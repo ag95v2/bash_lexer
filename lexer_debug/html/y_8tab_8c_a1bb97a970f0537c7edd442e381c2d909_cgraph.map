@@ -1,0 +1,7 @@
+<map id="shell_getc" name="shell_getc">
+<area shape="rect" id="node2" href="$y_8tab_8c.html#af07d89f5ceaea0c7c8252cc41fd75f37" title="free" alt="" coords="481,32,525,59"/>
+<area shape="rect" id="node3" href="$y_8tab_8c.html#a2ea477f9f0e79d6865887e79570ac386" title="print_prompt" alt="" coords="137,32,232,59"/>
+<area shape="rect" id="node4" href="$y_8tab_8c.html#af942cc98d4706ece78c55389c1e24128" title="yy_getc" alt="" coords="151,83,219,110"/>
+<area shape="rect" id="node5" href="$y_8tab_8c.html#ae5386ae1c96bb1b825d46cf2dc91ad72" title="prompt_again" alt="" coords="135,134,235,160"/>
+<area shape="rect" id="node6" href="$y_8tab_8c.html#aa565d263ac0f3fd3154f4fccf8ce6914" title="decode_prompt_string" alt="" coords="283,83,433,110"/>
+</map>

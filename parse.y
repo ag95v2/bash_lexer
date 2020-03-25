@@ -1,19 +1,15 @@
 /* parse.y - Yacc grammar for bash. */
 
 /* Copyright (C) 1989-2017 Free Software Foundation, Inc.
-
    This file is part of GNU Bash, the Bourne Again SHell.
-
    Bash is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
-
    Bash is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-
    You should have received a copy of the GNU General Public License
    along with Bash.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -1159,7 +1155,6 @@ newline_list:
 /* A simple_list is a list that contains no significant newlines
    and no leading or trailing newlines.  Newlines are allowed
    only following operators, where they are not significant.
-
    This is what an inputunit consists of.  */
 
 simple_list:	simple_list1
@@ -2621,7 +2616,6 @@ pop_alias:
      and place the string to be parsed and executed into location.string, so
      we should not stop reading that until the pointer is '\0'.
      The check for shell_input_line_terminator may be superfluous.
-
      This solves the problem of `.' inside a multi-line alias with embedded
      newlines executing things out of order. */
   if (uc == 0 && bash_input.type == st_string && *bash_input.location.string &&
@@ -2878,14 +2872,12 @@ static int open_brace_count;
 
     /* OK, we have a token.  Let's try to alias expand it, if (and only if)
        it's eligible.
-
        It is eligible for expansion if EXPAND_ALIASES is set, and
        the token is unquoted and the last token read was a command
        separator (or expand_next_token is set), and we are currently
        processing an alias (pushed_string_list is non-empty) and this
        token is not the same as the current or any previously
        processed alias.
-
        Special cases that disqualify:
 	 In a pattern list in a case statement (parser_state & PST_CASEPAT). */
 
@@ -3006,25 +2998,18 @@ time_command_acceptable ()
 /* Handle special cases of token recognition:
 	IN is recognized if the last token was WORD and the token
 	before that was FOR or CASE or SELECT.
-
 	DO is recognized if the last token was WORD and the token
 	before that was FOR or SELECT.
-
 	ESAC is recognized if the last token caused `esacs_needed_count'
 	to be set
-
 	`{' is recognized if the last token as WORD and the token
 	before that was FUNCTION, or if we just parsed an arithmetic
 	`for' command.
-
 	`}' is recognized if there is an unclosed `{' present.
-
 	`-p' is returned as TIMEOPT if the last read token was TIME.
 	`--' is returned as TIMEIGN if the last read token was TIMEOPT.
-
 	']]' is returned as COND_END if the parser is currently parsing
 	a conditional expression ((parser_state & PST_CONDEXPR) != 0)
-
 	`time' is returned as TIME if and only if it is immediately
 	preceded by one of `;', `\n', `||', `&&', or `&'.
 */
@@ -5669,7 +5654,6 @@ prompt_history_number (pmt)
 
 /* Return a string which will be printed as a prompt.  The string
    may contain special characters which are decoded as follows:
-
 	\a	bell (ascii 07)
 	\d	the date in Day Mon Date format
 	\e	escape (ascii 033)

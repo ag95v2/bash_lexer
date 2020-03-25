@@ -1,0 +1,23 @@
+<map id="read_token" name="read_token">
+<area shape="rect" id="node2" href="$y_8tab_8c.html#a3e2d1045f92e30c7f8e21d2c54af5d8d" title="reset_parser" alt="" coords="980,716,1075,743"/>
+<area shape="rect" id="node4" href="$y_8tab_8c.html#a1bb97a970f0537c7edd442e381c2d909" title="shell_getc" alt="" coords="824,159,905,185"/>
+<area shape="rect" id="node9" href="$y_8tab_8c.html#a69533ad00ee99fbf514ff690b42c1d13" title="discard_until" alt="" coords="633,57,728,84"/>
+<area shape="rect" id="node10" href="$y_8tab_8c.html#a95e5276f0210eadb06662b6a7ffb8cb8" title="shell_ungetc" alt="" coords="817,209,912,236"/>
+<area shape="rect" id="node11" href="$y_8tab_8c.html#a51a94e4267a96d97fc4fe33305fd6271" title="gather_here_documents" alt="" coords="140,412,301,439"/>
+<area shape="rect" id="node12" href="$y_8tab_8c.html#a8bb7c7e996dba7eb88f68f57116b8374" title="read_token_word" alt="" coords="160,361,281,388"/>
+<area shape="rect" id="node3" href="$y_8tab_8c.html#af07d89f5ceaea0c7c8252cc41fd75f37" title="free" alt="" coords="1349,456,1393,483"/>
+<area shape="rect" id="node5" href="$y_8tab_8c.html#a2ea477f9f0e79d6865887e79570ac386" title="print_prompt" alt="" coords="980,159,1075,185"/>
+<area shape="rect" id="node6" href="$y_8tab_8c.html#af942cc98d4706ece78c55389c1e24128" title="yy_getc" alt="" coords="993,209,1061,236"/>
+<area shape="rect" id="node7" href="$y_8tab_8c.html#ae5386ae1c96bb1b825d46cf2dc91ad72" title="prompt_again" alt="" coords="977,412,1077,439"/>
+<area shape="rect" id="node8" href="$y_8tab_8c.html#aa565d263ac0f3fd3154f4fccf8ce6914" title="decode_prompt_string" alt="" coords="1147,412,1297,439"/>
+<area shape="rect" id="node13" href="$y_8tab_8c.html#af6d9f49af723aa0967fbe6d751501c39" title="parse_matched_pair" alt="" coords="377,361,516,388"/>
+<area shape="rect" id="node14" href="$y_8tab_8c.html#ac97f2adca92f87c907c35d781caed8b2" title="parse_comsub" alt="" coords="627,311,734,337"/>
+<area shape="rect" id="node15" href="$y_8tab_8c.html#a019c33f7135bc88bdfe1f4939337d4ac" title="parse_compound_assignment" alt="" coords="349,615,544,641"/>
+<area shape="rect" id="node21" href="$y_8tab_8c.html#a2446401fab4ce385293f312e4c8b3277" title="special_case_tokens" alt="" coords="375,513,519,540"/>
+<area shape="rect" id="node16" href="$y_8tab_8c.html#a8ff86640662ce198dff73974a08479e6" title="yyerror" alt="" coords="833,665,896,692"/>
+<area shape="rect" id="node17" href="$y_8tab_8c.html#ad38419552e85f20949449f6068a1b1b9" title="report_syntax_error" alt="" coords="960,633,1095,660"/>
+<area shape="rect" id="node18" href="$y_8tab_8c.html#ad3c0d376cb729cbe8c049f224492255b" title="error_token_from_token" alt="" coords="1143,684,1301,711"/>
+<area shape="rect" id="node19" href="$y_8tab_8c.html#a3082c48392aaa20b6271e02725a7c744" title="print_offending_line" alt="" coords="1155,532,1289,559"/>
+<area shape="rect" id="node20" href="$y_8tab_8c.html#aec21fcf1de3609367c74860cd8728e42" title="error_token_from_text" alt="" coords="1147,633,1297,660"/>
+<area shape="rect" id="node22" href="$y_8tab_8c.html#a95c2b7ccd3541afb78bc05778e9113ee" title="reserved_word_acceptable" alt="" coords="592,513,769,540"/>
+</map>

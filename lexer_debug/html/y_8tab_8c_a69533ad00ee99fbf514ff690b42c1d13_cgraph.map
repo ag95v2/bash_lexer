@@ -1,0 +1,9 @@
+<map id="discard_until" name="discard_until">
+<area shape="rect" id="node2" href="$y_8tab_8c.html#a1bb97a970f0537c7edd442e381c2d909" title="shell_getc" alt="" coords="155,56,236,83"/>
+<area shape="rect" id="node8" href="$y_8tab_8c.html#a95e5276f0210eadb06662b6a7ffb8cb8" title="shell_ungetc" alt="" coords="148,107,243,134"/>
+<area shape="rect" id="node3" href="$y_8tab_8c.html#af07d89f5ceaea0c7c8252cc41fd75f37" title="free" alt="" coords="637,31,681,58"/>
+<area shape="rect" id="node4" href="$y_8tab_8c.html#a2ea477f9f0e79d6865887e79570ac386" title="print_prompt" alt="" coords="293,31,388,58"/>
+<area shape="rect" id="node5" href="$y_8tab_8c.html#af942cc98d4706ece78c55389c1e24128" title="yy_getc" alt="" coords="307,82,375,108"/>
+<area shape="rect" id="node6" href="$y_8tab_8c.html#ae5386ae1c96bb1b825d46cf2dc91ad72" title="prompt_again" alt="" coords="291,132,391,159"/>
+<area shape="rect" id="node7" href="$y_8tab_8c.html#aa565d263ac0f3fd3154f4fccf8ce6914" title="decode_prompt_string" alt="" coords="439,82,589,108"/>
+</map>

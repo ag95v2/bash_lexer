@@ -1,0 +1,12 @@
+<map id="read_a_line" name="read_a_line">
+<area shape="rect" id="node2" href="$y_8tab_8c.html#a2ea477f9f0e79d6865887e79570ac386" title="print_prompt" alt="" coords="141,5,236,32"/>
+<area shape="rect" id="node3" href="$y_8tab_8c.html#af942cc98d4706ece78c55389c1e24128" title="yy_getc" alt="" coords="155,56,223,83"/>
+<area shape="rect" id="node4" href="$y_8tab_8c.html#a95ac601370f5579d31f92e63881a537b" title="yy_ungetc" alt="" coords="147,107,230,133"/>
+<area shape="rect" id="node5" href="$y_8tab_8c.html#af07d89f5ceaea0c7c8252cc41fd75f37" title="free" alt="" coords="337,31,381,57"/>
+<area shape="rect" id="node6" href="$y_8tab_8c.html#a316a93bd11b27f39fbfd398249957f02" title="with_input_from_stdin" alt="" coords="284,132,433,159"/>
+<area shape="rect" id="node8" href="$y_8tab_8c.html#a7de921093a5cda1e88ca63396c373128" title="init_yy_io" alt="" coords="713,81,791,108"/>
+<area shape="rect" id="node11" href="$y_8tab_8c.html#a9b6b445082e52d91c66e24fdb09ae58a" title="stream_on_stack" alt="" coords="297,183,420,209"/>
+<area shape="rect" id="node7" href="$y_8tab_8c.html#a1e173e69f1583139cc4473a10c518f74" title="with_input_from_stream" alt="" coords="481,132,643,159"/>
+<area shape="rect" id="node9" href="$y_8tab_8c.html#a62b7bebc6291d0add18ac5d7ab9a42ef" title="yy_stream_get" alt="" coords="698,132,806,159"/>
+<area shape="rect" id="node10" href="$y_8tab_8c.html#a032182f4c7d690ec6048bf209511e889" title="yy_stream_unget" alt="" coords="691,183,813,209"/>
+</map>
