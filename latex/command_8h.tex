@@ -1,0 +1,838 @@
+\hypertarget{command_8h}{}\section{command.\+h File Reference}
+\label{command_8h}\index{command.\+h@{command.\+h}}
+{\ttfamily \#include \char`\"{}stdc.\+h\char`\"{}}\\*
+Include dependency graph for command.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{command_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{command_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structword__desc}{word\+\_\+desc}
+\item 
+struct \hyperlink{structword__list}{word\+\_\+list}
+\item 
+union \hyperlink{unionREDIRECTEE}{R\+E\+D\+I\+R\+E\+C\+T\+EE}
+\item 
+struct \hyperlink{structredirect}{redirect}
+\item 
+struct \hyperlink{structelement}{element}
+\item 
+struct \hyperlink{structcommand}{command}
+\item 
+struct \hyperlink{structconnection}{connection}
+\item 
+struct \hyperlink{structpattern__list}{pattern\+\_\+list}
+\item 
+struct \hyperlink{structcase__com}{case\+\_\+com}
+\item 
+struct \hyperlink{structfor__com}{for\+\_\+com}
+\item 
+struct \hyperlink{structif__com}{if\+\_\+com}
+\item 
+struct \hyperlink{structwhile__com}{while\+\_\+com}
+\item 
+struct \hyperlink{structcond__com}{cond\+\_\+com}
+\item 
+struct \hyperlink{structsimple__com}{simple\+\_\+com}
+\item 
+struct \hyperlink{structfunction__def}{function\+\_\+def}
+\item 
+struct \hyperlink{structgroup__com}{group\+\_\+com}
+\item 
+struct \hyperlink{structsubshell__com}{subshell\+\_\+com}
+\item 
+struct \hyperlink{structcoproc}{coproc}
+\item 
+struct \hyperlink{structcoproc__com}{coproc\+\_\+com}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{command_8h_aeb193d7a3c699fc4688fe85b70f842f6}{R\+E\+D\+I\+R\+\_\+\+V\+A\+R\+A\+S\+S\+I\+GN}~0x01
+\item 
+\#define \hyperlink{command_8h_a2e7def3c711f2f7816246bffcab00116}{A\+M\+B\+I\+G\+U\+O\+U\+S\+\_\+\+R\+E\+D\+I\+R\+E\+CT}~-\/1
+\item 
+\#define \hyperlink{command_8h_a8c9f73d7aa8eabcae431cabfa8269690}{N\+O\+C\+L\+O\+B\+B\+E\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT}~-\/2
+\item 
+\#define \hyperlink{command_8h_a14ca562fa2cc0f4d9beac9d953ecb66d}{R\+E\+S\+T\+R\+I\+C\+T\+E\+D\+\_\+\+R\+E\+D\+I\+R\+E\+CT}~-\/3	/$\ast$ can only happen in \hyperlink{flags_8c_aac4a9e2f668b5aa59f6f9870b47a9905}{restricted} shells. $\ast$/
+\item 
+\#define \hyperlink{command_8h_ab69e7d3526bfb38ef9254878195cdc31}{H\+E\+R\+E\+D\+O\+C\+\_\+\+R\+E\+D\+I\+R\+E\+CT}~-\/4  /$\ast$ here-\/doc temp file can\textquotesingle{}t be created $\ast$/
+\item 
+\#define \hyperlink{command_8h_a0938a3c2e1571a9de7bac4614856425e}{B\+A\+D\+V\+A\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT}~-\/5  /$\ast$ something wrong with \{varname\}\hyperlink{y_8tab_8c_a37cab0766979dccd60d3f89f0e2c2c8c}{redir} $\ast$/
+\item 
+\#define \hyperlink{command_8h_aa11224c9ee989eb52528f5c46069850a}{C\+L\+O\+B\+B\+E\+R\+I\+N\+G\+\_\+\+R\+E\+D\+I\+R\+E\+CT}(ri)~(ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da2c69229c3578e06a1d65505386741077}{r\+\_\+output\+\_\+direction} $\vert$$\vert$ ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55daa0c75652231141c973727b2395f455b1}{r\+\_\+err\+\_\+and\+\_\+out})
+\item 
+\#define \hyperlink{command_8h_a72aba3a31f4c68b55380ffedefb496f7}{O\+U\+T\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT}(ri)~(ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da2c69229c3578e06a1d65505386741077}{r\+\_\+output\+\_\+direction} $\vert$$\vert$ ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da9678fd1dc74794c90ff05cbc87028723}{r\+\_\+input\+\_\+output} $\vert$$\vert$ ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55daa0c75652231141c973727b2395f455b1}{r\+\_\+err\+\_\+and\+\_\+out} $\vert$$\vert$ ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55dacc481932ed1e82e2bfbf1afd394f056c}{r\+\_\+append\+\_\+err\+\_\+and\+\_\+out})
+\item 
+\#define \hyperlink{command_8h_a77a5a677b045bde12c0cecb4347ec1e7}{I\+N\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT}(ri)~(ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da2692c773b18ff643634cdca169dae8d8}{r\+\_\+input\+\_\+direction} $\vert$$\vert$ ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55dacb9e022ddb1386971e5616fbe312b7c2}{r\+\_\+inputa\+\_\+direction} $\vert$$\vert$ ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da9678fd1dc74794c90ff05cbc87028723}{r\+\_\+input\+\_\+output})
+\item 
+\#define \hyperlink{command_8h_aefb426df9142aa359ba636084b0e7b95}{W\+R\+I\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT}(ri)
+\item 
+\#define \hyperlink{command_8h_a6a55dfa841fd7fad2ad111066150c383}{T\+R\+A\+N\+S\+L\+A\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT}(ri)
+\item 
+\#define \hyperlink{command_8h_ac2b7d1775cfa13dc957b7e89cbdc5c79}{W\+\_\+\+H\+A\+S\+D\+O\+L\+L\+AR}~0x000001	/$\ast$ Dollar sign present. $\ast$/
+\item 
+\#define \hyperlink{command_8h_aeaff821980f0c3b0e991cd793a9f1ff2}{W\+\_\+\+Q\+U\+O\+T\+ED}~0x000002	/$\ast$ Some form of quote character is present. $\ast$/
+\item 
+\#define \hyperlink{command_8h_af2e8d0ab8ebc8b5e53c931576981e376}{W\+\_\+\+A\+S\+S\+I\+G\+N\+M\+E\+NT}~0x000004	/$\ast$ This word is a variable assignment. $\ast$/
+\item 
+\#define \hyperlink{command_8h_aa2dc72d898e20f06df525709f278cc5a}{W\+\_\+\+S\+P\+L\+I\+T\+S\+P\+A\+CE}~0x000008	/$\ast$ Split this word on \char`\"{} \char`\"{} regardless of I\+F\+S $\ast$/
+\item 
+\#define \hyperlink{command_8h_a4c5fbbe2909f93d42fad2d5fda2e93a0}{W\+\_\+\+N\+O\+S\+P\+L\+IT}~0x000010	/$\ast$ Do not perform word splitting on this word because ifs is empty string. $\ast$/
+\item 
+\#define \hyperlink{command_8h_a5b082468bd78a9d4cb6447bf0702d1a3}{W\+\_\+\+N\+O\+G\+L\+OB}~0x000020	/$\ast$ Do not perform globbing on this word. $\ast$/
+\item 
+\#define \hyperlink{command_8h_ab9bb003fcbcf4e03daa619913a8344ec}{W\+\_\+\+N\+O\+S\+P\+L\+I\+T2}~0x000040	/$\ast$ Don\textquotesingle{}t split word except for \$@ expansion (using spaces) because context does not allow it. $\ast$/
+\item 
+\#define \hyperlink{command_8h_a0e1cff89ea608dfe940ce589122d9e94}{W\+\_\+\+T\+I\+L\+D\+E\+E\+XP}~0x000080	/$\ast$ Tilde expand this assignment word $\ast$/
+\item 
+\#define \hyperlink{command_8h_a03cb47d103a7c09e3a0f5d80fac0e52b}{W\+\_\+\+D\+O\+L\+L\+A\+R\+AT}~0x000100	/$\ast$ \$@ and its special handling $\ast$/
+\item 
+\#define \hyperlink{command_8h_a9064b75cd40d783149d844ede671c10f}{W\+\_\+\+D\+O\+L\+L\+A\+R\+S\+T\+AR}~0x000200	/$\ast$ \$$\ast$ and its special handling $\ast$/
+\item 
+\#define \hyperlink{command_8h_a3a631ce89bdf6cbfdaf61e9ba8724e6c}{W\+\_\+\+N\+O\+C\+O\+M\+S\+UB}~0x000400	/$\ast$ Don\textquotesingle{}t perform command substitution on this word $\ast$/
+\item 
+\#define \hyperlink{command_8h_a6469febdc021d8e49dc9e337cf803459}{W\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS}~0x000800	/$\ast$ Word is rhs of an assignment statement $\ast$/
+\item 
+\#define \hyperlink{command_8h_ac84c9fea401843556ddb98e7c27344ba}{W\+\_\+\+N\+O\+T\+I\+L\+DE}~0x001000	/$\ast$ Don\textquotesingle{}t perform tilde expansion on this word $\ast$/
+\item 
+\#define \hyperlink{command_8h_a6a503ea9140b7ba880938cfcf4e0b6f9}{W\+\_\+\+I\+T\+I\+L\+DE}~0x002000	/$\ast$ Internal flag for word expansion $\ast$/
+\item 
+\#define \hyperlink{command_8h_a7735f299a348d04ce4ca39389d6abf20}{W\+\_\+\+N\+O\+E\+X\+P\+A\+ND}~0x004000	/$\ast$ Don\textquotesingle{}t expand at all -\/-\/ do quote removal $\ast$/
+\item 
+\#define \hyperlink{command_8h_aec55fb1d59eccbf09b04dd40d1b5a0fd}{W\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN}~0x008000	/$\ast$ Compound assignment $\ast$/
+\item 
+\#define \hyperlink{command_8h_ab599af35fc2f41cb142fad1c4906d5b4}{W\+\_\+\+A\+S\+S\+N\+B\+L\+T\+IN}~0x010000	/$\ast$ word is a builtin command that takes assignments $\ast$/
+\item 
+\#define \hyperlink{command_8h_a27827a9c9d9fa0c27da3192732febc34}{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+RG}~0x020000	/$\ast$ word is assignment argument to command $\ast$/
+\item 
+\#define \hyperlink{command_8h_a7f2d596fb9a11ee8827802f17378d6c0}{W\+\_\+\+H\+A\+S\+Q\+U\+O\+T\+E\+D\+N\+U\+LL}~0x040000	/$\ast$ word contains a quoted null character $\ast$/
+\item 
+\#define \hyperlink{command_8h_a3314c024ea58c967acaa0db45f01bcc5}{W\+\_\+\+D\+Q\+U\+O\+TE}~0x080000	/$\ast$ word should be treated as if double-\/quoted $\ast$/
+\item 
+\#define \hyperlink{command_8h_ab04c950186c3cc792a1b1347d1655ff3}{W\+\_\+\+N\+O\+P\+R\+O\+C\+S\+UB}~0x100000	/$\ast$ don\textquotesingle{}t perform process substitution $\ast$/
+\item 
+\#define \hyperlink{command_8h_abd73c980d6a490bc095b724387821c0b}{W\+\_\+\+S\+A\+W\+Q\+U\+O\+T\+E\+D\+N\+U\+LL}~0x200000	/$\ast$ word contained a quoted null that was removed $\ast$/
+\item 
+\#define \hyperlink{command_8h_abaa65a0967a7f23d937b93ddac7c7a61}{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+S\+S\+OC}~0x400000	/$\ast$ word looks like associative array assignment $\ast$/
+\item 
+\#define \hyperlink{command_8h_aace1f35eb92bd698ceedef24f46db38d}{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+R\+R\+AY}~0x800000	/$\ast$ word looks like a compound indexed array assignment $\ast$/
+\item 
+\#define \hyperlink{command_8h_affa7cf6dfbf57425433e7751af9cb966}{W\+\_\+\+A\+R\+R\+A\+Y\+I\+ND}~0x1000000	/$\ast$ word is an array index being expanded $\ast$/
+\item 
+\#define \hyperlink{command_8h_a6dfcb3d9a4a25c61c48afcae84b1618e}{W\+\_\+\+A\+S\+S\+N\+G\+L\+O\+B\+AL}~0x2000000	/$\ast$ word is a global assignment to declare (declare/typeset -\/g) $\ast$/
+\item 
+\#define \hyperlink{command_8h_a111e22b177e688ade25edf3a1111292b}{W\+\_\+\+N\+O\+B\+R\+A\+CE}~0x4000000	/$\ast$ Don\textquotesingle{}t perform brace expansion $\ast$/
+\item 
+\#define \hyperlink{command_8h_ae9e11e696c210b9ac3978d122cdffcc3}{W\+\_\+\+C\+O\+M\+P\+L\+E\+TE}~0x8000000	/$\ast$ word is being expanded for completion $\ast$/
+\item 
+\#define \hyperlink{command_8h_a852301eab3bb50b3761ee3ba989b817e}{W\+\_\+\+C\+H\+K\+L\+O\+C\+AL}~0x10000000	/$\ast$ check for local vars on assignment $\ast$/
+\item 
+\#define \hyperlink{command_8h_ae1cbb46da717e4b7d398993f0f4720cb}{W\+\_\+\+N\+O\+A\+S\+S\+N\+T\+I\+L\+DE}~0x20000000	/$\ast$ don\textquotesingle{}t do tilde expansion like an assignment statement $\ast$/
+\item 
+\#define \hyperlink{command_8h_a9a762d22376d45d7a8adb7abc721b1a4}{P\+F\+\_\+\+N\+O\+C\+O\+M\+S\+UB}~0x01	/$\ast$ Do not perform command substitution $\ast$/
+\item 
+\#define \hyperlink{command_8h_a62c229b62dd33e891bec27d12320dc41}{P\+F\+\_\+\+I\+G\+N\+U\+N\+B\+O\+U\+ND}~0x02	/$\ast$ ignore unbound vars even if -\/u set $\ast$/
+\item 
+\#define \hyperlink{command_8h_ab1df02cee4e8a7f5cc25730c13e41a65}{P\+F\+\_\+\+N\+O\+S\+P\+L\+I\+T2}~0x04	/$\ast$ same as W\+\_\+\+N\+O\+S\+P\+L\+I\+T2 $\ast$/
+\item 
+\#define \hyperlink{command_8h_a9fdc12d2acee2ab43919e08d54a205ef}{P\+F\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS}~0x08	/$\ast$ same as W\+\_\+\+A\+S\+S\+I\+G\+N\+R\+H\+S $\ast$/
+\item 
+\#define \hyperlink{command_8h_a9cab3656706831f1a3fb7a4efb8bdfe7}{P\+F\+\_\+\+C\+O\+M\+P\+L\+E\+TE}~0x10	/$\ast$ same as W\+\_\+\+C\+O\+M\+P\+L\+E\+T\+E, sets S\+X\+\_\+\+C\+O\+M\+P\+L\+E\+T\+E $\ast$/
+\item 
+\#define \hyperlink{command_8h_abd94aff81c34160c8185303ebe67c539}{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+A\+S\+Y\+NC}~0x01	/$\ast$ subshell caused by `command \&\textquotesingle{} $\ast$/
+\item 
+\#define \hyperlink{command_8h_a099d95cd805bc361bdfe3434fc3df1a8}{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+A\+R\+EN}~0x02	/$\ast$ subshell caused by ( ... ) $\ast$/
+\item 
+\#define \hyperlink{command_8h_acaecc6b5540a23a9d1d411add740147a}{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+M\+S\+UB}~0x04	/$\ast$ subshell caused by `command` or \$(command) $\ast$/
+\item 
+\#define \hyperlink{command_8h_a41bcaa6d0d3a62c211c35e54638a382f}{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+F\+O\+RK}~0x08	/$\ast$ subshell caused by executing a disk command $\ast$/
+\item 
+\#define \hyperlink{command_8h_a1f4bab590838fd1ce5e0e8a4ba0c6f0b}{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+I\+PE}~0x10	/$\ast$ subshell from a pipeline element $\ast$/
+\item 
+\#define \hyperlink{command_8h_a30ebb68f2ed5c431f8ed7be204e7cf6d}{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+R\+O\+C\+S\+UB}~0x20	/$\ast$ subshell caused by $<$(command) or $>$(command) $\ast$/
+\item 
+\#define \hyperlink{command_8h_af3e3f0228854b49f9a1473927086896b}{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+P\+R\+OC}~0x40	/$\ast$ subshell from a coproc pipeline $\ast$/
+\item 
+\#define \hyperlink{command_8h_a293321462a0aa4e566ee3d432374bd5f}{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+R\+E\+S\+E\+T\+T\+R\+AP}~0x80	/$\ast$ subshell needs to reset trap strings on first call to trap $\ast$/
+\item 
+\#define \hyperlink{command_8h_a0806649401c3bb4c89bb431d3f3f5a99}{C\+M\+D\+\_\+\+W\+A\+N\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL}~0x01	/$\ast$ User wants a subshell\+: ( command ) $\ast$/
+\item 
+\#define \hyperlink{command_8h_ac81077f23150b67ec83919478361f017}{C\+M\+D\+\_\+\+F\+O\+R\+C\+E\+\_\+\+S\+U\+B\+S\+H\+E\+LL}~0x02	/$\ast$ Shell needs to force a subshell. $\ast$/
+\item 
+\#define \hyperlink{command_8h_a580b06894a4aec29dcbcd920f8b65bd9}{C\+M\+D\+\_\+\+I\+N\+V\+E\+R\+T\+\_\+\+R\+E\+T\+U\+RN}~0x04	/$\ast$ Invert the exit value. $\ast$/
+\item 
+\#define \hyperlink{command_8h_affea08650ec3a3c97110c6a216a41b34}{C\+M\+D\+\_\+\+I\+G\+N\+O\+R\+E\+\_\+\+R\+E\+T\+U\+RN}~0x08	/$\ast$ Ignore the exit value.  For set -\/e. $\ast$/
+\item 
+\#define \hyperlink{command_8h_aff3dd0768a86c52f722064766eda4724}{C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS}~0x10 /$\ast$ Ignore functions during command lookup. $\ast$/
+\item 
+\#define \hyperlink{command_8h_a177ba2ebb0aea0441c83c39643ff5181}{C\+M\+D\+\_\+\+I\+N\+H\+I\+B\+I\+T\+\_\+\+E\+X\+P\+A\+N\+S\+I\+ON}~0x20 /$\ast$ Do not expand the command words. $\ast$/
+\item 
+\#define \hyperlink{command_8h_ae7c225776eecb2f1a0b4de5ac1f6eff3}{C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+O\+RK}~0x40	/$\ast$ Don\textquotesingle{}t fork; just call execve $\ast$/
+\item 
+\#define \hyperlink{command_8h_a188d6b1f7afac2ff9204793f8caeea6e}{C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+I\+P\+E\+L\+I\+NE}~0x80 /$\ast$ Time a pipeline $\ast$/
+\item 
+\#define \hyperlink{command_8h_ab7af131e28fe7685d0590ebbfff920f5}{C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+O\+S\+IX}~0x100 /$\ast$ time -\/p; use P\+O\+S\+I\+X.\+2 time output spec. $\ast$/
+\item 
+\#define \hyperlink{command_8h_a84143f106fb0e7e4470389a550d8eff3}{C\+M\+D\+\_\+\+A\+M\+P\+E\+R\+S\+A\+ND}~0x200 /$\ast$ command \& $\ast$/
+\item 
+\#define \hyperlink{command_8h_a8df5f451751609f16a376892ad22d746}{C\+M\+D\+\_\+\+S\+T\+D\+I\+N\+\_\+\+R\+E\+D\+IR}~0x400 /$\ast$ async command needs implicit $<$/dev/null $\ast$/
+\item 
+\#define \hyperlink{command_8h_a4577eeffb11f0901b14c4d82852eed26}{C\+M\+D\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+B\+U\+I\+L\+T\+IN}~0x0800 /$\ast$ command executed by `command\textquotesingle{} builtin $\ast$/
+\item 
+\#define \hyperlink{command_8h_a2cc0bbce38aefc79effdfa483c4c98c7}{C\+M\+D\+\_\+\+C\+O\+P\+R\+O\+C\+\_\+\+S\+U\+B\+S\+H\+E\+LL}~0x1000
+\item 
+\#define \hyperlink{command_8h_a329fad0b9806a27d1fe3568547f92180}{C\+M\+D\+\_\+\+L\+A\+S\+T\+P\+I\+PE}~0x2000
+\item 
+\#define \hyperlink{command_8h_ab35c5ac23f228be18acfc99fdbac9077}{C\+M\+D\+\_\+\+S\+T\+D\+P\+A\+TH}~0x4000	/$\ast$ use standard path for command lookup $\ast$/
+\item 
+\#define \hyperlink{command_8h_a78b79388ea30a60ab8207d517c1d18c3}{C\+M\+D\+\_\+\+T\+R\+Y\+\_\+\+O\+P\+T\+I\+M\+I\+Z\+I\+NG}~0x8000	/$\ast$ try to optimize this simple command $\ast$/
+\item 
+\#define \hyperlink{command_8h_adf2737085ad5882519bda0ed989f8a60}{C\+A\+S\+E\+P\+A\+T\+\_\+\+F\+A\+L\+L\+T\+H\+R\+O\+U\+GH}~0x01
+\item 
+\#define \hyperlink{command_8h_a990e7acfa04422690478a375bd571ba0}{C\+A\+S\+E\+P\+A\+T\+\_\+\+T\+E\+S\+T\+N\+E\+XT}~0x02
+\item 
+\#define \hyperlink{command_8h_acb04d1a39efe075514c3db25081a6a29}{C\+O\+N\+D\+\_\+\+A\+ND}~1
+\item 
+\#define \hyperlink{command_8h_a492083d124f5c7ab21333ca4874d5ad0}{C\+O\+N\+D\+\_\+\+OR}~2
+\item 
+\#define \hyperlink{command_8h_a922bbc28525403f01e0a092a90f33f0f}{C\+O\+N\+D\+\_\+\+U\+N\+A\+RY}~3
+\item 
+\#define \hyperlink{command_8h_a4a6baeb58d76450ff3d235cd592bd4ec}{C\+O\+N\+D\+\_\+\+B\+I\+N\+A\+RY}~4
+\item 
+\#define \hyperlink{command_8h_a088ec6c0df71936622b026347b5ea766}{C\+O\+N\+D\+\_\+\+T\+E\+RM}~5
+\item 
+\#define \hyperlink{command_8h_aa891c8cec866e9738888f46bc26d4172}{C\+O\+N\+D\+\_\+\+E\+X\+PR}~6
+\item 
+\#define \hyperlink{command_8h_a672ffd2d8ac7851801ca7bf91749431c}{C\+O\+P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG}~0x01
+\item 
+\#define \hyperlink{command_8h_a8593f501faea91cac1d23020c5124b50}{C\+O\+P\+R\+O\+C\+\_\+\+D\+E\+AD}~0x02
+\item 
+\#define \hyperlink{command_8h_a8297cc1e3343ae709026724d63772235}{C\+M\+D\+E\+R\+R\+\_\+\+D\+E\+F\+A\+U\+LT}~0
+\item 
+\#define \hyperlink{command_8h_a67b74c35b4f3ff70a02c6172323c1ac6}{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+T\+Y\+PE}~1
+\item 
+\#define \hyperlink{command_8h_aaba18b62fee2388c8159048f35233147}{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+C\+O\+NN}~2
+\item 
+\#define \hyperlink{command_8h_aa010901aecffe22f7d71610d9975de34}{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+J\+U\+MP}~3
+\item 
+\#define \hyperlink{command_8h_a95a8cfaac9547f1a3851dbacad6631fb}{C\+M\+D\+E\+R\+R\+\_\+\+L\+A\+ST}~3
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structword__desc}{word\+\_\+desc} \hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC}
+\item 
+typedef struct \hyperlink{structword__list}{word\+\_\+list} \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST}
+\item 
+typedef struct \hyperlink{structredirect}{redirect} \hyperlink{command_8h_adeb9f5d937c92c7923aec48ad5e47d57}{R\+E\+D\+I\+R\+E\+CT}
+\item 
+typedef struct \hyperlink{structelement}{element} \hyperlink{command_8h_ad98861155f12e470f2a392b7767cbe23}{E\+L\+E\+M\+E\+NT}
+\item 
+typedef struct \hyperlink{structcommand}{command} \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND}
+\item 
+typedef struct \hyperlink{structconnection}{connection} \hyperlink{command_8h_a34e34bdf67ba6b978c0c85018d08b452}{C\+O\+N\+N\+E\+C\+T\+I\+ON}
+\item 
+typedef struct \hyperlink{structpattern__list}{pattern\+\_\+list} \hyperlink{command_8h_a05098e88133e048a1acf396288758a9e}{P\+A\+T\+T\+E\+R\+N\+\_\+\+L\+I\+ST}
+\item 
+typedef struct \hyperlink{structcase__com}{case\+\_\+com} \hyperlink{command_8h_ae78fe81043e2cc981b6a0ba07c970358}{C\+A\+S\+E\+\_\+\+C\+OM}
+\item 
+typedef struct \hyperlink{structfor__com}{for\+\_\+com} \hyperlink{command_8h_a60c74cb6066b6f55517b5364b5ce2ae6}{F\+O\+R\+\_\+\+C\+OM}
+\item 
+typedef struct \hyperlink{structif__com}{if\+\_\+com} \hyperlink{command_8h_ad4ea9ec325de49bd9ca4b20b75a8729f}{I\+F\+\_\+\+C\+OM}
+\item 
+typedef struct \hyperlink{structwhile__com}{while\+\_\+com} \hyperlink{command_8h_a1564494fa7eadc120c09d53091e7a372}{W\+H\+I\+L\+E\+\_\+\+C\+OM}
+\item 
+typedef struct \hyperlink{structcond__com}{cond\+\_\+com} \hyperlink{command_8h_acfd591313c8c77c4f1fa185e5caf79c7}{C\+O\+N\+D\+\_\+\+C\+OM}
+\item 
+typedef struct \hyperlink{structsimple__com}{simple\+\_\+com} \hyperlink{command_8h_a9e5765af5d6e27f63eb9e9faeccc6404}{S\+I\+M\+P\+L\+E\+\_\+\+C\+OM}
+\item 
+typedef struct \hyperlink{structfunction__def}{function\+\_\+def} \hyperlink{command_8h_afcca6733a6618ea69dc7bcbedc9b96f1}{F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF}
+\item 
+typedef struct \hyperlink{structgroup__com}{group\+\_\+com} \hyperlink{command_8h_a9b146a7f540f0d6fbd9d0217f8ab9f98}{G\+R\+O\+U\+P\+\_\+\+C\+OM}
+\item 
+typedef struct \hyperlink{structsubshell__com}{subshell\+\_\+com} \hyperlink{command_8h_adc49f70ae0784d556fbf7fab41e4f642}{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+OM}
+\item 
+typedef struct \hyperlink{structcoproc}{coproc} \hyperlink{command_8h_a5f641f10198dcdbb65b316c692f3fd1a}{Coproc}
+\item 
+typedef struct \hyperlink{structcoproc__com}{coproc\+\_\+com} \hyperlink{command_8h_a05386ce05906df99a9c80e0738481dd9}{C\+O\+P\+R\+O\+C\+\_\+\+C\+OM}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55d}{r\+\_\+instruction} \{ \\*
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da2c69229c3578e06a1d65505386741077}{r\+\_\+output\+\_\+direction}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da2692c773b18ff643634cdca169dae8d8}{r\+\_\+input\+\_\+direction}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55dacb9e022ddb1386971e5616fbe312b7c2}{r\+\_\+inputa\+\_\+direction}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55dabdf14fbf47ea4511d7d86f4c6265d59a}{r\+\_\+appending\+\_\+to}, 
+\\*
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55dad6ac8401fce129fd7a87abbd1e607cae}{r\+\_\+reading\+\_\+until}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da2b4bada230697dabd5241c62a9ab9c19}{r\+\_\+reading\+\_\+string}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da37dbd5b8931579801f7f21e7e17fde80}{r\+\_\+duplicating\+\_\+input}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da5184a718fb36d51c96164d48ff361880}{r\+\_\+duplicating\+\_\+output}, 
+\\*
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da9112f830d7972fd884b2fde6a9678ece}{r\+\_\+deblank\+\_\+reading\+\_\+until}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da1a8b78fedef80651df23168d82de702f}{r\+\_\+close\+\_\+this}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55daa0c75652231141c973727b2395f455b1}{r\+\_\+err\+\_\+and\+\_\+out}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da9678fd1dc74794c90ff05cbc87028723}{r\+\_\+input\+\_\+output}, 
+\\*
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da9aaae513103312f652c3db6547a1ae51}{r\+\_\+output\+\_\+force}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da0d7bbe18befbbfb357b2da2fe3291b92}{r\+\_\+duplicating\+\_\+input\+\_\+word}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da4805d3919a0c259834e8f759d92b39ca}{r\+\_\+duplicating\+\_\+output\+\_\+word}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da7e6b370bfc294c10763c41fa49d871b1}{r\+\_\+move\+\_\+input}, 
+\\*
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da44d4c409356338b255cd96f03bf4d89f}{r\+\_\+move\+\_\+output}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55daaee0d3f7dfd8724a9e45f5481f504514}{r\+\_\+move\+\_\+input\+\_\+word}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55dada6da3f73b9c1c256e6db43bd852c562}{r\+\_\+move\+\_\+output\+\_\+word}, 
+\hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55dacc481932ed1e82e2bfbf1afd394f056c}{r\+\_\+append\+\_\+err\+\_\+and\+\_\+out}
+ \}
+\item 
+enum \hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4}{command\+\_\+type} \{ \\*
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4ad251e86bb9c320dd7686e4fb619864fb}{cm\+\_\+for}, 
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4a231ab4a34926d8540dd6645d28e046b3}{cm\+\_\+case}, 
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4aa5a171679a4afeedbf5656842c28d7d6}{cm\+\_\+while}, 
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4afb9898b99c8da429d239cd0264af4718}{cm\+\_\+if}, 
+\\*
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4a6b95c578a76edef96b78363613c03424}{cm\+\_\+simple}, 
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4ade005cb6c786196a2c4387b06649afa6}{cm\+\_\+select}, 
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4a45d0af40ea3834a6294f236d061dbf85}{cm\+\_\+connection}, 
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4af738c7876da438b4b0ccd9ba3e6e37f2}{cm\+\_\+function\+\_\+def}, 
+\\*
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4ad3bc32e998505a5d85220f89a3946c43}{cm\+\_\+until}, 
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4af707d29bf49d39c31aa013337e179614}{cm\+\_\+group}, 
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4afbe09c28d0b774c3f618235f135e725e}{cm\+\_\+arith}, 
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4a34e63fa25a73c47ca9c1e3c4675b4cb0}{cm\+\_\+cond}, 
+\\*
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4a9cda2772dfb914a28f9fd15f0827f5b9}{cm\+\_\+arith\+\_\+for}, 
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4a3a10db8d17c0c9e4d5b345e51cc54f91}{cm\+\_\+subshell}, 
+\hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4a41cbb56c2bbc34560ab03d87c7156846}{cm\+\_\+coproc}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{command_8h_afcca6733a6618ea69dc7bcbedc9b96f1}{F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF} $\ast$\hyperlink{copy__cmd_8c_ac6a4c2b66b50d6f6d7c2261b0eb6a2c1}{copy\+\_\+function\+\_\+def\+\_\+contents} \hyperlink{command_8h_a98ee9b6cc1ca3837bea6dfcc9bd515f8}{\+\_\+\+\_\+P} ((\hyperlink{command_8h_afcca6733a6618ea69dc7bcbedc9b96f1}{F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF} $\ast$, \hyperlink{command_8h_afcca6733a6618ea69dc7bcbedc9b96f1}{F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF} $\ast$))
+\item 
+\hyperlink{command_8h_afcca6733a6618ea69dc7bcbedc9b96f1}{F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF} $\ast$\hyperlink{copy__cmd_8c_a6a174f7214aa54161c9b117f17cde82f}{copy\+\_\+function\+\_\+def} \hyperlink{command_8h_a7728d15074fce25228c30d727dd3473b}{\+\_\+\+\_\+P} ((\hyperlink{command_8h_afcca6733a6618ea69dc7bcbedc9b96f1}{F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF} $\ast$))
+\item 
+\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$\hyperlink{copy__cmd_8c_aeac551e6a371c4df6da2adbd2b30ba77}{copy\+\_\+word} \hyperlink{command_8h_a82321ae5b1c9383c6f9ba07455a286a2}{\+\_\+\+\_\+P} ((\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$))
+\item 
+\hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$\hyperlink{copy__cmd_8c_a679eaec692763387c9c73afb6b298440}{copy\+\_\+word\+\_\+list} \hyperlink{command_8h_a97e5abe67f2e5964e51b730ed9f349fd}{\+\_\+\+\_\+P} ((\hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$))
+\item 
+\hyperlink{command_8h_adeb9f5d937c92c7923aec48ad5e47d57}{R\+E\+D\+I\+R\+E\+CT} $\ast$\hyperlink{copy__cmd_8c_a5b3a869ad2828cf1d6b4a2fedef5e33b}{copy\+\_\+redirect} \hyperlink{command_8h_a5b9efaa219f19a763d9810ae7cbec265}{\+\_\+\+\_\+P} ((\hyperlink{command_8h_adeb9f5d937c92c7923aec48ad5e47d57}{R\+E\+D\+I\+R\+E\+CT} $\ast$))
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$\hyperlink{copy__cmd_8c_a916f9421aca91f12372c68f0f1c38d56}{copy\+\_\+command} \hyperlink{command_8h_ae939b9b513ab404fe513cb5c9256afbf}{\+\_\+\+\_\+P} ((\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{command_8h_aad10387cf2b3a5e282a7e54e1605e7fc}{global\+\_\+command}
+\item 
+\hyperlink{command_8h_a5f641f10198dcdbb65b316c692f3fd1a}{Coproc} \hyperlink{command_8h_a510ca1a742b05c210803a73b9b7719c7}{sh\+\_\+coproc}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{command.\+h@{command.\+h}!A\+M\+B\+I\+G\+U\+O\+U\+S\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{A\+M\+B\+I\+G\+U\+O\+U\+S\+\_\+\+R\+E\+D\+I\+R\+E\+CT}}
+\index{A\+M\+B\+I\+G\+U\+O\+U\+S\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{A\+M\+B\+I\+G\+U\+O\+U\+S\+\_\+\+R\+E\+D\+I\+R\+E\+CT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{A\+M\+B\+I\+G\+U\+O\+U\+S\+\_\+\+R\+E\+D\+I\+R\+E\+CT}{AMBIGUOUS_REDIRECT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+M\+B\+I\+G\+U\+O\+U\+S\+\_\+\+R\+E\+D\+I\+R\+E\+CT~-\/1}\hypertarget{command_8h_a2e7def3c711f2f7816246bffcab00116}{}\label{command_8h_a2e7def3c711f2f7816246bffcab00116}
+\index{command.\+h@{command.\+h}!B\+A\+D\+V\+A\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{B\+A\+D\+V\+A\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT}}
+\index{B\+A\+D\+V\+A\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{B\+A\+D\+V\+A\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{B\+A\+D\+V\+A\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT}{BADVAR_REDIRECT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+D\+V\+A\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT~-\/5  /$\ast$ something wrong with \{varname\}{\bf redir} $\ast$/}\hypertarget{command_8h_a0938a3c2e1571a9de7bac4614856425e}{}\label{command_8h_a0938a3c2e1571a9de7bac4614856425e}
+\index{command.\+h@{command.\+h}!C\+A\+S\+E\+P\+A\+T\+\_\+\+F\+A\+L\+L\+T\+H\+R\+O\+U\+GH@{C\+A\+S\+E\+P\+A\+T\+\_\+\+F\+A\+L\+L\+T\+H\+R\+O\+U\+GH}}
+\index{C\+A\+S\+E\+P\+A\+T\+\_\+\+F\+A\+L\+L\+T\+H\+R\+O\+U\+GH@{C\+A\+S\+E\+P\+A\+T\+\_\+\+F\+A\+L\+L\+T\+H\+R\+O\+U\+GH}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+A\+S\+E\+P\+A\+T\+\_\+\+F\+A\+L\+L\+T\+H\+R\+O\+U\+GH}{CASEPAT_FALLTHROUGH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+A\+S\+E\+P\+A\+T\+\_\+\+F\+A\+L\+L\+T\+H\+R\+O\+U\+GH~0x01}\hypertarget{command_8h_adf2737085ad5882519bda0ed989f8a60}{}\label{command_8h_adf2737085ad5882519bda0ed989f8a60}
+\index{command.\+h@{command.\+h}!C\+A\+S\+E\+P\+A\+T\+\_\+\+T\+E\+S\+T\+N\+E\+XT@{C\+A\+S\+E\+P\+A\+T\+\_\+\+T\+E\+S\+T\+N\+E\+XT}}
+\index{C\+A\+S\+E\+P\+A\+T\+\_\+\+T\+E\+S\+T\+N\+E\+XT@{C\+A\+S\+E\+P\+A\+T\+\_\+\+T\+E\+S\+T\+N\+E\+XT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+A\+S\+E\+P\+A\+T\+\_\+\+T\+E\+S\+T\+N\+E\+XT}{CASEPAT_TESTNEXT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+A\+S\+E\+P\+A\+T\+\_\+\+T\+E\+S\+T\+N\+E\+XT~0x02}\hypertarget{command_8h_a990e7acfa04422690478a375bd571ba0}{}\label{command_8h_a990e7acfa04422690478a375bd571ba0}
+\index{command.\+h@{command.\+h}!C\+L\+O\+B\+B\+E\+R\+I\+N\+G\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{C\+L\+O\+B\+B\+E\+R\+I\+N\+G\+\_\+\+R\+E\+D\+I\+R\+E\+CT}}
+\index{C\+L\+O\+B\+B\+E\+R\+I\+N\+G\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{C\+L\+O\+B\+B\+E\+R\+I\+N\+G\+\_\+\+R\+E\+D\+I\+R\+E\+CT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+L\+O\+B\+B\+E\+R\+I\+N\+G\+\_\+\+R\+E\+D\+I\+R\+E\+CT}{CLOBBERING_REDIRECT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+L\+O\+B\+B\+E\+R\+I\+N\+G\+\_\+\+R\+E\+D\+I\+R\+E\+CT(
+\begin{DoxyParamCaption}
+\item[{}]{ri}
+\end{DoxyParamCaption}
+)~(ri == {\bf r\+\_\+output\+\_\+direction} $\vert$$\vert$ ri == {\bf r\+\_\+err\+\_\+and\+\_\+out})}\hypertarget{command_8h_aa11224c9ee989eb52528f5c46069850a}{}\label{command_8h_aa11224c9ee989eb52528f5c46069850a}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+A\+M\+P\+E\+R\+S\+A\+ND@{C\+M\+D\+\_\+\+A\+M\+P\+E\+R\+S\+A\+ND}}
+\index{C\+M\+D\+\_\+\+A\+M\+P\+E\+R\+S\+A\+ND@{C\+M\+D\+\_\+\+A\+M\+P\+E\+R\+S\+A\+ND}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+A\+M\+P\+E\+R\+S\+A\+ND}{CMD_AMPERSAND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+A\+M\+P\+E\+R\+S\+A\+ND~0x200 /$\ast$ command \& $\ast$/}\hypertarget{command_8h_a84143f106fb0e7e4470389a550d8eff3}{}\label{command_8h_a84143f106fb0e7e4470389a550d8eff3}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+B\+U\+I\+L\+T\+IN@{C\+M\+D\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+B\+U\+I\+L\+T\+IN}}
+\index{C\+M\+D\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+B\+U\+I\+L\+T\+IN@{C\+M\+D\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+B\+U\+I\+L\+T\+IN}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+B\+U\+I\+L\+T\+IN}{CMD_COMMAND_BUILTIN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+C\+O\+M\+M\+A\+N\+D\+\_\+\+B\+U\+I\+L\+T\+IN~0x0800 /$\ast$ command executed by `command\textquotesingle{} builtin $\ast$/}\hypertarget{command_8h_a4577eeffb11f0901b14c4d82852eed26}{}\label{command_8h_a4577eeffb11f0901b14c4d82852eed26}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+C\+O\+P\+R\+O\+C\+\_\+\+S\+U\+B\+S\+H\+E\+LL@{C\+M\+D\+\_\+\+C\+O\+P\+R\+O\+C\+\_\+\+S\+U\+B\+S\+H\+E\+LL}}
+\index{C\+M\+D\+\_\+\+C\+O\+P\+R\+O\+C\+\_\+\+S\+U\+B\+S\+H\+E\+LL@{C\+M\+D\+\_\+\+C\+O\+P\+R\+O\+C\+\_\+\+S\+U\+B\+S\+H\+E\+LL}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+C\+O\+P\+R\+O\+C\+\_\+\+S\+U\+B\+S\+H\+E\+LL}{CMD_COPROC_SUBSHELL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+C\+O\+P\+R\+O\+C\+\_\+\+S\+U\+B\+S\+H\+E\+LL~0x1000}\hypertarget{command_8h_a2cc0bbce38aefc79effdfa483c4c98c7}{}\label{command_8h_a2cc0bbce38aefc79effdfa483c4c98c7}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+F\+O\+R\+C\+E\+\_\+\+S\+U\+B\+S\+H\+E\+LL@{C\+M\+D\+\_\+\+F\+O\+R\+C\+E\+\_\+\+S\+U\+B\+S\+H\+E\+LL}}
+\index{C\+M\+D\+\_\+\+F\+O\+R\+C\+E\+\_\+\+S\+U\+B\+S\+H\+E\+LL@{C\+M\+D\+\_\+\+F\+O\+R\+C\+E\+\_\+\+S\+U\+B\+S\+H\+E\+LL}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+F\+O\+R\+C\+E\+\_\+\+S\+U\+B\+S\+H\+E\+LL}{CMD_FORCE_SUBSHELL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+F\+O\+R\+C\+E\+\_\+\+S\+U\+B\+S\+H\+E\+LL~0x02	/$\ast$ Shell needs to force a subshell. $\ast$/}\hypertarget{command_8h_ac81077f23150b67ec83919478361f017}{}\label{command_8h_ac81077f23150b67ec83919478361f017}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+I\+G\+N\+O\+R\+E\+\_\+\+R\+E\+T\+U\+RN@{C\+M\+D\+\_\+\+I\+G\+N\+O\+R\+E\+\_\+\+R\+E\+T\+U\+RN}}
+\index{C\+M\+D\+\_\+\+I\+G\+N\+O\+R\+E\+\_\+\+R\+E\+T\+U\+RN@{C\+M\+D\+\_\+\+I\+G\+N\+O\+R\+E\+\_\+\+R\+E\+T\+U\+RN}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+I\+G\+N\+O\+R\+E\+\_\+\+R\+E\+T\+U\+RN}{CMD_IGNORE_RETURN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+I\+G\+N\+O\+R\+E\+\_\+\+R\+E\+T\+U\+RN~0x08	/$\ast$ Ignore the exit value.  For set -\/e. $\ast$/}\hypertarget{command_8h_affea08650ec3a3c97110c6a216a41b34}{}\label{command_8h_affea08650ec3a3c97110c6a216a41b34}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+I\+N\+H\+I\+B\+I\+T\+\_\+\+E\+X\+P\+A\+N\+S\+I\+ON@{C\+M\+D\+\_\+\+I\+N\+H\+I\+B\+I\+T\+\_\+\+E\+X\+P\+A\+N\+S\+I\+ON}}
+\index{C\+M\+D\+\_\+\+I\+N\+H\+I\+B\+I\+T\+\_\+\+E\+X\+P\+A\+N\+S\+I\+ON@{C\+M\+D\+\_\+\+I\+N\+H\+I\+B\+I\+T\+\_\+\+E\+X\+P\+A\+N\+S\+I\+ON}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+I\+N\+H\+I\+B\+I\+T\+\_\+\+E\+X\+P\+A\+N\+S\+I\+ON}{CMD_INHIBIT_EXPANSION}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+I\+N\+H\+I\+B\+I\+T\+\_\+\+E\+X\+P\+A\+N\+S\+I\+ON~0x20 /$\ast$ Do not expand the command words. $\ast$/}\hypertarget{command_8h_a177ba2ebb0aea0441c83c39643ff5181}{}\label{command_8h_a177ba2ebb0aea0441c83c39643ff5181}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+I\+N\+V\+E\+R\+T\+\_\+\+R\+E\+T\+U\+RN@{C\+M\+D\+\_\+\+I\+N\+V\+E\+R\+T\+\_\+\+R\+E\+T\+U\+RN}}
+\index{C\+M\+D\+\_\+\+I\+N\+V\+E\+R\+T\+\_\+\+R\+E\+T\+U\+RN@{C\+M\+D\+\_\+\+I\+N\+V\+E\+R\+T\+\_\+\+R\+E\+T\+U\+RN}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+I\+N\+V\+E\+R\+T\+\_\+\+R\+E\+T\+U\+RN}{CMD_INVERT_RETURN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+I\+N\+V\+E\+R\+T\+\_\+\+R\+E\+T\+U\+RN~0x04	/$\ast$ Invert the exit value. $\ast$/}\hypertarget{command_8h_a580b06894a4aec29dcbcd920f8b65bd9}{}\label{command_8h_a580b06894a4aec29dcbcd920f8b65bd9}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+L\+A\+S\+T\+P\+I\+PE@{C\+M\+D\+\_\+\+L\+A\+S\+T\+P\+I\+PE}}
+\index{C\+M\+D\+\_\+\+L\+A\+S\+T\+P\+I\+PE@{C\+M\+D\+\_\+\+L\+A\+S\+T\+P\+I\+PE}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+L\+A\+S\+T\+P\+I\+PE}{CMD_LASTPIPE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+L\+A\+S\+T\+P\+I\+PE~0x2000}\hypertarget{command_8h_a329fad0b9806a27d1fe3568547f92180}{}\label{command_8h_a329fad0b9806a27d1fe3568547f92180}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+O\+RK@{C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+O\+RK}}
+\index{C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+O\+RK@{C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+O\+RK}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+O\+RK}{CMD_NO_FORK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+O\+RK~0x40	/$\ast$ Don\textquotesingle{}t fork; just call execve $\ast$/}\hypertarget{command_8h_ae7c225776eecb2f1a0b4de5ac1f6eff3}{}\label{command_8h_ae7c225776eecb2f1a0b4de5ac1f6eff3}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS@{C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS}}
+\index{C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS@{C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS}{CMD_NO_FUNCTIONS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+N\+O\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS~0x10 /$\ast$ Ignore functions during command lookup. $\ast$/}\hypertarget{command_8h_aff3dd0768a86c52f722064766eda4724}{}\label{command_8h_aff3dd0768a86c52f722064766eda4724}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+S\+T\+D\+I\+N\+\_\+\+R\+E\+D\+IR@{C\+M\+D\+\_\+\+S\+T\+D\+I\+N\+\_\+\+R\+E\+D\+IR}}
+\index{C\+M\+D\+\_\+\+S\+T\+D\+I\+N\+\_\+\+R\+E\+D\+IR@{C\+M\+D\+\_\+\+S\+T\+D\+I\+N\+\_\+\+R\+E\+D\+IR}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+S\+T\+D\+I\+N\+\_\+\+R\+E\+D\+IR}{CMD_STDIN_REDIR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+S\+T\+D\+I\+N\+\_\+\+R\+E\+D\+IR~0x400 /$\ast$ async command needs implicit $<$/dev/null $\ast$/}\hypertarget{command_8h_a8df5f451751609f16a376892ad22d746}{}\label{command_8h_a8df5f451751609f16a376892ad22d746}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+S\+T\+D\+P\+A\+TH@{C\+M\+D\+\_\+\+S\+T\+D\+P\+A\+TH}}
+\index{C\+M\+D\+\_\+\+S\+T\+D\+P\+A\+TH@{C\+M\+D\+\_\+\+S\+T\+D\+P\+A\+TH}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+S\+T\+D\+P\+A\+TH}{CMD_STDPATH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+S\+T\+D\+P\+A\+TH~0x4000	/$\ast$ use standard path for command lookup $\ast$/}\hypertarget{command_8h_ab35c5ac23f228be18acfc99fdbac9077}{}\label{command_8h_ab35c5ac23f228be18acfc99fdbac9077}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+I\+P\+E\+L\+I\+NE@{C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+I\+P\+E\+L\+I\+NE}}
+\index{C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+I\+P\+E\+L\+I\+NE@{C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+I\+P\+E\+L\+I\+NE}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+I\+P\+E\+L\+I\+NE}{CMD_TIME_PIPELINE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+I\+P\+E\+L\+I\+NE~0x80 /$\ast$ Time a pipeline $\ast$/}\hypertarget{command_8h_a188d6b1f7afac2ff9204793f8caeea6e}{}\label{command_8h_a188d6b1f7afac2ff9204793f8caeea6e}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+O\+S\+IX@{C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+O\+S\+IX}}
+\index{C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+O\+S\+IX@{C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+O\+S\+IX}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+O\+S\+IX}{CMD_TIME_POSIX}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+T\+I\+M\+E\+\_\+\+P\+O\+S\+IX~0x100 /$\ast$ time -\/p; use P\+O\+S\+I\+X.\+2 time output spec. $\ast$/}\hypertarget{command_8h_ab7af131e28fe7685d0590ebbfff920f5}{}\label{command_8h_ab7af131e28fe7685d0590ebbfff920f5}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+T\+R\+Y\+\_\+\+O\+P\+T\+I\+M\+I\+Z\+I\+NG@{C\+M\+D\+\_\+\+T\+R\+Y\+\_\+\+O\+P\+T\+I\+M\+I\+Z\+I\+NG}}
+\index{C\+M\+D\+\_\+\+T\+R\+Y\+\_\+\+O\+P\+T\+I\+M\+I\+Z\+I\+NG@{C\+M\+D\+\_\+\+T\+R\+Y\+\_\+\+O\+P\+T\+I\+M\+I\+Z\+I\+NG}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+T\+R\+Y\+\_\+\+O\+P\+T\+I\+M\+I\+Z\+I\+NG}{CMD_TRY_OPTIMIZING}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+T\+R\+Y\+\_\+\+O\+P\+T\+I\+M\+I\+Z\+I\+NG~0x8000	/$\ast$ try to optimize this simple command $\ast$/}\hypertarget{command_8h_a78b79388ea30a60ab8207d517c1d18c3}{}\label{command_8h_a78b79388ea30a60ab8207d517c1d18c3}
+\index{command.\+h@{command.\+h}!C\+M\+D\+\_\+\+W\+A\+N\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL@{C\+M\+D\+\_\+\+W\+A\+N\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL}}
+\index{C\+M\+D\+\_\+\+W\+A\+N\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL@{C\+M\+D\+\_\+\+W\+A\+N\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+W\+A\+N\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL}{CMD_WANT_SUBSHELL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+W\+A\+N\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL~0x01	/$\ast$ User wants a subshell\+: ( command ) $\ast$/}\hypertarget{command_8h_a0806649401c3bb4c89bb431d3f3f5a99}{}\label{command_8h_a0806649401c3bb4c89bb431d3f3f5a99}
+\index{command.\+h@{command.\+h}!C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+C\+O\+NN@{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+C\+O\+NN}}
+\index{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+C\+O\+NN@{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+C\+O\+NN}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+C\+O\+NN}{CMDERR_BADCONN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+C\+O\+NN~2}\hypertarget{command_8h_aaba18b62fee2388c8159048f35233147}{}\label{command_8h_aaba18b62fee2388c8159048f35233147}
+\index{command.\+h@{command.\+h}!C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+J\+U\+MP@{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+J\+U\+MP}}
+\index{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+J\+U\+MP@{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+J\+U\+MP}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+J\+U\+MP}{CMDERR_BADJUMP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+J\+U\+MP~3}\hypertarget{command_8h_aa010901aecffe22f7d71610d9975de34}{}\label{command_8h_aa010901aecffe22f7d71610d9975de34}
+\index{command.\+h@{command.\+h}!C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+T\+Y\+PE@{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+T\+Y\+PE}}
+\index{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+T\+Y\+PE@{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+T\+Y\+PE}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+T\+Y\+PE}{CMDERR_BADTYPE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+E\+R\+R\+\_\+\+B\+A\+D\+T\+Y\+PE~1}\hypertarget{command_8h_a67b74c35b4f3ff70a02c6172323c1ac6}{}\label{command_8h_a67b74c35b4f3ff70a02c6172323c1ac6}
+\index{command.\+h@{command.\+h}!C\+M\+D\+E\+R\+R\+\_\+\+D\+E\+F\+A\+U\+LT@{C\+M\+D\+E\+R\+R\+\_\+\+D\+E\+F\+A\+U\+LT}}
+\index{C\+M\+D\+E\+R\+R\+\_\+\+D\+E\+F\+A\+U\+LT@{C\+M\+D\+E\+R\+R\+\_\+\+D\+E\+F\+A\+U\+LT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+E\+R\+R\+\_\+\+D\+E\+F\+A\+U\+LT}{CMDERR_DEFAULT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+E\+R\+R\+\_\+\+D\+E\+F\+A\+U\+LT~0}\hypertarget{command_8h_a8297cc1e3343ae709026724d63772235}{}\label{command_8h_a8297cc1e3343ae709026724d63772235}
+\index{command.\+h@{command.\+h}!C\+M\+D\+E\+R\+R\+\_\+\+L\+A\+ST@{C\+M\+D\+E\+R\+R\+\_\+\+L\+A\+ST}}
+\index{C\+M\+D\+E\+R\+R\+\_\+\+L\+A\+ST@{C\+M\+D\+E\+R\+R\+\_\+\+L\+A\+ST}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+E\+R\+R\+\_\+\+L\+A\+ST}{CMDERR_LAST}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+E\+R\+R\+\_\+\+L\+A\+ST~3}\hypertarget{command_8h_a95a8cfaac9547f1a3851dbacad6631fb}{}\label{command_8h_a95a8cfaac9547f1a3851dbacad6631fb}
+\index{command.\+h@{command.\+h}!C\+O\+N\+D\+\_\+\+A\+ND@{C\+O\+N\+D\+\_\+\+A\+ND}}
+\index{C\+O\+N\+D\+\_\+\+A\+ND@{C\+O\+N\+D\+\_\+\+A\+ND}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+N\+D\+\_\+\+A\+ND}{COND_AND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+N\+D\+\_\+\+A\+ND~1}\hypertarget{command_8h_acb04d1a39efe075514c3db25081a6a29}{}\label{command_8h_acb04d1a39efe075514c3db25081a6a29}
+\index{command.\+h@{command.\+h}!C\+O\+N\+D\+\_\+\+B\+I\+N\+A\+RY@{C\+O\+N\+D\+\_\+\+B\+I\+N\+A\+RY}}
+\index{C\+O\+N\+D\+\_\+\+B\+I\+N\+A\+RY@{C\+O\+N\+D\+\_\+\+B\+I\+N\+A\+RY}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+N\+D\+\_\+\+B\+I\+N\+A\+RY}{COND_BINARY}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+N\+D\+\_\+\+B\+I\+N\+A\+RY~4}\hypertarget{command_8h_a4a6baeb58d76450ff3d235cd592bd4ec}{}\label{command_8h_a4a6baeb58d76450ff3d235cd592bd4ec}
+\index{command.\+h@{command.\+h}!C\+O\+N\+D\+\_\+\+E\+X\+PR@{C\+O\+N\+D\+\_\+\+E\+X\+PR}}
+\index{C\+O\+N\+D\+\_\+\+E\+X\+PR@{C\+O\+N\+D\+\_\+\+E\+X\+PR}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+N\+D\+\_\+\+E\+X\+PR}{COND_EXPR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+N\+D\+\_\+\+E\+X\+PR~6}\hypertarget{command_8h_aa891c8cec866e9738888f46bc26d4172}{}\label{command_8h_aa891c8cec866e9738888f46bc26d4172}
+\index{command.\+h@{command.\+h}!C\+O\+N\+D\+\_\+\+OR@{C\+O\+N\+D\+\_\+\+OR}}
+\index{C\+O\+N\+D\+\_\+\+OR@{C\+O\+N\+D\+\_\+\+OR}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+N\+D\+\_\+\+OR}{COND_OR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+N\+D\+\_\+\+OR~2}\hypertarget{command_8h_a492083d124f5c7ab21333ca4874d5ad0}{}\label{command_8h_a492083d124f5c7ab21333ca4874d5ad0}
+\index{command.\+h@{command.\+h}!C\+O\+N\+D\+\_\+\+T\+E\+RM@{C\+O\+N\+D\+\_\+\+T\+E\+RM}}
+\index{C\+O\+N\+D\+\_\+\+T\+E\+RM@{C\+O\+N\+D\+\_\+\+T\+E\+RM}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+N\+D\+\_\+\+T\+E\+RM}{COND_TERM}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+N\+D\+\_\+\+T\+E\+RM~5}\hypertarget{command_8h_a088ec6c0df71936622b026347b5ea766}{}\label{command_8h_a088ec6c0df71936622b026347b5ea766}
+\index{command.\+h@{command.\+h}!C\+O\+N\+D\+\_\+\+U\+N\+A\+RY@{C\+O\+N\+D\+\_\+\+U\+N\+A\+RY}}
+\index{C\+O\+N\+D\+\_\+\+U\+N\+A\+RY@{C\+O\+N\+D\+\_\+\+U\+N\+A\+RY}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+N\+D\+\_\+\+U\+N\+A\+RY}{COND_UNARY}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+N\+D\+\_\+\+U\+N\+A\+RY~3}\hypertarget{command_8h_a922bbc28525403f01e0a092a90f33f0f}{}\label{command_8h_a922bbc28525403f01e0a092a90f33f0f}
+\index{command.\+h@{command.\+h}!C\+O\+P\+R\+O\+C\+\_\+\+D\+E\+AD@{C\+O\+P\+R\+O\+C\+\_\+\+D\+E\+AD}}
+\index{C\+O\+P\+R\+O\+C\+\_\+\+D\+E\+AD@{C\+O\+P\+R\+O\+C\+\_\+\+D\+E\+AD}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+P\+R\+O\+C\+\_\+\+D\+E\+AD}{COPROC_DEAD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+P\+R\+O\+C\+\_\+\+D\+E\+AD~0x02}\hypertarget{command_8h_a8593f501faea91cac1d23020c5124b50}{}\label{command_8h_a8593f501faea91cac1d23020c5124b50}
+\index{command.\+h@{command.\+h}!C\+O\+P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG@{C\+O\+P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG}}
+\index{C\+O\+P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG@{C\+O\+P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG}{COPROC_RUNNING}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG~0x01}\hypertarget{command_8h_a672ffd2d8ac7851801ca7bf91749431c}{}\label{command_8h_a672ffd2d8ac7851801ca7bf91749431c}
+\index{command.\+h@{command.\+h}!H\+E\+R\+E\+D\+O\+C\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{H\+E\+R\+E\+D\+O\+C\+\_\+\+R\+E\+D\+I\+R\+E\+CT}}
+\index{H\+E\+R\+E\+D\+O\+C\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{H\+E\+R\+E\+D\+O\+C\+\_\+\+R\+E\+D\+I\+R\+E\+CT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{H\+E\+R\+E\+D\+O\+C\+\_\+\+R\+E\+D\+I\+R\+E\+CT}{HEREDOC_REDIRECT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+E\+R\+E\+D\+O\+C\+\_\+\+R\+E\+D\+I\+R\+E\+CT~-\/4  /$\ast$ here-\/doc temp file can\textquotesingle{}t be created $\ast$/}\hypertarget{command_8h_ab69e7d3526bfb38ef9254878195cdc31}{}\label{command_8h_ab69e7d3526bfb38ef9254878195cdc31}
+\index{command.\+h@{command.\+h}!I\+N\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{I\+N\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT}}
+\index{I\+N\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{I\+N\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{I\+N\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT}{INPUT_REDIRECT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT(
+\begin{DoxyParamCaption}
+\item[{}]{ri}
+\end{DoxyParamCaption}
+)~(ri == {\bf r\+\_\+input\+\_\+direction} $\vert$$\vert$ ri == {\bf r\+\_\+inputa\+\_\+direction} $\vert$$\vert$ ri == {\bf r\+\_\+input\+\_\+output})}\hypertarget{command_8h_a77a5a677b045bde12c0cecb4347ec1e7}{}\label{command_8h_a77a5a677b045bde12c0cecb4347ec1e7}
+\index{command.\+h@{command.\+h}!N\+O\+C\+L\+O\+B\+B\+E\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{N\+O\+C\+L\+O\+B\+B\+E\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT}}
+\index{N\+O\+C\+L\+O\+B\+B\+E\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{N\+O\+C\+L\+O\+B\+B\+E\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{N\+O\+C\+L\+O\+B\+B\+E\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT}{NOCLOBBER_REDIRECT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+O\+C\+L\+O\+B\+B\+E\+R\+\_\+\+R\+E\+D\+I\+R\+E\+CT~-\/2}\hypertarget{command_8h_a8c9f73d7aa8eabcae431cabfa8269690}{}\label{command_8h_a8c9f73d7aa8eabcae431cabfa8269690}
+\index{command.\+h@{command.\+h}!O\+U\+T\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{O\+U\+T\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT}}
+\index{O\+U\+T\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{O\+U\+T\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{O\+U\+T\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT}{OUTPUT_REDIRECT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+U\+T\+P\+U\+T\+\_\+\+R\+E\+D\+I\+R\+E\+CT(
+\begin{DoxyParamCaption}
+\item[{}]{ri}
+\end{DoxyParamCaption}
+)~(ri == {\bf r\+\_\+output\+\_\+direction} $\vert$$\vert$ ri == {\bf r\+\_\+input\+\_\+output} $\vert$$\vert$ ri == {\bf r\+\_\+err\+\_\+and\+\_\+out} $\vert$$\vert$ ri == {\bf r\+\_\+append\+\_\+err\+\_\+and\+\_\+out})}\hypertarget{command_8h_a72aba3a31f4c68b55380ffedefb496f7}{}\label{command_8h_a72aba3a31f4c68b55380ffedefb496f7}
+\index{command.\+h@{command.\+h}!P\+F\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS@{P\+F\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS}}
+\index{P\+F\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS@{P\+F\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{P\+F\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS}{PF_ASSIGNRHS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+F\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS~0x08	/$\ast$ same as W\+\_\+\+A\+S\+S\+I\+G\+N\+R\+H\+S $\ast$/}\hypertarget{command_8h_a9fdc12d2acee2ab43919e08d54a205ef}{}\label{command_8h_a9fdc12d2acee2ab43919e08d54a205ef}
+\index{command.\+h@{command.\+h}!P\+F\+\_\+\+C\+O\+M\+P\+L\+E\+TE@{P\+F\+\_\+\+C\+O\+M\+P\+L\+E\+TE}}
+\index{P\+F\+\_\+\+C\+O\+M\+P\+L\+E\+TE@{P\+F\+\_\+\+C\+O\+M\+P\+L\+E\+TE}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{P\+F\+\_\+\+C\+O\+M\+P\+L\+E\+TE}{PF_COMPLETE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+F\+\_\+\+C\+O\+M\+P\+L\+E\+TE~0x10	/$\ast$ same as W\+\_\+\+C\+O\+M\+P\+L\+E\+T\+E, sets S\+X\+\_\+\+C\+O\+M\+P\+L\+E\+T\+E $\ast$/}\hypertarget{command_8h_a9cab3656706831f1a3fb7a4efb8bdfe7}{}\label{command_8h_a9cab3656706831f1a3fb7a4efb8bdfe7}
+\index{command.\+h@{command.\+h}!P\+F\+\_\+\+I\+G\+N\+U\+N\+B\+O\+U\+ND@{P\+F\+\_\+\+I\+G\+N\+U\+N\+B\+O\+U\+ND}}
+\index{P\+F\+\_\+\+I\+G\+N\+U\+N\+B\+O\+U\+ND@{P\+F\+\_\+\+I\+G\+N\+U\+N\+B\+O\+U\+ND}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{P\+F\+\_\+\+I\+G\+N\+U\+N\+B\+O\+U\+ND}{PF_IGNUNBOUND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+F\+\_\+\+I\+G\+N\+U\+N\+B\+O\+U\+ND~0x02	/$\ast$ ignore unbound vars even if -\/u set $\ast$/}\hypertarget{command_8h_a62c229b62dd33e891bec27d12320dc41}{}\label{command_8h_a62c229b62dd33e891bec27d12320dc41}
+\index{command.\+h@{command.\+h}!P\+F\+\_\+\+N\+O\+C\+O\+M\+S\+UB@{P\+F\+\_\+\+N\+O\+C\+O\+M\+S\+UB}}
+\index{P\+F\+\_\+\+N\+O\+C\+O\+M\+S\+UB@{P\+F\+\_\+\+N\+O\+C\+O\+M\+S\+UB}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{P\+F\+\_\+\+N\+O\+C\+O\+M\+S\+UB}{PF_NOCOMSUB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+F\+\_\+\+N\+O\+C\+O\+M\+S\+UB~0x01	/$\ast$ Do not perform command substitution $\ast$/}\hypertarget{command_8h_a9a762d22376d45d7a8adb7abc721b1a4}{}\label{command_8h_a9a762d22376d45d7a8adb7abc721b1a4}
+\index{command.\+h@{command.\+h}!P\+F\+\_\+\+N\+O\+S\+P\+L\+I\+T2@{P\+F\+\_\+\+N\+O\+S\+P\+L\+I\+T2}}
+\index{P\+F\+\_\+\+N\+O\+S\+P\+L\+I\+T2@{P\+F\+\_\+\+N\+O\+S\+P\+L\+I\+T2}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{P\+F\+\_\+\+N\+O\+S\+P\+L\+I\+T2}{PF_NOSPLIT2}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+F\+\_\+\+N\+O\+S\+P\+L\+I\+T2~0x04	/$\ast$ same as W\+\_\+\+N\+O\+S\+P\+L\+I\+T2 $\ast$/}\hypertarget{command_8h_ab1df02cee4e8a7f5cc25730c13e41a65}{}\label{command_8h_ab1df02cee4e8a7f5cc25730c13e41a65}
+\index{command.\+h@{command.\+h}!R\+E\+D\+I\+R\+\_\+\+V\+A\+R\+A\+S\+S\+I\+GN@{R\+E\+D\+I\+R\+\_\+\+V\+A\+R\+A\+S\+S\+I\+GN}}
+\index{R\+E\+D\+I\+R\+\_\+\+V\+A\+R\+A\+S\+S\+I\+GN@{R\+E\+D\+I\+R\+\_\+\+V\+A\+R\+A\+S\+S\+I\+GN}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{R\+E\+D\+I\+R\+\_\+\+V\+A\+R\+A\+S\+S\+I\+GN}{REDIR_VARASSIGN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+D\+I\+R\+\_\+\+V\+A\+R\+A\+S\+S\+I\+GN~0x01}\hypertarget{command_8h_aeb193d7a3c699fc4688fe85b70f842f6}{}\label{command_8h_aeb193d7a3c699fc4688fe85b70f842f6}
+\index{command.\+h@{command.\+h}!R\+E\+S\+T\+R\+I\+C\+T\+E\+D\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{R\+E\+S\+T\+R\+I\+C\+T\+E\+D\+\_\+\+R\+E\+D\+I\+R\+E\+CT}}
+\index{R\+E\+S\+T\+R\+I\+C\+T\+E\+D\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{R\+E\+S\+T\+R\+I\+C\+T\+E\+D\+\_\+\+R\+E\+D\+I\+R\+E\+CT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{R\+E\+S\+T\+R\+I\+C\+T\+E\+D\+\_\+\+R\+E\+D\+I\+R\+E\+CT}{RESTRICTED_REDIRECT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+S\+T\+R\+I\+C\+T\+E\+D\+\_\+\+R\+E\+D\+I\+R\+E\+CT~-\/3	/$\ast$ can only happen in {\bf restricted} shells. $\ast$/}\hypertarget{command_8h_a14ca562fa2cc0f4d9beac9d953ecb66d}{}\label{command_8h_a14ca562fa2cc0f4d9beac9d953ecb66d}
+\index{command.\+h@{command.\+h}!S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+A\+S\+Y\+NC@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+A\+S\+Y\+NC}}
+\index{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+A\+S\+Y\+NC@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+A\+S\+Y\+NC}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+A\+S\+Y\+NC}{SUBSHELL_ASYNC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+A\+S\+Y\+NC~0x01	/$\ast$ subshell caused by `command \&\textquotesingle{} $\ast$/}\hypertarget{command_8h_abd94aff81c34160c8185303ebe67c539}{}\label{command_8h_abd94aff81c34160c8185303ebe67c539}
+\index{command.\+h@{command.\+h}!S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+M\+S\+UB@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+M\+S\+UB}}
+\index{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+M\+S\+UB@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+M\+S\+UB}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+M\+S\+UB}{SUBSHELL_COMSUB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+M\+S\+UB~0x04	/$\ast$ subshell caused by `command` or \$(command) $\ast$/}\hypertarget{command_8h_acaecc6b5540a23a9d1d411add740147a}{}\label{command_8h_acaecc6b5540a23a9d1d411add740147a}
+\index{command.\+h@{command.\+h}!S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+P\+R\+OC@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+P\+R\+OC}}
+\index{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+P\+R\+OC@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+P\+R\+OC}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+P\+R\+OC}{SUBSHELL_COPROC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+O\+P\+R\+OC~0x40	/$\ast$ subshell from a coproc pipeline $\ast$/}\hypertarget{command_8h_af3e3f0228854b49f9a1473927086896b}{}\label{command_8h_af3e3f0228854b49f9a1473927086896b}
+\index{command.\+h@{command.\+h}!S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+F\+O\+RK@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+F\+O\+RK}}
+\index{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+F\+O\+RK@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+F\+O\+RK}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+F\+O\+RK}{SUBSHELL_FORK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+F\+O\+RK~0x08	/$\ast$ subshell caused by executing a disk command $\ast$/}\hypertarget{command_8h_a41bcaa6d0d3a62c211c35e54638a382f}{}\label{command_8h_a41bcaa6d0d3a62c211c35e54638a382f}
+\index{command.\+h@{command.\+h}!S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+A\+R\+EN@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+A\+R\+EN}}
+\index{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+A\+R\+EN@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+A\+R\+EN}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+A\+R\+EN}{SUBSHELL_PAREN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+A\+R\+EN~0x02	/$\ast$ subshell caused by ( ... ) $\ast$/}\hypertarget{command_8h_a099d95cd805bc361bdfe3434fc3df1a8}{}\label{command_8h_a099d95cd805bc361bdfe3434fc3df1a8}
+\index{command.\+h@{command.\+h}!S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+I\+PE@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+I\+PE}}
+\index{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+I\+PE@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+I\+PE}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+I\+PE}{SUBSHELL_PIPE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+I\+PE~0x10	/$\ast$ subshell from a pipeline element $\ast$/}\hypertarget{command_8h_a1f4bab590838fd1ce5e0e8a4ba0c6f0b}{}\label{command_8h_a1f4bab590838fd1ce5e0e8a4ba0c6f0b}
+\index{command.\+h@{command.\+h}!S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+R\+O\+C\+S\+UB@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+R\+O\+C\+S\+UB}}
+\index{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+R\+O\+C\+S\+UB@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+R\+O\+C\+S\+UB}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+R\+O\+C\+S\+UB}{SUBSHELL_PROCSUB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+P\+R\+O\+C\+S\+UB~0x20	/$\ast$ subshell caused by $<$(command) or $>$(command) $\ast$/}\hypertarget{command_8h_a30ebb68f2ed5c431f8ed7be204e7cf6d}{}\label{command_8h_a30ebb68f2ed5c431f8ed7be204e7cf6d}
+\index{command.\+h@{command.\+h}!S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+R\+E\+S\+E\+T\+T\+R\+AP@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+R\+E\+S\+E\+T\+T\+R\+AP}}
+\index{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+R\+E\+S\+E\+T\+T\+R\+AP@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+R\+E\+S\+E\+T\+T\+R\+AP}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+R\+E\+S\+E\+T\+T\+R\+AP}{SUBSHELL_RESETTRAP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+R\+E\+S\+E\+T\+T\+R\+AP~0x80	/$\ast$ subshell needs to reset trap strings on first call to trap $\ast$/}\hypertarget{command_8h_a293321462a0aa4e566ee3d432374bd5f}{}\label{command_8h_a293321462a0aa4e566ee3d432374bd5f}
+\index{command.\+h@{command.\+h}!T\+R\+A\+N\+S\+L\+A\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{T\+R\+A\+N\+S\+L\+A\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT}}
+\index{T\+R\+A\+N\+S\+L\+A\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{T\+R\+A\+N\+S\+L\+A\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{T\+R\+A\+N\+S\+L\+A\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT}{TRANSLATE_REDIRECT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+R\+A\+N\+S\+L\+A\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT(
+\begin{DoxyParamCaption}
+\item[{}]{ri}
+\end{DoxyParamCaption}
+)}\hypertarget{command_8h_a6a55dfa841fd7fad2ad111066150c383}{}\label{command_8h_a6a55dfa841fd7fad2ad111066150c383}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+(ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da0d7bbe18befbbfb357b2da2fe3291b92}{r\_duplicating\_input\_word} || ri == 
+      \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da4805d3919a0c259834e8f759d92b39ca}{r\_duplicating\_output\_word} || \(\backslash\)
+   ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55daaee0d3f7dfd8724a9e45f5481f504514}{r\_move\_input\_word} || ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55dada6da3f73b9c1c256e6db43bd852c562}{r\_move\_output\_word})
+\end{DoxyCode}
+\index{command.\+h@{command.\+h}!W\+\_\+\+A\+R\+R\+A\+Y\+I\+ND@{W\+\_\+\+A\+R\+R\+A\+Y\+I\+ND}}
+\index{W\+\_\+\+A\+R\+R\+A\+Y\+I\+ND@{W\+\_\+\+A\+R\+R\+A\+Y\+I\+ND}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+A\+R\+R\+A\+Y\+I\+ND}{W_ARRAYIND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+A\+R\+R\+A\+Y\+I\+ND~0x1000000	/$\ast$ word is an array index being expanded $\ast$/}\hypertarget{command_8h_affa7cf6dfbf57425433e7751af9cb966}{}\label{command_8h_affa7cf6dfbf57425433e7751af9cb966}
+\index{command.\+h@{command.\+h}!W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+RG@{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+RG}}
+\index{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+RG@{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+RG}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+RG}{W_ASSIGNARG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+RG~0x020000	/$\ast$ word is assignment argument to command $\ast$/}\hypertarget{command_8h_a27827a9c9d9fa0c27da3192732febc34}{}\label{command_8h_a27827a9c9d9fa0c27da3192732febc34}
+\index{command.\+h@{command.\+h}!W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+R\+R\+AY@{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+R\+R\+AY}}
+\index{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+R\+R\+AY@{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+R\+R\+AY}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+R\+R\+AY}{W_ASSIGNARRAY}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+R\+R\+AY~0x800000	/$\ast$ word looks like a compound indexed array assignment $\ast$/}\hypertarget{command_8h_aace1f35eb92bd698ceedef24f46db38d}{}\label{command_8h_aace1f35eb92bd698ceedef24f46db38d}
+\index{command.\+h@{command.\+h}!W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+S\+S\+OC@{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+S\+S\+OC}}
+\index{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+S\+S\+OC@{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+S\+S\+OC}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+S\+S\+OC}{W_ASSIGNASSOC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+A\+S\+S\+I\+G\+N\+A\+S\+S\+OC~0x400000	/$\ast$ word looks like associative array assignment $\ast$/}\hypertarget{command_8h_abaa65a0967a7f23d937b93ddac7c7a61}{}\label{command_8h_abaa65a0967a7f23d937b93ddac7c7a61}
+\index{command.\+h@{command.\+h}!W\+\_\+\+A\+S\+S\+I\+G\+N\+M\+E\+NT@{W\+\_\+\+A\+S\+S\+I\+G\+N\+M\+E\+NT}}
+\index{W\+\_\+\+A\+S\+S\+I\+G\+N\+M\+E\+NT@{W\+\_\+\+A\+S\+S\+I\+G\+N\+M\+E\+NT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+A\+S\+S\+I\+G\+N\+M\+E\+NT}{W_ASSIGNMENT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+A\+S\+S\+I\+G\+N\+M\+E\+NT~0x000004	/$\ast$ This word is a variable assignment. $\ast$/}\hypertarget{command_8h_af2e8d0ab8ebc8b5e53c931576981e376}{}\label{command_8h_af2e8d0ab8ebc8b5e53c931576981e376}
+\index{command.\+h@{command.\+h}!W\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS@{W\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS}}
+\index{W\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS@{W\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS}{W_ASSIGNRHS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+A\+S\+S\+I\+G\+N\+R\+HS~0x000800	/$\ast$ Word is rhs of an assignment statement $\ast$/}\hypertarget{command_8h_a6469febdc021d8e49dc9e337cf803459}{}\label{command_8h_a6469febdc021d8e49dc9e337cf803459}
+\index{command.\+h@{command.\+h}!W\+\_\+\+A\+S\+S\+N\+B\+L\+T\+IN@{W\+\_\+\+A\+S\+S\+N\+B\+L\+T\+IN}}
+\index{W\+\_\+\+A\+S\+S\+N\+B\+L\+T\+IN@{W\+\_\+\+A\+S\+S\+N\+B\+L\+T\+IN}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+A\+S\+S\+N\+B\+L\+T\+IN}{W_ASSNBLTIN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+A\+S\+S\+N\+B\+L\+T\+IN~0x010000	/$\ast$ word is a builtin command that takes assignments $\ast$/}\hypertarget{command_8h_ab599af35fc2f41cb142fad1c4906d5b4}{}\label{command_8h_ab599af35fc2f41cb142fad1c4906d5b4}
+\index{command.\+h@{command.\+h}!W\+\_\+\+A\+S\+S\+N\+G\+L\+O\+B\+AL@{W\+\_\+\+A\+S\+S\+N\+G\+L\+O\+B\+AL}}
+\index{W\+\_\+\+A\+S\+S\+N\+G\+L\+O\+B\+AL@{W\+\_\+\+A\+S\+S\+N\+G\+L\+O\+B\+AL}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+A\+S\+S\+N\+G\+L\+O\+B\+AL}{W_ASSNGLOBAL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+A\+S\+S\+N\+G\+L\+O\+B\+AL~0x2000000	/$\ast$ word is a global assignment to declare (declare/typeset -\/g) $\ast$/}\hypertarget{command_8h_a6dfcb3d9a4a25c61c48afcae84b1618e}{}\label{command_8h_a6dfcb3d9a4a25c61c48afcae84b1618e}
+\index{command.\+h@{command.\+h}!W\+\_\+\+C\+H\+K\+L\+O\+C\+AL@{W\+\_\+\+C\+H\+K\+L\+O\+C\+AL}}
+\index{W\+\_\+\+C\+H\+K\+L\+O\+C\+AL@{W\+\_\+\+C\+H\+K\+L\+O\+C\+AL}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+C\+H\+K\+L\+O\+C\+AL}{W_CHKLOCAL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+C\+H\+K\+L\+O\+C\+AL~0x10000000	/$\ast$ check for local vars on assignment $\ast$/}\hypertarget{command_8h_a852301eab3bb50b3761ee3ba989b817e}{}\label{command_8h_a852301eab3bb50b3761ee3ba989b817e}
+\index{command.\+h@{command.\+h}!W\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN@{W\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN}}
+\index{W\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN@{W\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN}{W_COMPASSIGN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN~0x008000	/$\ast$ Compound assignment $\ast$/}\hypertarget{command_8h_aec55fb1d59eccbf09b04dd40d1b5a0fd}{}\label{command_8h_aec55fb1d59eccbf09b04dd40d1b5a0fd}
+\index{command.\+h@{command.\+h}!W\+\_\+\+C\+O\+M\+P\+L\+E\+TE@{W\+\_\+\+C\+O\+M\+P\+L\+E\+TE}}
+\index{W\+\_\+\+C\+O\+M\+P\+L\+E\+TE@{W\+\_\+\+C\+O\+M\+P\+L\+E\+TE}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+C\+O\+M\+P\+L\+E\+TE}{W_COMPLETE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+C\+O\+M\+P\+L\+E\+TE~0x8000000	/$\ast$ word is being expanded for completion $\ast$/}\hypertarget{command_8h_ae9e11e696c210b9ac3978d122cdffcc3}{}\label{command_8h_ae9e11e696c210b9ac3978d122cdffcc3}
+\index{command.\+h@{command.\+h}!W\+\_\+\+D\+O\+L\+L\+A\+R\+AT@{W\+\_\+\+D\+O\+L\+L\+A\+R\+AT}}
+\index{W\+\_\+\+D\+O\+L\+L\+A\+R\+AT@{W\+\_\+\+D\+O\+L\+L\+A\+R\+AT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+D\+O\+L\+L\+A\+R\+AT}{W_DOLLARAT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+D\+O\+L\+L\+A\+R\+AT~0x000100	/$\ast$ \$@ and its special handling $\ast$/}\hypertarget{command_8h_a03cb47d103a7c09e3a0f5d80fac0e52b}{}\label{command_8h_a03cb47d103a7c09e3a0f5d80fac0e52b}
+\index{command.\+h@{command.\+h}!W\+\_\+\+D\+O\+L\+L\+A\+R\+S\+T\+AR@{W\+\_\+\+D\+O\+L\+L\+A\+R\+S\+T\+AR}}
+\index{W\+\_\+\+D\+O\+L\+L\+A\+R\+S\+T\+AR@{W\+\_\+\+D\+O\+L\+L\+A\+R\+S\+T\+AR}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+D\+O\+L\+L\+A\+R\+S\+T\+AR}{W_DOLLARSTAR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+D\+O\+L\+L\+A\+R\+S\+T\+AR~0x000200	/$\ast$ \$$\ast$ and its special handling $\ast$/}\hypertarget{command_8h_a9064b75cd40d783149d844ede671c10f}{}\label{command_8h_a9064b75cd40d783149d844ede671c10f}
+\index{command.\+h@{command.\+h}!W\+\_\+\+D\+Q\+U\+O\+TE@{W\+\_\+\+D\+Q\+U\+O\+TE}}
+\index{W\+\_\+\+D\+Q\+U\+O\+TE@{W\+\_\+\+D\+Q\+U\+O\+TE}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+D\+Q\+U\+O\+TE}{W_DQUOTE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+D\+Q\+U\+O\+TE~0x080000	/$\ast$ word should be treated as if double-\/quoted $\ast$/}\hypertarget{command_8h_a3314c024ea58c967acaa0db45f01bcc5}{}\label{command_8h_a3314c024ea58c967acaa0db45f01bcc5}
+\index{command.\+h@{command.\+h}!W\+\_\+\+H\+A\+S\+D\+O\+L\+L\+AR@{W\+\_\+\+H\+A\+S\+D\+O\+L\+L\+AR}}
+\index{W\+\_\+\+H\+A\+S\+D\+O\+L\+L\+AR@{W\+\_\+\+H\+A\+S\+D\+O\+L\+L\+AR}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+H\+A\+S\+D\+O\+L\+L\+AR}{W_HASDOLLAR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+H\+A\+S\+D\+O\+L\+L\+AR~0x000001	/$\ast$ Dollar sign present. $\ast$/}\hypertarget{command_8h_ac2b7d1775cfa13dc957b7e89cbdc5c79}{}\label{command_8h_ac2b7d1775cfa13dc957b7e89cbdc5c79}
+\index{command.\+h@{command.\+h}!W\+\_\+\+H\+A\+S\+Q\+U\+O\+T\+E\+D\+N\+U\+LL@{W\+\_\+\+H\+A\+S\+Q\+U\+O\+T\+E\+D\+N\+U\+LL}}
+\index{W\+\_\+\+H\+A\+S\+Q\+U\+O\+T\+E\+D\+N\+U\+LL@{W\+\_\+\+H\+A\+S\+Q\+U\+O\+T\+E\+D\+N\+U\+LL}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+H\+A\+S\+Q\+U\+O\+T\+E\+D\+N\+U\+LL}{W_HASQUOTEDNULL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+H\+A\+S\+Q\+U\+O\+T\+E\+D\+N\+U\+LL~0x040000	/$\ast$ word contains a quoted null character $\ast$/}\hypertarget{command_8h_a7f2d596fb9a11ee8827802f17378d6c0}{}\label{command_8h_a7f2d596fb9a11ee8827802f17378d6c0}
+\index{command.\+h@{command.\+h}!W\+\_\+\+I\+T\+I\+L\+DE@{W\+\_\+\+I\+T\+I\+L\+DE}}
+\index{W\+\_\+\+I\+T\+I\+L\+DE@{W\+\_\+\+I\+T\+I\+L\+DE}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+I\+T\+I\+L\+DE}{W_ITILDE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+I\+T\+I\+L\+DE~0x002000	/$\ast$ Internal flag for word expansion $\ast$/}\hypertarget{command_8h_a6a503ea9140b7ba880938cfcf4e0b6f9}{}\label{command_8h_a6a503ea9140b7ba880938cfcf4e0b6f9}
+\index{command.\+h@{command.\+h}!W\+\_\+\+N\+O\+A\+S\+S\+N\+T\+I\+L\+DE@{W\+\_\+\+N\+O\+A\+S\+S\+N\+T\+I\+L\+DE}}
+\index{W\+\_\+\+N\+O\+A\+S\+S\+N\+T\+I\+L\+DE@{W\+\_\+\+N\+O\+A\+S\+S\+N\+T\+I\+L\+DE}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+N\+O\+A\+S\+S\+N\+T\+I\+L\+DE}{W_NOASSNTILDE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+N\+O\+A\+S\+S\+N\+T\+I\+L\+DE~0x20000000	/$\ast$ don\textquotesingle{}t do tilde expansion like an assignment statement $\ast$/}\hypertarget{command_8h_ae1cbb46da717e4b7d398993f0f4720cb}{}\label{command_8h_ae1cbb46da717e4b7d398993f0f4720cb}
+\index{command.\+h@{command.\+h}!W\+\_\+\+N\+O\+B\+R\+A\+CE@{W\+\_\+\+N\+O\+B\+R\+A\+CE}}
+\index{W\+\_\+\+N\+O\+B\+R\+A\+CE@{W\+\_\+\+N\+O\+B\+R\+A\+CE}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+N\+O\+B\+R\+A\+CE}{W_NOBRACE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+N\+O\+B\+R\+A\+CE~0x4000000	/$\ast$ Don\textquotesingle{}t perform brace expansion $\ast$/}\hypertarget{command_8h_a111e22b177e688ade25edf3a1111292b}{}\label{command_8h_a111e22b177e688ade25edf3a1111292b}
+\index{command.\+h@{command.\+h}!W\+\_\+\+N\+O\+C\+O\+M\+S\+UB@{W\+\_\+\+N\+O\+C\+O\+M\+S\+UB}}
+\index{W\+\_\+\+N\+O\+C\+O\+M\+S\+UB@{W\+\_\+\+N\+O\+C\+O\+M\+S\+UB}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+N\+O\+C\+O\+M\+S\+UB}{W_NOCOMSUB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+N\+O\+C\+O\+M\+S\+UB~0x000400	/$\ast$ Don\textquotesingle{}t perform command substitution on this word $\ast$/}\hypertarget{command_8h_a3a631ce89bdf6cbfdaf61e9ba8724e6c}{}\label{command_8h_a3a631ce89bdf6cbfdaf61e9ba8724e6c}
+\index{command.\+h@{command.\+h}!W\+\_\+\+N\+O\+E\+X\+P\+A\+ND@{W\+\_\+\+N\+O\+E\+X\+P\+A\+ND}}
+\index{W\+\_\+\+N\+O\+E\+X\+P\+A\+ND@{W\+\_\+\+N\+O\+E\+X\+P\+A\+ND}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+N\+O\+E\+X\+P\+A\+ND}{W_NOEXPAND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+N\+O\+E\+X\+P\+A\+ND~0x004000	/$\ast$ Don\textquotesingle{}t expand at all -\/-\/ do quote removal $\ast$/}\hypertarget{command_8h_a7735f299a348d04ce4ca39389d6abf20}{}\label{command_8h_a7735f299a348d04ce4ca39389d6abf20}
+\index{command.\+h@{command.\+h}!W\+\_\+\+N\+O\+G\+L\+OB@{W\+\_\+\+N\+O\+G\+L\+OB}}
+\index{W\+\_\+\+N\+O\+G\+L\+OB@{W\+\_\+\+N\+O\+G\+L\+OB}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+N\+O\+G\+L\+OB}{W_NOGLOB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+N\+O\+G\+L\+OB~0x000020	/$\ast$ Do not perform globbing on this word. $\ast$/}\hypertarget{command_8h_a5b082468bd78a9d4cb6447bf0702d1a3}{}\label{command_8h_a5b082468bd78a9d4cb6447bf0702d1a3}
+\index{command.\+h@{command.\+h}!W\+\_\+\+N\+O\+P\+R\+O\+C\+S\+UB@{W\+\_\+\+N\+O\+P\+R\+O\+C\+S\+UB}}
+\index{W\+\_\+\+N\+O\+P\+R\+O\+C\+S\+UB@{W\+\_\+\+N\+O\+P\+R\+O\+C\+S\+UB}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+N\+O\+P\+R\+O\+C\+S\+UB}{W_NOPROCSUB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+N\+O\+P\+R\+O\+C\+S\+UB~0x100000	/$\ast$ don\textquotesingle{}t perform process substitution $\ast$/}\hypertarget{command_8h_ab04c950186c3cc792a1b1347d1655ff3}{}\label{command_8h_ab04c950186c3cc792a1b1347d1655ff3}
+\index{command.\+h@{command.\+h}!W\+\_\+\+N\+O\+S\+P\+L\+IT@{W\+\_\+\+N\+O\+S\+P\+L\+IT}}
+\index{W\+\_\+\+N\+O\+S\+P\+L\+IT@{W\+\_\+\+N\+O\+S\+P\+L\+IT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+N\+O\+S\+P\+L\+IT}{W_NOSPLIT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+N\+O\+S\+P\+L\+IT~0x000010	/$\ast$ Do not perform word splitting on this word because ifs is empty string. $\ast$/}\hypertarget{command_8h_a4c5fbbe2909f93d42fad2d5fda2e93a0}{}\label{command_8h_a4c5fbbe2909f93d42fad2d5fda2e93a0}
+\index{command.\+h@{command.\+h}!W\+\_\+\+N\+O\+S\+P\+L\+I\+T2@{W\+\_\+\+N\+O\+S\+P\+L\+I\+T2}}
+\index{W\+\_\+\+N\+O\+S\+P\+L\+I\+T2@{W\+\_\+\+N\+O\+S\+P\+L\+I\+T2}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+N\+O\+S\+P\+L\+I\+T2}{W_NOSPLIT2}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+N\+O\+S\+P\+L\+I\+T2~0x000040	/$\ast$ Don\textquotesingle{}t split word except for \$@ expansion (using spaces) because context does not allow it. $\ast$/}\hypertarget{command_8h_ab9bb003fcbcf4e03daa619913a8344ec}{}\label{command_8h_ab9bb003fcbcf4e03daa619913a8344ec}
+\index{command.\+h@{command.\+h}!W\+\_\+\+N\+O\+T\+I\+L\+DE@{W\+\_\+\+N\+O\+T\+I\+L\+DE}}
+\index{W\+\_\+\+N\+O\+T\+I\+L\+DE@{W\+\_\+\+N\+O\+T\+I\+L\+DE}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+N\+O\+T\+I\+L\+DE}{W_NOTILDE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+N\+O\+T\+I\+L\+DE~0x001000	/$\ast$ Don\textquotesingle{}t perform tilde expansion on this word $\ast$/}\hypertarget{command_8h_ac84c9fea401843556ddb98e7c27344ba}{}\label{command_8h_ac84c9fea401843556ddb98e7c27344ba}
+\index{command.\+h@{command.\+h}!W\+\_\+\+Q\+U\+O\+T\+ED@{W\+\_\+\+Q\+U\+O\+T\+ED}}
+\index{W\+\_\+\+Q\+U\+O\+T\+ED@{W\+\_\+\+Q\+U\+O\+T\+ED}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+Q\+U\+O\+T\+ED}{W_QUOTED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+Q\+U\+O\+T\+ED~0x000002	/$\ast$ Some form of quote character is present. $\ast$/}\hypertarget{command_8h_aeaff821980f0c3b0e991cd793a9f1ff2}{}\label{command_8h_aeaff821980f0c3b0e991cd793a9f1ff2}
+\index{command.\+h@{command.\+h}!W\+\_\+\+S\+A\+W\+Q\+U\+O\+T\+E\+D\+N\+U\+LL@{W\+\_\+\+S\+A\+W\+Q\+U\+O\+T\+E\+D\+N\+U\+LL}}
+\index{W\+\_\+\+S\+A\+W\+Q\+U\+O\+T\+E\+D\+N\+U\+LL@{W\+\_\+\+S\+A\+W\+Q\+U\+O\+T\+E\+D\+N\+U\+LL}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+S\+A\+W\+Q\+U\+O\+T\+E\+D\+N\+U\+LL}{W_SAWQUOTEDNULL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+S\+A\+W\+Q\+U\+O\+T\+E\+D\+N\+U\+LL~0x200000	/$\ast$ word contained a quoted null that was removed $\ast$/}\hypertarget{command_8h_abd73c980d6a490bc095b724387821c0b}{}\label{command_8h_abd73c980d6a490bc095b724387821c0b}
+\index{command.\+h@{command.\+h}!W\+\_\+\+S\+P\+L\+I\+T\+S\+P\+A\+CE@{W\+\_\+\+S\+P\+L\+I\+T\+S\+P\+A\+CE}}
+\index{W\+\_\+\+S\+P\+L\+I\+T\+S\+P\+A\+CE@{W\+\_\+\+S\+P\+L\+I\+T\+S\+P\+A\+CE}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+S\+P\+L\+I\+T\+S\+P\+A\+CE}{W_SPLITSPACE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+S\+P\+L\+I\+T\+S\+P\+A\+CE~0x000008	/$\ast$ Split this word on \char`\"{} \char`\"{} regardless of I\+F\+S $\ast$/}\hypertarget{command_8h_aa2dc72d898e20f06df525709f278cc5a}{}\label{command_8h_aa2dc72d898e20f06df525709f278cc5a}
+\index{command.\+h@{command.\+h}!W\+\_\+\+T\+I\+L\+D\+E\+E\+XP@{W\+\_\+\+T\+I\+L\+D\+E\+E\+XP}}
+\index{W\+\_\+\+T\+I\+L\+D\+E\+E\+XP@{W\+\_\+\+T\+I\+L\+D\+E\+E\+XP}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+T\+I\+L\+D\+E\+E\+XP}{W_TILDEEXP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+T\+I\+L\+D\+E\+E\+XP~0x000080	/$\ast$ Tilde expand this assignment word $\ast$/}\hypertarget{command_8h_a0e1cff89ea608dfe940ce589122d9e94}{}\label{command_8h_a0e1cff89ea608dfe940ce589122d9e94}
+\index{command.\+h@{command.\+h}!W\+R\+I\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{W\+R\+I\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT}}
+\index{W\+R\+I\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT@{W\+R\+I\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+R\+I\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT}{WRITE_REDIRECT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+R\+I\+T\+E\+\_\+\+R\+E\+D\+I\+R\+E\+CT(
+\begin{DoxyParamCaption}
+\item[{}]{ri}
+\end{DoxyParamCaption}
+)}\hypertarget{command_8h_aefb426df9142aa359ba636084b0e7b95}{}\label{command_8h_aefb426df9142aa359ba636084b0e7b95}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+(ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da2c69229c3578e06a1d65505386741077}{r\_output\_direction} || \(\backslash\)
+    ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da9678fd1dc74794c90ff05cbc87028723}{r\_input\_output} || \(\backslash\)
+    ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55daa0c75652231141c973727b2395f455b1}{r\_err\_and\_out} || \(\backslash\)
+    ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55dabdf14fbf47ea4511d7d86f4c6265d59a}{r\_appending\_to} || \(\backslash\)
+    ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55dacc481932ed1e82e2bfbf1afd394f056c}{r\_append\_err\_and\_out} || \(\backslash\)
+    ri == \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55da9aaae513103312f652c3db6547a1ae51}{r\_output\_force})
+\end{DoxyCode}
+
+
+\subsection{Typedef Documentation}
+\index{command.\+h@{command.\+h}!C\+A\+S\+E\+\_\+\+C\+OM@{C\+A\+S\+E\+\_\+\+C\+OM}}
+\index{C\+A\+S\+E\+\_\+\+C\+OM@{C\+A\+S\+E\+\_\+\+C\+OM}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+A\+S\+E\+\_\+\+C\+OM}{CASE_COM}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf case\+\_\+com}  {\bf C\+A\+S\+E\+\_\+\+C\+OM}}\hypertarget{command_8h_ae78fe81043e2cc981b6a0ba07c970358}{}\label{command_8h_ae78fe81043e2cc981b6a0ba07c970358}
+\index{command.\+h@{command.\+h}!C\+O\+M\+M\+A\+ND@{C\+O\+M\+M\+A\+ND}}
+\index{C\+O\+M\+M\+A\+ND@{C\+O\+M\+M\+A\+ND}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+M\+M\+A\+ND}{COMMAND}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf command}  {\bf C\+O\+M\+M\+A\+ND}}\hypertarget{command_8h_a8c41dec142c299806885773c902c0d87}{}\label{command_8h_a8c41dec142c299806885773c902c0d87}
+\index{command.\+h@{command.\+h}!C\+O\+N\+D\+\_\+\+C\+OM@{C\+O\+N\+D\+\_\+\+C\+OM}}
+\index{C\+O\+N\+D\+\_\+\+C\+OM@{C\+O\+N\+D\+\_\+\+C\+OM}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+N\+D\+\_\+\+C\+OM}{COND_COM}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf cond\+\_\+com}  {\bf C\+O\+N\+D\+\_\+\+C\+OM}}\hypertarget{command_8h_acfd591313c8c77c4f1fa185e5caf79c7}{}\label{command_8h_acfd591313c8c77c4f1fa185e5caf79c7}
+\index{command.\+h@{command.\+h}!C\+O\+N\+N\+E\+C\+T\+I\+ON@{C\+O\+N\+N\+E\+C\+T\+I\+ON}}
+\index{C\+O\+N\+N\+E\+C\+T\+I\+ON@{C\+O\+N\+N\+E\+C\+T\+I\+ON}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+N\+N\+E\+C\+T\+I\+ON}{CONNECTION}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf connection}  {\bf C\+O\+N\+N\+E\+C\+T\+I\+ON}}\hypertarget{command_8h_a34e34bdf67ba6b978c0c85018d08b452}{}\label{command_8h_a34e34bdf67ba6b978c0c85018d08b452}
+\index{command.\+h@{command.\+h}!Coproc@{Coproc}}
+\index{Coproc@{Coproc}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{Coproc}{Coproc}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf coproc}  {\bf Coproc}}\hypertarget{command_8h_a5f641f10198dcdbb65b316c692f3fd1a}{}\label{command_8h_a5f641f10198dcdbb65b316c692f3fd1a}
+\index{command.\+h@{command.\+h}!C\+O\+P\+R\+O\+C\+\_\+\+C\+OM@{C\+O\+P\+R\+O\+C\+\_\+\+C\+OM}}
+\index{C\+O\+P\+R\+O\+C\+\_\+\+C\+OM@{C\+O\+P\+R\+O\+C\+\_\+\+C\+OM}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+P\+R\+O\+C\+\_\+\+C\+OM}{COPROC_COM}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf coproc\+\_\+com}  {\bf C\+O\+P\+R\+O\+C\+\_\+\+C\+OM}}\hypertarget{command_8h_a05386ce05906df99a9c80e0738481dd9}{}\label{command_8h_a05386ce05906df99a9c80e0738481dd9}
+\index{command.\+h@{command.\+h}!E\+L\+E\+M\+E\+NT@{E\+L\+E\+M\+E\+NT}}
+\index{E\+L\+E\+M\+E\+NT@{E\+L\+E\+M\+E\+NT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{E\+L\+E\+M\+E\+NT}{ELEMENT}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf element}  {\bf E\+L\+E\+M\+E\+NT}}\hypertarget{command_8h_ad98861155f12e470f2a392b7767cbe23}{}\label{command_8h_ad98861155f12e470f2a392b7767cbe23}
+\index{command.\+h@{command.\+h}!F\+O\+R\+\_\+\+C\+OM@{F\+O\+R\+\_\+\+C\+OM}}
+\index{F\+O\+R\+\_\+\+C\+OM@{F\+O\+R\+\_\+\+C\+OM}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{F\+O\+R\+\_\+\+C\+OM}{FOR_COM}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf for\+\_\+com}  {\bf F\+O\+R\+\_\+\+C\+OM}}\hypertarget{command_8h_a60c74cb6066b6f55517b5364b5ce2ae6}{}\label{command_8h_a60c74cb6066b6f55517b5364b5ce2ae6}
+\index{command.\+h@{command.\+h}!F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF@{F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF}}
+\index{F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF@{F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF}{FUNCTION_DEF}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf function\+\_\+def}  {\bf F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF}}\hypertarget{command_8h_afcca6733a6618ea69dc7bcbedc9b96f1}{}\label{command_8h_afcca6733a6618ea69dc7bcbedc9b96f1}
+\index{command.\+h@{command.\+h}!G\+R\+O\+U\+P\+\_\+\+C\+OM@{G\+R\+O\+U\+P\+\_\+\+C\+OM}}
+\index{G\+R\+O\+U\+P\+\_\+\+C\+OM@{G\+R\+O\+U\+P\+\_\+\+C\+OM}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{G\+R\+O\+U\+P\+\_\+\+C\+OM}{GROUP_COM}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf group\+\_\+com}  {\bf G\+R\+O\+U\+P\+\_\+\+C\+OM}}\hypertarget{command_8h_a9b146a7f540f0d6fbd9d0217f8ab9f98}{}\label{command_8h_a9b146a7f540f0d6fbd9d0217f8ab9f98}
+\index{command.\+h@{command.\+h}!I\+F\+\_\+\+C\+OM@{I\+F\+\_\+\+C\+OM}}
+\index{I\+F\+\_\+\+C\+OM@{I\+F\+\_\+\+C\+OM}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{I\+F\+\_\+\+C\+OM}{IF_COM}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf if\+\_\+com}  {\bf I\+F\+\_\+\+C\+OM}}\hypertarget{command_8h_ad4ea9ec325de49bd9ca4b20b75a8729f}{}\label{command_8h_ad4ea9ec325de49bd9ca4b20b75a8729f}
+\index{command.\+h@{command.\+h}!P\+A\+T\+T\+E\+R\+N\+\_\+\+L\+I\+ST@{P\+A\+T\+T\+E\+R\+N\+\_\+\+L\+I\+ST}}
+\index{P\+A\+T\+T\+E\+R\+N\+\_\+\+L\+I\+ST@{P\+A\+T\+T\+E\+R\+N\+\_\+\+L\+I\+ST}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{P\+A\+T\+T\+E\+R\+N\+\_\+\+L\+I\+ST}{PATTERN_LIST}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf pattern\+\_\+list}  {\bf P\+A\+T\+T\+E\+R\+N\+\_\+\+L\+I\+ST}}\hypertarget{command_8h_a05098e88133e048a1acf396288758a9e}{}\label{command_8h_a05098e88133e048a1acf396288758a9e}
+\index{command.\+h@{command.\+h}!R\+E\+D\+I\+R\+E\+CT@{R\+E\+D\+I\+R\+E\+CT}}
+\index{R\+E\+D\+I\+R\+E\+CT@{R\+E\+D\+I\+R\+E\+CT}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{R\+E\+D\+I\+R\+E\+CT}{REDIRECT}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf redirect}  {\bf R\+E\+D\+I\+R\+E\+CT}}\hypertarget{command_8h_adeb9f5d937c92c7923aec48ad5e47d57}{}\label{command_8h_adeb9f5d937c92c7923aec48ad5e47d57}
+\index{command.\+h@{command.\+h}!S\+I\+M\+P\+L\+E\+\_\+\+C\+OM@{S\+I\+M\+P\+L\+E\+\_\+\+C\+OM}}
+\index{S\+I\+M\+P\+L\+E\+\_\+\+C\+OM@{S\+I\+M\+P\+L\+E\+\_\+\+C\+OM}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{S\+I\+M\+P\+L\+E\+\_\+\+C\+OM}{SIMPLE_COM}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf simple\+\_\+com}  {\bf S\+I\+M\+P\+L\+E\+\_\+\+C\+OM}}\hypertarget{command_8h_a9e5765af5d6e27f63eb9e9faeccc6404}{}\label{command_8h_a9e5765af5d6e27f63eb9e9faeccc6404}
+\index{command.\+h@{command.\+h}!S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+OM@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+OM}}
+\index{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+OM@{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+OM}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+OM}{SUBSHELL_COM}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf subshell\+\_\+com}  {\bf S\+U\+B\+S\+H\+E\+L\+L\+\_\+\+C\+OM}}\hypertarget{command_8h_adc49f70ae0784d556fbf7fab41e4f642}{}\label{command_8h_adc49f70ae0784d556fbf7fab41e4f642}
+\index{command.\+h@{command.\+h}!W\+H\+I\+L\+E\+\_\+\+C\+OM@{W\+H\+I\+L\+E\+\_\+\+C\+OM}}
+\index{W\+H\+I\+L\+E\+\_\+\+C\+OM@{W\+H\+I\+L\+E\+\_\+\+C\+OM}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+H\+I\+L\+E\+\_\+\+C\+OM}{WHILE_COM}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf while\+\_\+com}  {\bf W\+H\+I\+L\+E\+\_\+\+C\+OM}}\hypertarget{command_8h_a1564494fa7eadc120c09d53091e7a372}{}\label{command_8h_a1564494fa7eadc120c09d53091e7a372}
+\index{command.\+h@{command.\+h}!W\+O\+R\+D\+\_\+\+D\+E\+SC@{W\+O\+R\+D\+\_\+\+D\+E\+SC}}
+\index{W\+O\+R\+D\+\_\+\+D\+E\+SC@{W\+O\+R\+D\+\_\+\+D\+E\+SC}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+O\+R\+D\+\_\+\+D\+E\+SC}{WORD_DESC}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf word\+\_\+desc}  {\bf W\+O\+R\+D\+\_\+\+D\+E\+SC}}\hypertarget{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{}\label{command_8h_a3f0cccf333703e5f6c4168be0db675fa}
+\index{command.\+h@{command.\+h}!W\+O\+R\+D\+\_\+\+L\+I\+ST@{W\+O\+R\+D\+\_\+\+L\+I\+ST}}
+\index{W\+O\+R\+D\+\_\+\+L\+I\+ST@{W\+O\+R\+D\+\_\+\+L\+I\+ST}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{W\+O\+R\+D\+\_\+\+L\+I\+ST}{WORD_LIST}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf word\+\_\+list}  {\bf W\+O\+R\+D\+\_\+\+L\+I\+ST}}\hypertarget{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{}\label{command_8h_ac42a7b781459884316a1f2ffe79e8a62}
+
+
+\subsection{Enumeration Type Documentation}
+\index{command.\+h@{command.\+h}!command\+\_\+type@{command\+\_\+type}}
+\index{command\+\_\+type@{command\+\_\+type}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{command\+\_\+type}{command_type}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf command\+\_\+type}}\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{cm\+\_\+for@{cm\+\_\+for}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+for@{cm\+\_\+for}}\item[{\em 
+cm\+\_\+for\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4ad251e86bb9c320dd7686e4fb619864fb}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4ad251e86bb9c320dd7686e4fb619864fb}
+}]\index{cm\+\_\+case@{cm\+\_\+case}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+case@{cm\+\_\+case}}\item[{\em 
+cm\+\_\+case\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4a231ab4a34926d8540dd6645d28e046b3}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4a231ab4a34926d8540dd6645d28e046b3}
+}]\index{cm\+\_\+while@{cm\+\_\+while}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+while@{cm\+\_\+while}}\item[{\em 
+cm\+\_\+while\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4aa5a171679a4afeedbf5656842c28d7d6}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4aa5a171679a4afeedbf5656842c28d7d6}
+}]\index{cm\+\_\+if@{cm\+\_\+if}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+if@{cm\+\_\+if}}\item[{\em 
+cm\+\_\+if\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4afb9898b99c8da429d239cd0264af4718}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4afb9898b99c8da429d239cd0264af4718}
+}]\index{cm\+\_\+simple@{cm\+\_\+simple}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+simple@{cm\+\_\+simple}}\item[{\em 
+cm\+\_\+simple\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4a6b95c578a76edef96b78363613c03424}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4a6b95c578a76edef96b78363613c03424}
+}]\index{cm\+\_\+select@{cm\+\_\+select}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+select@{cm\+\_\+select}}\item[{\em 
+cm\+\_\+select\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4ade005cb6c786196a2c4387b06649afa6}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4ade005cb6c786196a2c4387b06649afa6}
+}]\index{cm\+\_\+connection@{cm\+\_\+connection}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+connection@{cm\+\_\+connection}}\item[{\em 
+cm\+\_\+connection\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4a45d0af40ea3834a6294f236d061dbf85}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4a45d0af40ea3834a6294f236d061dbf85}
+}]\index{cm\+\_\+function\+\_\+def@{cm\+\_\+function\+\_\+def}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+function\+\_\+def@{cm\+\_\+function\+\_\+def}}\item[{\em 
+cm\+\_\+function\+\_\+def\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4af738c7876da438b4b0ccd9ba3e6e37f2}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4af738c7876da438b4b0ccd9ba3e6e37f2}
+}]\index{cm\+\_\+until@{cm\+\_\+until}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+until@{cm\+\_\+until}}\item[{\em 
+cm\+\_\+until\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4ad3bc32e998505a5d85220f89a3946c43}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4ad3bc32e998505a5d85220f89a3946c43}
+}]\index{cm\+\_\+group@{cm\+\_\+group}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+group@{cm\+\_\+group}}\item[{\em 
+cm\+\_\+group\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4af707d29bf49d39c31aa013337e179614}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4af707d29bf49d39c31aa013337e179614}
+}]\index{cm\+\_\+arith@{cm\+\_\+arith}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+arith@{cm\+\_\+arith}}\item[{\em 
+cm\+\_\+arith\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4afbe09c28d0b774c3f618235f135e725e}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4afbe09c28d0b774c3f618235f135e725e}
+}]\index{cm\+\_\+cond@{cm\+\_\+cond}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+cond@{cm\+\_\+cond}}\item[{\em 
+cm\+\_\+cond\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4a34e63fa25a73c47ca9c1e3c4675b4cb0}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4a34e63fa25a73c47ca9c1e3c4675b4cb0}
+}]\index{cm\+\_\+arith\+\_\+for@{cm\+\_\+arith\+\_\+for}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+arith\+\_\+for@{cm\+\_\+arith\+\_\+for}}\item[{\em 
+cm\+\_\+arith\+\_\+for\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4a9cda2772dfb914a28f9fd15f0827f5b9}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4a9cda2772dfb914a28f9fd15f0827f5b9}
+}]\index{cm\+\_\+subshell@{cm\+\_\+subshell}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+subshell@{cm\+\_\+subshell}}\item[{\em 
+cm\+\_\+subshell\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4a3a10db8d17c0c9e4d5b345e51cc54f91}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4a3a10db8d17c0c9e4d5b345e51cc54f91}
+}]\index{cm\+\_\+coproc@{cm\+\_\+coproc}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!cm\+\_\+coproc@{cm\+\_\+coproc}}\item[{\em 
+cm\+\_\+coproc\hypertarget{command_8h_a71e4cb55459005154ad8360914a8e1f4a41cbb56c2bbc34560ab03d87c7156846}{}\label{command_8h_a71e4cb55459005154ad8360914a8e1f4a41cbb56c2bbc34560ab03d87c7156846}
+}]\end{description}
+\end{Desc}
+\index{command.\+h@{command.\+h}!r\+\_\+instruction@{r\+\_\+instruction}}
+\index{r\+\_\+instruction@{r\+\_\+instruction}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{r\+\_\+instruction}{r_instruction}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf r\+\_\+instruction}}\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55d}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55d}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{r\+\_\+output\+\_\+direction@{r\+\_\+output\+\_\+direction}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+output\+\_\+direction@{r\+\_\+output\+\_\+direction}}\item[{\em 
+r\+\_\+output\+\_\+direction\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55da2c69229c3578e06a1d65505386741077}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55da2c69229c3578e06a1d65505386741077}
+}]\index{r\+\_\+input\+\_\+direction@{r\+\_\+input\+\_\+direction}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+input\+\_\+direction@{r\+\_\+input\+\_\+direction}}\item[{\em 
+r\+\_\+input\+\_\+direction\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55da2692c773b18ff643634cdca169dae8d8}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55da2692c773b18ff643634cdca169dae8d8}
+}]\index{r\+\_\+inputa\+\_\+direction@{r\+\_\+inputa\+\_\+direction}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+inputa\+\_\+direction@{r\+\_\+inputa\+\_\+direction}}\item[{\em 
+r\+\_\+inputa\+\_\+direction\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55dacb9e022ddb1386971e5616fbe312b7c2}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55dacb9e022ddb1386971e5616fbe312b7c2}
+}]\index{r\+\_\+appending\+\_\+to@{r\+\_\+appending\+\_\+to}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+appending\+\_\+to@{r\+\_\+appending\+\_\+to}}\item[{\em 
+r\+\_\+appending\+\_\+to\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55dabdf14fbf47ea4511d7d86f4c6265d59a}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55dabdf14fbf47ea4511d7d86f4c6265d59a}
+}]\index{r\+\_\+reading\+\_\+until@{r\+\_\+reading\+\_\+until}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+reading\+\_\+until@{r\+\_\+reading\+\_\+until}}\item[{\em 
+r\+\_\+reading\+\_\+until\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55dad6ac8401fce129fd7a87abbd1e607cae}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55dad6ac8401fce129fd7a87abbd1e607cae}
+}]\index{r\+\_\+reading\+\_\+string@{r\+\_\+reading\+\_\+string}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+reading\+\_\+string@{r\+\_\+reading\+\_\+string}}\item[{\em 
+r\+\_\+reading\+\_\+string\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55da2b4bada230697dabd5241c62a9ab9c19}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55da2b4bada230697dabd5241c62a9ab9c19}
+}]\index{r\+\_\+duplicating\+\_\+input@{r\+\_\+duplicating\+\_\+input}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+duplicating\+\_\+input@{r\+\_\+duplicating\+\_\+input}}\item[{\em 
+r\+\_\+duplicating\+\_\+input\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55da37dbd5b8931579801f7f21e7e17fde80}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55da37dbd5b8931579801f7f21e7e17fde80}
+}]\index{r\+\_\+duplicating\+\_\+output@{r\+\_\+duplicating\+\_\+output}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+duplicating\+\_\+output@{r\+\_\+duplicating\+\_\+output}}\item[{\em 
+r\+\_\+duplicating\+\_\+output\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55da5184a718fb36d51c96164d48ff361880}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55da5184a718fb36d51c96164d48ff361880}
+}]\index{r\+\_\+deblank\+\_\+reading\+\_\+until@{r\+\_\+deblank\+\_\+reading\+\_\+until}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+deblank\+\_\+reading\+\_\+until@{r\+\_\+deblank\+\_\+reading\+\_\+until}}\item[{\em 
+r\+\_\+deblank\+\_\+reading\+\_\+until\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55da9112f830d7972fd884b2fde6a9678ece}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55da9112f830d7972fd884b2fde6a9678ece}
+}]\index{r\+\_\+close\+\_\+this@{r\+\_\+close\+\_\+this}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+close\+\_\+this@{r\+\_\+close\+\_\+this}}\item[{\em 
+r\+\_\+close\+\_\+this\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55da1a8b78fedef80651df23168d82de702f}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55da1a8b78fedef80651df23168d82de702f}
+}]\index{r\+\_\+err\+\_\+and\+\_\+out@{r\+\_\+err\+\_\+and\+\_\+out}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+err\+\_\+and\+\_\+out@{r\+\_\+err\+\_\+and\+\_\+out}}\item[{\em 
+r\+\_\+err\+\_\+and\+\_\+out\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55daa0c75652231141c973727b2395f455b1}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55daa0c75652231141c973727b2395f455b1}
+}]\index{r\+\_\+input\+\_\+output@{r\+\_\+input\+\_\+output}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+input\+\_\+output@{r\+\_\+input\+\_\+output}}\item[{\em 
+r\+\_\+input\+\_\+output\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55da9678fd1dc74794c90ff05cbc87028723}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55da9678fd1dc74794c90ff05cbc87028723}
+}]\index{r\+\_\+output\+\_\+force@{r\+\_\+output\+\_\+force}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+output\+\_\+force@{r\+\_\+output\+\_\+force}}\item[{\em 
+r\+\_\+output\+\_\+force\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55da9aaae513103312f652c3db6547a1ae51}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55da9aaae513103312f652c3db6547a1ae51}
+}]\index{r\+\_\+duplicating\+\_\+input\+\_\+word@{r\+\_\+duplicating\+\_\+input\+\_\+word}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+duplicating\+\_\+input\+\_\+word@{r\+\_\+duplicating\+\_\+input\+\_\+word}}\item[{\em 
+r\+\_\+duplicating\+\_\+input\+\_\+word\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55da0d7bbe18befbbfb357b2da2fe3291b92}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55da0d7bbe18befbbfb357b2da2fe3291b92}
+}]\index{r\+\_\+duplicating\+\_\+output\+\_\+word@{r\+\_\+duplicating\+\_\+output\+\_\+word}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+duplicating\+\_\+output\+\_\+word@{r\+\_\+duplicating\+\_\+output\+\_\+word}}\item[{\em 
+r\+\_\+duplicating\+\_\+output\+\_\+word\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55da4805d3919a0c259834e8f759d92b39ca}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55da4805d3919a0c259834e8f759d92b39ca}
+}]\index{r\+\_\+move\+\_\+input@{r\+\_\+move\+\_\+input}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+move\+\_\+input@{r\+\_\+move\+\_\+input}}\item[{\em 
+r\+\_\+move\+\_\+input\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55da7e6b370bfc294c10763c41fa49d871b1}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55da7e6b370bfc294c10763c41fa49d871b1}
+}]\index{r\+\_\+move\+\_\+output@{r\+\_\+move\+\_\+output}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+move\+\_\+output@{r\+\_\+move\+\_\+output}}\item[{\em 
+r\+\_\+move\+\_\+output\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55da44d4c409356338b255cd96f03bf4d89f}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55da44d4c409356338b255cd96f03bf4d89f}
+}]\index{r\+\_\+move\+\_\+input\+\_\+word@{r\+\_\+move\+\_\+input\+\_\+word}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+move\+\_\+input\+\_\+word@{r\+\_\+move\+\_\+input\+\_\+word}}\item[{\em 
+r\+\_\+move\+\_\+input\+\_\+word\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55daaee0d3f7dfd8724a9e45f5481f504514}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55daaee0d3f7dfd8724a9e45f5481f504514}
+}]\index{r\+\_\+move\+\_\+output\+\_\+word@{r\+\_\+move\+\_\+output\+\_\+word}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+move\+\_\+output\+\_\+word@{r\+\_\+move\+\_\+output\+\_\+word}}\item[{\em 
+r\+\_\+move\+\_\+output\+\_\+word\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55dada6da3f73b9c1c256e6db43bd852c562}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55dada6da3f73b9c1c256e6db43bd852c562}
+}]\index{r\+\_\+append\+\_\+err\+\_\+and\+\_\+out@{r\+\_\+append\+\_\+err\+\_\+and\+\_\+out}!command.\+h@{command.\+h}}\index{command.\+h@{command.\+h}!r\+\_\+append\+\_\+err\+\_\+and\+\_\+out@{r\+\_\+append\+\_\+err\+\_\+and\+\_\+out}}\item[{\em 
+r\+\_\+append\+\_\+err\+\_\+and\+\_\+out\hypertarget{command_8h_a30995e3628b99a0514ed9fdd9843e55dacc481932ed1e82e2bfbf1afd394f056c}{}\label{command_8h_a30995e3628b99a0514ed9fdd9843e55dacc481932ed1e82e2bfbf1afd394f056c}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\index{command.\+h@{command.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+E\+F $\ast$, F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+E\+F $\ast$))}{__P((FUNCTION_DEF *, FUNCTION_DEF *))}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF}$\ast$ {\bf copy\+\_\+function\+\_\+def\+\_\+contents} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF} $\ast$, {\bf F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{command_8h_a98ee9b6cc1ca3837bea6dfcc9bd515f8}{}\label{command_8h_a98ee9b6cc1ca3837bea6dfcc9bd515f8}
+\index{command.\+h@{command.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+E\+F $\ast$))}{__P((FUNCTION_DEF *))}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF}$\ast$ {\bf copy\+\_\+function\+\_\+def} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{command_8h_a7728d15074fce25228c30d727dd3473b}{}\label{command_8h_a7728d15074fce25228c30d727dd3473b}
+\index{command.\+h@{command.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+W\+O\+R\+D\+\_\+\+D\+E\+S\+C $\ast$))}{__P((WORD_DESC *))}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC}$\ast$ {\bf copy\+\_\+word} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{command_8h_a82321ae5b1c9383c6f9ba07455a286a2}{}\label{command_8h_a82321ae5b1c9383c6f9ba07455a286a2}
+\index{command.\+h@{command.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$))}{__P((WORD_LIST *))}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST}$\ast$ {\bf copy\+\_\+word\+\_\+list} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{command_8h_a97e5abe67f2e5964e51b730ed9f349fd}{}\label{command_8h_a97e5abe67f2e5964e51b730ed9f349fd}
+\index{command.\+h@{command.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+R\+E\+D\+I\+R\+E\+C\+T $\ast$))}{__P((REDIRECT *))}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+D\+I\+R\+E\+CT}$\ast$ {\bf copy\+\_\+redirect} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf R\+E\+D\+I\+R\+E\+CT} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{command_8h_a5b9efaa219f19a763d9810ae7cbec265}{}\label{command_8h_a5b9efaa219f19a763d9810ae7cbec265}
+\index{command.\+h@{command.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+C\+O\+M\+M\+A\+N\+D $\ast$))}{__P((COMMAND *))}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ {\bf copy\+\_\+command} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf C\+O\+M\+M\+A\+ND} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{command_8h_ae939b9b513ab404fe513cb5c9256afbf}{}\label{command_8h_ae939b9b513ab404fe513cb5c9256afbf}
+
+
+\subsection{Variable Documentation}
+\index{command.\+h@{command.\+h}!global\+\_\+command@{global\+\_\+command}}
+\index{global\+\_\+command@{global\+\_\+command}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{global\+\_\+command}{global_command}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ global\+\_\+command}\hypertarget{command_8h_aad10387cf2b3a5e282a7e54e1605e7fc}{}\label{command_8h_aad10387cf2b3a5e282a7e54e1605e7fc}
+\index{command.\+h@{command.\+h}!sh\+\_\+coproc@{sh\+\_\+coproc}}
+\index{sh\+\_\+coproc@{sh\+\_\+coproc}!command.\+h@{command.\+h}}
+\subsubsection[{\texorpdfstring{sh\+\_\+coproc}{sh_coproc}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Coproc} sh\+\_\+coproc}\hypertarget{command_8h_a510ca1a742b05c210803a73b9b7719c7}{}\label{command_8h_a510ca1a742b05c210803a73b9b7719c7}

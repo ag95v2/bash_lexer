@@ -1839,6 +1839,7 @@ yybackup:
     {
       YYDPRINTF ((stderr, "Reading a token: "));
       yychar = yylex ();
+	  printf("%d\n", yychar);
     }
 
   if (yychar <= YYEOF)

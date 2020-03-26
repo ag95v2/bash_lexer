@@ -1,0 +1,780 @@
+\hypertarget{make__cmd_8c}{}\section{make\+\_\+cmd.\+c File Reference}
+\label{make__cmd_8c}\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$sys/file.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}filecntl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}execute\+\_\+cmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}parser.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}flags.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}input.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}jobs.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shmbutil.\+h\char`\"{}}\\*
+Include dependency graph for make\+\_\+cmd.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{make__cmd_8c_a24bf0c4267b783dc6d14f9333e4b54ab}{W\+D\+C\+A\+C\+H\+E\+S\+I\+ZE}~128
+\item 
+\#define \hyperlink{make__cmd_8c_ae80e55b7e6961ca951ae43c296d8f253}{W\+L\+C\+A\+C\+H\+E\+S\+I\+ZE}~128
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$\hyperlink{make__cmd_8c_a4a25f54617aba84a84847ea5ac9f520d}{make\+\_\+for\+\_\+or\+\_\+select} \hyperlink{make__cmd_8c_aaf1a53a01f78ff407c4c4ba03d13bf3f}{\+\_\+\+\_\+P} ((enum \hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4}{command\+\_\+type}, \hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$, int))
+\item 
+static \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$\hyperlink{make__cmd_8c_a8294f806d952cc8b41780c7fc523f036}{make\+\_\+arith\+\_\+for\+\_\+expr} \hyperlink{make__cmd_8c_a0f2c85bdcff9448ad5dd7b8afe8dc718}{\+\_\+\+\_\+P} ((char $\ast$))
+\item 
+static \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$\hyperlink{make__cmd_8c_a7689d2d94e329ce1855b0ee42f0ac8c3}{make\+\_\+until\+\_\+or\+\_\+while} \hyperlink{make__cmd_8c_a863920247e32824d67a77141cb5da8d2}{\+\_\+\+\_\+P} ((enum \hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4}{command\+\_\+type}, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$))
+\item 
+void \hyperlink{make__cmd_8c_ab39e508f0407f0116610fe76bad3b699}{cmd\+\_\+init} ()
+\item 
+\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$ \hyperlink{make__cmd_8c_a6a8b36e3c23a7324d5f9f3ed305a8bca}{alloc\+\_\+word\+\_\+desc} ()
+\item 
+\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$ \hyperlink{make__cmd_8c_ae830e552eb79411cedfd8fe5fa9b4a4b}{make\+\_\+bare\+\_\+word} (char $\ast$string) const
+\item 
+\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$ \hyperlink{make__cmd_8c_a4136a0e5c54413cb4890c5070a71c31a}{make\+\_\+word\+\_\+flags} (\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$w, const char $\ast$string)
+\item 
+\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$ \hyperlink{make__cmd_8c_a1bf353c818fefb707867a3142c70f21f}{make\+\_\+word} (char $\ast$string) const
+\item 
+\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$ \hyperlink{make__cmd_8c_aa65bc9c12d704886558fffb9af305282}{make\+\_\+word\+\_\+from\+\_\+token} (int \hyperlink{y_8tab_8c_a1d71425d9df28667d528833a4db10432}{token})
+\item 
+\hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$ \hyperlink{make__cmd_8c_aa707cc6dc36f4646bd1b0c25d3082d9c}{make\+\_\+word\+\_\+list} (\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$word, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$wlink)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_ae3746cc0e47a7647b590733f2e53fc0d}{make\+\_\+command} (enum \hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4}{command\+\_\+type} \hyperlink{shell_8c_ac765329451135abec74c45e1897abf26}{type}, \hyperlink{command_8h_a9e5765af5d6e27f63eb9e9faeccc6404}{S\+I\+M\+P\+L\+E\+\_\+\+C\+OM} $\ast$pointer)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a4054726885022e5f706f2efa13e3dda4}{command\+\_\+connect} (\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$com1, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$com2, int connector)
+\item 
+static \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a4a25f54617aba84a84847ea5ac9f520d}{make\+\_\+for\+\_\+or\+\_\+select} (enum \hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4}{command\+\_\+type} \hyperlink{shell_8c_ac765329451135abec74c45e1897abf26}{type}, \hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$map\+\_\+list, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$action, int lineno)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a836b2ccddcd28421ba80c7891ede901f}{make\+\_\+for\+\_\+command} (\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$map\+\_\+list, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$action, int lineno)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_adb558bc256f7deab0472cc58a7bacb51}{make\+\_\+select\+\_\+command} (\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$map\+\_\+list, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$action, int lineno)
+\item 
+static \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$ \hyperlink{make__cmd_8c_a8294f806d952cc8b41780c7fc523f036}{make\+\_\+arith\+\_\+for\+\_\+expr} (char $\ast$s)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_ae01463e25c1f9bebfa9ce097b962d426}{make\+\_\+arith\+\_\+for\+\_\+command} (\hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$exprs, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$action, int lineno)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a48da37434b62f9c0f5682c622c83446a}{make\+\_\+group\+\_\+command} (\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$\hyperlink{structcommand}{command})
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_ae4c333a788596349ba4aa1721031a6db}{make\+\_\+case\+\_\+command} (\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$word, \hyperlink{command_8h_a05098e88133e048a1acf396288758a9e}{P\+A\+T\+T\+E\+R\+N\+\_\+\+L\+I\+ST} $\ast$clauses, int lineno)
+\item 
+\hyperlink{command_8h_a05098e88133e048a1acf396288758a9e}{P\+A\+T\+T\+E\+R\+N\+\_\+\+L\+I\+ST} $\ast$ \hyperlink{make__cmd_8c_a50ce146696e60ae203e51f280592fe50}{make\+\_\+pattern\+\_\+list} (\hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$patterns, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$action)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a6d1f05587603198030b9c96a838e8ca0}{make\+\_\+if\+\_\+command} (\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$test, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$true\+\_\+case, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$false\+\_\+case)
+\item 
+static \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a7689d2d94e329ce1855b0ee42f0ac8c3}{make\+\_\+until\+\_\+or\+\_\+while} (enum \hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4}{command\+\_\+type} which, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$test, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$action)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_aeafa47aa016c3eaf649c63a3c862be33}{make\+\_\+while\+\_\+command} (\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$test, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$action)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_ad77b7b87bf8cd747955c5868c5b81bd4}{make\+\_\+until\+\_\+command} (\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$test, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$action)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_ae7d98601fdc0eaa7c8de80f2168fa31d}{make\+\_\+arith\+\_\+command} (\hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$exp)
+\item 
+struct \hyperlink{structcond__com}{cond\+\_\+com} $\ast$ \hyperlink{make__cmd_8c_ac324f4a532dce0ba63af565a315799cb}{make\+\_\+cond\+\_\+node} (int \hyperlink{shell_8c_ac765329451135abec74c45e1897abf26}{type}, \hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$op, struct \hyperlink{structcond__com}{cond\+\_\+com} $\ast$left, struct \hyperlink{structcond__com}{cond\+\_\+com} $\ast$right)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a5bb30ac29b1afa2f5f00f97ccd44d8bb}{make\+\_\+cond\+\_\+command} (\hyperlink{command_8h_acfd591313c8c77c4f1fa185e5caf79c7}{C\+O\+N\+D\+\_\+\+C\+OM} $\ast$cond\+\_\+node)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a4a19283c082ea5039e23fbe243fdc233}{make\+\_\+bare\+\_\+simple\+\_\+command} ()
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a7e648063f7778f212f93938afed9c05b}{make\+\_\+simple\+\_\+command} (\hyperlink{command_8h_ad98861155f12e470f2a392b7767cbe23}{E\+L\+E\+M\+E\+NT} \hyperlink{structelement}{element}, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$\hyperlink{structcommand}{command})
+\item 
+void \hyperlink{make__cmd_8c_a49b429dbd42375ce746affc7ae57270d}{make\+\_\+here\+\_\+document} (\hyperlink{command_8h_adeb9f5d937c92c7923aec48ad5e47d57}{R\+E\+D\+I\+R\+E\+CT} $\ast$temp, int lineno)
+\item 
+\hyperlink{command_8h_adeb9f5d937c92c7923aec48ad5e47d57}{R\+E\+D\+I\+R\+E\+CT} $\ast$ \hyperlink{make__cmd_8c_a6ddeb55118131e64dee1cfd7574fc246}{make\+\_\+redirection} (\hyperlink{unionREDIRECTEE}{R\+E\+D\+I\+R\+E\+C\+T\+EE} \hyperlink{y_8tab_8c_a809c6dcae62bd9288eabd81fa9e6e95e}{source}, enum \hyperlink{command_8h_a30995e3628b99a0514ed9fdd9843e55d}{r\+\_\+instruction} instruction, \hyperlink{unionREDIRECTEE}{R\+E\+D\+I\+R\+E\+C\+T\+EE} dest\+\_\+and\+\_\+filename, int flags)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a6cee9c362a9eddf1fa4d58cc01218c40}{make\+\_\+function\+\_\+def} (\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$\hyperlink{structcommand}{command}, int lineno, int lstart)
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a551932281c78885d6a0361b61ebb704d}{make\+\_\+subshell\+\_\+command} (\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$\hyperlink{structcommand}{command})
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a7ab16612d0909049ab4ce8e58248731e}{make\+\_\+coproc\+\_\+command} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$\hyperlink{structcommand}{command})
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a88d88cabcd4d690be39e8be3248f3720}{clean\+\_\+simple\+\_\+command} (\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$\hyperlink{structcommand}{command})
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{make__cmd_8c_a3a6532d7df325eeadc59d3516bee397b}{connect\+\_\+async\+\_\+list} (\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$\hyperlink{structcommand}{command}, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$command2, int connector)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{make__cmd_8c_ac639c519592e9e3aaa21d436d0518885}{here\+\_\+doc\+\_\+first\+\_\+line} = 0
+\item 
+sh\+\_\+obj\+\_\+cache\+\_\+t \hyperlink{make__cmd_8c_a61b1285c7ee225324e6e4e31eff10c28}{wdcache} = \{0, 0, 0\}
+\item 
+sh\+\_\+obj\+\_\+cache\+\_\+t \hyperlink{make__cmd_8c_a3ac1b6aa061af7fd85a0181229cb24a2}{wlcache} = \{0, 0, 0\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!W\+D\+C\+A\+C\+H\+E\+S\+I\+ZE@{W\+D\+C\+A\+C\+H\+E\+S\+I\+ZE}}
+\index{W\+D\+C\+A\+C\+H\+E\+S\+I\+ZE@{W\+D\+C\+A\+C\+H\+E\+S\+I\+ZE}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{W\+D\+C\+A\+C\+H\+E\+S\+I\+ZE}{WDCACHESIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+D\+C\+A\+C\+H\+E\+S\+I\+ZE~128}\hypertarget{make__cmd_8c_a24bf0c4267b783dc6d14f9333e4b54ab}{}\label{make__cmd_8c_a24bf0c4267b783dc6d14f9333e4b54ab}
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!W\+L\+C\+A\+C\+H\+E\+S\+I\+ZE@{W\+L\+C\+A\+C\+H\+E\+S\+I\+ZE}}
+\index{W\+L\+C\+A\+C\+H\+E\+S\+I\+ZE@{W\+L\+C\+A\+C\+H\+E\+S\+I\+ZE}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{W\+L\+C\+A\+C\+H\+E\+S\+I\+ZE}{WLCACHESIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+L\+C\+A\+C\+H\+E\+S\+I\+ZE~128}\hypertarget{make__cmd_8c_ae80e55b7e6961ca951ae43c296d8f253}{}\label{make__cmd_8c_ae80e55b7e6961ca951ae43c296d8f253}
+
+
+\subsection{Function Documentation}
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((enum command\+\_\+type, W\+O\+R\+D\+\_\+\+D\+E\+S\+C $\ast$, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$, C\+O\+M\+M\+A\+N\+D $\ast$, int))}{__P((enum command_type, WORD_DESC *, WORD_LIST *, COMMAND *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+O\+M\+M\+A\+ND}$\ast$ {\bf make\+\_\+for\+\_\+or\+\_\+select} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(enum {\bf command\+\_\+type}, {\bf W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$, {\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$, {\bf C\+O\+M\+M\+A\+ND} $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{make__cmd_8c_aaf1a53a01f78ff407c4c4ba03d13bf3f}{}\label{make__cmd_8c_aaf1a53a01f78ff407c4c4ba03d13bf3f}
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf W\+O\+R\+D\+\_\+\+L\+I\+ST}$\ast$ {\bf make\+\_\+arith\+\_\+for\+\_\+expr} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{make__cmd_8c_a0f2c85bdcff9448ad5dd7b8afe8dc718}{}\label{make__cmd_8c_a0f2c85bdcff9448ad5dd7b8afe8dc718}
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((enum command\+\_\+type, C\+O\+M\+M\+A\+N\+D $\ast$, C\+O\+M\+M\+A\+N\+D $\ast$))}{__P((enum command_type, COMMAND *, COMMAND *))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+O\+M\+M\+A\+ND}$\ast$ {\bf make\+\_\+until\+\_\+or\+\_\+while} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(enum {\bf command\+\_\+type}, {\bf C\+O\+M\+M\+A\+ND} $\ast$, {\bf C\+O\+M\+M\+A\+ND} $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{make__cmd_8c_a863920247e32824d67a77141cb5da8d2}{}\label{make__cmd_8c_a863920247e32824d67a77141cb5da8d2}
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!alloc\+\_\+word\+\_\+desc@{alloc\+\_\+word\+\_\+desc}}
+\index{alloc\+\_\+word\+\_\+desc@{alloc\+\_\+word\+\_\+desc}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{alloc\+\_\+word\+\_\+desc()}{alloc_word_desc()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC}$\ast$ alloc\+\_\+word\+\_\+desc (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a6a8b36e3c23a7324d5f9f3ed305a8bca}{}\label{make__cmd_8c_a6a8b36e3c23a7324d5f9f3ed305a8bca}
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!clean\+\_\+simple\+\_\+command@{clean\+\_\+simple\+\_\+command}}
+\index{clean\+\_\+simple\+\_\+command@{clean\+\_\+simple\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{clean\+\_\+simple\+\_\+command(\+C\+O\+M\+M\+A\+N\+D $\ast$command)}{clean_simple_command(COMMAND *command)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ clean\+\_\+simple\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{command}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a88d88cabcd4d690be39e8be3248f3720}{}\label{make__cmd_8c_a88d88cabcd4d690be39e8be3248f3720}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a88d88cabcd4d690be39e8be3248f3720_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!cmd\+\_\+init@{cmd\+\_\+init}}
+\index{cmd\+\_\+init@{cmd\+\_\+init}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{cmd\+\_\+init()}{cmd_init()}}]{\setlength{\rightskip}{0pt plus 5cm}void cmd\+\_\+init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_ab39e508f0407f0116610fe76bad3b699}{}\label{make__cmd_8c_ab39e508f0407f0116610fe76bad3b699}
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!command\+\_\+connect@{command\+\_\+connect}}
+\index{command\+\_\+connect@{command\+\_\+connect}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{command\+\_\+connect(\+C\+O\+M\+M\+A\+N\+D $\ast$com1, C\+O\+M\+M\+A\+N\+D $\ast$com2, int connector)}{command_connect(COMMAND *com1, COMMAND *com2, int connector)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ command\+\_\+connect (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{com1, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{com2, }
+\item[{int}]{connector}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a4054726885022e5f706f2efa13e3dda4}{}\label{make__cmd_8c_a4054726885022e5f706f2efa13e3dda4}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a4054726885022e5f706f2efa13e3dda4_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!connect\+\_\+async\+\_\+list@{connect\+\_\+async\+\_\+list}}
+\index{connect\+\_\+async\+\_\+list@{connect\+\_\+async\+\_\+list}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{connect\+\_\+async\+\_\+list(\+C\+O\+M\+M\+A\+N\+D $\ast$command, C\+O\+M\+M\+A\+N\+D $\ast$command2, int connector)}{connect_async_list(COMMAND *command, COMMAND *command2, int connector)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ connect\+\_\+async\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{command, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{command2, }
+\item[{int}]{connector}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a3a6532d7df325eeadc59d3516bee397b}{}\label{make__cmd_8c_a3a6532d7df325eeadc59d3516bee397b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a3a6532d7df325eeadc59d3516bee397b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+arith\+\_\+command@{make\+\_\+arith\+\_\+command}}
+\index{make\+\_\+arith\+\_\+command@{make\+\_\+arith\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+arith\+\_\+command(\+W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$exp)}{make_arith_command(WORD_LIST *exp)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+arith\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{exp}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_ae7d98601fdc0eaa7c8de80f2168fa31d}{}\label{make__cmd_8c_ae7d98601fdc0eaa7c8de80f2168fa31d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_ae7d98601fdc0eaa7c8de80f2168fa31d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+arith\+\_\+for\+\_\+command@{make\+\_\+arith\+\_\+for\+\_\+command}}
+\index{make\+\_\+arith\+\_\+for\+\_\+command@{make\+\_\+arith\+\_\+for\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+arith\+\_\+for\+\_\+command(\+W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$exprs, C\+O\+M\+M\+A\+N\+D $\ast$action, int lineno)}{make_arith_for_command(WORD_LIST *exprs, COMMAND *action, int lineno)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+arith\+\_\+for\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{exprs, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{action, }
+\item[{int}]{lineno}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_ae01463e25c1f9bebfa9ce097b962d426}{}\label{make__cmd_8c_ae01463e25c1f9bebfa9ce097b962d426}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_ae01463e25c1f9bebfa9ce097b962d426_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+arith\+\_\+for\+\_\+expr@{make\+\_\+arith\+\_\+for\+\_\+expr}}
+\index{make\+\_\+arith\+\_\+for\+\_\+expr@{make\+\_\+arith\+\_\+for\+\_\+expr}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+arith\+\_\+for\+\_\+expr(char $\ast$s)}{make_arith_for_expr(char *s)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf W\+O\+R\+D\+\_\+\+L\+I\+ST}$\ast$ make\+\_\+arith\+\_\+for\+\_\+expr (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{make__cmd_8c_a8294f806d952cc8b41780c7fc523f036}{}\label{make__cmd_8c_a8294f806d952cc8b41780c7fc523f036}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a8294f806d952cc8b41780c7fc523f036_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+bare\+\_\+simple\+\_\+command@{make\+\_\+bare\+\_\+simple\+\_\+command}}
+\index{make\+\_\+bare\+\_\+simple\+\_\+command@{make\+\_\+bare\+\_\+simple\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+bare\+\_\+simple\+\_\+command()}{make_bare_simple_command()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+bare\+\_\+simple\+\_\+command (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a4a19283c082ea5039e23fbe243fdc233}{}\label{make__cmd_8c_a4a19283c082ea5039e23fbe243fdc233}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a4a19283c082ea5039e23fbe243fdc233_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+bare\+\_\+word@{make\+\_\+bare\+\_\+word}}
+\index{make\+\_\+bare\+\_\+word@{make\+\_\+bare\+\_\+word}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+bare\+\_\+word(char $\ast$string) const}{make_bare_word(char *string) const}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC}$\ast$ make\+\_\+bare\+\_\+word (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+) const}\hypertarget{make__cmd_8c_ae830e552eb79411cedfd8fe5fa9b4a4b}{}\label{make__cmd_8c_ae830e552eb79411cedfd8fe5fa9b4a4b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_ae830e552eb79411cedfd8fe5fa9b4a4b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+case\+\_\+command@{make\+\_\+case\+\_\+command}}
+\index{make\+\_\+case\+\_\+command@{make\+\_\+case\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+case\+\_\+command(\+W\+O\+R\+D\+\_\+\+D\+E\+S\+C $\ast$word, P\+A\+T\+T\+E\+R\+N\+\_\+\+L\+I\+S\+T $\ast$clauses, int lineno)}{make_case_command(WORD_DESC *word, PATTERN_LIST *clauses, int lineno)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+case\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$}]{word, }
+\item[{{\bf P\+A\+T\+T\+E\+R\+N\+\_\+\+L\+I\+ST} $\ast$}]{clauses, }
+\item[{int}]{lineno}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_ae4c333a788596349ba4aa1721031a6db}{}\label{make__cmd_8c_ae4c333a788596349ba4aa1721031a6db}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_ae4c333a788596349ba4aa1721031a6db_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+command@{make\+\_\+command}}
+\index{make\+\_\+command@{make\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+command(enum command\+\_\+type type, S\+I\+M\+P\+L\+E\+\_\+\+C\+O\+M $\ast$pointer)}{make_command(enum command_type type, SIMPLE_COM *pointer)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{enum {\bf command\+\_\+type}}]{type, }
+\item[{{\bf S\+I\+M\+P\+L\+E\+\_\+\+C\+OM} $\ast$}]{pointer}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_ae3746cc0e47a7647b590733f2e53fc0d}{}\label{make__cmd_8c_ae3746cc0e47a7647b590733f2e53fc0d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_ae3746cc0e47a7647b590733f2e53fc0d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+cond\+\_\+command@{make\+\_\+cond\+\_\+command}}
+\index{make\+\_\+cond\+\_\+command@{make\+\_\+cond\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+cond\+\_\+command(\+C\+O\+N\+D\+\_\+\+C\+O\+M $\ast$cond\+\_\+node)}{make_cond_command(COND_COM *cond_node)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+cond\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+N\+D\+\_\+\+C\+OM} $\ast$}]{cond\+\_\+node}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a5bb30ac29b1afa2f5f00f97ccd44d8bb}{}\label{make__cmd_8c_a5bb30ac29b1afa2f5f00f97ccd44d8bb}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a5bb30ac29b1afa2f5f00f97ccd44d8bb_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+cond\+\_\+node@{make\+\_\+cond\+\_\+node}}
+\index{make\+\_\+cond\+\_\+node@{make\+\_\+cond\+\_\+node}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+cond\+\_\+node(int type, W\+O\+R\+D\+\_\+\+D\+E\+S\+C $\ast$op, struct cond\+\_\+com $\ast$left, struct cond\+\_\+com $\ast$right)}{make_cond_node(int type, WORD_DESC *op, struct cond_com *left, struct cond_com *right)}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf cond\+\_\+com}$\ast$ make\+\_\+cond\+\_\+node (
+\begin{DoxyParamCaption}
+\item[{int}]{type, }
+\item[{{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$}]{op, }
+\item[{struct {\bf cond\+\_\+com} $\ast$}]{left, }
+\item[{struct {\bf cond\+\_\+com} $\ast$}]{right}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_ac324f4a532dce0ba63af565a315799cb}{}\label{make__cmd_8c_ac324f4a532dce0ba63af565a315799cb}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_ac324f4a532dce0ba63af565a315799cb_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+coproc\+\_\+command@{make\+\_\+coproc\+\_\+command}}
+\index{make\+\_\+coproc\+\_\+command@{make\+\_\+coproc\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+coproc\+\_\+command(char $\ast$name, C\+O\+M\+M\+A\+N\+D $\ast$command)}{make_coproc_command(char *name, COMMAND *command)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+coproc\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{command}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a7ab16612d0909049ab4ce8e58248731e}{}\label{make__cmd_8c_a7ab16612d0909049ab4ce8e58248731e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a7ab16612d0909049ab4ce8e58248731e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+for\+\_\+command@{make\+\_\+for\+\_\+command}}
+\index{make\+\_\+for\+\_\+command@{make\+\_\+for\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+for\+\_\+command(\+W\+O\+R\+D\+\_\+\+D\+E\+S\+C $\ast$name, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$map\+\_\+list, C\+O\+M\+M\+A\+N\+D $\ast$action, int lineno)}{make_for_command(WORD_DESC *name, WORD_LIST *map_list, COMMAND *action, int lineno)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+for\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$}]{name, }
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{map\+\_\+list, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{action, }
+\item[{int}]{lineno}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a836b2ccddcd28421ba80c7891ede901f}{}\label{make__cmd_8c_a836b2ccddcd28421ba80c7891ede901f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a836b2ccddcd28421ba80c7891ede901f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+for\+\_\+or\+\_\+select@{make\+\_\+for\+\_\+or\+\_\+select}}
+\index{make\+\_\+for\+\_\+or\+\_\+select@{make\+\_\+for\+\_\+or\+\_\+select}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+for\+\_\+or\+\_\+select(enum command\+\_\+type type, W\+O\+R\+D\+\_\+\+D\+E\+S\+C $\ast$name, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$map\+\_\+list, C\+O\+M\+M\+A\+N\+D $\ast$action, int lineno)}{make_for_or_select(enum command_type type, WORD_DESC *name, WORD_LIST *map_list, COMMAND *action, int lineno)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+for\+\_\+or\+\_\+select (
+\begin{DoxyParamCaption}
+\item[{enum {\bf command\+\_\+type}}]{type, }
+\item[{{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$}]{name, }
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{map\+\_\+list, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{action, }
+\item[{int}]{lineno}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{make__cmd_8c_a4a25f54617aba84a84847ea5ac9f520d}{}\label{make__cmd_8c_a4a25f54617aba84a84847ea5ac9f520d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a4a25f54617aba84a84847ea5ac9f520d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+function\+\_\+def@{make\+\_\+function\+\_\+def}}
+\index{make\+\_\+function\+\_\+def@{make\+\_\+function\+\_\+def}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+function\+\_\+def(\+W\+O\+R\+D\+\_\+\+D\+E\+S\+C $\ast$name, C\+O\+M\+M\+A\+N\+D $\ast$command, int lineno, int lstart)}{make_function_def(WORD_DESC *name, COMMAND *command, int lineno, int lstart)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+function\+\_\+def (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$}]{name, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{command, }
+\item[{int}]{lineno, }
+\item[{int}]{lstart}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a6cee9c362a9eddf1fa4d58cc01218c40}{}\label{make__cmd_8c_a6cee9c362a9eddf1fa4d58cc01218c40}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a6cee9c362a9eddf1fa4d58cc01218c40_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+group\+\_\+command@{make\+\_\+group\+\_\+command}}
+\index{make\+\_\+group\+\_\+command@{make\+\_\+group\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+group\+\_\+command(\+C\+O\+M\+M\+A\+N\+D $\ast$command)}{make_group_command(COMMAND *command)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+group\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{command}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a48da37434b62f9c0f5682c622c83446a}{}\label{make__cmd_8c_a48da37434b62f9c0f5682c622c83446a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a48da37434b62f9c0f5682c622c83446a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+here\+\_\+document@{make\+\_\+here\+\_\+document}}
+\index{make\+\_\+here\+\_\+document@{make\+\_\+here\+\_\+document}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+here\+\_\+document(\+R\+E\+D\+I\+R\+E\+C\+T $\ast$temp, int lineno)}{make_here_document(REDIRECT *temp, int lineno)}}]{\setlength{\rightskip}{0pt plus 5cm}void make\+\_\+here\+\_\+document (
+\begin{DoxyParamCaption}
+\item[{{\bf R\+E\+D\+I\+R\+E\+CT} $\ast$}]{temp, }
+\item[{int}]{lineno}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a49b429dbd42375ce746affc7ae57270d}{}\label{make__cmd_8c_a49b429dbd42375ce746affc7ae57270d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a49b429dbd42375ce746affc7ae57270d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+if\+\_\+command@{make\+\_\+if\+\_\+command}}
+\index{make\+\_\+if\+\_\+command@{make\+\_\+if\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+if\+\_\+command(\+C\+O\+M\+M\+A\+N\+D $\ast$test, C\+O\+M\+M\+A\+N\+D $\ast$true\+\_\+case, C\+O\+M\+M\+A\+N\+D $\ast$false\+\_\+case)}{make_if_command(COMMAND *test, COMMAND *true_case, COMMAND *false_case)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+if\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{test, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{true\+\_\+case, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{false\+\_\+case}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a6d1f05587603198030b9c96a838e8ca0}{}\label{make__cmd_8c_a6d1f05587603198030b9c96a838e8ca0}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a6d1f05587603198030b9c96a838e8ca0_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+pattern\+\_\+list@{make\+\_\+pattern\+\_\+list}}
+\index{make\+\_\+pattern\+\_\+list@{make\+\_\+pattern\+\_\+list}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+pattern\+\_\+list(\+W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$patterns, C\+O\+M\+M\+A\+N\+D $\ast$action)}{make_pattern_list(WORD_LIST *patterns, COMMAND *action)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf P\+A\+T\+T\+E\+R\+N\+\_\+\+L\+I\+ST}$\ast$ make\+\_\+pattern\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{patterns, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{action}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a50ce146696e60ae203e51f280592fe50}{}\label{make__cmd_8c_a50ce146696e60ae203e51f280592fe50}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a50ce146696e60ae203e51f280592fe50_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+redirection@{make\+\_\+redirection}}
+\index{make\+\_\+redirection@{make\+\_\+redirection}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+redirection(\+R\+E\+D\+I\+R\+E\+C\+T\+E\+E source, enum r\+\_\+instruction instruction, R\+E\+D\+I\+R\+E\+C\+T\+E\+E dest\+\_\+and\+\_\+filename, int flags)}{make_redirection(REDIRECTEE source, enum r_instruction instruction, REDIRECTEE dest_and_filename, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+D\+I\+R\+E\+CT}$\ast$ make\+\_\+redirection (
+\begin{DoxyParamCaption}
+\item[{{\bf R\+E\+D\+I\+R\+E\+C\+T\+EE}}]{source, }
+\item[{enum {\bf r\+\_\+instruction}}]{instruction, }
+\item[{{\bf R\+E\+D\+I\+R\+E\+C\+T\+EE}}]{dest\+\_\+and\+\_\+filename, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a6ddeb55118131e64dee1cfd7574fc246}{}\label{make__cmd_8c_a6ddeb55118131e64dee1cfd7574fc246}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a6ddeb55118131e64dee1cfd7574fc246_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+select\+\_\+command@{make\+\_\+select\+\_\+command}}
+\index{make\+\_\+select\+\_\+command@{make\+\_\+select\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+select\+\_\+command(\+W\+O\+R\+D\+\_\+\+D\+E\+S\+C $\ast$name, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$map\+\_\+list, C\+O\+M\+M\+A\+N\+D $\ast$action, int lineno)}{make_select_command(WORD_DESC *name, WORD_LIST *map_list, COMMAND *action, int lineno)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+select\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$}]{name, }
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{map\+\_\+list, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{action, }
+\item[{int}]{lineno}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_adb558bc256f7deab0472cc58a7bacb51}{}\label{make__cmd_8c_adb558bc256f7deab0472cc58a7bacb51}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_adb558bc256f7deab0472cc58a7bacb51_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+simple\+\_\+command@{make\+\_\+simple\+\_\+command}}
+\index{make\+\_\+simple\+\_\+command@{make\+\_\+simple\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+simple\+\_\+command(\+E\+L\+E\+M\+E\+N\+T element, C\+O\+M\+M\+A\+N\+D $\ast$command)}{make_simple_command(ELEMENT element, COMMAND *command)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+simple\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf E\+L\+E\+M\+E\+NT}}]{element, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{command}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a7e648063f7778f212f93938afed9c05b}{}\label{make__cmd_8c_a7e648063f7778f212f93938afed9c05b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a7e648063f7778f212f93938afed9c05b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+subshell\+\_\+command@{make\+\_\+subshell\+\_\+command}}
+\index{make\+\_\+subshell\+\_\+command@{make\+\_\+subshell\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+subshell\+\_\+command(\+C\+O\+M\+M\+A\+N\+D $\ast$command)}{make_subshell_command(COMMAND *command)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+subshell\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{command}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a551932281c78885d6a0361b61ebb704d}{}\label{make__cmd_8c_a551932281c78885d6a0361b61ebb704d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a551932281c78885d6a0361b61ebb704d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+until\+\_\+command@{make\+\_\+until\+\_\+command}}
+\index{make\+\_\+until\+\_\+command@{make\+\_\+until\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+until\+\_\+command(\+C\+O\+M\+M\+A\+N\+D $\ast$test, C\+O\+M\+M\+A\+N\+D $\ast$action)}{make_until_command(COMMAND *test, COMMAND *action)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+until\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{test, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{action}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_ad77b7b87bf8cd747955c5868c5b81bd4}{}\label{make__cmd_8c_ad77b7b87bf8cd747955c5868c5b81bd4}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_ad77b7b87bf8cd747955c5868c5b81bd4_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+until\+\_\+or\+\_\+while@{make\+\_\+until\+\_\+or\+\_\+while}}
+\index{make\+\_\+until\+\_\+or\+\_\+while@{make\+\_\+until\+\_\+or\+\_\+while}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+until\+\_\+or\+\_\+while(enum command\+\_\+type which, C\+O\+M\+M\+A\+N\+D $\ast$test, C\+O\+M\+M\+A\+N\+D $\ast$action)}{make_until_or_while(enum command_type which, COMMAND *test, COMMAND *action)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+until\+\_\+or\+\_\+while (
+\begin{DoxyParamCaption}
+\item[{enum {\bf command\+\_\+type}}]{which, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{test, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{action}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{make__cmd_8c_a7689d2d94e329ce1855b0ee42f0ac8c3}{}\label{make__cmd_8c_a7689d2d94e329ce1855b0ee42f0ac8c3}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a7689d2d94e329ce1855b0ee42f0ac8c3_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+while\+\_\+command@{make\+\_\+while\+\_\+command}}
+\index{make\+\_\+while\+\_\+command@{make\+\_\+while\+\_\+command}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+while\+\_\+command(\+C\+O\+M\+M\+A\+N\+D $\ast$test, C\+O\+M\+M\+A\+N\+D $\ast$action)}{make_while_command(COMMAND *test, COMMAND *action)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ make\+\_\+while\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{test, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{action}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_aeafa47aa016c3eaf649c63a3c862be33}{}\label{make__cmd_8c_aeafa47aa016c3eaf649c63a3c862be33}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_aeafa47aa016c3eaf649c63a3c862be33_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+word@{make\+\_\+word}}
+\index{make\+\_\+word@{make\+\_\+word}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+word(char $\ast$string) const}{make_word(char *string) const}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC}$\ast$ make\+\_\+word (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+) const}\hypertarget{make__cmd_8c_a1bf353c818fefb707867a3142c70f21f}{}\label{make__cmd_8c_a1bf353c818fefb707867a3142c70f21f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_a1bf353c818fefb707867a3142c70f21f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+word\+\_\+flags@{make\+\_\+word\+\_\+flags}}
+\index{make\+\_\+word\+\_\+flags@{make\+\_\+word\+\_\+flags}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+word\+\_\+flags(\+W\+O\+R\+D\+\_\+\+D\+E\+S\+C $\ast$w, const char $\ast$string)}{make_word_flags(WORD_DESC *w, const char *string)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC}$\ast$ make\+\_\+word\+\_\+flags (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$}]{w, }
+\item[{const char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_a4136a0e5c54413cb4890c5070a71c31a}{}\label{make__cmd_8c_a4136a0e5c54413cb4890c5070a71c31a}
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+word\+\_\+from\+\_\+token@{make\+\_\+word\+\_\+from\+\_\+token}}
+\index{make\+\_\+word\+\_\+from\+\_\+token@{make\+\_\+word\+\_\+from\+\_\+token}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+word\+\_\+from\+\_\+token(int token)}{make_word_from_token(int token)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC}$\ast$ make\+\_\+word\+\_\+from\+\_\+token (
+\begin{DoxyParamCaption}
+\item[{int}]{token}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_aa65bc9c12d704886558fffb9af305282}{}\label{make__cmd_8c_aa65bc9c12d704886558fffb9af305282}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{make__cmd_8c_aa65bc9c12d704886558fffb9af305282_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!make\+\_\+word\+\_\+list@{make\+\_\+word\+\_\+list}}
+\index{make\+\_\+word\+\_\+list@{make\+\_\+word\+\_\+list}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+word\+\_\+list(\+W\+O\+R\+D\+\_\+\+D\+E\+S\+C $\ast$word, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$wlink)}{make_word_list(WORD_DESC *word, WORD_LIST *wlink)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST}$\ast$ make\+\_\+word\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$}]{word, }
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{wlink}
+\end{DoxyParamCaption}
+)}\hypertarget{make__cmd_8c_aa707cc6dc36f4646bd1b0c25d3082d9c}{}\label{make__cmd_8c_aa707cc6dc36f4646bd1b0c25d3082d9c}
+
+
+\subsection{Variable Documentation}
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!here\+\_\+doc\+\_\+first\+\_\+line@{here\+\_\+doc\+\_\+first\+\_\+line}}
+\index{here\+\_\+doc\+\_\+first\+\_\+line@{here\+\_\+doc\+\_\+first\+\_\+line}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{here\+\_\+doc\+\_\+first\+\_\+line}{here_doc_first_line}}]{\setlength{\rightskip}{0pt plus 5cm}int here\+\_\+doc\+\_\+first\+\_\+line = 0}\hypertarget{make__cmd_8c_ac639c519592e9e3aaa21d436d0518885}{}\label{make__cmd_8c_ac639c519592e9e3aaa21d436d0518885}
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!wdcache@{wdcache}}
+\index{wdcache@{wdcache}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{wdcache}{wdcache}}]{\setlength{\rightskip}{0pt plus 5cm}sh\+\_\+obj\+\_\+cache\+\_\+t wdcache = \{0, 0, 0\}}\hypertarget{make__cmd_8c_a61b1285c7ee225324e6e4e31eff10c28}{}\label{make__cmd_8c_a61b1285c7ee225324e6e4e31eff10c28}
+\index{make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}!wlcache@{wlcache}}
+\index{wlcache@{wlcache}!make\+\_\+cmd.\+c@{make\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{wlcache}{wlcache}}]{\setlength{\rightskip}{0pt plus 5cm}sh\+\_\+obj\+\_\+cache\+\_\+t wlcache = \{0, 0, 0\}}\hypertarget{make__cmd_8c_a3ac1b6aa061af7fd85a0181229cb24a2}{}\label{make__cmd_8c_a3ac1b6aa061af7fd85a0181229cb24a2}

@@ -1,0 +1,19 @@
+<map id="YYSTYPE" name="YYSTYPE">
+<area shape="rect" id="node2" href="$structword__list.html" title="word_list" alt="" coords="210,433,285,460"/>
+<area shape="rect" id="node4" href="$structpattern__list.html" title="pattern_list" alt="" coords="412,533,499,560"/>
+<area shape="rect" id="node12" href="$structsimple__com.html" title="simple_com" alt="" coords="601,433,693,460"/>
+<area shape="rect" id="node14" href="$structfor__com.html" title="for_com" alt="" coords="1013,1081,1082,1108"/>
+<area shape="rect" id="node3" href="$structword__desc.html" title="word_desc" alt="" coords="5,331,91,357"/>
+<area shape="rect" id="node6" href="$structfunction__def.html" title="function_def" alt="" coords="1001,321,1094,348"/>
+<area shape="rect" id="node7" href="$structcase__com.html" title="case_com" alt="" coords="606,595,689,621"/>
+<area shape="rect" id="node11" href="$unionREDIRECTEE.html" title="REDIRECTEE" alt="" coords="192,257,303,284"/>
+<area shape="rect" id="node18" href="$structelement.html" title="element" alt="" coords="613,108,681,135"/>
+<area shape="rect" id="node5" href="$structcommand.html" title="command" alt="" coords="789,593,868,620"/>
+<area shape="rect" id="node8" href="$structsubshell__com.html" title="subshell_com" alt="" coords="996,435,1099,461"/>
+<area shape="rect" id="node9" href="$structgroup__com.html" title="group_com" alt="" coords="1004,525,1091,552"/>
+<area shape="rect" id="node13" href="$structconnection.html" title="connection" alt="" coords="1005,624,1090,651"/>
+<area shape="rect" id="node15" href="$structcoproc__com.html" title="coproc_com" alt="" coords="1001,947,1094,973"/>
+<area shape="rect" id="node16" href="$structwhile__com.html" title="while_com" alt="" coords="1005,736,1089,763"/>
+<area shape="rect" id="node17" href="$structif__com.html" title="if_com" alt="" coords="1017,856,1078,883"/>
+<area shape="rect" id="node10" href="$structredirect.html" title="redirect" alt="" coords="423,180,488,207"/>
+</map>

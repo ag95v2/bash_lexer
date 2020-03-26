@@ -1,0 +1,7 @@
+<map id="unbind_args" name="unbind_args">
+<area shape="rect" id="node2" href="$variables_8c.html#af663cdd8588a2280bdc7941f12990f04" title="pop_args" alt="" coords="145,107,220,133"/>
+<area shape="rect" id="node3" href="$array_8c.html#ae83b41ade25a16c0d12bb193bf5d1926" title="array_shift" alt="" coords="276,56,359,83"/>
+<area shape="rect" id="node5" href="$array_8c.html#a8620a01f7a7efdeb205437e112764672" title="array_dispose_element" alt="" coords="549,56,705,83"/>
+<area shape="rect" id="node6" href="$general_8c.html#acf578cd76e0dc1087cdc627781f06c9e" title="legal_number" alt="" coords="268,157,367,184"/>
+<area shape="rect" id="node4" href="$array_8c.html#a05b8194d509714a03fa60edb1c5b63e8" title="array_flush" alt="" coords="415,5,501,32"/>
+</map>

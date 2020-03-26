@@ -1,0 +1,96 @@
+\hypertarget{structcommand}{}\section{command Struct Reference}
+\label{structcommand}\index{command@{command}}
+
+
+{\ttfamily \#include $<$command.\+h$>$}
+
+
+
+Collaboration diagram for command\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structcommand__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{command_8h_a71e4cb55459005154ad8360914a8e1f4}{command\+\_\+type} \hyperlink{structcommand_adc520136f05efbf94b38913f7d8b1f31}{type}
+\item 
+int \hyperlink{structcommand_aa901bebf4c7f683f6934e69ad95f2b11}{flags}
+\item 
+int \hyperlink{structcommand_a35171ddf374dcfc97662a6b3965d2ad0}{line}
+\item 
+\hyperlink{command_8h_adeb9f5d937c92c7923aec48ad5e47d57}{R\+E\+D\+I\+R\+E\+CT} $\ast$ \hyperlink{structcommand_a5b5efa4854e0319791e28028712fee9a}{redirects}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>struct \hyperlink{structfor__com}{for\_com} $\ast$ \hyperlink{structcommand_a7b937c91d8eacc73c93c1cf64422dc28}{For}\\
+\>struct \hyperlink{structcase__com}{case\_com} $\ast$ \hyperlink{structcommand_a3b14b45192764ae24f9c40edf7aefc94}{Case}\\
+\>struct \hyperlink{structwhile__com}{while\_com} $\ast$ \hyperlink{structcommand_a770073860411c3d15cc533862688d035}{While}\\
+\>struct \hyperlink{structif__com}{if\_com} $\ast$ \hyperlink{structcommand_a7ebce7bca0b62a919f8ad0157046a58c}{If}\\
+\>struct \hyperlink{structconnection}{connection} $\ast$ \hyperlink{structcommand_a2d2ed612574d67c6d3d83892595563f5}{Connection}\\
+\>struct \hyperlink{structsimple__com}{simple\_com} $\ast$ \hyperlink{structcommand_ab3ddc136c7f74d323c4bd1afc97a5864}{Simple}\\
+\>struct \hyperlink{structfunction__def}{function\_def} $\ast$ \hyperlink{structcommand_a0f27ea57892789c32125560aa6b58372}{Function\_def}\\
+\>struct \hyperlink{structgroup__com}{group\_com} $\ast$ \hyperlink{structcommand_a3be5f23cdfe7367575228ab7c8a98c8a}{Group}\\
+\>struct \hyperlink{structsubshell__com}{subshell\_com} $\ast$ \hyperlink{structcommand_a31087dc3fce667d2ded99e645149afa6}{Subshell}\\
+\>struct \hyperlink{structcoproc__com}{coproc\_com} $\ast$ \hyperlink{structcommand_a2b7939e2744dc3a05722a9982148b219}{Coproc}\\
+\} \hyperlink{structcommand_adda5d5d9646a55d8cf1f8b64612af756}{value}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\index{command@{command}!Case@{Case}}
+\index{Case@{Case}!command@{command}}
+\subsubsection[{\texorpdfstring{Case}{Case}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf case\+\_\+com}$\ast$ command\+::\+Case}\hypertarget{structcommand_a3b14b45192764ae24f9c40edf7aefc94}{}\label{structcommand_a3b14b45192764ae24f9c40edf7aefc94}
+\index{command@{command}!Connection@{Connection}}
+\index{Connection@{Connection}!command@{command}}
+\subsubsection[{\texorpdfstring{Connection}{Connection}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf connection}$\ast$ command\+::\+Connection}\hypertarget{structcommand_a2d2ed612574d67c6d3d83892595563f5}{}\label{structcommand_a2d2ed612574d67c6d3d83892595563f5}
+\index{command@{command}!Coproc@{Coproc}}
+\index{Coproc@{Coproc}!command@{command}}
+\subsubsection[{\texorpdfstring{Coproc}{Coproc}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf coproc\+\_\+com}$\ast$ command\+::\+Coproc}\hypertarget{structcommand_a2b7939e2744dc3a05722a9982148b219}{}\label{structcommand_a2b7939e2744dc3a05722a9982148b219}
+\index{command@{command}!flags@{flags}}
+\index{flags@{flags}!command@{command}}
+\subsubsection[{\texorpdfstring{flags}{flags}}]{\setlength{\rightskip}{0pt plus 5cm}int command\+::flags}\hypertarget{structcommand_aa901bebf4c7f683f6934e69ad95f2b11}{}\label{structcommand_aa901bebf4c7f683f6934e69ad95f2b11}
+\index{command@{command}!For@{For}}
+\index{For@{For}!command@{command}}
+\subsubsection[{\texorpdfstring{For}{For}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf for\+\_\+com}$\ast$ command\+::\+For}\hypertarget{structcommand_a7b937c91d8eacc73c93c1cf64422dc28}{}\label{structcommand_a7b937c91d8eacc73c93c1cf64422dc28}
+\index{command@{command}!Function\+\_\+def@{Function\+\_\+def}}
+\index{Function\+\_\+def@{Function\+\_\+def}!command@{command}}
+\subsubsection[{\texorpdfstring{Function\+\_\+def}{Function_def}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf function\+\_\+def}$\ast$ command\+::\+Function\+\_\+def}\hypertarget{structcommand_a0f27ea57892789c32125560aa6b58372}{}\label{structcommand_a0f27ea57892789c32125560aa6b58372}
+\index{command@{command}!Group@{Group}}
+\index{Group@{Group}!command@{command}}
+\subsubsection[{\texorpdfstring{Group}{Group}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf group\+\_\+com}$\ast$ command\+::\+Group}\hypertarget{structcommand_a3be5f23cdfe7367575228ab7c8a98c8a}{}\label{structcommand_a3be5f23cdfe7367575228ab7c8a98c8a}
+\index{command@{command}!If@{If}}
+\index{If@{If}!command@{command}}
+\subsubsection[{\texorpdfstring{If}{If}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf if\+\_\+com}$\ast$ command\+::\+If}\hypertarget{structcommand_a7ebce7bca0b62a919f8ad0157046a58c}{}\label{structcommand_a7ebce7bca0b62a919f8ad0157046a58c}
+\index{command@{command}!line@{line}}
+\index{line@{line}!command@{command}}
+\subsubsection[{\texorpdfstring{line}{line}}]{\setlength{\rightskip}{0pt plus 5cm}int command\+::line}\hypertarget{structcommand_a35171ddf374dcfc97662a6b3965d2ad0}{}\label{structcommand_a35171ddf374dcfc97662a6b3965d2ad0}
+\index{command@{command}!redirects@{redirects}}
+\index{redirects@{redirects}!command@{command}}
+\subsubsection[{\texorpdfstring{redirects}{redirects}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+D\+I\+R\+E\+CT}$\ast$ command\+::redirects}\hypertarget{structcommand_a5b5efa4854e0319791e28028712fee9a}{}\label{structcommand_a5b5efa4854e0319791e28028712fee9a}
+\index{command@{command}!Simple@{Simple}}
+\index{Simple@{Simple}!command@{command}}
+\subsubsection[{\texorpdfstring{Simple}{Simple}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf simple\+\_\+com}$\ast$ command\+::\+Simple}\hypertarget{structcommand_ab3ddc136c7f74d323c4bd1afc97a5864}{}\label{structcommand_ab3ddc136c7f74d323c4bd1afc97a5864}
+\index{command@{command}!Subshell@{Subshell}}
+\index{Subshell@{Subshell}!command@{command}}
+\subsubsection[{\texorpdfstring{Subshell}{Subshell}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf subshell\+\_\+com}$\ast$ command\+::\+Subshell}\hypertarget{structcommand_a31087dc3fce667d2ded99e645149afa6}{}\label{structcommand_a31087dc3fce667d2ded99e645149afa6}
+\index{command@{command}!type@{type}}
+\index{type@{type}!command@{command}}
+\subsubsection[{\texorpdfstring{type}{type}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf command\+\_\+type} command\+::type}\hypertarget{structcommand_adc520136f05efbf94b38913f7d8b1f31}{}\label{structcommand_adc520136f05efbf94b38913f7d8b1f31}
+\index{command@{command}!value@{value}}
+\index{value@{value}!command@{command}}
+\subsubsection[{\texorpdfstring{value}{value}}]{\setlength{\rightskip}{0pt plus 5cm}union \{ ... \}   command\+::value}\hypertarget{structcommand_adda5d5d9646a55d8cf1f8b64612af756}{}\label{structcommand_adda5d5d9646a55d8cf1f8b64612af756}
+\index{command@{command}!While@{While}}
+\index{While@{While}!command@{command}}
+\subsubsection[{\texorpdfstring{While}{While}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf while\+\_\+com}$\ast$ command\+::\+While}\hypertarget{structcommand_a770073860411c3d15cc533862688d035}{}\label{structcommand_a770073860411c3d15cc533862688d035}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{command_8h}{command.\+h}\end{DoxyCompactItemize}

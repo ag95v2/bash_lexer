@@ -1,0 +1,127 @@
+\hypertarget{xmalloc_8c}{}\section{xmalloc.\+c File Reference}
+\label{xmalloc_8c}\index{xmalloc.\+c@{xmalloc.\+c}}
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}ansi\+\_\+stdlib.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+Include dependency graph for xmalloc.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xmalloc_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{xmalloc_8c_abbf31fec203727613ea15ba47bb8f344}{P\+T\+R\+\_\+T}~char $\ast$
+\item 
+\#define \hyperlink{xmalloc_8c_a487484fbe979679812d54498c1d80a92}{F\+I\+N\+D\+B\+RK}()
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{xmalloc_8c_a913632f336fdb7b67305829dcc75a16f}{allocerr} (char $\ast$func, size\+\_\+t bytes) const
+\item 
+\hyperlink{xmalloc_8h_abbf31fec203727613ea15ba47bb8f344}{P\+T\+R\+\_\+T} \hyperlink{xmalloc_8c_aa9b2ea281c63b37140fe955ec465c784}{xmalloc} (size\+\_\+t bytes)
+\item 
+\hyperlink{xmalloc_8h_abbf31fec203727613ea15ba47bb8f344}{P\+T\+R\+\_\+T} \hyperlink{xmalloc_8c_aff32224d0c0478d62fb5d5036f6a4285}{xrealloc} (\hyperlink{xmalloc_8h_abbf31fec203727613ea15ba47bb8f344}{P\+T\+R\+\_\+T} pointer, size\+\_\+t bytes)
+\item 
+void \hyperlink{xmalloc_8c_ad060380927e32fa2e157eaf1bcd7f3b1}{xfree} (\hyperlink{xmalloc_8h_abbf31fec203727613ea15ba47bb8f344}{P\+T\+R\+\_\+T} string)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{xmalloc.\+c@{xmalloc.\+c}!F\+I\+N\+D\+B\+RK@{F\+I\+N\+D\+B\+RK}}
+\index{F\+I\+N\+D\+B\+RK@{F\+I\+N\+D\+B\+RK}!xmalloc.\+c@{xmalloc.\+c}}
+\subsubsection[{\texorpdfstring{F\+I\+N\+D\+B\+RK}{FINDBRK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+I\+N\+D\+B\+RK(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{xmalloc_8c_a487484fbe979679812d54498c1d80a92}{}\label{xmalloc_8c_a487484fbe979679812d54498c1d80a92}
+\index{xmalloc.\+c@{xmalloc.\+c}!P\+T\+R\+\_\+T@{P\+T\+R\+\_\+T}}
+\index{P\+T\+R\+\_\+T@{P\+T\+R\+\_\+T}!xmalloc.\+c@{xmalloc.\+c}}
+\subsubsection[{\texorpdfstring{P\+T\+R\+\_\+T}{PTR_T}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+T\+R\+\_\+T~char $\ast$}\hypertarget{xmalloc_8c_abbf31fec203727613ea15ba47bb8f344}{}\label{xmalloc_8c_abbf31fec203727613ea15ba47bb8f344}
+
+
+\subsection{Function Documentation}
+\index{xmalloc.\+c@{xmalloc.\+c}!allocerr@{allocerr}}
+\index{allocerr@{allocerr}!xmalloc.\+c@{xmalloc.\+c}}
+\subsubsection[{\texorpdfstring{allocerr(char $\ast$func, size\+\_\+t bytes) const}{allocerr(char *func, size_t bytes) const}}]{\setlength{\rightskip}{0pt plus 5cm}static void allocerr (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{func, }
+\item[{size\+\_\+t}]{bytes}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{xmalloc_8c_a913632f336fdb7b67305829dcc75a16f}{}\label{xmalloc_8c_a913632f336fdb7b67305829dcc75a16f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xmalloc_8c_a913632f336fdb7b67305829dcc75a16f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{xmalloc.\+c@{xmalloc.\+c}!xfree@{xfree}}
+\index{xfree@{xfree}!xmalloc.\+c@{xmalloc.\+c}}
+\subsubsection[{\texorpdfstring{xfree(\+P\+T\+R\+\_\+\+T string)}{xfree(PTR_T string)}}]{\setlength{\rightskip}{0pt plus 5cm}void xfree (
+\begin{DoxyParamCaption}
+\item[{{\bf P\+T\+R\+\_\+T}}]{string}
+\end{DoxyParamCaption}
+)}\hypertarget{xmalloc_8c_ad060380927e32fa2e157eaf1bcd7f3b1}{}\label{xmalloc_8c_ad060380927e32fa2e157eaf1bcd7f3b1}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xmalloc_8c_ad060380927e32fa2e157eaf1bcd7f3b1_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{xmalloc.\+c@{xmalloc.\+c}!xmalloc@{xmalloc}}
+\index{xmalloc@{xmalloc}!xmalloc.\+c@{xmalloc.\+c}}
+\subsubsection[{\texorpdfstring{xmalloc(size\+\_\+t bytes)}{xmalloc(size_t bytes)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf P\+T\+R\+\_\+T} xmalloc (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{bytes}
+\end{DoxyParamCaption}
+)}\hypertarget{xmalloc_8c_aa9b2ea281c63b37140fe955ec465c784}{}\label{xmalloc_8c_aa9b2ea281c63b37140fe955ec465c784}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xmalloc_8c_aa9b2ea281c63b37140fe955ec465c784_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{xmalloc.\+c@{xmalloc.\+c}!xrealloc@{xrealloc}}
+\index{xrealloc@{xrealloc}!xmalloc.\+c@{xmalloc.\+c}}
+\subsubsection[{\texorpdfstring{xrealloc(\+P\+T\+R\+\_\+\+T pointer, size\+\_\+t bytes)}{xrealloc(PTR_T pointer, size_t bytes)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf P\+T\+R\+\_\+T} xrealloc (
+\begin{DoxyParamCaption}
+\item[{{\bf P\+T\+R\+\_\+T}}]{pointer, }
+\item[{size\+\_\+t}]{bytes}
+\end{DoxyParamCaption}
+)}\hypertarget{xmalloc_8c_aff32224d0c0478d62fb5d5036f6a4285}{}\label{xmalloc_8c_aff32224d0c0478d62fb5d5036f6a4285}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{xmalloc_8c_aff32224d0c0478d62fb5d5036f6a4285_cgraph}
+\end{center}
+\end{figure}
+
+

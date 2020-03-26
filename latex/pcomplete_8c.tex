@@ -1,0 +1,1180 @@
+\hypertarget{pcomplete_8c}{}\section{pcomplete.\+c File Reference}
+\label{pcomplete_8c}\index{pcomplete.\+c@{pcomplete.\+c}}
+{\ttfamily \#include $<$config.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}posixstat.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+{\ttfamily \#include $<$stdarg.\+h$>$}\\*
+{\ttfamily \#include $<$sys/time.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pcomplete.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}alias.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashline.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}execute\+\_\+cmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pathexp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}jobs.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}trap.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shmbutil.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/common.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/builtext.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$glob/glob.\+h$>$}\\*
+{\ttfamily \#include $<$glob/strmatch.\+h$>$}\\*
+{\ttfamily \#include $<$readline/rlconf.\+h$>$}\\*
+{\ttfamily \#include $<$readline/readline.\+h$>$}\\*
+{\ttfamily \#include $<$readline/history.\+h$>$}\\*
+Include dependency graph for pcomplete.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{pcomplete_8c_ae4bc0afa328d6588777cb932a96dee1e}{S\+T\+R\+D\+UP}(x)~((x) ? \hyperlink{general_8h_abb76e9f0eacf35ac61f9080497555ccd}{savestring} (x) \+: (char $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL})
+\item 
+\#define \hyperlink{pcomplete_8c_a086686190148192bf21ccc440bf2393b}{G\+E\+N\+\_\+\+C\+O\+M\+PS}(bmap,  flag,  it,  text,  glist,  tlist)
+\item 
+\#define \hyperlink{pcomplete_8c_a11fa23fa3da65c241cb7c8b825e1525f}{G\+E\+N\+\_\+\+X\+C\+O\+M\+PS}(bmap,  flag,  text,  func,  cmatches,  glist,  tlist)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$$\ast$ \hyperlink{pcomplete_8c_ac03275f13940a3b16d2583061a75f789}{S\+V\+F\+U\+NC}()
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{pcomplete_8c_a36231d486411ae328b36e501d4bfdb12}{it\+\_\+init\+\_\+joblist} \hyperlink{pcomplete_8c_a155c35cabeac894ff89b54879e3e5b1e}{\+\_\+\+\_\+P} ((\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$, int))
+\item 
+static int \hyperlink{pcomplete_8c_add91f3b72ac4af79a0dc8af3ce2ab8ef}{it\+\_\+init\+\_\+aliases} \hyperlink{pcomplete_8c_aca3d9024365c19362f8069a8b63a17e2}{\+\_\+\+\_\+P} ((\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$))
+\item 
+static int \hyperlink{pcomplete_8c_a020d464e31e714b7162f1430c8630372}{shouldexp\+\_\+filterpat} \hyperlink{pcomplete_8c_a03540afb59b025bdbea61ff9998b000a}{\+\_\+\+\_\+P} ((char $\ast$))
+\item 
+static char $\ast$\hyperlink{pcomplete_8c_a638bcc8361b87483e67cfd92a6b1ae4a}{preproc\+\_\+filterpat} \hyperlink{pcomplete_8c_ae71a3a8eaf774d96265b106d5e7ad6af}{\+\_\+\+\_\+P} ((char $\ast$, const char $\ast$))
+\item 
+static void \hyperlink{pcomplete_8c_acd5b1d0ef49cb1e068186159d652bad6}{init\+\_\+itemlist\+\_\+from\+\_\+varlist} \hyperlink{pcomplete_8c_a0952f1b1e7e38012ed7d700326fece4d}{\+\_\+\+\_\+P} ((\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$, \hyperlink{pcomplete_8c_ac03275f13940a3b16d2583061a75f789}{S\+V\+F\+U\+NC} $\ast$))
+\item 
+static \hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$\hyperlink{pcomplete_8c_aecffd66d44785fae33475611191f278b}{gen\+\_\+matches\+\_\+from\+\_\+itemlist} \hyperlink{pcomplete_8c_a1c66f47379ef9d7da4ee724dfe0e8fa9}{\+\_\+\+\_\+P} ((\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$, const char $\ast$))
+\item 
+static \hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$\hyperlink{pcomplete_8c_a1f7265fcbf34ab6e9fd73216545c7459}{gen\+\_\+action\+\_\+completions} \hyperlink{pcomplete_8c_a368380a51de8d5a35f03acb07f68ac21}{\+\_\+\+\_\+P} ((\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$, const char $\ast$))
+\item 
+static \hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$\hyperlink{pcomplete_8c_a334c3a43528a2d1e0167da28fb4c2b99}{gen\+\_\+shell\+\_\+function\+\_\+matches} \hyperlink{pcomplete_8c_a1a939e760b6d8645797b84665c165e14}{\+\_\+\+\_\+P} ((\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$, const char $\ast$, const char $\ast$, char $\ast$, int, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$, int, int, int $\ast$))
+\item 
+static \hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$\hyperlink{pcomplete_8c_a7aea57aa0016641e6a9e1cad9d6dc0b8}{gen\+\_\+command\+\_\+matches} \hyperlink{pcomplete_8c_a0df07c230160f02c0250f6899f4e8281}{\+\_\+\+\_\+P} ((\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$, const char $\ast$, const char $\ast$, char $\ast$, int, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$, int, int))
+\item 
+static \hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$\hyperlink{pcomplete_8c_a82af3414474e5077b01d7cbc3b93bd37}{gen\+\_\+progcomp\+\_\+completions} \hyperlink{pcomplete_8c_af5202d2f9393417a528040e0cff169f8}{\+\_\+\+\_\+P} ((const char $\ast$, const char $\ast$, const char $\ast$, int, int, int $\ast$, int $\ast$, \hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$$\ast$))
+\item 
+static char $\ast$\hyperlink{pcomplete_8c_a8353918be25029b2c87c367aa0e74439}{pcomp\+\_\+filename\+\_\+completion\+\_\+function} \hyperlink{pcomplete_8c_a193adb030bef60884d3ab8ebdb82962d}{\+\_\+\+\_\+P} ((const char $\ast$, int))
+\item 
+static \hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$\hyperlink{pcomplete_8c_ac6507553575099b9370562d22653f417}{bind\+\_\+comp\+\_\+words} \hyperlink{pcomplete_8c_a0fd02a42e87168e97a5f9c2d6e0aeea6}{\+\_\+\+\_\+P} ((\hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$))
+\item 
+static void \hyperlink{pcomplete_8c_a057fcf84bfc0dca4d6ff96068c34a4a7}{bind\+\_\+compfunc\+\_\+variables} \hyperlink{pcomplete_8c_a2c38b349407502ada65a44d555a12fdb}{\+\_\+\+\_\+P} ((char $\ast$, int, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$, int, int))
+\item 
+static void \hyperlink{pcomplete_8c_a291b733b46f69288cd9d1e7ef32cc4d3}{unbind\+\_\+compfunc\+\_\+variables} \hyperlink{pcomplete_8c_a6f93e5d405b9329545fa6eb8a884dabb}{\+\_\+\+\_\+P} ((int))
+\item 
+static \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$\hyperlink{pcomplete_8c_a94112077f4b6ac6bd441c403335feaf6}{build\+\_\+arg\+\_\+list} \hyperlink{pcomplete_8c_a20645dbf679d933fcd29beb48244ba68}{\+\_\+\+\_\+P} ((char $\ast$, const char $\ast$, const char $\ast$, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$, int))
+\item 
+static \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$\hyperlink{pcomplete_8c_a1381136852033051568996d76fcf8459}{command\+\_\+line\+\_\+to\+\_\+word\+\_\+list} \hyperlink{pcomplete_8c_adc3640c659e3d8f72adfed75fb4ca179}{\+\_\+\+\_\+P} ((char $\ast$, int, int, int $\ast$, int $\ast$))
+\item 
+void \hyperlink{pcomplete_8c_a3bd6cbb8629c3e6b89b44de7d81dce17}{set\+\_\+itemlist\+\_\+dirty} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$it)
+\item 
+void \hyperlink{pcomplete_8c_a9fc63344eaa19d6e7e7bc77ff9e6829c}{initialize\+\_\+itemlist} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+void \hyperlink{pcomplete_8c_af96aa5be7a9e0a8ec419b63252388e8f}{clean\+\_\+itemlist} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_a020d464e31e714b7162f1430c8630372}{shouldexp\+\_\+filterpat} (char $\ast$s)
+\item 
+static char $\ast$ \hyperlink{pcomplete_8c_a638bcc8361b87483e67cfd92a6b1ae4a}{preproc\+\_\+filterpat} (char $\ast$pat, const char $\ast$text)
+\item 
+\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$ \hyperlink{pcomplete_8c_a931a904c69c56324713c858953ffd065}{filter\+\_\+stringlist} (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$sl, char $\ast$filterpat, const char $\ast$text)
+\item 
+\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$ \hyperlink{pcomplete_8c_a5683f3cc4d3715326b5bd0bc93063184}{completions\+\_\+to\+\_\+stringlist} (char $\ast$$\ast$matches)
+\item 
+static int \hyperlink{pcomplete_8c_add91f3b72ac4af79a0dc8af3ce2ab8ef}{it\+\_\+init\+\_\+aliases} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static void \hyperlink{pcomplete_8c_acd5b1d0ef49cb1e068186159d652bad6}{init\+\_\+itemlist\+\_\+from\+\_\+varlist} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp, \hyperlink{pcomplete_8c_ac03275f13940a3b16d2583061a75f789}{S\+V\+F\+U\+NC} $\ast$svfunc)
+\item 
+static int \hyperlink{pcomplete_8c_a62d94003a6a66a5768b08425c4c72161}{it\+\_\+init\+\_\+arrayvars} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_ab4c54a2a9d69c8185899bb1df669ec39}{it\+\_\+init\+\_\+bindings} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_afbb1c743ad9f3d3e30a96073d9944bff}{it\+\_\+init\+\_\+builtins} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_a87a7d30aa220449ae6fdad1a7ea87d22}{it\+\_\+init\+\_\+enabled} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_a5ac7ce1624d6f595971952a9f0a79d2d}{it\+\_\+init\+\_\+disabled} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_a4a13d7f2deb5d40d1f555389e6531810}{it\+\_\+init\+\_\+exported} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_a353bb886824c0278a45d0ac80be756e9}{it\+\_\+init\+\_\+functions} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_a8b4cdec9f1ebc3334c1d338482fe795a}{it\+\_\+init\+\_\+helptopics} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_af0b6f88a20163ce42afc9d19f86569f2}{it\+\_\+init\+\_\+hostnames} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_a36231d486411ae328b36e501d4bfdb12}{it\+\_\+init\+\_\+joblist} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp, int jstate)
+\item 
+static int \hyperlink{pcomplete_8c_a9510c6a193bc54f72e9ea654a02840ae}{it\+\_\+init\+\_\+jobs} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_a8bd0b8a07f814b0564715fc8c034303c}{it\+\_\+init\+\_\+running} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_aed80704d6b03c82c2328a90f8d701269}{it\+\_\+init\+\_\+stopped} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_a2eceb93786ea47fd47b2e7bc4896cb8c}{it\+\_\+init\+\_\+keywords} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_a79bbba5562d40b0986b18d264907dbcb}{it\+\_\+init\+\_\+signals} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_ac11d4452b057e8260ce3e9780c312f8d}{it\+\_\+init\+\_\+variables} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_a130c64694b472e55e7c753356ae965f5}{it\+\_\+init\+\_\+setopts} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static int \hyperlink{pcomplete_8c_a162e414244fb43041e4745d1f7ddc751}{it\+\_\+init\+\_\+shopts} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp)
+\item 
+static \hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$ \hyperlink{pcomplete_8c_aecffd66d44785fae33475611191f278b}{gen\+\_\+matches\+\_\+from\+\_\+itemlist} (\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} $\ast$itp, const char $\ast$text)
+\item 
+static char $\ast$ \hyperlink{pcomplete_8c_a8353918be25029b2c87c367aa0e74439}{pcomp\+\_\+filename\+\_\+completion\+\_\+function} (char $\ast$text, int state) const
+\item 
+static \hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$ \hyperlink{pcomplete_8c_a1f7265fcbf34ab6e9fd73216545c7459}{gen\+\_\+action\+\_\+completions} (\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$cs, const char $\ast$text)
+\item 
+static \hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$ \hyperlink{pcomplete_8c_a0d56e4c9e811165845778a0ded0eb56a}{gen\+\_\+globpat\+\_\+matches} (\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$cs, const char $\ast$text)
+\item 
+static \hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$ \hyperlink{pcomplete_8c_aab1e5902327fa64d9390988049958ce9}{gen\+\_\+wordlist\+\_\+matches} (\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$cs, const char $\ast$text)
+\item 
+static \hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{pcomplete_8c_ac6507553575099b9370562d22653f417}{bind\+\_\+comp\+\_\+words} (\hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$lwords)
+\item 
+static void \hyperlink{pcomplete_8c_a057fcf84bfc0dca4d6ff96068c34a4a7}{bind\+\_\+compfunc\+\_\+variables} (char $\ast$line, int ind, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$lwords, int cw, int exported)
+\item 
+static void \hyperlink{pcomplete_8c_a291b733b46f69288cd9d1e7ef32cc4d3}{unbind\+\_\+compfunc\+\_\+variables} (int exported)
+\item 
+static \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$ \hyperlink{pcomplete_8c_a94112077f4b6ac6bd441c403335feaf6}{build\+\_\+arg\+\_\+list} (char $\ast$cmd, const char $\ast$cname, const char $\ast$text, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$lwords, int ind)
+\item 
+static \hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$ \hyperlink{pcomplete_8c_a334c3a43528a2d1e0167da28fb4c2b99}{gen\+\_\+shell\+\_\+function\+\_\+matches} (\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$cs, const char $\ast$cmd, const char $\ast$text, char $\ast$line, int ind, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$lwords, int nw, int cw, int $\ast$foundp)
+\item 
+static \hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$ \hyperlink{pcomplete_8c_a7aea57aa0016641e6a9e1cad9d6dc0b8}{gen\+\_\+command\+\_\+matches} (\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$cs, const char $\ast$cmd, const char $\ast$text, char $\ast$line, int ind, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$lwords, int nw, int cw)
+\item 
+static \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$ \hyperlink{pcomplete_8c_a1381136852033051568996d76fcf8459}{command\+\_\+line\+\_\+to\+\_\+word\+\_\+list} (char $\ast$line, int llen, int sentinel, int $\ast$nwp, int $\ast$cwp)
+\item 
+\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$ \hyperlink{pcomplete_8c_a7840fecafb235450727c75855e1d9aca}{gen\+\_\+compspec\+\_\+completions} (\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$cs, const char $\ast$cmd, const char $\ast$word, int start, int end, int $\ast$foundp)
+\item 
+void \hyperlink{pcomplete_8c_a3e80c4648ce50a6a1f9c150e1ff671a6}{pcomp\+\_\+set\+\_\+readline\+\_\+variables} (int flags, int nval)
+\item 
+void \hyperlink{pcomplete_8c_a543d0ece43c3c48ebccb33c7a48ecaf2}{pcomp\+\_\+set\+\_\+compspec\+\_\+options} (\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$cs, int flags, int set\+\_\+or\+\_\+unset)
+\item 
+static \hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$ \hyperlink{pcomplete_8c_a82af3414474e5077b01d7cbc3b93bd37}{gen\+\_\+progcomp\+\_\+completions} (char $\ast$ocmd, const char $\ast$cmd, const char $\ast$word, int start, int end, int $\ast$foundp, int $\ast$retryp, \hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$$\ast$lastcs) const
+\item 
+char $\ast$$\ast$ \hyperlink{pcomplete_8c_a9364f427aff295ebba375f98b59cbf1a}{programmable\+\_\+completions} (char $\ast$cmd, const char $\ast$word, int start, int end, int $\ast$foundp) const
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structSTRING__INT__ALIST}{S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+ST} \hyperlink{pcomplete_8c_a61dc7eddb90ab5f8e332f66f1ae0f51b}{word\+\_\+token\+\_\+alist} \mbox{[}$\,$\mbox{]}
+\item 
+char $\ast$ \hyperlink{pcomplete_8c_ae2a2abc6809c8213628efadacfc28def}{signal\+\_\+names} \mbox{[}$\,$\mbox{]}
+\item 
+int \hyperlink{pcomplete_8c_abed050769ae280b6dc4dedd31417b9dc}{prog\+\_\+completion\+\_\+enabled} = 1
+\item 
+int \hyperlink{pcomplete_8c_aa09edba26459d25e797a7430ec8350ef}{progcomp\+\_\+alias} = 0
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a0c83122feb3082b77c731a4b31719b90}{it\+\_\+aliases} = \{ 0, \hyperlink{pcomplete_8c_add91f3b72ac4af79a0dc8af3ce2ab8ef}{it\+\_\+init\+\_\+aliases}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a84c40fd6e2634c550f7e9b895d7195e9}{it\+\_\+arrayvars} = \{ \hyperlink{pcomplete_8h_a528b6e256856a4cd9e8549ce888de63b}{L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, \hyperlink{pcomplete_8c_a62d94003a6a66a5768b08425c4c72161}{it\+\_\+init\+\_\+arrayvars}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_aaef5151f69828a32da532bdc3ef918db}{it\+\_\+bindings} = \{ 0, \hyperlink{pcomplete_8c_ab4c54a2a9d69c8185899bb1df669ec39}{it\+\_\+init\+\_\+bindings}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a7fa57b8b1d27d13eaf6611cd055fbcbd}{it\+\_\+builtins} = \{ 0, \hyperlink{pcomplete_8c_afbb1c743ad9f3d3e30a96073d9944bff}{it\+\_\+init\+\_\+builtins}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_ae28999aa507c8147ece44beb0b878942}{it\+\_\+commands} = \{ \hyperlink{pcomplete_8h_a528b6e256856a4cd9e8549ce888de63b}{L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC} \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_afe15762cd4f6d6a6f1f44c0c3d38fd1c}{it\+\_\+directories} = \{ \hyperlink{pcomplete_8h_a528b6e256856a4cd9e8549ce888de63b}{L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC} \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_ae0411ee9749caeacefa24bae868136f6}{it\+\_\+disabled} = \{ 0, \hyperlink{pcomplete_8c_a5ac7ce1624d6f595971952a9f0a79d2d}{it\+\_\+init\+\_\+disabled}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a0f51e98803b390d29714243ac36f07d7}{it\+\_\+enabled} = \{ 0, \hyperlink{pcomplete_8c_a87a7d30aa220449ae6fdad1a7ea87d22}{it\+\_\+init\+\_\+enabled}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a274313283d2c7dbc0ea26901cd459cf7}{it\+\_\+exports} = \{ \hyperlink{pcomplete_8h_a528b6e256856a4cd9e8549ce888de63b}{L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, \hyperlink{pcomplete_8c_a4a13d7f2deb5d40d1f555389e6531810}{it\+\_\+init\+\_\+exported}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_aa091306570a1999b0a6909f8e2380511}{it\+\_\+files} = \{ \hyperlink{pcomplete_8h_a528b6e256856a4cd9e8549ce888de63b}{L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC} \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a3bb237f49d18643677b3e27f59c11866}{it\+\_\+functions} = \{ 0, \hyperlink{pcomplete_8c_a353bb886824c0278a45d0ac80be756e9}{it\+\_\+init\+\_\+functions}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a58121675ce0fc913782f751ec648f515}{it\+\_\+helptopics} = \{ 0, \hyperlink{pcomplete_8c_a8b4cdec9f1ebc3334c1d338482fe795a}{it\+\_\+init\+\_\+helptopics}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_ad95275c3b4a31b57ff31b739534e0a82}{it\+\_\+hostnames} = \{ \hyperlink{pcomplete_8h_a528b6e256856a4cd9e8549ce888de63b}{L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, \hyperlink{pcomplete_8c_af0b6f88a20163ce42afc9d19f86569f2}{it\+\_\+init\+\_\+hostnames}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a531400c140eaae7703b191d3c613a2e0}{it\+\_\+groups} = \{ \hyperlink{pcomplete_8h_a528b6e256856a4cd9e8549ce888de63b}{L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC} \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a254e7fc46f627b9b6b4385ca70518885}{it\+\_\+jobs} = \{ \hyperlink{pcomplete_8h_a528b6e256856a4cd9e8549ce888de63b}{L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, \hyperlink{pcomplete_8c_a9510c6a193bc54f72e9ea654a02840ae}{it\+\_\+init\+\_\+jobs}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a4dac263b9cb9dfeb479b688900fd9f55}{it\+\_\+keywords} = \{ 0, \hyperlink{pcomplete_8c_a2eceb93786ea47fd47b2e7bc4896cb8c}{it\+\_\+init\+\_\+keywords}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a35ac8854f6596e8e0aa44d51769bf64d}{it\+\_\+running} = \{ \hyperlink{pcomplete_8h_a528b6e256856a4cd9e8549ce888de63b}{L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, \hyperlink{pcomplete_8c_a8bd0b8a07f814b0564715fc8c034303c}{it\+\_\+init\+\_\+running}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a63134c9c293f0e3ef5ba7bb0e24a51d8}{it\+\_\+services} = \{ \hyperlink{pcomplete_8h_a528b6e256856a4cd9e8549ce888de63b}{L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC} \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_ad0924bfc22078b66e6f2c140571d4443}{it\+\_\+setopts} = \{ 0, \hyperlink{pcomplete_8c_a130c64694b472e55e7c753356ae965f5}{it\+\_\+init\+\_\+setopts}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_aa991b5e7034bc95cb00bd7c96c28e1c2}{it\+\_\+shopts} = \{ 0, \hyperlink{pcomplete_8c_a162e414244fb43041e4745d1f7ddc751}{it\+\_\+init\+\_\+shopts}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a96bd15a10a06e5d825f48d811ceebfc3}{it\+\_\+signals} = \{ 0, \hyperlink{pcomplete_8c_a79bbba5562d40b0986b18d264907dbcb}{it\+\_\+init\+\_\+signals}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_a851e31b7c350d12b713903294d1108d3}{it\+\_\+stopped} = \{ \hyperlink{pcomplete_8h_a528b6e256856a4cd9e8549ce888de63b}{L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, \hyperlink{pcomplete_8c_aed80704d6b03c82c2328a90f8d701269}{it\+\_\+init\+\_\+stopped}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_ad5c2d12cc18850ba4291f8e7167f6470}{it\+\_\+users} = \{ \hyperlink{pcomplete_8h_a528b6e256856a4cd9e8549ce888de63b}{L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC} \}
+\item 
+\hyperlink{pcomplete_8h_ad33939dbd24a27d209e330e799dbc144}{I\+T\+E\+M\+L\+I\+ST} \hyperlink{pcomplete_8c_aa557483b1bd5f0456a4c56a9514547b4}{it\+\_\+variables} = \{ \hyperlink{pcomplete_8h_a528b6e256856a4cd9e8549ce888de63b}{L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, \hyperlink{pcomplete_8c_ac11d4452b057e8260ce3e9780c312f8d}{it\+\_\+init\+\_\+variables}, (\hyperlink{externs_8h_a278124bbcc96be39e8b7485a7ddfa038}{S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}
+\item 
+\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$ \hyperlink{pcomplete_8c_a9cfdfb2c5c7a29d9a1ffa2ce38bedd62}{pcomp\+\_\+curcs}
+\item 
+const char $\ast$ \hyperlink{pcomplete_8c_af71e7cd3d067b988742e78201945bc45}{pcomp\+\_\+curcmd}
+\item 
+const char $\ast$ \hyperlink{pcomplete_8c_a31a4bc2e64f7c66228a0078a09445499}{pcomp\+\_\+curtxt}
+\item 
+char $\ast$ \hyperlink{pcomplete_8c_a4500a2a38d76b805d5f0967ffe21175b}{pcomp\+\_\+line}
+\item 
+int \hyperlink{pcomplete_8c_a4f012713eb97fcd84fd1c7e7824c0330}{pcomp\+\_\+ind}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{pcomplete.\+c@{pcomplete.\+c}!G\+E\+N\+\_\+\+C\+O\+M\+PS@{G\+E\+N\+\_\+\+C\+O\+M\+PS}}
+\index{G\+E\+N\+\_\+\+C\+O\+M\+PS@{G\+E\+N\+\_\+\+C\+O\+M\+PS}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{G\+E\+N\+\_\+\+C\+O\+M\+PS}{GEN_COMPS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+E\+N\+\_\+\+C\+O\+M\+PS(
+\begin{DoxyParamCaption}
+\item[{}]{bmap, }
+\item[{}]{flag, }
+\item[{}]{it, }
+\item[{}]{text, }
+\item[{}]{glist, }
+\item[{}]{tlist}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplete_8c_a086686190148192bf21ccc440bf2393b}{}\label{pcomplete_8c_a086686190148192bf21ccc440bf2393b}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+    if (bmap & flag) \(\backslash\)
+      \{ \(\backslash\)
+    tlist = \hyperlink{pcomplete_8c_aecffd66d44785fae33475611191f278b}{gen\_matches\_from\_itemlist} (it, text); \(\backslash\)
+    if (tlist) \(\backslash\)
+      \{ \(\backslash\)
+        glist = strlist\_append (glist, tlist); \(\backslash\)
+        strlist\_dispose (tlist); \(\backslash\)
+      \} \(\backslash\)
+      \} \(\backslash\)
+  \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\index{pcomplete.\+c@{pcomplete.\+c}!G\+E\+N\+\_\+\+X\+C\+O\+M\+PS@{G\+E\+N\+\_\+\+X\+C\+O\+M\+PS}}
+\index{G\+E\+N\+\_\+\+X\+C\+O\+M\+PS@{G\+E\+N\+\_\+\+X\+C\+O\+M\+PS}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{G\+E\+N\+\_\+\+X\+C\+O\+M\+PS}{GEN_XCOMPS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+E\+N\+\_\+\+X\+C\+O\+M\+PS(
+\begin{DoxyParamCaption}
+\item[{}]{bmap, }
+\item[{}]{flag, }
+\item[{}]{text, }
+\item[{}]{func, }
+\item[{}]{cmatches, }
+\item[{}]{glist, }
+\item[{}]{tlist}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplete_8c_a11fa23fa3da65c241cb7c8b825e1525f}{}\label{pcomplete_8c_a11fa23fa3da65c241cb7c8b825e1525f}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+    if (bmap & flag) \(\backslash\)
+      \{ \(\backslash\)
+    cmatches = rl\_completion\_matches (text, func); \(\backslash\)
+    tlist = \hyperlink{pcomplete_8c_a5683f3cc4d3715326b5bd0bc93063184}{completions\_to\_stringlist} (cmatches); \(\backslash\)
+    glist = strlist\_append (glist, tlist); \(\backslash\)
+    strvec\_dispose (cmatches); \(\backslash\)
+    strlist\_dispose (tlist); \(\backslash\)
+      \} \(\backslash\)
+  \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\index{pcomplete.\+c@{pcomplete.\+c}!S\+T\+R\+D\+UP@{S\+T\+R\+D\+UP}}
+\index{S\+T\+R\+D\+UP@{S\+T\+R\+D\+UP}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{S\+T\+R\+D\+UP}{STRDUP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+R\+D\+UP(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~((x) ? {\bf savestring} (x) \+: (char $\ast$){\bf N\+U\+LL})}\hypertarget{pcomplete_8c_ae4bc0afa328d6588777cb932a96dee1e}{}\label{pcomplete_8c_ae4bc0afa328d6588777cb932a96dee1e}
+
+
+\subsection{Typedef Documentation}
+\index{pcomplete.\+c@{pcomplete.\+c}!S\+V\+F\+U\+NC@{S\+V\+F\+U\+NC}}
+\index{S\+V\+F\+U\+NC@{S\+V\+F\+U\+NC}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{S\+V\+F\+U\+NC}{SVFUNC}}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$$\ast$ S\+V\+F\+U\+NC()}\hypertarget{pcomplete_8c_ac03275f13940a3b16d2583061a75f789}{}\label{pcomplete_8c_ac03275f13940a3b16d2583061a75f789}
+
+
+\subsection{Function Documentation}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+I\+T\+E\+M\+L\+I\+S\+T $\ast$, int))}{__P((ITEMLIST *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf it\+\_\+init\+\_\+joblist} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf I\+T\+E\+M\+L\+I\+ST} $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a155c35cabeac894ff89b54879e3e5b1e}{}\label{pcomplete_8c_a155c35cabeac894ff89b54879e3e5b1e}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+I\+T\+E\+M\+L\+I\+S\+T $\ast$))}{__P((ITEMLIST *))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf it\+\_\+init\+\_\+aliases} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf I\+T\+E\+M\+L\+I\+ST} $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_aca3d9024365c19362f8069a8b63a17e2}{}\label{pcomplete_8c_aca3d9024365c19362f8069a8b63a17e2}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf shouldexp\+\_\+filterpat} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a03540afb59b025bdbea61ff9998b000a}{}\label{pcomplete_8c_a03540afb59b025bdbea61ff9998b000a}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, const char $\ast$))}{__P((char *, const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf preproc\+\_\+filterpat} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_ae71a3a8eaf774d96265b106d5e7ad6af}{}\label{pcomplete_8c_ae71a3a8eaf774d96265b106d5e7ad6af}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+I\+T\+E\+M\+L\+I\+S\+T $\ast$, S\+V\+F\+U\+N\+C $\ast$))}{__P((ITEMLIST *, SVFUNC *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf init\+\_\+itemlist\+\_\+from\+\_\+varlist} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf I\+T\+E\+M\+L\+I\+ST} $\ast$, {\bf S\+V\+F\+U\+NC} $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a0952f1b1e7e38012ed7d700326fece4d}{}\label{pcomplete_8c_a0952f1b1e7e38012ed7d700326fece4d}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+I\+T\+E\+M\+L\+I\+S\+T $\ast$, const char $\ast$))}{__P((ITEMLIST *, const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ {\bf gen\+\_\+matches\+\_\+from\+\_\+itemlist} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf I\+T\+E\+M\+L\+I\+ST} $\ast$, const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a1c66f47379ef9d7da4ee724dfe0e8fa9}{}\label{pcomplete_8c_a1c66f47379ef9d7da4ee724dfe0e8fa9}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+C\+O\+M\+P\+S\+P\+E\+C $\ast$, const char $\ast$))}{__P((COMPSPEC *, const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ {\bf gen\+\_\+action\+\_\+completions} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf C\+O\+M\+P\+S\+P\+EC} $\ast$, const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a368380a51de8d5a35f03acb07f68ac21}{}\label{pcomplete_8c_a368380a51de8d5a35f03acb07f68ac21}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+C\+O\+M\+P\+S\+P\+E\+C $\ast$, const char $\ast$, const char $\ast$, char $\ast$, int, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$, int, int, int $\ast$))}{__P((COMPSPEC *, const char *, const char *, char *, int, WORD_LIST *, int, int, int *))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ {\bf gen\+\_\+shell\+\_\+function\+\_\+matches} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf C\+O\+M\+P\+S\+P\+EC} $\ast$, const char $\ast$, const char $\ast$, char $\ast$, int, {\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$, int, int, int $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a1a939e760b6d8645797b84665c165e14}{}\label{pcomplete_8c_a1a939e760b6d8645797b84665c165e14}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+C\+O\+M\+P\+S\+P\+E\+C $\ast$, const char $\ast$, const char $\ast$, char $\ast$, int, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$, int, int))}{__P((COMPSPEC *, const char *, const char *, char *, int, WORD_LIST *, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ {\bf gen\+\_\+command\+\_\+matches} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf C\+O\+M\+P\+S\+P\+EC} $\ast$, const char $\ast$, const char $\ast$, char $\ast$, int, {\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$, int, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a0df07c230160f02c0250f6899f4e8281}{}\label{pcomplete_8c_a0df07c230160f02c0250f6899f4e8281}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, const char $\ast$, const char $\ast$, int, int, int $\ast$, int $\ast$, C\+O\+M\+P\+S\+P\+E\+C $\ast$$\ast$))}{__P((const char *, const char *, const char *, int, int, int *, int *, COMPSPEC **))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ {\bf gen\+\_\+progcomp\+\_\+completions} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, const char $\ast$, const char $\ast$, int, int, int $\ast$, int $\ast$, {\bf C\+O\+M\+P\+S\+P\+EC} $\ast$$\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_af5202d2f9393417a528040e0cff169f8}{}\label{pcomplete_8c_af5202d2f9393417a528040e0cff169f8}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, int))}{__P((const char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf pcomp\+\_\+filename\+\_\+completion\+\_\+function} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a193adb030bef60884d3ab8ebdb82962d}{}\label{pcomplete_8c_a193adb030bef60884d3ab8ebdb82962d}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$))}{__P((WORD_LIST *))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ {\bf bind\+\_\+comp\+\_\+words} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a0fd02a42e87168e97a5f9c2d6e0aeea6}{}\label{pcomplete_8c_a0fd02a42e87168e97a5f9c2d6e0aeea6}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, int, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$, int, int))}{__P((char *, int, WORD_LIST *, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf bind\+\_\+compfunc\+\_\+variables} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, int, {\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$, int, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a2c38b349407502ada65a44d555a12fdb}{}\label{pcomplete_8c_a2c38b349407502ada65a44d555a12fdb}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf unbind\+\_\+compfunc\+\_\+variables} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a6f93e5d405b9329545fa6eb8a884dabb}{}\label{pcomplete_8c_a6f93e5d405b9329545fa6eb8a884dabb}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, const char $\ast$, const char $\ast$, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$, int))}{__P((char *, const char *, const char *, WORD_LIST *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf W\+O\+R\+D\+\_\+\+L\+I\+ST}$\ast$ {\bf build\+\_\+arg\+\_\+list} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, const char $\ast$, const char $\ast$, {\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a20645dbf679d933fcd29beb48244ba68}{}\label{pcomplete_8c_a20645dbf679d933fcd29beb48244ba68}
+\index{pcomplete.\+c@{pcomplete.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, int, int, int $\ast$, int $\ast$))}{__P((char *, int, int, int *, int *))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf W\+O\+R\+D\+\_\+\+L\+I\+ST}$\ast$ {\bf command\+\_\+line\+\_\+to\+\_\+word\+\_\+list} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, int, int, int $\ast$, int $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_adc3640c659e3d8f72adfed75fb4ca179}{}\label{pcomplete_8c_adc3640c659e3d8f72adfed75fb4ca179}
+\index{pcomplete.\+c@{pcomplete.\+c}!bind\+\_\+comp\+\_\+words@{bind\+\_\+comp\+\_\+words}}
+\index{bind\+\_\+comp\+\_\+words@{bind\+\_\+comp\+\_\+words}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{bind\+\_\+comp\+\_\+words(\+W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$lwords)}{bind_comp_words(WORD_LIST *lwords)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ bind\+\_\+comp\+\_\+words (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{lwords}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_ac6507553575099b9370562d22653f417}{}\label{pcomplete_8c_ac6507553575099b9370562d22653f417}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_ac6507553575099b9370562d22653f417_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!bind\+\_\+compfunc\+\_\+variables@{bind\+\_\+compfunc\+\_\+variables}}
+\index{bind\+\_\+compfunc\+\_\+variables@{bind\+\_\+compfunc\+\_\+variables}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{bind\+\_\+compfunc\+\_\+variables(char $\ast$line, int ind, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$lwords, int cw, int exported)}{bind_compfunc_variables(char *line, int ind, WORD_LIST *lwords, int cw, int exported)}}]{\setlength{\rightskip}{0pt plus 5cm}static void bind\+\_\+compfunc\+\_\+variables (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{line, }
+\item[{int}]{ind, }
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{lwords, }
+\item[{int}]{cw, }
+\item[{int}]{exported}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a057fcf84bfc0dca4d6ff96068c34a4a7}{}\label{pcomplete_8c_a057fcf84bfc0dca4d6ff96068c34a4a7}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a057fcf84bfc0dca4d6ff96068c34a4a7_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!build\+\_\+arg\+\_\+list@{build\+\_\+arg\+\_\+list}}
+\index{build\+\_\+arg\+\_\+list@{build\+\_\+arg\+\_\+list}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{build\+\_\+arg\+\_\+list(char $\ast$cmd, const char $\ast$cname, const char $\ast$text, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$lwords, int ind)}{build_arg_list(char *cmd, const char *cname, const char *text, WORD_LIST *lwords, int ind)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf W\+O\+R\+D\+\_\+\+L\+I\+ST}$\ast$ build\+\_\+arg\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{cmd, }
+\item[{const char $\ast$}]{cname, }
+\item[{const char $\ast$}]{text, }
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{lwords, }
+\item[{int}]{ind}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a94112077f4b6ac6bd441c403335feaf6}{}\label{pcomplete_8c_a94112077f4b6ac6bd441c403335feaf6}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a94112077f4b6ac6bd441c403335feaf6_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!clean\+\_\+itemlist@{clean\+\_\+itemlist}}
+\index{clean\+\_\+itemlist@{clean\+\_\+itemlist}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{clean\+\_\+itemlist(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{clean_itemlist(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}void clean\+\_\+itemlist (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplete_8c_af96aa5be7a9e0a8ec419b63252388e8f}{}\label{pcomplete_8c_af96aa5be7a9e0a8ec419b63252388e8f}
+\index{pcomplete.\+c@{pcomplete.\+c}!command\+\_\+line\+\_\+to\+\_\+word\+\_\+list@{command\+\_\+line\+\_\+to\+\_\+word\+\_\+list}}
+\index{command\+\_\+line\+\_\+to\+\_\+word\+\_\+list@{command\+\_\+line\+\_\+to\+\_\+word\+\_\+list}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{command\+\_\+line\+\_\+to\+\_\+word\+\_\+list(char $\ast$line, int llen, int sentinel, int $\ast$nwp, int $\ast$cwp)}{command_line_to_word_list(char *line, int llen, int sentinel, int *nwp, int *cwp)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf W\+O\+R\+D\+\_\+\+L\+I\+ST}$\ast$ command\+\_\+line\+\_\+to\+\_\+word\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{line, }
+\item[{int}]{llen, }
+\item[{int}]{sentinel, }
+\item[{int $\ast$}]{nwp, }
+\item[{int $\ast$}]{cwp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a1381136852033051568996d76fcf8459}{}\label{pcomplete_8c_a1381136852033051568996d76fcf8459}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a1381136852033051568996d76fcf8459_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!completions\+\_\+to\+\_\+stringlist@{completions\+\_\+to\+\_\+stringlist}}
+\index{completions\+\_\+to\+\_\+stringlist@{completions\+\_\+to\+\_\+stringlist}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{completions\+\_\+to\+\_\+stringlist(char $\ast$$\ast$matches)}{completions_to_stringlist(char **matches)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ completions\+\_\+to\+\_\+stringlist (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{matches}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplete_8c_a5683f3cc4d3715326b5bd0bc93063184}{}\label{pcomplete_8c_a5683f3cc4d3715326b5bd0bc93063184}
+\index{pcomplete.\+c@{pcomplete.\+c}!filter\+\_\+stringlist@{filter\+\_\+stringlist}}
+\index{filter\+\_\+stringlist@{filter\+\_\+stringlist}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{filter\+\_\+stringlist(\+S\+T\+R\+I\+N\+G\+L\+I\+S\+T $\ast$sl, char $\ast$filterpat, const char $\ast$text)}{filter_stringlist(STRINGLIST *sl, char *filterpat, const char *text)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ filter\+\_\+stringlist (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$}]{sl, }
+\item[{char $\ast$}]{filterpat, }
+\item[{const char $\ast$}]{text}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplete_8c_a931a904c69c56324713c858953ffd065}{}\label{pcomplete_8c_a931a904c69c56324713c858953ffd065}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a931a904c69c56324713c858953ffd065_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!gen\+\_\+action\+\_\+completions@{gen\+\_\+action\+\_\+completions}}
+\index{gen\+\_\+action\+\_\+completions@{gen\+\_\+action\+\_\+completions}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{gen\+\_\+action\+\_\+completions(\+C\+O\+M\+P\+S\+P\+E\+C $\ast$cs, const char $\ast$text)}{gen_action_completions(COMPSPEC *cs, const char *text)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ gen\+\_\+action\+\_\+completions (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+P\+S\+P\+EC} $\ast$}]{cs, }
+\item[{const char $\ast$}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a1f7265fcbf34ab6e9fd73216545c7459}{}\label{pcomplete_8c_a1f7265fcbf34ab6e9fd73216545c7459}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a1f7265fcbf34ab6e9fd73216545c7459_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!gen\+\_\+command\+\_\+matches@{gen\+\_\+command\+\_\+matches}}
+\index{gen\+\_\+command\+\_\+matches@{gen\+\_\+command\+\_\+matches}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{gen\+\_\+command\+\_\+matches(\+C\+O\+M\+P\+S\+P\+E\+C $\ast$cs, const char $\ast$cmd, const char $\ast$text, char $\ast$line, int ind, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$lwords, int nw, int cw)}{gen_command_matches(COMPSPEC *cs, const char *cmd, const char *text, char *line, int ind, WORD_LIST *lwords, int nw, int cw)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ gen\+\_\+command\+\_\+matches (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+P\+S\+P\+EC} $\ast$}]{cs, }
+\item[{const char $\ast$}]{cmd, }
+\item[{const char $\ast$}]{text, }
+\item[{char $\ast$}]{line, }
+\item[{int}]{ind, }
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{lwords, }
+\item[{int}]{nw, }
+\item[{int}]{cw}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a7aea57aa0016641e6a9e1cad9d6dc0b8}{}\label{pcomplete_8c_a7aea57aa0016641e6a9e1cad9d6dc0b8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a7aea57aa0016641e6a9e1cad9d6dc0b8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!gen\+\_\+compspec\+\_\+completions@{gen\+\_\+compspec\+\_\+completions}}
+\index{gen\+\_\+compspec\+\_\+completions@{gen\+\_\+compspec\+\_\+completions}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{gen\+\_\+compspec\+\_\+completions(\+C\+O\+M\+P\+S\+P\+E\+C $\ast$cs, const char $\ast$cmd, const char $\ast$word, int start, int end, int $\ast$foundp)}{gen_compspec_completions(COMPSPEC *cs, const char *cmd, const char *word, int start, int end, int *foundp)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ gen\+\_\+compspec\+\_\+completions (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+P\+S\+P\+EC} $\ast$}]{cs, }
+\item[{const char $\ast$}]{cmd, }
+\item[{const char $\ast$}]{word, }
+\item[{int}]{start, }
+\item[{int}]{end, }
+\item[{int $\ast$}]{foundp}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplete_8c_a7840fecafb235450727c75855e1d9aca}{}\label{pcomplete_8c_a7840fecafb235450727c75855e1d9aca}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{pcomplete_8c_a7840fecafb235450727c75855e1d9aca_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!gen\+\_\+globpat\+\_\+matches@{gen\+\_\+globpat\+\_\+matches}}
+\index{gen\+\_\+globpat\+\_\+matches@{gen\+\_\+globpat\+\_\+matches}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{gen\+\_\+globpat\+\_\+matches(\+C\+O\+M\+P\+S\+P\+E\+C $\ast$cs, const char $\ast$text)}{gen_globpat_matches(COMPSPEC *cs, const char *text)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ gen\+\_\+globpat\+\_\+matches (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+P\+S\+P\+EC} $\ast$}]{cs, }
+\item[{const char $\ast$}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a0d56e4c9e811165845778a0ded0eb56a}{}\label{pcomplete_8c_a0d56e4c9e811165845778a0ded0eb56a}
+\index{pcomplete.\+c@{pcomplete.\+c}!gen\+\_\+matches\+\_\+from\+\_\+itemlist@{gen\+\_\+matches\+\_\+from\+\_\+itemlist}}
+\index{gen\+\_\+matches\+\_\+from\+\_\+itemlist@{gen\+\_\+matches\+\_\+from\+\_\+itemlist}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{gen\+\_\+matches\+\_\+from\+\_\+itemlist(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp, const char $\ast$text)}{gen_matches_from_itemlist(ITEMLIST *itp, const char *text)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ gen\+\_\+matches\+\_\+from\+\_\+itemlist (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp, }
+\item[{const char $\ast$}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_aecffd66d44785fae33475611191f278b}{}\label{pcomplete_8c_aecffd66d44785fae33475611191f278b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_aecffd66d44785fae33475611191f278b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!gen\+\_\+progcomp\+\_\+completions@{gen\+\_\+progcomp\+\_\+completions}}
+\index{gen\+\_\+progcomp\+\_\+completions@{gen\+\_\+progcomp\+\_\+completions}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{gen\+\_\+progcomp\+\_\+completions(char $\ast$ocmd, const char $\ast$cmd, const char $\ast$word, int start, int end, int $\ast$foundp, int $\ast$retryp, C\+O\+M\+P\+S\+P\+E\+C $\ast$$\ast$lastcs) const}{gen_progcomp_completions(char *ocmd, const char *cmd, const char *word, int start, int end, int *foundp, int *retryp, COMPSPEC **lastcs) const}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ gen\+\_\+progcomp\+\_\+completions (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{ocmd, }
+\item[{const char $\ast$}]{cmd, }
+\item[{const char $\ast$}]{word, }
+\item[{int}]{start, }
+\item[{int}]{end, }
+\item[{int $\ast$}]{foundp, }
+\item[{int $\ast$}]{retryp, }
+\item[{{\bf C\+O\+M\+P\+S\+P\+EC} $\ast$$\ast$}]{lastcs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a82af3414474e5077b01d7cbc3b93bd37}{}\label{pcomplete_8c_a82af3414474e5077b01d7cbc3b93bd37}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a82af3414474e5077b01d7cbc3b93bd37_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!gen\+\_\+shell\+\_\+function\+\_\+matches@{gen\+\_\+shell\+\_\+function\+\_\+matches}}
+\index{gen\+\_\+shell\+\_\+function\+\_\+matches@{gen\+\_\+shell\+\_\+function\+\_\+matches}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{gen\+\_\+shell\+\_\+function\+\_\+matches(\+C\+O\+M\+P\+S\+P\+E\+C $\ast$cs, const char $\ast$cmd, const char $\ast$text, char $\ast$line, int ind, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$lwords, int nw, int cw, int $\ast$foundp)}{gen_shell_function_matches(COMPSPEC *cs, const char *cmd, const char *text, char *line, int ind, WORD_LIST *lwords, int nw, int cw, int *foundp)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ gen\+\_\+shell\+\_\+function\+\_\+matches (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+P\+S\+P\+EC} $\ast$}]{cs, }
+\item[{const char $\ast$}]{cmd, }
+\item[{const char $\ast$}]{text, }
+\item[{char $\ast$}]{line, }
+\item[{int}]{ind, }
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{lwords, }
+\item[{int}]{nw, }
+\item[{int}]{cw, }
+\item[{int $\ast$}]{foundp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a334c3a43528a2d1e0167da28fb4c2b99}{}\label{pcomplete_8c_a334c3a43528a2d1e0167da28fb4c2b99}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a334c3a43528a2d1e0167da28fb4c2b99_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!gen\+\_\+wordlist\+\_\+matches@{gen\+\_\+wordlist\+\_\+matches}}
+\index{gen\+\_\+wordlist\+\_\+matches@{gen\+\_\+wordlist\+\_\+matches}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{gen\+\_\+wordlist\+\_\+matches(\+C\+O\+M\+P\+S\+P\+E\+C $\ast$cs, const char $\ast$text)}{gen_wordlist_matches(COMPSPEC *cs, const char *text)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+T\+R\+I\+N\+G\+L\+I\+ST}$\ast$ gen\+\_\+wordlist\+\_\+matches (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+P\+S\+P\+EC} $\ast$}]{cs, }
+\item[{const char $\ast$}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_aab1e5902327fa64d9390988049958ce9}{}\label{pcomplete_8c_aab1e5902327fa64d9390988049958ce9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_aab1e5902327fa64d9390988049958ce9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!init\+\_\+itemlist\+\_\+from\+\_\+varlist@{init\+\_\+itemlist\+\_\+from\+\_\+varlist}}
+\index{init\+\_\+itemlist\+\_\+from\+\_\+varlist@{init\+\_\+itemlist\+\_\+from\+\_\+varlist}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{init\+\_\+itemlist\+\_\+from\+\_\+varlist(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp, S\+V\+F\+U\+N\+C $\ast$svfunc)}{init_itemlist_from_varlist(ITEMLIST *itp, SVFUNC *svfunc)}}]{\setlength{\rightskip}{0pt plus 5cm}static void init\+\_\+itemlist\+\_\+from\+\_\+varlist (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp, }
+\item[{{\bf S\+V\+F\+U\+NC} $\ast$}]{svfunc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_acd5b1d0ef49cb1e068186159d652bad6}{}\label{pcomplete_8c_acd5b1d0ef49cb1e068186159d652bad6}
+\index{pcomplete.\+c@{pcomplete.\+c}!initialize\+\_\+itemlist@{initialize\+\_\+itemlist}}
+\index{initialize\+\_\+itemlist@{initialize\+\_\+itemlist}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+itemlist(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{initialize_itemlist(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}void initialize\+\_\+itemlist (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplete_8c_a9fc63344eaa19d6e7e7bc77ff9e6829c}{}\label{pcomplete_8c_a9fc63344eaa19d6e7e7bc77ff9e6829c}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+aliases@{it\+\_\+init\+\_\+aliases}}
+\index{it\+\_\+init\+\_\+aliases@{it\+\_\+init\+\_\+aliases}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+aliases(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_aliases(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+aliases (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_add91f3b72ac4af79a0dc8af3ce2ab8ef}{}\label{pcomplete_8c_add91f3b72ac4af79a0dc8af3ce2ab8ef}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_add91f3b72ac4af79a0dc8af3ce2ab8ef_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+arrayvars@{it\+\_\+init\+\_\+arrayvars}}
+\index{it\+\_\+init\+\_\+arrayvars@{it\+\_\+init\+\_\+arrayvars}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+arrayvars(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_arrayvars(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+arrayvars (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a62d94003a6a66a5768b08425c4c72161}{}\label{pcomplete_8c_a62d94003a6a66a5768b08425c4c72161}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a62d94003a6a66a5768b08425c4c72161_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+bindings@{it\+\_\+init\+\_\+bindings}}
+\index{it\+\_\+init\+\_\+bindings@{it\+\_\+init\+\_\+bindings}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+bindings(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_bindings(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+bindings (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_ab4c54a2a9d69c8185899bb1df669ec39}{}\label{pcomplete_8c_ab4c54a2a9d69c8185899bb1df669ec39}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+builtins@{it\+\_\+init\+\_\+builtins}}
+\index{it\+\_\+init\+\_\+builtins@{it\+\_\+init\+\_\+builtins}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+builtins(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_builtins(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+builtins (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_afbb1c743ad9f3d3e30a96073d9944bff}{}\label{pcomplete_8c_afbb1c743ad9f3d3e30a96073d9944bff}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+disabled@{it\+\_\+init\+\_\+disabled}}
+\index{it\+\_\+init\+\_\+disabled@{it\+\_\+init\+\_\+disabled}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+disabled(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_disabled(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+disabled (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a5ac7ce1624d6f595971952a9f0a79d2d}{}\label{pcomplete_8c_a5ac7ce1624d6f595971952a9f0a79d2d}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+enabled@{it\+\_\+init\+\_\+enabled}}
+\index{it\+\_\+init\+\_\+enabled@{it\+\_\+init\+\_\+enabled}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+enabled(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_enabled(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+enabled (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a87a7d30aa220449ae6fdad1a7ea87d22}{}\label{pcomplete_8c_a87a7d30aa220449ae6fdad1a7ea87d22}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+exported@{it\+\_\+init\+\_\+exported}}
+\index{it\+\_\+init\+\_\+exported@{it\+\_\+init\+\_\+exported}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+exported(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_exported(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+exported (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a4a13d7f2deb5d40d1f555389e6531810}{}\label{pcomplete_8c_a4a13d7f2deb5d40d1f555389e6531810}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a4a13d7f2deb5d40d1f555389e6531810_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+functions@{it\+\_\+init\+\_\+functions}}
+\index{it\+\_\+init\+\_\+functions@{it\+\_\+init\+\_\+functions}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+functions(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_functions(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+functions (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a353bb886824c0278a45d0ac80be756e9}{}\label{pcomplete_8c_a353bb886824c0278a45d0ac80be756e9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a353bb886824c0278a45d0ac80be756e9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+helptopics@{it\+\_\+init\+\_\+helptopics}}
+\index{it\+\_\+init\+\_\+helptopics@{it\+\_\+init\+\_\+helptopics}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+helptopics(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_helptopics(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+helptopics (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a8b4cdec9f1ebc3334c1d338482fe795a}{}\label{pcomplete_8c_a8b4cdec9f1ebc3334c1d338482fe795a}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+hostnames@{it\+\_\+init\+\_\+hostnames}}
+\index{it\+\_\+init\+\_\+hostnames@{it\+\_\+init\+\_\+hostnames}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+hostnames(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_hostnames(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+hostnames (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_af0b6f88a20163ce42afc9d19f86569f2}{}\label{pcomplete_8c_af0b6f88a20163ce42afc9d19f86569f2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_af0b6f88a20163ce42afc9d19f86569f2_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+joblist@{it\+\_\+init\+\_\+joblist}}
+\index{it\+\_\+init\+\_\+joblist@{it\+\_\+init\+\_\+joblist}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+joblist(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp, int jstate)}{it_init_joblist(ITEMLIST *itp, int jstate)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+joblist (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp, }
+\item[{int}]{jstate}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a36231d486411ae328b36e501d4bfdb12}{}\label{pcomplete_8c_a36231d486411ae328b36e501d4bfdb12}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+jobs@{it\+\_\+init\+\_\+jobs}}
+\index{it\+\_\+init\+\_\+jobs@{it\+\_\+init\+\_\+jobs}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+jobs(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_jobs(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+jobs (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a9510c6a193bc54f72e9ea654a02840ae}{}\label{pcomplete_8c_a9510c6a193bc54f72e9ea654a02840ae}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{pcomplete_8c_a9510c6a193bc54f72e9ea654a02840ae_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+keywords@{it\+\_\+init\+\_\+keywords}}
+\index{it\+\_\+init\+\_\+keywords@{it\+\_\+init\+\_\+keywords}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+keywords(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_keywords(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+keywords (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a2eceb93786ea47fd47b2e7bc4896cb8c}{}\label{pcomplete_8c_a2eceb93786ea47fd47b2e7bc4896cb8c}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+running@{it\+\_\+init\+\_\+running}}
+\index{it\+\_\+init\+\_\+running@{it\+\_\+init\+\_\+running}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+running(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_running(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+running (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a8bd0b8a07f814b0564715fc8c034303c}{}\label{pcomplete_8c_a8bd0b8a07f814b0564715fc8c034303c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{pcomplete_8c_a8bd0b8a07f814b0564715fc8c034303c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+setopts@{it\+\_\+init\+\_\+setopts}}
+\index{it\+\_\+init\+\_\+setopts@{it\+\_\+init\+\_\+setopts}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+setopts(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_setopts(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+setopts (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a130c64694b472e55e7c753356ae965f5}{}\label{pcomplete_8c_a130c64694b472e55e7c753356ae965f5}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+shopts@{it\+\_\+init\+\_\+shopts}}
+\index{it\+\_\+init\+\_\+shopts@{it\+\_\+init\+\_\+shopts}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+shopts(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_shopts(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+shopts (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a162e414244fb43041e4745d1f7ddc751}{}\label{pcomplete_8c_a162e414244fb43041e4745d1f7ddc751}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+signals@{it\+\_\+init\+\_\+signals}}
+\index{it\+\_\+init\+\_\+signals@{it\+\_\+init\+\_\+signals}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+signals(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_signals(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+signals (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a79bbba5562d40b0986b18d264907dbcb}{}\label{pcomplete_8c_a79bbba5562d40b0986b18d264907dbcb}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+stopped@{it\+\_\+init\+\_\+stopped}}
+\index{it\+\_\+init\+\_\+stopped@{it\+\_\+init\+\_\+stopped}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+stopped(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_stopped(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+stopped (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_aed80704d6b03c82c2328a90f8d701269}{}\label{pcomplete_8c_aed80704d6b03c82c2328a90f8d701269}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{pcomplete_8c_aed80704d6b03c82c2328a90f8d701269_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+init\+\_\+variables@{it\+\_\+init\+\_\+variables}}
+\index{it\+\_\+init\+\_\+variables@{it\+\_\+init\+\_\+variables}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+init\+\_\+variables(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$itp)}{it_init_variables(ITEMLIST *itp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int it\+\_\+init\+\_\+variables (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{itp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_ac11d4452b057e8260ce3e9780c312f8d}{}\label{pcomplete_8c_ac11d4452b057e8260ce3e9780c312f8d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_ac11d4452b057e8260ce3e9780c312f8d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!pcomp\+\_\+filename\+\_\+completion\+\_\+function@{pcomp\+\_\+filename\+\_\+completion\+\_\+function}}
+\index{pcomp\+\_\+filename\+\_\+completion\+\_\+function@{pcomp\+\_\+filename\+\_\+completion\+\_\+function}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{pcomp\+\_\+filename\+\_\+completion\+\_\+function(char $\ast$text, int state) const}{pcomp_filename_completion_function(char *text, int state) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ pcomp\+\_\+filename\+\_\+completion\+\_\+function (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{int}]{state}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a8353918be25029b2c87c367aa0e74439}{}\label{pcomplete_8c_a8353918be25029b2c87c367aa0e74439}
+\index{pcomplete.\+c@{pcomplete.\+c}!pcomp\+\_\+set\+\_\+compspec\+\_\+options@{pcomp\+\_\+set\+\_\+compspec\+\_\+options}}
+\index{pcomp\+\_\+set\+\_\+compspec\+\_\+options@{pcomp\+\_\+set\+\_\+compspec\+\_\+options}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{pcomp\+\_\+set\+\_\+compspec\+\_\+options(\+C\+O\+M\+P\+S\+P\+E\+C $\ast$cs, int flags, int set\+\_\+or\+\_\+unset)}{pcomp_set_compspec_options(COMPSPEC *cs, int flags, int set_or_unset)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcomp\+\_\+set\+\_\+compspec\+\_\+options (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+P\+S\+P\+EC} $\ast$}]{cs, }
+\item[{int}]{flags, }
+\item[{int}]{set\+\_\+or\+\_\+unset}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplete_8c_a543d0ece43c3c48ebccb33c7a48ecaf2}{}\label{pcomplete_8c_a543d0ece43c3c48ebccb33c7a48ecaf2}
+\index{pcomplete.\+c@{pcomplete.\+c}!pcomp\+\_\+set\+\_\+readline\+\_\+variables@{pcomp\+\_\+set\+\_\+readline\+\_\+variables}}
+\index{pcomp\+\_\+set\+\_\+readline\+\_\+variables@{pcomp\+\_\+set\+\_\+readline\+\_\+variables}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{pcomp\+\_\+set\+\_\+readline\+\_\+variables(int flags, int nval)}{pcomp_set_readline_variables(int flags, int nval)}}]{\setlength{\rightskip}{0pt plus 5cm}void pcomp\+\_\+set\+\_\+readline\+\_\+variables (
+\begin{DoxyParamCaption}
+\item[{int}]{flags, }
+\item[{int}]{nval}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplete_8c_a3e80c4648ce50a6a1f9c150e1ff671a6}{}\label{pcomplete_8c_a3e80c4648ce50a6a1f9c150e1ff671a6}
+\index{pcomplete.\+c@{pcomplete.\+c}!preproc\+\_\+filterpat@{preproc\+\_\+filterpat}}
+\index{preproc\+\_\+filterpat@{preproc\+\_\+filterpat}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{preproc\+\_\+filterpat(char $\ast$pat, const char $\ast$text)}{preproc_filterpat(char *pat, const char *text)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ preproc\+\_\+filterpat (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{pat, }
+\item[{const char $\ast$}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a638bcc8361b87483e67cfd92a6b1ae4a}{}\label{pcomplete_8c_a638bcc8361b87483e67cfd92a6b1ae4a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a638bcc8361b87483e67cfd92a6b1ae4a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!programmable\+\_\+completions@{programmable\+\_\+completions}}
+\index{programmable\+\_\+completions@{programmable\+\_\+completions}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{programmable\+\_\+completions(char $\ast$cmd, const char $\ast$word, int start, int end, int $\ast$foundp) const}{programmable_completions(char *cmd, const char *word, int start, int end, int *foundp) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ programmable\+\_\+completions (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{cmd, }
+\item[{const char $\ast$}]{word, }
+\item[{int}]{start, }
+\item[{int}]{end, }
+\item[{int $\ast$}]{foundp}
+\end{DoxyParamCaption}
+) const}\hypertarget{pcomplete_8c_a9364f427aff295ebba375f98b59cbf1a}{}\label{pcomplete_8c_a9364f427aff295ebba375f98b59cbf1a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a9364f427aff295ebba375f98b59cbf1a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplete.\+c@{pcomplete.\+c}!set\+\_\+itemlist\+\_\+dirty@{set\+\_\+itemlist\+\_\+dirty}}
+\index{set\+\_\+itemlist\+\_\+dirty@{set\+\_\+itemlist\+\_\+dirty}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+itemlist\+\_\+dirty(\+I\+T\+E\+M\+L\+I\+S\+T $\ast$it)}{set_itemlist_dirty(ITEMLIST *it)}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+itemlist\+\_\+dirty (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+T\+E\+M\+L\+I\+ST} $\ast$}]{it}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplete_8c_a3bd6cbb8629c3e6b89b44de7d81dce17}{}\label{pcomplete_8c_a3bd6cbb8629c3e6b89b44de7d81dce17}
+\index{pcomplete.\+c@{pcomplete.\+c}!shouldexp\+\_\+filterpat@{shouldexp\+\_\+filterpat}}
+\index{shouldexp\+\_\+filterpat@{shouldexp\+\_\+filterpat}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{shouldexp\+\_\+filterpat(char $\ast$s)}{shouldexp_filterpat(char *s)}}]{\setlength{\rightskip}{0pt plus 5cm}static int shouldexp\+\_\+filterpat (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a020d464e31e714b7162f1430c8630372}{}\label{pcomplete_8c_a020d464e31e714b7162f1430c8630372}
+\index{pcomplete.\+c@{pcomplete.\+c}!unbind\+\_\+compfunc\+\_\+variables@{unbind\+\_\+compfunc\+\_\+variables}}
+\index{unbind\+\_\+compfunc\+\_\+variables@{unbind\+\_\+compfunc\+\_\+variables}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{unbind\+\_\+compfunc\+\_\+variables(int exported)}{unbind_compfunc_variables(int exported)}}]{\setlength{\rightskip}{0pt plus 5cm}static void unbind\+\_\+compfunc\+\_\+variables (
+\begin{DoxyParamCaption}
+\item[{int}]{exported}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplete_8c_a291b733b46f69288cd9d1e7ef32cc4d3}{}\label{pcomplete_8c_a291b733b46f69288cd9d1e7ef32cc4d3}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplete_8c_a291b733b46f69288cd9d1e7ef32cc4d3_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+aliases@{it\+\_\+aliases}}
+\index{it\+\_\+aliases@{it\+\_\+aliases}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+aliases}{it_aliases}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+aliases = \{ 0, {\bf it\+\_\+init\+\_\+aliases}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_a0c83122feb3082b77c731a4b31719b90}{}\label{pcomplete_8c_a0c83122feb3082b77c731a4b31719b90}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+arrayvars@{it\+\_\+arrayvars}}
+\index{it\+\_\+arrayvars@{it\+\_\+arrayvars}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+arrayvars}{it_arrayvars}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+arrayvars = \{ {\bf L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, {\bf it\+\_\+init\+\_\+arrayvars}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_a84c40fd6e2634c550f7e9b895d7195e9}{}\label{pcomplete_8c_a84c40fd6e2634c550f7e9b895d7195e9}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+bindings@{it\+\_\+bindings}}
+\index{it\+\_\+bindings@{it\+\_\+bindings}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+bindings}{it_bindings}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+bindings = \{ 0, {\bf it\+\_\+init\+\_\+bindings}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_aaef5151f69828a32da532bdc3ef918db}{}\label{pcomplete_8c_aaef5151f69828a32da532bdc3ef918db}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+builtins@{it\+\_\+builtins}}
+\index{it\+\_\+builtins@{it\+\_\+builtins}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+builtins}{it_builtins}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+builtins = \{ 0, {\bf it\+\_\+init\+\_\+builtins}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_a7fa57b8b1d27d13eaf6611cd055fbcbd}{}\label{pcomplete_8c_a7fa57b8b1d27d13eaf6611cd055fbcbd}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+commands@{it\+\_\+commands}}
+\index{it\+\_\+commands@{it\+\_\+commands}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+commands}{it_commands}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+commands = \{ {\bf L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC} \}}\hypertarget{pcomplete_8c_ae28999aa507c8147ece44beb0b878942}{}\label{pcomplete_8c_ae28999aa507c8147ece44beb0b878942}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+directories@{it\+\_\+directories}}
+\index{it\+\_\+directories@{it\+\_\+directories}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+directories}{it_directories}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+directories = \{ {\bf L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC} \}}\hypertarget{pcomplete_8c_afe15762cd4f6d6a6f1f44c0c3d38fd1c}{}\label{pcomplete_8c_afe15762cd4f6d6a6f1f44c0c3d38fd1c}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+disabled@{it\+\_\+disabled}}
+\index{it\+\_\+disabled@{it\+\_\+disabled}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+disabled}{it_disabled}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+disabled = \{ 0, {\bf it\+\_\+init\+\_\+disabled}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_ae0411ee9749caeacefa24bae868136f6}{}\label{pcomplete_8c_ae0411ee9749caeacefa24bae868136f6}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+enabled@{it\+\_\+enabled}}
+\index{it\+\_\+enabled@{it\+\_\+enabled}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+enabled}{it_enabled}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+enabled = \{ 0, {\bf it\+\_\+init\+\_\+enabled}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_a0f51e98803b390d29714243ac36f07d7}{}\label{pcomplete_8c_a0f51e98803b390d29714243ac36f07d7}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+exports@{it\+\_\+exports}}
+\index{it\+\_\+exports@{it\+\_\+exports}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+exports}{it_exports}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+exports = \{ {\bf L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, {\bf it\+\_\+init\+\_\+exported}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_a274313283d2c7dbc0ea26901cd459cf7}{}\label{pcomplete_8c_a274313283d2c7dbc0ea26901cd459cf7}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+files@{it\+\_\+files}}
+\index{it\+\_\+files@{it\+\_\+files}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+files}{it_files}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+files = \{ {\bf L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC} \}}\hypertarget{pcomplete_8c_aa091306570a1999b0a6909f8e2380511}{}\label{pcomplete_8c_aa091306570a1999b0a6909f8e2380511}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+functions@{it\+\_\+functions}}
+\index{it\+\_\+functions@{it\+\_\+functions}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+functions}{it_functions}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+functions = \{ 0, {\bf it\+\_\+init\+\_\+functions}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_a3bb237f49d18643677b3e27f59c11866}{}\label{pcomplete_8c_a3bb237f49d18643677b3e27f59c11866}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+groups@{it\+\_\+groups}}
+\index{it\+\_\+groups@{it\+\_\+groups}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+groups}{it_groups}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+groups = \{ {\bf L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC} \}}\hypertarget{pcomplete_8c_a531400c140eaae7703b191d3c613a2e0}{}\label{pcomplete_8c_a531400c140eaae7703b191d3c613a2e0}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+helptopics@{it\+\_\+helptopics}}
+\index{it\+\_\+helptopics@{it\+\_\+helptopics}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+helptopics}{it_helptopics}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+helptopics = \{ 0, {\bf it\+\_\+init\+\_\+helptopics}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_a58121675ce0fc913782f751ec648f515}{}\label{pcomplete_8c_a58121675ce0fc913782f751ec648f515}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+hostnames@{it\+\_\+hostnames}}
+\index{it\+\_\+hostnames@{it\+\_\+hostnames}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+hostnames}{it_hostnames}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+hostnames = \{ {\bf L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, {\bf it\+\_\+init\+\_\+hostnames}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_ad95275c3b4a31b57ff31b739534e0a82}{}\label{pcomplete_8c_ad95275c3b4a31b57ff31b739534e0a82}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+jobs@{it\+\_\+jobs}}
+\index{it\+\_\+jobs@{it\+\_\+jobs}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+jobs}{it_jobs}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+jobs = \{ {\bf L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, {\bf it\+\_\+init\+\_\+jobs}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_a254e7fc46f627b9b6b4385ca70518885}{}\label{pcomplete_8c_a254e7fc46f627b9b6b4385ca70518885}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+keywords@{it\+\_\+keywords}}
+\index{it\+\_\+keywords@{it\+\_\+keywords}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+keywords}{it_keywords}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+keywords = \{ 0, {\bf it\+\_\+init\+\_\+keywords}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_a4dac263b9cb9dfeb479b688900fd9f55}{}\label{pcomplete_8c_a4dac263b9cb9dfeb479b688900fd9f55}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+running@{it\+\_\+running}}
+\index{it\+\_\+running@{it\+\_\+running}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+running}{it_running}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+running = \{ {\bf L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, {\bf it\+\_\+init\+\_\+running}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_a35ac8854f6596e8e0aa44d51769bf64d}{}\label{pcomplete_8c_a35ac8854f6596e8e0aa44d51769bf64d}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+services@{it\+\_\+services}}
+\index{it\+\_\+services@{it\+\_\+services}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+services}{it_services}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+services = \{ {\bf L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC} \}}\hypertarget{pcomplete_8c_a63134c9c293f0e3ef5ba7bb0e24a51d8}{}\label{pcomplete_8c_a63134c9c293f0e3ef5ba7bb0e24a51d8}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+setopts@{it\+\_\+setopts}}
+\index{it\+\_\+setopts@{it\+\_\+setopts}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+setopts}{it_setopts}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+setopts = \{ 0, {\bf it\+\_\+init\+\_\+setopts}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_ad0924bfc22078b66e6f2c140571d4443}{}\label{pcomplete_8c_ad0924bfc22078b66e6f2c140571d4443}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+shopts@{it\+\_\+shopts}}
+\index{it\+\_\+shopts@{it\+\_\+shopts}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+shopts}{it_shopts}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+shopts = \{ 0, {\bf it\+\_\+init\+\_\+shopts}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_aa991b5e7034bc95cb00bd7c96c28e1c2}{}\label{pcomplete_8c_aa991b5e7034bc95cb00bd7c96c28e1c2}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+signals@{it\+\_\+signals}}
+\index{it\+\_\+signals@{it\+\_\+signals}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+signals}{it_signals}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+signals = \{ 0, {\bf it\+\_\+init\+\_\+signals}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_a96bd15a10a06e5d825f48d811ceebfc3}{}\label{pcomplete_8c_a96bd15a10a06e5d825f48d811ceebfc3}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+stopped@{it\+\_\+stopped}}
+\index{it\+\_\+stopped@{it\+\_\+stopped}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+stopped}{it_stopped}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+stopped = \{ {\bf L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, {\bf it\+\_\+init\+\_\+stopped}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_a851e31b7c350d12b713903294d1108d3}{}\label{pcomplete_8c_a851e31b7c350d12b713903294d1108d3}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+users@{it\+\_\+users}}
+\index{it\+\_\+users@{it\+\_\+users}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+users}{it_users}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+users = \{ {\bf L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC} \}}\hypertarget{pcomplete_8c_ad5c2d12cc18850ba4291f8e7167f6470}{}\label{pcomplete_8c_ad5c2d12cc18850ba4291f8e7167f6470}
+\index{pcomplete.\+c@{pcomplete.\+c}!it\+\_\+variables@{it\+\_\+variables}}
+\index{it\+\_\+variables@{it\+\_\+variables}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{it\+\_\+variables}{it_variables}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+T\+E\+M\+L\+I\+ST} it\+\_\+variables = \{ {\bf L\+I\+S\+T\+\_\+\+D\+Y\+N\+A\+M\+IC}, {\bf it\+\_\+init\+\_\+variables}, ({\bf S\+T\+R\+I\+N\+G\+L\+I\+ST} $\ast$)0 \}}\hypertarget{pcomplete_8c_aa557483b1bd5f0456a4c56a9514547b4}{}\label{pcomplete_8c_aa557483b1bd5f0456a4c56a9514547b4}
+\index{pcomplete.\+c@{pcomplete.\+c}!pcomp\+\_\+curcmd@{pcomp\+\_\+curcmd}}
+\index{pcomp\+\_\+curcmd@{pcomp\+\_\+curcmd}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{pcomp\+\_\+curcmd}{pcomp_curcmd}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ pcomp\+\_\+curcmd}\hypertarget{pcomplete_8c_af71e7cd3d067b988742e78201945bc45}{}\label{pcomplete_8c_af71e7cd3d067b988742e78201945bc45}
+\index{pcomplete.\+c@{pcomplete.\+c}!pcomp\+\_\+curcs@{pcomp\+\_\+curcs}}
+\index{pcomp\+\_\+curcs@{pcomp\+\_\+curcs}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{pcomp\+\_\+curcs}{pcomp_curcs}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+P\+S\+P\+EC}$\ast$ pcomp\+\_\+curcs}\hypertarget{pcomplete_8c_a9cfdfb2c5c7a29d9a1ffa2ce38bedd62}{}\label{pcomplete_8c_a9cfdfb2c5c7a29d9a1ffa2ce38bedd62}
+\index{pcomplete.\+c@{pcomplete.\+c}!pcomp\+\_\+curtxt@{pcomp\+\_\+curtxt}}
+\index{pcomp\+\_\+curtxt@{pcomp\+\_\+curtxt}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{pcomp\+\_\+curtxt}{pcomp_curtxt}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ pcomp\+\_\+curtxt}\hypertarget{pcomplete_8c_a31a4bc2e64f7c66228a0078a09445499}{}\label{pcomplete_8c_a31a4bc2e64f7c66228a0078a09445499}
+\index{pcomplete.\+c@{pcomplete.\+c}!pcomp\+\_\+ind@{pcomp\+\_\+ind}}
+\index{pcomp\+\_\+ind@{pcomp\+\_\+ind}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{pcomp\+\_\+ind}{pcomp_ind}}]{\setlength{\rightskip}{0pt plus 5cm}int pcomp\+\_\+ind}\hypertarget{pcomplete_8c_a4f012713eb97fcd84fd1c7e7824c0330}{}\label{pcomplete_8c_a4f012713eb97fcd84fd1c7e7824c0330}
+\index{pcomplete.\+c@{pcomplete.\+c}!pcomp\+\_\+line@{pcomp\+\_\+line}}
+\index{pcomp\+\_\+line@{pcomp\+\_\+line}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{pcomp\+\_\+line}{pcomp_line}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ pcomp\+\_\+line}\hypertarget{pcomplete_8c_a4500a2a38d76b805d5f0967ffe21175b}{}\label{pcomplete_8c_a4500a2a38d76b805d5f0967ffe21175b}
+\index{pcomplete.\+c@{pcomplete.\+c}!prog\+\_\+completion\+\_\+enabled@{prog\+\_\+completion\+\_\+enabled}}
+\index{prog\+\_\+completion\+\_\+enabled@{prog\+\_\+completion\+\_\+enabled}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{prog\+\_\+completion\+\_\+enabled}{prog_completion_enabled}}]{\setlength{\rightskip}{0pt plus 5cm}int prog\+\_\+completion\+\_\+enabled = 1}\hypertarget{pcomplete_8c_abed050769ae280b6dc4dedd31417b9dc}{}\label{pcomplete_8c_abed050769ae280b6dc4dedd31417b9dc}
+\index{pcomplete.\+c@{pcomplete.\+c}!progcomp\+\_\+alias@{progcomp\+\_\+alias}}
+\index{progcomp\+\_\+alias@{progcomp\+\_\+alias}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{progcomp\+\_\+alias}{progcomp_alias}}]{\setlength{\rightskip}{0pt plus 5cm}int progcomp\+\_\+alias = 0}\hypertarget{pcomplete_8c_aa09edba26459d25e797a7430ec8350ef}{}\label{pcomplete_8c_aa09edba26459d25e797a7430ec8350ef}
+\index{pcomplete.\+c@{pcomplete.\+c}!signal\+\_\+names@{signal\+\_\+names}}
+\index{signal\+\_\+names@{signal\+\_\+names}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{signal\+\_\+names}{signal_names}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ signal\+\_\+names\mbox{[}$\,$\mbox{]}}\hypertarget{pcomplete_8c_ae2a2abc6809c8213628efadacfc28def}{}\label{pcomplete_8c_ae2a2abc6809c8213628efadacfc28def}
+\index{pcomplete.\+c@{pcomplete.\+c}!word\+\_\+token\+\_\+alist@{word\+\_\+token\+\_\+alist}}
+\index{word\+\_\+token\+\_\+alist@{word\+\_\+token\+\_\+alist}!pcomplete.\+c@{pcomplete.\+c}}
+\subsubsection[{\texorpdfstring{word\+\_\+token\+\_\+alist}{word_token_alist}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+ST} word\+\_\+token\+\_\+alist\mbox{[}$\,$\mbox{]}}\hypertarget{pcomplete_8c_a61dc7eddb90ab5f8e332f66f1ae0f51b}{}\label{pcomplete_8c_a61dc7eddb90ab5f8e332f66f1ae0f51b}

@@ -1,0 +1,140 @@
+\hypertarget{stringlib_8c}{}\section{stringlib.\+c File Reference}
+\label{stringlib_8c}\index{stringlib.\+c@{stringlib.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}chartypes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pathexp.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$glob/glob.\+h$>$}\\*
+{\ttfamily \#include $<$glob/strmatch.\+h$>$}\\*
+Include dependency graph for stringlib.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{stringlib_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{stringlib_8c_a3c4b3196d29244a419907bf77fd11299}{find\+\_\+string\+\_\+in\+\_\+alist} (char $\ast$string, \hyperlink{structSTRING__INT__ALIST}{S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+ST} $\ast$alist, int flags)
+\item 
+char $\ast$ \hyperlink{stringlib_8c_af3bc86d5e724131397a24247012a2c6b}{find\+\_\+token\+\_\+in\+\_\+alist} (int \hyperlink{y_8tab_8c_a1d71425d9df28667d528833a4db10432}{token}, \hyperlink{structSTRING__INT__ALIST}{S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+ST} $\ast$alist, int flags)
+\item 
+int \hyperlink{stringlib_8c_af42bb650b073895fef6aaafe916b90a9}{find\+\_\+index\+\_\+in\+\_\+alist} (char $\ast$string, \hyperlink{structSTRING__INT__ALIST}{S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+ST} $\ast$alist, int flags)
+\item 
+char $\ast$ \hyperlink{stringlib_8c_a5e3a8603eefdb8820db8fc609f7a6a9d}{substring} (char $\ast$string, int start, int end) const
+\item 
+char $\ast$ \hyperlink{stringlib_8c_a0916b4634e34e05c4ccf6e8d3ee482ec}{strsub} (char $\ast$string, char $\ast$pat, char $\ast$rep, int global)
+\item 
+char $\ast$ \hyperlink{stringlib_8c_a76b176a73a67ca0faf0437f6dadeffc9}{strcreplace} (char $\ast$string, int c, const char $\ast$text, int do\+\_\+glob)
+\item 
+void \hyperlink{stringlib_8c_a719e898342363bbe46bfe0a3389dccd1}{strip\+\_\+trailing} (char $\ast$string, int len, int newlines\+\_\+only)
+\item 
+void \hyperlink{stringlib_8c_aa5e7893a4ac249adea1c687a3318ab61}{xbcopy} (char $\ast$s, char $\ast$d, int n)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{stringlib.\+c@{stringlib.\+c}!find\+\_\+index\+\_\+in\+\_\+alist@{find\+\_\+index\+\_\+in\+\_\+alist}}
+\index{find\+\_\+index\+\_\+in\+\_\+alist@{find\+\_\+index\+\_\+in\+\_\+alist}!stringlib.\+c@{stringlib.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+index\+\_\+in\+\_\+alist(char $\ast$string, S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+S\+T $\ast$alist, int flags)}{find_index_in_alist(char *string, STRING_INT_ALIST *alist, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}int find\+\_\+index\+\_\+in\+\_\+alist (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{{\bf S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+ST} $\ast$}]{alist, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{stringlib_8c_af42bb650b073895fef6aaafe916b90a9}{}\label{stringlib_8c_af42bb650b073895fef6aaafe916b90a9}
+\index{stringlib.\+c@{stringlib.\+c}!find\+\_\+string\+\_\+in\+\_\+alist@{find\+\_\+string\+\_\+in\+\_\+alist}}
+\index{find\+\_\+string\+\_\+in\+\_\+alist@{find\+\_\+string\+\_\+in\+\_\+alist}!stringlib.\+c@{stringlib.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+string\+\_\+in\+\_\+alist(char $\ast$string, S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+S\+T $\ast$alist, int flags)}{find_string_in_alist(char *string, STRING_INT_ALIST *alist, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}int find\+\_\+string\+\_\+in\+\_\+alist (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{{\bf S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+ST} $\ast$}]{alist, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{stringlib_8c_a3c4b3196d29244a419907bf77fd11299}{}\label{stringlib_8c_a3c4b3196d29244a419907bf77fd11299}
+\index{stringlib.\+c@{stringlib.\+c}!find\+\_\+token\+\_\+in\+\_\+alist@{find\+\_\+token\+\_\+in\+\_\+alist}}
+\index{find\+\_\+token\+\_\+in\+\_\+alist@{find\+\_\+token\+\_\+in\+\_\+alist}!stringlib.\+c@{stringlib.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+token\+\_\+in\+\_\+alist(int token, S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+S\+T $\ast$alist, int flags)}{find_token_in_alist(int token, STRING_INT_ALIST *alist, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ find\+\_\+token\+\_\+in\+\_\+alist (
+\begin{DoxyParamCaption}
+\item[{int}]{token, }
+\item[{{\bf S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+ST} $\ast$}]{alist, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{stringlib_8c_af3bc86d5e724131397a24247012a2c6b}{}\label{stringlib_8c_af3bc86d5e724131397a24247012a2c6b}
+\index{stringlib.\+c@{stringlib.\+c}!strcreplace@{strcreplace}}
+\index{strcreplace@{strcreplace}!stringlib.\+c@{stringlib.\+c}}
+\subsubsection[{\texorpdfstring{strcreplace(char $\ast$string, int c, const char $\ast$text, int do\+\_\+glob)}{strcreplace(char *string, int c, const char *text, int do_glob)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strcreplace (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{int}]{c, }
+\item[{const char $\ast$}]{text, }
+\item[{int}]{do\+\_\+glob}
+\end{DoxyParamCaption}
+)}\hypertarget{stringlib_8c_a76b176a73a67ca0faf0437f6dadeffc9}{}\label{stringlib_8c_a76b176a73a67ca0faf0437f6dadeffc9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{stringlib_8c_a76b176a73a67ca0faf0437f6dadeffc9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{stringlib.\+c@{stringlib.\+c}!strip\+\_\+trailing@{strip\+\_\+trailing}}
+\index{strip\+\_\+trailing@{strip\+\_\+trailing}!stringlib.\+c@{stringlib.\+c}}
+\subsubsection[{\texorpdfstring{strip\+\_\+trailing(char $\ast$string, int len, int newlines\+\_\+only)}{strip_trailing(char *string, int len, int newlines_only)}}]{\setlength{\rightskip}{0pt plus 5cm}void strip\+\_\+trailing (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{int}]{len, }
+\item[{int}]{newlines\+\_\+only}
+\end{DoxyParamCaption}
+)}\hypertarget{stringlib_8c_a719e898342363bbe46bfe0a3389dccd1}{}\label{stringlib_8c_a719e898342363bbe46bfe0a3389dccd1}
+\index{stringlib.\+c@{stringlib.\+c}!strsub@{strsub}}
+\index{strsub@{strsub}!stringlib.\+c@{stringlib.\+c}}
+\subsubsection[{\texorpdfstring{strsub(char $\ast$string, char $\ast$pat, char $\ast$rep, int global)}{strsub(char *string, char *pat, char *rep, int global)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ strsub (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{char $\ast$}]{pat, }
+\item[{char $\ast$}]{rep, }
+\item[{int}]{global}
+\end{DoxyParamCaption}
+)}\hypertarget{stringlib_8c_a0916b4634e34e05c4ccf6e8d3ee482ec}{}\label{stringlib_8c_a0916b4634e34e05c4ccf6e8d3ee482ec}
+\index{stringlib.\+c@{stringlib.\+c}!substring@{substring}}
+\index{substring@{substring}!stringlib.\+c@{stringlib.\+c}}
+\subsubsection[{\texorpdfstring{substring(char $\ast$string, int start, int end) const}{substring(char *string, int start, int end) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ substring (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{int}]{start, }
+\item[{int}]{end}
+\end{DoxyParamCaption}
+) const}\hypertarget{stringlib_8c_a5e3a8603eefdb8820db8fc609f7a6a9d}{}\label{stringlib_8c_a5e3a8603eefdb8820db8fc609f7a6a9d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{stringlib_8c_a5e3a8603eefdb8820db8fc609f7a6a9d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{stringlib.\+c@{stringlib.\+c}!xbcopy@{xbcopy}}
+\index{xbcopy@{xbcopy}!stringlib.\+c@{stringlib.\+c}}
+\subsubsection[{\texorpdfstring{xbcopy(char $\ast$s, char $\ast$d, int n)}{xbcopy(char *s, char *d, int n)}}]{\setlength{\rightskip}{0pt plus 5cm}void xbcopy (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{char $\ast$}]{d, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\hypertarget{stringlib_8c_aa5e7893a4ac249adea1c687a3318ab61}{}\label{stringlib_8c_aa5e7893a4ac249adea1c687a3318ab61}

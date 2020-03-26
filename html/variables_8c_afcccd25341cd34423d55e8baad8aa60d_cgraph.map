@@ -1,0 +1,7 @@
+<map id="dispose_temporary_env" name="dispose_temporary_env">
+<area shape="rect" id="node2" href="$hashlib_8c.html#ad69fda224fdf3fc1a39aa8a8d94b6e85" title="hash_flush" alt="" coords="246,5,331,32"/>
+<area shape="rect" id="node3" href="$hashlib_8c.html#a779ef64d95ec26c510b9fe09c6ddd24d" title="hash_dispose" alt="" coords="237,56,340,83"/>
+<area shape="rect" id="node4" href="$variables_8c.html#a513b24f1ec6fa6be96bf74288d604b72" title="stupidly_hack_special\l_variables" alt="" coords="213,107,364,149"/>
+<area shape="rect" id="node5" href="$variables_8c.html#a97de1ba4b40cc75748067c3d1135c88a" title="sv_compare" alt="" coords="423,89,517,116"/>
+<area shape="rect" id="node6" href="$variables_8c.html#a619d4dafc16d5496104e60f264097cbe" title="find_special_var" alt="" coords="412,140,528,167"/>
+</map>

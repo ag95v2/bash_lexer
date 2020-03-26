@@ -1,0 +1,23 @@
+<map id="_value" name="_value">
+<area shape="rect" id="node2" href="$structarray.html" title="array" alt="" coords="853,97,904,124"/>
+<area shape="rect" id="node3" href="$structarray__element.html" title="array_element" alt="" coords="597,59,701,85"/>
+<area shape="rect" id="node4" href="$structhash__table.html" title="hash_table" alt="" coords="836,148,921,175"/>
+<area shape="rect" id="node5" href="$structbucket__contents.html" title="bucket_contents" alt="" coords="589,148,708,175"/>
+<area shape="rect" id="node6" href="$structvariable.html" title="variable" alt="" coords="845,47,912,73"/>
+<area shape="rect" id="node7" href="$structcommand.html" title="command" alt="" coords="839,697,918,724"/>
+<area shape="rect" id="node8" href="$structfunction__def.html" title="function_def" alt="" coords="1054,1197,1147,1224"/>
+<area shape="rect" id="node11" href="$structpattern__list.html" title="pattern_list" alt="" coords="1057,329,1144,356"/>
+<area shape="rect" id="node13" href="$structsubshell__com.html" title="subshell_com" alt="" coords="1049,539,1152,565"/>
+<area shape="rect" id="node14" href="$structgroup__com.html" title="group_com" alt="" coords="1057,636,1144,663"/>
+<area shape="rect" id="node18" href="$structconnection.html" title="connection" alt="" coords="1058,713,1143,740"/>
+<area shape="rect" id="node19" href="$structfor__com.html" title="for_com" alt="" coords="1066,408,1135,435"/>
+<area shape="rect" id="node20" href="$structcoproc__com.html" title="coproc_com" alt="" coords="1054,825,1147,852"/>
+<area shape="rect" id="node21" href="$structwhile__com.html" title="while_com" alt="" coords="1059,931,1143,957"/>
+<area shape="rect" id="node22" href="$structif__com.html" title="if_com" alt="" coords="1070,1047,1131,1073"/>
+<area shape="rect" id="node9" href="$structword__desc.html" title="word_desc" alt="" coords="5,391,91,417"/>
+<area shape="rect" id="node10" href="$structcase__com.html" title="case_com" alt="" coords="1249,329,1332,356"/>
+<area shape="rect" id="node12" href="$structword__list.html" title="word_list" alt="" coords="412,391,487,417"/>
+<area shape="rect" id="node16" href="$unionREDIRECTEE.html" title="REDIRECTEE" alt="" coords="192,465,303,492"/>
+<area shape="rect" id="node17" href="$structsimple__com.html" title="simple_com" alt="" coords="603,580,695,607"/>
+<area shape="rect" id="node15" href="$structredirect.html" title="redirect" alt="" coords="417,519,482,545"/>
+</map>

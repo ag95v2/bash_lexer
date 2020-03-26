@@ -1,0 +1,122 @@
+\hypertarget{version_8c}{}\section{version.\+c File Reference}
+\label{version_8c}\index{version.\+c@{version.\+c}}
+{\ttfamily \#include $<$config.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}stdc.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}version.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}patchlevel.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}conftypes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+Include dependency graph for version.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{version_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$\hyperlink{version_8c_ad7ddb20b12551e44bf19474e15e37bb7}{shell\+\_\+version\+\_\+string} \hyperlink{version_8c_abe356750edcc8f77827bf420c4f44376}{\+\_\+\+\_\+P} ((void))
+\item 
+void \hyperlink{version_8c_a2b538a91b0e0ce9d5b8eb51ab616dce1}{show\+\_\+shell\+\_\+version} \hyperlink{version_8c_a7179a9467ad287f8443591dd9b11c759}{\+\_\+\+\_\+P} ((int))
+\item 
+char $\ast$ \hyperlink{version_8c_ad7ddb20b12551e44bf19474e15e37bb7}{shell\+\_\+version\+\_\+string} ()
+\item 
+void \hyperlink{version_8c_a2b538a91b0e0ce9d5b8eb51ab616dce1}{show\+\_\+shell\+\_\+version} (int extended)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{version_8c_a12ca07e776396afc9a8bfee840d90d96}{shell\+\_\+name}
+\item 
+const char $\ast$const \hyperlink{version_8c_a5605b27e7b0f177e0fd80d13c2dbecbe}{dist\+\_\+version} = \hyperlink{version_8h_aaf554d4209cdb36f5e3126c6de590889}{D\+I\+S\+T\+V\+E\+R\+S\+I\+ON}
+\item 
+const int \hyperlink{version_8c_a9ac72079d81ef1da03f0cc15acd57862}{patch\+\_\+level} = \hyperlink{patchlevel_8h_a0e36fabb240fb841cc1df19b076f45c9}{P\+A\+T\+C\+H\+L\+E\+V\+EL}
+\item 
+const int \hyperlink{version_8c_acd098d0368d99470b513740402ecccdd}{build\+\_\+version} = \hyperlink{version_8h_ac8628a634a544bcc4820b7665c490726}{B\+U\+I\+L\+D\+V\+E\+R\+S\+I\+ON}
+\item 
+const char $\ast$const \hyperlink{version_8c_ab42ad26d0751a2d0bf9ba843a32faec8}{release\+\_\+status} = \hyperlink{version_8h_a92e1352fc151f76c7c77bd7d7ccb81ee}{R\+E\+L\+S\+T\+A\+T\+US}
+\item 
+const char $\ast$const \hyperlink{version_8c_ac6027592403402690476b01b05103a3c}{sccs\+\_\+version} = \hyperlink{version_8h_a2f64c87b27f1faffb7231e2362f8658d}{S\+C\+C\+S\+V\+E\+R\+S\+I\+ON}
+\item 
+const char $\ast$const \hyperlink{version_8c_aa376586954c85cbf1c19eb38a5ba32f0}{bash\+\_\+copyright} = \hyperlink{bashintl_8h_abdf0847bd8caa2c2247f5d9bc5e12982}{N\+\_\+}(\char`\"{}Copyright (C) 2019 Free Software Foundation, Inc.\char`\"{})
+\item 
+const char $\ast$const \hyperlink{version_8c_a80894870e31bfdadc8f0453857088645}{bash\+\_\+license} = \hyperlink{bashintl_8h_abdf0847bd8caa2c2247f5d9bc5e12982}{N\+\_\+}(\char`\"{}License G\+P\+Lv3+\+: G\+NU G\+PL version 3 \hyperlink{test_8c_a365f2d8039082624bc36762514a8a34c}{or} later $<$http\+://gnu.\+org/licenses/gpl.\+html$>$\textbackslash{}n\char`\"{})
+\item 
+int \hyperlink{version_8c_a5474d60edee7e82e47b35345fa4e8ca2}{shell\+\_\+compatibility\+\_\+level} = \hyperlink{version_8h_a5ee13c1567995d72c0553bccb347925c}{D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+O\+M\+P\+A\+T\+\_\+\+L\+E\+V\+EL}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{version.\+c@{version.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!version.\+c@{version.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf shell\+\_\+version\+\_\+string} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{version_8c_abe356750edcc8f77827bf420c4f44376}{}\label{version_8c_abe356750edcc8f77827bf420c4f44376}
+\index{version.\+c@{version.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!version.\+c@{version.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf show\+\_\+shell\+\_\+version} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{version_8c_a7179a9467ad287f8443591dd9b11c759}{}\label{version_8c_a7179a9467ad287f8443591dd9b11c759}
+\index{version.\+c@{version.\+c}!shell\+\_\+version\+\_\+string@{shell\+\_\+version\+\_\+string}}
+\index{shell\+\_\+version\+\_\+string@{shell\+\_\+version\+\_\+string}!version.\+c@{version.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+version\+\_\+string()}{shell_version_string()}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ shell\+\_\+version\+\_\+string (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{version_8c_ad7ddb20b12551e44bf19474e15e37bb7}{}\label{version_8c_ad7ddb20b12551e44bf19474e15e37bb7}
+\index{version.\+c@{version.\+c}!show\+\_\+shell\+\_\+version@{show\+\_\+shell\+\_\+version}}
+\index{show\+\_\+shell\+\_\+version@{show\+\_\+shell\+\_\+version}!version.\+c@{version.\+c}}
+\subsubsection[{\texorpdfstring{show\+\_\+shell\+\_\+version(int extended)}{show_shell_version(int extended)}}]{\setlength{\rightskip}{0pt plus 5cm}void show\+\_\+shell\+\_\+version (
+\begin{DoxyParamCaption}
+\item[{int}]{extended}
+\end{DoxyParamCaption}
+)}\hypertarget{version_8c_a2b538a91b0e0ce9d5b8eb51ab616dce1}{}\label{version_8c_a2b538a91b0e0ce9d5b8eb51ab616dce1}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{version_8c_a2b538a91b0e0ce9d5b8eb51ab616dce1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{version.\+c@{version.\+c}!bash\+\_\+copyright@{bash\+\_\+copyright}}
+\index{bash\+\_\+copyright@{bash\+\_\+copyright}!version.\+c@{version.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+copyright}{bash_copyright}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ const bash\+\_\+copyright = {\bf N\+\_\+}(\char`\"{}Copyright (C) 2019 Free Software Foundation, Inc.\char`\"{})}\hypertarget{version_8c_aa376586954c85cbf1c19eb38a5ba32f0}{}\label{version_8c_aa376586954c85cbf1c19eb38a5ba32f0}
+\index{version.\+c@{version.\+c}!bash\+\_\+license@{bash\+\_\+license}}
+\index{bash\+\_\+license@{bash\+\_\+license}!version.\+c@{version.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+license}{bash_license}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ const bash\+\_\+license = {\bf N\+\_\+}(\char`\"{}License G\+P\+Lv3+\+: G\+NU G\+PL version 3 {\bf or} later $<$http\+://gnu.\+org/licenses/gpl.\+html$>$\textbackslash{}n\char`\"{})}\hypertarget{version_8c_a80894870e31bfdadc8f0453857088645}{}\label{version_8c_a80894870e31bfdadc8f0453857088645}
+\index{version.\+c@{version.\+c}!build\+\_\+version@{build\+\_\+version}}
+\index{build\+\_\+version@{build\+\_\+version}!version.\+c@{version.\+c}}
+\subsubsection[{\texorpdfstring{build\+\_\+version}{build_version}}]{\setlength{\rightskip}{0pt plus 5cm}const int build\+\_\+version = {\bf B\+U\+I\+L\+D\+V\+E\+R\+S\+I\+ON}}\hypertarget{version_8c_acd098d0368d99470b513740402ecccdd}{}\label{version_8c_acd098d0368d99470b513740402ecccdd}
+\index{version.\+c@{version.\+c}!dist\+\_\+version@{dist\+\_\+version}}
+\index{dist\+\_\+version@{dist\+\_\+version}!version.\+c@{version.\+c}}
+\subsubsection[{\texorpdfstring{dist\+\_\+version}{dist_version}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ const dist\+\_\+version = {\bf D\+I\+S\+T\+V\+E\+R\+S\+I\+ON}}\hypertarget{version_8c_a5605b27e7b0f177e0fd80d13c2dbecbe}{}\label{version_8c_a5605b27e7b0f177e0fd80d13c2dbecbe}
+\index{version.\+c@{version.\+c}!patch\+\_\+level@{patch\+\_\+level}}
+\index{patch\+\_\+level@{patch\+\_\+level}!version.\+c@{version.\+c}}
+\subsubsection[{\texorpdfstring{patch\+\_\+level}{patch_level}}]{\setlength{\rightskip}{0pt plus 5cm}const int patch\+\_\+level = {\bf P\+A\+T\+C\+H\+L\+E\+V\+EL}}\hypertarget{version_8c_a9ac72079d81ef1da03f0cc15acd57862}{}\label{version_8c_a9ac72079d81ef1da03f0cc15acd57862}
+\index{version.\+c@{version.\+c}!release\+\_\+status@{release\+\_\+status}}
+\index{release\+\_\+status@{release\+\_\+status}!version.\+c@{version.\+c}}
+\subsubsection[{\texorpdfstring{release\+\_\+status}{release_status}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ const release\+\_\+status = {\bf R\+E\+L\+S\+T\+A\+T\+US}}\hypertarget{version_8c_ab42ad26d0751a2d0bf9ba843a32faec8}{}\label{version_8c_ab42ad26d0751a2d0bf9ba843a32faec8}
+\index{version.\+c@{version.\+c}!sccs\+\_\+version@{sccs\+\_\+version}}
+\index{sccs\+\_\+version@{sccs\+\_\+version}!version.\+c@{version.\+c}}
+\subsubsection[{\texorpdfstring{sccs\+\_\+version}{sccs_version}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ const sccs\+\_\+version = {\bf S\+C\+C\+S\+V\+E\+R\+S\+I\+ON}}\hypertarget{version_8c_ac6027592403402690476b01b05103a3c}{}\label{version_8c_ac6027592403402690476b01b05103a3c}
+\index{version.\+c@{version.\+c}!shell\+\_\+compatibility\+\_\+level@{shell\+\_\+compatibility\+\_\+level}}
+\index{shell\+\_\+compatibility\+\_\+level@{shell\+\_\+compatibility\+\_\+level}!version.\+c@{version.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+compatibility\+\_\+level}{shell_compatibility_level}}]{\setlength{\rightskip}{0pt plus 5cm}int shell\+\_\+compatibility\+\_\+level = {\bf D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+O\+M\+P\+A\+T\+\_\+\+L\+E\+V\+EL}}\hypertarget{version_8c_a5474d60edee7e82e47b35345fa4e8ca2}{}\label{version_8c_a5474d60edee7e82e47b35345fa4e8ca2}
+\index{version.\+c@{version.\+c}!shell\+\_\+name@{shell\+\_\+name}}
+\index{shell\+\_\+name@{shell\+\_\+name}!version.\+c@{version.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+name}{shell_name}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ shell\+\_\+name}\hypertarget{version_8c_a12ca07e776396afc9a8bfee840d90d96}{}\label{version_8c_a12ca07e776396afc9a8bfee840d90d96}

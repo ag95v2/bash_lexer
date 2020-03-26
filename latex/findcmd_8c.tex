@@ -1,0 +1,473 @@
+\hypertarget{findcmd_8c}{}\section{findcmd.\+c File Reference}
+\label{findcmd_8c}\index{findcmd.\+c@{findcmd.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}chartypes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$sys/file.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}filecntl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}posixstat.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}memalloc.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}execute\+\_\+cmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}flags.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}hashlib.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pathexp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}hashcmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}findcmd.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$glob/strmatch.\+h$>$}\\*
+Include dependency graph for findcmd.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static char $\ast$\hyperlink{findcmd_8c_a99320605ca966787fd20c7d85f7a271e}{\+\_\+find\+\_\+user\+\_\+command\+\_\+internal} \hyperlink{findcmd_8c_a4502ffc4de0aa14016191eb9a959147f}{\+\_\+\+\_\+P} ((const char $\ast$, int))
+\item 
+static char $\ast$\hyperlink{findcmd_8c_a0ae2232666e58c6cf11734d97e2ff506}{find\+\_\+user\+\_\+command\+\_\+in\+\_\+path} \hyperlink{findcmd_8c_ac4263f038448a1fdfb8a25f776d152ef}{\+\_\+\+\_\+P} ((const char $\ast$, char $\ast$, int))
+\item 
+static char $\ast$\hyperlink{findcmd_8c_a839a81ae33d343cc1a7df33a2ba47cf6}{find\+\_\+in\+\_\+path\+\_\+element} \hyperlink{findcmd_8c_ade4cec7be876a50247f26f67d315ca49}{\+\_\+\+\_\+P} ((const char $\ast$, char $\ast$, int, int, struct stat $\ast$))
+\item 
+static char $\ast$\hyperlink{findcmd_8c_a619854eb806f64022176a100ec0610fe}{get\+\_\+next\+\_\+path\+\_\+element} \hyperlink{findcmd_8c_ac71b5a9e8c5da81f36bba4d9a7f7b001}{\+\_\+\+\_\+P} ((char $\ast$, int $\ast$))
+\item 
+void \hyperlink{findcmd_8c_a0b40a57c2e43fc7184dee8484a2e7aa1}{setup\+\_\+exec\+\_\+ignore} (char $\ast$varname)
+\item 
+static int \hyperlink{findcmd_8c_aecaa95fa14dcca82209983a6f71d5f79}{exec\+\_\+name\+\_\+should\+\_\+ignore} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}) const
+\item 
+int \hyperlink{findcmd_8c_a7e6b11cc0264af5b9998ff5047bd256b}{file\+\_\+status} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}) const
+\item 
+int \hyperlink{findcmd_8c_aaaf5fcf5bc8ed9090ba50a8f39f79fb4}{executable\+\_\+file} (char $\ast$file) const
+\item 
+int \hyperlink{findcmd_8c_a94df1dc5a4693d175e9eb30cb4e21b0a}{is\+\_\+directory} (char $\ast$file) const
+\item 
+int \hyperlink{findcmd_8c_a54d1865ff2e8aa516f0336ee811c3476}{executable\+\_\+or\+\_\+directory} (char $\ast$file) const
+\item 
+char $\ast$ \hyperlink{findcmd_8c_a4eab5def0c9b8e2fbeddb3cfad57cd75}{find\+\_\+user\+\_\+command} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}) const
+\item 
+char $\ast$ \hyperlink{findcmd_8c_a5e07b6e163c584c497012c56adcad571}{find\+\_\+path\+\_\+file} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}) const
+\item 
+static char $\ast$ \hyperlink{findcmd_8c_a99320605ca966787fd20c7d85f7a271e}{\+\_\+find\+\_\+user\+\_\+command\+\_\+internal} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, int flags) const
+\item 
+static char $\ast$ \hyperlink{findcmd_8c_a04d511f1b2c054bfde3c262f6bb209a7}{find\+\_\+user\+\_\+command\+\_\+internal} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, int flags) const
+\item 
+static char $\ast$ \hyperlink{findcmd_8c_a619854eb806f64022176a100ec0610fe}{get\+\_\+next\+\_\+path\+\_\+element} (char $\ast$path\+\_\+list, int $\ast$path\+\_\+index\+\_\+pointer)
+\item 
+char $\ast$ \hyperlink{findcmd_8c_a6dde73e7143fc8fa2f1e94534a36a00d}{search\+\_\+for\+\_\+command} (char $\ast$pathname, int flags) const
+\item 
+char $\ast$ \hyperlink{findcmd_8c_a7e1aa914e716099ba62e2f9de1dee1df}{user\+\_\+command\+\_\+matches} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, int flags, int state) const
+\item 
+static char $\ast$ \hyperlink{findcmd_8c_adac4d0068bd74296925bbe24c298aa5c}{find\+\_\+absolute\+\_\+program} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, int flags) const
+\item 
+static char $\ast$ \hyperlink{findcmd_8c_a839a81ae33d343cc1a7df33a2ba47cf6}{find\+\_\+in\+\_\+path\+\_\+element} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, char $\ast$path, int flags, int name\+\_\+len, struct stat $\ast$dotinfop) const
+\item 
+static char $\ast$ \hyperlink{findcmd_8c_a0ae2232666e58c6cf11734d97e2ff506}{find\+\_\+user\+\_\+command\+\_\+in\+\_\+path} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, char $\ast$path\+\_\+list, int flags) const
+\item 
+char $\ast$ \hyperlink{findcmd_8c_a04862f776353a1a5740eed9608422e48}{find\+\_\+in\+\_\+path} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, char $\ast$path\+\_\+list, int flags) const
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{findcmd_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno}
+\item 
+static char $\ast$ \hyperlink{findcmd_8c_ad4ec1563cfc74ee805e6033ff0af964c}{file\+\_\+to\+\_\+lose\+\_\+on}
+\item 
+int \hyperlink{findcmd_8c_adf88e318755e93333a0f5cb1ba39a493}{check\+\_\+hashed\+\_\+filenames} = \hyperlink{config-top_8h_a0215ebc13592f64b00cb311db6b0f6f4}{C\+H\+E\+C\+K\+H\+A\+S\+H\+\_\+\+D\+E\+F\+A\+U\+LT}
+\item 
+int \hyperlink{findcmd_8c_a8ff54d53102b3d79a4b9cb725fe3324a}{dot\+\_\+found\+\_\+in\+\_\+search} = 0
+\item 
+static struct \hyperlink{structignorevar}{ignorevar} \hyperlink{findcmd_8c_a9f8776d4695ab6c6287235659d77cff5}{execignore}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{findcmd.\+c@{findcmd.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, int))}{__P((const char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf \+\_\+find\+\_\+user\+\_\+command\+\_\+internal} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{findcmd_8c_a4502ffc4de0aa14016191eb9a959147f}{}\label{findcmd_8c_a4502ffc4de0aa14016191eb9a959147f}
+\index{findcmd.\+c@{findcmd.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, char $\ast$, int))}{__P((const char *, char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf find\+\_\+user\+\_\+command\+\_\+in\+\_\+path} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{findcmd_8c_ac4263f038448a1fdfb8a25f776d152ef}{}\label{findcmd_8c_ac4263f038448a1fdfb8a25f776d152ef}
+\index{findcmd.\+c@{findcmd.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, char $\ast$, int, int, struct stat $\ast$))}{__P((const char *, char *, int, int, struct stat *))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf find\+\_\+in\+\_\+path\+\_\+element} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, char $\ast$, int, int, struct stat $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{findcmd_8c_ade4cec7be876a50247f26f67d315ca49}{}\label{findcmd_8c_ade4cec7be876a50247f26f67d315ca49}
+\index{findcmd.\+c@{findcmd.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, int $\ast$))}{__P((char *, int *))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf get\+\_\+next\+\_\+path\+\_\+element} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, int $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{findcmd_8c_ac71b5a9e8c5da81f36bba4d9a7f7b001}{}\label{findcmd_8c_ac71b5a9e8c5da81f36bba4d9a7f7b001}
+\index{findcmd.\+c@{findcmd.\+c}!\+\_\+find\+\_\+user\+\_\+command\+\_\+internal@{\+\_\+find\+\_\+user\+\_\+command\+\_\+internal}}
+\index{\+\_\+find\+\_\+user\+\_\+command\+\_\+internal@{\+\_\+find\+\_\+user\+\_\+command\+\_\+internal}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+find\+\_\+user\+\_\+command\+\_\+internal(char $\ast$name, int flags) const}{_find_user_command_internal(char *name, int flags) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ \+\_\+find\+\_\+user\+\_\+command\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{findcmd_8c_a99320605ca966787fd20c7d85f7a271e}{}\label{findcmd_8c_a99320605ca966787fd20c7d85f7a271e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a99320605ca966787fd20c7d85f7a271e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!exec\+\_\+name\+\_\+should\+\_\+ignore@{exec\+\_\+name\+\_\+should\+\_\+ignore}}
+\index{exec\+\_\+name\+\_\+should\+\_\+ignore@{exec\+\_\+name\+\_\+should\+\_\+ignore}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{exec\+\_\+name\+\_\+should\+\_\+ignore(char $\ast$name) const}{exec_name_should_ignore(char *name) const}}]{\setlength{\rightskip}{0pt plus 5cm}static int exec\+\_\+name\+\_\+should\+\_\+ignore (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{findcmd_8c_aecaa95fa14dcca82209983a6f71d5f79}{}\label{findcmd_8c_aecaa95fa14dcca82209983a6f71d5f79}
+\index{findcmd.\+c@{findcmd.\+c}!executable\+\_\+file@{executable\+\_\+file}}
+\index{executable\+\_\+file@{executable\+\_\+file}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{executable\+\_\+file(char $\ast$file) const}{executable_file(char *file) const}}]{\setlength{\rightskip}{0pt plus 5cm}int executable\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{file}
+\end{DoxyParamCaption}
+) const}\hypertarget{findcmd_8c_aaaf5fcf5bc8ed9090ba50a8f39f79fb4}{}\label{findcmd_8c_aaaf5fcf5bc8ed9090ba50a8f39f79fb4}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_aaaf5fcf5bc8ed9090ba50a8f39f79fb4_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!executable\+\_\+or\+\_\+directory@{executable\+\_\+or\+\_\+directory}}
+\index{executable\+\_\+or\+\_\+directory@{executable\+\_\+or\+\_\+directory}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{executable\+\_\+or\+\_\+directory(char $\ast$file) const}{executable_or_directory(char *file) const}}]{\setlength{\rightskip}{0pt plus 5cm}int executable\+\_\+or\+\_\+directory (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{file}
+\end{DoxyParamCaption}
+) const}\hypertarget{findcmd_8c_a54d1865ff2e8aa516f0336ee811c3476}{}\label{findcmd_8c_a54d1865ff2e8aa516f0336ee811c3476}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a54d1865ff2e8aa516f0336ee811c3476_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!file\+\_\+status@{file\+\_\+status}}
+\index{file\+\_\+status@{file\+\_\+status}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{file\+\_\+status(char $\ast$name) const}{file_status(char *name) const}}]{\setlength{\rightskip}{0pt plus 5cm}int file\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+) const}\hypertarget{findcmd_8c_a7e6b11cc0264af5b9998ff5047bd256b}{}\label{findcmd_8c_a7e6b11cc0264af5b9998ff5047bd256b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a7e6b11cc0264af5b9998ff5047bd256b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!find\+\_\+absolute\+\_\+program@{find\+\_\+absolute\+\_\+program}}
+\index{find\+\_\+absolute\+\_\+program@{find\+\_\+absolute\+\_\+program}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+absolute\+\_\+program(char $\ast$name, int flags) const}{find_absolute_program(char *name, int flags) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ find\+\_\+absolute\+\_\+program (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{findcmd_8c_adac4d0068bd74296925bbe24c298aa5c}{}\label{findcmd_8c_adac4d0068bd74296925bbe24c298aa5c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_adac4d0068bd74296925bbe24c298aa5c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!find\+\_\+in\+\_\+path@{find\+\_\+in\+\_\+path}}
+\index{find\+\_\+in\+\_\+path@{find\+\_\+in\+\_\+path}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+in\+\_\+path(char $\ast$name, char $\ast$path\+\_\+list, int flags) const}{find_in_path(char *name, char *path_list, int flags) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ find\+\_\+in\+\_\+path (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{char $\ast$}]{path\+\_\+list, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+) const}\hypertarget{findcmd_8c_a04862f776353a1a5740eed9608422e48}{}\label{findcmd_8c_a04862f776353a1a5740eed9608422e48}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a04862f776353a1a5740eed9608422e48_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!find\+\_\+in\+\_\+path\+\_\+element@{find\+\_\+in\+\_\+path\+\_\+element}}
+\index{find\+\_\+in\+\_\+path\+\_\+element@{find\+\_\+in\+\_\+path\+\_\+element}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+in\+\_\+path\+\_\+element(char $\ast$name, char $\ast$path, int flags, int name\+\_\+len, struct stat $\ast$dotinfop) const}{find_in_path_element(char *name, char *path, int flags, int name_len, struct stat *dotinfop) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ find\+\_\+in\+\_\+path\+\_\+element (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{char $\ast$}]{path, }
+\item[{int}]{flags, }
+\item[{int}]{name\+\_\+len, }
+\item[{struct stat $\ast$}]{dotinfop}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{findcmd_8c_a839a81ae33d343cc1a7df33a2ba47cf6}{}\label{findcmd_8c_a839a81ae33d343cc1a7df33a2ba47cf6}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a839a81ae33d343cc1a7df33a2ba47cf6_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!find\+\_\+path\+\_\+file@{find\+\_\+path\+\_\+file}}
+\index{find\+\_\+path\+\_\+file@{find\+\_\+path\+\_\+file}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+path\+\_\+file(char $\ast$name) const}{find_path_file(char *name) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ find\+\_\+path\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+) const}\hypertarget{findcmd_8c_a5e07b6e163c584c497012c56adcad571}{}\label{findcmd_8c_a5e07b6e163c584c497012c56adcad571}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a5e07b6e163c584c497012c56adcad571_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!find\+\_\+user\+\_\+command@{find\+\_\+user\+\_\+command}}
+\index{find\+\_\+user\+\_\+command@{find\+\_\+user\+\_\+command}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+user\+\_\+command(char $\ast$name) const}{find_user_command(char *name) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ find\+\_\+user\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+) const}\hypertarget{findcmd_8c_a4eab5def0c9b8e2fbeddb3cfad57cd75}{}\label{findcmd_8c_a4eab5def0c9b8e2fbeddb3cfad57cd75}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a4eab5def0c9b8e2fbeddb3cfad57cd75_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!find\+\_\+user\+\_\+command\+\_\+in\+\_\+path@{find\+\_\+user\+\_\+command\+\_\+in\+\_\+path}}
+\index{find\+\_\+user\+\_\+command\+\_\+in\+\_\+path@{find\+\_\+user\+\_\+command\+\_\+in\+\_\+path}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+user\+\_\+command\+\_\+in\+\_\+path(char $\ast$name, char $\ast$path\+\_\+list, int flags) const}{find_user_command_in_path(char *name, char *path_list, int flags) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ find\+\_\+user\+\_\+command\+\_\+in\+\_\+path (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{char $\ast$}]{path\+\_\+list, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{findcmd_8c_a0ae2232666e58c6cf11734d97e2ff506}{}\label{findcmd_8c_a0ae2232666e58c6cf11734d97e2ff506}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a0ae2232666e58c6cf11734d97e2ff506_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!find\+\_\+user\+\_\+command\+\_\+internal@{find\+\_\+user\+\_\+command\+\_\+internal}}
+\index{find\+\_\+user\+\_\+command\+\_\+internal@{find\+\_\+user\+\_\+command\+\_\+internal}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+user\+\_\+command\+\_\+internal(char $\ast$name, int flags) const}{find_user_command_internal(char *name, int flags) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ find\+\_\+user\+\_\+command\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{findcmd_8c_a04d511f1b2c054bfde3c262f6bb209a7}{}\label{findcmd_8c_a04d511f1b2c054bfde3c262f6bb209a7}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a04d511f1b2c054bfde3c262f6bb209a7_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!get\+\_\+next\+\_\+path\+\_\+element@{get\+\_\+next\+\_\+path\+\_\+element}}
+\index{get\+\_\+next\+\_\+path\+\_\+element@{get\+\_\+next\+\_\+path\+\_\+element}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+next\+\_\+path\+\_\+element(char $\ast$path\+\_\+list, int $\ast$path\+\_\+index\+\_\+pointer)}{get_next_path_element(char *path_list, int *path_index_pointer)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ get\+\_\+next\+\_\+path\+\_\+element (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{path\+\_\+list, }
+\item[{int $\ast$}]{path\+\_\+index\+\_\+pointer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{findcmd_8c_a619854eb806f64022176a100ec0610fe}{}\label{findcmd_8c_a619854eb806f64022176a100ec0610fe}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a619854eb806f64022176a100ec0610fe_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!is\+\_\+directory@{is\+\_\+directory}}
+\index{is\+\_\+directory@{is\+\_\+directory}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{is\+\_\+directory(char $\ast$file) const}{is_directory(char *file) const}}]{\setlength{\rightskip}{0pt plus 5cm}int is\+\_\+directory (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{file}
+\end{DoxyParamCaption}
+) const}\hypertarget{findcmd_8c_a94df1dc5a4693d175e9eb30cb4e21b0a}{}\label{findcmd_8c_a94df1dc5a4693d175e9eb30cb4e21b0a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a94df1dc5a4693d175e9eb30cb4e21b0a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!search\+\_\+for\+\_\+command@{search\+\_\+for\+\_\+command}}
+\index{search\+\_\+for\+\_\+command@{search\+\_\+for\+\_\+command}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{search\+\_\+for\+\_\+command(char $\ast$pathname, int flags) const}{search_for_command(char *pathname, int flags) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ search\+\_\+for\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{pathname, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+) const}\hypertarget{findcmd_8c_a6dde73e7143fc8fa2f1e94534a36a00d}{}\label{findcmd_8c_a6dde73e7143fc8fa2f1e94534a36a00d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a6dde73e7143fc8fa2f1e94534a36a00d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!setup\+\_\+exec\+\_\+ignore@{setup\+\_\+exec\+\_\+ignore}}
+\index{setup\+\_\+exec\+\_\+ignore@{setup\+\_\+exec\+\_\+ignore}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{setup\+\_\+exec\+\_\+ignore(char $\ast$varname)}{setup_exec_ignore(char *varname)}}]{\setlength{\rightskip}{0pt plus 5cm}void setup\+\_\+exec\+\_\+ignore (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{varname}
+\end{DoxyParamCaption}
+)}\hypertarget{findcmd_8c_a0b40a57c2e43fc7184dee8484a2e7aa1}{}\label{findcmd_8c_a0b40a57c2e43fc7184dee8484a2e7aa1}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a0b40a57c2e43fc7184dee8484a2e7aa1_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{findcmd.\+c@{findcmd.\+c}!user\+\_\+command\+\_\+matches@{user\+\_\+command\+\_\+matches}}
+\index{user\+\_\+command\+\_\+matches@{user\+\_\+command\+\_\+matches}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{user\+\_\+command\+\_\+matches(char $\ast$name, int flags, int state) const}{user_command_matches(char *name, int flags, int state) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ user\+\_\+command\+\_\+matches (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{int}]{flags, }
+\item[{int}]{state}
+\end{DoxyParamCaption}
+) const}\hypertarget{findcmd_8c_a7e1aa914e716099ba62e2f9de1dee1df}{}\label{findcmd_8c_a7e1aa914e716099ba62e2f9de1dee1df}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8c_a7e1aa914e716099ba62e2f9de1dee1df_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{findcmd.\+c@{findcmd.\+c}!check\+\_\+hashed\+\_\+filenames@{check\+\_\+hashed\+\_\+filenames}}
+\index{check\+\_\+hashed\+\_\+filenames@{check\+\_\+hashed\+\_\+filenames}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+hashed\+\_\+filenames}{check_hashed_filenames}}]{\setlength{\rightskip}{0pt plus 5cm}int check\+\_\+hashed\+\_\+filenames = {\bf C\+H\+E\+C\+K\+H\+A\+S\+H\+\_\+\+D\+E\+F\+A\+U\+LT}}\hypertarget{findcmd_8c_adf88e318755e93333a0f5cb1ba39a493}{}\label{findcmd_8c_adf88e318755e93333a0f5cb1ba39a493}
+\index{findcmd.\+c@{findcmd.\+c}!dot\+\_\+found\+\_\+in\+\_\+search@{dot\+\_\+found\+\_\+in\+\_\+search}}
+\index{dot\+\_\+found\+\_\+in\+\_\+search@{dot\+\_\+found\+\_\+in\+\_\+search}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{dot\+\_\+found\+\_\+in\+\_\+search}{dot_found_in_search}}]{\setlength{\rightskip}{0pt plus 5cm}int dot\+\_\+found\+\_\+in\+\_\+search = 0}\hypertarget{findcmd_8c_a8ff54d53102b3d79a4b9cb725fe3324a}{}\label{findcmd_8c_a8ff54d53102b3d79a4b9cb725fe3324a}
+\index{findcmd.\+c@{findcmd.\+c}!errno@{errno}}
+\index{errno@{errno}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{errno}{errno}}]{\setlength{\rightskip}{0pt plus 5cm}int errno}\hypertarget{findcmd_8c_ad65a8842cc674e3ddf69355898c0ecbf}{}\label{findcmd_8c_ad65a8842cc674e3ddf69355898c0ecbf}
+\index{findcmd.\+c@{findcmd.\+c}!execignore@{execignore}}
+\index{execignore@{execignore}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{execignore}{execignore}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf ignorevar} execignore\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{findcmd_8c_a9f8776d4695ab6c6287235659d77cff5}{}\label{findcmd_8c_a9f8776d4695ab6c6287235659d77cff5}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+\{
+  \textcolor{stringliteral}{"EXECIGNORE"},
+  \hyperlink{general_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL},
+  0,
+  \hyperlink{general_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL},
+  NULL
+\}
+\end{DoxyCode}
+\index{findcmd.\+c@{findcmd.\+c}!file\+\_\+to\+\_\+lose\+\_\+on@{file\+\_\+to\+\_\+lose\+\_\+on}}
+\index{file\+\_\+to\+\_\+lose\+\_\+on@{file\+\_\+to\+\_\+lose\+\_\+on}!findcmd.\+c@{findcmd.\+c}}
+\subsubsection[{\texorpdfstring{file\+\_\+to\+\_\+lose\+\_\+on}{file_to_lose_on}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ file\+\_\+to\+\_\+lose\+\_\+on\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{findcmd_8c_ad4ec1563cfc74ee805e6033ff0af964c}{}\label{findcmd_8c_ad4ec1563cfc74ee805e6033ff0af964c}

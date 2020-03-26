@@ -1,0 +1,26 @@
+<map id="mailcheck.c" name="mailcheck.c">
+<area shape="rect" id="node2" href="$config_8h.html" title="config.h" alt="" coords="219,80,287,107"/>
+<area shape="rect" id="node9" href="$bashtypes_8h.html" title="bashtypes.h" alt="" coords="679,229,773,256"/>
+<area shape="rect" id="node17" href="$bashansi_8h.html" title="bashansi.h" alt="" coords="438,155,523,181"/>
+<area shape="rect" id="node22" href="$bashintl_8h.html" title="bashintl.h" alt="" coords="2160,80,2239,107"/>
+<area shape="rect" id="node25" href="$shell_8h.html" title="shell.h" alt="" coords="1420,80,1480,107"/>
+<area shape="rect" id="node48" href="$execute__cmd_8h.html" title="execute_cmd.h" alt="" coords="1504,80,1615,107"/>
+<area shape="rect" id="node49" href="$mailcheck_8h.html" title="mailcheck.h" alt="" coords="2263,80,2355,107"/>
+<area shape="rect" id="node3" href="$config-top_8h.html" title="config&#45;top.h" alt="" coords="93,155,183,181"/>
+<area shape="rect" id="node4" href="$config-bot_8h.html" title="config&#45;bot.h" alt="" coords="207,155,298,181"/>
+<area shape="rect" id="node26" href="$bashjmp_8h.html" title="bashjmp.h" alt="" coords="1667,155,1750,181"/>
+<area shape="rect" id="node28" href="$command_8h.html" title="command.h" alt="" coords="1490,229,1581,256"/>
+<area shape="rect" id="node30" href="$syntax_8h.html" title="syntax.h" alt="" coords="1825,155,1897,181"/>
+<area shape="rect" id="node31" href="$general_8h.html" title="general.h" alt="" coords="1054,155,1129,181"/>
+<area shape="rect" id="node35" href="$error_8h.html" title="error.h" alt="" coords="1605,229,1663,256"/>
+<area shape="rect" id="node36" href="$variables_8h.html" title="variables.h" alt="" coords="1687,229,1773,256"/>
+<area shape="rect" id="node37" href="$arrayfunc_8h.html" title="arrayfunc.h" alt="" coords="1921,155,2008,181"/>
+<area shape="rect" id="node38" href="$quit_8h.html" title="quit.h" alt="" coords="2032,155,2087,181"/>
+<area shape="rect" id="node39" href="$sig_8h.html" title="sig.h" alt="" coords="1906,229,1957,256"/>
+<area shape="rect" id="node41" href="$unwind__prot_8h.html" title="unwind_prot.h" alt="" coords="705,155,808,181"/>
+<area shape="rect" id="node42" href="$dispose__cmd_8h.html" title="dispose_cmd.h" alt="" coords="1203,229,1313,256"/>
+<area shape="rect" id="node43" href="$make__cmd_8h.html" title="make_cmd.h" alt="" coords="1204,155,1301,181"/>
+<area shape="rect" id="node45" href="$subst_8h.html" title="subst.h" alt="" coords="1325,155,1391,181"/>
+<area shape="rect" id="node46" href="$pathnames_8h.html" title="pathnames.h" alt="" coords="932,155,1029,181"/>
+<area shape="rect" id="node47" href="$externs_8h.html" title="externs.h" alt="" coords="1415,155,1491,181"/>
+</map>

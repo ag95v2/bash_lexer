@@ -1,0 +1,596 @@
+\hypertarget{jobs_8h}{}\section{jobs.\+h File Reference}
+\label{jobs_8h}\index{jobs.\+h@{jobs.\+h}}
+{\ttfamily \#include \char`\"{}quit.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}siglist.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stdc.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}posixwait.\+h\char`\"{}}\\*
+Include dependency graph for jobs.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{jobs_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structprocess}{process}
+\item 
+struct \hyperlink{structpipeline__saver}{pipeline\+\_\+saver}
+\item 
+struct \hyperlink{structjob}{job}
+\item 
+struct \hyperlink{structjobstats}{jobstats}
+\item 
+struct \hyperlink{structpidstat}{pidstat}
+\item 
+struct \hyperlink{structbgpids}{bgpids}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{jobs_8h_ad9054abf38050f25ca5110797469a799}{J\+L\+I\+S\+T\+\_\+\+S\+T\+A\+N\+D\+A\+RD}~0
+\item 
+\#define \hyperlink{jobs_8h_a4ab9e8bb54284bd20a2e11476e845092}{J\+L\+I\+S\+T\+\_\+\+L\+O\+NG}~1
+\item 
+\#define \hyperlink{jobs_8h_ae56b0ceb1d7156755f08a42b776afcb0}{J\+L\+I\+S\+T\+\_\+\+P\+I\+D\+\_\+\+O\+N\+LY}~2
+\item 
+\#define \hyperlink{jobs_8h_a454150edd28e70e10e8357b1e71e7384}{J\+L\+I\+S\+T\+\_\+\+C\+H\+A\+N\+G\+E\+D\+\_\+\+O\+N\+LY}~3
+\item 
+\#define \hyperlink{jobs_8h_a3e32ddd300903bbc3e8a401532ff6eef}{J\+L\+I\+S\+T\+\_\+\+N\+O\+N\+I\+N\+T\+E\+R\+A\+C\+T\+I\+VE}~4
+\item 
+\#define \hyperlink{jobs_8h_ad71765c2220f5220fd8874558a5eddea}{L\+O\+N\+G\+E\+S\+T\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+E\+SC}~24
+\item 
+\#define \hyperlink{jobs_8h_aa236a5ea43c9e46224f27d12350def6b}{J\+W\+A\+I\+T\+\_\+\+P\+E\+R\+R\+OR}~0x01
+\item 
+\#define \hyperlink{jobs_8h_a9f8ff74629b8584c7710213ea30318e9}{J\+W\+A\+I\+T\+\_\+\+F\+O\+R\+CE}~0x02
+\item 
+\#define \hyperlink{jobs_8h_a6f659f402b7f03b2fd393f9351e3625a}{F\+O\+R\+K\+S\+L\+E\+E\+P\+\_\+\+M\+AX}~16
+\item 
+\#define \hyperlink{jobs_8h_ab3f16fed1877b48f617e7b3e8485723d}{P\+S\+\_\+\+D\+O\+NE}~0
+\item 
+\#define \hyperlink{jobs_8h_a228659160deea0a4abee765afda81df3}{P\+S\+\_\+\+R\+U\+N\+N\+I\+NG}~1
+\item 
+\#define \hyperlink{jobs_8h_aae5c0c0efd4a7288c08a1305c2fe1d37}{P\+S\+\_\+\+S\+T\+O\+P\+P\+ED}~2
+\item 
+\#define \hyperlink{jobs_8h_ad41680df7976be34f5b9285abe327247}{P\+S\+\_\+\+R\+E\+C\+Y\+C\+L\+ED}~4
+\item 
+\#define \hyperlink{jobs_8h_aa5b9f7ecd789405fb1d6c079865df027}{P\+S\+T\+O\+P\+P\+ED}(p)~(W\+I\+F\+S\+T\+O\+P\+P\+ED((p)-\/$>$status))
+\item 
+\#define \hyperlink{jobs_8h_adcdd2eca21a30b7f30b69d21a592a657}{P\+R\+U\+N\+N\+I\+NG}(p)~((p)-\/$>$running == \hyperlink{jobs_8h_a228659160deea0a4abee765afda81df3}{P\+S\+\_\+\+R\+U\+N\+N\+I\+NG})
+\item 
+\#define \hyperlink{jobs_8h_a4f29476eb81762940d28edc76520c035}{P\+A\+L\+I\+VE}(p)~(\hyperlink{jobs_8h_adcdd2eca21a30b7f30b69d21a592a657}{P\+R\+U\+N\+N\+I\+NG}(p) $\vert$$\vert$ \hyperlink{jobs_8h_aa5b9f7ecd789405fb1d6c079865df027}{P\+S\+T\+O\+P\+P\+ED}(p))
+\item 
+\#define \hyperlink{jobs_8h_aa950db8c4a3fa33f105de7e9526696f6}{P\+E\+X\+I\+T\+ED}(p)~((p)-\/$>$running == \hyperlink{jobs_8h_ab3f16fed1877b48f617e7b3e8485723d}{P\+S\+\_\+\+D\+O\+NE})
+\item 
+\#define \hyperlink{jobs_8h_a1a848e9706bd998191db511e100e5ac5}{P\+R\+E\+C\+Y\+C\+L\+ED}(p)~(0)
+\item 
+\#define \hyperlink{jobs_8h_a3ae3fe6bc7334f620a7df3727f5d393d}{P\+D\+E\+A\+D\+P\+R\+OC}(p)~(\hyperlink{jobs_8h_aa950db8c4a3fa33f105de7e9526696f6}{P\+E\+X\+I\+T\+ED}(p) $\vert$$\vert$ \hyperlink{jobs_8h_a1a848e9706bd998191db511e100e5ac5}{P\+R\+E\+C\+Y\+C\+L\+ED}(p))
+\item 
+\#define \hyperlink{jobs_8h_ac052bc6bc0d57ca2cdb004dd3fa77626}{get\+\_\+job\+\_\+by\+\_\+jid}(ind)~(\hyperlink{jobs_8h_a6cce913474372029492267b46b745d88}{jobs}\mbox{[}(ind)\mbox{]})
+\item 
+\#define \hyperlink{jobs_8h_a466620bfa4ee2d285544d9a67a8a337e}{J\+O\+B\+S\+T\+A\+TE}(\hyperlink{structjob}{job})~(\hyperlink{jobs_8h_a6cce913474372029492267b46b745d88}{jobs}\mbox{[}(\hyperlink{structjob}{job})\mbox{]}-\/$>$state)
+\item 
+\#define \hyperlink{jobs_8h_a47ab715fff51e48630c7961834d47016}{J\+\_\+\+J\+O\+B\+S\+T\+A\+TE}(j)~((j)-\/$>$state)
+\item 
+\#define \hyperlink{jobs_8h_adc39613d1152c030190012a614856c69}{S\+T\+O\+P\+P\+ED}(j)~(\hyperlink{jobs_8h_a6cce913474372029492267b46b745d88}{jobs}\mbox{[}(j)\mbox{]}-\/$>$state == \hyperlink{jobs_8h_a27f134c9d8392fc50ee339c518707f57a55fea56f3156409573084fce0c920da7}{J\+S\+T\+O\+P\+P\+ED})
+\item 
+\#define \hyperlink{jobs_8h_abb162c99100e0466ef43cf32884f29e8}{R\+U\+N\+N\+I\+NG}(j)~(\hyperlink{jobs_8h_a6cce913474372029492267b46b745d88}{jobs}\mbox{[}(j)\mbox{]}-\/$>$state == \hyperlink{jobs_8h_a27f134c9d8392fc50ee339c518707f57a1bf5a4892e9bb413f0dc598c6764541b}{J\+R\+U\+N\+N\+I\+NG})
+\item 
+\#define \hyperlink{jobs_8h_a15d782ba433bae3ec145926e26c9ea37}{D\+E\+A\+D\+J\+OB}(j)~(\hyperlink{jobs_8h_a6cce913474372029492267b46b745d88}{jobs}\mbox{[}(j)\mbox{]}-\/$>$state == \hyperlink{jobs_8h_a27f134c9d8392fc50ee339c518707f57acc7e60ddf9078b1521d1adb70bd16f8b}{J\+D\+E\+AD})
+\item 
+\#define \hyperlink{jobs_8h_adf1796b65bab65f7837caaea01cbdf93}{I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+OB}(j)~((j) $<$ 0 $\vert$$\vert$ (j) $>$= js.\+j\+\_\+jobslots $\vert$$\vert$ \hyperlink{jobs_8h_ac052bc6bc0d57ca2cdb004dd3fa77626}{get\+\_\+job\+\_\+by\+\_\+jid}(j) == 0)
+\item 
+\#define \hyperlink{jobs_8h_a76354a83b668afadd4704004a84925fc}{J\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND}~0x01 /$\ast$ Non-\/zero if this is running in the foreground.  $\ast$/
+\item 
+\#define \hyperlink{jobs_8h_ac67735d6cc995bbac83d5efe91a52125}{J\+\_\+\+N\+O\+T\+I\+F\+I\+ED}~0x02 /$\ast$ Non-\/zero if already notified about job state.   $\ast$/
+\item 
+\#define \hyperlink{jobs_8h_a025dcbff75dc6c4c7831b23de0b6fc6e}{J\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL}~0x04 /$\ast$ Non-\/zero if this job started under job control. $\ast$/
+\item 
+\#define \hyperlink{jobs_8h_aa4437cbff50585ca7c615cafd558cc8f}{J\+\_\+\+N\+O\+H\+UP}~0x08 /$\ast$ Don\textquotesingle{}t send S\+I\+G\+H\+U\+P to job if shell gets S\+I\+G\+H\+U\+P. $\ast$/
+\item 
+\#define \hyperlink{jobs_8h_a9f1e62e1165a40646cf0fa40f3769df7}{J\+\_\+\+S\+T\+A\+T\+S\+A\+V\+ED}~0x10 /$\ast$ A process in this job had had status saved via \$! $\ast$/
+\item 
+\#define \hyperlink{jobs_8h_a0a8c62c503b7b9ef17e86bf823588e38}{J\+\_\+\+A\+S\+Y\+NC}~0x20 /$\ast$ Job was started asynchronously $\ast$/
+\item 
+\#define \hyperlink{jobs_8h_ae4b20447946321b09a36e22e696ba9dd}{J\+\_\+\+P\+I\+P\+E\+F\+A\+IL}~0x40 /$\ast$ pipefail set when job was started $\ast$/
+\item 
+\#define \hyperlink{jobs_8h_ae19ce7e46f6caa8b6726dfb0d40e0a1f}{I\+S\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND}(j)~((\hyperlink{jobs_8h_a6cce913474372029492267b46b745d88}{jobs}\mbox{[}j\mbox{]}-\/$>$flags \& \hyperlink{jobs_8h_a76354a83b668afadd4704004a84925fc}{J\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND}) != 0)
+\item 
+\#define \hyperlink{jobs_8h_a264330cfc7dfcc3a68791098619b1b10}{I\+S\+\_\+\+N\+O\+T\+I\+F\+I\+ED}(j)~((\hyperlink{jobs_8h_a6cce913474372029492267b46b745d88}{jobs}\mbox{[}j\mbox{]}-\/$>$flags \& \hyperlink{jobs_8h_ac67735d6cc995bbac83d5efe91a52125}{J\+\_\+\+N\+O\+T\+I\+F\+I\+ED}) != 0)
+\item 
+\#define \hyperlink{jobs_8h_a5cf9a3ee434f914f66cdf9949084d427}{I\+S\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL}(j)~((\hyperlink{jobs_8h_a6cce913474372029492267b46b745d88}{jobs}\mbox{[}j\mbox{]}-\/$>$flags \& \hyperlink{jobs_8h_a025dcbff75dc6c4c7831b23de0b6fc6e}{J\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL}) != 0)
+\item 
+\#define \hyperlink{jobs_8h_aaedcec150705f927c2f4e566d9df07a3}{I\+S\+\_\+\+A\+S\+Y\+NC}(j)~((\hyperlink{jobs_8h_a6cce913474372029492267b46b745d88}{jobs}\mbox{[}j\mbox{]}-\/$>$flags \& \hyperlink{jobs_8h_a0a8c62c503b7b9ef17e86bf823588e38}{J\+\_\+\+A\+S\+Y\+NC}) != 0)
+\item 
+\#define \hyperlink{jobs_8h_aa0ca45454a6e8f383c4d1e490dcb6bb3}{N\+O\+\_\+\+P\+I\+D\+S\+T\+AT}~(\hyperlink{jobs_8h_a677d6488545fa3193e7cb54647b4ae5c}{ps\+\_\+index\+\_\+t})-\/1
+\item 
+\#define \hyperlink{jobs_8h_a6eba094b1ac1bc00e5883edd166bd944}{N\+O\+\_\+\+J\+OB}~-\/1	/$\ast$ An impossible \hyperlink{structjob}{job} \hyperlink{structarray}{array} index. $\ast$/
+\item 
+\#define \hyperlink{jobs_8h_a375e26dee9e99965020699df8ca41ae0}{D\+U\+P\+\_\+\+J\+OB}~-\/2	/$\ast$ A possible return value for get\+\_\+job\+\_\+spec (). $\ast$/
+\item 
+\#define \hyperlink{jobs_8h_a933dd4b3454ed6aff431b08be6e7b8cb}{B\+A\+D\+\_\+\+J\+O\+B\+S\+P\+EC}~-\/3	/$\ast$ Bad syntax for \hyperlink{structjob}{job} spec. $\ast$/
+\item 
+\#define \hyperlink{jobs_8h_ad40327c746e8ef715109d9b9257eb991}{N\+O\+\_\+\+P\+ID}~(pid\+\_\+t)-\/1
+\item 
+\#define \hyperlink{jobs_8h_ab583c287aa3595ca5d35ffb3214de135}{A\+N\+Y\+\_\+\+P\+ID}~(pid\+\_\+t)-\/1
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structprocess}{process} \hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS}
+\item 
+typedef struct \hyperlink{structjob}{job} \hyperlink{jobs_8h_a9f9c26ac1579020577aabcd357e0c98b}{J\+OB}
+\item 
+typedef pid\+\_\+t \hyperlink{jobs_8h_a677d6488545fa3193e7cb54647b4ae5c}{ps\+\_\+index\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{jobs_8h_a27f134c9d8392fc50ee339c518707f57}{J\+O\+B\+\_\+\+S\+T\+A\+TE} \{ \\*
+\hyperlink{jobs_8h_a27f134c9d8392fc50ee339c518707f57a9e9b73201f3e18ac43ec7286633f30f2}{J\+N\+O\+NE} = -\/1, 
+\hyperlink{jobs_8h_a27f134c9d8392fc50ee339c518707f57a1bf5a4892e9bb413f0dc598c6764541b}{J\+R\+U\+N\+N\+I\+NG} = 1, 
+\hyperlink{jobs_8h_a27f134c9d8392fc50ee339c518707f57a55fea56f3156409573084fce0c920da7}{J\+S\+T\+O\+P\+P\+ED} = 2, 
+\hyperlink{jobs_8h_a27f134c9d8392fc50ee339c518707f57acc7e60ddf9078b1521d1adb70bd16f8b}{J\+D\+E\+AD} = 4, 
+\\*
+\hyperlink{jobs_8h_a27f134c9d8392fc50ee339c518707f57a77b803b70a59a6ebd6fc89e6b2ec30bb}{J\+M\+I\+X\+ED} = 8
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+pid\+\_\+t \hyperlink{jobs_8h_a04629be7bde8f11cbf56e09e66a62dcc}{fork} ()
+\item 
+pid\+\_\+t \hyperlink{jobs_8h_add1dc6545057b7f1c7f91352536fb060}{getpid} ()
+\item 
+pid\+\_\+t \hyperlink{jobs_8h_a744446ac24606c182bbd911772a04ca0}{getpgrp} ()
+\item 
+void \hyperlink{jobs_8c_a52091bff84389f379c1dfae1369c019e}{making\+\_\+children} \hyperlink{jobs_8h_a54f4d259b9407c3554d3610d6ff50ae1}{\+\_\+\+\_\+P} ((void))
+\item 
+void \hyperlink{jobs_8c_a1181af998ba25683752c7cd4bdf91091}{save\+\_\+pipeline} \hyperlink{jobs_8h_a76b99c2821baee0574a94957fc7bf86c}{\+\_\+\+\_\+P} ((int))
+\item 
+int \hyperlink{nojobs_8c_a97eafecf3808cf462b54a378857155ae}{stop\+\_\+pipeline} \hyperlink{jobs_8h_aead6bb1466e1720f2f3cea7f115a6297}{\+\_\+\+\_\+P} ((int, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$))
+\item 
+int \hyperlink{jobs_8c_aefd8badf09efc12aee9dfa1cfaaef024}{discard\+\_\+pipeline} \hyperlink{jobs_8h_a1af1b088ff836e1130bfa9236df1de63}{\+\_\+\+\_\+P} ((\hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$))
+\item 
+void \hyperlink{jobs_8c_a00c2a1d6f9dcaf3f68f9f66726827b7f}{append\+\_\+process} \hyperlink{jobs_8h_a5481daa4f815a5477b3688fed4f2eff1}{\+\_\+\+\_\+P} ((char $\ast$, pid\+\_\+t, int, int))
+\item 
+void \hyperlink{jobs_8c_ae6f3e928efd8e712697fe9c5903b7610}{delete\+\_\+job} \hyperlink{jobs_8h_a34aff98b8b177fe6d9ab4d97476d5638}{\+\_\+\+\_\+P} ((int, int))
+\item 
+int \hyperlink{nojobs_8c_ae4b48a0f3e1472558c53f8f26db3ccf8}{get\+\_\+job\+\_\+by\+\_\+pid} \hyperlink{jobs_8h_a9c949d45dc2e8756dddadf7dbcb3cb57}{\+\_\+\+\_\+P} ((pid\+\_\+t, int))
+\item 
+void \hyperlink{nojobs_8c_a6e05c5efdbabb700ce1f089aa2208017}{describe\+\_\+pid} \hyperlink{jobs_8h_a9dd3972e77b69ed33ca5abdf028c3814}{\+\_\+\+\_\+P} ((pid\+\_\+t))
+\item 
+void \hyperlink{jobs_8c_ae858994fe6f851d06889c330f0372bfb}{list\+\_\+one\+\_\+job} \hyperlink{jobs_8h_a9b3ef1988264540717332131f17fb9a7}{\+\_\+\+\_\+P} ((\hyperlink{jobs_8h_a9f9c26ac1579020577aabcd357e0c98b}{J\+OB} $\ast$, int, int, int))
+\item 
+pid\+\_\+t \hyperlink{nojobs_8c_a5d849da9461b9ef900d191e67f54856c}{make\+\_\+child} \hyperlink{jobs_8h_a8351c1922497c3d401204a4e93130763}{\+\_\+\+\_\+P} ((char $\ast$, int))
+\item 
+int \hyperlink{nojobs_8c_a69ef0847d0993f8c08c1b4c79e868abc}{kill\+\_\+pid} \hyperlink{jobs_8h_aacc7d2bf5f70475a98cc914985f6ce1d}{\+\_\+\+\_\+P} ((pid\+\_\+t, int, int))
+\item 
+void \hyperlink{jobs_8c_a1864a19c6da2cb340691f1da2b942625}{save\+\_\+pgrp\+\_\+pipe} \hyperlink{jobs_8h_a7745b9b7a286fb759361571f31fb50f9}{\+\_\+\+\_\+P} ((int $\ast$, int))
+\item 
+void \hyperlink{jobs_8c_a022a1c10ded6b4071bdd8d933aa87116}{restore\+\_\+pgrp\+\_\+pipe} \hyperlink{jobs_8h_a60d3470f4baaf012ab330f070973610c}{\+\_\+\+\_\+P} ((int $\ast$))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structjobstats}{jobstats} \hyperlink{jobs_8h_afed1e71c6cd6951355514e19454fd26a}{js}
+\item 
+pid\+\_\+t \hyperlink{jobs_8h_a927de0d08067183bd327b538a1b77f73}{original\+\_\+pgrp}
+\item 
+pid\+\_\+t \hyperlink{jobs_8h_a12352dc576f1c23274468beca1ccf916}{shell\+\_\+pgrp}
+\item 
+pid\+\_\+t \hyperlink{jobs_8h_a4cf043826d84509527bdbcfbd5f68b68}{pipeline\+\_\+pgrp}
+\item 
+volatile pid\+\_\+t \hyperlink{jobs_8h_a6014bc30456423f628a211bf8007fbe0}{last\+\_\+made\+\_\+pid}
+\item 
+volatile pid\+\_\+t \hyperlink{jobs_8h_a2819d9527c8d26be39bb531290f4b597}{last\+\_\+asynchronous\+\_\+pid}
+\item 
+int \hyperlink{jobs_8h_a3887d369fc9987f2ba0c9f5b8bd6dfbc}{asynchronous\+\_\+notification}
+\item 
+int \hyperlink{jobs_8h_ab73b81916e1b9c693ec186cb41e9f4e5}{already\+\_\+making\+\_\+children}
+\item 
+int \hyperlink{jobs_8h_ad2b44c9005c5a931c29ae6588e237636}{running\+\_\+in\+\_\+background}
+\item 
+\hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$ \hyperlink{jobs_8h_a00b3fcd8506b159c50c98186435d1f13}{last\+\_\+procsub\+\_\+child}
+\item 
+\hyperlink{jobs_8h_a9f9c26ac1579020577aabcd357e0c98b}{J\+OB} $\ast$$\ast$ \hyperlink{jobs_8h_a6cce913474372029492267b46b745d88}{jobs}
+\item 
+int \hyperlink{jobs_8h_a3002cbcd4a652dec2c5cef5ff3da446f}{job\+\_\+control}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{jobs.\+h@{jobs.\+h}!A\+N\+Y\+\_\+\+P\+ID@{A\+N\+Y\+\_\+\+P\+ID}}
+\index{A\+N\+Y\+\_\+\+P\+ID@{A\+N\+Y\+\_\+\+P\+ID}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{A\+N\+Y\+\_\+\+P\+ID}{ANY_PID}}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+N\+Y\+\_\+\+P\+ID~(pid\+\_\+t)-\/1}\hypertarget{jobs_8h_ab583c287aa3595ca5d35ffb3214de135}{}\label{jobs_8h_ab583c287aa3595ca5d35ffb3214de135}
+\index{jobs.\+h@{jobs.\+h}!B\+A\+D\+\_\+\+J\+O\+B\+S\+P\+EC@{B\+A\+D\+\_\+\+J\+O\+B\+S\+P\+EC}}
+\index{B\+A\+D\+\_\+\+J\+O\+B\+S\+P\+EC@{B\+A\+D\+\_\+\+J\+O\+B\+S\+P\+EC}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{B\+A\+D\+\_\+\+J\+O\+B\+S\+P\+EC}{BAD_JOBSPEC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+D\+\_\+\+J\+O\+B\+S\+P\+EC~-\/3	/$\ast$ Bad syntax for {\bf job} spec. $\ast$/}\hypertarget{jobs_8h_a933dd4b3454ed6aff431b08be6e7b8cb}{}\label{jobs_8h_a933dd4b3454ed6aff431b08be6e7b8cb}
+\index{jobs.\+h@{jobs.\+h}!D\+E\+A\+D\+J\+OB@{D\+E\+A\+D\+J\+OB}}
+\index{D\+E\+A\+D\+J\+OB@{D\+E\+A\+D\+J\+OB}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{D\+E\+A\+D\+J\+OB}{DEADJOB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+A\+D\+J\+OB(
+\begin{DoxyParamCaption}
+\item[{}]{j}
+\end{DoxyParamCaption}
+)~({\bf jobs}\mbox{[}(j)\mbox{]}-\/$>$state == {\bf J\+D\+E\+AD})}\hypertarget{jobs_8h_a15d782ba433bae3ec145926e26c9ea37}{}\label{jobs_8h_a15d782ba433bae3ec145926e26c9ea37}
+\index{jobs.\+h@{jobs.\+h}!D\+U\+P\+\_\+\+J\+OB@{D\+U\+P\+\_\+\+J\+OB}}
+\index{D\+U\+P\+\_\+\+J\+OB@{D\+U\+P\+\_\+\+J\+OB}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{D\+U\+P\+\_\+\+J\+OB}{DUP_JOB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+U\+P\+\_\+\+J\+OB~-\/2	/$\ast$ A possible return value for get\+\_\+job\+\_\+spec (). $\ast$/}\hypertarget{jobs_8h_a375e26dee9e99965020699df8ca41ae0}{}\label{jobs_8h_a375e26dee9e99965020699df8ca41ae0}
+\index{jobs.\+h@{jobs.\+h}!F\+O\+R\+K\+S\+L\+E\+E\+P\+\_\+\+M\+AX@{F\+O\+R\+K\+S\+L\+E\+E\+P\+\_\+\+M\+AX}}
+\index{F\+O\+R\+K\+S\+L\+E\+E\+P\+\_\+\+M\+AX@{F\+O\+R\+K\+S\+L\+E\+E\+P\+\_\+\+M\+AX}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{F\+O\+R\+K\+S\+L\+E\+E\+P\+\_\+\+M\+AX}{FORKSLEEP_MAX}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+O\+R\+K\+S\+L\+E\+E\+P\+\_\+\+M\+AX~16}\hypertarget{jobs_8h_a6f659f402b7f03b2fd393f9351e3625a}{}\label{jobs_8h_a6f659f402b7f03b2fd393f9351e3625a}
+\index{jobs.\+h@{jobs.\+h}!get\+\_\+job\+\_\+by\+\_\+jid@{get\+\_\+job\+\_\+by\+\_\+jid}}
+\index{get\+\_\+job\+\_\+by\+\_\+jid@{get\+\_\+job\+\_\+by\+\_\+jid}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+job\+\_\+by\+\_\+jid}{get_job_by_jid}}]{\setlength{\rightskip}{0pt plus 5cm}\#define get\+\_\+job\+\_\+by\+\_\+jid(
+\begin{DoxyParamCaption}
+\item[{}]{ind}
+\end{DoxyParamCaption}
+)~({\bf jobs}\mbox{[}(ind)\mbox{]})}\hypertarget{jobs_8h_ac052bc6bc0d57ca2cdb004dd3fa77626}{}\label{jobs_8h_ac052bc6bc0d57ca2cdb004dd3fa77626}
+\index{jobs.\+h@{jobs.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+OB@{I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+OB}}
+\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+OB@{I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+OB}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+OB}{INVALID_JOB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+V\+A\+L\+I\+D\+\_\+\+J\+OB(
+\begin{DoxyParamCaption}
+\item[{}]{j}
+\end{DoxyParamCaption}
+)~((j) $<$ 0 $\vert$$\vert$ (j) $>$= js.\+j\+\_\+jobslots $\vert$$\vert$ {\bf get\+\_\+job\+\_\+by\+\_\+jid}(j) == 0)}\hypertarget{jobs_8h_adf1796b65bab65f7837caaea01cbdf93}{}\label{jobs_8h_adf1796b65bab65f7837caaea01cbdf93}
+\index{jobs.\+h@{jobs.\+h}!I\+S\+\_\+\+A\+S\+Y\+NC@{I\+S\+\_\+\+A\+S\+Y\+NC}}
+\index{I\+S\+\_\+\+A\+S\+Y\+NC@{I\+S\+\_\+\+A\+S\+Y\+NC}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{I\+S\+\_\+\+A\+S\+Y\+NC}{IS_ASYNC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+S\+\_\+\+A\+S\+Y\+NC(
+\begin{DoxyParamCaption}
+\item[{}]{j}
+\end{DoxyParamCaption}
+)~(({\bf jobs}\mbox{[}j\mbox{]}-\/$>$flags \& {\bf J\+\_\+\+A\+S\+Y\+NC}) != 0)}\hypertarget{jobs_8h_aaedcec150705f927c2f4e566d9df07a3}{}\label{jobs_8h_aaedcec150705f927c2f4e566d9df07a3}
+\index{jobs.\+h@{jobs.\+h}!I\+S\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND@{I\+S\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND}}
+\index{I\+S\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND@{I\+S\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{I\+S\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND}{IS_FOREGROUND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+S\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND(
+\begin{DoxyParamCaption}
+\item[{}]{j}
+\end{DoxyParamCaption}
+)~(({\bf jobs}\mbox{[}j\mbox{]}-\/$>$flags \& {\bf J\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND}) != 0)}\hypertarget{jobs_8h_ae19ce7e46f6caa8b6726dfb0d40e0a1f}{}\label{jobs_8h_ae19ce7e46f6caa8b6726dfb0d40e0a1f}
+\index{jobs.\+h@{jobs.\+h}!I\+S\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL@{I\+S\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL}}
+\index{I\+S\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL@{I\+S\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{I\+S\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL}{IS_JOBCONTROL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+S\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL(
+\begin{DoxyParamCaption}
+\item[{}]{j}
+\end{DoxyParamCaption}
+)~(({\bf jobs}\mbox{[}j\mbox{]}-\/$>$flags \& {\bf J\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL}) != 0)}\hypertarget{jobs_8h_a5cf9a3ee434f914f66cdf9949084d427}{}\label{jobs_8h_a5cf9a3ee434f914f66cdf9949084d427}
+\index{jobs.\+h@{jobs.\+h}!I\+S\+\_\+\+N\+O\+T\+I\+F\+I\+ED@{I\+S\+\_\+\+N\+O\+T\+I\+F\+I\+ED}}
+\index{I\+S\+\_\+\+N\+O\+T\+I\+F\+I\+ED@{I\+S\+\_\+\+N\+O\+T\+I\+F\+I\+ED}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{I\+S\+\_\+\+N\+O\+T\+I\+F\+I\+ED}{IS_NOTIFIED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+S\+\_\+\+N\+O\+T\+I\+F\+I\+ED(
+\begin{DoxyParamCaption}
+\item[{}]{j}
+\end{DoxyParamCaption}
+)~(({\bf jobs}\mbox{[}j\mbox{]}-\/$>$flags \& {\bf J\+\_\+\+N\+O\+T\+I\+F\+I\+ED}) != 0)}\hypertarget{jobs_8h_a264330cfc7dfcc3a68791098619b1b10}{}\label{jobs_8h_a264330cfc7dfcc3a68791098619b1b10}
+\index{jobs.\+h@{jobs.\+h}!J\+\_\+\+A\+S\+Y\+NC@{J\+\_\+\+A\+S\+Y\+NC}}
+\index{J\+\_\+\+A\+S\+Y\+NC@{J\+\_\+\+A\+S\+Y\+NC}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+\_\+\+A\+S\+Y\+NC}{J_ASYNC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+\_\+\+A\+S\+Y\+NC~0x20 /$\ast$ Job was started asynchronously $\ast$/}\hypertarget{jobs_8h_a0a8c62c503b7b9ef17e86bf823588e38}{}\label{jobs_8h_a0a8c62c503b7b9ef17e86bf823588e38}
+\index{jobs.\+h@{jobs.\+h}!J\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND@{J\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND}}
+\index{J\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND@{J\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND}{J_FOREGROUND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+\_\+\+F\+O\+R\+E\+G\+R\+O\+U\+ND~0x01 /$\ast$ Non-\/zero if this is running in the foreground.  $\ast$/}\hypertarget{jobs_8h_a76354a83b668afadd4704004a84925fc}{}\label{jobs_8h_a76354a83b668afadd4704004a84925fc}
+\index{jobs.\+h@{jobs.\+h}!J\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL@{J\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL}}
+\index{J\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL@{J\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL}{J_JOBCONTROL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+\_\+\+J\+O\+B\+C\+O\+N\+T\+R\+OL~0x04 /$\ast$ Non-\/zero if this job started under job control. $\ast$/}\hypertarget{jobs_8h_a025dcbff75dc6c4c7831b23de0b6fc6e}{}\label{jobs_8h_a025dcbff75dc6c4c7831b23de0b6fc6e}
+\index{jobs.\+h@{jobs.\+h}!J\+\_\+\+J\+O\+B\+S\+T\+A\+TE@{J\+\_\+\+J\+O\+B\+S\+T\+A\+TE}}
+\index{J\+\_\+\+J\+O\+B\+S\+T\+A\+TE@{J\+\_\+\+J\+O\+B\+S\+T\+A\+TE}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+\_\+\+J\+O\+B\+S\+T\+A\+TE}{J_JOBSTATE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+\_\+\+J\+O\+B\+S\+T\+A\+TE(
+\begin{DoxyParamCaption}
+\item[{}]{j}
+\end{DoxyParamCaption}
+)~((j)-\/$>$state)}\hypertarget{jobs_8h_a47ab715fff51e48630c7961834d47016}{}\label{jobs_8h_a47ab715fff51e48630c7961834d47016}
+\index{jobs.\+h@{jobs.\+h}!J\+\_\+\+N\+O\+H\+UP@{J\+\_\+\+N\+O\+H\+UP}}
+\index{J\+\_\+\+N\+O\+H\+UP@{J\+\_\+\+N\+O\+H\+UP}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+\_\+\+N\+O\+H\+UP}{J_NOHUP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+\_\+\+N\+O\+H\+UP~0x08 /$\ast$ Don\textquotesingle{}t send S\+I\+G\+H\+U\+P to job if shell gets S\+I\+G\+H\+U\+P. $\ast$/}\hypertarget{jobs_8h_aa4437cbff50585ca7c615cafd558cc8f}{}\label{jobs_8h_aa4437cbff50585ca7c615cafd558cc8f}
+\index{jobs.\+h@{jobs.\+h}!J\+\_\+\+N\+O\+T\+I\+F\+I\+ED@{J\+\_\+\+N\+O\+T\+I\+F\+I\+ED}}
+\index{J\+\_\+\+N\+O\+T\+I\+F\+I\+ED@{J\+\_\+\+N\+O\+T\+I\+F\+I\+ED}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+\_\+\+N\+O\+T\+I\+F\+I\+ED}{J_NOTIFIED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+\_\+\+N\+O\+T\+I\+F\+I\+ED~0x02 /$\ast$ Non-\/zero if already notified about job state.   $\ast$/}\hypertarget{jobs_8h_ac67735d6cc995bbac83d5efe91a52125}{}\label{jobs_8h_ac67735d6cc995bbac83d5efe91a52125}
+\index{jobs.\+h@{jobs.\+h}!J\+\_\+\+P\+I\+P\+E\+F\+A\+IL@{J\+\_\+\+P\+I\+P\+E\+F\+A\+IL}}
+\index{J\+\_\+\+P\+I\+P\+E\+F\+A\+IL@{J\+\_\+\+P\+I\+P\+E\+F\+A\+IL}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+\_\+\+P\+I\+P\+E\+F\+A\+IL}{J_PIPEFAIL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+\_\+\+P\+I\+P\+E\+F\+A\+IL~0x40 /$\ast$ pipefail set when job was started $\ast$/}\hypertarget{jobs_8h_ae4b20447946321b09a36e22e696ba9dd}{}\label{jobs_8h_ae4b20447946321b09a36e22e696ba9dd}
+\index{jobs.\+h@{jobs.\+h}!J\+\_\+\+S\+T\+A\+T\+S\+A\+V\+ED@{J\+\_\+\+S\+T\+A\+T\+S\+A\+V\+ED}}
+\index{J\+\_\+\+S\+T\+A\+T\+S\+A\+V\+ED@{J\+\_\+\+S\+T\+A\+T\+S\+A\+V\+ED}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+\_\+\+S\+T\+A\+T\+S\+A\+V\+ED}{J_STATSAVED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+\_\+\+S\+T\+A\+T\+S\+A\+V\+ED~0x10 /$\ast$ A process in this job had had status saved via \$! $\ast$/}\hypertarget{jobs_8h_a9f1e62e1165a40646cf0fa40f3769df7}{}\label{jobs_8h_a9f1e62e1165a40646cf0fa40f3769df7}
+\index{jobs.\+h@{jobs.\+h}!J\+L\+I\+S\+T\+\_\+\+C\+H\+A\+N\+G\+E\+D\+\_\+\+O\+N\+LY@{J\+L\+I\+S\+T\+\_\+\+C\+H\+A\+N\+G\+E\+D\+\_\+\+O\+N\+LY}}
+\index{J\+L\+I\+S\+T\+\_\+\+C\+H\+A\+N\+G\+E\+D\+\_\+\+O\+N\+LY@{J\+L\+I\+S\+T\+\_\+\+C\+H\+A\+N\+G\+E\+D\+\_\+\+O\+N\+LY}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+L\+I\+S\+T\+\_\+\+C\+H\+A\+N\+G\+E\+D\+\_\+\+O\+N\+LY}{JLIST_CHANGED_ONLY}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+L\+I\+S\+T\+\_\+\+C\+H\+A\+N\+G\+E\+D\+\_\+\+O\+N\+LY~3}\hypertarget{jobs_8h_a454150edd28e70e10e8357b1e71e7384}{}\label{jobs_8h_a454150edd28e70e10e8357b1e71e7384}
+\index{jobs.\+h@{jobs.\+h}!J\+L\+I\+S\+T\+\_\+\+L\+O\+NG@{J\+L\+I\+S\+T\+\_\+\+L\+O\+NG}}
+\index{J\+L\+I\+S\+T\+\_\+\+L\+O\+NG@{J\+L\+I\+S\+T\+\_\+\+L\+O\+NG}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+L\+I\+S\+T\+\_\+\+L\+O\+NG}{JLIST_LONG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+L\+I\+S\+T\+\_\+\+L\+O\+NG~1}\hypertarget{jobs_8h_a4ab9e8bb54284bd20a2e11476e845092}{}\label{jobs_8h_a4ab9e8bb54284bd20a2e11476e845092}
+\index{jobs.\+h@{jobs.\+h}!J\+L\+I\+S\+T\+\_\+\+N\+O\+N\+I\+N\+T\+E\+R\+A\+C\+T\+I\+VE@{J\+L\+I\+S\+T\+\_\+\+N\+O\+N\+I\+N\+T\+E\+R\+A\+C\+T\+I\+VE}}
+\index{J\+L\+I\+S\+T\+\_\+\+N\+O\+N\+I\+N\+T\+E\+R\+A\+C\+T\+I\+VE@{J\+L\+I\+S\+T\+\_\+\+N\+O\+N\+I\+N\+T\+E\+R\+A\+C\+T\+I\+VE}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+L\+I\+S\+T\+\_\+\+N\+O\+N\+I\+N\+T\+E\+R\+A\+C\+T\+I\+VE}{JLIST_NONINTERACTIVE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+L\+I\+S\+T\+\_\+\+N\+O\+N\+I\+N\+T\+E\+R\+A\+C\+T\+I\+VE~4}\hypertarget{jobs_8h_a3e32ddd300903bbc3e8a401532ff6eef}{}\label{jobs_8h_a3e32ddd300903bbc3e8a401532ff6eef}
+\index{jobs.\+h@{jobs.\+h}!J\+L\+I\+S\+T\+\_\+\+P\+I\+D\+\_\+\+O\+N\+LY@{J\+L\+I\+S\+T\+\_\+\+P\+I\+D\+\_\+\+O\+N\+LY}}
+\index{J\+L\+I\+S\+T\+\_\+\+P\+I\+D\+\_\+\+O\+N\+LY@{J\+L\+I\+S\+T\+\_\+\+P\+I\+D\+\_\+\+O\+N\+LY}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+L\+I\+S\+T\+\_\+\+P\+I\+D\+\_\+\+O\+N\+LY}{JLIST_PID_ONLY}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+L\+I\+S\+T\+\_\+\+P\+I\+D\+\_\+\+O\+N\+LY~2}\hypertarget{jobs_8h_ae56b0ceb1d7156755f08a42b776afcb0}{}\label{jobs_8h_ae56b0ceb1d7156755f08a42b776afcb0}
+\index{jobs.\+h@{jobs.\+h}!J\+L\+I\+S\+T\+\_\+\+S\+T\+A\+N\+D\+A\+RD@{J\+L\+I\+S\+T\+\_\+\+S\+T\+A\+N\+D\+A\+RD}}
+\index{J\+L\+I\+S\+T\+\_\+\+S\+T\+A\+N\+D\+A\+RD@{J\+L\+I\+S\+T\+\_\+\+S\+T\+A\+N\+D\+A\+RD}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+L\+I\+S\+T\+\_\+\+S\+T\+A\+N\+D\+A\+RD}{JLIST_STANDARD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+L\+I\+S\+T\+\_\+\+S\+T\+A\+N\+D\+A\+RD~0}\hypertarget{jobs_8h_ad9054abf38050f25ca5110797469a799}{}\label{jobs_8h_ad9054abf38050f25ca5110797469a799}
+\index{jobs.\+h@{jobs.\+h}!J\+O\+B\+S\+T\+A\+TE@{J\+O\+B\+S\+T\+A\+TE}}
+\index{J\+O\+B\+S\+T\+A\+TE@{J\+O\+B\+S\+T\+A\+TE}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+O\+B\+S\+T\+A\+TE}{JOBSTATE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+O\+B\+S\+T\+A\+TE(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf job}}
+\end{DoxyParamCaption}
+)~({\bf jobs}\mbox{[}({\bf job})\mbox{]}-\/$>$state)}\hypertarget{jobs_8h_a466620bfa4ee2d285544d9a67a8a337e}{}\label{jobs_8h_a466620bfa4ee2d285544d9a67a8a337e}
+\index{jobs.\+h@{jobs.\+h}!J\+W\+A\+I\+T\+\_\+\+F\+O\+R\+CE@{J\+W\+A\+I\+T\+\_\+\+F\+O\+R\+CE}}
+\index{J\+W\+A\+I\+T\+\_\+\+F\+O\+R\+CE@{J\+W\+A\+I\+T\+\_\+\+F\+O\+R\+CE}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+W\+A\+I\+T\+\_\+\+F\+O\+R\+CE}{JWAIT_FORCE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+W\+A\+I\+T\+\_\+\+F\+O\+R\+CE~0x02}\hypertarget{jobs_8h_a9f8ff74629b8584c7710213ea30318e9}{}\label{jobs_8h_a9f8ff74629b8584c7710213ea30318e9}
+\index{jobs.\+h@{jobs.\+h}!J\+W\+A\+I\+T\+\_\+\+P\+E\+R\+R\+OR@{J\+W\+A\+I\+T\+\_\+\+P\+E\+R\+R\+OR}}
+\index{J\+W\+A\+I\+T\+\_\+\+P\+E\+R\+R\+OR@{J\+W\+A\+I\+T\+\_\+\+P\+E\+R\+R\+OR}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+W\+A\+I\+T\+\_\+\+P\+E\+R\+R\+OR}{JWAIT_PERROR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+W\+A\+I\+T\+\_\+\+P\+E\+R\+R\+OR~0x01}\hypertarget{jobs_8h_aa236a5ea43c9e46224f27d12350def6b}{}\label{jobs_8h_aa236a5ea43c9e46224f27d12350def6b}
+\index{jobs.\+h@{jobs.\+h}!L\+O\+N\+G\+E\+S\+T\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+E\+SC@{L\+O\+N\+G\+E\+S\+T\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+E\+SC}}
+\index{L\+O\+N\+G\+E\+S\+T\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+E\+SC@{L\+O\+N\+G\+E\+S\+T\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+E\+SC}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{L\+O\+N\+G\+E\+S\+T\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+E\+SC}{LONGEST_SIGNAL_DESC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+O\+N\+G\+E\+S\+T\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+D\+E\+SC~24}\hypertarget{jobs_8h_ad71765c2220f5220fd8874558a5eddea}{}\label{jobs_8h_ad71765c2220f5220fd8874558a5eddea}
+\index{jobs.\+h@{jobs.\+h}!N\+O\+\_\+\+J\+OB@{N\+O\+\_\+\+J\+OB}}
+\index{N\+O\+\_\+\+J\+OB@{N\+O\+\_\+\+J\+OB}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{N\+O\+\_\+\+J\+OB}{NO_JOB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+O\+\_\+\+J\+OB~-\/1	/$\ast$ An impossible {\bf job} {\bf array} index. $\ast$/}\hypertarget{jobs_8h_a6eba094b1ac1bc00e5883edd166bd944}{}\label{jobs_8h_a6eba094b1ac1bc00e5883edd166bd944}
+\index{jobs.\+h@{jobs.\+h}!N\+O\+\_\+\+P\+ID@{N\+O\+\_\+\+P\+ID}}
+\index{N\+O\+\_\+\+P\+ID@{N\+O\+\_\+\+P\+ID}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{N\+O\+\_\+\+P\+ID}{NO_PID}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+O\+\_\+\+P\+ID~(pid\+\_\+t)-\/1}\hypertarget{jobs_8h_ad40327c746e8ef715109d9b9257eb991}{}\label{jobs_8h_ad40327c746e8ef715109d9b9257eb991}
+\index{jobs.\+h@{jobs.\+h}!N\+O\+\_\+\+P\+I\+D\+S\+T\+AT@{N\+O\+\_\+\+P\+I\+D\+S\+T\+AT}}
+\index{N\+O\+\_\+\+P\+I\+D\+S\+T\+AT@{N\+O\+\_\+\+P\+I\+D\+S\+T\+AT}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{N\+O\+\_\+\+P\+I\+D\+S\+T\+AT}{NO_PIDSTAT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+O\+\_\+\+P\+I\+D\+S\+T\+AT~({\bf ps\+\_\+index\+\_\+t})-\/1}\hypertarget{jobs_8h_aa0ca45454a6e8f383c4d1e490dcb6bb3}{}\label{jobs_8h_aa0ca45454a6e8f383c4d1e490dcb6bb3}
+\index{jobs.\+h@{jobs.\+h}!P\+A\+L\+I\+VE@{P\+A\+L\+I\+VE}}
+\index{P\+A\+L\+I\+VE@{P\+A\+L\+I\+VE}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{P\+A\+L\+I\+VE}{PALIVE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+L\+I\+VE(
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~({\bf P\+R\+U\+N\+N\+I\+NG}(p) $\vert$$\vert$ {\bf P\+S\+T\+O\+P\+P\+ED}(p))}\hypertarget{jobs_8h_a4f29476eb81762940d28edc76520c035}{}\label{jobs_8h_a4f29476eb81762940d28edc76520c035}
+\index{jobs.\+h@{jobs.\+h}!P\+D\+E\+A\+D\+P\+R\+OC@{P\+D\+E\+A\+D\+P\+R\+OC}}
+\index{P\+D\+E\+A\+D\+P\+R\+OC@{P\+D\+E\+A\+D\+P\+R\+OC}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{P\+D\+E\+A\+D\+P\+R\+OC}{PDEADPROC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+D\+E\+A\+D\+P\+R\+OC(
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~({\bf P\+E\+X\+I\+T\+ED}(p) $\vert$$\vert$ {\bf P\+R\+E\+C\+Y\+C\+L\+ED}(p))}\hypertarget{jobs_8h_a3ae3fe6bc7334f620a7df3727f5d393d}{}\label{jobs_8h_a3ae3fe6bc7334f620a7df3727f5d393d}
+\index{jobs.\+h@{jobs.\+h}!P\+E\+X\+I\+T\+ED@{P\+E\+X\+I\+T\+ED}}
+\index{P\+E\+X\+I\+T\+ED@{P\+E\+X\+I\+T\+ED}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{P\+E\+X\+I\+T\+ED}{PEXITED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+E\+X\+I\+T\+ED(
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~((p)-\/$>$running == {\bf P\+S\+\_\+\+D\+O\+NE})}\hypertarget{jobs_8h_aa950db8c4a3fa33f105de7e9526696f6}{}\label{jobs_8h_aa950db8c4a3fa33f105de7e9526696f6}
+\index{jobs.\+h@{jobs.\+h}!P\+R\+E\+C\+Y\+C\+L\+ED@{P\+R\+E\+C\+Y\+C\+L\+ED}}
+\index{P\+R\+E\+C\+Y\+C\+L\+ED@{P\+R\+E\+C\+Y\+C\+L\+ED}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{P\+R\+E\+C\+Y\+C\+L\+ED}{PRECYCLED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+E\+C\+Y\+C\+L\+ED(
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~(0)}\hypertarget{jobs_8h_a1a848e9706bd998191db511e100e5ac5}{}\label{jobs_8h_a1a848e9706bd998191db511e100e5ac5}
+\index{jobs.\+h@{jobs.\+h}!P\+R\+U\+N\+N\+I\+NG@{P\+R\+U\+N\+N\+I\+NG}}
+\index{P\+R\+U\+N\+N\+I\+NG@{P\+R\+U\+N\+N\+I\+NG}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{P\+R\+U\+N\+N\+I\+NG}{PRUNNING}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+U\+N\+N\+I\+NG(
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~((p)-\/$>$running == {\bf P\+S\+\_\+\+R\+U\+N\+N\+I\+NG})}\hypertarget{jobs_8h_adcdd2eca21a30b7f30b69d21a592a657}{}\label{jobs_8h_adcdd2eca21a30b7f30b69d21a592a657}
+\index{jobs.\+h@{jobs.\+h}!P\+S\+\_\+\+D\+O\+NE@{P\+S\+\_\+\+D\+O\+NE}}
+\index{P\+S\+\_\+\+D\+O\+NE@{P\+S\+\_\+\+D\+O\+NE}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+\_\+\+D\+O\+NE}{PS_DONE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+\_\+\+D\+O\+NE~0}\hypertarget{jobs_8h_ab3f16fed1877b48f617e7b3e8485723d}{}\label{jobs_8h_ab3f16fed1877b48f617e7b3e8485723d}
+\index{jobs.\+h@{jobs.\+h}!P\+S\+\_\+\+R\+E\+C\+Y\+C\+L\+ED@{P\+S\+\_\+\+R\+E\+C\+Y\+C\+L\+ED}}
+\index{P\+S\+\_\+\+R\+E\+C\+Y\+C\+L\+ED@{P\+S\+\_\+\+R\+E\+C\+Y\+C\+L\+ED}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+\_\+\+R\+E\+C\+Y\+C\+L\+ED}{PS_RECYCLED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+\_\+\+R\+E\+C\+Y\+C\+L\+ED~4}\hypertarget{jobs_8h_ad41680df7976be34f5b9285abe327247}{}\label{jobs_8h_ad41680df7976be34f5b9285abe327247}
+\index{jobs.\+h@{jobs.\+h}!P\+S\+\_\+\+R\+U\+N\+N\+I\+NG@{P\+S\+\_\+\+R\+U\+N\+N\+I\+NG}}
+\index{P\+S\+\_\+\+R\+U\+N\+N\+I\+NG@{P\+S\+\_\+\+R\+U\+N\+N\+I\+NG}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+\_\+\+R\+U\+N\+N\+I\+NG}{PS_RUNNING}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+\_\+\+R\+U\+N\+N\+I\+NG~1}\hypertarget{jobs_8h_a228659160deea0a4abee765afda81df3}{}\label{jobs_8h_a228659160deea0a4abee765afda81df3}
+\index{jobs.\+h@{jobs.\+h}!P\+S\+\_\+\+S\+T\+O\+P\+P\+ED@{P\+S\+\_\+\+S\+T\+O\+P\+P\+ED}}
+\index{P\+S\+\_\+\+S\+T\+O\+P\+P\+ED@{P\+S\+\_\+\+S\+T\+O\+P\+P\+ED}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+\_\+\+S\+T\+O\+P\+P\+ED}{PS_STOPPED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+\_\+\+S\+T\+O\+P\+P\+ED~2}\hypertarget{jobs_8h_aae5c0c0efd4a7288c08a1305c2fe1d37}{}\label{jobs_8h_aae5c0c0efd4a7288c08a1305c2fe1d37}
+\index{jobs.\+h@{jobs.\+h}!P\+S\+T\+O\+P\+P\+ED@{P\+S\+T\+O\+P\+P\+ED}}
+\index{P\+S\+T\+O\+P\+P\+ED@{P\+S\+T\+O\+P\+P\+ED}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+O\+P\+P\+ED}{PSTOPPED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+O\+P\+P\+ED(
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~(W\+I\+F\+S\+T\+O\+P\+P\+ED((p)-\/$>$status))}\hypertarget{jobs_8h_aa5b9f7ecd789405fb1d6c079865df027}{}\label{jobs_8h_aa5b9f7ecd789405fb1d6c079865df027}
+\index{jobs.\+h@{jobs.\+h}!R\+U\+N\+N\+I\+NG@{R\+U\+N\+N\+I\+NG}}
+\index{R\+U\+N\+N\+I\+NG@{R\+U\+N\+N\+I\+NG}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{R\+U\+N\+N\+I\+NG}{RUNNING}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+U\+N\+N\+I\+NG(
+\begin{DoxyParamCaption}
+\item[{}]{j}
+\end{DoxyParamCaption}
+)~({\bf jobs}\mbox{[}(j)\mbox{]}-\/$>$state == {\bf J\+R\+U\+N\+N\+I\+NG})}\hypertarget{jobs_8h_abb162c99100e0466ef43cf32884f29e8}{}\label{jobs_8h_abb162c99100e0466ef43cf32884f29e8}
+\index{jobs.\+h@{jobs.\+h}!S\+T\+O\+P\+P\+ED@{S\+T\+O\+P\+P\+ED}}
+\index{S\+T\+O\+P\+P\+ED@{S\+T\+O\+P\+P\+ED}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{S\+T\+O\+P\+P\+ED}{STOPPED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+O\+P\+P\+ED(
+\begin{DoxyParamCaption}
+\item[{}]{j}
+\end{DoxyParamCaption}
+)~({\bf jobs}\mbox{[}(j)\mbox{]}-\/$>$state == {\bf J\+S\+T\+O\+P\+P\+ED})}\hypertarget{jobs_8h_adc39613d1152c030190012a614856c69}{}\label{jobs_8h_adc39613d1152c030190012a614856c69}
+
+
+\subsection{Typedef Documentation}
+\index{jobs.\+h@{jobs.\+h}!J\+OB@{J\+OB}}
+\index{J\+OB@{J\+OB}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+OB}{JOB}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf job}  {\bf J\+OB}}\hypertarget{jobs_8h_a9f9c26ac1579020577aabcd357e0c98b}{}\label{jobs_8h_a9f9c26ac1579020577aabcd357e0c98b}
+\index{jobs.\+h@{jobs.\+h}!P\+R\+O\+C\+E\+SS@{P\+R\+O\+C\+E\+SS}}
+\index{P\+R\+O\+C\+E\+SS@{P\+R\+O\+C\+E\+SS}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{P\+R\+O\+C\+E\+SS}{PROCESS}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf process}  {\bf P\+R\+O\+C\+E\+SS}}\hypertarget{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{}\label{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}
+\index{jobs.\+h@{jobs.\+h}!ps\+\_\+index\+\_\+t@{ps\+\_\+index\+\_\+t}}
+\index{ps\+\_\+index\+\_\+t@{ps\+\_\+index\+\_\+t}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{ps\+\_\+index\+\_\+t}{ps_index_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef pid\+\_\+t {\bf ps\+\_\+index\+\_\+t}}\hypertarget{jobs_8h_a677d6488545fa3193e7cb54647b4ae5c}{}\label{jobs_8h_a677d6488545fa3193e7cb54647b4ae5c}
+
+
+\subsection{Enumeration Type Documentation}
+\index{jobs.\+h@{jobs.\+h}!J\+O\+B\+\_\+\+S\+T\+A\+TE@{J\+O\+B\+\_\+\+S\+T\+A\+TE}}
+\index{J\+O\+B\+\_\+\+S\+T\+A\+TE@{J\+O\+B\+\_\+\+S\+T\+A\+TE}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{J\+O\+B\+\_\+\+S\+T\+A\+TE}{JOB_STATE}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf J\+O\+B\+\_\+\+S\+T\+A\+TE}}\hypertarget{jobs_8h_a27f134c9d8392fc50ee339c518707f57}{}\label{jobs_8h_a27f134c9d8392fc50ee339c518707f57}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{J\+N\+O\+NE@{J\+N\+O\+NE}!jobs.\+h@{jobs.\+h}}\index{jobs.\+h@{jobs.\+h}!J\+N\+O\+NE@{J\+N\+O\+NE}}\item[{\em 
+J\+N\+O\+NE\hypertarget{jobs_8h_a27f134c9d8392fc50ee339c518707f57a9e9b73201f3e18ac43ec7286633f30f2}{}\label{jobs_8h_a27f134c9d8392fc50ee339c518707f57a9e9b73201f3e18ac43ec7286633f30f2}
+}]\index{J\+R\+U\+N\+N\+I\+NG@{J\+R\+U\+N\+N\+I\+NG}!jobs.\+h@{jobs.\+h}}\index{jobs.\+h@{jobs.\+h}!J\+R\+U\+N\+N\+I\+NG@{J\+R\+U\+N\+N\+I\+NG}}\item[{\em 
+J\+R\+U\+N\+N\+I\+NG\hypertarget{jobs_8h_a27f134c9d8392fc50ee339c518707f57a1bf5a4892e9bb413f0dc598c6764541b}{}\label{jobs_8h_a27f134c9d8392fc50ee339c518707f57a1bf5a4892e9bb413f0dc598c6764541b}
+}]\index{J\+S\+T\+O\+P\+P\+ED@{J\+S\+T\+O\+P\+P\+ED}!jobs.\+h@{jobs.\+h}}\index{jobs.\+h@{jobs.\+h}!J\+S\+T\+O\+P\+P\+ED@{J\+S\+T\+O\+P\+P\+ED}}\item[{\em 
+J\+S\+T\+O\+P\+P\+ED\hypertarget{jobs_8h_a27f134c9d8392fc50ee339c518707f57a55fea56f3156409573084fce0c920da7}{}\label{jobs_8h_a27f134c9d8392fc50ee339c518707f57a55fea56f3156409573084fce0c920da7}
+}]\index{J\+D\+E\+AD@{J\+D\+E\+AD}!jobs.\+h@{jobs.\+h}}\index{jobs.\+h@{jobs.\+h}!J\+D\+E\+AD@{J\+D\+E\+AD}}\item[{\em 
+J\+D\+E\+AD\hypertarget{jobs_8h_a27f134c9d8392fc50ee339c518707f57acc7e60ddf9078b1521d1adb70bd16f8b}{}\label{jobs_8h_a27f134c9d8392fc50ee339c518707f57acc7e60ddf9078b1521d1adb70bd16f8b}
+}]\index{J\+M\+I\+X\+ED@{J\+M\+I\+X\+ED}!jobs.\+h@{jobs.\+h}}\index{jobs.\+h@{jobs.\+h}!J\+M\+I\+X\+ED@{J\+M\+I\+X\+ED}}\item[{\em 
+J\+M\+I\+X\+ED\hypertarget{jobs_8h_a27f134c9d8392fc50ee339c518707f57a77b803b70a59a6ebd6fc89e6b2ec30bb}{}\label{jobs_8h_a27f134c9d8392fc50ee339c518707f57a77b803b70a59a6ebd6fc89e6b2ec30bb}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\index{jobs.\+h@{jobs.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf making\+\_\+children} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_a54f4d259b9407c3554d3610d6ff50ae1}{}\label{jobs_8h_a54f4d259b9407c3554d3610d6ff50ae1}
+\index{jobs.\+h@{jobs.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf save\+\_\+pipeline} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_a76b99c2821baee0574a94957fc7bf86c}{}\label{jobs_8h_a76b99c2821baee0574a94957fc7bf86c}
+\index{jobs.\+h@{jobs.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, C\+O\+M\+M\+A\+N\+D $\ast$))}{__P((int, COMMAND *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf stop\+\_\+pipeline} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, {\bf C\+O\+M\+M\+A\+ND} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_aead6bb1466e1720f2f3cea7f115a6297}{}\label{jobs_8h_aead6bb1466e1720f2f3cea7f115a6297}
+\index{jobs.\+h@{jobs.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+P\+R\+O\+C\+E\+S\+S $\ast$))}{__P((PROCESS *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf discard\+\_\+pipeline} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf P\+R\+O\+C\+E\+SS} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_a1af1b088ff836e1130bfa9236df1de63}{}\label{jobs_8h_a1af1b088ff836e1130bfa9236df1de63}
+\index{jobs.\+h@{jobs.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, pid\+\_\+t, int, int))}{__P((char *, pid_t, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf append\+\_\+process} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, pid\+\_\+t, int, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_a5481daa4f815a5477b3688fed4f2eff1}{}\label{jobs_8h_a5481daa4f815a5477b3688fed4f2eff1}
+\index{jobs.\+h@{jobs.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, int))}{__P((int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf delete\+\_\+job} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_a34aff98b8b177fe6d9ab4d97476d5638}{}\label{jobs_8h_a34aff98b8b177fe6d9ab4d97476d5638}
+\index{jobs.\+h@{jobs.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((pid\+\_\+t, int))}{__P((pid_t, int))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf get\+\_\+job\+\_\+by\+\_\+pid} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(pid\+\_\+t, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_a9c949d45dc2e8756dddadf7dbcb3cb57}{}\label{jobs_8h_a9c949d45dc2e8756dddadf7dbcb3cb57}
+\index{jobs.\+h@{jobs.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((pid\+\_\+t))}{__P((pid_t))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf describe\+\_\+pid} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(pid\+\_\+t)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_a9dd3972e77b69ed33ca5abdf028c3814}{}\label{jobs_8h_a9dd3972e77b69ed33ca5abdf028c3814}
+\index{jobs.\+h@{jobs.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+J\+O\+B $\ast$, int, int, int))}{__P((JOB *, int, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf list\+\_\+one\+\_\+job} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf J\+OB} $\ast$, int, int, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_a9b3ef1988264540717332131f17fb9a7}{}\label{jobs_8h_a9b3ef1988264540717332131f17fb9a7}
+\index{jobs.\+h@{jobs.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, int))}{__P((char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t {\bf make\+\_\+child} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_a8351c1922497c3d401204a4e93130763}{}\label{jobs_8h_a8351c1922497c3d401204a4e93130763}
+\index{jobs.\+h@{jobs.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((pid\+\_\+t, int, int))}{__P((pid_t, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf kill\+\_\+pid} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(pid\+\_\+t, int, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_aacc7d2bf5f70475a98cc914985f6ce1d}{}\label{jobs_8h_aacc7d2bf5f70475a98cc914985f6ce1d}
+\index{jobs.\+h@{jobs.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int $\ast$, int))}{__P((int *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf save\+\_\+pgrp\+\_\+pipe} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_a7745b9b7a286fb759361571f31fb50f9}{}\label{jobs_8h_a7745b9b7a286fb759361571f31fb50f9}
+\index{jobs.\+h@{jobs.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int $\ast$))}{__P((int *))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf restore\+\_\+pgrp\+\_\+pipe} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_a60d3470f4baaf012ab330f070973610c}{}\label{jobs_8h_a60d3470f4baaf012ab330f070973610c}
+\index{jobs.\+h@{jobs.\+h}!fork@{fork}}
+\index{fork@{fork}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{fork()}{fork()}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t fork (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_a04629be7bde8f11cbf56e09e66a62dcc}{}\label{jobs_8h_a04629be7bde8f11cbf56e09e66a62dcc}
+\index{jobs.\+h@{jobs.\+h}!getpgrp@{getpgrp}}
+\index{getpgrp@{getpgrp}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{getpgrp()}{getpgrp()}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t getpgrp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_a744446ac24606c182bbd911772a04ca0}{}\label{jobs_8h_a744446ac24606c182bbd911772a04ca0}
+\index{jobs.\+h@{jobs.\+h}!getpid@{getpid}}
+\index{getpid@{getpid}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{getpid()}{getpid()}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t getpid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8h_add1dc6545057b7f1c7f91352536fb060}{}\label{jobs_8h_add1dc6545057b7f1c7f91352536fb060}
+
+
+\subsection{Variable Documentation}
+\index{jobs.\+h@{jobs.\+h}!already\+\_\+making\+\_\+children@{already\+\_\+making\+\_\+children}}
+\index{already\+\_\+making\+\_\+children@{already\+\_\+making\+\_\+children}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{already\+\_\+making\+\_\+children}{already_making_children}}]{\setlength{\rightskip}{0pt plus 5cm}int already\+\_\+making\+\_\+children}\hypertarget{jobs_8h_ab73b81916e1b9c693ec186cb41e9f4e5}{}\label{jobs_8h_ab73b81916e1b9c693ec186cb41e9f4e5}
+\index{jobs.\+h@{jobs.\+h}!asynchronous\+\_\+notification@{asynchronous\+\_\+notification}}
+\index{asynchronous\+\_\+notification@{asynchronous\+\_\+notification}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{asynchronous\+\_\+notification}{asynchronous_notification}}]{\setlength{\rightskip}{0pt plus 5cm}int asynchronous\+\_\+notification}\hypertarget{jobs_8h_a3887d369fc9987f2ba0c9f5b8bd6dfbc}{}\label{jobs_8h_a3887d369fc9987f2ba0c9f5b8bd6dfbc}
+\index{jobs.\+h@{jobs.\+h}!job\+\_\+control@{job\+\_\+control}}
+\index{job\+\_\+control@{job\+\_\+control}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{job\+\_\+control}{job_control}}]{\setlength{\rightskip}{0pt plus 5cm}int job\+\_\+control}\hypertarget{jobs_8h_a3002cbcd4a652dec2c5cef5ff3da446f}{}\label{jobs_8h_a3002cbcd4a652dec2c5cef5ff3da446f}
+\index{jobs.\+h@{jobs.\+h}!jobs@{jobs}}
+\index{jobs@{jobs}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{jobs}{jobs}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf J\+OB}$\ast$$\ast$ jobs}\hypertarget{jobs_8h_a6cce913474372029492267b46b745d88}{}\label{jobs_8h_a6cce913474372029492267b46b745d88}
+\index{jobs.\+h@{jobs.\+h}!js@{js}}
+\index{js@{js}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{js}{js}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf jobstats} js}\hypertarget{jobs_8h_afed1e71c6cd6951355514e19454fd26a}{}\label{jobs_8h_afed1e71c6cd6951355514e19454fd26a}
+\index{jobs.\+h@{jobs.\+h}!last\+\_\+asynchronous\+\_\+pid@{last\+\_\+asynchronous\+\_\+pid}}
+\index{last\+\_\+asynchronous\+\_\+pid@{last\+\_\+asynchronous\+\_\+pid}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{last\+\_\+asynchronous\+\_\+pid}{last_asynchronous_pid}}]{\setlength{\rightskip}{0pt plus 5cm}volatile pid\+\_\+t last\+\_\+asynchronous\+\_\+pid}\hypertarget{jobs_8h_a2819d9527c8d26be39bb531290f4b597}{}\label{jobs_8h_a2819d9527c8d26be39bb531290f4b597}
+\index{jobs.\+h@{jobs.\+h}!last\+\_\+made\+\_\+pid@{last\+\_\+made\+\_\+pid}}
+\index{last\+\_\+made\+\_\+pid@{last\+\_\+made\+\_\+pid}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{last\+\_\+made\+\_\+pid}{last_made_pid}}]{\setlength{\rightskip}{0pt plus 5cm}volatile pid\+\_\+t last\+\_\+made\+\_\+pid}\hypertarget{jobs_8h_a6014bc30456423f628a211bf8007fbe0}{}\label{jobs_8h_a6014bc30456423f628a211bf8007fbe0}
+\index{jobs.\+h@{jobs.\+h}!last\+\_\+procsub\+\_\+child@{last\+\_\+procsub\+\_\+child}}
+\index{last\+\_\+procsub\+\_\+child@{last\+\_\+procsub\+\_\+child}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{last\+\_\+procsub\+\_\+child}{last_procsub_child}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf P\+R\+O\+C\+E\+SS}$\ast$ last\+\_\+procsub\+\_\+child}\hypertarget{jobs_8h_a00b3fcd8506b159c50c98186435d1f13}{}\label{jobs_8h_a00b3fcd8506b159c50c98186435d1f13}
+\index{jobs.\+h@{jobs.\+h}!original\+\_\+pgrp@{original\+\_\+pgrp}}
+\index{original\+\_\+pgrp@{original\+\_\+pgrp}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{original\+\_\+pgrp}{original_pgrp}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t original\+\_\+pgrp}\hypertarget{jobs_8h_a927de0d08067183bd327b538a1b77f73}{}\label{jobs_8h_a927de0d08067183bd327b538a1b77f73}
+\index{jobs.\+h@{jobs.\+h}!pipeline\+\_\+pgrp@{pipeline\+\_\+pgrp}}
+\index{pipeline\+\_\+pgrp@{pipeline\+\_\+pgrp}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{pipeline\+\_\+pgrp}{pipeline_pgrp}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t pipeline\+\_\+pgrp}\hypertarget{jobs_8h_a4cf043826d84509527bdbcfbd5f68b68}{}\label{jobs_8h_a4cf043826d84509527bdbcfbd5f68b68}
+\index{jobs.\+h@{jobs.\+h}!running\+\_\+in\+\_\+background@{running\+\_\+in\+\_\+background}}
+\index{running\+\_\+in\+\_\+background@{running\+\_\+in\+\_\+background}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{running\+\_\+in\+\_\+background}{running_in_background}}]{\setlength{\rightskip}{0pt plus 5cm}int running\+\_\+in\+\_\+background}\hypertarget{jobs_8h_ad2b44c9005c5a931c29ae6588e237636}{}\label{jobs_8h_ad2b44c9005c5a931c29ae6588e237636}
+\index{jobs.\+h@{jobs.\+h}!shell\+\_\+pgrp@{shell\+\_\+pgrp}}
+\index{shell\+\_\+pgrp@{shell\+\_\+pgrp}!jobs.\+h@{jobs.\+h}}
+\subsubsection[{\texorpdfstring{shell\+\_\+pgrp}{shell_pgrp}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t shell\+\_\+pgrp}\hypertarget{jobs_8h_a12352dc576f1c23274468beca1ccf916}{}\label{jobs_8h_a12352dc576f1c23274468beca1ccf916}

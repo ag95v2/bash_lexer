@@ -1,0 +1,32 @@
+<map id="trap.c" name="trap.c">
+<area shape="rect" id="node2" href="$config_8h.html" title="config.h" alt="" coords="512,155,580,181"/>
+<area shape="rect" id="node6" href="$bashtypes_8h.html" title="bashtypes.h" alt="" coords="99,229,193,256"/>
+<area shape="rect" id="node10" href="$bashansi_8h.html" title="bashansi.h" alt="" coords="613,155,698,181"/>
+<area shape="rect" id="node17" href="$bashintl_8h.html" title="bashintl.h" alt="" coords="157,80,236,107"/>
+<area shape="rect" id="node21" href="$trap_8h.html" title="trap.h" alt="" coords="257,155,312,181"/>
+<area shape="rect" id="node23" href="$shell_8h.html" title="shell.h" alt="" coords="1532,80,1592,107"/>
+<area shape="rect" id="node40" href="$execute__cmd_8h.html" title="execute_cmd.h" alt="" coords="2361,229,2472,256"/>
+<area shape="rect" id="node41" href="$flags_8h.html" title="flags.h" alt="" coords="2479,80,2541,107"/>
+<area shape="rect" id="node42" href="$parser_8h.html" title="parser.h" alt="" coords="1617,80,1686,107"/>
+<area shape="rect" id="node43" href="$input_8h.html" title="input.h" alt="" coords="2234,155,2295,181"/>
+<area shape="rect" id="node44" href="$jobs_8h.html" title="jobs.h" alt="" coords="964,80,1021,107"/>
+<area shape="rect" id="node45" href="$signames_8h.html" title="signames.h" alt="" coords="1867,80,1956,107"/>
+<area shape="rect" id="node46" href="$builtins_8h.html" title="builtins.h" alt="" coords="865,80,939,107"/>
+<area shape="rect" id="node50" href="$bashline_8h.html" title="bashline.h" alt="" coords="1761,80,1843,107"/>
+<area shape="rect" id="node3" href="$config-top_8h.html" title="config&#45;top.h" alt="" coords="494,229,585,256"/>
+<area shape="rect" id="node4" href="$config-bot_8h.html" title="config&#45;bot.h" alt="" coords="379,229,470,256"/>
+<area shape="rect" id="node24" href="$bashjmp_8h.html" title="bashjmp.h" alt="" coords="1759,155,1842,181"/>
+<area shape="rect" id="node25" href="$command_8h.html" title="command.h" alt="" coords="2119,155,2210,181"/>
+<area shape="rect" id="node26" href="$syntax_8h.html" title="syntax.h" alt="" coords="1442,155,1514,181"/>
+<area shape="rect" id="node27" href="$general_8h.html" title="general.h" alt="" coords="815,155,890,181"/>
+<area shape="rect" id="node28" href="$error_8h.html" title="error.h" alt="" coords="1657,229,1715,256"/>
+<area shape="rect" id="node29" href="$variables_8h.html" title="variables.h" alt="" coords="1739,229,1825,256"/>
+<area shape="rect" id="node30" href="$arrayfunc_8h.html" title="arrayfunc.h" alt="" coords="1096,155,1183,181"/>
+<area shape="rect" id="node31" href="$quit_8h.html" title="quit.h" alt="" coords="965,155,1020,181"/>
+<area shape="rect" id="node32" href="$sig_8h.html" title="sig.h" alt="" coords="1105,229,1155,256"/>
+<area shape="rect" id="node34" href="$unwind__prot_8h.html" title="unwind_prot.h" alt="" coords="1315,155,1417,181"/>
+<area shape="rect" id="node35" href="$dispose__cmd_8h.html" title="dispose_cmd.h" alt="" coords="1849,229,1960,256"/>
+<area shape="rect" id="node36" href="$make__cmd_8h.html" title="make_cmd.h" alt="" coords="1984,229,2081,256"/>
+<area shape="rect" id="node38" href="$subst_8h.html" title="subst.h" alt="" coords="2105,229,2171,256"/>
+<area shape="rect" id="node39" href="$pathnames_8h.html" title="pathnames.h" alt="" coords="1637,155,1735,181"/>
+</map>

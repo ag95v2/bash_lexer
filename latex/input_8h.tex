@@ -1,0 +1,217 @@
+\hypertarget{input_8h}{}\section{input.\+h File Reference}
+\label{input_8h}\index{input.\+h@{input.\+h}}
+{\ttfamily \#include \char`\"{}stdc.\+h\char`\"{}}\\*
+Include dependency graph for input.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=126pt]{input_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{input_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \hyperlink{unionINPUT__STREAM}{I\+N\+P\+U\+T\+\_\+\+S\+T\+R\+E\+AM}
+\item 
+struct \hyperlink{structBASH__INPUT}{B\+A\+S\+H\+\_\+\+I\+N\+P\+UT}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{input_8h_af556f200a3182cce21a4e9129ae48569}{\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int \hyperlink{input_8h_a38bf8b007a281c3c96504ad1d2614af4}{Function}()
+\item 
+typedef void \hyperlink{input_8h_a0aac0b2046ec9535d322b00cb1340ad8}{V\+Function}()
+\item 
+typedef char $\ast$ \hyperlink{input_8h_a53ba2b4130056235c7444f8266a84336}{C\+P\+Function}()
+\item 
+typedef char $\ast$$\ast$ \hyperlink{input_8h_a3ca27885669daa352cd10ed19ab8d432}{C\+P\+P\+Function}()
+\item 
+typedef int sh\+\_\+cget\+\_\+func\+\_\+t \hyperlink{input_8h_a01711994a23fc00df3f09a89854e95f4}{\+\_\+\+\_\+P}((void))
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{input_8h_a565ef8a9f2a47f27189e6a48b5dc615a}{stream\+\_\+type} \{ \\*
+\hyperlink{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aae617607e2035ffda4de2cfea81987ce0}{st\+\_\+none}, 
+\hyperlink{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aa00c39836da35c27c3e6c01b130c5c41a}{st\+\_\+stdin}, 
+\hyperlink{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aac589b003939c5a832f37cbe411e12749}{st\+\_\+stream}, 
+\hyperlink{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aa7d2caee3eaa37e0293967188e32f9bb8}{st\+\_\+string}, 
+\\*
+\hyperlink{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aa4b225614252d6ca3f2f71cb6c3d8f9ce}{st\+\_\+bstream}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{y_8tab_8c_a2d944804a7963ca820b496a2cf17a580}{initialize\+\_\+bash\+\_\+input} \hyperlink{input_8h_abbc8df0b631da1647b9230c7d7969d06}{\+\_\+\+\_\+P} ((void))
+\item 
+void \hyperlink{y_8tab_8c_a7de921093a5cda1e88ca63396c373128}{init\+\_\+yy\+\_\+io} \hyperlink{input_8h_ace8f80695dfbb0bf5fbf2f7cfb6c165d}{\+\_\+\+\_\+P} ((sh\+\_\+cget\+\_\+func\+\_\+t $\ast$, sh\+\_\+cunget\+\_\+func\+\_\+t $\ast$, enum \hyperlink{input_8h_a565ef8a9f2a47f27189e6a48b5dc615a}{stream\+\_\+type}, const char $\ast$, \hyperlink{unionINPUT__STREAM}{I\+N\+P\+U\+T\+\_\+\+S\+T\+R\+E\+AM}))
+\item 
+void \hyperlink{y_8tab_8c_a47ade238965ece8260fdf823b99b7ee2}{with\+\_\+input\+\_\+from\+\_\+string} \hyperlink{input_8h_a36e07ac7f44fa0b2666e6b67aa89325a}{\+\_\+\+\_\+P} ((char $\ast$, const char $\ast$))
+\item 
+void \hyperlink{y_8tab_8c_a1e173e69f1583139cc4473a10c518f74}{with\+\_\+input\+\_\+from\+\_\+stream} \hyperlink{input_8h_afc3a40d8c49c9c3046649054e6b288e8}{\+\_\+\+\_\+P} ((F\+I\+LE $\ast$, const char $\ast$))
+\item 
+void \hyperlink{y_8tab_8c_a051b58bff87087efbfe4a31c33f3fe87}{push\+\_\+stream} \hyperlink{input_8h_a271e8d9b60b4d08477078ff62e887643}{\+\_\+\+\_\+P} ((int))
+\item 
+int \hyperlink{y_8tab_8c_a9b6b445082e52d91c66e24fdb09ae58a}{stream\+\_\+on\+\_\+stack} \hyperlink{input_8h_a63a205908393d6361c8bb160d91852a7}{\+\_\+\+\_\+P} ((enum \hyperlink{input_8h_a565ef8a9f2a47f27189e6a48b5dc615a}{stream\+\_\+type}))
+\item 
+int \hyperlink{y_8tab_8c_acc3f0dcfc06a15c3f59cae2a83bf2fdd}{find\+\_\+reserved\+\_\+word} \hyperlink{input_8h_af2aa6f1dc48c126714f68aeb75e1bd85}{\+\_\+\+\_\+P} ((char $\ast$))
+\item 
+void \hyperlink{y_8tab_8c_a5a82f7d4631f5e302d72487fec155e1e}{execute\+\_\+variable\+\_\+command} \hyperlink{input_8h_a823fdde01fcc2b335635048fb4381830}{\+\_\+\+\_\+P} ((char $\ast$, char $\ast$))
+\item 
+void \hyperlink{y_8tab_8c_a489e794a3d27e9720f077d265f3cd4d3}{restore\+\_\+token\+\_\+state} \hyperlink{input_8h_a5d20500d94736ae69c02ea8e9d31f426}{\+\_\+\+\_\+P} ((int $\ast$))
+\item 
+int \hyperlink{input_8c_a7a89140170c68e478cf7bc10775c5c25}{getc\+\_\+with\+\_\+restart} \hyperlink{input_8h_ae7a3294b2ca381100a978acf206f3589}{\+\_\+\+\_\+P} ((F\+I\+LE $\ast$))
+\item 
+int \hyperlink{input_8c_aaca4332c00e9db614c8b65c97dbf630c}{ungetc\+\_\+with\+\_\+restart} \hyperlink{input_8h_a1679b035d930c12d62c8282ac2f78a37}{\+\_\+\+\_\+P} ((int, F\+I\+LE $\ast$))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structBASH__INPUT}{B\+A\+S\+H\+\_\+\+I\+N\+P\+UT} \hyperlink{input_8h_a6900ba43728fd33985cd78bd967b5256}{bash\+\_\+input}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{input.\+h@{input.\+h}!\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF@{\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF}}
+\index{\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF@{\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF}{_FUNCTION_DEF}}]{\setlength{\rightskip}{0pt plus 5cm}\#define \+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF}\hypertarget{input_8h_af556f200a3182cce21a4e9129ae48569}{}\label{input_8h_af556f200a3182cce21a4e9129ae48569}
+
+
+\subsection{Typedef Documentation}
+\index{input.\+h@{input.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+P}{__P}}]{\setlength{\rightskip}{0pt plus 5cm}typedef int sh\+\_\+cunget\+\_\+func\+\_\+t \+\_\+\+\_\+P((int))}\hypertarget{input_8h_a01711994a23fc00df3f09a89854e95f4}{}\label{input_8h_a01711994a23fc00df3f09a89854e95f4}
+\index{input.\+h@{input.\+h}!C\+P\+Function@{C\+P\+Function}}
+\index{C\+P\+Function@{C\+P\+Function}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{C\+P\+Function}{CPFunction}}]{\setlength{\rightskip}{0pt plus 5cm}typedef char$\ast$ C\+P\+Function()}\hypertarget{input_8h_a53ba2b4130056235c7444f8266a84336}{}\label{input_8h_a53ba2b4130056235c7444f8266a84336}
+\index{input.\+h@{input.\+h}!C\+P\+P\+Function@{C\+P\+P\+Function}}
+\index{C\+P\+P\+Function@{C\+P\+P\+Function}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{C\+P\+P\+Function}{CPPFunction}}]{\setlength{\rightskip}{0pt plus 5cm}typedef char$\ast$$\ast$ C\+P\+P\+Function()}\hypertarget{input_8h_a3ca27885669daa352cd10ed19ab8d432}{}\label{input_8h_a3ca27885669daa352cd10ed19ab8d432}
+\index{input.\+h@{input.\+h}!Function@{Function}}
+\index{Function@{Function}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{Function}{Function}}]{\setlength{\rightskip}{0pt plus 5cm}typedef int Function()}\hypertarget{input_8h_a38bf8b007a281c3c96504ad1d2614af4}{}\label{input_8h_a38bf8b007a281c3c96504ad1d2614af4}
+\index{input.\+h@{input.\+h}!V\+Function@{V\+Function}}
+\index{V\+Function@{V\+Function}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{V\+Function}{VFunction}}]{\setlength{\rightskip}{0pt plus 5cm}typedef void V\+Function()}\hypertarget{input_8h_a0aac0b2046ec9535d322b00cb1340ad8}{}\label{input_8h_a0aac0b2046ec9535d322b00cb1340ad8}
+
+
+\subsection{Enumeration Type Documentation}
+\index{input.\+h@{input.\+h}!stream\+\_\+type@{stream\+\_\+type}}
+\index{stream\+\_\+type@{stream\+\_\+type}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{stream\+\_\+type}{stream_type}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf stream\+\_\+type}}\hypertarget{input_8h_a565ef8a9f2a47f27189e6a48b5dc615a}{}\label{input_8h_a565ef8a9f2a47f27189e6a48b5dc615a}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{st\+\_\+none@{st\+\_\+none}!input.\+h@{input.\+h}}\index{input.\+h@{input.\+h}!st\+\_\+none@{st\+\_\+none}}\item[{\em 
+st\+\_\+none\hypertarget{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aae617607e2035ffda4de2cfea81987ce0}{}\label{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aae617607e2035ffda4de2cfea81987ce0}
+}]\index{st\+\_\+stdin@{st\+\_\+stdin}!input.\+h@{input.\+h}}\index{input.\+h@{input.\+h}!st\+\_\+stdin@{st\+\_\+stdin}}\item[{\em 
+st\+\_\+stdin\hypertarget{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aa00c39836da35c27c3e6c01b130c5c41a}{}\label{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aa00c39836da35c27c3e6c01b130c5c41a}
+}]\index{st\+\_\+stream@{st\+\_\+stream}!input.\+h@{input.\+h}}\index{input.\+h@{input.\+h}!st\+\_\+stream@{st\+\_\+stream}}\item[{\em 
+st\+\_\+stream\hypertarget{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aac589b003939c5a832f37cbe411e12749}{}\label{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aac589b003939c5a832f37cbe411e12749}
+}]\index{st\+\_\+string@{st\+\_\+string}!input.\+h@{input.\+h}}\index{input.\+h@{input.\+h}!st\+\_\+string@{st\+\_\+string}}\item[{\em 
+st\+\_\+string\hypertarget{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aa7d2caee3eaa37e0293967188e32f9bb8}{}\label{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aa7d2caee3eaa37e0293967188e32f9bb8}
+}]\index{st\+\_\+bstream@{st\+\_\+bstream}!input.\+h@{input.\+h}}\index{input.\+h@{input.\+h}!st\+\_\+bstream@{st\+\_\+bstream}}\item[{\em 
+st\+\_\+bstream\hypertarget{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aa4b225614252d6ca3f2f71cb6c3d8f9ce}{}\label{input_8h_a565ef8a9f2a47f27189e6a48b5dc615aa4b225614252d6ca3f2f71cb6c3d8f9ce}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\index{input.\+h@{input.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf initialize\+\_\+bash\+\_\+input} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{input_8h_abbc8df0b631da1647b9230c7d7969d06}{}\label{input_8h_abbc8df0b631da1647b9230c7d7969d06}
+\index{input.\+h@{input.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((sh\+\_\+cget\+\_\+func\+\_\+t $\ast$, sh\+\_\+cunget\+\_\+func\+\_\+t $\ast$, enum stream\+\_\+type, const char $\ast$, I\+N\+P\+U\+T\+\_\+\+S\+T\+R\+E\+A\+M))}{__P((sh_cget_func_t *, sh_cunget_func_t *, enum stream_type, const char *, INPUT_STREAM))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf init\+\_\+yy\+\_\+io} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(sh\+\_\+cget\+\_\+func\+\_\+t $\ast$, sh\+\_\+cunget\+\_\+func\+\_\+t $\ast$, enum {\bf stream\+\_\+type}, const char $\ast$, {\bf I\+N\+P\+U\+T\+\_\+\+S\+T\+R\+E\+AM})}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{input_8h_ace8f80695dfbb0bf5fbf2f7cfb6c165d}{}\label{input_8h_ace8f80695dfbb0bf5fbf2f7cfb6c165d}
+\index{input.\+h@{input.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, const char $\ast$))}{__P((char *, const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf with\+\_\+input\+\_\+from\+\_\+string} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{input_8h_a36e07ac7f44fa0b2666e6b67aa89325a}{}\label{input_8h_a36e07ac7f44fa0b2666e6b67aa89325a}
+\index{input.\+h@{input.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+F\+I\+L\+E $\ast$, const char $\ast$))}{__P((FILE *, const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf with\+\_\+input\+\_\+from\+\_\+stream} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(F\+I\+LE $\ast$, const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{input_8h_afc3a40d8c49c9c3046649054e6b288e8}{}\label{input_8h_afc3a40d8c49c9c3046649054e6b288e8}
+\index{input.\+h@{input.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf push\+\_\+stream} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{input_8h_a271e8d9b60b4d08477078ff62e887643}{}\label{input_8h_a271e8d9b60b4d08477078ff62e887643}
+\index{input.\+h@{input.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((enum stream\+\_\+type))}{__P((enum stream_type))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf stream\+\_\+on\+\_\+stack} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(enum {\bf stream\+\_\+type})}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{input_8h_a63a205908393d6361c8bb160d91852a7}{}\label{input_8h_a63a205908393d6361c8bb160d91852a7}
+\index{input.\+h@{input.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf find\+\_\+reserved\+\_\+word} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{input_8h_af2aa6f1dc48c126714f68aeb75e1bd85}{}\label{input_8h_af2aa6f1dc48c126714f68aeb75e1bd85}
+\index{input.\+h@{input.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, char $\ast$))}{__P((char *, char *))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf execute\+\_\+variable\+\_\+command} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{input_8h_a823fdde01fcc2b335635048fb4381830}{}\label{input_8h_a823fdde01fcc2b335635048fb4381830}
+\index{input.\+h@{input.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int $\ast$))}{__P((int *))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf restore\+\_\+token\+\_\+state} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{input_8h_a5d20500d94736ae69c02ea8e9d31f426}{}\label{input_8h_a5d20500d94736ae69c02ea8e9d31f426}
+\index{input.\+h@{input.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+F\+I\+L\+E $\ast$))}{__P((FILE *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf getc\+\_\+with\+\_\+restart} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(F\+I\+LE $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{input_8h_ae7a3294b2ca381100a978acf206f3589}{}\label{input_8h_ae7a3294b2ca381100a978acf206f3589}
+\index{input.\+h@{input.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, F\+I\+L\+E $\ast$))}{__P((int, FILE *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf ungetc\+\_\+with\+\_\+restart} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, F\+I\+LE $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{input_8h_a1679b035d930c12d62c8282ac2f78a37}{}\label{input_8h_a1679b035d930c12d62c8282ac2f78a37}
+
+
+\subsection{Variable Documentation}
+\index{input.\+h@{input.\+h}!bash\+\_\+input@{bash\+\_\+input}}
+\index{bash\+\_\+input@{bash\+\_\+input}!input.\+h@{input.\+h}}
+\subsubsection[{\texorpdfstring{bash\+\_\+input}{bash_input}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+A\+S\+H\+\_\+\+I\+N\+P\+UT} bash\+\_\+input}\hypertarget{input_8h_a6900ba43728fd33985cd78bd967b5256}{}\label{input_8h_a6900ba43728fd33985cd78bd967b5256}

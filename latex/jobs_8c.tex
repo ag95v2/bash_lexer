@@ -1,0 +1,2642 @@
+\hypertarget{jobs_8c}{}\section{jobs.\+c File Reference}
+\label{jobs_8c}\index{jobs.\+c@{jobs.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}trap.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}posixtime.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$sys/file.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}filecntl.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$sys/ioctl.\+h$>$}\\*
+{\ttfamily \#include $<$sys/param.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}input.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shtty.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}parser.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}jobs.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}execute\+\_\+cmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}flags.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}typemax.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/builtext.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/common.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$readline/readline.\+h$>$}\\*
+Include dependency graph for jobs.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{jobs_8c_a626cd506cc8c8753532f784d12b382e2}{D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX}~32
+\item 
+\#define \hyperlink{jobs_8c_a93df246677de7b76e2b8e743da164ba1}{M\+A\+X\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX}~32768
+\item 
+\#define \hyperlink{jobs_8c_ae73608c2e00c712414d7a3262dbe2a20}{M\+A\+X\+\_\+\+J\+O\+B\+S\+\_\+\+I\+N\+\_\+\+A\+R\+R\+AY}~4096		/$\ast$ production $\ast$/
+\item 
+\#define \hyperlink{jobs_8c_aa52b3fc7fe43cf6aba78123f474f050a}{P\+I\+D\+S\+T\+A\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ}~4096
+\item 
+\#define \hyperlink{jobs_8c_a539c77a9dfeaf7df64b89278a020702e}{B\+G\+P\+I\+D\+S\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ}~512
+\item 
+\#define \hyperlink{jobs_8c_a1782af65c1d301fe419504e0f00853b0}{D\+E\+L\+\_\+\+W\+A\+R\+N\+S\+T\+O\+P\+P\+ED}~1	/$\ast$ warn about deleting stopped \hyperlink{jobs_8h_a6cce913474372029492267b46b745d88}{jobs} $\ast$/
+\item 
+\#define \hyperlink{jobs_8c_a7144363c25cc07fb8cd621d1db3f9584}{D\+E\+L\+\_\+\+N\+O\+B\+G\+P\+ID}~2	/$\ast$ don\textquotesingle{}t add pgrp leader to \hyperlink{structbgpids}{bgpids} $\ast$/
+\item 
+\#define \hyperlink{jobs_8c_a3aa5418612f55083950f87b97f60ce33}{W\+A\+I\+T\+P\+ID}(pid,  statusp,  options)~waitpid ((pid\+\_\+t)pid, statusp, options)
+\item 
+\#define \hyperlink{jobs_8c_a0a891da39663805f56b077cf8aab2d68}{getpgid}(p)~\hyperlink{jobs_8h_a744446ac24606c182bbd911772a04ca0}{getpgrp} ()
+\item 
+\#define \hyperlink{jobs_8c_af213fd428488fc5ae5bbda14bcea275e}{R\+E\+I\+N\+S\+T\+A\+L\+L\+\_\+\+S\+I\+G\+C\+H\+L\+D\+\_\+\+H\+A\+N\+D\+L\+ER}
+\item 
+\#define \hyperlink{jobs_8c_afcc090a70f53d677b748f4b1a4b896e6}{W\+C\+O\+N\+T\+I\+N\+U\+ED}~0
+\item 
+\#define \hyperlink{jobs_8c_ae5533b3213b8e81491aa4212ac8fc602}{W\+I\+F\+C\+O\+N\+T\+I\+N\+U\+ED}(s)~(0)
+\item 
+\#define \hyperlink{jobs_8c_a47e7841cbc97ed0297e01ff639346405}{J\+O\+B\+\_\+\+S\+L\+O\+TS}~8
+\item 
+\#define \hyperlink{jobs_8c_a94c540ad458707a7ced24d74a260e1e2}{Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD}(os)~(os) = \hyperlink{jobs_8c_aa332884f0c3ecd93a329263848b7fa04}{sigchld}, \hyperlink{nojobs_8c_af553b22eef984c5245e4eae3e4a36cd5}{queue\+\_\+sigchld}++
+\item 
+\#define \hyperlink{jobs_8c_a54543fd2ec1a59443849d1dfdabdadbc}{U\+N\+Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD}(os)
+\item 
+\#define \hyperlink{jobs_8c_af35bd0de8c2181231698de03bbdd58ca}{setpgid}(pid,  pgrp)~setpgrp (pid, pgrp)
+\item 
+\#define \hyperlink{jobs_8c_a701bcb628c909e9932c9f53c133be6bf}{tcsetpgrp}(fd,  pgrp)~ioctl ((fd), T\+I\+O\+C\+S\+P\+G\+RP, \&(pgrp))
+\item 
+\#define \hyperlink{jobs_8c_a23dc422a1eed633a3a9ce331720ca21c}{input\+\_\+tty}()~(\hyperlink{nojobs_8c_ae43d281c5f91cb3d7ad00fc46971b4da}{shell\+\_\+tty} != -\/1) ? \hyperlink{nojobs_8c_ae43d281c5f91cb3d7ad00fc46971b4da}{shell\+\_\+tty} \+: fileno (stderr)
+\item 
+\#define \hyperlink{jobs_8c_a4236e83af520841a9f9b18cab6952df1}{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER}~(Sig\+Handler $\ast$)\hyperlink{nojobs_8c_a003e4bf7f3074638f24ae4e7f2d25717}{wait\+\_\+for\+\_\+background\+\_\+pids}
+\item 
+\#define \hyperlink{jobs_8c_a6b48ad51922d930d3b692dc8517627d4}{F\+I\+N\+D\+\_\+\+C\+H\+I\+LD}(pid,  child)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int sh\+\_\+job\+\_\+map\+\_\+func\+\_\+t \hyperlink{jobs_8c_abb63d6e746778abc2e5e20b0c62e4445}{\+\_\+\+\_\+P}((\hyperlink{jobs_8h_a9f9c26ac1579020577aabcd357e0c98b}{J\+OB} $\ast$, int, int, int))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{trap_8c_a16eea6a0b6ebfc715568ee23e0ae83b9}{set\+\_\+original\+\_\+signal} \hyperlink{jobs_8c_a1fbfa74b670d120e2c1bd9668688a4ed}{\+\_\+\+\_\+P} ((int, Sig\+Handler $\ast$))
+\item 
+void \hyperlink{jobs_8c_aaf7e994e6b7a6080266c91a2f8c2b0c4}{debug\+\_\+print\+\_\+pgrps} (void)
+\item 
+static \hyperlink{sig_8h_a09fccaf2f4ae9265e0535220e9447dce}{sighandler} \hyperlink{nojobs_8c_a89ced87614d7f6c88e27c96091684467}{wait\+\_\+sigint\+\_\+handler} \hyperlink{jobs_8c_ac8f357fcfaaf0f0099ef3701516807fe}{\+\_\+\+\_\+P} ((int))
+\item 
+static int \hyperlink{jobs_8c_a84e054741c4b7e3132b43efce8064090}{waitchld} \hyperlink{jobs_8c_afd6ef1d167723dbc32b9e4affddcd421}{\+\_\+\+\_\+P} ((pid\+\_\+t, int))
+\item 
+static \hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$\hyperlink{jobs_8c_a6581f40e1e7657048cbecabb416f13bb}{find\+\_\+pipeline} \hyperlink{jobs_8c_ae57855ea1c6d465dcce993cf6ed9550e}{\+\_\+\+\_\+P} ((pid\+\_\+t, int, int $\ast$))
+\item 
+static char $\ast$\hyperlink{jobs_8c_aa00dc6ac57f419e8d59ff822cc7b51ab}{current\+\_\+working\+\_\+directory} \hyperlink{jobs_8c_a3bb84275c76e7a22b6e09b0a918ce29d}{\+\_\+\+\_\+P} ((void))
+\item 
+static char $\ast$\hyperlink{jobs_8c_aa39fb0570606ccbbce86ce48dfb52a9e}{printable\+\_\+job\+\_\+status} \hyperlink{jobs_8c_ac3319df773ae20632b7f50dc759fb69a}{\+\_\+\+\_\+P} ((int, \hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$, int))
+\item 
+static \hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$\hyperlink{jobs_8c_a3a439aacb4e64d3b5ec52640311fbdcf}{find\+\_\+last\+\_\+proc} \hyperlink{jobs_8c_abd8971f8f8b92d1d7a909281a483a1ea}{\+\_\+\+\_\+P} ((int, int))
+\item 
+static int \hyperlink{jobs_8c_aafea484f3bce52ca817d92f7c7b833ed}{map\+\_\+over\+\_\+jobs} \hyperlink{jobs_8c_a103f2274e38ac75d010d62edc46438de}{\+\_\+\+\_\+P} ((sh\+\_\+job\+\_\+map\+\_\+func\+\_\+t $\ast$, int, int))
+\item 
+static int \hyperlink{jobs_8c_a63606668cb8599788b6876b0f8683418}{most\+\_\+recent\+\_\+job\+\_\+in\+\_\+state} \hyperlink{jobs_8c_a88de2a104cce4c195d2b55b6b732607d}{\+\_\+\+\_\+P} ((int, \hyperlink{jobs_8h_a27f134c9d8392fc50ee339c518707f57}{J\+O\+B\+\_\+\+S\+T\+A\+TE}))
+\item 
+static int \hyperlink{jobs_8c_a99584c8b38b45a70629677a975056374}{find\+\_\+job} \hyperlink{jobs_8c_a7157b2d7b873364b0683cdaf2f1b18a0}{\+\_\+\+\_\+P} ((pid\+\_\+t, int, \hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$$\ast$))
+\item 
+static int \hyperlink{jobs_8c_a86dc11f7ce9b7fa8cb388f1e9029ac46}{print\+\_\+job} \hyperlink{jobs_8c_ab588a0ba7b1853bfff9098827d23fcdd}{\+\_\+\+\_\+P} ((\hyperlink{jobs_8h_a9f9c26ac1579020577aabcd357e0c98b}{J\+OB} $\ast$, int, int, int))
+\item 
+static int \hyperlink{nojobs_8c_ab424b34a1f2efb697ac04e6ae1b67bd9}{process\+\_\+exit\+\_\+status} \hyperlink{jobs_8c_a8bb50d60b9d7287ae4dd13496428879b}{\+\_\+\+\_\+P} ((W\+A\+IT))
+\item 
+static void \hyperlink{jobs_8c_ac5deaaec3f7af2c959d1508e9f5f8fce}{add\+\_\+process} \hyperlink{jobs_8c_aa9b25faad89c109dedcb66cc8f45b467}{\+\_\+\+\_\+P} ((char $\ast$, pid\+\_\+t))
+\item 
+static void \hyperlink{jobs_8c_acc4f7a8abd55aaf9f35c58fe4afc0989}{print\+\_\+pipeline} \hyperlink{jobs_8c_ae414962094b7c58f304c53f90673c164}{\+\_\+\+\_\+P} ((\hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$, int, int, F\+I\+LE $\ast$))
+\item 
+static void \hyperlink{jobs_8c_af63ad360618b0a85b34755c7bc513b08}{pretty\+\_\+print\+\_\+job} \hyperlink{jobs_8c_ab835c82fee1fa33bbca3628f64796832}{\+\_\+\+\_\+P} ((int, int, F\+I\+LE $\ast$))
+\item 
+static int \hyperlink{jobs_8c_ade652681afa73d6b7c0b50697d071f83}{maybe\+\_\+give\+\_\+terminal\+\_\+to} \hyperlink{jobs_8c_a342898240681fba0eb80b526178e2f2c}{\+\_\+\+\_\+P} ((pid\+\_\+t, pid\+\_\+t, int))
+\item 
+static void \hyperlink{jobs_8c_a04a6ad6421913665c8c4d4dce4baf6c8}{pipe\+\_\+read} \hyperlink{jobs_8c_a48808e7e59f10fdc33584e3e294022ea}{\+\_\+\+\_\+P} ((int $\ast$))
+\item 
+static \hyperlink{jobs_8h_a677d6488545fa3193e7cb54647b4ae5c}{ps\+\_\+index\+\_\+t} $\ast$\hyperlink{jobs_8c_a7e0bb0533cedbd5496331c5aae1e1d60}{pshash\+\_\+getbucket} \hyperlink{jobs_8c_ae221357208222cc87cb4ef417146d43e}{\+\_\+\+\_\+P} ((pid\+\_\+t))
+\item 
+pid\+\_\+t \hyperlink{jobs_8c_a30c3edb2b02399d64b5e8eaaf7fe40e6}{tcgetpgrp} (int fd)
+\item 
+void \hyperlink{jobs_8c_a1f9d98a5ac1e452fa40b1ca93285843a}{init\+\_\+job\+\_\+stats} ()
+\item 
+static char $\ast$ \hyperlink{jobs_8c_aa00dc6ac57f419e8d59ff822cc7b51ab}{current\+\_\+working\+\_\+directory} ()
+\item 
+static char $\ast$ \hyperlink{jobs_8c_a504a46e0a88bc784f96093dc7506e6fa}{job\+\_\+working\+\_\+directory} ()
+\item 
+void \hyperlink{jobs_8c_a52091bff84389f379c1dfae1369c019e}{making\+\_\+children} ()
+\item 
+void \hyperlink{jobs_8c_a5d4feeb769d599bb634672546e5a19ff}{stop\+\_\+making\+\_\+children} ()
+\item 
+void \hyperlink{jobs_8c_aad2d2f6a2251b71cf26012d046f93d89}{cleanup\+\_\+the\+\_\+pipeline} ()
+\item 
+void \hyperlink{jobs_8c_ae076d60db4f63dd44d8093842fd79a4c}{discard\+\_\+last\+\_\+procsub\+\_\+child} ()
+\item 
+static struct \hyperlink{structpipeline__saver}{pipeline\+\_\+saver} $\ast$ \hyperlink{jobs_8c_ae8fe3d7879405c3910a34e0b8dda55bb}{alloc\+\_\+pipeline\+\_\+saver} ()
+\item 
+void \hyperlink{jobs_8c_a1181af998ba25683752c7cd4bdf91091}{save\+\_\+pipeline} (int clear)
+\item 
+\hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$ \hyperlink{jobs_8c_a19307882067f71f056dc87339565cce1}{restore\+\_\+pipeline} (int discard)
+\item 
+void \hyperlink{jobs_8c_a718ce465ffb026f4a2b67b4a6eab4761}{start\+\_\+pipeline} ()
+\item 
+int \hyperlink{jobs_8c_ad569e95d0123bab22a08e7d38a3a06e1}{stop\+\_\+pipeline} (int async, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$deferred)
+\item 
+static void \hyperlink{jobs_8c_a5e03148121047cff6dda436442ac7960}{bgp\+\_\+resize} ()
+\item 
+static \hyperlink{jobs_8h_a677d6488545fa3193e7cb54647b4ae5c}{ps\+\_\+index\+\_\+t} \hyperlink{jobs_8c_a14eab3b775a7ec5d490e506cf833dec9}{bgp\+\_\+getindex} ()
+\item 
+static \hyperlink{jobs_8h_a677d6488545fa3193e7cb54647b4ae5c}{ps\+\_\+index\+\_\+t} $\ast$ \hyperlink{jobs_8c_a7e0bb0533cedbd5496331c5aae1e1d60}{pshash\+\_\+getbucket} (pid\+\_\+t pid)
+\item 
+static struct \hyperlink{structpidstat}{pidstat} $\ast$ \hyperlink{jobs_8c_ac44d197b4771154fac5c0eefca1052f6}{bgp\+\_\+add} (pid\+\_\+t pid, int status)
+\item 
+static void \hyperlink{jobs_8c_afe405cc65c61bf8889e6147876a49c75}{pshash\+\_\+delindex} (\hyperlink{jobs_8h_a677d6488545fa3193e7cb54647b4ae5c}{ps\+\_\+index\+\_\+t} psi)
+\item 
+static int \hyperlink{jobs_8c_a1944a12e8c62f7d7a9b419a9228a89a9}{bgp\+\_\+delete} (pid\+\_\+t pid)
+\item 
+static void \hyperlink{jobs_8c_ab2aa5e9feea832a14471ef39a355c91a}{bgp\+\_\+clear} ()
+\item 
+static int \hyperlink{jobs_8c_ad9ed29155697136943ee817c237314e1}{bgp\+\_\+search} (pid\+\_\+t pid)
+\item 
+static void \hyperlink{jobs_8c_a037783844d1b44bdec0f7eef30dd6ede}{reset\+\_\+job\+\_\+indices} ()
+\item 
+static void \hyperlink{jobs_8c_a47c393729bc38de011d2422746de634c}{cleanup\+\_\+dead\+\_\+jobs} ()
+\item 
+static int \hyperlink{jobs_8c_ac3e9a0b379bd8615de3876b2e6b6754d}{processes\+\_\+in\+\_\+job} (int \hyperlink{structjob}{job})
+\item 
+static void \hyperlink{jobs_8c_a5b6e7c7a458539929974e288a59a2f38}{delete\+\_\+old\+\_\+job} (pid\+\_\+t pid)
+\item 
+static void \hyperlink{jobs_8c_a062169660044519b9a33a27f35cf6a85}{realloc\+\_\+jobs\+\_\+list} ()
+\item 
+static int \hyperlink{jobs_8c_a9d9dd03ba5aadbebe470c27eae2209da}{compact\+\_\+jobs\+\_\+list} (int flags)
+\item 
+void \hyperlink{jobs_8c_ae6f3e928efd8e712697fe9c5903b7610}{delete\+\_\+job} (int job\+\_\+index, int dflags)
+\item 
+void \hyperlink{jobs_8c_a9711d4d0e7ed711f9160dbfcf22aa75c}{nohup\+\_\+job} (int job\+\_\+index)
+\item 
+int \hyperlink{jobs_8c_aefd8badf09efc12aee9dfa1cfaaef024}{discard\+\_\+pipeline} (\hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$chain)
+\item 
+static void \hyperlink{jobs_8c_ac5deaaec3f7af2c959d1508e9f5f8fce}{add\+\_\+process} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, pid\+\_\+t pid)
+\item 
+void \hyperlink{jobs_8c_a00c2a1d6f9dcaf3f68f9f66726827b7f}{append\+\_\+process} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, pid\+\_\+t pid, int status, int jid)
+\item 
+static int \hyperlink{jobs_8c_aafea484f3bce52ca817d92f7c7b833ed}{map\+\_\+over\+\_\+jobs} (sh\+\_\+job\+\_\+map\+\_\+func\+\_\+t $\ast$func, int arg1, int arg2)
+\item 
+void \hyperlink{jobs_8c_a56a3393f655f01d7c763be6f034b57b7}{terminate\+\_\+current\+\_\+pipeline} ()
+\item 
+void \hyperlink{jobs_8c_aac172ca161ecd7a5b6baf30e9c239c65}{terminate\+\_\+stopped\+\_\+jobs} ()
+\item 
+void \hyperlink{jobs_8c_ac9399fb7055be9b3b9aeb362c96a53f7}{hangup\+\_\+all\+\_\+jobs} ()
+\item 
+void \hyperlink{jobs_8c_ac29c70bbf156a302776a486f60cb31e0}{kill\+\_\+current\+\_\+pipeline} ()
+\item 
+static \hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$ \hyperlink{jobs_8c_a6581f40e1e7657048cbecabb416f13bb}{find\+\_\+pipeline} (pid\+\_\+t pid, int alive\+\_\+only, int $\ast$jobp)
+\item 
+static \hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$ \hyperlink{jobs_8c_a16d3beacf583f9f0822f8b06b83695fe}{find\+\_\+process} (pid\+\_\+t pid, int alive\+\_\+only, int $\ast$jobp)
+\item 
+static int \hyperlink{jobs_8c_a99584c8b38b45a70629677a975056374}{find\+\_\+job} (pid\+\_\+t pid, int alive\+\_\+only, \hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$$\ast$procp)
+\item 
+int \hyperlink{jobs_8c_ae4b48a0f3e1472558c53f8f26db3ccf8}{get\+\_\+job\+\_\+by\+\_\+pid} (pid\+\_\+t pid, int block)
+\item 
+void \hyperlink{jobs_8c_a6e05c5efdbabb700ce1f089aa2208017}{describe\+\_\+pid} (pid\+\_\+t pid)
+\item 
+static char $\ast$ \hyperlink{jobs_8c_a73562e7524f0f619567b2414e0a15309}{j\+\_\+strsignal} (int s)
+\item 
+static char $\ast$ \hyperlink{jobs_8c_aa39fb0570606ccbbce86ce48dfb52a9e}{printable\+\_\+job\+\_\+status} (int j, \hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$p, int format)
+\item 
+static void \hyperlink{jobs_8c_acc4f7a8abd55aaf9f35c58fe4afc0989}{print\+\_\+pipeline} (\hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$p, int job\+\_\+index, int format, F\+I\+LE $\ast$stream)
+\item 
+static void \hyperlink{jobs_8c_af63ad360618b0a85b34755c7bc513b08}{pretty\+\_\+print\+\_\+job} (int job\+\_\+index, int format, F\+I\+LE $\ast$stream)
+\item 
+static int \hyperlink{jobs_8c_a86dc11f7ce9b7fa8cb388f1e9029ac46}{print\+\_\+job} (\hyperlink{jobs_8h_a9f9c26ac1579020577aabcd357e0c98b}{J\+OB} $\ast$\hyperlink{structjob}{job}, int format, int state, int job\+\_\+index)
+\item 
+void \hyperlink{jobs_8c_ae858994fe6f851d06889c330f0372bfb}{list\+\_\+one\+\_\+job} (\hyperlink{jobs_8h_a9f9c26ac1579020577aabcd357e0c98b}{J\+OB} $\ast$\hyperlink{structjob}{job}, int format, int ignore, int job\+\_\+index)
+\item 
+void \hyperlink{jobs_8c_a445f3a091027fd8aed287e6463e92283}{list\+\_\+stopped\+\_\+jobs} (int format)
+\item 
+void \hyperlink{jobs_8c_a85b9d5bdb58ebb4c7556f9f4350d557e}{list\+\_\+running\+\_\+jobs} (int format)
+\item 
+void \hyperlink{jobs_8c_ac165de0465f02a6ff7a7b5c705837bcf}{list\+\_\+all\+\_\+jobs} (int format)
+\item 
+pid\+\_\+t \hyperlink{jobs_8c_a5d849da9461b9ef900d191e67f54856c}{make\+\_\+child} (char $\ast$\hyperlink{structcommand}{command}, int async\+\_\+p)
+\item 
+void \hyperlink{jobs_8c_a0b224dea42fc99fc8f75137c74d10d8c}{ignore\+\_\+tty\+\_\+job\+\_\+signals} ()
+\item 
+void \hyperlink{jobs_8c_a35131fce775aec129aca6c1ea1127f97}{default\+\_\+tty\+\_\+job\+\_\+signals} ()
+\item 
+void \hyperlink{jobs_8c_a186a35817ae0f49ac740cbae8f598edb}{get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals} ()
+\item 
+int \hyperlink{jobs_8c_a37d6118360319f23c01a9a326ad32906}{get\+\_\+tty\+\_\+state} ()
+\item 
+int \hyperlink{jobs_8c_ab9dc901cdc105f8060eafdc6301fe2de}{set\+\_\+tty\+\_\+state} ()
+\item 
+static \hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$ \hyperlink{jobs_8c_a3a439aacb4e64d3b5ec52640311fbdcf}{find\+\_\+last\+\_\+proc} (int \hyperlink{structjob}{job}, int block)
+\item 
+static pid\+\_\+t \hyperlink{jobs_8c_a758086bb1f3a53e925371b718b1068ab}{find\+\_\+last\+\_\+pid} (int \hyperlink{structjob}{job}, int block)
+\item 
+int \hyperlink{jobs_8c_a637f8e438a0ea8c409d891cb8ccb523e}{wait\+\_\+for\+\_\+single\+\_\+pid} (pid\+\_\+t pid, int flags)
+\item 
+void \hyperlink{jobs_8c_a003e4bf7f3074638f24ae4e7f2d25717}{wait\+\_\+for\+\_\+background\+\_\+pids} ()
+\item 
+void \hyperlink{jobs_8c_a1ced6c7ceaf0cf2f9983aa5262dfe392}{wait\+\_\+sigint\+\_\+cleanup} ()
+\item 
+static void \hyperlink{jobs_8c_abaf052f06c9c04a236219814419b7e83}{restore\+\_\+sigint\+\_\+handler} ()
+\item 
+static \hyperlink{sig_8h_a09fccaf2f4ae9265e0535220e9447dce}{sighandler} \hyperlink{jobs_8c_a89ced87614d7f6c88e27c96091684467}{wait\+\_\+sigint\+\_\+handler} (int sig)
+\item 
+static int \hyperlink{jobs_8c_aa55261d2e8eb934ebde20d623e5e05d2}{process\+\_\+exit\+\_\+signal} (W\+A\+IT status)
+\item 
+static int \hyperlink{jobs_8c_ab424b34a1f2efb697ac04e6ae1b67bd9}{process\+\_\+exit\+\_\+status} (W\+A\+IT status)
+\item 
+static W\+A\+IT \hyperlink{jobs_8c_a98276db28c5fb03624f84aabe134de90}{job\+\_\+signal\+\_\+status} (int \hyperlink{structjob}{job})
+\item 
+static W\+A\+IT \hyperlink{jobs_8c_af88686bf38197f4c2a43031f5ddbbec8}{raw\+\_\+job\+\_\+exit\+\_\+status} (int \hyperlink{structjob}{job})
+\item 
+int \hyperlink{jobs_8c_a997643f3b98ece63e0acd25b30a1b93e}{job\+\_\+exit\+\_\+status} (int \hyperlink{structjob}{job})
+\item 
+int \hyperlink{jobs_8c_aa66bc71748a428c3e27ab8271a4459ce}{job\+\_\+exit\+\_\+signal} (int \hyperlink{structjob}{job})
+\item 
+int \hyperlink{jobs_8c_abcef62306debcbcd910ed2cbadcb43fe}{wait\+\_\+for} (pid\+\_\+t pid)
+\item 
+int \hyperlink{jobs_8c_a60c0f397651324054c4e84df569ba0c8}{wait\+\_\+for\+\_\+job} (int \hyperlink{structjob}{job}, int flags)
+\item 
+int \hyperlink{jobs_8c_a689603a452c5c1ed36b04a9b14db419d}{wait\+\_\+for\+\_\+any\+\_\+job} (int flags)
+\item 
+void \hyperlink{jobs_8c_adf243013e184887caa6995be05126873}{notify\+\_\+and\+\_\+cleanup} ()
+\item 
+void \hyperlink{jobs_8c_a8113aecd5926c83f5bec94aaded2476a}{reap\+\_\+dead\+\_\+jobs} ()
+\item 
+static int \hyperlink{jobs_8c_a63606668cb8599788b6876b0f8683418}{most\+\_\+recent\+\_\+job\+\_\+in\+\_\+state} (int \hyperlink{structjob}{job}, \hyperlink{jobs_8h_a27f134c9d8392fc50ee339c518707f57}{J\+O\+B\+\_\+\+S\+T\+A\+TE} state)
+\item 
+static int \hyperlink{jobs_8c_a65da6d0fa85ebbb91282a70c186172ee}{job\+\_\+last\+\_\+stopped} (int \hyperlink{structjob}{job})
+\item 
+static int \hyperlink{jobs_8c_a16770b5754c59e8942a2a4e577d3489b}{job\+\_\+last\+\_\+running} (int \hyperlink{structjob}{job})
+\item 
+static void \hyperlink{jobs_8c_a418c0d4ef10f2149706710f16d250882}{set\+\_\+current\+\_\+job} (int \hyperlink{structjob}{job})
+\item 
+static void \hyperlink{jobs_8c_a8461670b988ab55fb068f3546e2dbceb}{reset\+\_\+current} ()
+\item 
+static void \hyperlink{jobs_8c_a61bf5bf35899dc2c1e91cd412de1876b}{set\+\_\+job\+\_\+running} (int \hyperlink{structjob}{job})
+\item 
+int \hyperlink{jobs_8c_abf725a8b0ca073cc1140e9f1d88b0c26}{start\+\_\+job} (int \hyperlink{structjob}{job}, int foreground)
+\item 
+int \hyperlink{jobs_8c_acf4ffb95309a2a66455507a242a6ff7e}{kill\+\_\+pid} (pid\+\_\+t pid, int sig, int group)
+\item 
+static \hyperlink{sig_8h_a09fccaf2f4ae9265e0535220e9447dce}{sighandler} \hyperlink{jobs_8c_a2ff305f4a0cb3c0f7ccb33c71cc2d0d2}{sigchld\+\_\+handler} (int sig)
+\item 
+static int \hyperlink{jobs_8c_a84e054741c4b7e3132b43efce8064090}{waitchld} (pid\+\_\+t wpid, int block)
+\item 
+static int \hyperlink{jobs_8c_a5b699391d568903c90bbce6a46a744fb}{set\+\_\+job\+\_\+status\+\_\+and\+\_\+cleanup} (int \hyperlink{structjob}{job})
+\item 
+static void \hyperlink{jobs_8c_a28bc0018a01c0f1991274a6a2e6d79f4}{setjstatus} (int j)
+\item 
+void \hyperlink{jobs_8c_abdbc0219d409378ba6c6732891257457}{run\+\_\+sigchld\+\_\+trap} (int nchild)
+\item 
+static void \hyperlink{jobs_8c_a4d9c4222b40edc2f52cb70d3df978b22}{notify\+\_\+of\+\_\+job\+\_\+status} ()
+\item 
+int \hyperlink{jobs_8c_aa9447ba6eda1088457e76cc37da06b7b}{initialize\+\_\+job\+\_\+control} (int force)
+\item 
+static int \hyperlink{jobs_8c_a498a633d49209b6c93d81baf6e7e1430}{set\+\_\+new\+\_\+line\+\_\+discipline} (int tty)
+\item 
+void \hyperlink{jobs_8c_ab3bf0c468c5caa52e82aa6a68f6a3099}{initialize\+\_\+job\+\_\+signals} ()
+\item 
+static \hyperlink{sig_8h_a09fccaf2f4ae9265e0535220e9447dce}{sighandler} \hyperlink{jobs_8c_a9da7fe878f86821d72ebb991092f2a13}{sigcont\+\_\+sighandler} (int sig)
+\item 
+static \hyperlink{sig_8h_a09fccaf2f4ae9265e0535220e9447dce}{sighandler} \hyperlink{jobs_8c_aff70c2f626e4ae983bc38f0dc5a375e8}{sigstop\+\_\+sighandler} (int sig)
+\item 
+int \hyperlink{jobs_8c_a8db3c891f1a77a1b3412544323ae6eb4}{give\+\_\+terminal\+\_\+to} (pid\+\_\+t pgrp, int force)
+\item 
+static int \hyperlink{jobs_8c_ade652681afa73d6b7c0b50697d071f83}{maybe\+\_\+give\+\_\+terminal\+\_\+to} (pid\+\_\+t opgrp, pid\+\_\+t npgrp, int flags)
+\item 
+void \hyperlink{jobs_8c_ab54a0986c5e457b5d7941b97a4bdce80}{delete\+\_\+all\+\_\+jobs} (int running\+\_\+only)
+\item 
+void \hyperlink{jobs_8c_a2b7eaf2f1db72714e7e3faf6991471a2}{nohup\+\_\+all\+\_\+jobs} (int running\+\_\+only)
+\item 
+int \hyperlink{jobs_8c_adaf7a0885abd94848dabd18ba344eb66}{count\+\_\+all\+\_\+jobs} ()
+\item 
+static void \hyperlink{jobs_8c_af8ab905a192c6341c12fd82f166374a2}{mark\+\_\+all\+\_\+jobs\+\_\+as\+\_\+dead} ()
+\item 
+static void \hyperlink{jobs_8c_a17ec09b97c22e3e745e6fe463418e203}{mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified} (int force)
+\item 
+int \hyperlink{jobs_8c_ac04bd8c6bbeec0e7e6f542d3a8a9f09f}{freeze\+\_\+jobs\+\_\+list} ()
+\item 
+void \hyperlink{jobs_8c_acc347c3553987b2835c81ebaffd378d6}{unfreeze\+\_\+jobs\+\_\+list} ()
+\item 
+void \hyperlink{jobs_8c_a9c5a796b3c5e2ddcc0ea88c494e324ea}{set\+\_\+jobs\+\_\+list\+\_\+frozen} (int s)
+\item 
+int \hyperlink{jobs_8c_a95d21d57cdf01784017ec41245a7ccf2}{set\+\_\+job\+\_\+control} (int arg)
+\item 
+void \hyperlink{jobs_8c_ab9244e49349e5265eef7d020233848ae}{without\+\_\+job\+\_\+control} ()
+\item 
+void \hyperlink{jobs_8c_a923886e6daaac9b0ff0e27b137e268cc}{end\+\_\+job\+\_\+control} ()
+\item 
+void \hyperlink{jobs_8c_a2d4f082d7fb9a88caf928c7ee833156a}{restart\+\_\+job\+\_\+control} ()
+\item 
+void \hyperlink{jobs_8c_a137086a1fb1016e07d53473ef106d1f0}{set\+\_\+maxchild} (int nchild)
+\item 
+void \hyperlink{jobs_8c_a9c3599dc5b071245445a30237eefbe9c}{set\+\_\+sigchld\+\_\+handler} ()
+\item 
+static void \hyperlink{jobs_8c_a04a6ad6421913665c8c4d4dce4baf6c8}{pipe\+\_\+read} (int $\ast$pp)
+\item 
+void \hyperlink{jobs_8c_ab1b55a36ae4c02e7297ca9f1fb488163}{close\+\_\+pgrp\+\_\+pipe} ()
+\item 
+void \hyperlink{jobs_8c_a1864a19c6da2cb340691f1da2b942625}{save\+\_\+pgrp\+\_\+pipe} (int $\ast$p, int clear)
+\item 
+void \hyperlink{jobs_8c_a022a1c10ded6b4071bdd8d933aa87116}{restore\+\_\+pgrp\+\_\+pipe} (int $\ast$p)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{jobs_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno}
+\item 
+sigset\+\_\+t \hyperlink{jobs_8c_a4423f1b40bab1e30781e832c6cad1e00}{top\+\_\+level\+\_\+mask}
+\item 
+\hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$ \hyperlink{jobs_8c_a8635881c32ee192e781422e8234f603f}{subst\+\_\+assign\+\_\+varlist}
+\item 
+Sig\+Handler $\ast$$\ast$ \hyperlink{jobs_8c_a09b47218f3174e8bc8f36377308fd33a}{original\+\_\+signals}
+\item 
+static struct \hyperlink{structjobstats}{jobstats} \hyperlink{jobs_8c_a00a528c63ad265bc45f9dd8892147fd1}{zerojs} = \{ -\/1\+L, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, N\+O\+\_\+\+J\+O\+B, N\+O\+\_\+\+J\+O\+B, 0, 0 \}
+\item 
+struct \hyperlink{structjobstats}{jobstats} \hyperlink{jobs_8c_afed1e71c6cd6951355514e19454fd26a}{js} = \{ -\/1\+L, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, N\+O\+\_\+\+J\+O\+B, N\+O\+\_\+\+J\+O\+B, 0, 0 \}
+\item 
+\hyperlink{jobs_8h_a677d6488545fa3193e7cb54647b4ae5c}{ps\+\_\+index\+\_\+t} \hyperlink{jobs_8c_ad64c488ea31ee4a9aba985c9336bb0fa}{pidstat\+\_\+table} \mbox{[}\hyperlink{jobs_8c_aa52b3fc7fe43cf6aba78123f474f050a}{P\+I\+D\+S\+T\+A\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ}\mbox{]}
+\item 
+struct \hyperlink{structbgpids}{bgpids} \hyperlink{jobs_8c_a402293945126f92a09d7cc87aee212a9}{bgpids} = \{ 0, 0, 0 \}
+\item 
+\hyperlink{jobs_8h_a9f9c26ac1579020577aabcd357e0c98b}{J\+OB} $\ast$$\ast$ \hyperlink{jobs_8c_a6cce913474372029492267b46b745d88}{jobs} = (\hyperlink{jobs_8h_a9f9c26ac1579020577aabcd357e0c98b}{J\+OB} $\ast$$\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+int \hyperlink{jobs_8c_ae43d281c5f91cb3d7ad00fc46971b4da}{shell\+\_\+tty} = -\/1
+\item 
+pid\+\_\+t \hyperlink{jobs_8c_a12352dc576f1c23274468beca1ccf916}{shell\+\_\+pgrp} = \hyperlink{jobs_8h_ad40327c746e8ef715109d9b9257eb991}{N\+O\+\_\+\+P\+ID}
+\item 
+pid\+\_\+t \hyperlink{jobs_8c_aeb36f80c8f1667339f6f23318ff29b50}{terminal\+\_\+pgrp} = \hyperlink{jobs_8h_ad40327c746e8ef715109d9b9257eb991}{N\+O\+\_\+\+P\+ID}
+\item 
+pid\+\_\+t \hyperlink{jobs_8c_a927de0d08067183bd327b538a1b77f73}{original\+\_\+pgrp} = \hyperlink{jobs_8h_ad40327c746e8ef715109d9b9257eb991}{N\+O\+\_\+\+P\+ID}
+\item 
+pid\+\_\+t \hyperlink{jobs_8c_a4cf043826d84509527bdbcfbd5f68b68}{pipeline\+\_\+pgrp} = (pid\+\_\+t)0
+\item 
+int \hyperlink{jobs_8c_a336a1162cfa5f9b88291667fe2a22a09}{pgrp\+\_\+pipe} \mbox{[}2\mbox{]} = \{ -\/1, -\/1 \}
+\item 
+volatile pid\+\_\+t \hyperlink{jobs_8c_a6014bc30456423f628a211bf8007fbe0}{last\+\_\+made\+\_\+pid} = \hyperlink{jobs_8h_ad40327c746e8ef715109d9b9257eb991}{N\+O\+\_\+\+P\+ID}
+\item 
+volatile pid\+\_\+t \hyperlink{jobs_8c_a2819d9527c8d26be39bb531290f4b597}{last\+\_\+asynchronous\+\_\+pid} = \hyperlink{jobs_8h_ad40327c746e8ef715109d9b9257eb991}{N\+O\+\_\+\+P\+ID}
+\item 
+\hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$ \hyperlink{jobs_8c_a5efe88eb6aefb268d1259a51812164b2}{the\+\_\+pipeline} = (\hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+int \hyperlink{jobs_8c_a3002cbcd4a652dec2c5cef5ff3da446f}{job\+\_\+control} = 1
+\item 
+int \hyperlink{jobs_8c_ad2b44c9005c5a931c29ae6588e237636}{running\+\_\+in\+\_\+background} = 0
+\item 
+int \hyperlink{jobs_8c_ab73b81916e1b9c693ec186cb41e9f4e5}{already\+\_\+making\+\_\+children} = 0
+\item 
+int \hyperlink{jobs_8c_a27ab938bc70e7696ed8fc9e10a4834c4}{check\+\_\+window\+\_\+size} = \hyperlink{config-top_8h_a533e5612b0a36f3dde51f89fb40c87f0}{C\+H\+E\+C\+K\+W\+I\+N\+S\+I\+Z\+E\+\_\+\+D\+E\+F\+A\+U\+LT}
+\item 
+\hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$ \hyperlink{jobs_8c_a00b3fcd8506b159c50c98186435d1f13}{last\+\_\+procsub\+\_\+child} = (\hyperlink{jobs_8h_a98d7f91a8b6b7bc43192267133fe951d}{P\+R\+O\+C\+E\+SS} $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+static int $\ast$ \hyperlink{jobs_8c_a724e31722dc60d826aa8870567958eb1}{pstatuses}
+\item 
+static int \hyperlink{jobs_8c_a24dc5d70952dc004a6d23a179df6a1c1}{statsize}
+\item 
+static int \hyperlink{jobs_8c_aa332884f0c3ecd93a329263848b7fa04}{sigchld}
+\item 
+static int \hyperlink{jobs_8c_af553b22eef984c5245e4eae3e4a36cd5}{queue\+\_\+sigchld}
+\item 
+static Sig\+Handler $\ast$ \hyperlink{jobs_8c_a2117a3ea7b950d08a1de610d18291bf1}{old\+\_\+tstp}
+\item 
+static Sig\+Handler $\ast$ \hyperlink{jobs_8c_a6c44b645419b61a2eeab9833fe2abc97}{old\+\_\+ttou}
+\item 
+static Sig\+Handler $\ast$ \hyperlink{jobs_8c_a0c33b0e2f430ff18bc36dd8fa19c14d1}{old\+\_\+ttin}
+\item 
+static Sig\+Handler $\ast$ \hyperlink{jobs_8c_a2b18b8d320ae7eae035b6fdc7cf3111a}{old\+\_\+cont} = (Sig\+Handler $\ast$)S\+I\+G\+\_\+\+D\+FL
+\item 
+static struct \hyperlink{structpipeline__saver}{pipeline\+\_\+saver} $\ast$ \hyperlink{jobs_8c_a60e714219004a4142832cea6d34ebc97}{saved\+\_\+pipeline}
+\item 
+static int \hyperlink{jobs_8c_a788ff02a9abd424b3160a4315e6cdbac}{saved\+\_\+already\+\_\+making\+\_\+children}
+\item 
+static int \hyperlink{jobs_8c_a57e47a8425e68a1907ac493cd673ca41}{jobs\+\_\+list\+\_\+frozen}
+\item 
+static char \hyperlink{jobs_8c_aac5dfe821e90fd3b3f3a0c4a0d1f09a1}{retcode\+\_\+name\+\_\+buffer} \mbox{[}64\mbox{]}
+\item 
+static T\+T\+Y\+S\+T\+R\+U\+CT \hyperlink{jobs_8c_ad9fe5481268cb2aed5102ece6ef18bbb}{shell\+\_\+tty\+\_\+info}
+\item 
+static Sig\+Handler $\ast$ \hyperlink{jobs_8c_ae15b67160f6705f527ba4c23e11e64d3}{old\+\_\+sigint\+\_\+handler} = \hyperlink{nojobs_8c_a4236e83af520841a9f9b18cab6952df1}{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER}
+\item 
+static int \hyperlink{jobs_8c_acc216a9180c7ff0368811af940fe3c4f}{wait\+\_\+sigint\+\_\+received}
+\item 
+static int \hyperlink{jobs_8c_ad3281e6cc7874bc09819bc9f5afad595}{child\+\_\+caught\+\_\+sigint}
+\item 
+static int \hyperlink{jobs_8c_af3275b044b48a9ba5da272b925ba6d9e}{waiting\+\_\+for\+\_\+child}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{jobs.\+c@{jobs.\+c}!B\+G\+P\+I\+D\+S\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ@{B\+G\+P\+I\+D\+S\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ}}
+\index{B\+G\+P\+I\+D\+S\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ@{B\+G\+P\+I\+D\+S\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{B\+G\+P\+I\+D\+S\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ}{BGPIDS_TABLE_SZ}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+G\+P\+I\+D\+S\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ~512}\hypertarget{jobs_8c_a539c77a9dfeaf7df64b89278a020702e}{}\label{jobs_8c_a539c77a9dfeaf7df64b89278a020702e}
+\index{jobs.\+c@{jobs.\+c}!D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX@{D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX@{D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX}{DEFAULT_CHILD_MAX}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX~32}\hypertarget{jobs_8c_a626cd506cc8c8753532f784d12b382e2}{}\label{jobs_8c_a626cd506cc8c8753532f784d12b382e2}
+\index{jobs.\+c@{jobs.\+c}!D\+E\+L\+\_\+\+N\+O\+B\+G\+P\+ID@{D\+E\+L\+\_\+\+N\+O\+B\+G\+P\+ID}}
+\index{D\+E\+L\+\_\+\+N\+O\+B\+G\+P\+ID@{D\+E\+L\+\_\+\+N\+O\+B\+G\+P\+ID}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{D\+E\+L\+\_\+\+N\+O\+B\+G\+P\+ID}{DEL_NOBGPID}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+L\+\_\+\+N\+O\+B\+G\+P\+ID~2	/$\ast$ don\textquotesingle{}t add pgrp leader to {\bf bgpids} $\ast$/}\hypertarget{jobs_8c_a7144363c25cc07fb8cd621d1db3f9584}{}\label{jobs_8c_a7144363c25cc07fb8cd621d1db3f9584}
+\index{jobs.\+c@{jobs.\+c}!D\+E\+L\+\_\+\+W\+A\+R\+N\+S\+T\+O\+P\+P\+ED@{D\+E\+L\+\_\+\+W\+A\+R\+N\+S\+T\+O\+P\+P\+ED}}
+\index{D\+E\+L\+\_\+\+W\+A\+R\+N\+S\+T\+O\+P\+P\+ED@{D\+E\+L\+\_\+\+W\+A\+R\+N\+S\+T\+O\+P\+P\+ED}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{D\+E\+L\+\_\+\+W\+A\+R\+N\+S\+T\+O\+P\+P\+ED}{DEL_WARNSTOPPED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+L\+\_\+\+W\+A\+R\+N\+S\+T\+O\+P\+P\+ED~1	/$\ast$ warn about deleting stopped {\bf jobs} $\ast$/}\hypertarget{jobs_8c_a1782af65c1d301fe419504e0f00853b0}{}\label{jobs_8c_a1782af65c1d301fe419504e0f00853b0}
+\index{jobs.\+c@{jobs.\+c}!F\+I\+N\+D\+\_\+\+C\+H\+I\+LD@{F\+I\+N\+D\+\_\+\+C\+H\+I\+LD}}
+\index{F\+I\+N\+D\+\_\+\+C\+H\+I\+LD@{F\+I\+N\+D\+\_\+\+C\+H\+I\+LD}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{F\+I\+N\+D\+\_\+\+C\+H\+I\+LD}{FIND_CHILD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+I\+N\+D\+\_\+\+C\+H\+I\+LD(
+\begin{DoxyParamCaption}
+\item[{}]{pid, }
+\item[{}]{child}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a6b48ad51922d930d3b692dc8517627d4}{}\label{jobs_8c_a6b48ad51922d930d3b692dc8517627d4}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \(\backslash\)
+    \{ \(\backslash\)
+      child = \hyperlink{jobs_8c_a6581f40e1e7657048cbecabb416f13bb}{find\_pipeline} (pid, 0, (\textcolor{keywordtype}{int} *)\hyperlink{general_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}); \(\backslash\)
+      if (child == 0) \(\backslash\)
+    \{ \hyperlink{jobs_8c_a8db3c891f1a77a1b3412544323ae6eb4}{\(\backslash\)}
+\hyperlink{jobs_8c_a8db3c891f1a77a1b3412544323ae6eb4}{      give\_terminal\_to} (\hyperlink{jobs_8c_a12352dc576f1c23274468beca1ccf916}{shell\_pgrp}, 0); \hyperlink{sig_8h_aa9262558d91ca8060065606f36167783}{\(\backslash\)}
+\hyperlink{sig_8h_aa9262558d91ca8060065606f36167783}{      UNBLOCK\_CHILD} (oset); \hyperlink{error_8c_afaa2977599f2e816220e72d1ca5a0af9}{\(\backslash\)}
+\hyperlink{error_8c_afaa2977599f2e816220e72d1ca5a0af9}{      internal\_error} (\hyperlink{bashintl_8h_a86a239addea586602343007a370bf8ad}{\_}(\textcolor{stringliteral}{"wait\_for: No record of process %ld"}), (\textcolor{keywordtype}{long})pid); 
+      \hyperlink{jobs_8c_abaf052f06c9c04a236219814419b7e83}{\(\backslash\)}
+\hyperlink{jobs_8c_abaf052f06c9c04a236219814419b7e83}{      restore\_sigint\_handler} (); \(\backslash\)
+      return (termination\_state = 127); \(\backslash\)
+    \} \(\backslash\)
+    \} \(\backslash\)
+  while (0)
+\end{DoxyCode}
+\index{jobs.\+c@{jobs.\+c}!getpgid@{getpgid}}
+\index{getpgid@{getpgid}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{getpgid}{getpgid}}]{\setlength{\rightskip}{0pt plus 5cm}\#define getpgid(
+\begin{DoxyParamCaption}
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~{\bf getpgrp} ()}\hypertarget{jobs_8c_a0a891da39663805f56b077cf8aab2d68}{}\label{jobs_8c_a0a891da39663805f56b077cf8aab2d68}
+\index{jobs.\+c@{jobs.\+c}!input\+\_\+tty@{input\+\_\+tty}}
+\index{input\+\_\+tty@{input\+\_\+tty}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{input\+\_\+tty}{input_tty}}]{\setlength{\rightskip}{0pt plus 5cm}\#define input\+\_\+tty(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~({\bf shell\+\_\+tty} != -\/1) ? {\bf shell\+\_\+tty} \+: fileno (stderr)}\hypertarget{jobs_8c_a23dc422a1eed633a3a9ce331720ca21c}{}\label{jobs_8c_a23dc422a1eed633a3a9ce331720ca21c}
+\index{jobs.\+c@{jobs.\+c}!I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER@{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER}}
+\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER@{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER}{INVALID_SIGNAL_HANDLER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER~(Sig\+Handler $\ast$){\bf wait\+\_\+for\+\_\+background\+\_\+pids}}\hypertarget{jobs_8c_a4236e83af520841a9f9b18cab6952df1}{}\label{jobs_8c_a4236e83af520841a9f9b18cab6952df1}
+\index{jobs.\+c@{jobs.\+c}!J\+O\+B\+\_\+\+S\+L\+O\+TS@{J\+O\+B\+\_\+\+S\+L\+O\+TS}}
+\index{J\+O\+B\+\_\+\+S\+L\+O\+TS@{J\+O\+B\+\_\+\+S\+L\+O\+TS}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{J\+O\+B\+\_\+\+S\+L\+O\+TS}{JOB_SLOTS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\+O\+B\+\_\+\+S\+L\+O\+TS~8}\hypertarget{jobs_8c_a47e7841cbc97ed0297e01ff639346405}{}\label{jobs_8c_a47e7841cbc97ed0297e01ff639346405}
+\index{jobs.\+c@{jobs.\+c}!M\+A\+X\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX@{M\+A\+X\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX}}
+\index{M\+A\+X\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX@{M\+A\+X\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+X\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX}{MAX_CHILD_MAX}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX~32768}\hypertarget{jobs_8c_a93df246677de7b76e2b8e743da164ba1}{}\label{jobs_8c_a93df246677de7b76e2b8e743da164ba1}
+\index{jobs.\+c@{jobs.\+c}!M\+A\+X\+\_\+\+J\+O\+B\+S\+\_\+\+I\+N\+\_\+\+A\+R\+R\+AY@{M\+A\+X\+\_\+\+J\+O\+B\+S\+\_\+\+I\+N\+\_\+\+A\+R\+R\+AY}}
+\index{M\+A\+X\+\_\+\+J\+O\+B\+S\+\_\+\+I\+N\+\_\+\+A\+R\+R\+AY@{M\+A\+X\+\_\+\+J\+O\+B\+S\+\_\+\+I\+N\+\_\+\+A\+R\+R\+AY}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+X\+\_\+\+J\+O\+B\+S\+\_\+\+I\+N\+\_\+\+A\+R\+R\+AY}{MAX_JOBS_IN_ARRAY}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+J\+O\+B\+S\+\_\+\+I\+N\+\_\+\+A\+R\+R\+AY~4096		/$\ast$ production $\ast$/}\hypertarget{jobs_8c_ae73608c2e00c712414d7a3262dbe2a20}{}\label{jobs_8c_ae73608c2e00c712414d7a3262dbe2a20}
+\index{jobs.\+c@{jobs.\+c}!P\+I\+D\+S\+T\+A\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ@{P\+I\+D\+S\+T\+A\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ}}
+\index{P\+I\+D\+S\+T\+A\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ@{P\+I\+D\+S\+T\+A\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{P\+I\+D\+S\+T\+A\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ}{PIDSTAT_TABLE_SZ}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+I\+D\+S\+T\+A\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ~4096}\hypertarget{jobs_8c_aa52b3fc7fe43cf6aba78123f474f050a}{}\label{jobs_8c_aa52b3fc7fe43cf6aba78123f474f050a}
+\index{jobs.\+c@{jobs.\+c}!Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD@{Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD}}
+\index{Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD@{Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD}{QUEUE_SIGCHLD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD(
+\begin{DoxyParamCaption}
+\item[{}]{os}
+\end{DoxyParamCaption}
+)~(os) = {\bf sigchld}, {\bf queue\+\_\+sigchld}++}\hypertarget{jobs_8c_a94c540ad458707a7ced24d74a260e1e2}{}\label{jobs_8c_a94c540ad458707a7ced24d74a260e1e2}
+\index{jobs.\+c@{jobs.\+c}!R\+E\+I\+N\+S\+T\+A\+L\+L\+\_\+\+S\+I\+G\+C\+H\+L\+D\+\_\+\+H\+A\+N\+D\+L\+ER@{R\+E\+I\+N\+S\+T\+A\+L\+L\+\_\+\+S\+I\+G\+C\+H\+L\+D\+\_\+\+H\+A\+N\+D\+L\+ER}}
+\index{R\+E\+I\+N\+S\+T\+A\+L\+L\+\_\+\+S\+I\+G\+C\+H\+L\+D\+\_\+\+H\+A\+N\+D\+L\+ER@{R\+E\+I\+N\+S\+T\+A\+L\+L\+\_\+\+S\+I\+G\+C\+H\+L\+D\+\_\+\+H\+A\+N\+D\+L\+ER}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{R\+E\+I\+N\+S\+T\+A\+L\+L\+\_\+\+S\+I\+G\+C\+H\+L\+D\+\_\+\+H\+A\+N\+D\+L\+ER}{REINSTALL_SIGCHLD_HANDLER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+I\+N\+S\+T\+A\+L\+L\+\_\+\+S\+I\+G\+C\+H\+L\+D\+\_\+\+H\+A\+N\+D\+L\+ER}\hypertarget{jobs_8c_af213fd428488fc5ae5bbda14bcea275e}{}\label{jobs_8c_af213fd428488fc5ae5bbda14bcea275e}
+\index{jobs.\+c@{jobs.\+c}!setpgid@{setpgid}}
+\index{setpgid@{setpgid}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{setpgid}{setpgid}}]{\setlength{\rightskip}{0pt plus 5cm}\#define setpgid(
+\begin{DoxyParamCaption}
+\item[{}]{pid, }
+\item[{}]{pgrp}
+\end{DoxyParamCaption}
+)~setpgrp (pid, pgrp)}\hypertarget{jobs_8c_af35bd0de8c2181231698de03bbdd58ca}{}\label{jobs_8c_af35bd0de8c2181231698de03bbdd58ca}
+\index{jobs.\+c@{jobs.\+c}!tcsetpgrp@{tcsetpgrp}}
+\index{tcsetpgrp@{tcsetpgrp}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{tcsetpgrp}{tcsetpgrp}}]{\setlength{\rightskip}{0pt plus 5cm}\#define tcsetpgrp(
+\begin{DoxyParamCaption}
+\item[{}]{fd, }
+\item[{}]{pgrp}
+\end{DoxyParamCaption}
+)~ioctl ((fd), T\+I\+O\+C\+S\+P\+G\+RP, \&(pgrp))}\hypertarget{jobs_8c_a701bcb628c909e9932c9f53c133be6bf}{}\label{jobs_8c_a701bcb628c909e9932c9f53c133be6bf}
+\index{jobs.\+c@{jobs.\+c}!U\+N\+Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD@{U\+N\+Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD}}
+\index{U\+N\+Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD@{U\+N\+Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{U\+N\+Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD}{UNQUEUE_SIGCHLD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+N\+Q\+U\+E\+U\+E\+\_\+\+S\+I\+G\+C\+H\+LD(
+\begin{DoxyParamCaption}
+\item[{}]{os}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a54543fd2ec1a59443849d1dfdabdadbc}{}\label{jobs_8c_a54543fd2ec1a59443849d1dfdabdadbc}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \hyperlink{jobs_8c_af553b22eef984c5245e4eae3e4a36cd5}{\(\backslash\)}
+\hyperlink{jobs_8c_af553b22eef984c5245e4eae3e4a36cd5}{      queue\_sigchld}--; \(\backslash\)
+      if (\hyperlink{jobs_8c_af553b22eef984c5245e4eae3e4a36cd5}{queue\_sigchld} == 0 && os != \hyperlink{jobs_8c_aa332884f0c3ecd93a329263848b7fa04}{sigchld}) \hyperlink{jobs_8c_a84e054741c4b7e3132b43efce8064090}{\(\backslash\)}
+\hyperlink{jobs_8c_a84e054741c4b7e3132b43efce8064090}{        waitchld} (-1, 0); \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\index{jobs.\+c@{jobs.\+c}!W\+A\+I\+T\+P\+ID@{W\+A\+I\+T\+P\+ID}}
+\index{W\+A\+I\+T\+P\+ID@{W\+A\+I\+T\+P\+ID}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{W\+A\+I\+T\+P\+ID}{WAITPID}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+A\+I\+T\+P\+ID(
+\begin{DoxyParamCaption}
+\item[{}]{pid, }
+\item[{}]{statusp, }
+\item[{}]{options}
+\end{DoxyParamCaption}
+)~waitpid ((pid\+\_\+t)pid, statusp, options)}\hypertarget{jobs_8c_a3aa5418612f55083950f87b97f60ce33}{}\label{jobs_8c_a3aa5418612f55083950f87b97f60ce33}
+\index{jobs.\+c@{jobs.\+c}!W\+C\+O\+N\+T\+I\+N\+U\+ED@{W\+C\+O\+N\+T\+I\+N\+U\+ED}}
+\index{W\+C\+O\+N\+T\+I\+N\+U\+ED@{W\+C\+O\+N\+T\+I\+N\+U\+ED}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{W\+C\+O\+N\+T\+I\+N\+U\+ED}{WCONTINUED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+C\+O\+N\+T\+I\+N\+U\+ED~0}\hypertarget{jobs_8c_afcc090a70f53d677b748f4b1a4b896e6}{}\label{jobs_8c_afcc090a70f53d677b748f4b1a4b896e6}
+\index{jobs.\+c@{jobs.\+c}!W\+I\+F\+C\+O\+N\+T\+I\+N\+U\+ED@{W\+I\+F\+C\+O\+N\+T\+I\+N\+U\+ED}}
+\index{W\+I\+F\+C\+O\+N\+T\+I\+N\+U\+ED@{W\+I\+F\+C\+O\+N\+T\+I\+N\+U\+ED}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{W\+I\+F\+C\+O\+N\+T\+I\+N\+U\+ED}{WIFCONTINUED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+I\+F\+C\+O\+N\+T\+I\+N\+U\+ED(
+\begin{DoxyParamCaption}
+\item[{}]{s}
+\end{DoxyParamCaption}
+)~(0)}\hypertarget{jobs_8c_ae5533b3213b8e81491aa4212ac8fc602}{}\label{jobs_8c_ae5533b3213b8e81491aa4212ac8fc602}
+
+
+\subsection{Typedef Documentation}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+P}{__P}}]{\setlength{\rightskip}{0pt plus 5cm}typedef int sh\+\_\+job\+\_\+map\+\_\+func\+\_\+t \+\_\+\+\_\+P(({\bf J\+OB} $\ast$, int, int, int))}\hypertarget{jobs_8c_abb63d6e746778abc2e5e20b0c62e4445}{}\label{jobs_8c_abb63d6e746778abc2e5e20b0c62e4445}
+
+
+\subsection{Function Documentation}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, Sig\+Handler $\ast$))}{__P((int, SigHandler *))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf set\+\_\+original\+\_\+signal} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, Sig\+Handler $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a1fbfa74b670d120e2c1bd9668688a4ed}{}\label{jobs_8c_a1fbfa74b670d120e2c1bd9668688a4ed}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf sighandler} {\bf wait\+\_\+sigint\+\_\+handler} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ac8f357fcfaaf0f0099ef3701516807fe}{}\label{jobs_8c_ac8f357fcfaaf0f0099ef3701516807fe}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((pid\+\_\+t, int))}{__P((pid_t, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf waitchld} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(pid\+\_\+t, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_afd6ef1d167723dbc32b9e4affddcd421}{}\label{jobs_8c_afd6ef1d167723dbc32b9e4affddcd421}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((pid\+\_\+t, int, int $\ast$))}{__P((pid_t, int, int *))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf P\+R\+O\+C\+E\+SS}$\ast$ {\bf find\+\_\+pipeline} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(pid\+\_\+t, int, int $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ae57855ea1c6d465dcce993cf6ed9550e}{}\label{jobs_8c_ae57855ea1c6d465dcce993cf6ed9550e}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf current\+\_\+working\+\_\+directory} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a3bb84275c76e7a22b6e09b0a918ce29d}{}\label{jobs_8c_a3bb84275c76e7a22b6e09b0a918ce29d}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, P\+R\+O\+C\+E\+S\+S $\ast$, int))}{__P((int, PROCESS *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf printable\+\_\+job\+\_\+status} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, {\bf P\+R\+O\+C\+E\+SS} $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ac3319df773ae20632b7f50dc759fb69a}{}\label{jobs_8c_ac3319df773ae20632b7f50dc759fb69a}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, int))}{__P((int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf P\+R\+O\+C\+E\+SS}$\ast$ {\bf find\+\_\+last\+\_\+proc} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_abd8971f8f8b92d1d7a909281a483a1ea}{}\label{jobs_8c_abd8971f8f8b92d1d7a909281a483a1ea}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((sh\+\_\+job\+\_\+map\+\_\+func\+\_\+t $\ast$, int, int))}{__P((sh_job_map_func_t *, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf map\+\_\+over\+\_\+jobs} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(sh\+\_\+job\+\_\+map\+\_\+func\+\_\+t $\ast$, int, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a103f2274e38ac75d010d62edc46438de}{}\label{jobs_8c_a103f2274e38ac75d010d62edc46438de}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, J\+O\+B\+\_\+\+S\+T\+A\+T\+E))}{__P((int, JOB_STATE))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf most\+\_\+recent\+\_\+job\+\_\+in\+\_\+state} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, {\bf J\+O\+B\+\_\+\+S\+T\+A\+TE})}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a88de2a104cce4c195d2b55b6b732607d}{}\label{jobs_8c_a88de2a104cce4c195d2b55b6b732607d}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((pid\+\_\+t, int, P\+R\+O\+C\+E\+S\+S $\ast$$\ast$))}{__P((pid_t, int, PROCESS **))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf find\+\_\+job} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(pid\+\_\+t, int, {\bf P\+R\+O\+C\+E\+SS} $\ast$$\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a7157b2d7b873364b0683cdaf2f1b18a0}{}\label{jobs_8c_a7157b2d7b873364b0683cdaf2f1b18a0}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+J\+O\+B $\ast$, int, int, int))}{__P((JOB *, int, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf print\+\_\+job} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf J\+OB} $\ast$, int, int, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ab588a0ba7b1853bfff9098827d23fcdd}{}\label{jobs_8c_ab588a0ba7b1853bfff9098827d23fcdd}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+W\+A\+I\+T))}{__P((WAIT))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf process\+\_\+exit\+\_\+status} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(W\+A\+IT)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a8bb50d60b9d7287ae4dd13496428879b}{}\label{jobs_8c_a8bb50d60b9d7287ae4dd13496428879b}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, pid\+\_\+t))}{__P((char *, pid_t))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf add\+\_\+process} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, pid\+\_\+t)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_aa9b25faad89c109dedcb66cc8f45b467}{}\label{jobs_8c_aa9b25faad89c109dedcb66cc8f45b467}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+P\+R\+O\+C\+E\+S\+S $\ast$, int, int, F\+I\+L\+E $\ast$))}{__P((PROCESS *, int, int, FILE *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf print\+\_\+pipeline} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf P\+R\+O\+C\+E\+SS} $\ast$, int, int, F\+I\+LE $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ae414962094b7c58f304c53f90673c164}{}\label{jobs_8c_ae414962094b7c58f304c53f90673c164}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, int, F\+I\+L\+E $\ast$))}{__P((int, int, FILE *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf pretty\+\_\+print\+\_\+job} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, int, F\+I\+LE $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ab835c82fee1fa33bbca3628f64796832}{}\label{jobs_8c_ab835c82fee1fa33bbca3628f64796832}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((pid\+\_\+t, pid\+\_\+t, int))}{__P((pid_t, pid_t, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf maybe\+\_\+give\+\_\+terminal\+\_\+to} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(pid\+\_\+t, pid\+\_\+t, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a342898240681fba0eb80b526178e2f2c}{}\label{jobs_8c_a342898240681fba0eb80b526178e2f2c}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int $\ast$))}{__P((int *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf pipe\+\_\+read} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a48808e7e59f10fdc33584e3e294022ea}{}\label{jobs_8c_a48808e7e59f10fdc33584e3e294022ea}
+\index{jobs.\+c@{jobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((pid\+\_\+t))}{__P((pid_t))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf ps\+\_\+index\+\_\+t}$\ast$ {\bf pshash\+\_\+getbucket} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(pid\+\_\+t)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ae221357208222cc87cb4ef417146d43e}{}\label{jobs_8c_ae221357208222cc87cb4ef417146d43e}
+\index{jobs.\+c@{jobs.\+c}!add\+\_\+process@{add\+\_\+process}}
+\index{add\+\_\+process@{add\+\_\+process}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+process(char $\ast$name, pid\+\_\+t pid)}{add_process(char *name, pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}static void add\+\_\+process (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ac5deaaec3f7af2c959d1508e9f5f8fce}{}\label{jobs_8c_ac5deaaec3f7af2c959d1508e9f5f8fce}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ac5deaaec3f7af2c959d1508e9f5f8fce_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!alloc\+\_\+pipeline\+\_\+saver@{alloc\+\_\+pipeline\+\_\+saver}}
+\index{alloc\+\_\+pipeline\+\_\+saver@{alloc\+\_\+pipeline\+\_\+saver}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{alloc\+\_\+pipeline\+\_\+saver()}{alloc_pipeline_saver()}}]{\setlength{\rightskip}{0pt plus 5cm}static struct {\bf pipeline\+\_\+saver}$\ast$ alloc\+\_\+pipeline\+\_\+saver (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ae8fe3d7879405c3910a34e0b8dda55bb}{}\label{jobs_8c_ae8fe3d7879405c3910a34e0b8dda55bb}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ae8fe3d7879405c3910a34e0b8dda55bb_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!append\+\_\+process@{append\+\_\+process}}
+\index{append\+\_\+process@{append\+\_\+process}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{append\+\_\+process(char $\ast$name, pid\+\_\+t pid, int status, int jid)}{append_process(char *name, pid_t pid, int status, int jid)}}]{\setlength{\rightskip}{0pt plus 5cm}void append\+\_\+process (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{status, }
+\item[{int}]{jid}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a00c2a1d6f9dcaf3f68f9f66726827b7f}{}\label{jobs_8c_a00c2a1d6f9dcaf3f68f9f66726827b7f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a00c2a1d6f9dcaf3f68f9f66726827b7f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!bgp\+\_\+add@{bgp\+\_\+add}}
+\index{bgp\+\_\+add@{bgp\+\_\+add}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{bgp\+\_\+add(pid\+\_\+t pid, int status)}{bgp_add(pid_t pid, int status)}}]{\setlength{\rightskip}{0pt plus 5cm}static struct {\bf pidstat}$\ast$ bgp\+\_\+add (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ac44d197b4771154fac5c0eefca1052f6}{}\label{jobs_8c_ac44d197b4771154fac5c0eefca1052f6}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ac44d197b4771154fac5c0eefca1052f6_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!bgp\+\_\+clear@{bgp\+\_\+clear}}
+\index{bgp\+\_\+clear@{bgp\+\_\+clear}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{bgp\+\_\+clear()}{bgp_clear()}}]{\setlength{\rightskip}{0pt plus 5cm}static void bgp\+\_\+clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ab2aa5e9feea832a14471ef39a355c91a}{}\label{jobs_8c_ab2aa5e9feea832a14471ef39a355c91a}
+\index{jobs.\+c@{jobs.\+c}!bgp\+\_\+delete@{bgp\+\_\+delete}}
+\index{bgp\+\_\+delete@{bgp\+\_\+delete}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{bgp\+\_\+delete(pid\+\_\+t pid)}{bgp_delete(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bgp\+\_\+delete (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a1944a12e8c62f7d7a9b419a9228a89a9}{}\label{jobs_8c_a1944a12e8c62f7d7a9b419a9228a89a9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a1944a12e8c62f7d7a9b419a9228a89a9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!bgp\+\_\+getindex@{bgp\+\_\+getindex}}
+\index{bgp\+\_\+getindex@{bgp\+\_\+getindex}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{bgp\+\_\+getindex()}{bgp_getindex()}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf ps\+\_\+index\+\_\+t} bgp\+\_\+getindex (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a14eab3b775a7ec5d490e506cf833dec9}{}\label{jobs_8c_a14eab3b775a7ec5d490e506cf833dec9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a14eab3b775a7ec5d490e506cf833dec9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!bgp\+\_\+resize@{bgp\+\_\+resize}}
+\index{bgp\+\_\+resize@{bgp\+\_\+resize}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{bgp\+\_\+resize()}{bgp_resize()}}]{\setlength{\rightskip}{0pt plus 5cm}static void bgp\+\_\+resize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a5e03148121047cff6dda436442ac7960}{}\label{jobs_8c_a5e03148121047cff6dda436442ac7960}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a5e03148121047cff6dda436442ac7960_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!bgp\+\_\+search@{bgp\+\_\+search}}
+\index{bgp\+\_\+search@{bgp\+\_\+search}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{bgp\+\_\+search(pid\+\_\+t pid)}{bgp_search(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bgp\+\_\+search (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ad9ed29155697136943ee817c237314e1}{}\label{jobs_8c_ad9ed29155697136943ee817c237314e1}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ad9ed29155697136943ee817c237314e1_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!cleanup\+\_\+dead\+\_\+jobs@{cleanup\+\_\+dead\+\_\+jobs}}
+\index{cleanup\+\_\+dead\+\_\+jobs@{cleanup\+\_\+dead\+\_\+jobs}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{cleanup\+\_\+dead\+\_\+jobs()}{cleanup_dead_jobs()}}]{\setlength{\rightskip}{0pt plus 5cm}static void cleanup\+\_\+dead\+\_\+jobs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a47c393729bc38de011d2422746de634c}{}\label{jobs_8c_a47c393729bc38de011d2422746de634c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a47c393729bc38de011d2422746de634c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!cleanup\+\_\+the\+\_\+pipeline@{cleanup\+\_\+the\+\_\+pipeline}}
+\index{cleanup\+\_\+the\+\_\+pipeline@{cleanup\+\_\+the\+\_\+pipeline}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{cleanup\+\_\+the\+\_\+pipeline()}{cleanup_the_pipeline()}}]{\setlength{\rightskip}{0pt plus 5cm}void cleanup\+\_\+the\+\_\+pipeline (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_aad2d2f6a2251b71cf26012d046f93d89}{}\label{jobs_8c_aad2d2f6a2251b71cf26012d046f93d89}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{jobs_8c_aad2d2f6a2251b71cf26012d046f93d89_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!close\+\_\+pgrp\+\_\+pipe@{close\+\_\+pgrp\+\_\+pipe}}
+\index{close\+\_\+pgrp\+\_\+pipe@{close\+\_\+pgrp\+\_\+pipe}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{close\+\_\+pgrp\+\_\+pipe()}{close_pgrp_pipe()}}]{\setlength{\rightskip}{0pt plus 5cm}void close\+\_\+pgrp\+\_\+pipe (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ab1b55a36ae4c02e7297ca9f1fb488163}{}\label{jobs_8c_ab1b55a36ae4c02e7297ca9f1fb488163}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=277pt]{jobs_8c_ab1b55a36ae4c02e7297ca9f1fb488163_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!compact\+\_\+jobs\+\_\+list@{compact\+\_\+jobs\+\_\+list}}
+\index{compact\+\_\+jobs\+\_\+list@{compact\+\_\+jobs\+\_\+list}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{compact\+\_\+jobs\+\_\+list(int flags)}{compact_jobs_list(int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}static int compact\+\_\+jobs\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a9d9dd03ba5aadbebe470c27eae2209da}{}\label{jobs_8c_a9d9dd03ba5aadbebe470c27eae2209da}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a9d9dd03ba5aadbebe470c27eae2209da_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!count\+\_\+all\+\_\+jobs@{count\+\_\+all\+\_\+jobs}}
+\index{count\+\_\+all\+\_\+jobs@{count\+\_\+all\+\_\+jobs}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{count\+\_\+all\+\_\+jobs()}{count_all_jobs()}}]{\setlength{\rightskip}{0pt plus 5cm}int count\+\_\+all\+\_\+jobs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_adaf7a0885abd94848dabd18ba344eb66}{}\label{jobs_8c_adaf7a0885abd94848dabd18ba344eb66}
+\index{jobs.\+c@{jobs.\+c}!current\+\_\+working\+\_\+directory@{current\+\_\+working\+\_\+directory}}
+\index{current\+\_\+working\+\_\+directory@{current\+\_\+working\+\_\+directory}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{current\+\_\+working\+\_\+directory()}{current_working_directory()}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ current\+\_\+working\+\_\+directory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_aa00dc6ac57f419e8d59ff822cc7b51ab}{}\label{jobs_8c_aa00dc6ac57f419e8d59ff822cc7b51ab}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_aa00dc6ac57f419e8d59ff822cc7b51ab_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!debug\+\_\+print\+\_\+pgrps@{debug\+\_\+print\+\_\+pgrps}}
+\index{debug\+\_\+print\+\_\+pgrps@{debug\+\_\+print\+\_\+pgrps}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{debug\+\_\+print\+\_\+pgrps(void)}{debug_print_pgrps(void)}}]{\setlength{\rightskip}{0pt plus 5cm}void debug\+\_\+print\+\_\+pgrps (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_aaf7e994e6b7a6080266c91a2f8c2b0c4}{}\label{jobs_8c_aaf7e994e6b7a6080266c91a2f8c2b0c4}
+\index{jobs.\+c@{jobs.\+c}!default\+\_\+tty\+\_\+job\+\_\+signals@{default\+\_\+tty\+\_\+job\+\_\+signals}}
+\index{default\+\_\+tty\+\_\+job\+\_\+signals@{default\+\_\+tty\+\_\+job\+\_\+signals}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{default\+\_\+tty\+\_\+job\+\_\+signals()}{default_tty_job_signals()}}]{\setlength{\rightskip}{0pt plus 5cm}void default\+\_\+tty\+\_\+job\+\_\+signals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a35131fce775aec129aca6c1ea1127f97}{}\label{jobs_8c_a35131fce775aec129aca6c1ea1127f97}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a35131fce775aec129aca6c1ea1127f97_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!delete\+\_\+all\+\_\+jobs@{delete\+\_\+all\+\_\+jobs}}
+\index{delete\+\_\+all\+\_\+jobs@{delete\+\_\+all\+\_\+jobs}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{delete\+\_\+all\+\_\+jobs(int running\+\_\+only)}{delete_all_jobs(int running_only)}}]{\setlength{\rightskip}{0pt plus 5cm}void delete\+\_\+all\+\_\+jobs (
+\begin{DoxyParamCaption}
+\item[{int}]{running\+\_\+only}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ab54a0986c5e457b5d7941b97a4bdce80}{}\label{jobs_8c_ab54a0986c5e457b5d7941b97a4bdce80}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ab54a0986c5e457b5d7941b97a4bdce80_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!delete\+\_\+job@{delete\+\_\+job}}
+\index{delete\+\_\+job@{delete\+\_\+job}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{delete\+\_\+job(int job\+\_\+index, int dflags)}{delete_job(int job_index, int dflags)}}]{\setlength{\rightskip}{0pt plus 5cm}void delete\+\_\+job (
+\begin{DoxyParamCaption}
+\item[{int}]{job\+\_\+index, }
+\item[{int}]{dflags}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ae6f3e928efd8e712697fe9c5903b7610}{}\label{jobs_8c_ae6f3e928efd8e712697fe9c5903b7610}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ae6f3e928efd8e712697fe9c5903b7610_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!delete\+\_\+old\+\_\+job@{delete\+\_\+old\+\_\+job}}
+\index{delete\+\_\+old\+\_\+job@{delete\+\_\+old\+\_\+job}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{delete\+\_\+old\+\_\+job(pid\+\_\+t pid)}{delete_old_job(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}static void delete\+\_\+old\+\_\+job (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a5b6e7c7a458539929974e288a59a2f38}{}\label{jobs_8c_a5b6e7c7a458539929974e288a59a2f38}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a5b6e7c7a458539929974e288a59a2f38_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!describe\+\_\+pid@{describe\+\_\+pid}}
+\index{describe\+\_\+pid@{describe\+\_\+pid}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{describe\+\_\+pid(pid\+\_\+t pid)}{describe_pid(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}void describe\+\_\+pid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a6e05c5efdbabb700ce1f089aa2208017}{}\label{jobs_8c_a6e05c5efdbabb700ce1f089aa2208017}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a6e05c5efdbabb700ce1f089aa2208017_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!discard\+\_\+last\+\_\+procsub\+\_\+child@{discard\+\_\+last\+\_\+procsub\+\_\+child}}
+\index{discard\+\_\+last\+\_\+procsub\+\_\+child@{discard\+\_\+last\+\_\+procsub\+\_\+child}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{discard\+\_\+last\+\_\+procsub\+\_\+child()}{discard_last_procsub_child()}}]{\setlength{\rightskip}{0pt plus 5cm}void discard\+\_\+last\+\_\+procsub\+\_\+child (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ae076d60db4f63dd44d8093842fd79a4c}{}\label{jobs_8c_ae076d60db4f63dd44d8093842fd79a4c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{jobs_8c_ae076d60db4f63dd44d8093842fd79a4c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!discard\+\_\+pipeline@{discard\+\_\+pipeline}}
+\index{discard\+\_\+pipeline@{discard\+\_\+pipeline}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{discard\+\_\+pipeline(\+P\+R\+O\+C\+E\+S\+S $\ast$chain)}{discard_pipeline(PROCESS *chain)}}]{\setlength{\rightskip}{0pt plus 5cm}int discard\+\_\+pipeline (
+\begin{DoxyParamCaption}
+\item[{{\bf P\+R\+O\+C\+E\+SS} $\ast$}]{chain}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_aefd8badf09efc12aee9dfa1cfaaef024}{}\label{jobs_8c_aefd8badf09efc12aee9dfa1cfaaef024}
+\index{jobs.\+c@{jobs.\+c}!end\+\_\+job\+\_\+control@{end\+\_\+job\+\_\+control}}
+\index{end\+\_\+job\+\_\+control@{end\+\_\+job\+\_\+control}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{end\+\_\+job\+\_\+control()}{end_job_control()}}]{\setlength{\rightskip}{0pt plus 5cm}void end\+\_\+job\+\_\+control (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a923886e6daaac9b0ff0e27b137e268cc}{}\label{jobs_8c_a923886e6daaac9b0ff0e27b137e268cc}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a923886e6daaac9b0ff0e27b137e268cc_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!find\+\_\+job@{find\+\_\+job}}
+\index{find\+\_\+job@{find\+\_\+job}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+job(pid\+\_\+t pid, int alive\+\_\+only, P\+R\+O\+C\+E\+S\+S $\ast$$\ast$procp)}{find_job(pid_t pid, int alive_only, PROCESS **procp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int find\+\_\+job (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{alive\+\_\+only, }
+\item[{{\bf P\+R\+O\+C\+E\+SS} $\ast$$\ast$}]{procp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a99584c8b38b45a70629677a975056374}{}\label{jobs_8c_a99584c8b38b45a70629677a975056374}
+\index{jobs.\+c@{jobs.\+c}!find\+\_\+last\+\_\+pid@{find\+\_\+last\+\_\+pid}}
+\index{find\+\_\+last\+\_\+pid@{find\+\_\+last\+\_\+pid}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+last\+\_\+pid(int job, int block)}{find_last_pid(int job, int block)}}]{\setlength{\rightskip}{0pt plus 5cm}static pid\+\_\+t find\+\_\+last\+\_\+pid (
+\begin{DoxyParamCaption}
+\item[{int}]{job, }
+\item[{int}]{block}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a758086bb1f3a53e925371b718b1068ab}{}\label{jobs_8c_a758086bb1f3a53e925371b718b1068ab}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{jobs_8c_a758086bb1f3a53e925371b718b1068ab_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!find\+\_\+last\+\_\+proc@{find\+\_\+last\+\_\+proc}}
+\index{find\+\_\+last\+\_\+proc@{find\+\_\+last\+\_\+proc}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+last\+\_\+proc(int job, int block)}{find_last_proc(int job, int block)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf P\+R\+O\+C\+E\+SS}$\ast$ find\+\_\+last\+\_\+proc (
+\begin{DoxyParamCaption}
+\item[{int}]{job, }
+\item[{int}]{block}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a3a439aacb4e64d3b5ec52640311fbdcf}{}\label{jobs_8c_a3a439aacb4e64d3b5ec52640311fbdcf}
+\index{jobs.\+c@{jobs.\+c}!find\+\_\+pipeline@{find\+\_\+pipeline}}
+\index{find\+\_\+pipeline@{find\+\_\+pipeline}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+pipeline(pid\+\_\+t pid, int alive\+\_\+only, int $\ast$jobp)}{find_pipeline(pid_t pid, int alive_only, int *jobp)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf P\+R\+O\+C\+E\+SS}$\ast$ find\+\_\+pipeline (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{alive\+\_\+only, }
+\item[{int $\ast$}]{jobp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a6581f40e1e7657048cbecabb416f13bb}{}\label{jobs_8c_a6581f40e1e7657048cbecabb416f13bb}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{jobs_8c_a6581f40e1e7657048cbecabb416f13bb_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!find\+\_\+process@{find\+\_\+process}}
+\index{find\+\_\+process@{find\+\_\+process}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+process(pid\+\_\+t pid, int alive\+\_\+only, int $\ast$jobp)}{find_process(pid_t pid, int alive_only, int *jobp)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf P\+R\+O\+C\+E\+SS}$\ast$ find\+\_\+process (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{alive\+\_\+only, }
+\item[{int $\ast$}]{jobp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a16d3beacf583f9f0822f8b06b83695fe}{}\label{jobs_8c_a16d3beacf583f9f0822f8b06b83695fe}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{jobs_8c_a16d3beacf583f9f0822f8b06b83695fe_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!freeze\+\_\+jobs\+\_\+list@{freeze\+\_\+jobs\+\_\+list}}
+\index{freeze\+\_\+jobs\+\_\+list@{freeze\+\_\+jobs\+\_\+list}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{freeze\+\_\+jobs\+\_\+list()}{freeze_jobs_list()}}]{\setlength{\rightskip}{0pt plus 5cm}int freeze\+\_\+jobs\+\_\+list (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ac04bd8c6bbeec0e7e6f542d3a8a9f09f}{}\label{jobs_8c_ac04bd8c6bbeec0e7e6f542d3a8a9f09f}
+\index{jobs.\+c@{jobs.\+c}!get\+\_\+job\+\_\+by\+\_\+pid@{get\+\_\+job\+\_\+by\+\_\+pid}}
+\index{get\+\_\+job\+\_\+by\+\_\+pid@{get\+\_\+job\+\_\+by\+\_\+pid}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+job\+\_\+by\+\_\+pid(pid\+\_\+t pid, int block)}{get_job_by_pid(pid_t pid, int block)}}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+job\+\_\+by\+\_\+pid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{block}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ae4b48a0f3e1472558c53f8f26db3ccf8}{}\label{jobs_8c_ae4b48a0f3e1472558c53f8f26db3ccf8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{jobs_8c_ae4b48a0f3e1472558c53f8f26db3ccf8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals@{get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals}}
+\index{get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals@{get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals()}{get_original_tty_job_signals()}}]{\setlength{\rightskip}{0pt plus 5cm}void get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a186a35817ae0f49ac740cbae8f598edb}{}\label{jobs_8c_a186a35817ae0f49ac740cbae8f598edb}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{jobs_8c_a186a35817ae0f49ac740cbae8f598edb_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!get\+\_\+tty\+\_\+state@{get\+\_\+tty\+\_\+state}}
+\index{get\+\_\+tty\+\_\+state@{get\+\_\+tty\+\_\+state}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+tty\+\_\+state()}{get_tty_state()}}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+tty\+\_\+state (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a37d6118360319f23c01a9a326ad32906}{}\label{jobs_8c_a37d6118360319f23c01a9a326ad32906}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a37d6118360319f23c01a9a326ad32906_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!give\+\_\+terminal\+\_\+to@{give\+\_\+terminal\+\_\+to}}
+\index{give\+\_\+terminal\+\_\+to@{give\+\_\+terminal\+\_\+to}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{give\+\_\+terminal\+\_\+to(pid\+\_\+t pgrp, int force)}{give_terminal_to(pid_t pgrp, int force)}}]{\setlength{\rightskip}{0pt plus 5cm}int give\+\_\+terminal\+\_\+to (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pgrp, }
+\item[{int}]{force}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a8db3c891f1a77a1b3412544323ae6eb4}{}\label{jobs_8c_a8db3c891f1a77a1b3412544323ae6eb4}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a8db3c891f1a77a1b3412544323ae6eb4_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!hangup\+\_\+all\+\_\+jobs@{hangup\+\_\+all\+\_\+jobs}}
+\index{hangup\+\_\+all\+\_\+jobs@{hangup\+\_\+all\+\_\+jobs}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{hangup\+\_\+all\+\_\+jobs()}{hangup_all_jobs()}}]{\setlength{\rightskip}{0pt plus 5cm}void hangup\+\_\+all\+\_\+jobs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ac9399fb7055be9b3b9aeb362c96a53f7}{}\label{jobs_8c_ac9399fb7055be9b3b9aeb362c96a53f7}
+\index{jobs.\+c@{jobs.\+c}!ignore\+\_\+tty\+\_\+job\+\_\+signals@{ignore\+\_\+tty\+\_\+job\+\_\+signals}}
+\index{ignore\+\_\+tty\+\_\+job\+\_\+signals@{ignore\+\_\+tty\+\_\+job\+\_\+signals}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{ignore\+\_\+tty\+\_\+job\+\_\+signals()}{ignore_tty_job_signals()}}]{\setlength{\rightskip}{0pt plus 5cm}void ignore\+\_\+tty\+\_\+job\+\_\+signals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a0b224dea42fc99fc8f75137c74d10d8c}{}\label{jobs_8c_a0b224dea42fc99fc8f75137c74d10d8c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a0b224dea42fc99fc8f75137c74d10d8c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!init\+\_\+job\+\_\+stats@{init\+\_\+job\+\_\+stats}}
+\index{init\+\_\+job\+\_\+stats@{init\+\_\+job\+\_\+stats}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{init\+\_\+job\+\_\+stats()}{init_job_stats()}}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+job\+\_\+stats (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a1f9d98a5ac1e452fa40b1ca93285843a}{}\label{jobs_8c_a1f9d98a5ac1e452fa40b1ca93285843a}
+\index{jobs.\+c@{jobs.\+c}!initialize\+\_\+job\+\_\+control@{initialize\+\_\+job\+\_\+control}}
+\index{initialize\+\_\+job\+\_\+control@{initialize\+\_\+job\+\_\+control}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+job\+\_\+control(int force)}{initialize_job_control(int force)}}]{\setlength{\rightskip}{0pt plus 5cm}int initialize\+\_\+job\+\_\+control (
+\begin{DoxyParamCaption}
+\item[{int}]{force}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_aa9447ba6eda1088457e76cc37da06b7b}{}\label{jobs_8c_aa9447ba6eda1088457e76cc37da06b7b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_aa9447ba6eda1088457e76cc37da06b7b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!initialize\+\_\+job\+\_\+signals@{initialize\+\_\+job\+\_\+signals}}
+\index{initialize\+\_\+job\+\_\+signals@{initialize\+\_\+job\+\_\+signals}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+job\+\_\+signals()}{initialize_job_signals()}}]{\setlength{\rightskip}{0pt plus 5cm}void initialize\+\_\+job\+\_\+signals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ab3bf0c468c5caa52e82aa6a68f6a3099}{}\label{jobs_8c_ab3bf0c468c5caa52e82aa6a68f6a3099}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ab3bf0c468c5caa52e82aa6a68f6a3099_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!j\+\_\+strsignal@{j\+\_\+strsignal}}
+\index{j\+\_\+strsignal@{j\+\_\+strsignal}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{j\+\_\+strsignal(int s)}{j_strsignal(int s)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ j\+\_\+strsignal (
+\begin{DoxyParamCaption}
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a73562e7524f0f619567b2414e0a15309}{}\label{jobs_8c_a73562e7524f0f619567b2414e0a15309}
+\index{jobs.\+c@{jobs.\+c}!job\+\_\+exit\+\_\+signal@{job\+\_\+exit\+\_\+signal}}
+\index{job\+\_\+exit\+\_\+signal@{job\+\_\+exit\+\_\+signal}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{job\+\_\+exit\+\_\+signal(int job)}{job_exit_signal(int job)}}]{\setlength{\rightskip}{0pt plus 5cm}int job\+\_\+exit\+\_\+signal (
+\begin{DoxyParamCaption}
+\item[{int}]{job}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_aa66bc71748a428c3e27ab8271a4459ce}{}\label{jobs_8c_aa66bc71748a428c3e27ab8271a4459ce}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{jobs_8c_aa66bc71748a428c3e27ab8271a4459ce_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!job\+\_\+exit\+\_\+status@{job\+\_\+exit\+\_\+status}}
+\index{job\+\_\+exit\+\_\+status@{job\+\_\+exit\+\_\+status}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{job\+\_\+exit\+\_\+status(int job)}{job_exit_status(int job)}}]{\setlength{\rightskip}{0pt plus 5cm}int job\+\_\+exit\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{int}]{job}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a997643f3b98ece63e0acd25b30a1b93e}{}\label{jobs_8c_a997643f3b98ece63e0acd25b30a1b93e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{jobs_8c_a997643f3b98ece63e0acd25b30a1b93e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!job\+\_\+last\+\_\+running@{job\+\_\+last\+\_\+running}}
+\index{job\+\_\+last\+\_\+running@{job\+\_\+last\+\_\+running}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{job\+\_\+last\+\_\+running(int job)}{job_last_running(int job)}}]{\setlength{\rightskip}{0pt plus 5cm}static int job\+\_\+last\+\_\+running (
+\begin{DoxyParamCaption}
+\item[{int}]{job}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a16770b5754c59e8942a2a4e577d3489b}{}\label{jobs_8c_a16770b5754c59e8942a2a4e577d3489b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{jobs_8c_a16770b5754c59e8942a2a4e577d3489b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!job\+\_\+last\+\_\+stopped@{job\+\_\+last\+\_\+stopped}}
+\index{job\+\_\+last\+\_\+stopped@{job\+\_\+last\+\_\+stopped}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{job\+\_\+last\+\_\+stopped(int job)}{job_last_stopped(int job)}}]{\setlength{\rightskip}{0pt plus 5cm}static int job\+\_\+last\+\_\+stopped (
+\begin{DoxyParamCaption}
+\item[{int}]{job}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a65da6d0fa85ebbb91282a70c186172ee}{}\label{jobs_8c_a65da6d0fa85ebbb91282a70c186172ee}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{jobs_8c_a65da6d0fa85ebbb91282a70c186172ee_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!job\+\_\+signal\+\_\+status@{job\+\_\+signal\+\_\+status}}
+\index{job\+\_\+signal\+\_\+status@{job\+\_\+signal\+\_\+status}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{job\+\_\+signal\+\_\+status(int job)}{job_signal_status(int job)}}]{\setlength{\rightskip}{0pt plus 5cm}static W\+A\+IT job\+\_\+signal\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{int}]{job}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a98276db28c5fb03624f84aabe134de90}{}\label{jobs_8c_a98276db28c5fb03624f84aabe134de90}
+\index{jobs.\+c@{jobs.\+c}!job\+\_\+working\+\_\+directory@{job\+\_\+working\+\_\+directory}}
+\index{job\+\_\+working\+\_\+directory@{job\+\_\+working\+\_\+directory}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{job\+\_\+working\+\_\+directory()}{job_working_directory()}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ job\+\_\+working\+\_\+directory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a504a46e0a88bc784f96093dc7506e6fa}{}\label{jobs_8c_a504a46e0a88bc784f96093dc7506e6fa}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a504a46e0a88bc784f96093dc7506e6fa_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!kill\+\_\+current\+\_\+pipeline@{kill\+\_\+current\+\_\+pipeline}}
+\index{kill\+\_\+current\+\_\+pipeline@{kill\+\_\+current\+\_\+pipeline}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{kill\+\_\+current\+\_\+pipeline()}{kill_current_pipeline()}}]{\setlength{\rightskip}{0pt plus 5cm}void kill\+\_\+current\+\_\+pipeline (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ac29c70bbf156a302776a486f60cb31e0}{}\label{jobs_8c_ac29c70bbf156a302776a486f60cb31e0}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ac29c70bbf156a302776a486f60cb31e0_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!kill\+\_\+pid@{kill\+\_\+pid}}
+\index{kill\+\_\+pid@{kill\+\_\+pid}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{kill\+\_\+pid(pid\+\_\+t pid, int sig, int group)}{kill_pid(pid_t pid, int sig, int group)}}]{\setlength{\rightskip}{0pt plus 5cm}int kill\+\_\+pid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{sig, }
+\item[{int}]{group}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_acf4ffb95309a2a66455507a242a6ff7e}{}\label{jobs_8c_acf4ffb95309a2a66455507a242a6ff7e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{jobs_8c_acf4ffb95309a2a66455507a242a6ff7e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!list\+\_\+all\+\_\+jobs@{list\+\_\+all\+\_\+jobs}}
+\index{list\+\_\+all\+\_\+jobs@{list\+\_\+all\+\_\+jobs}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{list\+\_\+all\+\_\+jobs(int format)}{list_all_jobs(int format)}}]{\setlength{\rightskip}{0pt plus 5cm}void list\+\_\+all\+\_\+jobs (
+\begin{DoxyParamCaption}
+\item[{int}]{format}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ac165de0465f02a6ff7a7b5c705837bcf}{}\label{jobs_8c_ac165de0465f02a6ff7a7b5c705837bcf}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ac165de0465f02a6ff7a7b5c705837bcf_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!list\+\_\+one\+\_\+job@{list\+\_\+one\+\_\+job}}
+\index{list\+\_\+one\+\_\+job@{list\+\_\+one\+\_\+job}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{list\+\_\+one\+\_\+job(\+J\+O\+B $\ast$job, int format, int ignore, int job\+\_\+index)}{list_one_job(JOB *job, int format, int ignore, int job_index)}}]{\setlength{\rightskip}{0pt plus 5cm}void list\+\_\+one\+\_\+job (
+\begin{DoxyParamCaption}
+\item[{{\bf J\+OB} $\ast$}]{job, }
+\item[{int}]{format, }
+\item[{int}]{ignore, }
+\item[{int}]{job\+\_\+index}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ae858994fe6f851d06889c330f0372bfb}{}\label{jobs_8c_ae858994fe6f851d06889c330f0372bfb}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ae858994fe6f851d06889c330f0372bfb_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!list\+\_\+running\+\_\+jobs@{list\+\_\+running\+\_\+jobs}}
+\index{list\+\_\+running\+\_\+jobs@{list\+\_\+running\+\_\+jobs}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{list\+\_\+running\+\_\+jobs(int format)}{list_running_jobs(int format)}}]{\setlength{\rightskip}{0pt plus 5cm}void list\+\_\+running\+\_\+jobs (
+\begin{DoxyParamCaption}
+\item[{int}]{format}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a85b9d5bdb58ebb4c7556f9f4350d557e}{}\label{jobs_8c_a85b9d5bdb58ebb4c7556f9f4350d557e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a85b9d5bdb58ebb4c7556f9f4350d557e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!list\+\_\+stopped\+\_\+jobs@{list\+\_\+stopped\+\_\+jobs}}
+\index{list\+\_\+stopped\+\_\+jobs@{list\+\_\+stopped\+\_\+jobs}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{list\+\_\+stopped\+\_\+jobs(int format)}{list_stopped_jobs(int format)}}]{\setlength{\rightskip}{0pt plus 5cm}void list\+\_\+stopped\+\_\+jobs (
+\begin{DoxyParamCaption}
+\item[{int}]{format}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a445f3a091027fd8aed287e6463e92283}{}\label{jobs_8c_a445f3a091027fd8aed287e6463e92283}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a445f3a091027fd8aed287e6463e92283_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!make\+\_\+child@{make\+\_\+child}}
+\index{make\+\_\+child@{make\+\_\+child}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+child(char $\ast$command, int async\+\_\+p)}{make_child(char *command, int async_p)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t make\+\_\+child (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{int}]{async\+\_\+p}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a5d849da9461b9ef900d191e67f54856c}{}\label{jobs_8c_a5d849da9461b9ef900d191e67f54856c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{jobs_8c_a5d849da9461b9ef900d191e67f54856c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!making\+\_\+children@{making\+\_\+children}}
+\index{making\+\_\+children@{making\+\_\+children}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{making\+\_\+children()}{making_children()}}]{\setlength{\rightskip}{0pt plus 5cm}void making\+\_\+children (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a52091bff84389f379c1dfae1369c019e}{}\label{jobs_8c_a52091bff84389f379c1dfae1369c019e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a52091bff84389f379c1dfae1369c019e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!map\+\_\+over\+\_\+jobs@{map\+\_\+over\+\_\+jobs}}
+\index{map\+\_\+over\+\_\+jobs@{map\+\_\+over\+\_\+jobs}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{map\+\_\+over\+\_\+jobs(sh\+\_\+job\+\_\+map\+\_\+func\+\_\+t $\ast$func, int arg1, int arg2)}{map_over_jobs(sh_job_map_func_t *func, int arg1, int arg2)}}]{\setlength{\rightskip}{0pt plus 5cm}static int map\+\_\+over\+\_\+jobs (
+\begin{DoxyParamCaption}
+\item[{sh\+\_\+job\+\_\+map\+\_\+func\+\_\+t $\ast$}]{func, }
+\item[{int}]{arg1, }
+\item[{int}]{arg2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_aafea484f3bce52ca817d92f7c7b833ed}{}\label{jobs_8c_aafea484f3bce52ca817d92f7c7b833ed}
+\index{jobs.\+c@{jobs.\+c}!mark\+\_\+all\+\_\+jobs\+\_\+as\+\_\+dead@{mark\+\_\+all\+\_\+jobs\+\_\+as\+\_\+dead}}
+\index{mark\+\_\+all\+\_\+jobs\+\_\+as\+\_\+dead@{mark\+\_\+all\+\_\+jobs\+\_\+as\+\_\+dead}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{mark\+\_\+all\+\_\+jobs\+\_\+as\+\_\+dead()}{mark_all_jobs_as_dead()}}]{\setlength{\rightskip}{0pt plus 5cm}static void mark\+\_\+all\+\_\+jobs\+\_\+as\+\_\+dead (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_af8ab905a192c6341c12fd82f166374a2}{}\label{jobs_8c_af8ab905a192c6341c12fd82f166374a2}
+\index{jobs.\+c@{jobs.\+c}!mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified@{mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified}}
+\index{mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified@{mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified(int force)}{mark_dead_jobs_as_notified(int force)}}]{\setlength{\rightskip}{0pt plus 5cm}static void mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified (
+\begin{DoxyParamCaption}
+\item[{int}]{force}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a17ec09b97c22e3e745e6fe463418e203}{}\label{jobs_8c_a17ec09b97c22e3e745e6fe463418e203}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a17ec09b97c22e3e745e6fe463418e203_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!maybe\+\_\+give\+\_\+terminal\+\_\+to@{maybe\+\_\+give\+\_\+terminal\+\_\+to}}
+\index{maybe\+\_\+give\+\_\+terminal\+\_\+to@{maybe\+\_\+give\+\_\+terminal\+\_\+to}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{maybe\+\_\+give\+\_\+terminal\+\_\+to(pid\+\_\+t opgrp, pid\+\_\+t npgrp, int flags)}{maybe_give_terminal_to(pid_t opgrp, pid_t npgrp, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}static int maybe\+\_\+give\+\_\+terminal\+\_\+to (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{opgrp, }
+\item[{pid\+\_\+t}]{npgrp, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ade652681afa73d6b7c0b50697d071f83}{}\label{jobs_8c_ade652681afa73d6b7c0b50697d071f83}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ade652681afa73d6b7c0b50697d071f83_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!most\+\_\+recent\+\_\+job\+\_\+in\+\_\+state@{most\+\_\+recent\+\_\+job\+\_\+in\+\_\+state}}
+\index{most\+\_\+recent\+\_\+job\+\_\+in\+\_\+state@{most\+\_\+recent\+\_\+job\+\_\+in\+\_\+state}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{most\+\_\+recent\+\_\+job\+\_\+in\+\_\+state(int job, J\+O\+B\+\_\+\+S\+T\+A\+T\+E state)}{most_recent_job_in_state(int job, JOB_STATE state)}}]{\setlength{\rightskip}{0pt plus 5cm}static int most\+\_\+recent\+\_\+job\+\_\+in\+\_\+state (
+\begin{DoxyParamCaption}
+\item[{int}]{job, }
+\item[{{\bf J\+O\+B\+\_\+\+S\+T\+A\+TE}}]{state}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a63606668cb8599788b6876b0f8683418}{}\label{jobs_8c_a63606668cb8599788b6876b0f8683418}
+\index{jobs.\+c@{jobs.\+c}!nohup\+\_\+all\+\_\+jobs@{nohup\+\_\+all\+\_\+jobs}}
+\index{nohup\+\_\+all\+\_\+jobs@{nohup\+\_\+all\+\_\+jobs}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{nohup\+\_\+all\+\_\+jobs(int running\+\_\+only)}{nohup_all_jobs(int running_only)}}]{\setlength{\rightskip}{0pt plus 5cm}void nohup\+\_\+all\+\_\+jobs (
+\begin{DoxyParamCaption}
+\item[{int}]{running\+\_\+only}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a2b7eaf2f1db72714e7e3faf6991471a2}{}\label{jobs_8c_a2b7eaf2f1db72714e7e3faf6991471a2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{jobs_8c_a2b7eaf2f1db72714e7e3faf6991471a2_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!nohup\+\_\+job@{nohup\+\_\+job}}
+\index{nohup\+\_\+job@{nohup\+\_\+job}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{nohup\+\_\+job(int job\+\_\+index)}{nohup_job(int job_index)}}]{\setlength{\rightskip}{0pt plus 5cm}void nohup\+\_\+job (
+\begin{DoxyParamCaption}
+\item[{int}]{job\+\_\+index}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a9711d4d0e7ed711f9160dbfcf22aa75c}{}\label{jobs_8c_a9711d4d0e7ed711f9160dbfcf22aa75c}
+\index{jobs.\+c@{jobs.\+c}!notify\+\_\+and\+\_\+cleanup@{notify\+\_\+and\+\_\+cleanup}}
+\index{notify\+\_\+and\+\_\+cleanup@{notify\+\_\+and\+\_\+cleanup}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{notify\+\_\+and\+\_\+cleanup()}{notify_and_cleanup()}}]{\setlength{\rightskip}{0pt plus 5cm}void notify\+\_\+and\+\_\+cleanup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_adf243013e184887caa6995be05126873}{}\label{jobs_8c_adf243013e184887caa6995be05126873}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_adf243013e184887caa6995be05126873_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!notify\+\_\+of\+\_\+job\+\_\+status@{notify\+\_\+of\+\_\+job\+\_\+status}}
+\index{notify\+\_\+of\+\_\+job\+\_\+status@{notify\+\_\+of\+\_\+job\+\_\+status}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{notify\+\_\+of\+\_\+job\+\_\+status()}{notify_of_job_status()}}]{\setlength{\rightskip}{0pt plus 5cm}static void notify\+\_\+of\+\_\+job\+\_\+status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a4d9c4222b40edc2f52cb70d3df978b22}{}\label{jobs_8c_a4d9c4222b40edc2f52cb70d3df978b22}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a4d9c4222b40edc2f52cb70d3df978b22_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!pipe\+\_\+read@{pipe\+\_\+read}}
+\index{pipe\+\_\+read@{pipe\+\_\+read}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{pipe\+\_\+read(int $\ast$pp)}{pipe_read(int *pp)}}]{\setlength{\rightskip}{0pt plus 5cm}static void pipe\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{pp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a04a6ad6421913665c8c4d4dce4baf6c8}{}\label{jobs_8c_a04a6ad6421913665c8c4d4dce4baf6c8}
+\index{jobs.\+c@{jobs.\+c}!pretty\+\_\+print\+\_\+job@{pretty\+\_\+print\+\_\+job}}
+\index{pretty\+\_\+print\+\_\+job@{pretty\+\_\+print\+\_\+job}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{pretty\+\_\+print\+\_\+job(int job\+\_\+index, int format, F\+I\+L\+E $\ast$stream)}{pretty_print_job(int job_index, int format, FILE *stream)}}]{\setlength{\rightskip}{0pt plus 5cm}static void pretty\+\_\+print\+\_\+job (
+\begin{DoxyParamCaption}
+\item[{int}]{job\+\_\+index, }
+\item[{int}]{format, }
+\item[{F\+I\+LE $\ast$}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_af63ad360618b0a85b34755c7bc513b08}{}\label{jobs_8c_af63ad360618b0a85b34755c7bc513b08}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_af63ad360618b0a85b34755c7bc513b08_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!print\+\_\+job@{print\+\_\+job}}
+\index{print\+\_\+job@{print\+\_\+job}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+job(\+J\+O\+B $\ast$job, int format, int state, int job\+\_\+index)}{print_job(JOB *job, int format, int state, int job_index)}}]{\setlength{\rightskip}{0pt plus 5cm}static int print\+\_\+job (
+\begin{DoxyParamCaption}
+\item[{{\bf J\+OB} $\ast$}]{job, }
+\item[{int}]{format, }
+\item[{int}]{state, }
+\item[{int}]{job\+\_\+index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a86dc11f7ce9b7fa8cb388f1e9029ac46}{}\label{jobs_8c_a86dc11f7ce9b7fa8cb388f1e9029ac46}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a86dc11f7ce9b7fa8cb388f1e9029ac46_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!print\+\_\+pipeline@{print\+\_\+pipeline}}
+\index{print\+\_\+pipeline@{print\+\_\+pipeline}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+pipeline(\+P\+R\+O\+C\+E\+S\+S $\ast$p, int job\+\_\+index, int format, F\+I\+L\+E $\ast$stream)}{print_pipeline(PROCESS *p, int job_index, int format, FILE *stream)}}]{\setlength{\rightskip}{0pt plus 5cm}static void print\+\_\+pipeline (
+\begin{DoxyParamCaption}
+\item[{{\bf P\+R\+O\+C\+E\+SS} $\ast$}]{p, }
+\item[{int}]{job\+\_\+index, }
+\item[{int}]{format, }
+\item[{F\+I\+LE $\ast$}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_acc4f7a8abd55aaf9f35c58fe4afc0989}{}\label{jobs_8c_acc4f7a8abd55aaf9f35c58fe4afc0989}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_acc4f7a8abd55aaf9f35c58fe4afc0989_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!printable\+\_\+job\+\_\+status@{printable\+\_\+job\+\_\+status}}
+\index{printable\+\_\+job\+\_\+status@{printable\+\_\+job\+\_\+status}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{printable\+\_\+job\+\_\+status(int j, P\+R\+O\+C\+E\+S\+S $\ast$p, int format)}{printable_job_status(int j, PROCESS *p, int format)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ printable\+\_\+job\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{int}]{j, }
+\item[{{\bf P\+R\+O\+C\+E\+SS} $\ast$}]{p, }
+\item[{int}]{format}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_aa39fb0570606ccbbce86ce48dfb52a9e}{}\label{jobs_8c_aa39fb0570606ccbbce86ce48dfb52a9e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{jobs_8c_aa39fb0570606ccbbce86ce48dfb52a9e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!process\+\_\+exit\+\_\+signal@{process\+\_\+exit\+\_\+signal}}
+\index{process\+\_\+exit\+\_\+signal@{process\+\_\+exit\+\_\+signal}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{process\+\_\+exit\+\_\+signal(\+W\+A\+I\+T status)}{process_exit_signal(WAIT status)}}]{\setlength{\rightskip}{0pt plus 5cm}static int process\+\_\+exit\+\_\+signal (
+\begin{DoxyParamCaption}
+\item[{W\+A\+IT}]{status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_aa55261d2e8eb934ebde20d623e5e05d2}{}\label{jobs_8c_aa55261d2e8eb934ebde20d623e5e05d2}
+\index{jobs.\+c@{jobs.\+c}!process\+\_\+exit\+\_\+status@{process\+\_\+exit\+\_\+status}}
+\index{process\+\_\+exit\+\_\+status@{process\+\_\+exit\+\_\+status}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{process\+\_\+exit\+\_\+status(\+W\+A\+I\+T status)}{process_exit_status(WAIT status)}}]{\setlength{\rightskip}{0pt plus 5cm}static int process\+\_\+exit\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{W\+A\+IT}]{status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ab424b34a1f2efb697ac04e6ae1b67bd9}{}\label{jobs_8c_ab424b34a1f2efb697ac04e6ae1b67bd9}
+\index{jobs.\+c@{jobs.\+c}!processes\+\_\+in\+\_\+job@{processes\+\_\+in\+\_\+job}}
+\index{processes\+\_\+in\+\_\+job@{processes\+\_\+in\+\_\+job}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{processes\+\_\+in\+\_\+job(int job)}{processes_in_job(int job)}}]{\setlength{\rightskip}{0pt plus 5cm}static int processes\+\_\+in\+\_\+job (
+\begin{DoxyParamCaption}
+\item[{int}]{job}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ac3e9a0b379bd8615de3876b2e6b6754d}{}\label{jobs_8c_ac3e9a0b379bd8615de3876b2e6b6754d}
+\index{jobs.\+c@{jobs.\+c}!pshash\+\_\+delindex@{pshash\+\_\+delindex}}
+\index{pshash\+\_\+delindex@{pshash\+\_\+delindex}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{pshash\+\_\+delindex(ps\+\_\+index\+\_\+t psi)}{pshash_delindex(ps_index_t psi)}}]{\setlength{\rightskip}{0pt plus 5cm}static void pshash\+\_\+delindex (
+\begin{DoxyParamCaption}
+\item[{{\bf ps\+\_\+index\+\_\+t}}]{psi}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_afe405cc65c61bf8889e6147876a49c75}{}\label{jobs_8c_afe405cc65c61bf8889e6147876a49c75}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{jobs_8c_afe405cc65c61bf8889e6147876a49c75_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!pshash\+\_\+getbucket@{pshash\+\_\+getbucket}}
+\index{pshash\+\_\+getbucket@{pshash\+\_\+getbucket}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{pshash\+\_\+getbucket(pid\+\_\+t pid)}{pshash_getbucket(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf ps\+\_\+index\+\_\+t}$\ast$ pshash\+\_\+getbucket (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a7e0bb0533cedbd5496331c5aae1e1d60}{}\label{jobs_8c_a7e0bb0533cedbd5496331c5aae1e1d60}
+\index{jobs.\+c@{jobs.\+c}!raw\+\_\+job\+\_\+exit\+\_\+status@{raw\+\_\+job\+\_\+exit\+\_\+status}}
+\index{raw\+\_\+job\+\_\+exit\+\_\+status@{raw\+\_\+job\+\_\+exit\+\_\+status}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{raw\+\_\+job\+\_\+exit\+\_\+status(int job)}{raw_job_exit_status(int job)}}]{\setlength{\rightskip}{0pt plus 5cm}static W\+A\+IT raw\+\_\+job\+\_\+exit\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{int}]{job}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_af88686bf38197f4c2a43031f5ddbbec8}{}\label{jobs_8c_af88686bf38197f4c2a43031f5ddbbec8}
+\index{jobs.\+c@{jobs.\+c}!realloc\+\_\+jobs\+\_\+list@{realloc\+\_\+jobs\+\_\+list}}
+\index{realloc\+\_\+jobs\+\_\+list@{realloc\+\_\+jobs\+\_\+list}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{realloc\+\_\+jobs\+\_\+list()}{realloc_jobs_list()}}]{\setlength{\rightskip}{0pt plus 5cm}static void realloc\+\_\+jobs\+\_\+list (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a062169660044519b9a33a27f35cf6a85}{}\label{jobs_8c_a062169660044519b9a33a27f35cf6a85}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a062169660044519b9a33a27f35cf6a85_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!reap\+\_\+dead\+\_\+jobs@{reap\+\_\+dead\+\_\+jobs}}
+\index{reap\+\_\+dead\+\_\+jobs@{reap\+\_\+dead\+\_\+jobs}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{reap\+\_\+dead\+\_\+jobs()}{reap_dead_jobs()}}]{\setlength{\rightskip}{0pt plus 5cm}void reap\+\_\+dead\+\_\+jobs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a8113aecd5926c83f5bec94aaded2476a}{}\label{jobs_8c_a8113aecd5926c83f5bec94aaded2476a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a8113aecd5926c83f5bec94aaded2476a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!reset\+\_\+current@{reset\+\_\+current}}
+\index{reset\+\_\+current@{reset\+\_\+current}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{reset\+\_\+current()}{reset_current()}}]{\setlength{\rightskip}{0pt plus 5cm}static void reset\+\_\+current (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a8461670b988ab55fb068f3546e2dbceb}{}\label{jobs_8c_a8461670b988ab55fb068f3546e2dbceb}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a8461670b988ab55fb068f3546e2dbceb_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!reset\+\_\+job\+\_\+indices@{reset\+\_\+job\+\_\+indices}}
+\index{reset\+\_\+job\+\_\+indices@{reset\+\_\+job\+\_\+indices}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{reset\+\_\+job\+\_\+indices()}{reset_job_indices()}}]{\setlength{\rightskip}{0pt plus 5cm}static void reset\+\_\+job\+\_\+indices (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a037783844d1b44bdec0f7eef30dd6ede}{}\label{jobs_8c_a037783844d1b44bdec0f7eef30dd6ede}
+\index{jobs.\+c@{jobs.\+c}!restart\+\_\+job\+\_\+control@{restart\+\_\+job\+\_\+control}}
+\index{restart\+\_\+job\+\_\+control@{restart\+\_\+job\+\_\+control}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{restart\+\_\+job\+\_\+control()}{restart_job_control()}}]{\setlength{\rightskip}{0pt plus 5cm}void restart\+\_\+job\+\_\+control (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a2d4f082d7fb9a88caf928c7ee833156a}{}\label{jobs_8c_a2d4f082d7fb9a88caf928c7ee833156a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a2d4f082d7fb9a88caf928c7ee833156a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!restore\+\_\+pgrp\+\_\+pipe@{restore\+\_\+pgrp\+\_\+pipe}}
+\index{restore\+\_\+pgrp\+\_\+pipe@{restore\+\_\+pgrp\+\_\+pipe}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{restore\+\_\+pgrp\+\_\+pipe(int $\ast$p)}{restore_pgrp_pipe(int *p)}}]{\setlength{\rightskip}{0pt plus 5cm}void restore\+\_\+pgrp\+\_\+pipe (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{p}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a022a1c10ded6b4071bdd8d933aa87116}{}\label{jobs_8c_a022a1c10ded6b4071bdd8d933aa87116}
+\index{jobs.\+c@{jobs.\+c}!restore\+\_\+pipeline@{restore\+\_\+pipeline}}
+\index{restore\+\_\+pipeline@{restore\+\_\+pipeline}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{restore\+\_\+pipeline(int discard)}{restore_pipeline(int discard)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf P\+R\+O\+C\+E\+SS}$\ast$ restore\+\_\+pipeline (
+\begin{DoxyParamCaption}
+\item[{int}]{discard}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a19307882067f71f056dc87339565cce1}{}\label{jobs_8c_a19307882067f71f056dc87339565cce1}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=287pt]{jobs_8c_a19307882067f71f056dc87339565cce1_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!restore\+\_\+sigint\+\_\+handler@{restore\+\_\+sigint\+\_\+handler}}
+\index{restore\+\_\+sigint\+\_\+handler@{restore\+\_\+sigint\+\_\+handler}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{restore\+\_\+sigint\+\_\+handler()}{restore_sigint_handler()}}]{\setlength{\rightskip}{0pt plus 5cm}static void restore\+\_\+sigint\+\_\+handler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_abaf052f06c9c04a236219814419b7e83}{}\label{jobs_8c_abaf052f06c9c04a236219814419b7e83}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_abaf052f06c9c04a236219814419b7e83_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!run\+\_\+sigchld\+\_\+trap@{run\+\_\+sigchld\+\_\+trap}}
+\index{run\+\_\+sigchld\+\_\+trap@{run\+\_\+sigchld\+\_\+trap}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{run\+\_\+sigchld\+\_\+trap(int nchild)}{run_sigchld_trap(int nchild)}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+sigchld\+\_\+trap (
+\begin{DoxyParamCaption}
+\item[{int}]{nchild}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_abdbc0219d409378ba6c6732891257457}{}\label{jobs_8c_abdbc0219d409378ba6c6732891257457}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_abdbc0219d409378ba6c6732891257457_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!save\+\_\+pgrp\+\_\+pipe@{save\+\_\+pgrp\+\_\+pipe}}
+\index{save\+\_\+pgrp\+\_\+pipe@{save\+\_\+pgrp\+\_\+pipe}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{save\+\_\+pgrp\+\_\+pipe(int $\ast$p, int clear)}{save_pgrp_pipe(int *p, int clear)}}]{\setlength{\rightskip}{0pt plus 5cm}void save\+\_\+pgrp\+\_\+pipe (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{p, }
+\item[{int}]{clear}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a1864a19c6da2cb340691f1da2b942625}{}\label{jobs_8c_a1864a19c6da2cb340691f1da2b942625}
+\index{jobs.\+c@{jobs.\+c}!save\+\_\+pipeline@{save\+\_\+pipeline}}
+\index{save\+\_\+pipeline@{save\+\_\+pipeline}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{save\+\_\+pipeline(int clear)}{save_pipeline(int clear)}}]{\setlength{\rightskip}{0pt plus 5cm}void save\+\_\+pipeline (
+\begin{DoxyParamCaption}
+\item[{int}]{clear}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a1181af998ba25683752c7cd4bdf91091}{}\label{jobs_8c_a1181af998ba25683752c7cd4bdf91091}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a1181af998ba25683752c7cd4bdf91091_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!set\+\_\+current\+\_\+job@{set\+\_\+current\+\_\+job}}
+\index{set\+\_\+current\+\_\+job@{set\+\_\+current\+\_\+job}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+current\+\_\+job(int job)}{set_current_job(int job)}}]{\setlength{\rightskip}{0pt plus 5cm}static void set\+\_\+current\+\_\+job (
+\begin{DoxyParamCaption}
+\item[{int}]{job}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a418c0d4ef10f2149706710f16d250882}{}\label{jobs_8c_a418c0d4ef10f2149706710f16d250882}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a418c0d4ef10f2149706710f16d250882_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!set\+\_\+job\+\_\+control@{set\+\_\+job\+\_\+control}}
+\index{set\+\_\+job\+\_\+control@{set\+\_\+job\+\_\+control}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+job\+\_\+control(int arg)}{set_job_control(int arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int set\+\_\+job\+\_\+control (
+\begin{DoxyParamCaption}
+\item[{int}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a95d21d57cdf01784017ec41245a7ccf2}{}\label{jobs_8c_a95d21d57cdf01784017ec41245a7ccf2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a95d21d57cdf01784017ec41245a7ccf2_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!set\+\_\+job\+\_\+running@{set\+\_\+job\+\_\+running}}
+\index{set\+\_\+job\+\_\+running@{set\+\_\+job\+\_\+running}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+job\+\_\+running(int job)}{set_job_running(int job)}}]{\setlength{\rightskip}{0pt plus 5cm}static void set\+\_\+job\+\_\+running (
+\begin{DoxyParamCaption}
+\item[{int}]{job}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a61bf5bf35899dc2c1e91cd412de1876b}{}\label{jobs_8c_a61bf5bf35899dc2c1e91cd412de1876b}
+\index{jobs.\+c@{jobs.\+c}!set\+\_\+job\+\_\+status\+\_\+and\+\_\+cleanup@{set\+\_\+job\+\_\+status\+\_\+and\+\_\+cleanup}}
+\index{set\+\_\+job\+\_\+status\+\_\+and\+\_\+cleanup@{set\+\_\+job\+\_\+status\+\_\+and\+\_\+cleanup}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+job\+\_\+status\+\_\+and\+\_\+cleanup(int job)}{set_job_status_and_cleanup(int job)}}]{\setlength{\rightskip}{0pt plus 5cm}static int set\+\_\+job\+\_\+status\+\_\+and\+\_\+cleanup (
+\begin{DoxyParamCaption}
+\item[{int}]{job}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a5b699391d568903c90bbce6a46a744fb}{}\label{jobs_8c_a5b699391d568903c90bbce6a46a744fb}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a5b699391d568903c90bbce6a46a744fb_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!set\+\_\+jobs\+\_\+list\+\_\+frozen@{set\+\_\+jobs\+\_\+list\+\_\+frozen}}
+\index{set\+\_\+jobs\+\_\+list\+\_\+frozen@{set\+\_\+jobs\+\_\+list\+\_\+frozen}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+jobs\+\_\+list\+\_\+frozen(int s)}{set_jobs_list_frozen(int s)}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+jobs\+\_\+list\+\_\+frozen (
+\begin{DoxyParamCaption}
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a9c5a796b3c5e2ddcc0ea88c494e324ea}{}\label{jobs_8c_a9c5a796b3c5e2ddcc0ea88c494e324ea}
+\index{jobs.\+c@{jobs.\+c}!set\+\_\+maxchild@{set\+\_\+maxchild}}
+\index{set\+\_\+maxchild@{set\+\_\+maxchild}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+maxchild(int nchild)}{set_maxchild(int nchild)}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+maxchild (
+\begin{DoxyParamCaption}
+\item[{int}]{nchild}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a137086a1fb1016e07d53473ef106d1f0}{}\label{jobs_8c_a137086a1fb1016e07d53473ef106d1f0}
+\index{jobs.\+c@{jobs.\+c}!set\+\_\+new\+\_\+line\+\_\+discipline@{set\+\_\+new\+\_\+line\+\_\+discipline}}
+\index{set\+\_\+new\+\_\+line\+\_\+discipline@{set\+\_\+new\+\_\+line\+\_\+discipline}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+new\+\_\+line\+\_\+discipline(int tty)}{set_new_line_discipline(int tty)}}]{\setlength{\rightskip}{0pt plus 5cm}static int set\+\_\+new\+\_\+line\+\_\+discipline (
+\begin{DoxyParamCaption}
+\item[{int}]{tty}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a498a633d49209b6c93d81baf6e7e1430}{}\label{jobs_8c_a498a633d49209b6c93d81baf6e7e1430}
+\index{jobs.\+c@{jobs.\+c}!set\+\_\+sigchld\+\_\+handler@{set\+\_\+sigchld\+\_\+handler}}
+\index{set\+\_\+sigchld\+\_\+handler@{set\+\_\+sigchld\+\_\+handler}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+sigchld\+\_\+handler()}{set_sigchld_handler()}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+sigchld\+\_\+handler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a9c3599dc5b071245445a30237eefbe9c}{}\label{jobs_8c_a9c3599dc5b071245445a30237eefbe9c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a9c3599dc5b071245445a30237eefbe9c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!set\+\_\+tty\+\_\+state@{set\+\_\+tty\+\_\+state}}
+\index{set\+\_\+tty\+\_\+state@{set\+\_\+tty\+\_\+state}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+tty\+\_\+state()}{set_tty_state()}}]{\setlength{\rightskip}{0pt plus 5cm}int set\+\_\+tty\+\_\+state (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ab9dc901cdc105f8060eafdc6301fe2de}{}\label{jobs_8c_ab9dc901cdc105f8060eafdc6301fe2de}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ab9dc901cdc105f8060eafdc6301fe2de_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!setjstatus@{setjstatus}}
+\index{setjstatus@{setjstatus}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{setjstatus(int j)}{setjstatus(int j)}}]{\setlength{\rightskip}{0pt plus 5cm}static void setjstatus (
+\begin{DoxyParamCaption}
+\item[{int}]{j}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a28bc0018a01c0f1991274a6a2e6d79f4}{}\label{jobs_8c_a28bc0018a01c0f1991274a6a2e6d79f4}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a28bc0018a01c0f1991274a6a2e6d79f4_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!sigchld\+\_\+handler@{sigchld\+\_\+handler}}
+\index{sigchld\+\_\+handler@{sigchld\+\_\+handler}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{sigchld\+\_\+handler(int sig)}{sigchld_handler(int sig)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf sighandler} sigchld\+\_\+handler (
+\begin{DoxyParamCaption}
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a2ff305f4a0cb3c0f7ccb33c71cc2d0d2}{}\label{jobs_8c_a2ff305f4a0cb3c0f7ccb33c71cc2d0d2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a2ff305f4a0cb3c0f7ccb33c71cc2d0d2_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!sigcont\+\_\+sighandler@{sigcont\+\_\+sighandler}}
+\index{sigcont\+\_\+sighandler@{sigcont\+\_\+sighandler}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{sigcont\+\_\+sighandler(int sig)}{sigcont_sighandler(int sig)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf sighandler} sigcont\+\_\+sighandler (
+\begin{DoxyParamCaption}
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a9da7fe878f86821d72ebb991092f2a13}{}\label{jobs_8c_a9da7fe878f86821d72ebb991092f2a13}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a9da7fe878f86821d72ebb991092f2a13_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!sigstop\+\_\+sighandler@{sigstop\+\_\+sighandler}}
+\index{sigstop\+\_\+sighandler@{sigstop\+\_\+sighandler}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{sigstop\+\_\+sighandler(int sig)}{sigstop_sighandler(int sig)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf sighandler} sigstop\+\_\+sighandler (
+\begin{DoxyParamCaption}
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_aff70c2f626e4ae983bc38f0dc5a375e8}{}\label{jobs_8c_aff70c2f626e4ae983bc38f0dc5a375e8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_aff70c2f626e4ae983bc38f0dc5a375e8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!start\+\_\+job@{start\+\_\+job}}
+\index{start\+\_\+job@{start\+\_\+job}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{start\+\_\+job(int job, int foreground)}{start_job(int job, int foreground)}}]{\setlength{\rightskip}{0pt plus 5cm}int start\+\_\+job (
+\begin{DoxyParamCaption}
+\item[{int}]{job, }
+\item[{int}]{foreground}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_abf725a8b0ca073cc1140e9f1d88b0c26}{}\label{jobs_8c_abf725a8b0ca073cc1140e9f1d88b0c26}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_abf725a8b0ca073cc1140e9f1d88b0c26_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!start\+\_\+pipeline@{start\+\_\+pipeline}}
+\index{start\+\_\+pipeline@{start\+\_\+pipeline}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{start\+\_\+pipeline()}{start_pipeline()}}]{\setlength{\rightskip}{0pt plus 5cm}void start\+\_\+pipeline (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a718ce465ffb026f4a2b67b4a6eab4761}{}\label{jobs_8c_a718ce465ffb026f4a2b67b4a6eab4761}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a718ce465ffb026f4a2b67b4a6eab4761_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!stop\+\_\+making\+\_\+children@{stop\+\_\+making\+\_\+children}}
+\index{stop\+\_\+making\+\_\+children@{stop\+\_\+making\+\_\+children}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{stop\+\_\+making\+\_\+children()}{stop_making_children()}}]{\setlength{\rightskip}{0pt plus 5cm}void stop\+\_\+making\+\_\+children (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a5d4feeb769d599bb634672546e5a19ff}{}\label{jobs_8c_a5d4feeb769d599bb634672546e5a19ff}
+\index{jobs.\+c@{jobs.\+c}!stop\+\_\+pipeline@{stop\+\_\+pipeline}}
+\index{stop\+\_\+pipeline@{stop\+\_\+pipeline}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{stop\+\_\+pipeline(int async, C\+O\+M\+M\+A\+N\+D $\ast$deferred)}{stop_pipeline(int async, COMMAND *deferred)}}]{\setlength{\rightskip}{0pt plus 5cm}int stop\+\_\+pipeline (
+\begin{DoxyParamCaption}
+\item[{int}]{async, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{deferred}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ad569e95d0123bab22a08e7d38a3a06e1}{}\label{jobs_8c_ad569e95d0123bab22a08e7d38a3a06e1}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ad569e95d0123bab22a08e7d38a3a06e1_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!tcgetpgrp@{tcgetpgrp}}
+\index{tcgetpgrp@{tcgetpgrp}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{tcgetpgrp(int fd)}{tcgetpgrp(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t tcgetpgrp (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a30c3edb2b02399d64b5e8eaaf7fe40e6}{}\label{jobs_8c_a30c3edb2b02399d64b5e8eaaf7fe40e6}
+\index{jobs.\+c@{jobs.\+c}!terminate\+\_\+current\+\_\+pipeline@{terminate\+\_\+current\+\_\+pipeline}}
+\index{terminate\+\_\+current\+\_\+pipeline@{terminate\+\_\+current\+\_\+pipeline}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{terminate\+\_\+current\+\_\+pipeline()}{terminate_current_pipeline()}}]{\setlength{\rightskip}{0pt plus 5cm}void terminate\+\_\+current\+\_\+pipeline (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a56a3393f655f01d7c763be6f034b57b7}{}\label{jobs_8c_a56a3393f655f01d7c763be6f034b57b7}
+\index{jobs.\+c@{jobs.\+c}!terminate\+\_\+stopped\+\_\+jobs@{terminate\+\_\+stopped\+\_\+jobs}}
+\index{terminate\+\_\+stopped\+\_\+jobs@{terminate\+\_\+stopped\+\_\+jobs}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{terminate\+\_\+stopped\+\_\+jobs()}{terminate_stopped_jobs()}}]{\setlength{\rightskip}{0pt plus 5cm}void terminate\+\_\+stopped\+\_\+jobs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_aac172ca161ecd7a5b6baf30e9c239c65}{}\label{jobs_8c_aac172ca161ecd7a5b6baf30e9c239c65}
+\index{jobs.\+c@{jobs.\+c}!unfreeze\+\_\+jobs\+\_\+list@{unfreeze\+\_\+jobs\+\_\+list}}
+\index{unfreeze\+\_\+jobs\+\_\+list@{unfreeze\+\_\+jobs\+\_\+list}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{unfreeze\+\_\+jobs\+\_\+list()}{unfreeze_jobs_list()}}]{\setlength{\rightskip}{0pt plus 5cm}void unfreeze\+\_\+jobs\+\_\+list (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_acc347c3553987b2835c81ebaffd378d6}{}\label{jobs_8c_acc347c3553987b2835c81ebaffd378d6}
+\index{jobs.\+c@{jobs.\+c}!wait\+\_\+for@{wait\+\_\+for}}
+\index{wait\+\_\+for@{wait\+\_\+for}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+for(pid\+\_\+t pid)}{wait_for(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}int wait\+\_\+for (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_abcef62306debcbcd910ed2cbadcb43fe}{}\label{jobs_8c_abcef62306debcbcd910ed2cbadcb43fe}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_abcef62306debcbcd910ed2cbadcb43fe_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!wait\+\_\+for\+\_\+any\+\_\+job@{wait\+\_\+for\+\_\+any\+\_\+job}}
+\index{wait\+\_\+for\+\_\+any\+\_\+job@{wait\+\_\+for\+\_\+any\+\_\+job}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+for\+\_\+any\+\_\+job(int flags)}{wait_for_any_job(int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}int wait\+\_\+for\+\_\+any\+\_\+job (
+\begin{DoxyParamCaption}
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a689603a452c5c1ed36b04a9b14db419d}{}\label{jobs_8c_a689603a452c5c1ed36b04a9b14db419d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a689603a452c5c1ed36b04a9b14db419d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!wait\+\_\+for\+\_\+background\+\_\+pids@{wait\+\_\+for\+\_\+background\+\_\+pids}}
+\index{wait\+\_\+for\+\_\+background\+\_\+pids@{wait\+\_\+for\+\_\+background\+\_\+pids}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+for\+\_\+background\+\_\+pids()}{wait_for_background_pids()}}]{\setlength{\rightskip}{0pt plus 5cm}void wait\+\_\+for\+\_\+background\+\_\+pids (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a003e4bf7f3074638f24ae4e7f2d25717}{}\label{jobs_8c_a003e4bf7f3074638f24ae4e7f2d25717}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a003e4bf7f3074638f24ae4e7f2d25717_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!wait\+\_\+for\+\_\+job@{wait\+\_\+for\+\_\+job}}
+\index{wait\+\_\+for\+\_\+job@{wait\+\_\+for\+\_\+job}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+for\+\_\+job(int job, int flags)}{wait_for_job(int job, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}int wait\+\_\+for\+\_\+job (
+\begin{DoxyParamCaption}
+\item[{int}]{job, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a60c0f397651324054c4e84df569ba0c8}{}\label{jobs_8c_a60c0f397651324054c4e84df569ba0c8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a60c0f397651324054c4e84df569ba0c8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!wait\+\_\+for\+\_\+single\+\_\+pid@{wait\+\_\+for\+\_\+single\+\_\+pid}}
+\index{wait\+\_\+for\+\_\+single\+\_\+pid@{wait\+\_\+for\+\_\+single\+\_\+pid}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+for\+\_\+single\+\_\+pid(pid\+\_\+t pid, int flags)}{wait_for_single_pid(pid_t pid, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}int wait\+\_\+for\+\_\+single\+\_\+pid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a637f8e438a0ea8c409d891cb8ccb523e}{}\label{jobs_8c_a637f8e438a0ea8c409d891cb8ccb523e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a637f8e438a0ea8c409d891cb8ccb523e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!wait\+\_\+sigint\+\_\+cleanup@{wait\+\_\+sigint\+\_\+cleanup}}
+\index{wait\+\_\+sigint\+\_\+cleanup@{wait\+\_\+sigint\+\_\+cleanup}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+sigint\+\_\+cleanup()}{wait_sigint_cleanup()}}]{\setlength{\rightskip}{0pt plus 5cm}void wait\+\_\+sigint\+\_\+cleanup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_a1ced6c7ceaf0cf2f9983aa5262dfe392}{}\label{jobs_8c_a1ced6c7ceaf0cf2f9983aa5262dfe392}
+\index{jobs.\+c@{jobs.\+c}!wait\+\_\+sigint\+\_\+handler@{wait\+\_\+sigint\+\_\+handler}}
+\index{wait\+\_\+sigint\+\_\+handler@{wait\+\_\+sigint\+\_\+handler}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+sigint\+\_\+handler(int sig)}{wait_sigint_handler(int sig)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf sighandler} wait\+\_\+sigint\+\_\+handler (
+\begin{DoxyParamCaption}
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a89ced87614d7f6c88e27c96091684467}{}\label{jobs_8c_a89ced87614d7f6c88e27c96091684467}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a89ced87614d7f6c88e27c96091684467_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!waitchld@{waitchld}}
+\index{waitchld@{waitchld}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{waitchld(pid\+\_\+t wpid, int block)}{waitchld(pid_t wpid, int block)}}]{\setlength{\rightskip}{0pt plus 5cm}static int waitchld (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{wpid, }
+\item[{int}]{block}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a84e054741c4b7e3132b43efce8064090}{}\label{jobs_8c_a84e054741c4b7e3132b43efce8064090}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_a84e054741c4b7e3132b43efce8064090_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{jobs.\+c@{jobs.\+c}!without\+\_\+job\+\_\+control@{without\+\_\+job\+\_\+control}}
+\index{without\+\_\+job\+\_\+control@{without\+\_\+job\+\_\+control}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{without\+\_\+job\+\_\+control()}{without_job_control()}}]{\setlength{\rightskip}{0pt plus 5cm}void without\+\_\+job\+\_\+control (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{jobs_8c_ab9244e49349e5265eef7d020233848ae}{}\label{jobs_8c_ab9244e49349e5265eef7d020233848ae}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{jobs_8c_ab9244e49349e5265eef7d020233848ae_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{jobs.\+c@{jobs.\+c}!already\+\_\+making\+\_\+children@{already\+\_\+making\+\_\+children}}
+\index{already\+\_\+making\+\_\+children@{already\+\_\+making\+\_\+children}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{already\+\_\+making\+\_\+children}{already_making_children}}]{\setlength{\rightskip}{0pt plus 5cm}int already\+\_\+making\+\_\+children = 0}\hypertarget{jobs_8c_ab73b81916e1b9c693ec186cb41e9f4e5}{}\label{jobs_8c_ab73b81916e1b9c693ec186cb41e9f4e5}
+\index{jobs.\+c@{jobs.\+c}!bgpids@{bgpids}}
+\index{bgpids@{bgpids}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{bgpids}{bgpids}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf bgpids} {\bf bgpids} = \{ 0, 0, 0 \}}\hypertarget{jobs_8c_a402293945126f92a09d7cc87aee212a9}{}\label{jobs_8c_a402293945126f92a09d7cc87aee212a9}
+\index{jobs.\+c@{jobs.\+c}!check\+\_\+window\+\_\+size@{check\+\_\+window\+\_\+size}}
+\index{check\+\_\+window\+\_\+size@{check\+\_\+window\+\_\+size}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+window\+\_\+size}{check_window_size}}]{\setlength{\rightskip}{0pt plus 5cm}int check\+\_\+window\+\_\+size = {\bf C\+H\+E\+C\+K\+W\+I\+N\+S\+I\+Z\+E\+\_\+\+D\+E\+F\+A\+U\+LT}}\hypertarget{jobs_8c_a27ab938bc70e7696ed8fc9e10a4834c4}{}\label{jobs_8c_a27ab938bc70e7696ed8fc9e10a4834c4}
+\index{jobs.\+c@{jobs.\+c}!child\+\_\+caught\+\_\+sigint@{child\+\_\+caught\+\_\+sigint}}
+\index{child\+\_\+caught\+\_\+sigint@{child\+\_\+caught\+\_\+sigint}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{child\+\_\+caught\+\_\+sigint}{child_caught_sigint}}]{\setlength{\rightskip}{0pt plus 5cm}int child\+\_\+caught\+\_\+sigint\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ad3281e6cc7874bc09819bc9f5afad595}{}\label{jobs_8c_ad3281e6cc7874bc09819bc9f5afad595}
+\index{jobs.\+c@{jobs.\+c}!errno@{errno}}
+\index{errno@{errno}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{errno}{errno}}]{\setlength{\rightskip}{0pt plus 5cm}int errno}\hypertarget{jobs_8c_ad65a8842cc674e3ddf69355898c0ecbf}{}\label{jobs_8c_ad65a8842cc674e3ddf69355898c0ecbf}
+\index{jobs.\+c@{jobs.\+c}!job\+\_\+control@{job\+\_\+control}}
+\index{job\+\_\+control@{job\+\_\+control}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{job\+\_\+control}{job_control}}]{\setlength{\rightskip}{0pt plus 5cm}int job\+\_\+control = 1}\hypertarget{jobs_8c_a3002cbcd4a652dec2c5cef5ff3da446f}{}\label{jobs_8c_a3002cbcd4a652dec2c5cef5ff3da446f}
+\index{jobs.\+c@{jobs.\+c}!jobs@{jobs}}
+\index{jobs@{jobs}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{jobs}{jobs}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf J\+OB}$\ast$$\ast$ jobs = ({\bf J\+OB} $\ast$$\ast$){\bf N\+U\+LL}}\hypertarget{jobs_8c_a6cce913474372029492267b46b745d88}{}\label{jobs_8c_a6cce913474372029492267b46b745d88}
+\index{jobs.\+c@{jobs.\+c}!jobs\+\_\+list\+\_\+frozen@{jobs\+\_\+list\+\_\+frozen}}
+\index{jobs\+\_\+list\+\_\+frozen@{jobs\+\_\+list\+\_\+frozen}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{jobs\+\_\+list\+\_\+frozen}{jobs_list_frozen}}]{\setlength{\rightskip}{0pt plus 5cm}int jobs\+\_\+list\+\_\+frozen\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a57e47a8425e68a1907ac493cd673ca41}{}\label{jobs_8c_a57e47a8425e68a1907ac493cd673ca41}
+\index{jobs.\+c@{jobs.\+c}!js@{js}}
+\index{js@{js}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{js}{js}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf jobstats} js = \{ -\/1\+L, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, N\+O\+\_\+\+J\+O\+B, N\+O\+\_\+\+J\+O\+B, 0, 0 \}}\hypertarget{jobs_8c_afed1e71c6cd6951355514e19454fd26a}{}\label{jobs_8c_afed1e71c6cd6951355514e19454fd26a}
+\index{jobs.\+c@{jobs.\+c}!last\+\_\+asynchronous\+\_\+pid@{last\+\_\+asynchronous\+\_\+pid}}
+\index{last\+\_\+asynchronous\+\_\+pid@{last\+\_\+asynchronous\+\_\+pid}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{last\+\_\+asynchronous\+\_\+pid}{last_asynchronous_pid}}]{\setlength{\rightskip}{0pt plus 5cm}volatile pid\+\_\+t last\+\_\+asynchronous\+\_\+pid = {\bf N\+O\+\_\+\+P\+ID}}\hypertarget{jobs_8c_a2819d9527c8d26be39bb531290f4b597}{}\label{jobs_8c_a2819d9527c8d26be39bb531290f4b597}
+\index{jobs.\+c@{jobs.\+c}!last\+\_\+made\+\_\+pid@{last\+\_\+made\+\_\+pid}}
+\index{last\+\_\+made\+\_\+pid@{last\+\_\+made\+\_\+pid}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{last\+\_\+made\+\_\+pid}{last_made_pid}}]{\setlength{\rightskip}{0pt plus 5cm}volatile pid\+\_\+t last\+\_\+made\+\_\+pid = {\bf N\+O\+\_\+\+P\+ID}}\hypertarget{jobs_8c_a6014bc30456423f628a211bf8007fbe0}{}\label{jobs_8c_a6014bc30456423f628a211bf8007fbe0}
+\index{jobs.\+c@{jobs.\+c}!last\+\_\+procsub\+\_\+child@{last\+\_\+procsub\+\_\+child}}
+\index{last\+\_\+procsub\+\_\+child@{last\+\_\+procsub\+\_\+child}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{last\+\_\+procsub\+\_\+child}{last_procsub_child}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf P\+R\+O\+C\+E\+SS}$\ast$ last\+\_\+procsub\+\_\+child = ({\bf P\+R\+O\+C\+E\+SS} $\ast$){\bf N\+U\+LL}}\hypertarget{jobs_8c_a00b3fcd8506b159c50c98186435d1f13}{}\label{jobs_8c_a00b3fcd8506b159c50c98186435d1f13}
+\index{jobs.\+c@{jobs.\+c}!old\+\_\+cont@{old\+\_\+cont}}
+\index{old\+\_\+cont@{old\+\_\+cont}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{old\+\_\+cont}{old_cont}}]{\setlength{\rightskip}{0pt plus 5cm}Sig\+Handler$\ast$ old\+\_\+cont = (Sig\+Handler $\ast$)S\+I\+G\+\_\+\+D\+FL\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a2b18b8d320ae7eae035b6fdc7cf3111a}{}\label{jobs_8c_a2b18b8d320ae7eae035b6fdc7cf3111a}
+\index{jobs.\+c@{jobs.\+c}!old\+\_\+sigint\+\_\+handler@{old\+\_\+sigint\+\_\+handler}}
+\index{old\+\_\+sigint\+\_\+handler@{old\+\_\+sigint\+\_\+handler}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{old\+\_\+sigint\+\_\+handler}{old_sigint_handler}}]{\setlength{\rightskip}{0pt plus 5cm}Sig\+Handler$\ast$ old\+\_\+sigint\+\_\+handler = {\bf I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ae15b67160f6705f527ba4c23e11e64d3}{}\label{jobs_8c_ae15b67160f6705f527ba4c23e11e64d3}
+\index{jobs.\+c@{jobs.\+c}!old\+\_\+tstp@{old\+\_\+tstp}}
+\index{old\+\_\+tstp@{old\+\_\+tstp}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{old\+\_\+tstp}{old_tstp}}]{\setlength{\rightskip}{0pt plus 5cm}Sig\+Handler$\ast$ old\+\_\+tstp\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a2117a3ea7b950d08a1de610d18291bf1}{}\label{jobs_8c_a2117a3ea7b950d08a1de610d18291bf1}
+\index{jobs.\+c@{jobs.\+c}!old\+\_\+ttin@{old\+\_\+ttin}}
+\index{old\+\_\+ttin@{old\+\_\+ttin}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{old\+\_\+ttin}{old_ttin}}]{\setlength{\rightskip}{0pt plus 5cm}Sig\+Handler $\ast$ old\+\_\+ttin\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a0c33b0e2f430ff18bc36dd8fa19c14d1}{}\label{jobs_8c_a0c33b0e2f430ff18bc36dd8fa19c14d1}
+\index{jobs.\+c@{jobs.\+c}!old\+\_\+ttou@{old\+\_\+ttou}}
+\index{old\+\_\+ttou@{old\+\_\+ttou}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{old\+\_\+ttou}{old_ttou}}]{\setlength{\rightskip}{0pt plus 5cm}Sig\+Handler $\ast$ old\+\_\+ttou\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a6c44b645419b61a2eeab9833fe2abc97}{}\label{jobs_8c_a6c44b645419b61a2eeab9833fe2abc97}
+\index{jobs.\+c@{jobs.\+c}!original\+\_\+pgrp@{original\+\_\+pgrp}}
+\index{original\+\_\+pgrp@{original\+\_\+pgrp}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{original\+\_\+pgrp}{original_pgrp}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t original\+\_\+pgrp = {\bf N\+O\+\_\+\+P\+ID}}\hypertarget{jobs_8c_a927de0d08067183bd327b538a1b77f73}{}\label{jobs_8c_a927de0d08067183bd327b538a1b77f73}
+\index{jobs.\+c@{jobs.\+c}!original\+\_\+signals@{original\+\_\+signals}}
+\index{original\+\_\+signals@{original\+\_\+signals}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{original\+\_\+signals}{original_signals}}]{\setlength{\rightskip}{0pt plus 5cm}Sig\+Handler$\ast$$\ast$ original\+\_\+signals}\hypertarget{jobs_8c_a09b47218f3174e8bc8f36377308fd33a}{}\label{jobs_8c_a09b47218f3174e8bc8f36377308fd33a}
+\index{jobs.\+c@{jobs.\+c}!pgrp\+\_\+pipe@{pgrp\+\_\+pipe}}
+\index{pgrp\+\_\+pipe@{pgrp\+\_\+pipe}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{pgrp\+\_\+pipe}{pgrp_pipe}}]{\setlength{\rightskip}{0pt plus 5cm}int pgrp\+\_\+pipe\mbox{[}2\mbox{]} = \{ -\/1, -\/1 \}}\hypertarget{jobs_8c_a336a1162cfa5f9b88291667fe2a22a09}{}\label{jobs_8c_a336a1162cfa5f9b88291667fe2a22a09}
+\index{jobs.\+c@{jobs.\+c}!pidstat\+\_\+table@{pidstat\+\_\+table}}
+\index{pidstat\+\_\+table@{pidstat\+\_\+table}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{pidstat\+\_\+table}{pidstat_table}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ps\+\_\+index\+\_\+t} pidstat\+\_\+table\mbox{[}{\bf P\+I\+D\+S\+T\+A\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+SZ}\mbox{]}}\hypertarget{jobs_8c_ad64c488ea31ee4a9aba985c9336bb0fa}{}\label{jobs_8c_ad64c488ea31ee4a9aba985c9336bb0fa}
+\index{jobs.\+c@{jobs.\+c}!pipeline\+\_\+pgrp@{pipeline\+\_\+pgrp}}
+\index{pipeline\+\_\+pgrp@{pipeline\+\_\+pgrp}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{pipeline\+\_\+pgrp}{pipeline_pgrp}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t pipeline\+\_\+pgrp = (pid\+\_\+t)0}\hypertarget{jobs_8c_a4cf043826d84509527bdbcfbd5f68b68}{}\label{jobs_8c_a4cf043826d84509527bdbcfbd5f68b68}
+\index{jobs.\+c@{jobs.\+c}!pstatuses@{pstatuses}}
+\index{pstatuses@{pstatuses}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{pstatuses}{pstatuses}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ pstatuses\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a724e31722dc60d826aa8870567958eb1}{}\label{jobs_8c_a724e31722dc60d826aa8870567958eb1}
+\index{jobs.\+c@{jobs.\+c}!queue\+\_\+sigchld@{queue\+\_\+sigchld}}
+\index{queue\+\_\+sigchld@{queue\+\_\+sigchld}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{queue\+\_\+sigchld}{queue_sigchld}}]{\setlength{\rightskip}{0pt plus 5cm}int queue\+\_\+sigchld\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_af553b22eef984c5245e4eae3e4a36cd5}{}\label{jobs_8c_af553b22eef984c5245e4eae3e4a36cd5}
+\index{jobs.\+c@{jobs.\+c}!retcode\+\_\+name\+\_\+buffer@{retcode\+\_\+name\+\_\+buffer}}
+\index{retcode\+\_\+name\+\_\+buffer@{retcode\+\_\+name\+\_\+buffer}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{retcode\+\_\+name\+\_\+buffer}{retcode_name_buffer}}]{\setlength{\rightskip}{0pt plus 5cm}char retcode\+\_\+name\+\_\+buffer\mbox{[}64\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_aac5dfe821e90fd3b3f3a0c4a0d1f09a1}{}\label{jobs_8c_aac5dfe821e90fd3b3f3a0c4a0d1f09a1}
+\index{jobs.\+c@{jobs.\+c}!running\+\_\+in\+\_\+background@{running\+\_\+in\+\_\+background}}
+\index{running\+\_\+in\+\_\+background@{running\+\_\+in\+\_\+background}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{running\+\_\+in\+\_\+background}{running_in_background}}]{\setlength{\rightskip}{0pt plus 5cm}int running\+\_\+in\+\_\+background = 0}\hypertarget{jobs_8c_ad2b44c9005c5a931c29ae6588e237636}{}\label{jobs_8c_ad2b44c9005c5a931c29ae6588e237636}
+\index{jobs.\+c@{jobs.\+c}!saved\+\_\+already\+\_\+making\+\_\+children@{saved\+\_\+already\+\_\+making\+\_\+children}}
+\index{saved\+\_\+already\+\_\+making\+\_\+children@{saved\+\_\+already\+\_\+making\+\_\+children}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{saved\+\_\+already\+\_\+making\+\_\+children}{saved_already_making_children}}]{\setlength{\rightskip}{0pt plus 5cm}int saved\+\_\+already\+\_\+making\+\_\+children\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a788ff02a9abd424b3160a4315e6cdbac}{}\label{jobs_8c_a788ff02a9abd424b3160a4315e6cdbac}
+\index{jobs.\+c@{jobs.\+c}!saved\+\_\+pipeline@{saved\+\_\+pipeline}}
+\index{saved\+\_\+pipeline@{saved\+\_\+pipeline}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{saved\+\_\+pipeline}{saved_pipeline}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf pipeline\+\_\+saver}$\ast$ saved\+\_\+pipeline\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a60e714219004a4142832cea6d34ebc97}{}\label{jobs_8c_a60e714219004a4142832cea6d34ebc97}
+\index{jobs.\+c@{jobs.\+c}!shell\+\_\+pgrp@{shell\+\_\+pgrp}}
+\index{shell\+\_\+pgrp@{shell\+\_\+pgrp}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+pgrp}{shell_pgrp}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t shell\+\_\+pgrp = {\bf N\+O\+\_\+\+P\+ID}}\hypertarget{jobs_8c_a12352dc576f1c23274468beca1ccf916}{}\label{jobs_8c_a12352dc576f1c23274468beca1ccf916}
+\index{jobs.\+c@{jobs.\+c}!shell\+\_\+tty@{shell\+\_\+tty}}
+\index{shell\+\_\+tty@{shell\+\_\+tty}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+tty}{shell_tty}}]{\setlength{\rightskip}{0pt plus 5cm}int shell\+\_\+tty = -\/1}\hypertarget{jobs_8c_ae43d281c5f91cb3d7ad00fc46971b4da}{}\label{jobs_8c_ae43d281c5f91cb3d7ad00fc46971b4da}
+\index{jobs.\+c@{jobs.\+c}!shell\+\_\+tty\+\_\+info@{shell\+\_\+tty\+\_\+info}}
+\index{shell\+\_\+tty\+\_\+info@{shell\+\_\+tty\+\_\+info}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+tty\+\_\+info}{shell_tty_info}}]{\setlength{\rightskip}{0pt plus 5cm}T\+T\+Y\+S\+T\+R\+U\+CT shell\+\_\+tty\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_ad9fe5481268cb2aed5102ece6ef18bbb}{}\label{jobs_8c_ad9fe5481268cb2aed5102ece6ef18bbb}
+\index{jobs.\+c@{jobs.\+c}!sigchld@{sigchld}}
+\index{sigchld@{sigchld}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{sigchld}{sigchld}}]{\setlength{\rightskip}{0pt plus 5cm}int sigchld\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_aa332884f0c3ecd93a329263848b7fa04}{}\label{jobs_8c_aa332884f0c3ecd93a329263848b7fa04}
+\index{jobs.\+c@{jobs.\+c}!statsize@{statsize}}
+\index{statsize@{statsize}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{statsize}{statsize}}]{\setlength{\rightskip}{0pt plus 5cm}int statsize\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a24dc5d70952dc004a6d23a179df6a1c1}{}\label{jobs_8c_a24dc5d70952dc004a6d23a179df6a1c1}
+\index{jobs.\+c@{jobs.\+c}!subst\+\_\+assign\+\_\+varlist@{subst\+\_\+assign\+\_\+varlist}}
+\index{subst\+\_\+assign\+\_\+varlist@{subst\+\_\+assign\+\_\+varlist}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{subst\+\_\+assign\+\_\+varlist}{subst_assign_varlist}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST}$\ast$ subst\+\_\+assign\+\_\+varlist}\hypertarget{jobs_8c_a8635881c32ee192e781422e8234f603f}{}\label{jobs_8c_a8635881c32ee192e781422e8234f603f}
+\index{jobs.\+c@{jobs.\+c}!terminal\+\_\+pgrp@{terminal\+\_\+pgrp}}
+\index{terminal\+\_\+pgrp@{terminal\+\_\+pgrp}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{terminal\+\_\+pgrp}{terminal_pgrp}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t terminal\+\_\+pgrp = {\bf N\+O\+\_\+\+P\+ID}}\hypertarget{jobs_8c_aeb36f80c8f1667339f6f23318ff29b50}{}\label{jobs_8c_aeb36f80c8f1667339f6f23318ff29b50}
+\index{jobs.\+c@{jobs.\+c}!the\+\_\+pipeline@{the\+\_\+pipeline}}
+\index{the\+\_\+pipeline@{the\+\_\+pipeline}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{the\+\_\+pipeline}{the_pipeline}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf P\+R\+O\+C\+E\+SS}$\ast$ the\+\_\+pipeline = ({\bf P\+R\+O\+C\+E\+SS} $\ast$){\bf N\+U\+LL}}\hypertarget{jobs_8c_a5efe88eb6aefb268d1259a51812164b2}{}\label{jobs_8c_a5efe88eb6aefb268d1259a51812164b2}
+\index{jobs.\+c@{jobs.\+c}!top\+\_\+level\+\_\+mask@{top\+\_\+level\+\_\+mask}}
+\index{top\+\_\+level\+\_\+mask@{top\+\_\+level\+\_\+mask}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{top\+\_\+level\+\_\+mask}{top_level_mask}}]{\setlength{\rightskip}{0pt plus 5cm}sigset\+\_\+t top\+\_\+level\+\_\+mask}\hypertarget{jobs_8c_a4423f1b40bab1e30781e832c6cad1e00}{}\label{jobs_8c_a4423f1b40bab1e30781e832c6cad1e00}
+\index{jobs.\+c@{jobs.\+c}!wait\+\_\+sigint\+\_\+received@{wait\+\_\+sigint\+\_\+received}}
+\index{wait\+\_\+sigint\+\_\+received@{wait\+\_\+sigint\+\_\+received}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+sigint\+\_\+received}{wait_sigint_received}}]{\setlength{\rightskip}{0pt plus 5cm}int wait\+\_\+sigint\+\_\+received\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_acc216a9180c7ff0368811af940fe3c4f}{}\label{jobs_8c_acc216a9180c7ff0368811af940fe3c4f}
+\index{jobs.\+c@{jobs.\+c}!waiting\+\_\+for\+\_\+child@{waiting\+\_\+for\+\_\+child}}
+\index{waiting\+\_\+for\+\_\+child@{waiting\+\_\+for\+\_\+child}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{waiting\+\_\+for\+\_\+child}{waiting_for_child}}]{\setlength{\rightskip}{0pt plus 5cm}int waiting\+\_\+for\+\_\+child\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_af3275b044b48a9ba5da272b925ba6d9e}{}\label{jobs_8c_af3275b044b48a9ba5da272b925ba6d9e}
+\index{jobs.\+c@{jobs.\+c}!zerojs@{zerojs}}
+\index{zerojs@{zerojs}!jobs.\+c@{jobs.\+c}}
+\subsubsection[{\texorpdfstring{zerojs}{zerojs}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf jobstats} zerojs = \{ -\/1\+L, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, N\+O\+\_\+\+J\+O\+B, N\+O\+\_\+\+J\+O\+B, 0, 0 \}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{jobs_8c_a00a528c63ad265bc45f9dd8892147fd1}{}\label{jobs_8c_a00a528c63ad265bc45f9dd8892147fd1}

@@ -1,0 +1,1069 @@
+\hypertarget{shell_8c}{}\section{shell.\+c File Reference}
+\label{shell_8c}\index{shell.\+c@{shell.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$sys/file.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}posixstat.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}posixtime.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}filecntl.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$pwd.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}parser.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}flags.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}trap.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mailcheck.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/common.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}jobs.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}input.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}execute\+\_\+cmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}findcmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashhist.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$readline/history.\+h$>$}\\*
+{\ttfamily \#include $<$readline/readline.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashline.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$tilde/tilde.\+h$>$}\\*
+{\ttfamily \#include $<$glob/strmatch.\+h$>$}\\*
+Include dependency graph for shell.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{shell_8c_a10a2f72f2ddff4f4e5cb1008eca080af}{I\+N\+S\+T\+A\+L\+L\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+DE}
+\item 
+\#define \hyperlink{shell_8c_aff7f8a309f07909be324fa40ec37308f}{N\+E\+E\+D\+\_\+\+S\+H\+\_\+\+S\+E\+T\+L\+I\+N\+E\+B\+U\+F\+\_\+\+D\+E\+CL}~/$\ast$ used in externs.\+h $\ast$/
+\item 
+\#define \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}~1
+\item 
+\#define \hyperlink{shell_8c_a430c93290f732080ee446c8ce110c134}{Charp}~2
+\item 
+\#define \hyperlink{shell_8c_a906afbfd1ce81a146b72d1ce928e7abb}{P\+R\+O\+G\+R\+AM}~\char`\"{}bash\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{shell_8c_a87c244bf78bb036a277a4beb4da6f9ac}{parse\+\_\+long\+\_\+options} \hyperlink{shell_8c_a41d8daa565d2681e4e5e4d6ec98cea2d}{\+\_\+\+\_\+P} ((char $\ast$$\ast$, int, int))
+\item 
+static int \hyperlink{shell_8c_a9b21516c906e8bef57633fc3a05ac9f1}{bind\+\_\+args} \hyperlink{shell_8c_aa7432a6d321b918c88794c95934de424}{\+\_\+\+\_\+P} ((char $\ast$$\ast$, int, int, int))
+\item 
+static void \hyperlink{shell_8c_a4265f1cf5cec94b2dcee2704ebe26495}{start\+\_\+debugger} \hyperlink{shell_8c_a28516e7412f88588867e0004ed57958e}{\+\_\+\+\_\+P} ((void))
+\item 
+static void \hyperlink{shell_8c_ac9196d15e0cc391642d1926a0aedb47a}{add\+\_\+shopt\+\_\+to\+\_\+alist} \hyperlink{shell_8c_ab85f3f1ed6c681b5893b49d319fe6182}{\+\_\+\+\_\+P} ((char $\ast$, int))
+\item 
+static void \hyperlink{shell_8c_a1986779ff4bd260f467d5f1a8c11cb4a}{execute\+\_\+env\+\_\+file} \hyperlink{shell_8c_a7830e20430b03647203c704c12cfc7a1}{\+\_\+\+\_\+P} ((char $\ast$))
+\item 
+static void \hyperlink{shell_8c_ab49249efad1bb1403b13ed8c1cace3eb}{show\+\_\+shell\+\_\+usage} \hyperlink{shell_8c_a99b14a802f9cb36a1a2ab7fa970691a2}{\+\_\+\+\_\+P} ((F\+I\+LE $\ast$, int))
+\item 
+int \hyperlink{shell_8c_a7b26396c9888d66d997b0007e8ff1e60}{main} (int \hyperlink{test_8c_ad1447518f4372828b8435ae82e48499e}{argc}, char $\ast$$\ast$\hyperlink{test_8c_af2efa898e9eed6fe6715279cb1ec35b0}{argv}, char $\ast$$\ast$env)
+\item 
+static int \hyperlink{shell_8c_a87c244bf78bb036a277a4beb4da6f9ac}{parse\+\_\+long\+\_\+options} (char $\ast$$\ast$\hyperlink{test_8c_af2efa898e9eed6fe6715279cb1ec35b0}{argv}, int arg\+\_\+start, int arg\+\_\+end)
+\item 
+static int \hyperlink{shell_8c_aaf706a2fe6e7e7b22617d86d64fe64d9}{parse\+\_\+shell\+\_\+options} (char $\ast$$\ast$\hyperlink{test_8c_af2efa898e9eed6fe6715279cb1ec35b0}{argv}, int arg\+\_\+start, int arg\+\_\+end)
+\item 
+void \hyperlink{shell_8c_a24a6769140074f7a288cbd9e7e57aaab}{exit\+\_\+shell} (int s)
+\item 
+void \hyperlink{shell_8c_a8cd407122e8280f23456b4942f4b7505}{sh\+\_\+exit} (int s)
+\item 
+void \hyperlink{shell_8c_a5b87ccc35dc6811b0a5c3f065a04acb4}{subshell\+\_\+exit} (int s)
+\item 
+static void \hyperlink{shell_8c_a1986779ff4bd260f467d5f1a8c11cb4a}{execute\+\_\+env\+\_\+file} (char $\ast$env\+\_\+file)
+\item 
+static void \hyperlink{shell_8c_a4219684155829a00736af89c7ea39b67}{run\+\_\+startup\+\_\+files} ()
+\item 
+int \hyperlink{shell_8c_a6bcc1ba90a1682931c8b5b61a036e704}{shell\+\_\+is\+\_\+restricted} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name})
+\item 
+int \hyperlink{shell_8c_a19ae98ef54af7231fc08929a7cab3972}{maybe\+\_\+make\+\_\+restricted} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name})
+\item 
+static int \hyperlink{shell_8c_ad5a822dfdb3e41f9297f48530d28858a}{uidget} ()
+\item 
+void \hyperlink{shell_8c_a57e21085387dd436b9bdff11cdbcea2d}{disable\+\_\+priv\+\_\+mode} ()
+\item 
+static int \hyperlink{shell_8c_a0b85f2207add5c9d69997032b096545d}{run\+\_\+one\+\_\+command} (char $\ast$\hyperlink{structcommand}{command})
+\item 
+static int \hyperlink{shell_8c_a9b21516c906e8bef57633fc3a05ac9f1}{bind\+\_\+args} (char $\ast$$\ast$\hyperlink{test_8c_af2efa898e9eed6fe6715279cb1ec35b0}{argv}, int arg\+\_\+start, int arg\+\_\+end, int start\+\_\+index)
+\item 
+void \hyperlink{shell_8c_ae6f95aee4b1dbb3c8e2476efad7dab8a}{unbind\+\_\+args} ()
+\item 
+static void \hyperlink{shell_8c_a4265f1cf5cec94b2dcee2704ebe26495}{start\+\_\+debugger} ()
+\item 
+static int \hyperlink{shell_8c_a101769b5bbfd6f3d1b7601d0681e261c}{open\+\_\+shell\+\_\+script} (char $\ast$script\+\_\+name)
+\item 
+static void \hyperlink{shell_8c_ae0256d1acf0d5c60db48c1e62acaf26e}{set\+\_\+bash\+\_\+input} ()
+\item 
+void \hyperlink{shell_8c_a6d7b9e420f5c24c3ba32be77071ee46f}{unset\+\_\+bash\+\_\+input} (int check\+\_\+zero)
+\item 
+static void \hyperlink{shell_8c_a471703a5ec066557e0687cbf97b0a48a}{set\+\_\+shell\+\_\+name} (char $\ast$argv0)
+\item 
+static void \hyperlink{shell_8c_afa788275c4dbd7b2173a20d42edf3462}{init\+\_\+interactive} ()
+\item 
+static void \hyperlink{shell_8c_a2b0be9f9498d07d4143a283652f7fdd8}{init\+\_\+noninteractive} ()
+\item 
+static void \hyperlink{shell_8c_a28026c4465f1c1488187f50b1cacbb81}{init\+\_\+interactive\+\_\+script} ()
+\item 
+void \hyperlink{shell_8c_a831835e6f23b0eb793fe702d1fdb07e3}{get\+\_\+current\+\_\+user\+\_\+info} ()
+\item 
+static void \hyperlink{shell_8c_a84a159e7418c850c1bcff5263fc3c95e}{shell\+\_\+initialize} ()
+\item 
+static void \hyperlink{shell_8c_a6641a68bac27e602f8adc5485a0731ac}{shell\+\_\+reinitialize} ()
+\item 
+static void \hyperlink{shell_8c_ab49249efad1bb1403b13ed8c1cace3eb}{show\+\_\+shell\+\_\+usage} (F\+I\+LE $\ast$fp, int extra)
+\item 
+static void \hyperlink{shell_8c_ac9196d15e0cc391642d1926a0aedb47a}{add\+\_\+shopt\+\_\+to\+\_\+alist} (char $\ast$opt, int on\+\_\+or\+\_\+off)
+\item 
+static void \hyperlink{shell_8c_abe832c98d124c8f48c2d1bb13147c8de}{run\+\_\+shopt\+\_\+alist} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{shell_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno}
+\item 
+int \hyperlink{shell_8c_a144f1595865b77904c64f1629267a358}{gnu\+\_\+error\+\_\+format}
+\item 
+int \hyperlink{shell_8c_a1e63ac3e6a769906dc9e0d1fce6704a1}{shell\+\_\+initialized} = 0
+\item 
+int \hyperlink{shell_8c_a9afb0d1631cbb7ecaac02f63c94b67c8}{bash\+\_\+argv\+\_\+initialized} = 0
+\item 
+\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ \hyperlink{shell_8c_aad10387cf2b3a5e282a7e54e1605e7fc}{global\+\_\+command} = (\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+struct \hyperlink{structuser__info}{user\+\_\+info} \hyperlink{shell_8c_a5d59ed416d1e932f76e390b237e2b731}{current\+\_\+user}
+\item 
+char $\ast$ \hyperlink{shell_8c_a633a4c54d867de47e17fb129c9a26aff}{current\+\_\+host\+\_\+name} = (char $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+int \hyperlink{shell_8c_a1f22336e1dd4c10975bf2fef179f6bce}{login\+\_\+shell} = 0
+\item 
+int \hyperlink{shell_8c_aeb39d5d8ddd4957f1b01720fa0e37e36}{interactive} = 0
+\item 
+int \hyperlink{shell_8c_ae2c20c1668999fe88f089ad20436f425}{interactive\+\_\+shell} = 0
+\item 
+int \hyperlink{shell_8c_a100cfe83ce6f33f9460d00bb4779a3fa}{hup\+\_\+on\+\_\+exit} = 0
+\item 
+int \hyperlink{shell_8c_ad179b069bdc9dc348b461c18b1a701be}{check\+\_\+jobs\+\_\+at\+\_\+exit} = 0
+\item 
+int \hyperlink{shell_8c_ad7014f00dbb52018fb3c69685ddd2e5e}{autocd} = 0
+\item 
+int \hyperlink{shell_8c_ae19f469a3f9d2c434e787c8d13abf576}{startup\+\_\+state} = 0
+\item 
+int \hyperlink{shell_8c_aa40020eb69f2239607e9c311065eba15}{reading\+\_\+shell\+\_\+script} = 0
+\item 
+int \hyperlink{shell_8c_a21eda0714c73937df723b5d1a7b00f9e}{debugging\+\_\+login\+\_\+shell} = 0
+\item 
+char $\ast$$\ast$ \hyperlink{shell_8c_aa1705f515b82de5ebe2537ade2be6711}{shell\+\_\+environment}
+\item 
+int \hyperlink{shell_8c_a6b10c6496bb85fc66ac770978c2ef185}{executing} = 0
+\item 
+int \hyperlink{shell_8c_a843f88f6713d61b61b30290f87294377}{current\+\_\+command\+\_\+number} = 1
+\item 
+int \hyperlink{shell_8c_a09197f649eac743c96df21743bb959aa}{indirection\+\_\+level} = 0
+\item 
+char $\ast$ \hyperlink{shell_8c_a12ca07e776396afc9a8bfee840d90d96}{shell\+\_\+name} = (char $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+time\+\_\+t \hyperlink{shell_8c_a921ecdc742149cd1e3f93520f8fbd371}{shell\+\_\+start\+\_\+time}
+\item 
+int \hyperlink{shell_8c_a5dadbca0edb1930542227575513f8562}{running\+\_\+under\+\_\+emacs}
+\item 
+int \hyperlink{shell_8c_ad5b0acbb37b367fa1898d9e079044321}{have\+\_\+devfd} = \hyperlink{config_8h_acd0db5403ab80635814460ae1e99822c}{H\+A\+V\+E\+\_\+\+D\+E\+V\+\_\+\+FD}
+\item 
+static char $\ast$ \hyperlink{shell_8c_adc2c2dbcdac59cc8fcf32f38fb9d4968}{bashrc\+\_\+file} = \hyperlink{config-top_8h_ac5356018ba5511948c1ffa47982abd7c}{D\+E\+F\+A\+U\+L\+T\+\_\+\+B\+A\+S\+H\+RC}
+\item 
+static int \hyperlink{shell_8c_a9bcfdf0e8c5f164583ad613d946a5d05}{act\+\_\+like\+\_\+sh}
+\item 
+static int \hyperlink{shell_8c_a9df0780f36156070c943d353e974dadf}{su\+\_\+shell}
+\item 
+static int \hyperlink{shell_8c_ab48a5abde2f90ddf87338e32c1ae2074}{sourced\+\_\+env}
+\item 
+static int \hyperlink{shell_8c_a50d9a17a96923ad585940cb2fd00559d}{running\+\_\+setuid}
+\item 
+static int \hyperlink{shell_8c_aeb20ca840680862ba2aeeff674c9dcb4}{debugging}
+\item 
+static int \hyperlink{shell_8c_ab354aa22103fc55a0ccbc1f24251233d}{no\+\_\+rc}
+\item 
+static int \hyperlink{shell_8c_a3587c8ce17d7505b0c056fe80dc26d04}{no\+\_\+profile}
+\item 
+static int \hyperlink{shell_8c_a0bc06c1906e5970de1b8cc948969d911}{do\+\_\+version}
+\item 
+static int \hyperlink{shell_8c_ac814d1397e7fec89351608671e673128}{make\+\_\+login\+\_\+shell}
+\item 
+static int \hyperlink{shell_8c_a906365e41d95b1015f286a0c312ebd06}{want\+\_\+initial\+\_\+help}
+\item 
+int \hyperlink{shell_8c_ae85600df6e3b2823d986bd95288b7237}{debugging\+\_\+mode} = 0
+\item 
+int \hyperlink{shell_8c_a0e8125dba58d8609b871041bc526db8e}{no\+\_\+line\+\_\+editing} = 0
+\item 
+int \hyperlink{shell_8c_ad1afa83036a310a3c29f4db3dfcf9be4}{dump\+\_\+translatable\+\_\+strings}
+\item 
+int \hyperlink{shell_8c_a5fed77c6fd3216357144a89741d9a4f2}{dump\+\_\+po\+\_\+strings}
+\item 
+int \hyperlink{shell_8c_aad6213e2edcf93ca3e4b9bfa4f594e10}{wordexp\+\_\+only} = 0
+\item 
+int \hyperlink{shell_8c_a3d1de338a7f6bb594efb159e1e34bf2d}{protected\+\_\+mode} = 0
+\item 
+int \hyperlink{shell_8c_a037d68a1d389e76f1624772b51a05efc}{pretty\+\_\+print\+\_\+mode} = 0
+\item 
+int \hyperlink{shell_8c_a15b0e48465dfc17e94173c63e10b57cc}{posixly\+\_\+correct} = 0
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>const char $\ast$ \hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}\\
+\>int \hyperlink{shell_8c_ac765329451135abec74c45e1897abf26}{type}\\
+\>int $\ast$ \hyperlink{shell_8c_a4d157054435f23acabcbc5390ae40967}{int\_value}\\
+\>char $\ast$$\ast$ \hyperlink{shell_8c_abe68dad39343f7010039217f9e9b800e}{char\_value}\\
+\} \hyperlink{shell_8c_a3f9d12df6291dfb9d1cba6f28a7b3956}{long\_args} \mbox{[}$\,$\mbox{]}\\
+
+\end{tabbing}\item 
+procenv\+\_\+t \hyperlink{shell_8c_a4eea10059ca05ea2aa89b5f7a38e4d5e}{subshell\+\_\+top\+\_\+level}
+\item 
+int \hyperlink{shell_8c_adf5af99c79a4b90c008156a44c7245ca}{subshell\+\_\+argc}
+\item 
+char $\ast$$\ast$ \hyperlink{shell_8c_a0647ded5eb463a5948fdd2630e8294ff}{subshell\+\_\+argv}
+\item 
+char $\ast$$\ast$ \hyperlink{shell_8c_ab32b027894484fb3b2aa56a4cc5e2c8a}{subshell\+\_\+envp}
+\item 
+char $\ast$ \hyperlink{shell_8c_aa0c379f9b5617870023bba4f3d661b77}{exec\+\_\+argv0}
+\item 
+int \hyperlink{shell_8c_a40b775636fbcf9017c80f9c301e36b2a}{default\+\_\+buffered\+\_\+input} = -\/1
+\item 
+int \hyperlink{shell_8c_ac33a32adcfbaeaba5a5ab7dd897975a5}{read\+\_\+from\+\_\+stdin}
+\item 
+int \hyperlink{shell_8c_aafdd2714b63dbde6ea7364f5d4864463}{want\+\_\+pending\+\_\+command}
+\item 
+char $\ast$ \hyperlink{shell_8c_af93d07407c5e6d0fd82102d52d6602ee}{command\+\_\+execution\+\_\+string}
+\item 
+char $\ast$ \hyperlink{shell_8c_a3468e8927370bcc47a7a664b805e6d76}{shell\+\_\+script\+\_\+filename}
+\item 
+int \hyperlink{shell_8c_aae146fed6007cf945f6af904f4d82de3}{malloc\+\_\+trace\+\_\+at\+\_\+exit} = 0
+\item 
+static int \hyperlink{shell_8c_ad9c426ed4add447bf1e85fbe6ebb204a}{shell\+\_\+reinitialized} = 0
+\item 
+static F\+I\+LE $\ast$ \hyperlink{shell_8c_ad42d752f4a19daff03a2099594080733}{default\+\_\+input}
+\item 
+static \hyperlink{structSTRING__INT__ALIST}{S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+ST} $\ast$ \hyperlink{shell_8c_ae88b8198635b2aca7128697bdcde08ef}{shopt\+\_\+alist}
+\item 
+static int \hyperlink{shell_8c_ad4860c33fb734399c948fec6dea25979}{shopt\+\_\+ind} = 0
+\item 
+static int \hyperlink{shell_8c_ab236ca326edd8b349e8c3c36b6bb6790}{shopt\+\_\+len} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{shell.\+c@{shell.\+c}!Charp@{Charp}}
+\index{Charp@{Charp}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{Charp}{Charp}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Charp~2}\hypertarget{shell_8c_a430c93290f732080ee446c8ce110c134}{}\label{shell_8c_a430c93290f732080ee446c8ce110c134}
+\index{shell.\+c@{shell.\+c}!I\+N\+S\+T\+A\+L\+L\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+DE@{I\+N\+S\+T\+A\+L\+L\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+DE}}
+\index{I\+N\+S\+T\+A\+L\+L\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+DE@{I\+N\+S\+T\+A\+L\+L\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+DE}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{I\+N\+S\+T\+A\+L\+L\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+DE}{INSTALL_DEBUG_MODE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+S\+T\+A\+L\+L\+\_\+\+D\+E\+B\+U\+G\+\_\+\+M\+O\+DE}\hypertarget{shell_8c_a10a2f72f2ddff4f4e5cb1008eca080af}{}\label{shell_8c_a10a2f72f2ddff4f4e5cb1008eca080af}
+\index{shell.\+c@{shell.\+c}!Int@{Int}}
+\index{Int@{Int}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{Int}{Int}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Int~1}\hypertarget{shell_8c_a91adff1610bdf681555a8f2e330dc963}{}\label{shell_8c_a91adff1610bdf681555a8f2e330dc963}
+\index{shell.\+c@{shell.\+c}!N\+E\+E\+D\+\_\+\+S\+H\+\_\+\+S\+E\+T\+L\+I\+N\+E\+B\+U\+F\+\_\+\+D\+E\+CL@{N\+E\+E\+D\+\_\+\+S\+H\+\_\+\+S\+E\+T\+L\+I\+N\+E\+B\+U\+F\+\_\+\+D\+E\+CL}}
+\index{N\+E\+E\+D\+\_\+\+S\+H\+\_\+\+S\+E\+T\+L\+I\+N\+E\+B\+U\+F\+\_\+\+D\+E\+CL@{N\+E\+E\+D\+\_\+\+S\+H\+\_\+\+S\+E\+T\+L\+I\+N\+E\+B\+U\+F\+\_\+\+D\+E\+CL}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{N\+E\+E\+D\+\_\+\+S\+H\+\_\+\+S\+E\+T\+L\+I\+N\+E\+B\+U\+F\+\_\+\+D\+E\+CL}{NEED_SH_SETLINEBUF_DECL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+E\+E\+D\+\_\+\+S\+H\+\_\+\+S\+E\+T\+L\+I\+N\+E\+B\+U\+F\+\_\+\+D\+E\+CL~/$\ast$ used in externs.\+h $\ast$/}\hypertarget{shell_8c_aff7f8a309f07909be324fa40ec37308f}{}\label{shell_8c_aff7f8a309f07909be324fa40ec37308f}
+\index{shell.\+c@{shell.\+c}!P\+R\+O\+G\+R\+AM@{P\+R\+O\+G\+R\+AM}}
+\index{P\+R\+O\+G\+R\+AM@{P\+R\+O\+G\+R\+AM}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{P\+R\+O\+G\+R\+AM}{PROGRAM}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+O\+G\+R\+AM~\char`\"{}bash\char`\"{}}\hypertarget{shell_8c_a906afbfd1ce81a146b72d1ce928e7abb}{}\label{shell_8c_a906afbfd1ce81a146b72d1ce928e7abb}
+
+
+\subsection{Function Documentation}
+\index{shell.\+c@{shell.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$$\ast$, int, int))}{__P((char **, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf parse\+\_\+long\+\_\+options} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$$\ast$, int, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a41d8daa565d2681e4e5e4d6ec98cea2d}{}\label{shell_8c_a41d8daa565d2681e4e5e4d6ec98cea2d}
+\index{shell.\+c@{shell.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$$\ast$, int, int, int))}{__P((char **, int, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf bind\+\_\+args} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$$\ast$, int, int, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_aa7432a6d321b918c88794c95934de424}{}\label{shell_8c_aa7432a6d321b918c88794c95934de424}
+\index{shell.\+c@{shell.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf start\+\_\+debugger} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a28516e7412f88588867e0004ed57958e}{}\label{shell_8c_a28516e7412f88588867e0004ed57958e}
+\index{shell.\+c@{shell.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, int))}{__P((char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf add\+\_\+shopt\+\_\+to\+\_\+alist} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_ab85f3f1ed6c681b5893b49d319fe6182}{}\label{shell_8c_ab85f3f1ed6c681b5893b49d319fe6182}
+\index{shell.\+c@{shell.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf execute\+\_\+env\+\_\+file} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a7830e20430b03647203c704c12cfc7a1}{}\label{shell_8c_a7830e20430b03647203c704c12cfc7a1}
+\index{shell.\+c@{shell.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+F\+I\+L\+E $\ast$, int))}{__P((FILE *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf show\+\_\+shell\+\_\+usage} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(F\+I\+LE $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a99b14a802f9cb36a1a2ab7fa970691a2}{}\label{shell_8c_a99b14a802f9cb36a1a2ab7fa970691a2}
+\index{shell.\+c@{shell.\+c}!add\+\_\+shopt\+\_\+to\+\_\+alist@{add\+\_\+shopt\+\_\+to\+\_\+alist}}
+\index{add\+\_\+shopt\+\_\+to\+\_\+alist@{add\+\_\+shopt\+\_\+to\+\_\+alist}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+shopt\+\_\+to\+\_\+alist(char $\ast$opt, int on\+\_\+or\+\_\+off)}{add_shopt_to_alist(char *opt, int on_or_off)}}]{\setlength{\rightskip}{0pt plus 5cm}static void add\+\_\+shopt\+\_\+to\+\_\+alist (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{opt, }
+\item[{int}]{on\+\_\+or\+\_\+off}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_ac9196d15e0cc391642d1926a0aedb47a}{}\label{shell_8c_ac9196d15e0cc391642d1926a0aedb47a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_ac9196d15e0cc391642d1926a0aedb47a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!bind\+\_\+args@{bind\+\_\+args}}
+\index{bind\+\_\+args@{bind\+\_\+args}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{bind\+\_\+args(char $\ast$$\ast$argv, int arg\+\_\+start, int arg\+\_\+end, int start\+\_\+index)}{bind_args(char **argv, int arg_start, int arg_end, int start_index)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bind\+\_\+args (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{argv, }
+\item[{int}]{arg\+\_\+start, }
+\item[{int}]{arg\+\_\+end, }
+\item[{int}]{start\+\_\+index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a9b21516c906e8bef57633fc3a05ac9f1}{}\label{shell_8c_a9b21516c906e8bef57633fc3a05ac9f1}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a9b21516c906e8bef57633fc3a05ac9f1_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!disable\+\_\+priv\+\_\+mode@{disable\+\_\+priv\+\_\+mode}}
+\index{disable\+\_\+priv\+\_\+mode@{disable\+\_\+priv\+\_\+mode}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{disable\+\_\+priv\+\_\+mode()}{disable_priv_mode()}}]{\setlength{\rightskip}{0pt plus 5cm}void disable\+\_\+priv\+\_\+mode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{shell_8c_a57e21085387dd436b9bdff11cdbcea2d}{}\label{shell_8c_a57e21085387dd436b9bdff11cdbcea2d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a57e21085387dd436b9bdff11cdbcea2d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!execute\+\_\+env\+\_\+file@{execute\+\_\+env\+\_\+file}}
+\index{execute\+\_\+env\+\_\+file@{execute\+\_\+env\+\_\+file}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{execute\+\_\+env\+\_\+file(char $\ast$env\+\_\+file)}{execute_env_file(char *env_file)}}]{\setlength{\rightskip}{0pt plus 5cm}static void execute\+\_\+env\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{env\+\_\+file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a1986779ff4bd260f467d5f1a8c11cb4a}{}\label{shell_8c_a1986779ff4bd260f467d5f1a8c11cb4a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a1986779ff4bd260f467d5f1a8c11cb4a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!exit\+\_\+shell@{exit\+\_\+shell}}
+\index{exit\+\_\+shell@{exit\+\_\+shell}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{exit\+\_\+shell(int s)}{exit_shell(int s)}}]{\setlength{\rightskip}{0pt plus 5cm}void exit\+\_\+shell (
+\begin{DoxyParamCaption}
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{shell_8c_a24a6769140074f7a288cbd9e7e57aaab}{}\label{shell_8c_a24a6769140074f7a288cbd9e7e57aaab}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a24a6769140074f7a288cbd9e7e57aaab_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!get\+\_\+current\+\_\+user\+\_\+info@{get\+\_\+current\+\_\+user\+\_\+info}}
+\index{get\+\_\+current\+\_\+user\+\_\+info@{get\+\_\+current\+\_\+user\+\_\+info}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+current\+\_\+user\+\_\+info()}{get_current_user_info()}}]{\setlength{\rightskip}{0pt plus 5cm}void get\+\_\+current\+\_\+user\+\_\+info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{shell_8c_a831835e6f23b0eb793fe702d1fdb07e3}{}\label{shell_8c_a831835e6f23b0eb793fe702d1fdb07e3}
+\index{shell.\+c@{shell.\+c}!init\+\_\+interactive@{init\+\_\+interactive}}
+\index{init\+\_\+interactive@{init\+\_\+interactive}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{init\+\_\+interactive()}{init_interactive()}}]{\setlength{\rightskip}{0pt plus 5cm}static void init\+\_\+interactive (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_afa788275c4dbd7b2173a20d42edf3462}{}\label{shell_8c_afa788275c4dbd7b2173a20d42edf3462}
+\index{shell.\+c@{shell.\+c}!init\+\_\+interactive\+\_\+script@{init\+\_\+interactive\+\_\+script}}
+\index{init\+\_\+interactive\+\_\+script@{init\+\_\+interactive\+\_\+script}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{init\+\_\+interactive\+\_\+script()}{init_interactive_script()}}]{\setlength{\rightskip}{0pt plus 5cm}static void init\+\_\+interactive\+\_\+script (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a28026c4465f1c1488187f50b1cacbb81}{}\label{shell_8c_a28026c4465f1c1488187f50b1cacbb81}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a28026c4465f1c1488187f50b1cacbb81_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!init\+\_\+noninteractive@{init\+\_\+noninteractive}}
+\index{init\+\_\+noninteractive@{init\+\_\+noninteractive}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{init\+\_\+noninteractive()}{init_noninteractive()}}]{\setlength{\rightskip}{0pt plus 5cm}static void init\+\_\+noninteractive (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a2b0be9f9498d07d4143a283652f7fdd8}{}\label{shell_8c_a2b0be9f9498d07d4143a283652f7fdd8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a2b0be9f9498d07d4143a283652f7fdd8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!main@{main}}
+\index{main@{main}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{main(int argc, char $\ast$$\ast$argv, char $\ast$$\ast$env)}{main(int argc, char **argv, char **env)}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv, }
+\item[{char $\ast$$\ast$}]{env}
+\end{DoxyParamCaption}
+)}\hypertarget{shell_8c_a7b26396c9888d66d997b0007e8ff1e60}{}\label{shell_8c_a7b26396c9888d66d997b0007e8ff1e60}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{shell_8c_a7b26396c9888d66d997b0007e8ff1e60_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!maybe\+\_\+make\+\_\+restricted@{maybe\+\_\+make\+\_\+restricted}}
+\index{maybe\+\_\+make\+\_\+restricted@{maybe\+\_\+make\+\_\+restricted}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{maybe\+\_\+make\+\_\+restricted(char $\ast$name)}{maybe_make_restricted(char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}int maybe\+\_\+make\+\_\+restricted (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{shell_8c_a19ae98ef54af7231fc08929a7cab3972}{}\label{shell_8c_a19ae98ef54af7231fc08929a7cab3972}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a19ae98ef54af7231fc08929a7cab3972_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!open\+\_\+shell\+\_\+script@{open\+\_\+shell\+\_\+script}}
+\index{open\+\_\+shell\+\_\+script@{open\+\_\+shell\+\_\+script}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{open\+\_\+shell\+\_\+script(char $\ast$script\+\_\+name)}{open_shell_script(char *script_name)}}]{\setlength{\rightskip}{0pt plus 5cm}static int open\+\_\+shell\+\_\+script (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{script\+\_\+name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a101769b5bbfd6f3d1b7601d0681e261c}{}\label{shell_8c_a101769b5bbfd6f3d1b7601d0681e261c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a101769b5bbfd6f3d1b7601d0681e261c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!parse\+\_\+long\+\_\+options@{parse\+\_\+long\+\_\+options}}
+\index{parse\+\_\+long\+\_\+options@{parse\+\_\+long\+\_\+options}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{parse\+\_\+long\+\_\+options(char $\ast$$\ast$argv, int arg\+\_\+start, int arg\+\_\+end)}{parse_long_options(char **argv, int arg_start, int arg_end)}}]{\setlength{\rightskip}{0pt plus 5cm}static int parse\+\_\+long\+\_\+options (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{argv, }
+\item[{int}]{arg\+\_\+start, }
+\item[{int}]{arg\+\_\+end}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a87c244bf78bb036a277a4beb4da6f9ac}{}\label{shell_8c_a87c244bf78bb036a277a4beb4da6f9ac}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a87c244bf78bb036a277a4beb4da6f9ac_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!parse\+\_\+shell\+\_\+options@{parse\+\_\+shell\+\_\+options}}
+\index{parse\+\_\+shell\+\_\+options@{parse\+\_\+shell\+\_\+options}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{parse\+\_\+shell\+\_\+options(char $\ast$$\ast$argv, int arg\+\_\+start, int arg\+\_\+end)}{parse_shell_options(char **argv, int arg_start, int arg_end)}}]{\setlength{\rightskip}{0pt plus 5cm}static int parse\+\_\+shell\+\_\+options (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{argv, }
+\item[{int}]{arg\+\_\+start, }
+\item[{int}]{arg\+\_\+end}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_aaf706a2fe6e7e7b22617d86d64fe64d9}{}\label{shell_8c_aaf706a2fe6e7e7b22617d86d64fe64d9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_aaf706a2fe6e7e7b22617d86d64fe64d9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!run\+\_\+one\+\_\+command@{run\+\_\+one\+\_\+command}}
+\index{run\+\_\+one\+\_\+command@{run\+\_\+one\+\_\+command}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{run\+\_\+one\+\_\+command(char $\ast$command)}{run_one_command(char *command)}}]{\setlength{\rightskip}{0pt plus 5cm}static int run\+\_\+one\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a0b85f2207add5c9d69997032b096545d}{}\label{shell_8c_a0b85f2207add5c9d69997032b096545d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a0b85f2207add5c9d69997032b096545d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!run\+\_\+shopt\+\_\+alist@{run\+\_\+shopt\+\_\+alist}}
+\index{run\+\_\+shopt\+\_\+alist@{run\+\_\+shopt\+\_\+alist}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{run\+\_\+shopt\+\_\+alist()}{run_shopt_alist()}}]{\setlength{\rightskip}{0pt plus 5cm}static void run\+\_\+shopt\+\_\+alist (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_abe832c98d124c8f48c2d1bb13147c8de}{}\label{shell_8c_abe832c98d124c8f48c2d1bb13147c8de}
+\index{shell.\+c@{shell.\+c}!run\+\_\+startup\+\_\+files@{run\+\_\+startup\+\_\+files}}
+\index{run\+\_\+startup\+\_\+files@{run\+\_\+startup\+\_\+files}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{run\+\_\+startup\+\_\+files()}{run_startup_files()}}]{\setlength{\rightskip}{0pt plus 5cm}static void run\+\_\+startup\+\_\+files (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a4219684155829a00736af89c7ea39b67}{}\label{shell_8c_a4219684155829a00736af89c7ea39b67}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a4219684155829a00736af89c7ea39b67_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!set\+\_\+bash\+\_\+input@{set\+\_\+bash\+\_\+input}}
+\index{set\+\_\+bash\+\_\+input@{set\+\_\+bash\+\_\+input}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+bash\+\_\+input()}{set_bash_input()}}]{\setlength{\rightskip}{0pt plus 5cm}static void set\+\_\+bash\+\_\+input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_ae0256d1acf0d5c60db48c1e62acaf26e}{}\label{shell_8c_ae0256d1acf0d5c60db48c1e62acaf26e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_ae0256d1acf0d5c60db48c1e62acaf26e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!set\+\_\+shell\+\_\+name@{set\+\_\+shell\+\_\+name}}
+\index{set\+\_\+shell\+\_\+name@{set\+\_\+shell\+\_\+name}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+shell\+\_\+name(char $\ast$argv0)}{set_shell_name(char *argv0)}}]{\setlength{\rightskip}{0pt plus 5cm}static void set\+\_\+shell\+\_\+name (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{argv0}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a471703a5ec066557e0687cbf97b0a48a}{}\label{shell_8c_a471703a5ec066557e0687cbf97b0a48a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a471703a5ec066557e0687cbf97b0a48a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!sh\+\_\+exit@{sh\+\_\+exit}}
+\index{sh\+\_\+exit@{sh\+\_\+exit}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{sh\+\_\+exit(int s)}{sh_exit(int s)}}]{\setlength{\rightskip}{0pt plus 5cm}void sh\+\_\+exit (
+\begin{DoxyParamCaption}
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{shell_8c_a8cd407122e8280f23456b4942f4b7505}{}\label{shell_8c_a8cd407122e8280f23456b4942f4b7505}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a8cd407122e8280f23456b4942f4b7505_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!shell\+\_\+initialize@{shell\+\_\+initialize}}
+\index{shell\+\_\+initialize@{shell\+\_\+initialize}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+initialize()}{shell_initialize()}}]{\setlength{\rightskip}{0pt plus 5cm}static void shell\+\_\+initialize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a84a159e7418c850c1bcff5263fc3c95e}{}\label{shell_8c_a84a159e7418c850c1bcff5263fc3c95e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{shell_8c_a84a159e7418c850c1bcff5263fc3c95e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!shell\+\_\+is\+\_\+restricted@{shell\+\_\+is\+\_\+restricted}}
+\index{shell\+\_\+is\+\_\+restricted@{shell\+\_\+is\+\_\+restricted}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+is\+\_\+restricted(char $\ast$name)}{shell_is_restricted(char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}int shell\+\_\+is\+\_\+restricted (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{shell_8c_a6bcc1ba90a1682931c8b5b61a036e704}{}\label{shell_8c_a6bcc1ba90a1682931c8b5b61a036e704}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a6bcc1ba90a1682931c8b5b61a036e704_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!shell\+\_\+reinitialize@{shell\+\_\+reinitialize}}
+\index{shell\+\_\+reinitialize@{shell\+\_\+reinitialize}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+reinitialize()}{shell_reinitialize()}}]{\setlength{\rightskip}{0pt plus 5cm}static void shell\+\_\+reinitialize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a6641a68bac27e602f8adc5485a0731ac}{}\label{shell_8c_a6641a68bac27e602f8adc5485a0731ac}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a6641a68bac27e602f8adc5485a0731ac_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!show\+\_\+shell\+\_\+usage@{show\+\_\+shell\+\_\+usage}}
+\index{show\+\_\+shell\+\_\+usage@{show\+\_\+shell\+\_\+usage}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{show\+\_\+shell\+\_\+usage(\+F\+I\+L\+E $\ast$fp, int extra)}{show_shell_usage(FILE *fp, int extra)}}]{\setlength{\rightskip}{0pt plus 5cm}static void show\+\_\+shell\+\_\+usage (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp, }
+\item[{int}]{extra}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_ab49249efad1bb1403b13ed8c1cace3eb}{}\label{shell_8c_ab49249efad1bb1403b13ed8c1cace3eb}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{shell_8c_ab49249efad1bb1403b13ed8c1cace3eb_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!start\+\_\+debugger@{start\+\_\+debugger}}
+\index{start\+\_\+debugger@{start\+\_\+debugger}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{start\+\_\+debugger()}{start_debugger()}}]{\setlength{\rightskip}{0pt plus 5cm}static void start\+\_\+debugger (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a4265f1cf5cec94b2dcee2704ebe26495}{}\label{shell_8c_a4265f1cf5cec94b2dcee2704ebe26495}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a4265f1cf5cec94b2dcee2704ebe26495_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!subshell\+\_\+exit@{subshell\+\_\+exit}}
+\index{subshell\+\_\+exit@{subshell\+\_\+exit}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{subshell\+\_\+exit(int s)}{subshell_exit(int s)}}]{\setlength{\rightskip}{0pt plus 5cm}void subshell\+\_\+exit (
+\begin{DoxyParamCaption}
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{shell_8c_a5b87ccc35dc6811b0a5c3f065a04acb4}{}\label{shell_8c_a5b87ccc35dc6811b0a5c3f065a04acb4}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a5b87ccc35dc6811b0a5c3f065a04acb4_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!uidget@{uidget}}
+\index{uidget@{uidget}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{uidget()}{uidget()}}]{\setlength{\rightskip}{0pt plus 5cm}static int uidget (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_ad5a822dfdb3e41f9297f48530d28858a}{}\label{shell_8c_ad5a822dfdb3e41f9297f48530d28858a}
+\index{shell.\+c@{shell.\+c}!unbind\+\_\+args@{unbind\+\_\+args}}
+\index{unbind\+\_\+args@{unbind\+\_\+args}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{unbind\+\_\+args()}{unbind_args()}}]{\setlength{\rightskip}{0pt plus 5cm}void unbind\+\_\+args (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{shell_8c_ae6f95aee4b1dbb3c8e2476efad7dab8a}{}\label{shell_8c_ae6f95aee4b1dbb3c8e2476efad7dab8a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_ae6f95aee4b1dbb3c8e2476efad7dab8a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{shell.\+c@{shell.\+c}!unset\+\_\+bash\+\_\+input@{unset\+\_\+bash\+\_\+input}}
+\index{unset\+\_\+bash\+\_\+input@{unset\+\_\+bash\+\_\+input}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{unset\+\_\+bash\+\_\+input(int check\+\_\+zero)}{unset_bash_input(int check_zero)}}]{\setlength{\rightskip}{0pt plus 5cm}void unset\+\_\+bash\+\_\+input (
+\begin{DoxyParamCaption}
+\item[{int}]{check\+\_\+zero}
+\end{DoxyParamCaption}
+)}\hypertarget{shell_8c_a6d7b9e420f5c24c3ba32be77071ee46f}{}\label{shell_8c_a6d7b9e420f5c24c3ba32be77071ee46f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{shell_8c_a6d7b9e420f5c24c3ba32be77071ee46f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{shell.\+c@{shell.\+c}!act\+\_\+like\+\_\+sh@{act\+\_\+like\+\_\+sh}}
+\index{act\+\_\+like\+\_\+sh@{act\+\_\+like\+\_\+sh}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{act\+\_\+like\+\_\+sh}{act_like_sh}}]{\setlength{\rightskip}{0pt plus 5cm}int act\+\_\+like\+\_\+sh\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a9bcfdf0e8c5f164583ad613d946a5d05}{}\label{shell_8c_a9bcfdf0e8c5f164583ad613d946a5d05}
+\index{shell.\+c@{shell.\+c}!autocd@{autocd}}
+\index{autocd@{autocd}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{autocd}{autocd}}]{\setlength{\rightskip}{0pt plus 5cm}int autocd = 0}\hypertarget{shell_8c_ad7014f00dbb52018fb3c69685ddd2e5e}{}\label{shell_8c_ad7014f00dbb52018fb3c69685ddd2e5e}
+\index{shell.\+c@{shell.\+c}!bash\+\_\+argv\+\_\+initialized@{bash\+\_\+argv\+\_\+initialized}}
+\index{bash\+\_\+argv\+\_\+initialized@{bash\+\_\+argv\+\_\+initialized}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+argv\+\_\+initialized}{bash_argv_initialized}}]{\setlength{\rightskip}{0pt plus 5cm}int bash\+\_\+argv\+\_\+initialized = 0}\hypertarget{shell_8c_a9afb0d1631cbb7ecaac02f63c94b67c8}{}\label{shell_8c_a9afb0d1631cbb7ecaac02f63c94b67c8}
+\index{shell.\+c@{shell.\+c}!bashrc\+\_\+file@{bashrc\+\_\+file}}
+\index{bashrc\+\_\+file@{bashrc\+\_\+file}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{bashrc\+\_\+file}{bashrc_file}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ bashrc\+\_\+file = {\bf D\+E\+F\+A\+U\+L\+T\+\_\+\+B\+A\+S\+H\+RC}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_adc2c2dbcdac59cc8fcf32f38fb9d4968}{}\label{shell_8c_adc2c2dbcdac59cc8fcf32f38fb9d4968}
+\index{shell.\+c@{shell.\+c}!char\+\_\+value@{char\+\_\+value}}
+\index{char\+\_\+value@{char\+\_\+value}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{char\+\_\+value}{char_value}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ char\+\_\+value}\hypertarget{shell_8c_abe68dad39343f7010039217f9e9b800e}{}\label{shell_8c_abe68dad39343f7010039217f9e9b800e}
+\index{shell.\+c@{shell.\+c}!check\+\_\+jobs\+\_\+at\+\_\+exit@{check\+\_\+jobs\+\_\+at\+\_\+exit}}
+\index{check\+\_\+jobs\+\_\+at\+\_\+exit@{check\+\_\+jobs\+\_\+at\+\_\+exit}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+jobs\+\_\+at\+\_\+exit}{check_jobs_at_exit}}]{\setlength{\rightskip}{0pt plus 5cm}int check\+\_\+jobs\+\_\+at\+\_\+exit = 0}\hypertarget{shell_8c_ad179b069bdc9dc348b461c18b1a701be}{}\label{shell_8c_ad179b069bdc9dc348b461c18b1a701be}
+\index{shell.\+c@{shell.\+c}!command\+\_\+execution\+\_\+string@{command\+\_\+execution\+\_\+string}}
+\index{command\+\_\+execution\+\_\+string@{command\+\_\+execution\+\_\+string}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{command\+\_\+execution\+\_\+string}{command_execution_string}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ command\+\_\+execution\+\_\+string}\hypertarget{shell_8c_af93d07407c5e6d0fd82102d52d6602ee}{}\label{shell_8c_af93d07407c5e6d0fd82102d52d6602ee}
+\index{shell.\+c@{shell.\+c}!current\+\_\+command\+\_\+number@{current\+\_\+command\+\_\+number}}
+\index{current\+\_\+command\+\_\+number@{current\+\_\+command\+\_\+number}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{current\+\_\+command\+\_\+number}{current_command_number}}]{\setlength{\rightskip}{0pt plus 5cm}int current\+\_\+command\+\_\+number = 1}\hypertarget{shell_8c_a843f88f6713d61b61b30290f87294377}{}\label{shell_8c_a843f88f6713d61b61b30290f87294377}
+\index{shell.\+c@{shell.\+c}!current\+\_\+host\+\_\+name@{current\+\_\+host\+\_\+name}}
+\index{current\+\_\+host\+\_\+name@{current\+\_\+host\+\_\+name}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{current\+\_\+host\+\_\+name}{current_host_name}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ current\+\_\+host\+\_\+name = (char $\ast$){\bf N\+U\+LL}}\hypertarget{shell_8c_a633a4c54d867de47e17fb129c9a26aff}{}\label{shell_8c_a633a4c54d867de47e17fb129c9a26aff}
+\index{shell.\+c@{shell.\+c}!current\+\_\+user@{current\+\_\+user}}
+\index{current\+\_\+user@{current\+\_\+user}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{current\+\_\+user}{current_user}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf user\+\_\+info} current\+\_\+user}\hypertarget{shell_8c_a5d59ed416d1e932f76e390b237e2b731}{}\label{shell_8c_a5d59ed416d1e932f76e390b237e2b731}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+\{
+  (uid\_t)-1, (uid\_t)-1, (gid\_t)-1, (gid\_t)-1,
+  (\textcolor{keywordtype}{char} *)\hyperlink{general_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}, (\textcolor{keywordtype}{char} *)\hyperlink{general_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}, (\textcolor{keywordtype}{char} *)\hyperlink{general_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}
+\}
+\end{DoxyCode}
+\index{shell.\+c@{shell.\+c}!debugging@{debugging}}
+\index{debugging@{debugging}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{debugging}{debugging}}]{\setlength{\rightskip}{0pt plus 5cm}int debugging\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_aeb20ca840680862ba2aeeff674c9dcb4}{}\label{shell_8c_aeb20ca840680862ba2aeeff674c9dcb4}
+\index{shell.\+c@{shell.\+c}!debugging\+\_\+login\+\_\+shell@{debugging\+\_\+login\+\_\+shell}}
+\index{debugging\+\_\+login\+\_\+shell@{debugging\+\_\+login\+\_\+shell}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{debugging\+\_\+login\+\_\+shell}{debugging_login_shell}}]{\setlength{\rightskip}{0pt plus 5cm}int debugging\+\_\+login\+\_\+shell = 0}\hypertarget{shell_8c_a21eda0714c73937df723b5d1a7b00f9e}{}\label{shell_8c_a21eda0714c73937df723b5d1a7b00f9e}
+\index{shell.\+c@{shell.\+c}!debugging\+\_\+mode@{debugging\+\_\+mode}}
+\index{debugging\+\_\+mode@{debugging\+\_\+mode}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{debugging\+\_\+mode}{debugging_mode}}]{\setlength{\rightskip}{0pt plus 5cm}int debugging\+\_\+mode = 0}\hypertarget{shell_8c_ae85600df6e3b2823d986bd95288b7237}{}\label{shell_8c_ae85600df6e3b2823d986bd95288b7237}
+\index{shell.\+c@{shell.\+c}!default\+\_\+buffered\+\_\+input@{default\+\_\+buffered\+\_\+input}}
+\index{default\+\_\+buffered\+\_\+input@{default\+\_\+buffered\+\_\+input}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{default\+\_\+buffered\+\_\+input}{default_buffered_input}}]{\setlength{\rightskip}{0pt plus 5cm}int default\+\_\+buffered\+\_\+input = -\/1}\hypertarget{shell_8c_a40b775636fbcf9017c80f9c301e36b2a}{}\label{shell_8c_a40b775636fbcf9017c80f9c301e36b2a}
+\index{shell.\+c@{shell.\+c}!default\+\_\+input@{default\+\_\+input}}
+\index{default\+\_\+input@{default\+\_\+input}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{default\+\_\+input}{default_input}}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+LE$\ast$ default\+\_\+input\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_ad42d752f4a19daff03a2099594080733}{}\label{shell_8c_ad42d752f4a19daff03a2099594080733}
+\index{shell.\+c@{shell.\+c}!do\+\_\+version@{do\+\_\+version}}
+\index{do\+\_\+version@{do\+\_\+version}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{do\+\_\+version}{do_version}}]{\setlength{\rightskip}{0pt plus 5cm}int do\+\_\+version\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a0bc06c1906e5970de1b8cc948969d911}{}\label{shell_8c_a0bc06c1906e5970de1b8cc948969d911}
+\index{shell.\+c@{shell.\+c}!dump\+\_\+po\+\_\+strings@{dump\+\_\+po\+\_\+strings}}
+\index{dump\+\_\+po\+\_\+strings@{dump\+\_\+po\+\_\+strings}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{dump\+\_\+po\+\_\+strings}{dump_po_strings}}]{\setlength{\rightskip}{0pt plus 5cm}int dump\+\_\+po\+\_\+strings}\hypertarget{shell_8c_a5fed77c6fd3216357144a89741d9a4f2}{}\label{shell_8c_a5fed77c6fd3216357144a89741d9a4f2}
+\index{shell.\+c@{shell.\+c}!dump\+\_\+translatable\+\_\+strings@{dump\+\_\+translatable\+\_\+strings}}
+\index{dump\+\_\+translatable\+\_\+strings@{dump\+\_\+translatable\+\_\+strings}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{dump\+\_\+translatable\+\_\+strings}{dump_translatable_strings}}]{\setlength{\rightskip}{0pt plus 5cm}int dump\+\_\+translatable\+\_\+strings}\hypertarget{shell_8c_ad1afa83036a310a3c29f4db3dfcf9be4}{}\label{shell_8c_ad1afa83036a310a3c29f4db3dfcf9be4}
+\index{shell.\+c@{shell.\+c}!errno@{errno}}
+\index{errno@{errno}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{errno}{errno}}]{\setlength{\rightskip}{0pt plus 5cm}int errno}\hypertarget{shell_8c_ad65a8842cc674e3ddf69355898c0ecbf}{}\label{shell_8c_ad65a8842cc674e3ddf69355898c0ecbf}
+\index{shell.\+c@{shell.\+c}!exec\+\_\+argv0@{exec\+\_\+argv0}}
+\index{exec\+\_\+argv0@{exec\+\_\+argv0}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{exec\+\_\+argv0}{exec_argv0}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ exec\+\_\+argv0}\hypertarget{shell_8c_aa0c379f9b5617870023bba4f3d661b77}{}\label{shell_8c_aa0c379f9b5617870023bba4f3d661b77}
+\index{shell.\+c@{shell.\+c}!executing@{executing}}
+\index{executing@{executing}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{executing}{executing}}]{\setlength{\rightskip}{0pt plus 5cm}int executing = 0}\hypertarget{shell_8c_a6b10c6496bb85fc66ac770978c2ef185}{}\label{shell_8c_a6b10c6496bb85fc66ac770978c2ef185}
+\index{shell.\+c@{shell.\+c}!global\+\_\+command@{global\+\_\+command}}
+\index{global\+\_\+command@{global\+\_\+command}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{global\+\_\+command}{global_command}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+M\+A\+ND}$\ast$ global\+\_\+command = ({\bf C\+O\+M\+M\+A\+ND} $\ast$){\bf N\+U\+LL}}\hypertarget{shell_8c_aad10387cf2b3a5e282a7e54e1605e7fc}{}\label{shell_8c_aad10387cf2b3a5e282a7e54e1605e7fc}
+\index{shell.\+c@{shell.\+c}!gnu\+\_\+error\+\_\+format@{gnu\+\_\+error\+\_\+format}}
+\index{gnu\+\_\+error\+\_\+format@{gnu\+\_\+error\+\_\+format}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{gnu\+\_\+error\+\_\+format}{gnu_error_format}}]{\setlength{\rightskip}{0pt plus 5cm}int gnu\+\_\+error\+\_\+format}\hypertarget{shell_8c_a144f1595865b77904c64f1629267a358}{}\label{shell_8c_a144f1595865b77904c64f1629267a358}
+\index{shell.\+c@{shell.\+c}!have\+\_\+devfd@{have\+\_\+devfd}}
+\index{have\+\_\+devfd@{have\+\_\+devfd}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{have\+\_\+devfd}{have_devfd}}]{\setlength{\rightskip}{0pt plus 5cm}int have\+\_\+devfd = {\bf H\+A\+V\+E\+\_\+\+D\+E\+V\+\_\+\+FD}}\hypertarget{shell_8c_ad5b0acbb37b367fa1898d9e079044321}{}\label{shell_8c_ad5b0acbb37b367fa1898d9e079044321}
+\index{shell.\+c@{shell.\+c}!hup\+\_\+on\+\_\+exit@{hup\+\_\+on\+\_\+exit}}
+\index{hup\+\_\+on\+\_\+exit@{hup\+\_\+on\+\_\+exit}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{hup\+\_\+on\+\_\+exit}{hup_on_exit}}]{\setlength{\rightskip}{0pt plus 5cm}int hup\+\_\+on\+\_\+exit = 0}\hypertarget{shell_8c_a100cfe83ce6f33f9460d00bb4779a3fa}{}\label{shell_8c_a100cfe83ce6f33f9460d00bb4779a3fa}
+\index{shell.\+c@{shell.\+c}!indirection\+\_\+level@{indirection\+\_\+level}}
+\index{indirection\+\_\+level@{indirection\+\_\+level}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{indirection\+\_\+level}{indirection_level}}]{\setlength{\rightskip}{0pt plus 5cm}int indirection\+\_\+level = 0}\hypertarget{shell_8c_a09197f649eac743c96df21743bb959aa}{}\label{shell_8c_a09197f649eac743c96df21743bb959aa}
+\index{shell.\+c@{shell.\+c}!int\+\_\+value@{int\+\_\+value}}
+\index{int\+\_\+value@{int\+\_\+value}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{int\+\_\+value}{int_value}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ int\+\_\+value}\hypertarget{shell_8c_a4d157054435f23acabcbc5390ae40967}{}\label{shell_8c_a4d157054435f23acabcbc5390ae40967}
+\index{shell.\+c@{shell.\+c}!interactive@{interactive}}
+\index{interactive@{interactive}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{interactive}{interactive}}]{\setlength{\rightskip}{0pt plus 5cm}int interactive = 0}\hypertarget{shell_8c_aeb39d5d8ddd4957f1b01720fa0e37e36}{}\label{shell_8c_aeb39d5d8ddd4957f1b01720fa0e37e36}
+\index{shell.\+c@{shell.\+c}!interactive\+\_\+shell@{interactive\+\_\+shell}}
+\index{interactive\+\_\+shell@{interactive\+\_\+shell}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{interactive\+\_\+shell}{interactive_shell}}]{\setlength{\rightskip}{0pt plus 5cm}int interactive\+\_\+shell = 0}\hypertarget{shell_8c_ae2c20c1668999fe88f089ad20436f425}{}\label{shell_8c_ae2c20c1668999fe88f089ad20436f425}
+\index{shell.\+c@{shell.\+c}!login\+\_\+shell@{login\+\_\+shell}}
+\index{login\+\_\+shell@{login\+\_\+shell}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{login\+\_\+shell}{login_shell}}]{\setlength{\rightskip}{0pt plus 5cm}int login\+\_\+shell = 0}\hypertarget{shell_8c_a1f22336e1dd4c10975bf2fef179f6bce}{}\label{shell_8c_a1f22336e1dd4c10975bf2fef179f6bce}
+\index{shell.\+c@{shell.\+c}!long\+\_\+args@{long\+\_\+args}}
+\index{long\+\_\+args@{long\+\_\+args}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{long\+\_\+args}{long_args}}]{\setlength{\rightskip}{0pt plus 5cm}const \{ ... \}   long\+\_\+args\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a3f9d12df6291dfb9d1cba6f28a7b3956}{}\label{shell_8c_a3f9d12df6291dfb9d1cba6f28a7b3956}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+  \{ \textcolor{stringliteral}{"debug"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{shell_8c_aeb20ca840680862ba2aeeff674c9dcb4}{debugging}, (\textcolor{keywordtype}{char} **)0x0 \},
+
+  \{ \textcolor{stringliteral}{"debugger"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{shell_8c_ae85600df6e3b2823d986bd95288b7237}{debugging\_mode}, (\textcolor{keywordtype}{char} **)0x0 \},
+
+  \{ \textcolor{stringliteral}{"dump-po-strings"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{shell_8c_a5fed77c6fd3216357144a89741d9a4f2}{dump\_po\_strings}, (\textcolor{keywordtype}{char} **)0x0 \},
+  \{ \textcolor{stringliteral}{"dump-strings"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{shell_8c_ad1afa83036a310a3c29f4db3dfcf9be4}{dump\_translatable\_strings}, (\textcolor{keywordtype}{char} **)0x0 \},
+  \{ \textcolor{stringliteral}{"help"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{shell_8c_a906365e41d95b1015f286a0c312ebd06}{want\_initial\_help}, (\textcolor{keywordtype}{char} **)0x0 \},
+  \{ \textcolor{stringliteral}{"init-file"}, \hyperlink{shell_8c_a430c93290f732080ee446c8ce110c134}{Charp}, (\textcolor{keywordtype}{int} *)0x0, &\hyperlink{shell_8c_adc2c2dbcdac59cc8fcf32f38fb9d4968}{bashrc\_file} \},
+  \{ \textcolor{stringliteral}{"login"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{shell_8c_ac814d1397e7fec89351608671e673128}{make\_login\_shell}, (\textcolor{keywordtype}{char} **)0x0 \},
+  \{ \textcolor{stringliteral}{"noediting"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{shell_8c_a0e8125dba58d8609b871041bc526db8e}{no\_line\_editing}, (\textcolor{keywordtype}{char} **)0x0 \},
+  \{ \textcolor{stringliteral}{"noprofile"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{shell_8c_a3587c8ce17d7505b0c056fe80dc26d04}{no\_profile}, (\textcolor{keywordtype}{char} **)0x0 \},
+  \{ \textcolor{stringliteral}{"norc"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{shell_8c_ab354aa22103fc55a0ccbc1f24251233d}{no\_rc}, (\textcolor{keywordtype}{char} **)0x0 \},
+  \{ \textcolor{stringliteral}{"posix"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{shell_8c_a15b0e48465dfc17e94173c63e10b57cc}{posixly\_correct}, (\textcolor{keywordtype}{char} **)0x0 \},
+  \{ \textcolor{stringliteral}{"pretty-print"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{shell_8c_a037d68a1d389e76f1624772b51a05efc}{pretty\_print\_mode}, (\textcolor{keywordtype}{char} **)0x0 \},
+
+
+
+  \{ \textcolor{stringliteral}{"rcfile"}, \hyperlink{shell_8c_a430c93290f732080ee446c8ce110c134}{Charp}, (\textcolor{keywordtype}{int} *)0x0, &\hyperlink{shell_8c_adc2c2dbcdac59cc8fcf32f38fb9d4968}{bashrc\_file} \},
+
+  \{ \textcolor{stringliteral}{"restricted"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{flags_8c_aac4a9e2f668b5aa59f6f9870b47a9905}{restricted}, (\textcolor{keywordtype}{char} **)0x0 \},
+
+  \{ \textcolor{stringliteral}{"verbose"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{flags_8c_a4c7699f4d1b8ee152b8d35bbc579430b}{verbose\_flag}, (\textcolor{keywordtype}{char} **)0x0 \},
+  \{ \textcolor{stringliteral}{"version"}, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, &\hyperlink{shell_8c_a0bc06c1906e5970de1b8cc948969d911}{do\_version}, (\textcolor{keywordtype}{char} **)0x0 \},
+
+
+
+  \{ (\textcolor{keywordtype}{char} *)0x0, \hyperlink{shell_8c_a91adff1610bdf681555a8f2e330dc963}{Int}, (\textcolor{keywordtype}{int} *)0x0, (\textcolor{keywordtype}{char} **)0x0 \}
+\}
+\end{DoxyCode}
+\index{shell.\+c@{shell.\+c}!make\+\_\+login\+\_\+shell@{make\+\_\+login\+\_\+shell}}
+\index{make\+\_\+login\+\_\+shell@{make\+\_\+login\+\_\+shell}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+login\+\_\+shell}{make_login_shell}}]{\setlength{\rightskip}{0pt plus 5cm}int make\+\_\+login\+\_\+shell\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_ac814d1397e7fec89351608671e673128}{}\label{shell_8c_ac814d1397e7fec89351608671e673128}
+\index{shell.\+c@{shell.\+c}!malloc\+\_\+trace\+\_\+at\+\_\+exit@{malloc\+\_\+trace\+\_\+at\+\_\+exit}}
+\index{malloc\+\_\+trace\+\_\+at\+\_\+exit@{malloc\+\_\+trace\+\_\+at\+\_\+exit}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{malloc\+\_\+trace\+\_\+at\+\_\+exit}{malloc_trace_at_exit}}]{\setlength{\rightskip}{0pt plus 5cm}int malloc\+\_\+trace\+\_\+at\+\_\+exit = 0}\hypertarget{shell_8c_aae146fed6007cf945f6af904f4d82de3}{}\label{shell_8c_aae146fed6007cf945f6af904f4d82de3}
+\index{shell.\+c@{shell.\+c}!name@{name}}
+\index{name@{name}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{name}{name}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ name}\hypertarget{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{}\label{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}
+\index{shell.\+c@{shell.\+c}!no\+\_\+line\+\_\+editing@{no\+\_\+line\+\_\+editing}}
+\index{no\+\_\+line\+\_\+editing@{no\+\_\+line\+\_\+editing}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{no\+\_\+line\+\_\+editing}{no_line_editing}}]{\setlength{\rightskip}{0pt plus 5cm}int no\+\_\+line\+\_\+editing = 0}\hypertarget{shell_8c_a0e8125dba58d8609b871041bc526db8e}{}\label{shell_8c_a0e8125dba58d8609b871041bc526db8e}
+\index{shell.\+c@{shell.\+c}!no\+\_\+profile@{no\+\_\+profile}}
+\index{no\+\_\+profile@{no\+\_\+profile}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{no\+\_\+profile}{no_profile}}]{\setlength{\rightskip}{0pt plus 5cm}int no\+\_\+profile\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a3587c8ce17d7505b0c056fe80dc26d04}{}\label{shell_8c_a3587c8ce17d7505b0c056fe80dc26d04}
+\index{shell.\+c@{shell.\+c}!no\+\_\+rc@{no\+\_\+rc}}
+\index{no\+\_\+rc@{no\+\_\+rc}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{no\+\_\+rc}{no_rc}}]{\setlength{\rightskip}{0pt plus 5cm}int no\+\_\+rc\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_ab354aa22103fc55a0ccbc1f24251233d}{}\label{shell_8c_ab354aa22103fc55a0ccbc1f24251233d}
+\index{shell.\+c@{shell.\+c}!posixly\+\_\+correct@{posixly\+\_\+correct}}
+\index{posixly\+\_\+correct@{posixly\+\_\+correct}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{posixly\+\_\+correct}{posixly_correct}}]{\setlength{\rightskip}{0pt plus 5cm}int posixly\+\_\+correct = 0}\hypertarget{shell_8c_a15b0e48465dfc17e94173c63e10b57cc}{}\label{shell_8c_a15b0e48465dfc17e94173c63e10b57cc}
+\index{shell.\+c@{shell.\+c}!pretty\+\_\+print\+\_\+mode@{pretty\+\_\+print\+\_\+mode}}
+\index{pretty\+\_\+print\+\_\+mode@{pretty\+\_\+print\+\_\+mode}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{pretty\+\_\+print\+\_\+mode}{pretty_print_mode}}]{\setlength{\rightskip}{0pt plus 5cm}int pretty\+\_\+print\+\_\+mode = 0}\hypertarget{shell_8c_a037d68a1d389e76f1624772b51a05efc}{}\label{shell_8c_a037d68a1d389e76f1624772b51a05efc}
+\index{shell.\+c@{shell.\+c}!protected\+\_\+mode@{protected\+\_\+mode}}
+\index{protected\+\_\+mode@{protected\+\_\+mode}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{protected\+\_\+mode}{protected_mode}}]{\setlength{\rightskip}{0pt plus 5cm}int protected\+\_\+mode = 0}\hypertarget{shell_8c_a3d1de338a7f6bb594efb159e1e34bf2d}{}\label{shell_8c_a3d1de338a7f6bb594efb159e1e34bf2d}
+\index{shell.\+c@{shell.\+c}!read\+\_\+from\+\_\+stdin@{read\+\_\+from\+\_\+stdin}}
+\index{read\+\_\+from\+\_\+stdin@{read\+\_\+from\+\_\+stdin}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{read\+\_\+from\+\_\+stdin}{read_from_stdin}}]{\setlength{\rightskip}{0pt plus 5cm}int read\+\_\+from\+\_\+stdin}\hypertarget{shell_8c_ac33a32adcfbaeaba5a5ab7dd897975a5}{}\label{shell_8c_ac33a32adcfbaeaba5a5ab7dd897975a5}
+\index{shell.\+c@{shell.\+c}!reading\+\_\+shell\+\_\+script@{reading\+\_\+shell\+\_\+script}}
+\index{reading\+\_\+shell\+\_\+script@{reading\+\_\+shell\+\_\+script}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{reading\+\_\+shell\+\_\+script}{reading_shell_script}}]{\setlength{\rightskip}{0pt plus 5cm}int reading\+\_\+shell\+\_\+script = 0}\hypertarget{shell_8c_aa40020eb69f2239607e9c311065eba15}{}\label{shell_8c_aa40020eb69f2239607e9c311065eba15}
+\index{shell.\+c@{shell.\+c}!running\+\_\+setuid@{running\+\_\+setuid}}
+\index{running\+\_\+setuid@{running\+\_\+setuid}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{running\+\_\+setuid}{running_setuid}}]{\setlength{\rightskip}{0pt plus 5cm}int running\+\_\+setuid\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a50d9a17a96923ad585940cb2fd00559d}{}\label{shell_8c_a50d9a17a96923ad585940cb2fd00559d}
+\index{shell.\+c@{shell.\+c}!running\+\_\+under\+\_\+emacs@{running\+\_\+under\+\_\+emacs}}
+\index{running\+\_\+under\+\_\+emacs@{running\+\_\+under\+\_\+emacs}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{running\+\_\+under\+\_\+emacs}{running_under_emacs}}]{\setlength{\rightskip}{0pt plus 5cm}int running\+\_\+under\+\_\+emacs}\hypertarget{shell_8c_a5dadbca0edb1930542227575513f8562}{}\label{shell_8c_a5dadbca0edb1930542227575513f8562}
+\index{shell.\+c@{shell.\+c}!shell\+\_\+environment@{shell\+\_\+environment}}
+\index{shell\+\_\+environment@{shell\+\_\+environment}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+environment}{shell_environment}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ shell\+\_\+environment}\hypertarget{shell_8c_aa1705f515b82de5ebe2537ade2be6711}{}\label{shell_8c_aa1705f515b82de5ebe2537ade2be6711}
+\index{shell.\+c@{shell.\+c}!shell\+\_\+initialized@{shell\+\_\+initialized}}
+\index{shell\+\_\+initialized@{shell\+\_\+initialized}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+initialized}{shell_initialized}}]{\setlength{\rightskip}{0pt plus 5cm}int shell\+\_\+initialized = 0}\hypertarget{shell_8c_a1e63ac3e6a769906dc9e0d1fce6704a1}{}\label{shell_8c_a1e63ac3e6a769906dc9e0d1fce6704a1}
+\index{shell.\+c@{shell.\+c}!shell\+\_\+name@{shell\+\_\+name}}
+\index{shell\+\_\+name@{shell\+\_\+name}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+name}{shell_name}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ shell\+\_\+name = (char $\ast$){\bf N\+U\+LL}}\hypertarget{shell_8c_a12ca07e776396afc9a8bfee840d90d96}{}\label{shell_8c_a12ca07e776396afc9a8bfee840d90d96}
+\index{shell.\+c@{shell.\+c}!shell\+\_\+reinitialized@{shell\+\_\+reinitialized}}
+\index{shell\+\_\+reinitialized@{shell\+\_\+reinitialized}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+reinitialized}{shell_reinitialized}}]{\setlength{\rightskip}{0pt plus 5cm}int shell\+\_\+reinitialized = 0\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_ad9c426ed4add447bf1e85fbe6ebb204a}{}\label{shell_8c_ad9c426ed4add447bf1e85fbe6ebb204a}
+\index{shell.\+c@{shell.\+c}!shell\+\_\+script\+\_\+filename@{shell\+\_\+script\+\_\+filename}}
+\index{shell\+\_\+script\+\_\+filename@{shell\+\_\+script\+\_\+filename}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+script\+\_\+filename}{shell_script_filename}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ shell\+\_\+script\+\_\+filename}\hypertarget{shell_8c_a3468e8927370bcc47a7a664b805e6d76}{}\label{shell_8c_a3468e8927370bcc47a7a664b805e6d76}
+\index{shell.\+c@{shell.\+c}!shell\+\_\+start\+\_\+time@{shell\+\_\+start\+\_\+time}}
+\index{shell\+\_\+start\+\_\+time@{shell\+\_\+start\+\_\+time}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+start\+\_\+time}{shell_start_time}}]{\setlength{\rightskip}{0pt plus 5cm}time\+\_\+t shell\+\_\+start\+\_\+time}\hypertarget{shell_8c_a921ecdc742149cd1e3f93520f8fbd371}{}\label{shell_8c_a921ecdc742149cd1e3f93520f8fbd371}
+\index{shell.\+c@{shell.\+c}!shopt\+\_\+alist@{shopt\+\_\+alist}}
+\index{shopt\+\_\+alist@{shopt\+\_\+alist}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{shopt\+\_\+alist}{shopt_alist}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+ST}$\ast$ shopt\+\_\+alist\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_ae88b8198635b2aca7128697bdcde08ef}{}\label{shell_8c_ae88b8198635b2aca7128697bdcde08ef}
+\index{shell.\+c@{shell.\+c}!shopt\+\_\+ind@{shopt\+\_\+ind}}
+\index{shopt\+\_\+ind@{shopt\+\_\+ind}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{shopt\+\_\+ind}{shopt_ind}}]{\setlength{\rightskip}{0pt plus 5cm}int shopt\+\_\+ind = 0\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_ad4860c33fb734399c948fec6dea25979}{}\label{shell_8c_ad4860c33fb734399c948fec6dea25979}
+\index{shell.\+c@{shell.\+c}!shopt\+\_\+len@{shopt\+\_\+len}}
+\index{shopt\+\_\+len@{shopt\+\_\+len}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{shopt\+\_\+len}{shopt_len}}]{\setlength{\rightskip}{0pt plus 5cm}int shopt\+\_\+len = 0\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_ab236ca326edd8b349e8c3c36b6bb6790}{}\label{shell_8c_ab236ca326edd8b349e8c3c36b6bb6790}
+\index{shell.\+c@{shell.\+c}!sourced\+\_\+env@{sourced\+\_\+env}}
+\index{sourced\+\_\+env@{sourced\+\_\+env}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{sourced\+\_\+env}{sourced_env}}]{\setlength{\rightskip}{0pt plus 5cm}int sourced\+\_\+env\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_ab48a5abde2f90ddf87338e32c1ae2074}{}\label{shell_8c_ab48a5abde2f90ddf87338e32c1ae2074}
+\index{shell.\+c@{shell.\+c}!startup\+\_\+state@{startup\+\_\+state}}
+\index{startup\+\_\+state@{startup\+\_\+state}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{startup\+\_\+state}{startup_state}}]{\setlength{\rightskip}{0pt plus 5cm}int startup\+\_\+state = 0}\hypertarget{shell_8c_ae19f469a3f9d2c434e787c8d13abf576}{}\label{shell_8c_ae19f469a3f9d2c434e787c8d13abf576}
+\index{shell.\+c@{shell.\+c}!su\+\_\+shell@{su\+\_\+shell}}
+\index{su\+\_\+shell@{su\+\_\+shell}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{su\+\_\+shell}{su_shell}}]{\setlength{\rightskip}{0pt plus 5cm}int su\+\_\+shell\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a9df0780f36156070c943d353e974dadf}{}\label{shell_8c_a9df0780f36156070c943d353e974dadf}
+\index{shell.\+c@{shell.\+c}!subshell\+\_\+argc@{subshell\+\_\+argc}}
+\index{subshell\+\_\+argc@{subshell\+\_\+argc}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{subshell\+\_\+argc}{subshell_argc}}]{\setlength{\rightskip}{0pt plus 5cm}int subshell\+\_\+argc}\hypertarget{shell_8c_adf5af99c79a4b90c008156a44c7245ca}{}\label{shell_8c_adf5af99c79a4b90c008156a44c7245ca}
+\index{shell.\+c@{shell.\+c}!subshell\+\_\+argv@{subshell\+\_\+argv}}
+\index{subshell\+\_\+argv@{subshell\+\_\+argv}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{subshell\+\_\+argv}{subshell_argv}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ subshell\+\_\+argv}\hypertarget{shell_8c_a0647ded5eb463a5948fdd2630e8294ff}{}\label{shell_8c_a0647ded5eb463a5948fdd2630e8294ff}
+\index{shell.\+c@{shell.\+c}!subshell\+\_\+envp@{subshell\+\_\+envp}}
+\index{subshell\+\_\+envp@{subshell\+\_\+envp}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{subshell\+\_\+envp}{subshell_envp}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ subshell\+\_\+envp}\hypertarget{shell_8c_ab32b027894484fb3b2aa56a4cc5e2c8a}{}\label{shell_8c_ab32b027894484fb3b2aa56a4cc5e2c8a}
+\index{shell.\+c@{shell.\+c}!subshell\+\_\+top\+\_\+level@{subshell\+\_\+top\+\_\+level}}
+\index{subshell\+\_\+top\+\_\+level@{subshell\+\_\+top\+\_\+level}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{subshell\+\_\+top\+\_\+level}{subshell_top_level}}]{\setlength{\rightskip}{0pt plus 5cm}procenv\+\_\+t subshell\+\_\+top\+\_\+level}\hypertarget{shell_8c_a4eea10059ca05ea2aa89b5f7a38e4d5e}{}\label{shell_8c_a4eea10059ca05ea2aa89b5f7a38e4d5e}
+\index{shell.\+c@{shell.\+c}!type@{type}}
+\index{type@{type}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{type}{type}}]{\setlength{\rightskip}{0pt plus 5cm}int type}\hypertarget{shell_8c_ac765329451135abec74c45e1897abf26}{}\label{shell_8c_ac765329451135abec74c45e1897abf26}
+\index{shell.\+c@{shell.\+c}!want\+\_\+initial\+\_\+help@{want\+\_\+initial\+\_\+help}}
+\index{want\+\_\+initial\+\_\+help@{want\+\_\+initial\+\_\+help}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{want\+\_\+initial\+\_\+help}{want_initial_help}}]{\setlength{\rightskip}{0pt plus 5cm}int want\+\_\+initial\+\_\+help\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{shell_8c_a906365e41d95b1015f286a0c312ebd06}{}\label{shell_8c_a906365e41d95b1015f286a0c312ebd06}
+\index{shell.\+c@{shell.\+c}!want\+\_\+pending\+\_\+command@{want\+\_\+pending\+\_\+command}}
+\index{want\+\_\+pending\+\_\+command@{want\+\_\+pending\+\_\+command}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{want\+\_\+pending\+\_\+command}{want_pending_command}}]{\setlength{\rightskip}{0pt plus 5cm}int want\+\_\+pending\+\_\+command}\hypertarget{shell_8c_aafdd2714b63dbde6ea7364f5d4864463}{}\label{shell_8c_aafdd2714b63dbde6ea7364f5d4864463}
+\index{shell.\+c@{shell.\+c}!wordexp\+\_\+only@{wordexp\+\_\+only}}
+\index{wordexp\+\_\+only@{wordexp\+\_\+only}!shell.\+c@{shell.\+c}}
+\subsubsection[{\texorpdfstring{wordexp\+\_\+only}{wordexp_only}}]{\setlength{\rightskip}{0pt plus 5cm}int wordexp\+\_\+only = 0}\hypertarget{shell_8c_aad6213e2edcf93ca3e4b9bfa4f594e10}{}\label{shell_8c_aad6213e2edcf93ca3e4b9bfa4f594e10}

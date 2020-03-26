@@ -1,0 +1,107 @@
+\hypertarget{findcmd_8h}{}\section{findcmd.\+h File Reference}
+\label{findcmd_8h}\index{findcmd.\+h@{findcmd.\+h}}
+{\ttfamily \#include \char`\"{}stdc.\+h\char`\"{}}\\*
+Include dependency graph for findcmd.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=139pt]{findcmd_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{findcmd_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{findcmd_8h_a0c7efa109d1692a5fe14bcce5d9cc3de}{C\+M\+D\+S\+R\+C\+H\+\_\+\+H\+A\+SH}~0x01
+\item 
+\#define \hyperlink{findcmd_8h_ab9f6db9a5dada215823ef980c655bece}{C\+M\+D\+S\+R\+C\+H\+\_\+\+S\+T\+D\+P\+A\+TH}~0x02
+\item 
+\#define \hyperlink{findcmd_8h_a6a5f448df882aae2e69ff03e0c1338e3}{C\+M\+D\+S\+R\+C\+H\+\_\+\+T\+E\+M\+P\+E\+NV}~0x04
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{findcmd_8c_a7e6b11cc0264af5b9998ff5047bd256b}{file\+\_\+status} \hyperlink{findcmd_8h_a0ee45496a2a3016489314d1aa1b3046c}{\+\_\+\+\_\+P} ((const char $\ast$))
+\item 
+char $\ast$\hyperlink{findcmd_8c_a04862f776353a1a5740eed9608422e48}{find\+\_\+in\+\_\+path} \hyperlink{findcmd_8h_a8e2b70b09fc2781a0f4d96a9f05f38cc}{\+\_\+\+\_\+P} ((const char $\ast$, char $\ast$, int))
+\item 
+char $\ast$\hyperlink{findcmd_8c_a6dde73e7143fc8fa2f1e94534a36a00d}{search\+\_\+for\+\_\+command} \hyperlink{findcmd_8h_ab5ef556c68c2bcdb658dc6cb6ad39ee9}{\+\_\+\+\_\+P} ((const char $\ast$, int))
+\item 
+char $\ast$\hyperlink{findcmd_8c_a7e1aa914e716099ba62e2f9de1dee1df}{user\+\_\+command\+\_\+matches} \hyperlink{findcmd_8h_ab8fdb827c921ab3de40da51a8b8861c3}{\+\_\+\+\_\+P} ((const char $\ast$, int, int))
+\item 
+void \hyperlink{findcmd_8c_a0b40a57c2e43fc7184dee8484a2e7aa1}{setup\+\_\+exec\+\_\+ignore} \hyperlink{findcmd_8h_a070a7620a5a197823d2dcc355788050c}{\+\_\+\+\_\+P} ((char $\ast$))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{findcmd_8h_a8ff54d53102b3d79a4b9cb725fe3324a}{dot\+\_\+found\+\_\+in\+\_\+search}
+\item 
+int \hyperlink{findcmd_8h_adf88e318755e93333a0f5cb1ba39a493}{check\+\_\+hashed\+\_\+filenames}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{findcmd.\+h@{findcmd.\+h}!C\+M\+D\+S\+R\+C\+H\+\_\+\+H\+A\+SH@{C\+M\+D\+S\+R\+C\+H\+\_\+\+H\+A\+SH}}
+\index{C\+M\+D\+S\+R\+C\+H\+\_\+\+H\+A\+SH@{C\+M\+D\+S\+R\+C\+H\+\_\+\+H\+A\+SH}!findcmd.\+h@{findcmd.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+S\+R\+C\+H\+\_\+\+H\+A\+SH}{CMDSRCH_HASH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+S\+R\+C\+H\+\_\+\+H\+A\+SH~0x01}\hypertarget{findcmd_8h_a0c7efa109d1692a5fe14bcce5d9cc3de}{}\label{findcmd_8h_a0c7efa109d1692a5fe14bcce5d9cc3de}
+\index{findcmd.\+h@{findcmd.\+h}!C\+M\+D\+S\+R\+C\+H\+\_\+\+S\+T\+D\+P\+A\+TH@{C\+M\+D\+S\+R\+C\+H\+\_\+\+S\+T\+D\+P\+A\+TH}}
+\index{C\+M\+D\+S\+R\+C\+H\+\_\+\+S\+T\+D\+P\+A\+TH@{C\+M\+D\+S\+R\+C\+H\+\_\+\+S\+T\+D\+P\+A\+TH}!findcmd.\+h@{findcmd.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+S\+R\+C\+H\+\_\+\+S\+T\+D\+P\+A\+TH}{CMDSRCH_STDPATH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+S\+R\+C\+H\+\_\+\+S\+T\+D\+P\+A\+TH~0x02}\hypertarget{findcmd_8h_ab9f6db9a5dada215823ef980c655bece}{}\label{findcmd_8h_ab9f6db9a5dada215823ef980c655bece}
+\index{findcmd.\+h@{findcmd.\+h}!C\+M\+D\+S\+R\+C\+H\+\_\+\+T\+E\+M\+P\+E\+NV@{C\+M\+D\+S\+R\+C\+H\+\_\+\+T\+E\+M\+P\+E\+NV}}
+\index{C\+M\+D\+S\+R\+C\+H\+\_\+\+T\+E\+M\+P\+E\+NV@{C\+M\+D\+S\+R\+C\+H\+\_\+\+T\+E\+M\+P\+E\+NV}!findcmd.\+h@{findcmd.\+h}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+S\+R\+C\+H\+\_\+\+T\+E\+M\+P\+E\+NV}{CMDSRCH_TEMPENV}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+S\+R\+C\+H\+\_\+\+T\+E\+M\+P\+E\+NV~0x04}\hypertarget{findcmd_8h_a6a5f448df882aae2e69ff03e0c1338e3}{}\label{findcmd_8h_a6a5f448df882aae2e69ff03e0c1338e3}
+
+
+\subsection{Function Documentation}
+\index{findcmd.\+h@{findcmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!findcmd.\+h@{findcmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$))}{__P((const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf file\+\_\+status} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{findcmd_8h_a0ee45496a2a3016489314d1aa1b3046c}{}\label{findcmd_8h_a0ee45496a2a3016489314d1aa1b3046c}
+\index{findcmd.\+h@{findcmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!findcmd.\+h@{findcmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, char $\ast$, int))}{__P((const char *, char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf find\+\_\+in\+\_\+path} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{findcmd_8h_a8e2b70b09fc2781a0f4d96a9f05f38cc}{}\label{findcmd_8h_a8e2b70b09fc2781a0f4d96a9f05f38cc}
+\index{findcmd.\+h@{findcmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!findcmd.\+h@{findcmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, int))}{__P((const char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf search\+\_\+for\+\_\+command} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{findcmd_8h_ab5ef556c68c2bcdb658dc6cb6ad39ee9}{}\label{findcmd_8h_ab5ef556c68c2bcdb658dc6cb6ad39ee9}
+\index{findcmd.\+h@{findcmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!findcmd.\+h@{findcmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, int, int))}{__P((const char *, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf user\+\_\+command\+\_\+matches} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, int, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{findcmd_8h_ab8fdb827c921ab3de40da51a8b8861c3}{}\label{findcmd_8h_ab8fdb827c921ab3de40da51a8b8861c3}
+\index{findcmd.\+h@{findcmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!findcmd.\+h@{findcmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf setup\+\_\+exec\+\_\+ignore} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{findcmd_8h_a070a7620a5a197823d2dcc355788050c}{}\label{findcmd_8h_a070a7620a5a197823d2dcc355788050c}
+
+
+\subsection{Variable Documentation}
+\index{findcmd.\+h@{findcmd.\+h}!check\+\_\+hashed\+\_\+filenames@{check\+\_\+hashed\+\_\+filenames}}
+\index{check\+\_\+hashed\+\_\+filenames@{check\+\_\+hashed\+\_\+filenames}!findcmd.\+h@{findcmd.\+h}}
+\subsubsection[{\texorpdfstring{check\+\_\+hashed\+\_\+filenames}{check_hashed_filenames}}]{\setlength{\rightskip}{0pt plus 5cm}int check\+\_\+hashed\+\_\+filenames}\hypertarget{findcmd_8h_adf88e318755e93333a0f5cb1ba39a493}{}\label{findcmd_8h_adf88e318755e93333a0f5cb1ba39a493}
+\index{findcmd.\+h@{findcmd.\+h}!dot\+\_\+found\+\_\+in\+\_\+search@{dot\+\_\+found\+\_\+in\+\_\+search}}
+\index{dot\+\_\+found\+\_\+in\+\_\+search@{dot\+\_\+found\+\_\+in\+\_\+search}!findcmd.\+h@{findcmd.\+h}}
+\subsubsection[{\texorpdfstring{dot\+\_\+found\+\_\+in\+\_\+search}{dot_found_in_search}}]{\setlength{\rightskip}{0pt plus 5cm}int dot\+\_\+found\+\_\+in\+\_\+search}\hypertarget{findcmd_8h_a8ff54d53102b3d79a4b9cb725fe3324a}{}\label{findcmd_8h_a8ff54d53102b3d79a4b9cb725fe3324a}

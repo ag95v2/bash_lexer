@@ -1,0 +1,130 @@
+\hypertarget{bashline_8h}{}\section{bashline.\+h File Reference}
+\label{bashline_8h}\index{bashline.\+h@{bashline.\+h}}
+{\ttfamily \#include \char`\"{}stdc.\+h\char`\"{}}\\*
+Include dependency graph for bashline.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=141pt]{bashline_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{bashline_8c_ae7d93155b5a5ff60983ee20547e4cba0}{posix\+\_\+readline\+\_\+initialize} \hyperlink{bashline_8h_afadc4af339961e1cef04ede8c5f275f5}{\+\_\+\+\_\+P} ((int))
+\item 
+void \hyperlink{bashline_8c_afab6b9fe42cb1b1c36539bcd32a6d39a}{reset\+\_\+completer\+\_\+word\+\_\+break\+\_\+chars} \hyperlink{bashline_8h_ac004938ad2b1efbb8084f728379a8d0c}{\+\_\+\+\_\+P} ((void))
+\item 
+int \hyperlink{bashline_8c_a14b077ed51af95a906e2de91fb829fd0}{bash\+\_\+re\+\_\+edit} \hyperlink{bashline_8h_a43950236038cdda7172189e68db96b41}{\+\_\+\+\_\+P} ((char $\ast$))
+\item 
+char $\ast$$\ast$\hyperlink{bashline_8c_aaac86d73cc4aa1dcfcdc5f9d2377b9cf}{bash\+\_\+default\+\_\+completion} \hyperlink{bashline_8h_a314ea66dfa64699518773c61757b6aa5}{\+\_\+\+\_\+P} ((const char $\ast$, int, int, int, int))
+\item 
+char $\ast$\hyperlink{bashline_8c_a8d5538b509cca782d25abe3aeec84458}{command\+\_\+word\+\_\+completion\+\_\+function} \hyperlink{bashline_8h_a9e09d67dce7de5ad595ea285a3e4fe2b}{\+\_\+\+\_\+P} ((const char $\ast$, int))
+\item 
+char $\ast$$\ast$\hyperlink{bashline_8c_a67132a5a9f7f4c2c281f39d202340148}{bash\+\_\+directory\+\_\+completion\+\_\+matches} \hyperlink{bashline_8h_a94ecb15f7f3b878652eadad2f5e9575b}{\+\_\+\+\_\+P} ((const char $\ast$))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{bashline_8h_a68a2ddf0bc68427c1fc0da8c1053242b}{bash\+\_\+readline\+\_\+initialized}
+\item 
+int \hyperlink{bashline_8h_a87935ec3fd72750971009a1d97bf253d}{hostname\+\_\+list\+\_\+initialized}
+\item 
+int \hyperlink{bashline_8h_a7c5f3cb423d2c9118957a0085e509da6}{perform\+\_\+hostname\+\_\+completion}
+\item 
+int \hyperlink{bashline_8h_ad051535bd97883586899593f6c574fe3}{no\+\_\+empty\+\_\+command\+\_\+completion}
+\item 
+int \hyperlink{bashline_8h_a432c7ae64a81b40587e5915cc49e0fe2}{force\+\_\+fignore}
+\item 
+int \hyperlink{bashline_8h_a0227da48137b3b6b652228ee21e33145}{dircomplete\+\_\+spelling}
+\item 
+int \hyperlink{bashline_8h_a1abcf01b5c8c7d4fc8b088dc3f8280b0}{dircomplete\+\_\+expand}
+\item 
+int \hyperlink{bashline_8h_a12bf3793a56e703b85dc6dabeaa06158}{dircomplete\+\_\+expand\+\_\+relpath}
+\item 
+int \hyperlink{bashline_8h_aafde51baef0db996c71dae472b62cb21}{complete\+\_\+fullquote}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{bashline.\+h@{bashline.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf posix\+\_\+readline\+\_\+initialize} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8h_afadc4af339961e1cef04ede8c5f275f5}{}\label{bashline_8h_afadc4af339961e1cef04ede8c5f275f5}
+\index{bashline.\+h@{bashline.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf reset\+\_\+completer\+\_\+word\+\_\+break\+\_\+chars} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8h_ac004938ad2b1efbb8084f728379a8d0c}{}\label{bashline_8h_ac004938ad2b1efbb8084f728379a8d0c}
+\index{bashline.\+h@{bashline.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bash\+\_\+re\+\_\+edit} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8h_a43950236038cdda7172189e68db96b41}{}\label{bashline_8h_a43950236038cdda7172189e68db96b41}
+\index{bashline.\+h@{bashline.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, int, int, int, int))}{__P((const char *, int, int, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ {\bf bash\+\_\+default\+\_\+completion} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, int, int, int, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8h_a314ea66dfa64699518773c61757b6aa5}{}\label{bashline_8h_a314ea66dfa64699518773c61757b6aa5}
+\index{bashline.\+h@{bashline.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, int))}{__P((const char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf command\+\_\+word\+\_\+completion\+\_\+function} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8h_a9e09d67dce7de5ad595ea285a3e4fe2b}{}\label{bashline_8h_a9e09d67dce7de5ad595ea285a3e4fe2b}
+\index{bashline.\+h@{bashline.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$))}{__P((const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ {\bf bash\+\_\+directory\+\_\+completion\+\_\+matches} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8h_a94ecb15f7f3b878652eadad2f5e9575b}{}\label{bashline_8h_a94ecb15f7f3b878652eadad2f5e9575b}
+
+
+\subsection{Variable Documentation}
+\index{bashline.\+h@{bashline.\+h}!bash\+\_\+readline\+\_\+initialized@{bash\+\_\+readline\+\_\+initialized}}
+\index{bash\+\_\+readline\+\_\+initialized@{bash\+\_\+readline\+\_\+initialized}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{bash\+\_\+readline\+\_\+initialized}{bash_readline_initialized}}]{\setlength{\rightskip}{0pt plus 5cm}int bash\+\_\+readline\+\_\+initialized}\hypertarget{bashline_8h_a68a2ddf0bc68427c1fc0da8c1053242b}{}\label{bashline_8h_a68a2ddf0bc68427c1fc0da8c1053242b}
+\index{bashline.\+h@{bashline.\+h}!complete\+\_\+fullquote@{complete\+\_\+fullquote}}
+\index{complete\+\_\+fullquote@{complete\+\_\+fullquote}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{complete\+\_\+fullquote}{complete_fullquote}}]{\setlength{\rightskip}{0pt plus 5cm}int complete\+\_\+fullquote}\hypertarget{bashline_8h_aafde51baef0db996c71dae472b62cb21}{}\label{bashline_8h_aafde51baef0db996c71dae472b62cb21}
+\index{bashline.\+h@{bashline.\+h}!dircomplete\+\_\+expand@{dircomplete\+\_\+expand}}
+\index{dircomplete\+\_\+expand@{dircomplete\+\_\+expand}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{dircomplete\+\_\+expand}{dircomplete_expand}}]{\setlength{\rightskip}{0pt plus 5cm}int dircomplete\+\_\+expand}\hypertarget{bashline_8h_a1abcf01b5c8c7d4fc8b088dc3f8280b0}{}\label{bashline_8h_a1abcf01b5c8c7d4fc8b088dc3f8280b0}
+\index{bashline.\+h@{bashline.\+h}!dircomplete\+\_\+expand\+\_\+relpath@{dircomplete\+\_\+expand\+\_\+relpath}}
+\index{dircomplete\+\_\+expand\+\_\+relpath@{dircomplete\+\_\+expand\+\_\+relpath}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{dircomplete\+\_\+expand\+\_\+relpath}{dircomplete_expand_relpath}}]{\setlength{\rightskip}{0pt plus 5cm}int dircomplete\+\_\+expand\+\_\+relpath}\hypertarget{bashline_8h_a12bf3793a56e703b85dc6dabeaa06158}{}\label{bashline_8h_a12bf3793a56e703b85dc6dabeaa06158}
+\index{bashline.\+h@{bashline.\+h}!dircomplete\+\_\+spelling@{dircomplete\+\_\+spelling}}
+\index{dircomplete\+\_\+spelling@{dircomplete\+\_\+spelling}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{dircomplete\+\_\+spelling}{dircomplete_spelling}}]{\setlength{\rightskip}{0pt plus 5cm}int dircomplete\+\_\+spelling}\hypertarget{bashline_8h_a0227da48137b3b6b652228ee21e33145}{}\label{bashline_8h_a0227da48137b3b6b652228ee21e33145}
+\index{bashline.\+h@{bashline.\+h}!force\+\_\+fignore@{force\+\_\+fignore}}
+\index{force\+\_\+fignore@{force\+\_\+fignore}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{force\+\_\+fignore}{force_fignore}}]{\setlength{\rightskip}{0pt plus 5cm}int force\+\_\+fignore}\hypertarget{bashline_8h_a432c7ae64a81b40587e5915cc49e0fe2}{}\label{bashline_8h_a432c7ae64a81b40587e5915cc49e0fe2}
+\index{bashline.\+h@{bashline.\+h}!hostname\+\_\+list\+\_\+initialized@{hostname\+\_\+list\+\_\+initialized}}
+\index{hostname\+\_\+list\+\_\+initialized@{hostname\+\_\+list\+\_\+initialized}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{hostname\+\_\+list\+\_\+initialized}{hostname_list_initialized}}]{\setlength{\rightskip}{0pt plus 5cm}int hostname\+\_\+list\+\_\+initialized}\hypertarget{bashline_8h_a87935ec3fd72750971009a1d97bf253d}{}\label{bashline_8h_a87935ec3fd72750971009a1d97bf253d}
+\index{bashline.\+h@{bashline.\+h}!no\+\_\+empty\+\_\+command\+\_\+completion@{no\+\_\+empty\+\_\+command\+\_\+completion}}
+\index{no\+\_\+empty\+\_\+command\+\_\+completion@{no\+\_\+empty\+\_\+command\+\_\+completion}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{no\+\_\+empty\+\_\+command\+\_\+completion}{no_empty_command_completion}}]{\setlength{\rightskip}{0pt plus 5cm}int no\+\_\+empty\+\_\+command\+\_\+completion}\hypertarget{bashline_8h_ad051535bd97883586899593f6c574fe3}{}\label{bashline_8h_ad051535bd97883586899593f6c574fe3}
+\index{bashline.\+h@{bashline.\+h}!perform\+\_\+hostname\+\_\+completion@{perform\+\_\+hostname\+\_\+completion}}
+\index{perform\+\_\+hostname\+\_\+completion@{perform\+\_\+hostname\+\_\+completion}!bashline.\+h@{bashline.\+h}}
+\subsubsection[{\texorpdfstring{perform\+\_\+hostname\+\_\+completion}{perform_hostname_completion}}]{\setlength{\rightskip}{0pt plus 5cm}int perform\+\_\+hostname\+\_\+completion}\hypertarget{bashline_8h_a7c5f3cb423d2c9118957a0085e509da6}{}\label{bashline_8h_a7c5f3cb423d2c9118957a0085e509da6}

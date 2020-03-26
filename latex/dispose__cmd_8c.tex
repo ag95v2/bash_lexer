@@ -1,0 +1,181 @@
+\hypertarget{dispose__cmd_8c}{}\section{dispose\+\_\+cmd.\+c File Reference}
+\label{dispose__cmd_8c}\index{dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+Include dependency graph for dispose\+\_\+cmd.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dispose__cmd_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{dispose__cmd_8c_a009e2d6264a3beacfbccca0830142d17}{dispose\+\_\+command} (\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$\hyperlink{structcommand}{command})
+\item 
+void \hyperlink{dispose__cmd_8c_a187463a2a0f9e7ab05dd49582324b1d9}{dispose\+\_\+cond\+\_\+node} (\hyperlink{command_8h_acfd591313c8c77c4f1fa185e5caf79c7}{C\+O\+N\+D\+\_\+\+C\+OM} $\ast$cond)
+\item 
+void \hyperlink{dispose__cmd_8c_aad929e4828ebb0e73aaa0aca07e6d319}{dispose\+\_\+function\+\_\+def\+\_\+contents} (\hyperlink{command_8h_afcca6733a6618ea69dc7bcbedc9b96f1}{F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF} $\ast$c)
+\item 
+void \hyperlink{dispose__cmd_8c_afdf690738348161030cf29abcf1624b8}{dispose\+\_\+function\+\_\+def} (\hyperlink{command_8h_afcca6733a6618ea69dc7bcbedc9b96f1}{F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF} $\ast$c)
+\item 
+void \hyperlink{dispose__cmd_8c_ae50614881b216f9cc6aad5008c767a8a}{dispose\+\_\+word} (\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$w)
+\item 
+void \hyperlink{dispose__cmd_8c_aefe6d639b3a7181c5a7e4e1245d829fa}{dispose\+\_\+word\+\_\+desc} (\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$w)
+\item 
+void \hyperlink{dispose__cmd_8c_a37005e70ed048a2e49b0b14112101f2f}{dispose\+\_\+words} (\hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$list)
+\item 
+void \hyperlink{dispose__cmd_8c_a6f4d35961973569c5a1e749855477221}{dispose\+\_\+redirects} (\hyperlink{command_8h_adeb9f5d937c92c7923aec48ad5e47d57}{R\+E\+D\+I\+R\+E\+CT} $\ast$list)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+sh\+\_\+obj\+\_\+cache\+\_\+t \hyperlink{dispose__cmd_8c_a61b1285c7ee225324e6e4e31eff10c28}{wdcache}
+\item 
+sh\+\_\+obj\+\_\+cache\+\_\+t \hyperlink{dispose__cmd_8c_a3ac1b6aa061af7fd85a0181229cb24a2}{wlcache}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}!dispose\+\_\+command@{dispose\+\_\+command}}
+\index{dispose\+\_\+command@{dispose\+\_\+command}!dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{dispose\+\_\+command(\+C\+O\+M\+M\+A\+N\+D $\ast$command)}{dispose_command(COMMAND *command)}}]{\setlength{\rightskip}{0pt plus 5cm}void dispose\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{command}
+\end{DoxyParamCaption}
+)}\hypertarget{dispose__cmd_8c_a009e2d6264a3beacfbccca0830142d17}{}\label{dispose__cmd_8c_a009e2d6264a3beacfbccca0830142d17}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dispose__cmd_8c_a009e2d6264a3beacfbccca0830142d17_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}!dispose\+\_\+cond\+\_\+node@{dispose\+\_\+cond\+\_\+node}}
+\index{dispose\+\_\+cond\+\_\+node@{dispose\+\_\+cond\+\_\+node}!dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{dispose\+\_\+cond\+\_\+node(\+C\+O\+N\+D\+\_\+\+C\+O\+M $\ast$cond)}{dispose_cond_node(COND_COM *cond)}}]{\setlength{\rightskip}{0pt plus 5cm}void dispose\+\_\+cond\+\_\+node (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+N\+D\+\_\+\+C\+OM} $\ast$}]{cond}
+\end{DoxyParamCaption}
+)}\hypertarget{dispose__cmd_8c_a187463a2a0f9e7ab05dd49582324b1d9}{}\label{dispose__cmd_8c_a187463a2a0f9e7ab05dd49582324b1d9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{dispose__cmd_8c_a187463a2a0f9e7ab05dd49582324b1d9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}!dispose\+\_\+function\+\_\+def@{dispose\+\_\+function\+\_\+def}}
+\index{dispose\+\_\+function\+\_\+def@{dispose\+\_\+function\+\_\+def}!dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{dispose\+\_\+function\+\_\+def(\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+E\+F $\ast$c)}{dispose_function_def(FUNCTION_DEF *c)}}]{\setlength{\rightskip}{0pt plus 5cm}void dispose\+\_\+function\+\_\+def (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF} $\ast$}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{dispose__cmd_8c_afdf690738348161030cf29abcf1624b8}{}\label{dispose__cmd_8c_afdf690738348161030cf29abcf1624b8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dispose__cmd_8c_afdf690738348161030cf29abcf1624b8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}!dispose\+\_\+function\+\_\+def\+\_\+contents@{dispose\+\_\+function\+\_\+def\+\_\+contents}}
+\index{dispose\+\_\+function\+\_\+def\+\_\+contents@{dispose\+\_\+function\+\_\+def\+\_\+contents}!dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{dispose\+\_\+function\+\_\+def\+\_\+contents(\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+E\+F $\ast$c)}{dispose_function_def_contents(FUNCTION_DEF *c)}}]{\setlength{\rightskip}{0pt plus 5cm}void dispose\+\_\+function\+\_\+def\+\_\+contents (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+D\+EF} $\ast$}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{dispose__cmd_8c_aad929e4828ebb0e73aaa0aca07e6d319}{}\label{dispose__cmd_8c_aad929e4828ebb0e73aaa0aca07e6d319}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dispose__cmd_8c_aad929e4828ebb0e73aaa0aca07e6d319_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}!dispose\+\_\+redirects@{dispose\+\_\+redirects}}
+\index{dispose\+\_\+redirects@{dispose\+\_\+redirects}!dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{dispose\+\_\+redirects(\+R\+E\+D\+I\+R\+E\+C\+T $\ast$list)}{dispose_redirects(REDIRECT *list)}}]{\setlength{\rightskip}{0pt plus 5cm}void dispose\+\_\+redirects (
+\begin{DoxyParamCaption}
+\item[{{\bf R\+E\+D\+I\+R\+E\+CT} $\ast$}]{list}
+\end{DoxyParamCaption}
+)}\hypertarget{dispose__cmd_8c_a6f4d35961973569c5a1e749855477221}{}\label{dispose__cmd_8c_a6f4d35961973569c5a1e749855477221}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{dispose__cmd_8c_a6f4d35961973569c5a1e749855477221_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}!dispose\+\_\+word@{dispose\+\_\+word}}
+\index{dispose\+\_\+word@{dispose\+\_\+word}!dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{dispose\+\_\+word(\+W\+O\+R\+D\+\_\+\+D\+E\+S\+C $\ast$w)}{dispose_word(WORD_DESC *w)}}]{\setlength{\rightskip}{0pt plus 5cm}void dispose\+\_\+word (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$}]{w}
+\end{DoxyParamCaption}
+)}\hypertarget{dispose__cmd_8c_ae50614881b216f9cc6aad5008c767a8a}{}\label{dispose__cmd_8c_ae50614881b216f9cc6aad5008c767a8a}
+\index{dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}!dispose\+\_\+word\+\_\+desc@{dispose\+\_\+word\+\_\+desc}}
+\index{dispose\+\_\+word\+\_\+desc@{dispose\+\_\+word\+\_\+desc}!dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{dispose\+\_\+word\+\_\+desc(\+W\+O\+R\+D\+\_\+\+D\+E\+S\+C $\ast$w)}{dispose_word_desc(WORD_DESC *w)}}]{\setlength{\rightskip}{0pt plus 5cm}void dispose\+\_\+word\+\_\+desc (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$}]{w}
+\end{DoxyParamCaption}
+)}\hypertarget{dispose__cmd_8c_aefe6d639b3a7181c5a7e4e1245d829fa}{}\label{dispose__cmd_8c_aefe6d639b3a7181c5a7e4e1245d829fa}
+\index{dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}!dispose\+\_\+words@{dispose\+\_\+words}}
+\index{dispose\+\_\+words@{dispose\+\_\+words}!dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{dispose\+\_\+words(\+W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$list)}{dispose_words(WORD_LIST *list)}}]{\setlength{\rightskip}{0pt plus 5cm}void dispose\+\_\+words (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{list}
+\end{DoxyParamCaption}
+)}\hypertarget{dispose__cmd_8c_a37005e70ed048a2e49b0b14112101f2f}{}\label{dispose__cmd_8c_a37005e70ed048a2e49b0b14112101f2f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=275pt]{dispose__cmd_8c_a37005e70ed048a2e49b0b14112101f2f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}!wdcache@{wdcache}}
+\index{wdcache@{wdcache}!dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{wdcache}{wdcache}}]{\setlength{\rightskip}{0pt plus 5cm}sh\+\_\+obj\+\_\+cache\+\_\+t wdcache}\hypertarget{dispose__cmd_8c_a61b1285c7ee225324e6e4e31eff10c28}{}\label{dispose__cmd_8c_a61b1285c7ee225324e6e4e31eff10c28}
+\index{dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}!wlcache@{wlcache}}
+\index{wlcache@{wlcache}!dispose\+\_\+cmd.\+c@{dispose\+\_\+cmd.\+c}}
+\subsubsection[{\texorpdfstring{wlcache}{wlcache}}]{\setlength{\rightskip}{0pt plus 5cm}sh\+\_\+obj\+\_\+cache\+\_\+t wlcache}\hypertarget{dispose__cmd_8c_a3ac1b6aa061af7fd85a0181229cb24a2}{}\label{dispose__cmd_8c_a3ac1b6aa061af7fd85a0181229cb24a2}

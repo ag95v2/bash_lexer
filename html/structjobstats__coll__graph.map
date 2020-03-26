@@ -1,0 +1,4 @@
+<map id="jobstats" name="jobstats">
+<area shape="rect" id="node2" href="$structjob.html" title="job" alt="" coords="20,95,59,121"/>
+<area shape="rect" id="node3" href="$structprocess.html" title="process" alt="" coords="5,5,73,32"/>
+</map>

@@ -1,0 +1,773 @@
+\hypertarget{arrayfunc_8c}{}\section{arrayfunc.\+c File Reference}
+\label{arrayfunc_8c}\index{arrayfunc.\+c@{arrayfunc.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}execute\+\_\+cmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pathexp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shmbutil.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/common.\+h\char`\"{}}\\*
+Include dependency graph for arrayfunc.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{arrayfunc_8c_a12900871ca7d16a2439c58da4cef3df9}{I\+N\+D\+E\+X\+\_\+\+E\+R\+R\+OR}()
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$\hyperlink{arrayfunc_8c_aea305d7c5950c3231246239bb59a2891}{bind\+\_\+array\+\_\+var\+\_\+internal} \hyperlink{arrayfunc_8c_ac2b40a7c2c2c36b7aa9d36e83b65bc18}{\+\_\+\+\_\+P} ((\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$, \hyperlink{array_8h_a3672e3c5b95dde98c9ed75ac7c1e6d60}{arrayind\+\_\+t}, char $\ast$, char $\ast$, int))
+\item 
+static \hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$\hyperlink{arrayfunc_8c_a9c48aca30fbca646306a523574b2ec69}{assign\+\_\+array\+\_\+element\+\_\+internal} \hyperlink{arrayfunc_8c_ac25b13f720fac49df7760f136622a53a}{\+\_\+\+\_\+P} ((\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$, char $\ast$, char $\ast$, char $\ast$, int, char $\ast$, int))
+\item 
+static char $\ast$\hyperlink{arrayfunc_8c_a74a83d5b934cbcd9a6183bb115db53f0}{quote\+\_\+assign} \hyperlink{arrayfunc_8c_abecd046ef75b458bdeea5f66294f9886}{\+\_\+\+\_\+P} ((const char $\ast$))
+\item 
+static void \hyperlink{arrayfunc_8c_a02041317b76396f3069979d7b4b17dd7}{quote\+\_\+array\+\_\+assignment\+\_\+chars} \hyperlink{arrayfunc_8c_acbdf7231d8beaac0c97d43a56374efec}{\+\_\+\+\_\+P} ((\hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$))
+\item 
+static char $\ast$\hyperlink{arrayfunc_8c_a3d7aaf3b0ffe3edd1e651381f2150553}{array\+\_\+value\+\_\+internal} \hyperlink{arrayfunc_8c_a21893ea15ae69696cc324cc52cefec05}{\+\_\+\+\_\+P} ((const char $\ast$, int, int, int $\ast$, \hyperlink{array_8h_a3672e3c5b95dde98c9ed75ac7c1e6d60}{arrayind\+\_\+t} $\ast$))
+\item 
+\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{arrayfunc_8c_aaacac4ff31bbec70660e8760c170642e}{convert\+\_\+var\+\_\+to\+\_\+array} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$var)
+\item 
+\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{arrayfunc_8c_ad767b49d642aef63a23ffc4c3f8d5a9c}{convert\+\_\+var\+\_\+to\+\_\+assoc} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$var)
+\item 
+char $\ast$ \hyperlink{arrayfunc_8c_a0e8deff21b4eccb809ddd46f3897910d}{make\+\_\+array\+\_\+variable\+\_\+value} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$entry, \hyperlink{array_8h_a3672e3c5b95dde98c9ed75ac7c1e6d60}{arrayind\+\_\+t} ind, char $\ast$key, char $\ast$value, int flags)
+\item 
+static \hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{arrayfunc_8c_aea305d7c5950c3231246239bb59a2891}{bind\+\_\+array\+\_\+var\+\_\+internal} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$entry, \hyperlink{array_8h_a3672e3c5b95dde98c9ed75ac7c1e6d60}{arrayind\+\_\+t} ind, char $\ast$key, char $\ast$value, int flags)
+\item 
+\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{arrayfunc_8c_a6499aaa0ee68e2240387cb08ebb516c6}{bind\+\_\+array\+\_\+variable} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, \hyperlink{array_8h_a3672e3c5b95dde98c9ed75ac7c1e6d60}{arrayind\+\_\+t} ind, char $\ast$value, int flags)
+\item 
+\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{arrayfunc_8c_afec656b6e125ea1311656e10948e068a}{bind\+\_\+array\+\_\+element} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$entry, \hyperlink{array_8h_a3672e3c5b95dde98c9ed75ac7c1e6d60}{arrayind\+\_\+t} ind, char $\ast$value, int flags)
+\item 
+\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{arrayfunc_8c_a620a583446102878df3a94f20d7a50ec}{bind\+\_\+assoc\+\_\+variable} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$entry, char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, char $\ast$key, char $\ast$value, int flags)
+\item 
+\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{arrayfunc_8c_ab788a04ffc0228695193626ee60bf247}{assign\+\_\+array\+\_\+element} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, char $\ast$value, int flags)
+\item 
+static \hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{arrayfunc_8c_a9c48aca30fbca646306a523574b2ec69}{assign\+\_\+array\+\_\+element\+\_\+internal} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$entry, char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, char $\ast$vname, char $\ast$sub, int sublen, char $\ast$value, int flags)
+\item 
+\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{arrayfunc_8c_a8322edd415c2c14d9e9e959dccae0606}{find\+\_\+or\+\_\+make\+\_\+array\+\_\+variable} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, int flags)
+\item 
+\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{arrayfunc_8c_aace280c387d762ed530f60391e399c29}{assign\+\_\+array\+\_\+from\+\_\+string} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, char $\ast$value, int flags)
+\item 
+\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{arrayfunc_8c_ad263fee74afcb4d8b26d96c4779516ac}{assign\+\_\+array\+\_\+var\+\_\+from\+\_\+word\+\_\+list} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$var, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$list, int flags)
+\item 
+\hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$ \hyperlink{arrayfunc_8c_af09176229d709203885a6129fe5c8951}{expand\+\_\+compound\+\_\+array\+\_\+assignment} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$var, char $\ast$value, int flags)
+\item 
+void \hyperlink{arrayfunc_8c_a5b35969e4cc894b18901ccb83873e310}{assign\+\_\+compound\+\_\+array\+\_\+list} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$var, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$nlist, int flags)
+\item 
+\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{arrayfunc_8c_a0a8c73a5291f3f7529f6006e8ab1512a}{assign\+\_\+array\+\_\+var\+\_\+from\+\_\+string} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$var, char $\ast$value, int flags)
+\item 
+static char $\ast$ \hyperlink{arrayfunc_8c_a74a83d5b934cbcd9a6183bb115db53f0}{quote\+\_\+assign} (char $\ast$string) const
+\item 
+static void \hyperlink{arrayfunc_8c_a02041317b76396f3069979d7b4b17dd7}{quote\+\_\+array\+\_\+assignment\+\_\+chars} (\hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$list)
+\item 
+int \hyperlink{arrayfunc_8c_a7e0b36f5ef5e0dc33efeacb17e9839be}{unbind\+\_\+array\+\_\+element} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$var, char $\ast$sub, int flags)
+\item 
+void \hyperlink{arrayfunc_8c_a087d1518ceaca786ea640331babe51a8}{print\+\_\+array\+\_\+assignment} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$var, int quoted)
+\item 
+void \hyperlink{arrayfunc_8c_a215b89fb2adfca23b3289fefa905879d}{print\+\_\+assoc\+\_\+assignment} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$var, int quoted)
+\item 
+int \hyperlink{arrayfunc_8c_a8577e5e204b8730225d64c87ddde3367}{valid\+\_\+array\+\_\+reference} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, int flags) const
+\item 
+\hyperlink{array_8h_a3672e3c5b95dde98c9ed75ac7c1e6d60}{arrayind\+\_\+t} \hyperlink{arrayfunc_8c_acee1c09072ca94216d267f92232d9296}{array\+\_\+expand\+\_\+index} (\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$var, char $\ast$s, int len, int flags)
+\item 
+char $\ast$ \hyperlink{arrayfunc_8c_a4b6d7a597c1c7e2cbf44e33b70fc819f}{array\+\_\+variable\+\_\+name} (char $\ast$s, int flags, char $\ast$$\ast$subp, int $\ast$lenp) const
+\item 
+\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{arrayfunc_8c_ad5ef4b9b98a733ab719652fdc37d2c1c}{array\+\_\+variable\+\_\+part} (char $\ast$s, int flags, char $\ast$$\ast$subp, int $\ast$lenp) const
+\item 
+static char $\ast$ \hyperlink{arrayfunc_8c_a3d7aaf3b0ffe3edd1e651381f2150553}{array\+\_\+value\+\_\+internal} (char $\ast$s, int quoted, int flags, int $\ast$rtype, \hyperlink{array_8h_a3672e3c5b95dde98c9ed75ac7c1e6d60}{arrayind\+\_\+t} $\ast$indp) const
+\item 
+char $\ast$ \hyperlink{arrayfunc_8c_a1efb1f798e18dedfe791b9e1b158103b}{array\+\_\+value} (char $\ast$s, int quoted, int flags, int $\ast$rtype, \hyperlink{array_8h_a3672e3c5b95dde98c9ed75ac7c1e6d60}{arrayind\+\_\+t} $\ast$indp) const
+\item 
+char $\ast$ \hyperlink{arrayfunc_8c_a0a70619d8cd4330d2b9446cc83d29f22}{get\+\_\+array\+\_\+value} (char $\ast$s, int flags, int $\ast$rtype, \hyperlink{array_8h_a3672e3c5b95dde98c9ed75ac7c1e6d60}{arrayind\+\_\+t} $\ast$indp) const
+\item 
+char $\ast$ \hyperlink{arrayfunc_8c_a24407b2e8a4881c6fdff6a00efe50ec8}{array\+\_\+keys} (char $\ast$s, int quoted)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{arrayfunc_8c_a4328b19d78402409b2d5d3e4983b2d19}{assoc\+\_\+expand\+\_\+once} = 0
+\item 
+int \hyperlink{arrayfunc_8c_a4c7043be68acc63383886cb1ebbb995e}{array\+\_\+expand\+\_\+once} = 0
+\item 
+const char $\ast$const \hyperlink{arrayfunc_8c_ad07db73af4336afc471825c9d2126c16}{bash\+\_\+badsub\+\_\+errmsg} = \hyperlink{bashintl_8h_abdf0847bd8caa2c2247f5d9bc5e12982}{N\+\_\+}(\char`\"{}bad \hyperlink{structarray}{array} subscript\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{arrayfunc.\+c@{arrayfunc.\+c}!I\+N\+D\+E\+X\+\_\+\+E\+R\+R\+OR@{I\+N\+D\+E\+X\+\_\+\+E\+R\+R\+OR}}
+\index{I\+N\+D\+E\+X\+\_\+\+E\+R\+R\+OR@{I\+N\+D\+E\+X\+\_\+\+E\+R\+R\+OR}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{I\+N\+D\+E\+X\+\_\+\+E\+R\+R\+OR}{INDEX_ERROR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+D\+E\+X\+\_\+\+E\+R\+R\+OR(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_a12900871ca7d16a2439c58da4cef3df9}{}\label{arrayfunc_8c_a12900871ca7d16a2439c58da4cef3df9}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \(\backslash\)
+    \{ \(\backslash\)
+      if (var) \hyperlink{error_8c_a4cb2cff2380d3c04960a2efda705b48b}{\(\backslash\)}
+\hyperlink{error_8c_a4cb2cff2380d3c04960a2efda705b48b}{    err\_badarraysub} (var->name); \(\backslash\)
+      else \(\backslash\)
+    \{ \(\backslash\)
+      t[-1] = \textcolor{charliteral}{'\(\backslash\)0'}; \hyperlink{error_8c_a4cb2cff2380d3c04960a2efda705b48b}{\(\backslash\)}
+\hyperlink{error_8c_a4cb2cff2380d3c04960a2efda705b48b}{      err\_badarraysub} (s); \(\backslash\)
+      t[-1] = \textcolor{charliteral}{'['};  \textcolor{comment}{/* ] */}\(\backslash\)
+    \} \(\backslash\)
+      return ((\textcolor{keywordtype}{char} *)\hyperlink{general_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}); \(\backslash\)
+    \} \(\backslash\)
+  while (0)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\index{arrayfunc.\+c@{arrayfunc.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$, arrayind\+\_\+t, char $\ast$, char $\ast$, int))}{__P((SHELL_VAR *, arrayind_t, char *, char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ {\bf bind\+\_\+array\+\_\+var\+\_\+internal} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$, {\bf arrayind\+\_\+t}, char $\ast$, char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{arrayfunc_8c_ac2b40a7c2c2c36b7aa9d36e83b65bc18}{}\label{arrayfunc_8c_ac2b40a7c2c2c36b7aa9d36e83b65bc18}
+\index{arrayfunc.\+c@{arrayfunc.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$, char $\ast$, char $\ast$, char $\ast$, int, char $\ast$, int))}{__P((SHELL_VAR *, char *, char *, char *, int, char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ {\bf assign\+\_\+array\+\_\+element\+\_\+internal} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$, char $\ast$, char $\ast$, char $\ast$, int, char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{arrayfunc_8c_ac25b13f720fac49df7760f136622a53a}{}\label{arrayfunc_8c_ac25b13f720fac49df7760f136622a53a}
+\index{arrayfunc.\+c@{arrayfunc.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$))}{__P((const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf quote\+\_\+assign} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{arrayfunc_8c_abecd046ef75b458bdeea5f66294f9886}{}\label{arrayfunc_8c_abecd046ef75b458bdeea5f66294f9886}
+\index{arrayfunc.\+c@{arrayfunc.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$))}{__P((WORD_LIST *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf quote\+\_\+array\+\_\+assignment\+\_\+chars} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{arrayfunc_8c_acbdf7231d8beaac0c97d43a56374efec}{}\label{arrayfunc_8c_acbdf7231d8beaac0c97d43a56374efec}
+\index{arrayfunc.\+c@{arrayfunc.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, int, int, int $\ast$, arrayind\+\_\+t $\ast$))}{__P((const char *, int, int, int *, arrayind_t *))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf array\+\_\+value\+\_\+internal} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, int, int, int $\ast$, {\bf arrayind\+\_\+t} $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{arrayfunc_8c_a21893ea15ae69696cc324cc52cefec05}{}\label{arrayfunc_8c_a21893ea15ae69696cc324cc52cefec05}
+\index{arrayfunc.\+c@{arrayfunc.\+c}!array\+\_\+expand\+\_\+index@{array\+\_\+expand\+\_\+index}}
+\index{array\+\_\+expand\+\_\+index@{array\+\_\+expand\+\_\+index}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{array\+\_\+expand\+\_\+index(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$var, char $\ast$s, int len, int flags)}{array_expand_index(SHELL_VAR *var, char *s, int len, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf arrayind\+\_\+t} array\+\_\+expand\+\_\+index (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{var, }
+\item[{char $\ast$}]{s, }
+\item[{int}]{len, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_acee1c09072ca94216d267f92232d9296}{}\label{arrayfunc_8c_acee1c09072ca94216d267f92232d9296}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_acee1c09072ca94216d267f92232d9296_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!array\+\_\+keys@{array\+\_\+keys}}
+\index{array\+\_\+keys@{array\+\_\+keys}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{array\+\_\+keys(char $\ast$s, int quoted)}{array_keys(char *s, int quoted)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ array\+\_\+keys (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{int}]{quoted}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_a24407b2e8a4881c6fdff6a00efe50ec8}{}\label{arrayfunc_8c_a24407b2e8a4881c6fdff6a00efe50ec8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a24407b2e8a4881c6fdff6a00efe50ec8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!array\+\_\+value@{array\+\_\+value}}
+\index{array\+\_\+value@{array\+\_\+value}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{array\+\_\+value(char $\ast$s, int quoted, int flags, int $\ast$rtype, arrayind\+\_\+t $\ast$indp) const}{array_value(char *s, int quoted, int flags, int *rtype, arrayind_t *indp) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ array\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{int}]{quoted, }
+\item[{int}]{flags, }
+\item[{int $\ast$}]{rtype, }
+\item[{{\bf arrayind\+\_\+t} $\ast$}]{indp}
+\end{DoxyParamCaption}
+) const}\hypertarget{arrayfunc_8c_a1efb1f798e18dedfe791b9e1b158103b}{}\label{arrayfunc_8c_a1efb1f798e18dedfe791b9e1b158103b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a1efb1f798e18dedfe791b9e1b158103b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!array\+\_\+value\+\_\+internal@{array\+\_\+value\+\_\+internal}}
+\index{array\+\_\+value\+\_\+internal@{array\+\_\+value\+\_\+internal}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{array\+\_\+value\+\_\+internal(char $\ast$s, int quoted, int flags, int $\ast$rtype, arrayind\+\_\+t $\ast$indp) const}{array_value_internal(char *s, int quoted, int flags, int *rtype, arrayind_t *indp) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ array\+\_\+value\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{int}]{quoted, }
+\item[{int}]{flags, }
+\item[{int $\ast$}]{rtype, }
+\item[{{\bf arrayind\+\_\+t} $\ast$}]{indp}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{arrayfunc_8c_a3d7aaf3b0ffe3edd1e651381f2150553}{}\label{arrayfunc_8c_a3d7aaf3b0ffe3edd1e651381f2150553}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a3d7aaf3b0ffe3edd1e651381f2150553_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!array\+\_\+variable\+\_\+name@{array\+\_\+variable\+\_\+name}}
+\index{array\+\_\+variable\+\_\+name@{array\+\_\+variable\+\_\+name}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{array\+\_\+variable\+\_\+name(char $\ast$s, int flags, char $\ast$$\ast$subp, int $\ast$lenp) const}{array_variable_name(char *s, int flags, char **subp, int *lenp) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ array\+\_\+variable\+\_\+name (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{int}]{flags, }
+\item[{char $\ast$$\ast$}]{subp, }
+\item[{int $\ast$}]{lenp}
+\end{DoxyParamCaption}
+) const}\hypertarget{arrayfunc_8c_a4b6d7a597c1c7e2cbf44e33b70fc819f}{}\label{arrayfunc_8c_a4b6d7a597c1c7e2cbf44e33b70fc819f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a4b6d7a597c1c7e2cbf44e33b70fc819f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!array\+\_\+variable\+\_\+part@{array\+\_\+variable\+\_\+part}}
+\index{array\+\_\+variable\+\_\+part@{array\+\_\+variable\+\_\+part}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{array\+\_\+variable\+\_\+part(char $\ast$s, int flags, char $\ast$$\ast$subp, int $\ast$lenp) const}{array_variable_part(char *s, int flags, char **subp, int *lenp) const}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ array\+\_\+variable\+\_\+part (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{int}]{flags, }
+\item[{char $\ast$$\ast$}]{subp, }
+\item[{int $\ast$}]{lenp}
+\end{DoxyParamCaption}
+) const}\hypertarget{arrayfunc_8c_ad5ef4b9b98a733ab719652fdc37d2c1c}{}\label{arrayfunc_8c_ad5ef4b9b98a733ab719652fdc37d2c1c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_ad5ef4b9b98a733ab719652fdc37d2c1c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!assign\+\_\+array\+\_\+element@{assign\+\_\+array\+\_\+element}}
+\index{assign\+\_\+array\+\_\+element@{assign\+\_\+array\+\_\+element}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{assign\+\_\+array\+\_\+element(char $\ast$name, char $\ast$value, int flags)}{assign_array_element(char *name, char *value, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ assign\+\_\+array\+\_\+element (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{char $\ast$}]{value, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_ab788a04ffc0228695193626ee60bf247}{}\label{arrayfunc_8c_ab788a04ffc0228695193626ee60bf247}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_ab788a04ffc0228695193626ee60bf247_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!assign\+\_\+array\+\_\+element\+\_\+internal@{assign\+\_\+array\+\_\+element\+\_\+internal}}
+\index{assign\+\_\+array\+\_\+element\+\_\+internal@{assign\+\_\+array\+\_\+element\+\_\+internal}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{assign\+\_\+array\+\_\+element\+\_\+internal(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$entry, char $\ast$name, char $\ast$vname, char $\ast$sub, int sublen, char $\ast$value, int flags)}{assign_array_element_internal(SHELL_VAR *entry, char *name, char *vname, char *sub, int sublen, char *value, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ assign\+\_\+array\+\_\+element\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{entry, }
+\item[{char $\ast$}]{name, }
+\item[{char $\ast$}]{vname, }
+\item[{char $\ast$}]{sub, }
+\item[{int}]{sublen, }
+\item[{char $\ast$}]{value, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{arrayfunc_8c_a9c48aca30fbca646306a523574b2ec69}{}\label{arrayfunc_8c_a9c48aca30fbca646306a523574b2ec69}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a9c48aca30fbca646306a523574b2ec69_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!assign\+\_\+array\+\_\+from\+\_\+string@{assign\+\_\+array\+\_\+from\+\_\+string}}
+\index{assign\+\_\+array\+\_\+from\+\_\+string@{assign\+\_\+array\+\_\+from\+\_\+string}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{assign\+\_\+array\+\_\+from\+\_\+string(char $\ast$name, char $\ast$value, int flags)}{assign_array_from_string(char *name, char *value, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ assign\+\_\+array\+\_\+from\+\_\+string (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{char $\ast$}]{value, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_aace280c387d762ed530f60391e399c29}{}\label{arrayfunc_8c_aace280c387d762ed530f60391e399c29}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_aace280c387d762ed530f60391e399c29_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!assign\+\_\+array\+\_\+var\+\_\+from\+\_\+string@{assign\+\_\+array\+\_\+var\+\_\+from\+\_\+string}}
+\index{assign\+\_\+array\+\_\+var\+\_\+from\+\_\+string@{assign\+\_\+array\+\_\+var\+\_\+from\+\_\+string}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{assign\+\_\+array\+\_\+var\+\_\+from\+\_\+string(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$var, char $\ast$value, int flags)}{assign_array_var_from_string(SHELL_VAR *var, char *value, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ assign\+\_\+array\+\_\+var\+\_\+from\+\_\+string (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{var, }
+\item[{char $\ast$}]{value, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_a0a8c73a5291f3f7529f6006e8ab1512a}{}\label{arrayfunc_8c_a0a8c73a5291f3f7529f6006e8ab1512a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a0a8c73a5291f3f7529f6006e8ab1512a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!assign\+\_\+array\+\_\+var\+\_\+from\+\_\+word\+\_\+list@{assign\+\_\+array\+\_\+var\+\_\+from\+\_\+word\+\_\+list}}
+\index{assign\+\_\+array\+\_\+var\+\_\+from\+\_\+word\+\_\+list@{assign\+\_\+array\+\_\+var\+\_\+from\+\_\+word\+\_\+list}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{assign\+\_\+array\+\_\+var\+\_\+from\+\_\+word\+\_\+list(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$var, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$list, int flags)}{assign_array_var_from_word_list(SHELL_VAR *var, WORD_LIST *list, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ assign\+\_\+array\+\_\+var\+\_\+from\+\_\+word\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{var, }
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{list, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_ad263fee74afcb4d8b26d96c4779516ac}{}\label{arrayfunc_8c_ad263fee74afcb4d8b26d96c4779516ac}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_ad263fee74afcb4d8b26d96c4779516ac_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!assign\+\_\+compound\+\_\+array\+\_\+list@{assign\+\_\+compound\+\_\+array\+\_\+list}}
+\index{assign\+\_\+compound\+\_\+array\+\_\+list@{assign\+\_\+compound\+\_\+array\+\_\+list}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{assign\+\_\+compound\+\_\+array\+\_\+list(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$var, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$nlist, int flags)}{assign_compound_array_list(SHELL_VAR *var, WORD_LIST *nlist, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}void assign\+\_\+compound\+\_\+array\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{var, }
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{nlist, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_a5b35969e4cc894b18901ccb83873e310}{}\label{arrayfunc_8c_a5b35969e4cc894b18901ccb83873e310}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a5b35969e4cc894b18901ccb83873e310_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!bind\+\_\+array\+\_\+element@{bind\+\_\+array\+\_\+element}}
+\index{bind\+\_\+array\+\_\+element@{bind\+\_\+array\+\_\+element}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{bind\+\_\+array\+\_\+element(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$entry, arrayind\+\_\+t ind, char $\ast$value, int flags)}{bind_array_element(SHELL_VAR *entry, arrayind_t ind, char *value, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ bind\+\_\+array\+\_\+element (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{entry, }
+\item[{{\bf arrayind\+\_\+t}}]{ind, }
+\item[{char $\ast$}]{value, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_afec656b6e125ea1311656e10948e068a}{}\label{arrayfunc_8c_afec656b6e125ea1311656e10948e068a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_afec656b6e125ea1311656e10948e068a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!bind\+\_\+array\+\_\+var\+\_\+internal@{bind\+\_\+array\+\_\+var\+\_\+internal}}
+\index{bind\+\_\+array\+\_\+var\+\_\+internal@{bind\+\_\+array\+\_\+var\+\_\+internal}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{bind\+\_\+array\+\_\+var\+\_\+internal(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$entry, arrayind\+\_\+t ind, char $\ast$key, char $\ast$value, int flags)}{bind_array_var_internal(SHELL_VAR *entry, arrayind_t ind, char *key, char *value, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ bind\+\_\+array\+\_\+var\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{entry, }
+\item[{{\bf arrayind\+\_\+t}}]{ind, }
+\item[{char $\ast$}]{key, }
+\item[{char $\ast$}]{value, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{arrayfunc_8c_aea305d7c5950c3231246239bb59a2891}{}\label{arrayfunc_8c_aea305d7c5950c3231246239bb59a2891}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_aea305d7c5950c3231246239bb59a2891_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!bind\+\_\+array\+\_\+variable@{bind\+\_\+array\+\_\+variable}}
+\index{bind\+\_\+array\+\_\+variable@{bind\+\_\+array\+\_\+variable}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{bind\+\_\+array\+\_\+variable(char $\ast$name, arrayind\+\_\+t ind, char $\ast$value, int flags)}{bind_array_variable(char *name, arrayind_t ind, char *value, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ bind\+\_\+array\+\_\+variable (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{{\bf arrayind\+\_\+t}}]{ind, }
+\item[{char $\ast$}]{value, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_a6499aaa0ee68e2240387cb08ebb516c6}{}\label{arrayfunc_8c_a6499aaa0ee68e2240387cb08ebb516c6}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a6499aaa0ee68e2240387cb08ebb516c6_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!bind\+\_\+assoc\+\_\+variable@{bind\+\_\+assoc\+\_\+variable}}
+\index{bind\+\_\+assoc\+\_\+variable@{bind\+\_\+assoc\+\_\+variable}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{bind\+\_\+assoc\+\_\+variable(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$entry, char $\ast$name, char $\ast$key, char $\ast$value, int flags)}{bind_assoc_variable(SHELL_VAR *entry, char *name, char *key, char *value, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ bind\+\_\+assoc\+\_\+variable (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{entry, }
+\item[{char $\ast$}]{name, }
+\item[{char $\ast$}]{key, }
+\item[{char $\ast$}]{value, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_a620a583446102878df3a94f20d7a50ec}{}\label{arrayfunc_8c_a620a583446102878df3a94f20d7a50ec}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a620a583446102878df3a94f20d7a50ec_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!convert\+\_\+var\+\_\+to\+\_\+array@{convert\+\_\+var\+\_\+to\+\_\+array}}
+\index{convert\+\_\+var\+\_\+to\+\_\+array@{convert\+\_\+var\+\_\+to\+\_\+array}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{convert\+\_\+var\+\_\+to\+\_\+array(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$var)}{convert_var_to_array(SHELL_VAR *var)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ convert\+\_\+var\+\_\+to\+\_\+array (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{var}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_aaacac4ff31bbec70660e8760c170642e}{}\label{arrayfunc_8c_aaacac4ff31bbec70660e8760c170642e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_aaacac4ff31bbec70660e8760c170642e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!convert\+\_\+var\+\_\+to\+\_\+assoc@{convert\+\_\+var\+\_\+to\+\_\+assoc}}
+\index{convert\+\_\+var\+\_\+to\+\_\+assoc@{convert\+\_\+var\+\_\+to\+\_\+assoc}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{convert\+\_\+var\+\_\+to\+\_\+assoc(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$var)}{convert_var_to_assoc(SHELL_VAR *var)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ convert\+\_\+var\+\_\+to\+\_\+assoc (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{var}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_ad767b49d642aef63a23ffc4c3f8d5a9c}{}\label{arrayfunc_8c_ad767b49d642aef63a23ffc4c3f8d5a9c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_ad767b49d642aef63a23ffc4c3f8d5a9c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!expand\+\_\+compound\+\_\+array\+\_\+assignment@{expand\+\_\+compound\+\_\+array\+\_\+assignment}}
+\index{expand\+\_\+compound\+\_\+array\+\_\+assignment@{expand\+\_\+compound\+\_\+array\+\_\+assignment}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{expand\+\_\+compound\+\_\+array\+\_\+assignment(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$var, char $\ast$value, int flags)}{expand_compound_array_assignment(SHELL_VAR *var, char *value, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST}$\ast$ expand\+\_\+compound\+\_\+array\+\_\+assignment (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{var, }
+\item[{char $\ast$}]{value, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_af09176229d709203885a6129fe5c8951}{}\label{arrayfunc_8c_af09176229d709203885a6129fe5c8951}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_af09176229d709203885a6129fe5c8951_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!find\+\_\+or\+\_\+make\+\_\+array\+\_\+variable@{find\+\_\+or\+\_\+make\+\_\+array\+\_\+variable}}
+\index{find\+\_\+or\+\_\+make\+\_\+array\+\_\+variable@{find\+\_\+or\+\_\+make\+\_\+array\+\_\+variable}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+or\+\_\+make\+\_\+array\+\_\+variable(char $\ast$name, int flags)}{find_or_make_array_variable(char *name, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ find\+\_\+or\+\_\+make\+\_\+array\+\_\+variable (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_a8322edd415c2c14d9e9e959dccae0606}{}\label{arrayfunc_8c_a8322edd415c2c14d9e9e959dccae0606}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a8322edd415c2c14d9e9e959dccae0606_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!get\+\_\+array\+\_\+value@{get\+\_\+array\+\_\+value}}
+\index{get\+\_\+array\+\_\+value@{get\+\_\+array\+\_\+value}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+array\+\_\+value(char $\ast$s, int flags, int $\ast$rtype, arrayind\+\_\+t $\ast$indp) const}{get_array_value(char *s, int flags, int *rtype, arrayind_t *indp) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\+\_\+array\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{int}]{flags, }
+\item[{int $\ast$}]{rtype, }
+\item[{{\bf arrayind\+\_\+t} $\ast$}]{indp}
+\end{DoxyParamCaption}
+) const}\hypertarget{arrayfunc_8c_a0a70619d8cd4330d2b9446cc83d29f22}{}\label{arrayfunc_8c_a0a70619d8cd4330d2b9446cc83d29f22}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a0a70619d8cd4330d2b9446cc83d29f22_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!make\+\_\+array\+\_\+variable\+\_\+value@{make\+\_\+array\+\_\+variable\+\_\+value}}
+\index{make\+\_\+array\+\_\+variable\+\_\+value@{make\+\_\+array\+\_\+variable\+\_\+value}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+array\+\_\+variable\+\_\+value(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$entry, arrayind\+\_\+t ind, char $\ast$key, char $\ast$value, int flags)}{make_array_variable_value(SHELL_VAR *entry, arrayind_t ind, char *key, char *value, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ make\+\_\+array\+\_\+variable\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{entry, }
+\item[{{\bf arrayind\+\_\+t}}]{ind, }
+\item[{char $\ast$}]{key, }
+\item[{char $\ast$}]{value, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_a0e8deff21b4eccb809ddd46f3897910d}{}\label{arrayfunc_8c_a0e8deff21b4eccb809ddd46f3897910d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a0e8deff21b4eccb809ddd46f3897910d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!print\+\_\+array\+\_\+assignment@{print\+\_\+array\+\_\+assignment}}
+\index{print\+\_\+array\+\_\+assignment@{print\+\_\+array\+\_\+assignment}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+array\+\_\+assignment(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$var, int quoted)}{print_array_assignment(SHELL_VAR *var, int quoted)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+array\+\_\+assignment (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{var, }
+\item[{int}]{quoted}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_a087d1518ceaca786ea640331babe51a8}{}\label{arrayfunc_8c_a087d1518ceaca786ea640331babe51a8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a087d1518ceaca786ea640331babe51a8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!print\+\_\+assoc\+\_\+assignment@{print\+\_\+assoc\+\_\+assignment}}
+\index{print\+\_\+assoc\+\_\+assignment@{print\+\_\+assoc\+\_\+assignment}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+assoc\+\_\+assignment(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$var, int quoted)}{print_assoc_assignment(SHELL_VAR *var, int quoted)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+assoc\+\_\+assignment (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{var, }
+\item[{int}]{quoted}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_a215b89fb2adfca23b3289fefa905879d}{}\label{arrayfunc_8c_a215b89fb2adfca23b3289fefa905879d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a215b89fb2adfca23b3289fefa905879d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!quote\+\_\+array\+\_\+assignment\+\_\+chars@{quote\+\_\+array\+\_\+assignment\+\_\+chars}}
+\index{quote\+\_\+array\+\_\+assignment\+\_\+chars@{quote\+\_\+array\+\_\+assignment\+\_\+chars}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{quote\+\_\+array\+\_\+assignment\+\_\+chars(\+W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$list)}{quote_array_assignment_chars(WORD_LIST *list)}}]{\setlength{\rightskip}{0pt plus 5cm}static void quote\+\_\+array\+\_\+assignment\+\_\+chars (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$}]{list}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{arrayfunc_8c_a02041317b76396f3069979d7b4b17dd7}{}\label{arrayfunc_8c_a02041317b76396f3069979d7b4b17dd7}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a02041317b76396f3069979d7b4b17dd7_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!quote\+\_\+assign@{quote\+\_\+assign}}
+\index{quote\+\_\+assign@{quote\+\_\+assign}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{quote\+\_\+assign(char $\ast$string) const}{quote_assign(char *string) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ quote\+\_\+assign (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{arrayfunc_8c_a74a83d5b934cbcd9a6183bb115db53f0}{}\label{arrayfunc_8c_a74a83d5b934cbcd9a6183bb115db53f0}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a74a83d5b934cbcd9a6183bb115db53f0_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!unbind\+\_\+array\+\_\+element@{unbind\+\_\+array\+\_\+element}}
+\index{unbind\+\_\+array\+\_\+element@{unbind\+\_\+array\+\_\+element}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{unbind\+\_\+array\+\_\+element(\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$var, char $\ast$sub, int flags)}{unbind_array_element(SHELL_VAR *var, char *sub, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}int unbind\+\_\+array\+\_\+element (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$}]{var, }
+\item[{char $\ast$}]{sub, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{arrayfunc_8c_a7e0b36f5ef5e0dc33efeacb17e9839be}{}\label{arrayfunc_8c_a7e0b36f5ef5e0dc33efeacb17e9839be}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a7e0b36f5ef5e0dc33efeacb17e9839be_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{arrayfunc.\+c@{arrayfunc.\+c}!valid\+\_\+array\+\_\+reference@{valid\+\_\+array\+\_\+reference}}
+\index{valid\+\_\+array\+\_\+reference@{valid\+\_\+array\+\_\+reference}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{valid\+\_\+array\+\_\+reference(char $\ast$name, int flags) const}{valid_array_reference(char *name, int flags) const}}]{\setlength{\rightskip}{0pt plus 5cm}int valid\+\_\+array\+\_\+reference (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+) const}\hypertarget{arrayfunc_8c_a8577e5e204b8730225d64c87ddde3367}{}\label{arrayfunc_8c_a8577e5e204b8730225d64c87ddde3367}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arrayfunc_8c_a8577e5e204b8730225d64c87ddde3367_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{arrayfunc.\+c@{arrayfunc.\+c}!array\+\_\+expand\+\_\+once@{array\+\_\+expand\+\_\+once}}
+\index{array\+\_\+expand\+\_\+once@{array\+\_\+expand\+\_\+once}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{array\+\_\+expand\+\_\+once}{array_expand_once}}]{\setlength{\rightskip}{0pt plus 5cm}int array\+\_\+expand\+\_\+once = 0}\hypertarget{arrayfunc_8c_a4c7043be68acc63383886cb1ebbb995e}{}\label{arrayfunc_8c_a4c7043be68acc63383886cb1ebbb995e}
+\index{arrayfunc.\+c@{arrayfunc.\+c}!assoc\+\_\+expand\+\_\+once@{assoc\+\_\+expand\+\_\+once}}
+\index{assoc\+\_\+expand\+\_\+once@{assoc\+\_\+expand\+\_\+once}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{assoc\+\_\+expand\+\_\+once}{assoc_expand_once}}]{\setlength{\rightskip}{0pt plus 5cm}int assoc\+\_\+expand\+\_\+once = 0}\hypertarget{arrayfunc_8c_a4328b19d78402409b2d5d3e4983b2d19}{}\label{arrayfunc_8c_a4328b19d78402409b2d5d3e4983b2d19}
+\index{arrayfunc.\+c@{arrayfunc.\+c}!bash\+\_\+badsub\+\_\+errmsg@{bash\+\_\+badsub\+\_\+errmsg}}
+\index{bash\+\_\+badsub\+\_\+errmsg@{bash\+\_\+badsub\+\_\+errmsg}!arrayfunc.\+c@{arrayfunc.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+badsub\+\_\+errmsg}{bash_badsub_errmsg}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ const bash\+\_\+badsub\+\_\+errmsg = {\bf N\+\_\+}(\char`\"{}bad {\bf array} subscript\char`\"{})}\hypertarget{arrayfunc_8c_ad07db73af4336afc471825c9d2126c16}{}\label{arrayfunc_8c_ad07db73af4336afc471825c9d2126c16}

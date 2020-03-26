@@ -1,0 +1,100 @@
+\hypertarget{builtins_8h}{}\section{builtins.\+h File Reference}
+\label{builtins_8h}\index{builtins.\+h@{builtins.\+h}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}command.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}general.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}alias.\+h\char`\"{}}\\*
+Include dependency graph for builtins.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{builtins_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{builtins_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structbuiltin}{builtin}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{builtins_8h_a2b8d646fca42cd9ac1072cff88785fde}{B\+U\+I\+L\+T\+I\+N\+\_\+\+E\+N\+A\+B\+L\+ED}~0x01	/$\ast$ This builtin is enabled. $\ast$/
+\item 
+\#define \hyperlink{builtins_8h_ae9905fe2cda99fa544c6483e1b8c9609}{B\+U\+I\+L\+T\+I\+N\+\_\+\+D\+E\+L\+E\+T\+ED}~0x02	/$\ast$ This has been deleted with enable -\/d. $\ast$/
+\item 
+\#define \hyperlink{builtins_8h_aad45d542b92e629f33eb2618c60466b6}{S\+T\+A\+T\+I\+C\+\_\+\+B\+U\+I\+L\+T\+IN}~0x04	/$\ast$ This builtin is not dynamically loaded. $\ast$/
+\item 
+\#define \hyperlink{builtins_8h_a1825fbd81b5546bc10820302a69e0eb8}{S\+P\+E\+C\+I\+A\+L\+\_\+\+B\+U\+I\+L\+T\+IN}~0x08	/$\ast$ This is a Posix `special\textquotesingle{} builtin. $\ast$/
+\item 
+\#define \hyperlink{builtins_8h_ae70f9097f113b1c52cabc5871556175f}{A\+S\+S\+I\+G\+N\+M\+E\+N\+T\+\_\+\+B\+U\+I\+L\+T\+IN}~0x10	/$\ast$ This builtin takes assignment statements. $\ast$/
+\item 
+\#define \hyperlink{builtins_8h_a0d0631203f7697a2fecec5332b0f42af}{P\+O\+S\+I\+X\+\_\+\+B\+U\+I\+L\+T\+IN}~0x20	/$\ast$ This builtins is special in the Posix command search order. $\ast$/
+\item 
+\#define \hyperlink{builtins_8h_aac5a22df46a699341bc515c63d821f2a}{L\+O\+C\+A\+L\+V\+A\+R\+\_\+\+B\+U\+I\+L\+T\+IN}~0x40	/$\ast$ This builtin creates local variables $\ast$/
+\item 
+\#define \hyperlink{builtins_8h_ab2c7364ba0b516b66903ab36ab82b53d}{B\+A\+S\+E\+\_\+\+I\+N\+D\+E\+NT}~4
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{builtins_8h_a1d529ca22c9ebad7b80e0ed81aece9f1}{num\+\_\+shell\+\_\+builtins}
+\item 
+struct \hyperlink{structbuiltin}{builtin} \hyperlink{builtins_8h_ace745a9943e74f96d31aa19d3a20e152}{static\+\_\+shell\+\_\+builtins} \mbox{[}$\,$\mbox{]}
+\item 
+struct \hyperlink{structbuiltin}{builtin} $\ast$ \hyperlink{builtins_8h_a56ec2002d9a71ef076568f00680b50ed}{shell\+\_\+builtins}
+\item 
+struct \hyperlink{structbuiltin}{builtin} $\ast$ \hyperlink{builtins_8h_a96777d95974f758cb63fd18e91c543f5}{current\+\_\+builtin}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{builtins.\+h@{builtins.\+h}!A\+S\+S\+I\+G\+N\+M\+E\+N\+T\+\_\+\+B\+U\+I\+L\+T\+IN@{A\+S\+S\+I\+G\+N\+M\+E\+N\+T\+\_\+\+B\+U\+I\+L\+T\+IN}}
+\index{A\+S\+S\+I\+G\+N\+M\+E\+N\+T\+\_\+\+B\+U\+I\+L\+T\+IN@{A\+S\+S\+I\+G\+N\+M\+E\+N\+T\+\_\+\+B\+U\+I\+L\+T\+IN}!builtins.\+h@{builtins.\+h}}
+\subsubsection[{\texorpdfstring{A\+S\+S\+I\+G\+N\+M\+E\+N\+T\+\_\+\+B\+U\+I\+L\+T\+IN}{ASSIGNMENT_BUILTIN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+S\+S\+I\+G\+N\+M\+E\+N\+T\+\_\+\+B\+U\+I\+L\+T\+IN~0x10	/$\ast$ This builtin takes assignment statements. $\ast$/}\hypertarget{builtins_8h_ae70f9097f113b1c52cabc5871556175f}{}\label{builtins_8h_ae70f9097f113b1c52cabc5871556175f}
+\index{builtins.\+h@{builtins.\+h}!B\+A\+S\+E\+\_\+\+I\+N\+D\+E\+NT@{B\+A\+S\+E\+\_\+\+I\+N\+D\+E\+NT}}
+\index{B\+A\+S\+E\+\_\+\+I\+N\+D\+E\+NT@{B\+A\+S\+E\+\_\+\+I\+N\+D\+E\+NT}!builtins.\+h@{builtins.\+h}}
+\subsubsection[{\texorpdfstring{B\+A\+S\+E\+\_\+\+I\+N\+D\+E\+NT}{BASE_INDENT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+S\+E\+\_\+\+I\+N\+D\+E\+NT~4}\hypertarget{builtins_8h_ab2c7364ba0b516b66903ab36ab82b53d}{}\label{builtins_8h_ab2c7364ba0b516b66903ab36ab82b53d}
+\index{builtins.\+h@{builtins.\+h}!B\+U\+I\+L\+T\+I\+N\+\_\+\+D\+E\+L\+E\+T\+ED@{B\+U\+I\+L\+T\+I\+N\+\_\+\+D\+E\+L\+E\+T\+ED}}
+\index{B\+U\+I\+L\+T\+I\+N\+\_\+\+D\+E\+L\+E\+T\+ED@{B\+U\+I\+L\+T\+I\+N\+\_\+\+D\+E\+L\+E\+T\+ED}!builtins.\+h@{builtins.\+h}}
+\subsubsection[{\texorpdfstring{B\+U\+I\+L\+T\+I\+N\+\_\+\+D\+E\+L\+E\+T\+ED}{BUILTIN_DELETED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+U\+I\+L\+T\+I\+N\+\_\+\+D\+E\+L\+E\+T\+ED~0x02	/$\ast$ This has been deleted with enable -\/d. $\ast$/}\hypertarget{builtins_8h_ae9905fe2cda99fa544c6483e1b8c9609}{}\label{builtins_8h_ae9905fe2cda99fa544c6483e1b8c9609}
+\index{builtins.\+h@{builtins.\+h}!B\+U\+I\+L\+T\+I\+N\+\_\+\+E\+N\+A\+B\+L\+ED@{B\+U\+I\+L\+T\+I\+N\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{B\+U\+I\+L\+T\+I\+N\+\_\+\+E\+N\+A\+B\+L\+ED@{B\+U\+I\+L\+T\+I\+N\+\_\+\+E\+N\+A\+B\+L\+ED}!builtins.\+h@{builtins.\+h}}
+\subsubsection[{\texorpdfstring{B\+U\+I\+L\+T\+I\+N\+\_\+\+E\+N\+A\+B\+L\+ED}{BUILTIN_ENABLED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+U\+I\+L\+T\+I\+N\+\_\+\+E\+N\+A\+B\+L\+ED~0x01	/$\ast$ This builtin is enabled. $\ast$/}\hypertarget{builtins_8h_a2b8d646fca42cd9ac1072cff88785fde}{}\label{builtins_8h_a2b8d646fca42cd9ac1072cff88785fde}
+\index{builtins.\+h@{builtins.\+h}!L\+O\+C\+A\+L\+V\+A\+R\+\_\+\+B\+U\+I\+L\+T\+IN@{L\+O\+C\+A\+L\+V\+A\+R\+\_\+\+B\+U\+I\+L\+T\+IN}}
+\index{L\+O\+C\+A\+L\+V\+A\+R\+\_\+\+B\+U\+I\+L\+T\+IN@{L\+O\+C\+A\+L\+V\+A\+R\+\_\+\+B\+U\+I\+L\+T\+IN}!builtins.\+h@{builtins.\+h}}
+\subsubsection[{\texorpdfstring{L\+O\+C\+A\+L\+V\+A\+R\+\_\+\+B\+U\+I\+L\+T\+IN}{LOCALVAR_BUILTIN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+O\+C\+A\+L\+V\+A\+R\+\_\+\+B\+U\+I\+L\+T\+IN~0x40	/$\ast$ This builtin creates local variables $\ast$/}\hypertarget{builtins_8h_aac5a22df46a699341bc515c63d821f2a}{}\label{builtins_8h_aac5a22df46a699341bc515c63d821f2a}
+\index{builtins.\+h@{builtins.\+h}!P\+O\+S\+I\+X\+\_\+\+B\+U\+I\+L\+T\+IN@{P\+O\+S\+I\+X\+\_\+\+B\+U\+I\+L\+T\+IN}}
+\index{P\+O\+S\+I\+X\+\_\+\+B\+U\+I\+L\+T\+IN@{P\+O\+S\+I\+X\+\_\+\+B\+U\+I\+L\+T\+IN}!builtins.\+h@{builtins.\+h}}
+\subsubsection[{\texorpdfstring{P\+O\+S\+I\+X\+\_\+\+B\+U\+I\+L\+T\+IN}{POSIX_BUILTIN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+S\+I\+X\+\_\+\+B\+U\+I\+L\+T\+IN~0x20	/$\ast$ This builtins is special in the Posix command search order. $\ast$/}\hypertarget{builtins_8h_a0d0631203f7697a2fecec5332b0f42af}{}\label{builtins_8h_a0d0631203f7697a2fecec5332b0f42af}
+\index{builtins.\+h@{builtins.\+h}!S\+P\+E\+C\+I\+A\+L\+\_\+\+B\+U\+I\+L\+T\+IN@{S\+P\+E\+C\+I\+A\+L\+\_\+\+B\+U\+I\+L\+T\+IN}}
+\index{S\+P\+E\+C\+I\+A\+L\+\_\+\+B\+U\+I\+L\+T\+IN@{S\+P\+E\+C\+I\+A\+L\+\_\+\+B\+U\+I\+L\+T\+IN}!builtins.\+h@{builtins.\+h}}
+\subsubsection[{\texorpdfstring{S\+P\+E\+C\+I\+A\+L\+\_\+\+B\+U\+I\+L\+T\+IN}{SPECIAL_BUILTIN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+P\+E\+C\+I\+A\+L\+\_\+\+B\+U\+I\+L\+T\+IN~0x08	/$\ast$ This is a Posix `special\textquotesingle{} builtin. $\ast$/}\hypertarget{builtins_8h_a1825fbd81b5546bc10820302a69e0eb8}{}\label{builtins_8h_a1825fbd81b5546bc10820302a69e0eb8}
+\index{builtins.\+h@{builtins.\+h}!S\+T\+A\+T\+I\+C\+\_\+\+B\+U\+I\+L\+T\+IN@{S\+T\+A\+T\+I\+C\+\_\+\+B\+U\+I\+L\+T\+IN}}
+\index{S\+T\+A\+T\+I\+C\+\_\+\+B\+U\+I\+L\+T\+IN@{S\+T\+A\+T\+I\+C\+\_\+\+B\+U\+I\+L\+T\+IN}!builtins.\+h@{builtins.\+h}}
+\subsubsection[{\texorpdfstring{S\+T\+A\+T\+I\+C\+\_\+\+B\+U\+I\+L\+T\+IN}{STATIC_BUILTIN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+A\+T\+I\+C\+\_\+\+B\+U\+I\+L\+T\+IN~0x04	/$\ast$ This builtin is not dynamically loaded. $\ast$/}\hypertarget{builtins_8h_aad45d542b92e629f33eb2618c60466b6}{}\label{builtins_8h_aad45d542b92e629f33eb2618c60466b6}
+
+
+\subsection{Variable Documentation}
+\index{builtins.\+h@{builtins.\+h}!current\+\_\+builtin@{current\+\_\+builtin}}
+\index{current\+\_\+builtin@{current\+\_\+builtin}!builtins.\+h@{builtins.\+h}}
+\subsubsection[{\texorpdfstring{current\+\_\+builtin}{current_builtin}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf builtin}$\ast$ current\+\_\+builtin}\hypertarget{builtins_8h_a96777d95974f758cb63fd18e91c543f5}{}\label{builtins_8h_a96777d95974f758cb63fd18e91c543f5}
+\index{builtins.\+h@{builtins.\+h}!num\+\_\+shell\+\_\+builtins@{num\+\_\+shell\+\_\+builtins}}
+\index{num\+\_\+shell\+\_\+builtins@{num\+\_\+shell\+\_\+builtins}!builtins.\+h@{builtins.\+h}}
+\subsubsection[{\texorpdfstring{num\+\_\+shell\+\_\+builtins}{num_shell_builtins}}]{\setlength{\rightskip}{0pt plus 5cm}int num\+\_\+shell\+\_\+builtins}\hypertarget{builtins_8h_a1d529ca22c9ebad7b80e0ed81aece9f1}{}\label{builtins_8h_a1d529ca22c9ebad7b80e0ed81aece9f1}
+\index{builtins.\+h@{builtins.\+h}!shell\+\_\+builtins@{shell\+\_\+builtins}}
+\index{shell\+\_\+builtins@{shell\+\_\+builtins}!builtins.\+h@{builtins.\+h}}
+\subsubsection[{\texorpdfstring{shell\+\_\+builtins}{shell_builtins}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf builtin}$\ast$ shell\+\_\+builtins}\hypertarget{builtins_8h_a56ec2002d9a71ef076568f00680b50ed}{}\label{builtins_8h_a56ec2002d9a71ef076568f00680b50ed}
+\index{builtins.\+h@{builtins.\+h}!static\+\_\+shell\+\_\+builtins@{static\+\_\+shell\+\_\+builtins}}
+\index{static\+\_\+shell\+\_\+builtins@{static\+\_\+shell\+\_\+builtins}!builtins.\+h@{builtins.\+h}}
+\subsubsection[{\texorpdfstring{static\+\_\+shell\+\_\+builtins}{static_shell_builtins}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf builtin} static\+\_\+shell\+\_\+builtins\mbox{[}$\,$\mbox{]}}\hypertarget{builtins_8h_ace745a9943e74f96d31aa19d3a20e152}{}\label{builtins_8h_ace745a9943e74f96d31aa19d3a20e152}

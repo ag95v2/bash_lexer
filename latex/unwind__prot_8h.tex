@@ -1,0 +1,119 @@
+\hypertarget{unwind__prot_8h}{}\section{unwind\+\_\+prot.\+h File Reference}
+\label{unwind__prot_8h}\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{unwind__prot_8h_a0584d6d13b3667265616889f59bf941d}{end\+\_\+unwind\+\_\+frame}()
+\item 
+\#define \hyperlink{unwind__prot_8h_a6e9a6757a3b50b57eb794efa368e176e}{unwind\+\_\+protect\+\_\+var}(X)~\hyperlink{unwind__prot_8c_aaa455f34e29b23a077c4004e2572dc81}{unwind\+\_\+protect\+\_\+mem} ((char $\ast$)\&(X), sizeof (X))
+\item 
+\#define \hyperlink{unwind__prot_8h_ae70d75ddd15368bde55398b7897111c4}{unwind\+\_\+protect\+\_\+int}~\hyperlink{unwind__prot_8h_a6e9a6757a3b50b57eb794efa368e176e}{unwind\+\_\+protect\+\_\+var}
+\item 
+\#define \hyperlink{unwind__prot_8h_a350acaab3fbc471db43f405cf86fc9bb}{unwind\+\_\+protect\+\_\+short}~\hyperlink{unwind__prot_8h_a6e9a6757a3b50b57eb794efa368e176e}{unwind\+\_\+protect\+\_\+var}
+\item 
+\#define \hyperlink{unwind__prot_8h_a788cc00fee2c6246c65113862d284ad2}{unwind\+\_\+protect\+\_\+string}~\hyperlink{unwind__prot_8h_a6e9a6757a3b50b57eb794efa368e176e}{unwind\+\_\+protect\+\_\+var}
+\item 
+\#define \hyperlink{unwind__prot_8h_a327f2034e54d38bf7e62a7ac9cad6c9c}{unwind\+\_\+protect\+\_\+pointer}~\hyperlink{unwind__prot_8h_a6e9a6757a3b50b57eb794efa368e176e}{unwind\+\_\+protect\+\_\+var}
+\item 
+\#define \hyperlink{unwind__prot_8h_a8c0f49740777f3b5944398c2a2a7d4fb}{unwind\+\_\+protect\+\_\+jmp\+\_\+buf}~\hyperlink{unwind__prot_8h_a6e9a6757a3b50b57eb794efa368e176e}{unwind\+\_\+protect\+\_\+var}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{unwind__prot_8c_a1886057f86c77799cd536208529f6ee5}{uwp\+\_\+init} \hyperlink{unwind__prot_8h_aef0ae2c0a1943ff5cd719a517cb72724}{\+\_\+\+\_\+P} ((void))
+\item 
+void \hyperlink{unwind__prot_8c_a0634c88afd6862533b1a4ea67dc6d0d8}{begin\+\_\+unwind\+\_\+frame} \hyperlink{unwind__prot_8h_aa660f3e6b5720f4d45e513f57a4aae74}{\+\_\+\+\_\+P} ((char $\ast$))
+\item 
+void \hyperlink{unwind__prot_8h_a2d90af72bf67ac08ba6236e9cfabc47f}{add\+\_\+unwind\+\_\+protect} ()
+\item 
+void \hyperlink{unwind__prot_8c_a38ec5f32e8267900c897189a08e79201}{clear\+\_\+unwind\+\_\+protect\+\_\+list} \hyperlink{unwind__prot_8h_ac01b412f8081d0158e30cd9f87aaa2bc}{\+\_\+\+\_\+P} ((int))
+\item 
+int \hyperlink{unwind__prot_8c_a06b424bcde098157f62db7584be13c99}{unwind\+\_\+protect\+\_\+tag\+\_\+on\+\_\+stack} \hyperlink{unwind__prot_8h_a05c7eb03252d5696a21eff9d4db99c0f}{\+\_\+\+\_\+P} ((const char $\ast$))
+\item 
+void \hyperlink{unwind__prot_8c_aaa455f34e29b23a077c4004e2572dc81}{unwind\+\_\+protect\+\_\+mem} \hyperlink{unwind__prot_8h_a0834ef10985e87022f508b70727b5212}{\+\_\+\+\_\+P} ((char $\ast$, int))
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}!end\+\_\+unwind\+\_\+frame@{end\+\_\+unwind\+\_\+frame}}
+\index{end\+\_\+unwind\+\_\+frame@{end\+\_\+unwind\+\_\+frame}!unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+\subsubsection[{\texorpdfstring{end\+\_\+unwind\+\_\+frame}{end_unwind_frame}}]{\setlength{\rightskip}{0pt plus 5cm}\#define end\+\_\+unwind\+\_\+frame(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8h_a0584d6d13b3667265616889f59bf941d}{}\label{unwind__prot_8h_a0584d6d13b3667265616889f59bf941d}
+\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}!unwind\+\_\+protect\+\_\+int@{unwind\+\_\+protect\+\_\+int}}
+\index{unwind\+\_\+protect\+\_\+int@{unwind\+\_\+protect\+\_\+int}!unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+\subsubsection[{\texorpdfstring{unwind\+\_\+protect\+\_\+int}{unwind_protect_int}}]{\setlength{\rightskip}{0pt plus 5cm}\#define unwind\+\_\+protect\+\_\+int~{\bf unwind\+\_\+protect\+\_\+var}}\hypertarget{unwind__prot_8h_ae70d75ddd15368bde55398b7897111c4}{}\label{unwind__prot_8h_ae70d75ddd15368bde55398b7897111c4}
+\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}!unwind\+\_\+protect\+\_\+jmp\+\_\+buf@{unwind\+\_\+protect\+\_\+jmp\+\_\+buf}}
+\index{unwind\+\_\+protect\+\_\+jmp\+\_\+buf@{unwind\+\_\+protect\+\_\+jmp\+\_\+buf}!unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+\subsubsection[{\texorpdfstring{unwind\+\_\+protect\+\_\+jmp\+\_\+buf}{unwind_protect_jmp_buf}}]{\setlength{\rightskip}{0pt plus 5cm}\#define unwind\+\_\+protect\+\_\+jmp\+\_\+buf~{\bf unwind\+\_\+protect\+\_\+var}}\hypertarget{unwind__prot_8h_a8c0f49740777f3b5944398c2a2a7d4fb}{}\label{unwind__prot_8h_a8c0f49740777f3b5944398c2a2a7d4fb}
+\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}!unwind\+\_\+protect\+\_\+pointer@{unwind\+\_\+protect\+\_\+pointer}}
+\index{unwind\+\_\+protect\+\_\+pointer@{unwind\+\_\+protect\+\_\+pointer}!unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+\subsubsection[{\texorpdfstring{unwind\+\_\+protect\+\_\+pointer}{unwind_protect_pointer}}]{\setlength{\rightskip}{0pt plus 5cm}\#define unwind\+\_\+protect\+\_\+pointer~{\bf unwind\+\_\+protect\+\_\+var}}\hypertarget{unwind__prot_8h_a327f2034e54d38bf7e62a7ac9cad6c9c}{}\label{unwind__prot_8h_a327f2034e54d38bf7e62a7ac9cad6c9c}
+\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}!unwind\+\_\+protect\+\_\+short@{unwind\+\_\+protect\+\_\+short}}
+\index{unwind\+\_\+protect\+\_\+short@{unwind\+\_\+protect\+\_\+short}!unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+\subsubsection[{\texorpdfstring{unwind\+\_\+protect\+\_\+short}{unwind_protect_short}}]{\setlength{\rightskip}{0pt plus 5cm}\#define unwind\+\_\+protect\+\_\+short~{\bf unwind\+\_\+protect\+\_\+var}}\hypertarget{unwind__prot_8h_a350acaab3fbc471db43f405cf86fc9bb}{}\label{unwind__prot_8h_a350acaab3fbc471db43f405cf86fc9bb}
+\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}!unwind\+\_\+protect\+\_\+string@{unwind\+\_\+protect\+\_\+string}}
+\index{unwind\+\_\+protect\+\_\+string@{unwind\+\_\+protect\+\_\+string}!unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+\subsubsection[{\texorpdfstring{unwind\+\_\+protect\+\_\+string}{unwind_protect_string}}]{\setlength{\rightskip}{0pt plus 5cm}\#define unwind\+\_\+protect\+\_\+string~{\bf unwind\+\_\+protect\+\_\+var}}\hypertarget{unwind__prot_8h_a788cc00fee2c6246c65113862d284ad2}{}\label{unwind__prot_8h_a788cc00fee2c6246c65113862d284ad2}
+\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}!unwind\+\_\+protect\+\_\+var@{unwind\+\_\+protect\+\_\+var}}
+\index{unwind\+\_\+protect\+\_\+var@{unwind\+\_\+protect\+\_\+var}!unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+\subsubsection[{\texorpdfstring{unwind\+\_\+protect\+\_\+var}{unwind_protect_var}}]{\setlength{\rightskip}{0pt plus 5cm}\#define unwind\+\_\+protect\+\_\+var(
+\begin{DoxyParamCaption}
+\item[{}]{X}
+\end{DoxyParamCaption}
+)~{\bf unwind\+\_\+protect\+\_\+mem} ((char $\ast$)\&(X), sizeof (X))}\hypertarget{unwind__prot_8h_a6e9a6757a3b50b57eb794efa368e176e}{}\label{unwind__prot_8h_a6e9a6757a3b50b57eb794efa368e176e}
+
+
+\subsection{Function Documentation}
+\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf uwp\+\_\+init} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8h_aef0ae2c0a1943ff5cd719a517cb72724}{}\label{unwind__prot_8h_aef0ae2c0a1943ff5cd719a517cb72724}
+\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf begin\+\_\+unwind\+\_\+frame} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8h_aa660f3e6b5720f4d45e513f57a4aae74}{}\label{unwind__prot_8h_aa660f3e6b5720f4d45e513f57a4aae74}
+\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf clear\+\_\+unwind\+\_\+protect\+\_\+list} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8h_ac01b412f8081d0158e30cd9f87aaa2bc}{}\label{unwind__prot_8h_ac01b412f8081d0158e30cd9f87aaa2bc}
+\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$))}{__P((const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf unwind\+\_\+protect\+\_\+tag\+\_\+on\+\_\+stack} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8h_a05c7eb03252d5696a21eff9d4db99c0f}{}\label{unwind__prot_8h_a05c7eb03252d5696a21eff9d4db99c0f}
+\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, int))}{__P((char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf unwind\+\_\+protect\+\_\+mem} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8h_a0834ef10985e87022f508b70727b5212}{}\label{unwind__prot_8h_a0834ef10985e87022f508b70727b5212}
+\index{unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}!add\+\_\+unwind\+\_\+protect@{add\+\_\+unwind\+\_\+protect}}
+\index{add\+\_\+unwind\+\_\+protect@{add\+\_\+unwind\+\_\+protect}!unwind\+\_\+prot.\+h@{unwind\+\_\+prot.\+h}}
+\subsubsection[{\texorpdfstring{add\+\_\+unwind\+\_\+protect()}{add_unwind_protect()}}]{\setlength{\rightskip}{0pt plus 5cm}void add\+\_\+unwind\+\_\+protect (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8h_a2d90af72bf67ac08ba6236e9cfabc47f}{}\label{unwind__prot_8h_a2d90af72bf67ac08ba6236e9cfabc47f}

@@ -1,0 +1,105 @@
+\hypertarget{bashjmp_8h}{}\section{bashjmp.\+h File Reference}
+\label{bashjmp_8h}\index{bashjmp.\+h@{bashjmp.\+h}}
+{\ttfamily \#include \char`\"{}posixjmp.\+h\char`\"{}}\\*
+Include dependency graph for bashjmp.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=144pt]{bashjmp_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashjmp_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{bashjmp_8h_a2513bc7a5579c1e048ed7dc37f145370}{S\+H\+F\+U\+N\+C\+\_\+\+R\+E\+T\+U\+RN}()~sh\+\_\+longjmp (\hyperlink{execute__cmd_8c_a2d6a7e8dd1530d8ddc57d42d0c689391}{return\+\_\+catch}, 1)
+\item 
+\#define \hyperlink{bashjmp_8h_a3811bcae9e0465d58b7c35887c987221}{C\+O\+P\+Y\+\_\+\+P\+R\+O\+C\+E\+NV}(old,  save)~\hyperlink{stringlib_8c_aa5e7893a4ac249adea1c687a3318ab61}{xbcopy} ((char $\ast$)old, (char $\ast$)save, sizeof (procenv\+\_\+t));
+\item 
+\#define \hyperlink{bashjmp_8h_aed4c68ec8b00e58f997182f8d7de9463}{N\+O\+T\+\_\+\+J\+U\+M\+P\+ED}~0	/$\ast$ Not returning from a longjmp. $\ast$/
+\item 
+\#define \hyperlink{bashjmp_8h_a8bef93d1daf140c7adaa29304f5b8e49}{F\+O\+R\+C\+E\+\_\+\+E\+OF}~1	/$\ast$ We want to stop parsing. $\ast$/
+\item 
+\#define \hyperlink{bashjmp_8h_adbaca35440ef5d1abf8a0084bf382b8b}{D\+I\+S\+C\+A\+RD}~2	/$\ast$ Discard current command. $\ast$/
+\item 
+\#define \hyperlink{bashjmp_8h_aa33f61f9f10a8fc3b63f3d4c88bea71a}{E\+X\+I\+T\+P\+R\+OG}~3	/$\ast$ Unconditionally exit the program now. $\ast$/
+\item 
+\#define \hyperlink{bashjmp_8h_ad4c19ce20bb4767ed705b1e79a72a30e}{E\+R\+R\+E\+X\+IT}~4	/$\ast$ Exit due to error condition $\ast$/
+\item 
+\#define \hyperlink{bashjmp_8h_ad5075ba0d0ab825cff13f0ae89f405c8}{S\+I\+G\+E\+X\+IT}~5	/$\ast$ Exit due to fatal terminating signal $\ast$/
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+procenv\+\_\+t \hyperlink{bashjmp_8h_a047be68a91ac230623785fa32c056bd2}{top\+\_\+level}
+\item 
+procenv\+\_\+t \hyperlink{bashjmp_8h_a4eea10059ca05ea2aa89b5f7a38e4d5e}{subshell\+\_\+top\+\_\+level}
+\item 
+procenv\+\_\+t \hyperlink{bashjmp_8h_a2d6a7e8dd1530d8ddc57d42d0c689391}{return\+\_\+catch}
+\item 
+procenv\+\_\+t \hyperlink{bashjmp_8h_a89d0152483195257de262e224716fcc1}{wait\+\_\+intr\+\_\+buf}
+\item 
+int \hyperlink{bashjmp_8h_a5899dcf1f64983d1dfc0dee87d846c35}{no\+\_\+longjmp\+\_\+on\+\_\+fatal\+\_\+error}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{bashjmp.\+h@{bashjmp.\+h}!C\+O\+P\+Y\+\_\+\+P\+R\+O\+C\+E\+NV@{C\+O\+P\+Y\+\_\+\+P\+R\+O\+C\+E\+NV}}
+\index{C\+O\+P\+Y\+\_\+\+P\+R\+O\+C\+E\+NV@{C\+O\+P\+Y\+\_\+\+P\+R\+O\+C\+E\+NV}!bashjmp.\+h@{bashjmp.\+h}}
+\subsubsection[{\texorpdfstring{C\+O\+P\+Y\+\_\+\+P\+R\+O\+C\+E\+NV}{COPY_PROCENV}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+P\+Y\+\_\+\+P\+R\+O\+C\+E\+NV(
+\begin{DoxyParamCaption}
+\item[{}]{old, }
+\item[{}]{save}
+\end{DoxyParamCaption}
+)~{\bf xbcopy} ((char $\ast$)old, (char $\ast$)save, sizeof (procenv\+\_\+t));}\hypertarget{bashjmp_8h_a3811bcae9e0465d58b7c35887c987221}{}\label{bashjmp_8h_a3811bcae9e0465d58b7c35887c987221}
+\index{bashjmp.\+h@{bashjmp.\+h}!D\+I\+S\+C\+A\+RD@{D\+I\+S\+C\+A\+RD}}
+\index{D\+I\+S\+C\+A\+RD@{D\+I\+S\+C\+A\+RD}!bashjmp.\+h@{bashjmp.\+h}}
+\subsubsection[{\texorpdfstring{D\+I\+S\+C\+A\+RD}{DISCARD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+I\+S\+C\+A\+RD~2	/$\ast$ Discard current command. $\ast$/}\hypertarget{bashjmp_8h_adbaca35440ef5d1abf8a0084bf382b8b}{}\label{bashjmp_8h_adbaca35440ef5d1abf8a0084bf382b8b}
+\index{bashjmp.\+h@{bashjmp.\+h}!E\+R\+R\+E\+X\+IT@{E\+R\+R\+E\+X\+IT}}
+\index{E\+R\+R\+E\+X\+IT@{E\+R\+R\+E\+X\+IT}!bashjmp.\+h@{bashjmp.\+h}}
+\subsubsection[{\texorpdfstring{E\+R\+R\+E\+X\+IT}{ERREXIT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+R\+R\+E\+X\+IT~4	/$\ast$ Exit due to error condition $\ast$/}\hypertarget{bashjmp_8h_ad4c19ce20bb4767ed705b1e79a72a30e}{}\label{bashjmp_8h_ad4c19ce20bb4767ed705b1e79a72a30e}
+\index{bashjmp.\+h@{bashjmp.\+h}!E\+X\+I\+T\+P\+R\+OG@{E\+X\+I\+T\+P\+R\+OG}}
+\index{E\+X\+I\+T\+P\+R\+OG@{E\+X\+I\+T\+P\+R\+OG}!bashjmp.\+h@{bashjmp.\+h}}
+\subsubsection[{\texorpdfstring{E\+X\+I\+T\+P\+R\+OG}{EXITPROG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+I\+T\+P\+R\+OG~3	/$\ast$ Unconditionally exit the program now. $\ast$/}\hypertarget{bashjmp_8h_aa33f61f9f10a8fc3b63f3d4c88bea71a}{}\label{bashjmp_8h_aa33f61f9f10a8fc3b63f3d4c88bea71a}
+\index{bashjmp.\+h@{bashjmp.\+h}!F\+O\+R\+C\+E\+\_\+\+E\+OF@{F\+O\+R\+C\+E\+\_\+\+E\+OF}}
+\index{F\+O\+R\+C\+E\+\_\+\+E\+OF@{F\+O\+R\+C\+E\+\_\+\+E\+OF}!bashjmp.\+h@{bashjmp.\+h}}
+\subsubsection[{\texorpdfstring{F\+O\+R\+C\+E\+\_\+\+E\+OF}{FORCE_EOF}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+O\+R\+C\+E\+\_\+\+E\+OF~1	/$\ast$ We want to stop parsing. $\ast$/}\hypertarget{bashjmp_8h_a8bef93d1daf140c7adaa29304f5b8e49}{}\label{bashjmp_8h_a8bef93d1daf140c7adaa29304f5b8e49}
+\index{bashjmp.\+h@{bashjmp.\+h}!N\+O\+T\+\_\+\+J\+U\+M\+P\+ED@{N\+O\+T\+\_\+\+J\+U\+M\+P\+ED}}
+\index{N\+O\+T\+\_\+\+J\+U\+M\+P\+ED@{N\+O\+T\+\_\+\+J\+U\+M\+P\+ED}!bashjmp.\+h@{bashjmp.\+h}}
+\subsubsection[{\texorpdfstring{N\+O\+T\+\_\+\+J\+U\+M\+P\+ED}{NOT_JUMPED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+O\+T\+\_\+\+J\+U\+M\+P\+ED~0	/$\ast$ Not returning from a longjmp. $\ast$/}\hypertarget{bashjmp_8h_aed4c68ec8b00e58f997182f8d7de9463}{}\label{bashjmp_8h_aed4c68ec8b00e58f997182f8d7de9463}
+\index{bashjmp.\+h@{bashjmp.\+h}!S\+H\+F\+U\+N\+C\+\_\+\+R\+E\+T\+U\+RN@{S\+H\+F\+U\+N\+C\+\_\+\+R\+E\+T\+U\+RN}}
+\index{S\+H\+F\+U\+N\+C\+\_\+\+R\+E\+T\+U\+RN@{S\+H\+F\+U\+N\+C\+\_\+\+R\+E\+T\+U\+RN}!bashjmp.\+h@{bashjmp.\+h}}
+\subsubsection[{\texorpdfstring{S\+H\+F\+U\+N\+C\+\_\+\+R\+E\+T\+U\+RN}{SHFUNC_RETURN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+H\+F\+U\+N\+C\+\_\+\+R\+E\+T\+U\+RN(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~sh\+\_\+longjmp ({\bf return\+\_\+catch}, 1)}\hypertarget{bashjmp_8h_a2513bc7a5579c1e048ed7dc37f145370}{}\label{bashjmp_8h_a2513bc7a5579c1e048ed7dc37f145370}
+\index{bashjmp.\+h@{bashjmp.\+h}!S\+I\+G\+E\+X\+IT@{S\+I\+G\+E\+X\+IT}}
+\index{S\+I\+G\+E\+X\+IT@{S\+I\+G\+E\+X\+IT}!bashjmp.\+h@{bashjmp.\+h}}
+\subsubsection[{\texorpdfstring{S\+I\+G\+E\+X\+IT}{SIGEXIT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+I\+G\+E\+X\+IT~5	/$\ast$ Exit due to fatal terminating signal $\ast$/}\hypertarget{bashjmp_8h_ad5075ba0d0ab825cff13f0ae89f405c8}{}\label{bashjmp_8h_ad5075ba0d0ab825cff13f0ae89f405c8}
+
+
+\subsection{Variable Documentation}
+\index{bashjmp.\+h@{bashjmp.\+h}!no\+\_\+longjmp\+\_\+on\+\_\+fatal\+\_\+error@{no\+\_\+longjmp\+\_\+on\+\_\+fatal\+\_\+error}}
+\index{no\+\_\+longjmp\+\_\+on\+\_\+fatal\+\_\+error@{no\+\_\+longjmp\+\_\+on\+\_\+fatal\+\_\+error}!bashjmp.\+h@{bashjmp.\+h}}
+\subsubsection[{\texorpdfstring{no\+\_\+longjmp\+\_\+on\+\_\+fatal\+\_\+error}{no_longjmp_on_fatal_error}}]{\setlength{\rightskip}{0pt plus 5cm}int no\+\_\+longjmp\+\_\+on\+\_\+fatal\+\_\+error}\hypertarget{bashjmp_8h_a5899dcf1f64983d1dfc0dee87d846c35}{}\label{bashjmp_8h_a5899dcf1f64983d1dfc0dee87d846c35}
+\index{bashjmp.\+h@{bashjmp.\+h}!return\+\_\+catch@{return\+\_\+catch}}
+\index{return\+\_\+catch@{return\+\_\+catch}!bashjmp.\+h@{bashjmp.\+h}}
+\subsubsection[{\texorpdfstring{return\+\_\+catch}{return_catch}}]{\setlength{\rightskip}{0pt plus 5cm}procenv\+\_\+t return\+\_\+catch}\hypertarget{bashjmp_8h_a2d6a7e8dd1530d8ddc57d42d0c689391}{}\label{bashjmp_8h_a2d6a7e8dd1530d8ddc57d42d0c689391}
+\index{bashjmp.\+h@{bashjmp.\+h}!subshell\+\_\+top\+\_\+level@{subshell\+\_\+top\+\_\+level}}
+\index{subshell\+\_\+top\+\_\+level@{subshell\+\_\+top\+\_\+level}!bashjmp.\+h@{bashjmp.\+h}}
+\subsubsection[{\texorpdfstring{subshell\+\_\+top\+\_\+level}{subshell_top_level}}]{\setlength{\rightskip}{0pt plus 5cm}procenv\+\_\+t subshell\+\_\+top\+\_\+level}\hypertarget{bashjmp_8h_a4eea10059ca05ea2aa89b5f7a38e4d5e}{}\label{bashjmp_8h_a4eea10059ca05ea2aa89b5f7a38e4d5e}
+\index{bashjmp.\+h@{bashjmp.\+h}!top\+\_\+level@{top\+\_\+level}}
+\index{top\+\_\+level@{top\+\_\+level}!bashjmp.\+h@{bashjmp.\+h}}
+\subsubsection[{\texorpdfstring{top\+\_\+level}{top_level}}]{\setlength{\rightskip}{0pt plus 5cm}procenv\+\_\+t top\+\_\+level}\hypertarget{bashjmp_8h_a047be68a91ac230623785fa32c056bd2}{}\label{bashjmp_8h_a047be68a91ac230623785fa32c056bd2}
+\index{bashjmp.\+h@{bashjmp.\+h}!wait\+\_\+intr\+\_\+buf@{wait\+\_\+intr\+\_\+buf}}
+\index{wait\+\_\+intr\+\_\+buf@{wait\+\_\+intr\+\_\+buf}!bashjmp.\+h@{bashjmp.\+h}}
+\subsubsection[{\texorpdfstring{wait\+\_\+intr\+\_\+buf}{wait_intr_buf}}]{\setlength{\rightskip}{0pt plus 5cm}procenv\+\_\+t wait\+\_\+intr\+\_\+buf}\hypertarget{bashjmp_8h_a89d0152483195257de262e224716fcc1}{}\label{bashjmp_8h_a89d0152483195257de262e224716fcc1}

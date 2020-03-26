@@ -1,0 +1,267 @@
+\hypertarget{syntax_8h}{}\section{syntax.\+h File Reference}
+\label{syntax_8h}\index{syntax.\+h@{syntax.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{syntax_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{syntax_8h_a3e2e8553a6d28ba44e6d90e59e922843}{slashify\+\_\+in\+\_\+quotes}~\char`\"{}\textbackslash{}\textbackslash{}`\$\textbackslash{}\char`\"{}\textbackslash{}n\char`\"{}
+\item 
+\#define \hyperlink{syntax_8h_a472b077316b0cc7c01b89540e46c94d8}{slashify\+\_\+in\+\_\+here\+\_\+document}~\char`\"{}\textbackslash{}\textbackslash{}`\$\char`\"{}
+\item 
+\#define \hyperlink{syntax_8h_acb240a13e66d37f75783bccac98c873f}{shell\+\_\+meta\+\_\+chars}~\char`\"{}()$<$$>$;\&$\vert$\char`\"{}
+\item 
+\#define \hyperlink{syntax_8h_ab285e231a8a18de04aaef7c649402205}{shell\+\_\+break\+\_\+chars}~\char`\"{}()$<$$>$;\&$\vert$ \textbackslash{}t\textbackslash{}n\char`\"{}
+\item 
+\#define \hyperlink{syntax_8h_af615a0969ed3514b2d11270459d2330c}{shell\+\_\+quote\+\_\+chars}~\char`\"{}\textbackslash{}\char`\"{}`\textquotesingle{}\char`\"{}
+\item 
+\#define \hyperlink{syntax_8h_a887e38aa0ca2c386419e239375087eb7}{shell\+\_\+exp\+\_\+chars}~\char`\"{}\$\char`\"{}
+\item 
+\#define \hyperlink{syntax_8h_afbc4beb43433bad972c7c2dc94cba4f9}{ext\+\_\+glob\+\_\+chars}~\char`\"{}\char`\"{}
+\item 
+\#define \hyperlink{syntax_8h_a04bb3628fd319cef3ea84f887eb51026}{shell\+\_\+glob\+\_\+chars}~\char`\"{}$\ast$?\mbox{[}$\,$\mbox{]}$^\wedge$\char`\"{}
+\item 
+\#define \hyperlink{syntax_8h_a7b8dd60ab90b7483c91c0cbeba6bafbd}{C\+W\+O\+RD}~0x0000	/$\ast$ nothing special; an ordinary character $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_a279df8bea63f0363dd63b8239a56609b}{C\+S\+H\+M\+E\+TA}~0x0001	/$\ast$ shell meta character $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_a4bab9a22b153363a4ae8ef138311bf83}{C\+S\+H\+B\+RK}~0x0002	/$\ast$ shell break character $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_ad5bfd1266535c1f39bbe6c1f2a9262be}{C\+B\+A\+C\+KQ}~0x0004	/$\ast$ back quote $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_ad5eccd4785fe7879f3ad3fe2a78e2ed5}{C\+Q\+U\+O\+TE}~0x0008	/$\ast$ shell quote character $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_a76f345621ba935aec3ae45211c8b3692}{C\+S\+P\+E\+CL}~0x0010	/$\ast$ special character that needs quoting $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_a691d03bd5a78dda7521e1b3131246429}{C\+E\+XP}~0x0020	/$\ast$ shell expansion character $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_a994956f3544823b74723c85aaa21396e}{C\+B\+S\+D\+Q\+U\+O\+TE}~0x0040	/$\ast$ characters escaped by backslash in double quotes $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_ab83e02f9258fd2d3137278df6387ed37}{C\+B\+S\+H\+D\+OC}~0x0080	/$\ast$ characters escaped by backslash in here doc $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_a9ab880e22ffa5bc8ce2ff97288affe40}{C\+G\+L\+OB}~0x0100	/$\ast$ globbing characters $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_a1a33332b80d4ffebe73337541ab1ade7}{C\+X\+G\+L\+OB}~0x0200	/$\ast$ extended globbing characters $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_a0ffca7671bfa9a43dd4f0c6f01dcdc2f}{C\+X\+Q\+U\+O\+TE}~0x0400	/$\ast$ cquote + backslash $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_a0ef7d47455eef1c6c4899263c883a419}{C\+S\+P\+E\+C\+V\+AR}~0x0800	/$\ast$ single-\/character shell variable name $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_a68813add36ac5a4a468b5aa37c129d39}{C\+S\+U\+B\+S\+T\+OP}~0x1000	/$\ast$ values of O\+P for \$\{word\mbox{[}\+:\mbox{]}\+O\+Pstuff\} $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_a554a7ced931c8f9dfed52adabb01e45c}{C\+B\+L\+A\+NK}~0x2000	/$\ast$ whitespace (blank) character $\ast$/
+\item 
+\#define \hyperlink{syntax_8h_aa201a991f08639a9e0e82234e70e03ad}{shellmeta}(c)~(\hyperlink{syntax_8h_adce75b0bbc56c93c6ebbda4967efa21c}{sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& \hyperlink{syntax_8h_a279df8bea63f0363dd63b8239a56609b}{C\+S\+H\+M\+E\+TA})
+\item 
+\#define \hyperlink{syntax_8h_a28a247df2aa426a4ef163512ccbca6bd}{shellbreak}(c)~(\hyperlink{syntax_8h_adce75b0bbc56c93c6ebbda4967efa21c}{sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& \hyperlink{syntax_8h_a4bab9a22b153363a4ae8ef138311bf83}{C\+S\+H\+B\+RK})
+\item 
+\#define \hyperlink{syntax_8h_a1457603f9d32fe381833795e57386088}{shellquote}(c)~(\hyperlink{syntax_8h_adce75b0bbc56c93c6ebbda4967efa21c}{sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& \hyperlink{syntax_8h_ad5eccd4785fe7879f3ad3fe2a78e2ed5}{C\+Q\+U\+O\+TE})
+\item 
+\#define \hyperlink{syntax_8h_a6ea8f2a670601d8a9ceb5d7695d92b09}{shellxquote}(c)~(\hyperlink{syntax_8h_adce75b0bbc56c93c6ebbda4967efa21c}{sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& \hyperlink{syntax_8h_a0ffca7671bfa9a43dd4f0c6f01dcdc2f}{C\+X\+Q\+U\+O\+TE})
+\item 
+\#define \hyperlink{syntax_8h_a2a73e24361d5f6ae7438b86b6fc15d44}{shellblank}(c)~(\hyperlink{syntax_8h_adce75b0bbc56c93c6ebbda4967efa21c}{sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& \hyperlink{syntax_8h_a554a7ced931c8f9dfed52adabb01e45c}{C\+B\+L\+A\+NK})
+\item 
+\#define \hyperlink{syntax_8h_a4f017ac2f2ef9aa31c50b62e1a1fae14}{parserblank}(c)~((c) == \textquotesingle{} \textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\textbackslash{}t\textquotesingle{})
+\item 
+\#define \hyperlink{syntax_8h_a384876b61081523002ecac0907debcfc}{issyntype}(c,  t)~((\hyperlink{syntax_8h_adce75b0bbc56c93c6ebbda4967efa21c}{sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& (t)) != 0)
+\item 
+\#define \hyperlink{syntax_8h_abfad7abc37d7c113193bd7c6e746bfff}{notsyntype}(c,  t)~((\hyperlink{syntax_8h_adce75b0bbc56c93c6ebbda4967efa21c}{sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& (t)) == 0)
+\item 
+\#define \hyperlink{syntax_8h_a58a0949c7988c4b1f45e68083b2eeaeb}{shellexp}(c)~((c) == \textquotesingle{}\$\textquotesingle{})
+\item 
+\#define \hyperlink{syntax_8h_a15436956c13ac7859b611d8c6563bede}{P\+A\+T\+T\+E\+R\+N\+\_\+\+C\+H\+AR}(c)~0
+\item 
+\#define \hyperlink{syntax_8h_a271c2e61c2e56e05579fa440cf4af0bf}{G\+L\+O\+B\+\_\+\+C\+H\+AR}(c)~((c) == \textquotesingle{}$\ast$\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}?\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\mbox{[}\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\mbox{]}\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}$^\wedge$\textquotesingle{})
+\item 
+\#define \hyperlink{syntax_8h_a8e200998dc81522671b71d8b0734b9eb}{C\+T\+L\+E\+SC}~\textquotesingle{}\textbackslash{}001\textquotesingle{}
+\item 
+\#define \hyperlink{syntax_8h_a948c36c43f5c74184ef620927b5a7434}{C\+T\+L\+N\+UL}~\textquotesingle{}\textbackslash{}177\textquotesingle{}
+\item 
+\#define \hyperlink{syntax_8h_ad9bfbdeef8c6f05cee294530b92547bf}{isblank}(x)~((x) == \textquotesingle{} \textquotesingle{} $\vert$$\vert$ (x) == \textquotesingle{}\textbackslash{}t\textquotesingle{})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{syntax_8h_adce75b0bbc56c93c6ebbda4967efa21c}{sh\+\_\+syntaxtab} \mbox{[}$\,$\mbox{]}
+\item 
+int \hyperlink{syntax_8h_a41f7a3ea96490f5bb0d57b6980733cbf}{sh\+\_\+syntabsiz}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{syntax.\+h@{syntax.\+h}!C\+B\+A\+C\+KQ@{C\+B\+A\+C\+KQ}}
+\index{C\+B\+A\+C\+KQ@{C\+B\+A\+C\+KQ}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+B\+A\+C\+KQ}{CBACKQ}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+B\+A\+C\+KQ~0x0004	/$\ast$ back quote $\ast$/}\hypertarget{syntax_8h_ad5bfd1266535c1f39bbe6c1f2a9262be}{}\label{syntax_8h_ad5bfd1266535c1f39bbe6c1f2a9262be}
+\index{syntax.\+h@{syntax.\+h}!C\+B\+L\+A\+NK@{C\+B\+L\+A\+NK}}
+\index{C\+B\+L\+A\+NK@{C\+B\+L\+A\+NK}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+B\+L\+A\+NK}{CBLANK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+B\+L\+A\+NK~0x2000	/$\ast$ whitespace (blank) character $\ast$/}\hypertarget{syntax_8h_a554a7ced931c8f9dfed52adabb01e45c}{}\label{syntax_8h_a554a7ced931c8f9dfed52adabb01e45c}
+\index{syntax.\+h@{syntax.\+h}!C\+B\+S\+D\+Q\+U\+O\+TE@{C\+B\+S\+D\+Q\+U\+O\+TE}}
+\index{C\+B\+S\+D\+Q\+U\+O\+TE@{C\+B\+S\+D\+Q\+U\+O\+TE}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+B\+S\+D\+Q\+U\+O\+TE}{CBSDQUOTE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+B\+S\+D\+Q\+U\+O\+TE~0x0040	/$\ast$ characters escaped by backslash in double quotes $\ast$/}\hypertarget{syntax_8h_a994956f3544823b74723c85aaa21396e}{}\label{syntax_8h_a994956f3544823b74723c85aaa21396e}
+\index{syntax.\+h@{syntax.\+h}!C\+B\+S\+H\+D\+OC@{C\+B\+S\+H\+D\+OC}}
+\index{C\+B\+S\+H\+D\+OC@{C\+B\+S\+H\+D\+OC}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+B\+S\+H\+D\+OC}{CBSHDOC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+B\+S\+H\+D\+OC~0x0080	/$\ast$ characters escaped by backslash in here doc $\ast$/}\hypertarget{syntax_8h_ab83e02f9258fd2d3137278df6387ed37}{}\label{syntax_8h_ab83e02f9258fd2d3137278df6387ed37}
+\index{syntax.\+h@{syntax.\+h}!C\+E\+XP@{C\+E\+XP}}
+\index{C\+E\+XP@{C\+E\+XP}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+E\+XP}{CEXP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+E\+XP~0x0020	/$\ast$ shell expansion character $\ast$/}\hypertarget{syntax_8h_a691d03bd5a78dda7521e1b3131246429}{}\label{syntax_8h_a691d03bd5a78dda7521e1b3131246429}
+\index{syntax.\+h@{syntax.\+h}!C\+G\+L\+OB@{C\+G\+L\+OB}}
+\index{C\+G\+L\+OB@{C\+G\+L\+OB}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+G\+L\+OB}{CGLOB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+G\+L\+OB~0x0100	/$\ast$ globbing characters $\ast$/}\hypertarget{syntax_8h_a9ab880e22ffa5bc8ce2ff97288affe40}{}\label{syntax_8h_a9ab880e22ffa5bc8ce2ff97288affe40}
+\index{syntax.\+h@{syntax.\+h}!C\+Q\+U\+O\+TE@{C\+Q\+U\+O\+TE}}
+\index{C\+Q\+U\+O\+TE@{C\+Q\+U\+O\+TE}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+Q\+U\+O\+TE}{CQUOTE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+Q\+U\+O\+TE~0x0008	/$\ast$ shell quote character $\ast$/}\hypertarget{syntax_8h_ad5eccd4785fe7879f3ad3fe2a78e2ed5}{}\label{syntax_8h_ad5eccd4785fe7879f3ad3fe2a78e2ed5}
+\index{syntax.\+h@{syntax.\+h}!C\+S\+H\+B\+RK@{C\+S\+H\+B\+RK}}
+\index{C\+S\+H\+B\+RK@{C\+S\+H\+B\+RK}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+S\+H\+B\+RK}{CSHBRK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+S\+H\+B\+RK~0x0002	/$\ast$ shell break character $\ast$/}\hypertarget{syntax_8h_a4bab9a22b153363a4ae8ef138311bf83}{}\label{syntax_8h_a4bab9a22b153363a4ae8ef138311bf83}
+\index{syntax.\+h@{syntax.\+h}!C\+S\+H\+M\+E\+TA@{C\+S\+H\+M\+E\+TA}}
+\index{C\+S\+H\+M\+E\+TA@{C\+S\+H\+M\+E\+TA}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+S\+H\+M\+E\+TA}{CSHMETA}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+S\+H\+M\+E\+TA~0x0001	/$\ast$ shell meta character $\ast$/}\hypertarget{syntax_8h_a279df8bea63f0363dd63b8239a56609b}{}\label{syntax_8h_a279df8bea63f0363dd63b8239a56609b}
+\index{syntax.\+h@{syntax.\+h}!C\+S\+P\+E\+CL@{C\+S\+P\+E\+CL}}
+\index{C\+S\+P\+E\+CL@{C\+S\+P\+E\+CL}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+S\+P\+E\+CL}{CSPECL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+S\+P\+E\+CL~0x0010	/$\ast$ special character that needs quoting $\ast$/}\hypertarget{syntax_8h_a76f345621ba935aec3ae45211c8b3692}{}\label{syntax_8h_a76f345621ba935aec3ae45211c8b3692}
+\index{syntax.\+h@{syntax.\+h}!C\+S\+P\+E\+C\+V\+AR@{C\+S\+P\+E\+C\+V\+AR}}
+\index{C\+S\+P\+E\+C\+V\+AR@{C\+S\+P\+E\+C\+V\+AR}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+S\+P\+E\+C\+V\+AR}{CSPECVAR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+S\+P\+E\+C\+V\+AR~0x0800	/$\ast$ single-\/character shell variable name $\ast$/}\hypertarget{syntax_8h_a0ef7d47455eef1c6c4899263c883a419}{}\label{syntax_8h_a0ef7d47455eef1c6c4899263c883a419}
+\index{syntax.\+h@{syntax.\+h}!C\+S\+U\+B\+S\+T\+OP@{C\+S\+U\+B\+S\+T\+OP}}
+\index{C\+S\+U\+B\+S\+T\+OP@{C\+S\+U\+B\+S\+T\+OP}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+S\+U\+B\+S\+T\+OP}{CSUBSTOP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+S\+U\+B\+S\+T\+OP~0x1000	/$\ast$ values of O\+P for \$\{word\mbox{[}\+:\mbox{]}\+O\+Pstuff\} $\ast$/}\hypertarget{syntax_8h_a68813add36ac5a4a468b5aa37c129d39}{}\label{syntax_8h_a68813add36ac5a4a468b5aa37c129d39}
+\index{syntax.\+h@{syntax.\+h}!C\+T\+L\+E\+SC@{C\+T\+L\+E\+SC}}
+\index{C\+T\+L\+E\+SC@{C\+T\+L\+E\+SC}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+T\+L\+E\+SC}{CTLESC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+T\+L\+E\+SC~\textquotesingle{}\textbackslash{}001\textquotesingle{}}\hypertarget{syntax_8h_a8e200998dc81522671b71d8b0734b9eb}{}\label{syntax_8h_a8e200998dc81522671b71d8b0734b9eb}
+\index{syntax.\+h@{syntax.\+h}!C\+T\+L\+N\+UL@{C\+T\+L\+N\+UL}}
+\index{C\+T\+L\+N\+UL@{C\+T\+L\+N\+UL}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+T\+L\+N\+UL}{CTLNUL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+T\+L\+N\+UL~\textquotesingle{}\textbackslash{}177\textquotesingle{}}\hypertarget{syntax_8h_a948c36c43f5c74184ef620927b5a7434}{}\label{syntax_8h_a948c36c43f5c74184ef620927b5a7434}
+\index{syntax.\+h@{syntax.\+h}!C\+W\+O\+RD@{C\+W\+O\+RD}}
+\index{C\+W\+O\+RD@{C\+W\+O\+RD}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+W\+O\+RD}{CWORD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+W\+O\+RD~0x0000	/$\ast$ nothing special; an ordinary character $\ast$/}\hypertarget{syntax_8h_a7b8dd60ab90b7483c91c0cbeba6bafbd}{}\label{syntax_8h_a7b8dd60ab90b7483c91c0cbeba6bafbd}
+\index{syntax.\+h@{syntax.\+h}!C\+X\+G\+L\+OB@{C\+X\+G\+L\+OB}}
+\index{C\+X\+G\+L\+OB@{C\+X\+G\+L\+OB}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+X\+G\+L\+OB}{CXGLOB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+X\+G\+L\+OB~0x0200	/$\ast$ extended globbing characters $\ast$/}\hypertarget{syntax_8h_a1a33332b80d4ffebe73337541ab1ade7}{}\label{syntax_8h_a1a33332b80d4ffebe73337541ab1ade7}
+\index{syntax.\+h@{syntax.\+h}!C\+X\+Q\+U\+O\+TE@{C\+X\+Q\+U\+O\+TE}}
+\index{C\+X\+Q\+U\+O\+TE@{C\+X\+Q\+U\+O\+TE}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{C\+X\+Q\+U\+O\+TE}{CXQUOTE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+X\+Q\+U\+O\+TE~0x0400	/$\ast$ cquote + backslash $\ast$/}\hypertarget{syntax_8h_a0ffca7671bfa9a43dd4f0c6f01dcdc2f}{}\label{syntax_8h_a0ffca7671bfa9a43dd4f0c6f01dcdc2f}
+\index{syntax.\+h@{syntax.\+h}!ext\+\_\+glob\+\_\+chars@{ext\+\_\+glob\+\_\+chars}}
+\index{ext\+\_\+glob\+\_\+chars@{ext\+\_\+glob\+\_\+chars}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{ext\+\_\+glob\+\_\+chars}{ext_glob_chars}}]{\setlength{\rightskip}{0pt plus 5cm}\#define ext\+\_\+glob\+\_\+chars~\char`\"{}\char`\"{}}\hypertarget{syntax_8h_afbc4beb43433bad972c7c2dc94cba4f9}{}\label{syntax_8h_afbc4beb43433bad972c7c2dc94cba4f9}
+\index{syntax.\+h@{syntax.\+h}!G\+L\+O\+B\+\_\+\+C\+H\+AR@{G\+L\+O\+B\+\_\+\+C\+H\+AR}}
+\index{G\+L\+O\+B\+\_\+\+C\+H\+AR@{G\+L\+O\+B\+\_\+\+C\+H\+AR}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{G\+L\+O\+B\+\_\+\+C\+H\+AR}{GLOB_CHAR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+L\+O\+B\+\_\+\+C\+H\+AR(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~((c) == \textquotesingle{}$\ast$\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}?\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\mbox{[}\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\mbox{]}\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}$^\wedge$\textquotesingle{})}\hypertarget{syntax_8h_a271c2e61c2e56e05579fa440cf4af0bf}{}\label{syntax_8h_a271c2e61c2e56e05579fa440cf4af0bf}
+\index{syntax.\+h@{syntax.\+h}!isblank@{isblank}}
+\index{isblank@{isblank}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{isblank}{isblank}}]{\setlength{\rightskip}{0pt plus 5cm}\#define isblank(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~((x) == \textquotesingle{} \textquotesingle{} $\vert$$\vert$ (x) == \textquotesingle{}\textbackslash{}t\textquotesingle{})}\hypertarget{syntax_8h_ad9bfbdeef8c6f05cee294530b92547bf}{}\label{syntax_8h_ad9bfbdeef8c6f05cee294530b92547bf}
+\index{syntax.\+h@{syntax.\+h}!issyntype@{issyntype}}
+\index{issyntype@{issyntype}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{issyntype}{issyntype}}]{\setlength{\rightskip}{0pt plus 5cm}\#define issyntype(
+\begin{DoxyParamCaption}
+\item[{}]{c, }
+\item[{}]{t}
+\end{DoxyParamCaption}
+)~(({\bf sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& (t)) != 0)}\hypertarget{syntax_8h_a384876b61081523002ecac0907debcfc}{}\label{syntax_8h_a384876b61081523002ecac0907debcfc}
+\index{syntax.\+h@{syntax.\+h}!notsyntype@{notsyntype}}
+\index{notsyntype@{notsyntype}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{notsyntype}{notsyntype}}]{\setlength{\rightskip}{0pt plus 5cm}\#define notsyntype(
+\begin{DoxyParamCaption}
+\item[{}]{c, }
+\item[{}]{t}
+\end{DoxyParamCaption}
+)~(({\bf sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& (t)) == 0)}\hypertarget{syntax_8h_abfad7abc37d7c113193bd7c6e746bfff}{}\label{syntax_8h_abfad7abc37d7c113193bd7c6e746bfff}
+\index{syntax.\+h@{syntax.\+h}!parserblank@{parserblank}}
+\index{parserblank@{parserblank}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{parserblank}{parserblank}}]{\setlength{\rightskip}{0pt plus 5cm}\#define parserblank(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~((c) == \textquotesingle{} \textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\textbackslash{}t\textquotesingle{})}\hypertarget{syntax_8h_a4f017ac2f2ef9aa31c50b62e1a1fae14}{}\label{syntax_8h_a4f017ac2f2ef9aa31c50b62e1a1fae14}
+\index{syntax.\+h@{syntax.\+h}!P\+A\+T\+T\+E\+R\+N\+\_\+\+C\+H\+AR@{P\+A\+T\+T\+E\+R\+N\+\_\+\+C\+H\+AR}}
+\index{P\+A\+T\+T\+E\+R\+N\+\_\+\+C\+H\+AR@{P\+A\+T\+T\+E\+R\+N\+\_\+\+C\+H\+AR}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{P\+A\+T\+T\+E\+R\+N\+\_\+\+C\+H\+AR}{PATTERN_CHAR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+T\+T\+E\+R\+N\+\_\+\+C\+H\+AR(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~0}\hypertarget{syntax_8h_a15436956c13ac7859b611d8c6563bede}{}\label{syntax_8h_a15436956c13ac7859b611d8c6563bede}
+\index{syntax.\+h@{syntax.\+h}!shell\+\_\+break\+\_\+chars@{shell\+\_\+break\+\_\+chars}}
+\index{shell\+\_\+break\+\_\+chars@{shell\+\_\+break\+\_\+chars}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{shell\+\_\+break\+\_\+chars}{shell_break_chars}}]{\setlength{\rightskip}{0pt plus 5cm}\#define shell\+\_\+break\+\_\+chars~\char`\"{}()$<$$>$;\&$\vert$ \textbackslash{}t\textbackslash{}n\char`\"{}}\hypertarget{syntax_8h_ab285e231a8a18de04aaef7c649402205}{}\label{syntax_8h_ab285e231a8a18de04aaef7c649402205}
+\index{syntax.\+h@{syntax.\+h}!shell\+\_\+exp\+\_\+chars@{shell\+\_\+exp\+\_\+chars}}
+\index{shell\+\_\+exp\+\_\+chars@{shell\+\_\+exp\+\_\+chars}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{shell\+\_\+exp\+\_\+chars}{shell_exp_chars}}]{\setlength{\rightskip}{0pt plus 5cm}\#define shell\+\_\+exp\+\_\+chars~\char`\"{}\$\char`\"{}}\hypertarget{syntax_8h_a887e38aa0ca2c386419e239375087eb7}{}\label{syntax_8h_a887e38aa0ca2c386419e239375087eb7}
+\index{syntax.\+h@{syntax.\+h}!shell\+\_\+glob\+\_\+chars@{shell\+\_\+glob\+\_\+chars}}
+\index{shell\+\_\+glob\+\_\+chars@{shell\+\_\+glob\+\_\+chars}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{shell\+\_\+glob\+\_\+chars}{shell_glob_chars}}]{\setlength{\rightskip}{0pt plus 5cm}\#define shell\+\_\+glob\+\_\+chars~\char`\"{}$\ast$?\mbox{[}$\,$\mbox{]}$^\wedge$\char`\"{}}\hypertarget{syntax_8h_a04bb3628fd319cef3ea84f887eb51026}{}\label{syntax_8h_a04bb3628fd319cef3ea84f887eb51026}
+\index{syntax.\+h@{syntax.\+h}!shell\+\_\+meta\+\_\+chars@{shell\+\_\+meta\+\_\+chars}}
+\index{shell\+\_\+meta\+\_\+chars@{shell\+\_\+meta\+\_\+chars}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{shell\+\_\+meta\+\_\+chars}{shell_meta_chars}}]{\setlength{\rightskip}{0pt plus 5cm}\#define shell\+\_\+meta\+\_\+chars~\char`\"{}()$<$$>$;\&$\vert$\char`\"{}}\hypertarget{syntax_8h_acb240a13e66d37f75783bccac98c873f}{}\label{syntax_8h_acb240a13e66d37f75783bccac98c873f}
+\index{syntax.\+h@{syntax.\+h}!shell\+\_\+quote\+\_\+chars@{shell\+\_\+quote\+\_\+chars}}
+\index{shell\+\_\+quote\+\_\+chars@{shell\+\_\+quote\+\_\+chars}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{shell\+\_\+quote\+\_\+chars}{shell_quote_chars}}]{\setlength{\rightskip}{0pt plus 5cm}\#define shell\+\_\+quote\+\_\+chars~\char`\"{}\textbackslash{}\char`\"{}`\textquotesingle{}\char`\"{}}\hypertarget{syntax_8h_af615a0969ed3514b2d11270459d2330c}{}\label{syntax_8h_af615a0969ed3514b2d11270459d2330c}
+\index{syntax.\+h@{syntax.\+h}!shellblank@{shellblank}}
+\index{shellblank@{shellblank}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{shellblank}{shellblank}}]{\setlength{\rightskip}{0pt plus 5cm}\#define shellblank(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~({\bf sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& {\bf C\+B\+L\+A\+NK})}\hypertarget{syntax_8h_a2a73e24361d5f6ae7438b86b6fc15d44}{}\label{syntax_8h_a2a73e24361d5f6ae7438b86b6fc15d44}
+\index{syntax.\+h@{syntax.\+h}!shellbreak@{shellbreak}}
+\index{shellbreak@{shellbreak}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{shellbreak}{shellbreak}}]{\setlength{\rightskip}{0pt plus 5cm}\#define shellbreak(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~({\bf sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& {\bf C\+S\+H\+B\+RK})}\hypertarget{syntax_8h_a28a247df2aa426a4ef163512ccbca6bd}{}\label{syntax_8h_a28a247df2aa426a4ef163512ccbca6bd}
+\index{syntax.\+h@{syntax.\+h}!shellexp@{shellexp}}
+\index{shellexp@{shellexp}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{shellexp}{shellexp}}]{\setlength{\rightskip}{0pt plus 5cm}\#define shellexp(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~((c) == \textquotesingle{}\$\textquotesingle{})}\hypertarget{syntax_8h_a58a0949c7988c4b1f45e68083b2eeaeb}{}\label{syntax_8h_a58a0949c7988c4b1f45e68083b2eeaeb}
+\index{syntax.\+h@{syntax.\+h}!shellmeta@{shellmeta}}
+\index{shellmeta@{shellmeta}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{shellmeta}{shellmeta}}]{\setlength{\rightskip}{0pt plus 5cm}\#define shellmeta(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~({\bf sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& {\bf C\+S\+H\+M\+E\+TA})}\hypertarget{syntax_8h_aa201a991f08639a9e0e82234e70e03ad}{}\label{syntax_8h_aa201a991f08639a9e0e82234e70e03ad}
+\index{syntax.\+h@{syntax.\+h}!shellquote@{shellquote}}
+\index{shellquote@{shellquote}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{shellquote}{shellquote}}]{\setlength{\rightskip}{0pt plus 5cm}\#define shellquote(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~({\bf sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& {\bf C\+Q\+U\+O\+TE})}\hypertarget{syntax_8h_a1457603f9d32fe381833795e57386088}{}\label{syntax_8h_a1457603f9d32fe381833795e57386088}
+\index{syntax.\+h@{syntax.\+h}!shellxquote@{shellxquote}}
+\index{shellxquote@{shellxquote}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{shellxquote}{shellxquote}}]{\setlength{\rightskip}{0pt plus 5cm}\#define shellxquote(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~({\bf sh\+\_\+syntaxtab}\mbox{[}(unsigned char)(c)\mbox{]} \& {\bf C\+X\+Q\+U\+O\+TE})}\hypertarget{syntax_8h_a6ea8f2a670601d8a9ceb5d7695d92b09}{}\label{syntax_8h_a6ea8f2a670601d8a9ceb5d7695d92b09}
+\index{syntax.\+h@{syntax.\+h}!slashify\+\_\+in\+\_\+here\+\_\+document@{slashify\+\_\+in\+\_\+here\+\_\+document}}
+\index{slashify\+\_\+in\+\_\+here\+\_\+document@{slashify\+\_\+in\+\_\+here\+\_\+document}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{slashify\+\_\+in\+\_\+here\+\_\+document}{slashify_in_here_document}}]{\setlength{\rightskip}{0pt plus 5cm}\#define slashify\+\_\+in\+\_\+here\+\_\+document~\char`\"{}\textbackslash{}\textbackslash{}`\$\char`\"{}}\hypertarget{syntax_8h_a472b077316b0cc7c01b89540e46c94d8}{}\label{syntax_8h_a472b077316b0cc7c01b89540e46c94d8}
+\index{syntax.\+h@{syntax.\+h}!slashify\+\_\+in\+\_\+quotes@{slashify\+\_\+in\+\_\+quotes}}
+\index{slashify\+\_\+in\+\_\+quotes@{slashify\+\_\+in\+\_\+quotes}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{slashify\+\_\+in\+\_\+quotes}{slashify_in_quotes}}]{\setlength{\rightskip}{0pt plus 5cm}\#define slashify\+\_\+in\+\_\+quotes~\char`\"{}\textbackslash{}\textbackslash{}`\$\textbackslash{}\char`\"{}\textbackslash{}n\char`\"{}}\hypertarget{syntax_8h_a3e2e8553a6d28ba44e6d90e59e922843}{}\label{syntax_8h_a3e2e8553a6d28ba44e6d90e59e922843}
+
+
+\subsection{Variable Documentation}
+\index{syntax.\+h@{syntax.\+h}!sh\+\_\+syntabsiz@{sh\+\_\+syntabsiz}}
+\index{sh\+\_\+syntabsiz@{sh\+\_\+syntabsiz}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{sh\+\_\+syntabsiz}{sh_syntabsiz}}]{\setlength{\rightskip}{0pt plus 5cm}int sh\+\_\+syntabsiz}\hypertarget{syntax_8h_a41f7a3ea96490f5bb0d57b6980733cbf}{}\label{syntax_8h_a41f7a3ea96490f5bb0d57b6980733cbf}
+\index{syntax.\+h@{syntax.\+h}!sh\+\_\+syntaxtab@{sh\+\_\+syntaxtab}}
+\index{sh\+\_\+syntaxtab@{sh\+\_\+syntaxtab}!syntax.\+h@{syntax.\+h}}
+\subsubsection[{\texorpdfstring{sh\+\_\+syntaxtab}{sh_syntaxtab}}]{\setlength{\rightskip}{0pt plus 5cm}int sh\+\_\+syntaxtab\mbox{[}$\,$\mbox{]}}\hypertarget{syntax_8h_adce75b0bbc56c93c6ebbda4967efa21c}{}\label{syntax_8h_adce75b0bbc56c93c6ebbda4967efa21c}

@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['n_5fshell_5fvariables',['n_shell_variables',['../variables_8c.html#a2cb26a468b954a42662696d0e9b1cfbd',1,'variables.c']]],
+  ['name_5fis_5facceptable',['name_is_acceptable',['../bashline_8c.html#a7a912c2b320b03ccf28a40718f236ae9',1,'bashline.c']]],
+  ['named_5ffunction_5fstring',['named_function_string',['../print__cmd_8c.html#a9d9320b014d6ebd86a9dbb0a16e4a9ae',1,'print_cmd.c']]],
+  ['nameref_5ftransform_5fname',['nameref_transform_name',['../variables_8c.html#a0d360da968672777149451ce36c74c11',1,'variables.c']]],
+  ['new_5ffd_5fbitmap',['new_fd_bitmap',['../execute__cmd_8c.html#a669e55863f9f092fd1890cd55fe270a3',1,'execute_cmd.c']]],
+  ['new_5fshell_5fvariable',['new_shell_variable',['../variables_8c.html#aa4d8aaa5c6e4d2eb4223d0f8b6ff892e',1,'variables.c']]],
+  ['new_5fvar_5fcontext',['new_var_context',['../variables_8c.html#a03db9063c313fb9aaded14340d61d6ff',1,'variables.c']]],
+  ['newline',['newline',['../print__cmd_8c.html#a3cdee568c3095d066ac399917d77accb',1,'print_cmd.c']]],
+  ['noclobber_5fopen',['noclobber_open',['../redir_8c.html#a9fbc518b99cec701fb3d8b88eba9ff97',1,'redir.c']]],
+  ['nohup_5fall_5fjobs',['nohup_all_jobs',['../jobs_8c.html#a2b7eaf2f1db72714e7e3faf6991471a2',1,'jobs.c']]],
+  ['nohup_5fjob',['nohup_job',['../jobs_8c.html#a9711d4d0e7ed711f9160dbfcf22aa75c',1,'jobs.c']]],
+  ['notify_5fand_5fcleanup',['notify_and_cleanup',['../jobs_8c.html#adf243013e184887caa6995be05126873',1,'jobs.c']]],
+  ['notify_5fof_5fjob_5fstatus',['notify_of_job_status',['../jobs_8c.html#a4d9c4222b40edc2f52cb70d3df978b22',1,'jobs.c']]],
+  ['null_5farray_5fassign',['null_array_assign',['../variables_8c.html#a7a240814a7a48928afbf899e2356cd61',1,'variables.c']]],
+  ['null_5fassign',['null_assign',['../variables_8c.html#abef6520c63d227a2da24f98d54816cdd',1,'variables.c']]],
+  ['num_5ffifos',['num_fifos',['../subst_8c.html#abf606c35f60a414ffcb56071756d9369',1,'subst.c']]],
+  ['num_5fposix_5foptions',['num_posix_options',['../general_8c.html#ace2a489fb204543cc145139fe6d951c3',1,'general.c']]],
+  ['number_5fof_5fargs',['number_of_args',['../subst_8c.html#a9a1dd697b14240c8d3837f3a1051d6a1',1,'subst.c']]]
+];

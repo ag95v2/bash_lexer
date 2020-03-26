@@ -1,0 +1,267 @@
+\hypertarget{parser_8h}{}\section{parser.\+h File Reference}
+\label{parser_8h}\index{parser.\+h@{parser.\+h}}
+{\ttfamily \#include \char`\"{}command.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}input.\+h\char`\"{}}\\*
+Include dependency graph for parser.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{parser_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structdstack}{dstack}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{parser_8h_ac26f69265abcd0b39df3ed0a4cc2e360}{P\+S\+T\+\_\+\+C\+A\+S\+E\+P\+AT}~0x000001	/$\ast$ in a case pattern list $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a93397c945f22a01e8017a3b935aba943}{P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+N\+E\+XT}~0x000002	/$\ast$ expand next word for aliases $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a2347d7d3a8e91fc2751f7f44dda57514}{P\+S\+T\+\_\+\+A\+L\+L\+O\+W\+O\+P\+N\+B\+RC}~0x000004	/$\ast$ allow open brace for function def $\ast$/
+\item 
+\#define \hyperlink{parser_8h_ac6ebafb371884138fb1ec674bf5f7285}{P\+S\+T\+\_\+\+N\+E\+E\+D\+C\+L\+O\+S\+B\+RC}~0x000008	/$\ast$ need close brace $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a590d4678ae1971cdcce502abad57da8b}{P\+S\+T\+\_\+\+D\+B\+L\+P\+A\+R\+EN}~0x000010	/$\ast$ double-\/paren parsing $\ast$/
+\item 
+\#define \hyperlink{parser_8h_ae07c8884aac34a44005dcfa2c139d0ee}{P\+S\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL}~0x000020	/$\ast$ ( ... ) subshell $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a23084de7b94214aea2b603b744c6927a}{P\+S\+T\+\_\+\+C\+M\+D\+S\+U\+B\+ST}~0x000040	/$\ast$ \$( ... ) command substitution $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a195724355d27c89411f260c590eb786e}{P\+S\+T\+\_\+\+C\+A\+S\+E\+S\+T\+MT}~0x000080	/$\ast$ parsing a case statement $\ast$/
+\item 
+\#define \hyperlink{parser_8h_af7242c844dc52d07e5ba6c45e9566d1c}{P\+S\+T\+\_\+\+C\+O\+N\+D\+C\+MD}~0x000100	/$\ast$ parsing a \mbox{[}\mbox{[}...\mbox{]}\mbox{]} command $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a3a29eac9f559aff6370868c23c0c4b2f}{P\+S\+T\+\_\+\+C\+O\+N\+D\+E\+X\+PR}~0x000200	/$\ast$ parsing the guts of \mbox{[}\mbox{[}...\mbox{]}\mbox{]} $\ast$/
+\item 
+\#define \hyperlink{parser_8h_ab33dcd27ee23baff7381f720e1bd5fb2}{P\+S\+T\+\_\+\+A\+R\+I\+T\+H\+F\+OR}~0x000400	/$\ast$ parsing an arithmetic for command -\/ unused $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a59e8b81032e82516f8939a55d7a03184}{P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+A\+ND}~0x000800	/$\ast$ O\+K to expand aliases -\/ unused $\ast$/
+\item 
+\#define \hyperlink{parser_8h_abdf7f793e92606c95969fe9a07930e5b}{P\+S\+T\+\_\+\+E\+X\+T\+P\+AT}~0x001000	/$\ast$ parsing an extended shell pattern $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a53c3d92d10879fd25066f01098fb7d4b}{P\+S\+T\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN}~0x002000	/$\ast$ parsing x=(...) compound assignment $\ast$/
+\item 
+\#define \hyperlink{parser_8h_ac4ea7f70a6e66da68fb89557c8e2b4f2}{P\+S\+T\+\_\+\+A\+S\+S\+I\+G\+N\+OK}~0x004000	/$\ast$ assignment statement ok in this context $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a87ee72f14b0ac2d00e4ba4049edb7e02}{P\+S\+T\+\_\+\+E\+O\+F\+T\+O\+K\+EN}~0x008000	/$\ast$ yylex checks against shell\+\_\+eof\+\_\+token $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a75add5ed8f99b71196211caa8771bba8}{P\+S\+T\+\_\+\+R\+E\+G\+E\+XP}~0x010000	/$\ast$ parsing an E\+R\+E/\+B\+R\+E as a single word $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a0913d6879039dbbfb35d0db5f8110725}{P\+S\+T\+\_\+\+H\+E\+R\+E\+D\+OC}~0x020000	/$\ast$ reading body of here-\/document $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a9c6f1923e514a0f71dfd251efc15203a}{P\+S\+T\+\_\+\+R\+E\+P\+A\+R\+SE}~0x040000	/$\ast$ re-\/parsing in parse\+\_\+string\+\_\+to\+\_\+word\+\_\+list $\ast$/
+\item 
+\#define \hyperlink{parser_8h_ab7665a40b44a1644cc4f56d0aeae5070}{P\+S\+T\+\_\+\+R\+E\+D\+I\+R\+L\+I\+ST}~0x080000	/$\ast$ parsing a list of redirections preceding a simple command name $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a84c23dfd189c699449e10e8041b079d1}{P\+S\+T\+\_\+\+C\+O\+M\+M\+E\+NT}~0x100000	/$\ast$ parsing a shell comment; used by aliases $\ast$/
+\item 
+\#define \hyperlink{parser_8h_ab121d113eb479fef957df0100b004f71}{P\+S\+T\+\_\+\+E\+N\+D\+A\+L\+I\+AS}~0x200000	/$\ast$ just finished expanding and consuming an alias $\ast$/
+\item 
+\#define \hyperlink{parser_8h_ad33a13bbddfd21d35edef4f97d71aa7b}{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+P\+A\+R\+AM}~0x01
+\item 
+\#define \hyperlink{parser_8h_aa5deb141e6b9ae2ab8b6a4c3c4680715}{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+OP}~0x02
+\item 
+\#define \hyperlink{parser_8h_a3973f392ac513cd28a00babad92091b9}{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+W\+O\+RD}~0x04
+\item 
+\#define \hyperlink{parser_8h_a74eddebc6a74b0b15fa89e5176f25c81}{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+TE}~0x40	/$\ast$ single quote is special in double quotes $\ast$/
+\item 
+\#define \hyperlink{parser_8h_a31ccf5a77dec1d77739b7d2dc4c02a76}{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+T\+E2}~0x80	/$\ast$ single quote is semi-\/special in double quotes $\ast$/
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structdstack}{dstack} \hyperlink{parser_8h_a717764d4f2db9eda94a9d1b1626531b1}{dstack}
+\item 
+char $\ast$ \hyperlink{parser_8h_ad753e437c88b9bc56f435a68e2f6a9db}{primary\+\_\+prompt}
+\item 
+char $\ast$ \hyperlink{parser_8h_ad24c12e247ee52e2d2a830f01d6a57dd}{secondary\+\_\+prompt}
+\item 
+char $\ast$ \hyperlink{parser_8h_a2d16f5bc4fa66a882e810150c240d778}{current\+\_\+prompt\+\_\+string}
+\item 
+char $\ast$ \hyperlink{parser_8h_a4d4b8ed8917ea5460c808285323010b1}{ps1\+\_\+prompt}
+\item 
+char $\ast$ \hyperlink{parser_8h_a7f547a4ae142794899f9ff7687b588e8}{ps2\+\_\+prompt}
+\item 
+char $\ast$ \hyperlink{parser_8h_abf3ca87e1dce94a30c72a7d429adaf2f}{ps0\+\_\+prompt}
+\item 
+int \hyperlink{parser_8h_a7f8a254149285ae8961a2061787c04f8}{expand\+\_\+aliases}
+\item 
+int \hyperlink{parser_8h_a2a117c51a5410eb1865be84ef022b194}{current\+\_\+command\+\_\+line\+\_\+count}
+\item 
+int \hyperlink{parser_8h_aa5550de7633059543caf7c5fe00137f6}{saved\+\_\+command\+\_\+line\+\_\+count}
+\item 
+int \hyperlink{parser_8h_a4b29b0232024b80ae7ea95e0640992d4}{shell\+\_\+eof\+\_\+token}
+\item 
+int \hyperlink{parser_8h_af0df865889bd38b5bde29fa651d396d1}{current\+\_\+token}
+\item 
+int \hyperlink{parser_8h_aacf5815680db2aacff5a343a15c62b8c}{parser\+\_\+state}
+\item 
+int \hyperlink{parser_8h_aa98b054993774c961c740684012bc69d}{need\+\_\+here\+\_\+doc}
+\item 
+int \hyperlink{parser_8h_a5ccc83ecd5dbe440a5573d52fb2a31c6}{ignoreeof}
+\item 
+int \hyperlink{parser_8h_ac5319d39ac61c70b558cd8b93db39100}{eof\+\_\+encountered}
+\item 
+int \hyperlink{parser_8h_af3017fcd99dbdb7277f00135c42e984b}{eof\+\_\+encountered\+\_\+limit}
+\item 
+int \hyperlink{parser_8h_ada7b81cc6d5bbe25b92c0162697e0f58}{line\+\_\+number}
+\item 
+int \hyperlink{parser_8h_a8db0d9da84006264361f260fccafcc3f}{line\+\_\+number\+\_\+base}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{parser.\+h@{parser.\+h}!D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+OP@{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+OP}}
+\index{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+OP@{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+OP}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+OP}{DOLBRACE_OP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+OP~0x02}\hypertarget{parser_8h_aa5deb141e6b9ae2ab8b6a4c3c4680715}{}\label{parser_8h_aa5deb141e6b9ae2ab8b6a4c3c4680715}
+\index{parser.\+h@{parser.\+h}!D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+P\+A\+R\+AM@{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+P\+A\+R\+AM}}
+\index{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+P\+A\+R\+AM@{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+P\+A\+R\+AM}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+P\+A\+R\+AM}{DOLBRACE_PARAM}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+P\+A\+R\+AM~0x01}\hypertarget{parser_8h_ad33a13bbddfd21d35edef4f97d71aa7b}{}\label{parser_8h_ad33a13bbddfd21d35edef4f97d71aa7b}
+\index{parser.\+h@{parser.\+h}!D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+TE@{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+TE}}
+\index{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+TE@{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+TE}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+TE}{DOLBRACE_QUOTE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+TE~0x40	/$\ast$ single quote is special in double quotes $\ast$/}\hypertarget{parser_8h_a74eddebc6a74b0b15fa89e5176f25c81}{}\label{parser_8h_a74eddebc6a74b0b15fa89e5176f25c81}
+\index{parser.\+h@{parser.\+h}!D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+T\+E2@{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+T\+E2}}
+\index{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+T\+E2@{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+T\+E2}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+T\+E2}{DOLBRACE_QUOTE2}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+Q\+U\+O\+T\+E2~0x80	/$\ast$ single quote is semi-\/special in double quotes $\ast$/}\hypertarget{parser_8h_a31ccf5a77dec1d77739b7d2dc4c02a76}{}\label{parser_8h_a31ccf5a77dec1d77739b7d2dc4c02a76}
+\index{parser.\+h@{parser.\+h}!D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+W\+O\+RD@{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+W\+O\+RD}}
+\index{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+W\+O\+RD@{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+W\+O\+RD}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+W\+O\+RD}{DOLBRACE_WORD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+O\+L\+B\+R\+A\+C\+E\+\_\+\+W\+O\+RD~0x04}\hypertarget{parser_8h_a3973f392ac513cd28a00babad92091b9}{}\label{parser_8h_a3973f392ac513cd28a00babad92091b9}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+A\+ND@{P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+A\+ND}}
+\index{P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+A\+ND@{P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+A\+ND}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+A\+ND}{PST_ALEXPAND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+A\+ND~0x000800	/$\ast$ O\+K to expand aliases -\/ unused $\ast$/}\hypertarget{parser_8h_a59e8b81032e82516f8939a55d7a03184}{}\label{parser_8h_a59e8b81032e82516f8939a55d7a03184}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+N\+E\+XT@{P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+N\+E\+XT}}
+\index{P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+N\+E\+XT@{P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+N\+E\+XT}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+N\+E\+XT}{PST_ALEXPNEXT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+A\+L\+E\+X\+P\+N\+E\+XT~0x000002	/$\ast$ expand next word for aliases $\ast$/}\hypertarget{parser_8h_a93397c945f22a01e8017a3b935aba943}{}\label{parser_8h_a93397c945f22a01e8017a3b935aba943}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+A\+L\+L\+O\+W\+O\+P\+N\+B\+RC@{P\+S\+T\+\_\+\+A\+L\+L\+O\+W\+O\+P\+N\+B\+RC}}
+\index{P\+S\+T\+\_\+\+A\+L\+L\+O\+W\+O\+P\+N\+B\+RC@{P\+S\+T\+\_\+\+A\+L\+L\+O\+W\+O\+P\+N\+B\+RC}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+A\+L\+L\+O\+W\+O\+P\+N\+B\+RC}{PST_ALLOWOPNBRC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+A\+L\+L\+O\+W\+O\+P\+N\+B\+RC~0x000004	/$\ast$ allow open brace for function def $\ast$/}\hypertarget{parser_8h_a2347d7d3a8e91fc2751f7f44dda57514}{}\label{parser_8h_a2347d7d3a8e91fc2751f7f44dda57514}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+A\+R\+I\+T\+H\+F\+OR@{P\+S\+T\+\_\+\+A\+R\+I\+T\+H\+F\+OR}}
+\index{P\+S\+T\+\_\+\+A\+R\+I\+T\+H\+F\+OR@{P\+S\+T\+\_\+\+A\+R\+I\+T\+H\+F\+OR}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+A\+R\+I\+T\+H\+F\+OR}{PST_ARITHFOR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+A\+R\+I\+T\+H\+F\+OR~0x000400	/$\ast$ parsing an arithmetic for command -\/ unused $\ast$/}\hypertarget{parser_8h_ab33dcd27ee23baff7381f720e1bd5fb2}{}\label{parser_8h_ab33dcd27ee23baff7381f720e1bd5fb2}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+A\+S\+S\+I\+G\+N\+OK@{P\+S\+T\+\_\+\+A\+S\+S\+I\+G\+N\+OK}}
+\index{P\+S\+T\+\_\+\+A\+S\+S\+I\+G\+N\+OK@{P\+S\+T\+\_\+\+A\+S\+S\+I\+G\+N\+OK}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+A\+S\+S\+I\+G\+N\+OK}{PST_ASSIGNOK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+A\+S\+S\+I\+G\+N\+OK~0x004000	/$\ast$ assignment statement ok in this context $\ast$/}\hypertarget{parser_8h_ac4ea7f70a6e66da68fb89557c8e2b4f2}{}\label{parser_8h_ac4ea7f70a6e66da68fb89557c8e2b4f2}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+C\+A\+S\+E\+P\+AT@{P\+S\+T\+\_\+\+C\+A\+S\+E\+P\+AT}}
+\index{P\+S\+T\+\_\+\+C\+A\+S\+E\+P\+AT@{P\+S\+T\+\_\+\+C\+A\+S\+E\+P\+AT}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+C\+A\+S\+E\+P\+AT}{PST_CASEPAT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+C\+A\+S\+E\+P\+AT~0x000001	/$\ast$ in a case pattern list $\ast$/}\hypertarget{parser_8h_ac26f69265abcd0b39df3ed0a4cc2e360}{}\label{parser_8h_ac26f69265abcd0b39df3ed0a4cc2e360}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+C\+A\+S\+E\+S\+T\+MT@{P\+S\+T\+\_\+\+C\+A\+S\+E\+S\+T\+MT}}
+\index{P\+S\+T\+\_\+\+C\+A\+S\+E\+S\+T\+MT@{P\+S\+T\+\_\+\+C\+A\+S\+E\+S\+T\+MT}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+C\+A\+S\+E\+S\+T\+MT}{PST_CASESTMT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+C\+A\+S\+E\+S\+T\+MT~0x000080	/$\ast$ parsing a case statement $\ast$/}\hypertarget{parser_8h_a195724355d27c89411f260c590eb786e}{}\label{parser_8h_a195724355d27c89411f260c590eb786e}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+C\+M\+D\+S\+U\+B\+ST@{P\+S\+T\+\_\+\+C\+M\+D\+S\+U\+B\+ST}}
+\index{P\+S\+T\+\_\+\+C\+M\+D\+S\+U\+B\+ST@{P\+S\+T\+\_\+\+C\+M\+D\+S\+U\+B\+ST}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+C\+M\+D\+S\+U\+B\+ST}{PST_CMDSUBST}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+C\+M\+D\+S\+U\+B\+ST~0x000040	/$\ast$ \$( ... ) command substitution $\ast$/}\hypertarget{parser_8h_a23084de7b94214aea2b603b744c6927a}{}\label{parser_8h_a23084de7b94214aea2b603b744c6927a}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+C\+O\+M\+M\+E\+NT@{P\+S\+T\+\_\+\+C\+O\+M\+M\+E\+NT}}
+\index{P\+S\+T\+\_\+\+C\+O\+M\+M\+E\+NT@{P\+S\+T\+\_\+\+C\+O\+M\+M\+E\+NT}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+C\+O\+M\+M\+E\+NT}{PST_COMMENT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+C\+O\+M\+M\+E\+NT~0x100000	/$\ast$ parsing a shell comment; used by aliases $\ast$/}\hypertarget{parser_8h_a84c23dfd189c699449e10e8041b079d1}{}\label{parser_8h_a84c23dfd189c699449e10e8041b079d1}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN@{P\+S\+T\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN}}
+\index{P\+S\+T\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN@{P\+S\+T\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN}{PST_COMPASSIGN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+C\+O\+M\+P\+A\+S\+S\+I\+GN~0x002000	/$\ast$ parsing x=(...) compound assignment $\ast$/}\hypertarget{parser_8h_a53c3d92d10879fd25066f01098fb7d4b}{}\label{parser_8h_a53c3d92d10879fd25066f01098fb7d4b}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+C\+O\+N\+D\+C\+MD@{P\+S\+T\+\_\+\+C\+O\+N\+D\+C\+MD}}
+\index{P\+S\+T\+\_\+\+C\+O\+N\+D\+C\+MD@{P\+S\+T\+\_\+\+C\+O\+N\+D\+C\+MD}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+C\+O\+N\+D\+C\+MD}{PST_CONDCMD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+C\+O\+N\+D\+C\+MD~0x000100	/$\ast$ parsing a \mbox{[}\mbox{[}...\mbox{]}\mbox{]} command $\ast$/}\hypertarget{parser_8h_af7242c844dc52d07e5ba6c45e9566d1c}{}\label{parser_8h_af7242c844dc52d07e5ba6c45e9566d1c}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+C\+O\+N\+D\+E\+X\+PR@{P\+S\+T\+\_\+\+C\+O\+N\+D\+E\+X\+PR}}
+\index{P\+S\+T\+\_\+\+C\+O\+N\+D\+E\+X\+PR@{P\+S\+T\+\_\+\+C\+O\+N\+D\+E\+X\+PR}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+C\+O\+N\+D\+E\+X\+PR}{PST_CONDEXPR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+C\+O\+N\+D\+E\+X\+PR~0x000200	/$\ast$ parsing the guts of \mbox{[}\mbox{[}...\mbox{]}\mbox{]} $\ast$/}\hypertarget{parser_8h_a3a29eac9f559aff6370868c23c0c4b2f}{}\label{parser_8h_a3a29eac9f559aff6370868c23c0c4b2f}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+D\+B\+L\+P\+A\+R\+EN@{P\+S\+T\+\_\+\+D\+B\+L\+P\+A\+R\+EN}}
+\index{P\+S\+T\+\_\+\+D\+B\+L\+P\+A\+R\+EN@{P\+S\+T\+\_\+\+D\+B\+L\+P\+A\+R\+EN}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+D\+B\+L\+P\+A\+R\+EN}{PST_DBLPAREN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+D\+B\+L\+P\+A\+R\+EN~0x000010	/$\ast$ double-\/paren parsing $\ast$/}\hypertarget{parser_8h_a590d4678ae1971cdcce502abad57da8b}{}\label{parser_8h_a590d4678ae1971cdcce502abad57da8b}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+E\+N\+D\+A\+L\+I\+AS@{P\+S\+T\+\_\+\+E\+N\+D\+A\+L\+I\+AS}}
+\index{P\+S\+T\+\_\+\+E\+N\+D\+A\+L\+I\+AS@{P\+S\+T\+\_\+\+E\+N\+D\+A\+L\+I\+AS}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+E\+N\+D\+A\+L\+I\+AS}{PST_ENDALIAS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+E\+N\+D\+A\+L\+I\+AS~0x200000	/$\ast$ just finished expanding and consuming an alias $\ast$/}\hypertarget{parser_8h_ab121d113eb479fef957df0100b004f71}{}\label{parser_8h_ab121d113eb479fef957df0100b004f71}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+E\+O\+F\+T\+O\+K\+EN@{P\+S\+T\+\_\+\+E\+O\+F\+T\+O\+K\+EN}}
+\index{P\+S\+T\+\_\+\+E\+O\+F\+T\+O\+K\+EN@{P\+S\+T\+\_\+\+E\+O\+F\+T\+O\+K\+EN}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+E\+O\+F\+T\+O\+K\+EN}{PST_EOFTOKEN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+E\+O\+F\+T\+O\+K\+EN~0x008000	/$\ast$ yylex checks against shell\+\_\+eof\+\_\+token $\ast$/}\hypertarget{parser_8h_a87ee72f14b0ac2d00e4ba4049edb7e02}{}\label{parser_8h_a87ee72f14b0ac2d00e4ba4049edb7e02}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+E\+X\+T\+P\+AT@{P\+S\+T\+\_\+\+E\+X\+T\+P\+AT}}
+\index{P\+S\+T\+\_\+\+E\+X\+T\+P\+AT@{P\+S\+T\+\_\+\+E\+X\+T\+P\+AT}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+E\+X\+T\+P\+AT}{PST_EXTPAT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+E\+X\+T\+P\+AT~0x001000	/$\ast$ parsing an extended shell pattern $\ast$/}\hypertarget{parser_8h_abdf7f793e92606c95969fe9a07930e5b}{}\label{parser_8h_abdf7f793e92606c95969fe9a07930e5b}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+H\+E\+R\+E\+D\+OC@{P\+S\+T\+\_\+\+H\+E\+R\+E\+D\+OC}}
+\index{P\+S\+T\+\_\+\+H\+E\+R\+E\+D\+OC@{P\+S\+T\+\_\+\+H\+E\+R\+E\+D\+OC}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+H\+E\+R\+E\+D\+OC}{PST_HEREDOC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+H\+E\+R\+E\+D\+OC~0x020000	/$\ast$ reading body of here-\/document $\ast$/}\hypertarget{parser_8h_a0913d6879039dbbfb35d0db5f8110725}{}\label{parser_8h_a0913d6879039dbbfb35d0db5f8110725}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+N\+E\+E\+D\+C\+L\+O\+S\+B\+RC@{P\+S\+T\+\_\+\+N\+E\+E\+D\+C\+L\+O\+S\+B\+RC}}
+\index{P\+S\+T\+\_\+\+N\+E\+E\+D\+C\+L\+O\+S\+B\+RC@{P\+S\+T\+\_\+\+N\+E\+E\+D\+C\+L\+O\+S\+B\+RC}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+N\+E\+E\+D\+C\+L\+O\+S\+B\+RC}{PST_NEEDCLOSBRC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+N\+E\+E\+D\+C\+L\+O\+S\+B\+RC~0x000008	/$\ast$ need close brace $\ast$/}\hypertarget{parser_8h_ac6ebafb371884138fb1ec674bf5f7285}{}\label{parser_8h_ac6ebafb371884138fb1ec674bf5f7285}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+R\+E\+D\+I\+R\+L\+I\+ST@{P\+S\+T\+\_\+\+R\+E\+D\+I\+R\+L\+I\+ST}}
+\index{P\+S\+T\+\_\+\+R\+E\+D\+I\+R\+L\+I\+ST@{P\+S\+T\+\_\+\+R\+E\+D\+I\+R\+L\+I\+ST}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+R\+E\+D\+I\+R\+L\+I\+ST}{PST_REDIRLIST}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+R\+E\+D\+I\+R\+L\+I\+ST~0x080000	/$\ast$ parsing a list of redirections preceding a simple command name $\ast$/}\hypertarget{parser_8h_ab7665a40b44a1644cc4f56d0aeae5070}{}\label{parser_8h_ab7665a40b44a1644cc4f56d0aeae5070}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+R\+E\+G\+E\+XP@{P\+S\+T\+\_\+\+R\+E\+G\+E\+XP}}
+\index{P\+S\+T\+\_\+\+R\+E\+G\+E\+XP@{P\+S\+T\+\_\+\+R\+E\+G\+E\+XP}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+R\+E\+G\+E\+XP}{PST_REGEXP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+R\+E\+G\+E\+XP~0x010000	/$\ast$ parsing an E\+R\+E/\+B\+R\+E as a single word $\ast$/}\hypertarget{parser_8h_a75add5ed8f99b71196211caa8771bba8}{}\label{parser_8h_a75add5ed8f99b71196211caa8771bba8}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+R\+E\+P\+A\+R\+SE@{P\+S\+T\+\_\+\+R\+E\+P\+A\+R\+SE}}
+\index{P\+S\+T\+\_\+\+R\+E\+P\+A\+R\+SE@{P\+S\+T\+\_\+\+R\+E\+P\+A\+R\+SE}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+R\+E\+P\+A\+R\+SE}{PST_REPARSE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+R\+E\+P\+A\+R\+SE~0x040000	/$\ast$ re-\/parsing in parse\+\_\+string\+\_\+to\+\_\+word\+\_\+list $\ast$/}\hypertarget{parser_8h_a9c6f1923e514a0f71dfd251efc15203a}{}\label{parser_8h_a9c6f1923e514a0f71dfd251efc15203a}
+\index{parser.\+h@{parser.\+h}!P\+S\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL@{P\+S\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL}}
+\index{P\+S\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL@{P\+S\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{P\+S\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL}{PST_SUBSHELL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+S\+T\+\_\+\+S\+U\+B\+S\+H\+E\+LL~0x000020	/$\ast$ ( ... ) subshell $\ast$/}\hypertarget{parser_8h_ae07c8884aac34a44005dcfa2c139d0ee}{}\label{parser_8h_ae07c8884aac34a44005dcfa2c139d0ee}
+
+
+\subsection{Variable Documentation}
+\index{parser.\+h@{parser.\+h}!current\+\_\+command\+\_\+line\+\_\+count@{current\+\_\+command\+\_\+line\+\_\+count}}
+\index{current\+\_\+command\+\_\+line\+\_\+count@{current\+\_\+command\+\_\+line\+\_\+count}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{current\+\_\+command\+\_\+line\+\_\+count}{current_command_line_count}}]{\setlength{\rightskip}{0pt plus 5cm}int current\+\_\+command\+\_\+line\+\_\+count}\hypertarget{parser_8h_a2a117c51a5410eb1865be84ef022b194}{}\label{parser_8h_a2a117c51a5410eb1865be84ef022b194}
+\index{parser.\+h@{parser.\+h}!current\+\_\+prompt\+\_\+string@{current\+\_\+prompt\+\_\+string}}
+\index{current\+\_\+prompt\+\_\+string@{current\+\_\+prompt\+\_\+string}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{current\+\_\+prompt\+\_\+string}{current_prompt_string}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ current\+\_\+prompt\+\_\+string}\hypertarget{parser_8h_a2d16f5bc4fa66a882e810150c240d778}{}\label{parser_8h_a2d16f5bc4fa66a882e810150c240d778}
+\index{parser.\+h@{parser.\+h}!current\+\_\+token@{current\+\_\+token}}
+\index{current\+\_\+token@{current\+\_\+token}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{current\+\_\+token}{current_token}}]{\setlength{\rightskip}{0pt plus 5cm}int current\+\_\+token}\hypertarget{parser_8h_af0df865889bd38b5bde29fa651d396d1}{}\label{parser_8h_af0df865889bd38b5bde29fa651d396d1}
+\index{parser.\+h@{parser.\+h}!dstack@{dstack}}
+\index{dstack@{dstack}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{dstack}{dstack}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf dstack} {\bf dstack}}\hypertarget{parser_8h_a717764d4f2db9eda94a9d1b1626531b1}{}\label{parser_8h_a717764d4f2db9eda94a9d1b1626531b1}
+\index{parser.\+h@{parser.\+h}!eof\+\_\+encountered@{eof\+\_\+encountered}}
+\index{eof\+\_\+encountered@{eof\+\_\+encountered}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{eof\+\_\+encountered}{eof_encountered}}]{\setlength{\rightskip}{0pt plus 5cm}int eof\+\_\+encountered}\hypertarget{parser_8h_ac5319d39ac61c70b558cd8b93db39100}{}\label{parser_8h_ac5319d39ac61c70b558cd8b93db39100}
+\index{parser.\+h@{parser.\+h}!eof\+\_\+encountered\+\_\+limit@{eof\+\_\+encountered\+\_\+limit}}
+\index{eof\+\_\+encountered\+\_\+limit@{eof\+\_\+encountered\+\_\+limit}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{eof\+\_\+encountered\+\_\+limit}{eof_encountered_limit}}]{\setlength{\rightskip}{0pt plus 5cm}int eof\+\_\+encountered\+\_\+limit}\hypertarget{parser_8h_af3017fcd99dbdb7277f00135c42e984b}{}\label{parser_8h_af3017fcd99dbdb7277f00135c42e984b}
+\index{parser.\+h@{parser.\+h}!expand\+\_\+aliases@{expand\+\_\+aliases}}
+\index{expand\+\_\+aliases@{expand\+\_\+aliases}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{expand\+\_\+aliases}{expand_aliases}}]{\setlength{\rightskip}{0pt plus 5cm}int expand\+\_\+aliases}\hypertarget{parser_8h_a7f8a254149285ae8961a2061787c04f8}{}\label{parser_8h_a7f8a254149285ae8961a2061787c04f8}
+\index{parser.\+h@{parser.\+h}!ignoreeof@{ignoreeof}}
+\index{ignoreeof@{ignoreeof}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{ignoreeof}{ignoreeof}}]{\setlength{\rightskip}{0pt plus 5cm}int ignoreeof}\hypertarget{parser_8h_a5ccc83ecd5dbe440a5573d52fb2a31c6}{}\label{parser_8h_a5ccc83ecd5dbe440a5573d52fb2a31c6}
+\index{parser.\+h@{parser.\+h}!line\+\_\+number@{line\+\_\+number}}
+\index{line\+\_\+number@{line\+\_\+number}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{line\+\_\+number}{line_number}}]{\setlength{\rightskip}{0pt plus 5cm}int line\+\_\+number}\hypertarget{parser_8h_ada7b81cc6d5bbe25b92c0162697e0f58}{}\label{parser_8h_ada7b81cc6d5bbe25b92c0162697e0f58}
+\index{parser.\+h@{parser.\+h}!line\+\_\+number\+\_\+base@{line\+\_\+number\+\_\+base}}
+\index{line\+\_\+number\+\_\+base@{line\+\_\+number\+\_\+base}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{line\+\_\+number\+\_\+base}{line_number_base}}]{\setlength{\rightskip}{0pt plus 5cm}int line\+\_\+number\+\_\+base}\hypertarget{parser_8h_a8db0d9da84006264361f260fccafcc3f}{}\label{parser_8h_a8db0d9da84006264361f260fccafcc3f}
+\index{parser.\+h@{parser.\+h}!need\+\_\+here\+\_\+doc@{need\+\_\+here\+\_\+doc}}
+\index{need\+\_\+here\+\_\+doc@{need\+\_\+here\+\_\+doc}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{need\+\_\+here\+\_\+doc}{need_here_doc}}]{\setlength{\rightskip}{0pt plus 5cm}int need\+\_\+here\+\_\+doc}\hypertarget{parser_8h_aa98b054993774c961c740684012bc69d}{}\label{parser_8h_aa98b054993774c961c740684012bc69d}
+\index{parser.\+h@{parser.\+h}!parser\+\_\+state@{parser\+\_\+state}}
+\index{parser\+\_\+state@{parser\+\_\+state}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{parser\+\_\+state}{parser_state}}]{\setlength{\rightskip}{0pt plus 5cm}int parser\+\_\+state}\hypertarget{parser_8h_aacf5815680db2aacff5a343a15c62b8c}{}\label{parser_8h_aacf5815680db2aacff5a343a15c62b8c}
+\index{parser.\+h@{parser.\+h}!primary\+\_\+prompt@{primary\+\_\+prompt}}
+\index{primary\+\_\+prompt@{primary\+\_\+prompt}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{primary\+\_\+prompt}{primary_prompt}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ primary\+\_\+prompt}\hypertarget{parser_8h_ad753e437c88b9bc56f435a68e2f6a9db}{}\label{parser_8h_ad753e437c88b9bc56f435a68e2f6a9db}
+\index{parser.\+h@{parser.\+h}!ps0\+\_\+prompt@{ps0\+\_\+prompt}}
+\index{ps0\+\_\+prompt@{ps0\+\_\+prompt}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{ps0\+\_\+prompt}{ps0_prompt}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ ps0\+\_\+prompt}\hypertarget{parser_8h_abf3ca87e1dce94a30c72a7d429adaf2f}{}\label{parser_8h_abf3ca87e1dce94a30c72a7d429adaf2f}
+\index{parser.\+h@{parser.\+h}!ps1\+\_\+prompt@{ps1\+\_\+prompt}}
+\index{ps1\+\_\+prompt@{ps1\+\_\+prompt}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{ps1\+\_\+prompt}{ps1_prompt}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ ps1\+\_\+prompt}\hypertarget{parser_8h_a4d4b8ed8917ea5460c808285323010b1}{}\label{parser_8h_a4d4b8ed8917ea5460c808285323010b1}
+\index{parser.\+h@{parser.\+h}!ps2\+\_\+prompt@{ps2\+\_\+prompt}}
+\index{ps2\+\_\+prompt@{ps2\+\_\+prompt}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{ps2\+\_\+prompt}{ps2_prompt}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ ps2\+\_\+prompt}\hypertarget{parser_8h_a7f547a4ae142794899f9ff7687b588e8}{}\label{parser_8h_a7f547a4ae142794899f9ff7687b588e8}
+\index{parser.\+h@{parser.\+h}!saved\+\_\+command\+\_\+line\+\_\+count@{saved\+\_\+command\+\_\+line\+\_\+count}}
+\index{saved\+\_\+command\+\_\+line\+\_\+count@{saved\+\_\+command\+\_\+line\+\_\+count}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{saved\+\_\+command\+\_\+line\+\_\+count}{saved_command_line_count}}]{\setlength{\rightskip}{0pt plus 5cm}int saved\+\_\+command\+\_\+line\+\_\+count}\hypertarget{parser_8h_aa5550de7633059543caf7c5fe00137f6}{}\label{parser_8h_aa5550de7633059543caf7c5fe00137f6}
+\index{parser.\+h@{parser.\+h}!secondary\+\_\+prompt@{secondary\+\_\+prompt}}
+\index{secondary\+\_\+prompt@{secondary\+\_\+prompt}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{secondary\+\_\+prompt}{secondary_prompt}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ secondary\+\_\+prompt}\hypertarget{parser_8h_ad24c12e247ee52e2d2a830f01d6a57dd}{}\label{parser_8h_ad24c12e247ee52e2d2a830f01d6a57dd}
+\index{parser.\+h@{parser.\+h}!shell\+\_\+eof\+\_\+token@{shell\+\_\+eof\+\_\+token}}
+\index{shell\+\_\+eof\+\_\+token@{shell\+\_\+eof\+\_\+token}!parser.\+h@{parser.\+h}}
+\subsubsection[{\texorpdfstring{shell\+\_\+eof\+\_\+token}{shell_eof_token}}]{\setlength{\rightskip}{0pt plus 5cm}int shell\+\_\+eof\+\_\+token}\hypertarget{parser_8h_a4b29b0232024b80ae7ea95e0640992d4}{}\label{parser_8h_a4b29b0232024b80ae7ea95e0640992d4}

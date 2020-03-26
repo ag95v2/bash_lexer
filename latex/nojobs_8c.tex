@@ -1,0 +1,969 @@
+\hypertarget{nojobs_8c}{}\section{nojobs.\+c File Reference}
+\label{nojobs_8c}\index{nojobs.\+c@{nojobs.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}filecntl.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}input.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shtty.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}jobs.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}execute\+\_\+cmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}trap.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/builtext.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/common.\+h\char`\"{}}\\*
+Include dependency graph for nojobs.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structproc__status}{proc\+\_\+status}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{nojobs_8c_a626cd506cc8c8753532f784d12b382e2}{D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX}~32
+\item 
+\#define \hyperlink{nojobs_8c_a3aa5418612f55083950f87b97f60ce33}{W\+A\+I\+T\+P\+ID}(pid,  statusp,  options)~waitpid (pid, statusp, options)
+\item 
+\#define \hyperlink{nojobs_8c_a23dc422a1eed633a3a9ce331720ca21c}{input\+\_\+tty}()~(\hyperlink{nojobs_8c_ae43d281c5f91cb3d7ad00fc46971b4da}{shell\+\_\+tty} != -\/1) ? \hyperlink{nojobs_8c_ae43d281c5f91cb3d7ad00fc46971b4da}{shell\+\_\+tty} \+: fileno (stderr)
+\item 
+\#define \hyperlink{nojobs_8c_a26975b50f0f5914f501689709f08147a}{P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG}~0x01
+\item 
+\#define \hyperlink{nojobs_8c_a8baa1a79ad945553f1b577549c37e6ce}{P\+R\+O\+C\+\_\+\+N\+O\+T\+I\+F\+I\+ED}~0x02
+\item 
+\#define \hyperlink{nojobs_8c_aa4e4b215686fd0782fcb5f0a6f6b8f22}{P\+R\+O\+C\+\_\+\+A\+S\+Y\+NC}~0x04
+\item 
+\#define \hyperlink{nojobs_8c_a1187de7eeba46331ede38ee97ccfd8c4}{P\+R\+O\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ED}~0x10
+\item 
+\#define \hyperlink{nojobs_8c_a1d72c7ba6b2af5c58b2be7031c9c7481}{P\+R\+O\+C\+\_\+\+B\+AD}~-\/1
+\item 
+\#define \hyperlink{nojobs_8c_ab33d13bf09b28451b873ad894dcae980}{P\+R\+O\+C\+\_\+\+S\+T\+I\+L\+L\+\_\+\+A\+L\+I\+VE}~-\/2
+\item 
+\#define \hyperlink{nojobs_8c_a4236e83af520841a9f9b18cab6952df1}{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER}~(Sig\+Handler $\ast$)\hyperlink{nojobs_8c_a003e4bf7f3074638f24ae4e7f2d25717}{wait\+\_\+for\+\_\+background\+\_\+pids}
+\item 
+\#define \hyperlink{nojobs_8c_a657dd81fc9a67340cd1997e708bc0618}{R\+E\+P\+O\+R\+T\+S\+IG}(x)~((x) != S\+I\+G\+I\+NT \&\& (x) != S\+I\+G\+P\+I\+PE \&\& (x) != S\+I\+G\+T\+E\+RM)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{trap_8c_a16eea6a0b6ebfc715568ee23e0ae83b9}{set\+\_\+original\+\_\+signal} \hyperlink{nojobs_8c_a1fbfa74b670d120e2c1bd9668688a4ed}{\+\_\+\+\_\+P} ((int, Sig\+Handler $\ast$))
+\item 
+static void \hyperlink{nojobs_8c_a007013470eda062a3a77d85cb2bc6e91}{alloc\+\_\+pid\+\_\+list} \hyperlink{nojobs_8c_ad647dd0fa00037b4b776b0715bb1b0c7}{\+\_\+\+\_\+P} ((void))
+\item 
+static int \hyperlink{nojobs_8c_abceed139a1763c63c5c310adc79f1631}{find\+\_\+proc\+\_\+slot} \hyperlink{nojobs_8c_a0dc07181cecd0c5a40614e69fd3dcb5e}{\+\_\+\+\_\+P} ((pid\+\_\+t))
+\item 
+static int \hyperlink{nojobs_8c_ab424b34a1f2efb697ac04e6ae1b67bd9}{process\+\_\+exit\+\_\+status} \hyperlink{nojobs_8c_a8bb50d60b9d7287ae4dd13496428879b}{\+\_\+\+\_\+P} ((W\+A\+IT))
+\item 
+static void \hyperlink{nojobs_8c_a535e472bb4a367eb632b2d1b5da2ea31}{set\+\_\+pid\+\_\+status} \hyperlink{nojobs_8c_a230b7327492d07513d959f8e0bfb42ec}{\+\_\+\+\_\+P} ((pid\+\_\+t, W\+A\+IT))
+\item 
+static void \hyperlink{nojobs_8c_acf61c8c86341c3fa68b62dad8ebe2607}{set\+\_\+pid\+\_\+flags} \hyperlink{nojobs_8c_a74c6a3b1b0d5f7fc208fa04e9f10a399}{\+\_\+\+\_\+P} ((pid\+\_\+t, int))
+\item 
+static void \hyperlink{nojobs_8c_a17ec09b97c22e3e745e6fe463418e203}{mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified} \hyperlink{nojobs_8c_ac6fd9125204fdd0cfc83499d6ed85aa7}{\+\_\+\+\_\+P} ((int))
+\item 
+static void \hyperlink{nojobs_8c_a007013470eda062a3a77d85cb2bc6e91}{alloc\+\_\+pid\+\_\+list} ()
+\item 
+static int \hyperlink{nojobs_8c_abceed139a1763c63c5c310adc79f1631}{find\+\_\+proc\+\_\+slot} (pid\+\_\+t pid)
+\item 
+static int \hyperlink{nojobs_8c_a69e369daaa12a0717d53ec471a33c7e0}{find\+\_\+index\+\_\+by\+\_\+pid} (pid\+\_\+t pid)
+\item 
+static int \hyperlink{nojobs_8c_a2742b5ff772154f71b705639d5aef9be}{find\+\_\+status\+\_\+by\+\_\+pid} (pid\+\_\+t pid)
+\item 
+static int \hyperlink{nojobs_8c_ab424b34a1f2efb697ac04e6ae1b67bd9}{process\+\_\+exit\+\_\+status} (W\+A\+IT status)
+\item 
+static int \hyperlink{nojobs_8c_a8275120d4c1d5830b01f2442e71685a2}{find\+\_\+termsig\+\_\+by\+\_\+pid} (pid\+\_\+t pid)
+\item 
+static int \hyperlink{nojobs_8c_a10c7daed7045ffdcb50669782c0a5c6e}{get\+\_\+termsig} (W\+A\+IT status)
+\item 
+static void \hyperlink{nojobs_8c_a535e472bb4a367eb632b2d1b5da2ea31}{set\+\_\+pid\+\_\+status} (pid\+\_\+t pid, W\+A\+IT status)
+\item 
+static void \hyperlink{nojobs_8c_acf61c8c86341c3fa68b62dad8ebe2607}{set\+\_\+pid\+\_\+flags} (pid\+\_\+t pid, int flags)
+\item 
+static void \hyperlink{nojobs_8c_a25778863c45840112f9db4fdb4157a1f}{unset\+\_\+pid\+\_\+flags} (pid\+\_\+t pid, int flags)
+\item 
+static int \hyperlink{nojobs_8c_a5f1e8101b565733b1139795f185182a9}{get\+\_\+pid\+\_\+flags} (pid\+\_\+t pid)
+\item 
+static void \hyperlink{nojobs_8c_ac1a600818fa4d8b2ed19bb882c5f7a68}{add\+\_\+pid} (pid\+\_\+t pid, int async)
+\item 
+static void \hyperlink{nojobs_8c_a17ec09b97c22e3e745e6fe463418e203}{mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified} (int force)
+\item 
+int \hyperlink{nojobs_8c_acfa5133d8dd2e2eca3a8169134346022}{cleanup\+\_\+dead\+\_\+jobs} ()
+\item 
+void \hyperlink{nojobs_8c_a8113aecd5926c83f5bec94aaded2476a}{reap\+\_\+dead\+\_\+jobs} ()
+\item 
+int \hyperlink{nojobs_8c_aa9447ba6eda1088457e76cc37da06b7b}{initialize\+\_\+job\+\_\+control} (int force)
+\item 
+void \hyperlink{nojobs_8c_ab3bf0c468c5caa52e82aa6a68f6a3099}{initialize\+\_\+job\+\_\+signals} ()
+\item 
+static void \hyperlink{nojobs_8c_a9e020a8737b6918c70849e04937908db}{reap\+\_\+zombie\+\_\+children} ()
+\item 
+pid\+\_\+t \hyperlink{nojobs_8c_a5d849da9461b9ef900d191e67f54856c}{make\+\_\+child} (char $\ast$\hyperlink{structcommand}{command}, int async\+\_\+p)
+\item 
+void \hyperlink{nojobs_8c_a0b224dea42fc99fc8f75137c74d10d8c}{ignore\+\_\+tty\+\_\+job\+\_\+signals} ()
+\item 
+void \hyperlink{nojobs_8c_a35131fce775aec129aca6c1ea1127f97}{default\+\_\+tty\+\_\+job\+\_\+signals} ()
+\item 
+void \hyperlink{nojobs_8c_a186a35817ae0f49ac740cbae8f598edb}{get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals} ()
+\item 
+int \hyperlink{nojobs_8c_a637f8e438a0ea8c409d891cb8ccb523e}{wait\+\_\+for\+\_\+single\+\_\+pid} (pid\+\_\+t pid, int flags)
+\item 
+void \hyperlink{nojobs_8c_a003e4bf7f3074638f24ae4e7f2d25717}{wait\+\_\+for\+\_\+background\+\_\+pids} ()
+\item 
+void \hyperlink{nojobs_8c_a1ced6c7ceaf0cf2f9983aa5262dfe392}{wait\+\_\+sigint\+\_\+cleanup} ()
+\item 
+static void \hyperlink{nojobs_8c_abaf052f06c9c04a236219814419b7e83}{restore\+\_\+sigint\+\_\+handler} ()
+\item 
+static \hyperlink{sig_8h_a09fccaf2f4ae9265e0535220e9447dce}{sighandler} \hyperlink{nojobs_8c_a89ced87614d7f6c88e27c96091684467}{wait\+\_\+sigint\+\_\+handler} (int sig)
+\item 
+static char $\ast$ \hyperlink{nojobs_8c_a73562e7524f0f619567b2414e0a15309}{j\+\_\+strsignal} (int s)
+\item 
+int \hyperlink{nojobs_8c_abcef62306debcbcd910ed2cbadcb43fe}{wait\+\_\+for} (pid\+\_\+t pid)
+\item 
+int \hyperlink{nojobs_8c_a69ef0847d0993f8c08c1b4c79e868abc}{kill\+\_\+pid} (pid\+\_\+t pid, int signal, int group)
+\item 
+int \hyperlink{nojobs_8c_a37d6118360319f23c01a9a326ad32906}{get\+\_\+tty\+\_\+state} ()
+\item 
+int \hyperlink{nojobs_8c_ab9dc901cdc105f8060eafdc6301fe2de}{set\+\_\+tty\+\_\+state} ()
+\item 
+int \hyperlink{nojobs_8c_a8db3c891f1a77a1b3412544323ae6eb4}{give\+\_\+terminal\+\_\+to} (pid\+\_\+t pgrp, int force)
+\item 
+int \hyperlink{nojobs_8c_a97eafecf3808cf462b54a378857155ae}{stop\+\_\+pipeline} (int async, \hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$ignore)
+\item 
+void \hyperlink{nojobs_8c_a718ce465ffb026f4a2b67b4a6eab4761}{start\+\_\+pipeline} ()
+\item 
+void \hyperlink{nojobs_8c_a5d4feeb769d599bb634672546e5a19ff}{stop\+\_\+making\+\_\+children} ()
+\item 
+void \hyperlink{nojobs_8c_ab9244e49349e5265eef7d020233848ae}{without\+\_\+job\+\_\+control} ()
+\item 
+int \hyperlink{nojobs_8c_ae4b48a0f3e1472558c53f8f26db3ccf8}{get\+\_\+job\+\_\+by\+\_\+pid} (pid\+\_\+t pid, int block)
+\item 
+void \hyperlink{nojobs_8c_a6e05c5efdbabb700ce1f089aa2208017}{describe\+\_\+pid} (pid\+\_\+t pid)
+\item 
+int \hyperlink{nojobs_8c_ac04bd8c6bbeec0e7e6f542d3a8a9f09f}{freeze\+\_\+jobs\+\_\+list} ()
+\item 
+void \hyperlink{nojobs_8c_acc347c3553987b2835c81ebaffd378d6}{unfreeze\+\_\+jobs\+\_\+list} ()
+\item 
+void \hyperlink{nojobs_8c_a9c5a796b3c5e2ddcc0ea88c494e324ea}{set\+\_\+jobs\+\_\+list\+\_\+frozen} (int s)
+\item 
+int \hyperlink{nojobs_8c_adaf7a0885abd94848dabd18ba344eb66}{count\+\_\+all\+\_\+jobs} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{nojobs_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno}
+\item 
+sigset\+\_\+t \hyperlink{nojobs_8c_a4423f1b40bab1e30781e832c6cad1e00}{top\+\_\+level\+\_\+mask}
+\item 
+volatile pid\+\_\+t \hyperlink{nojobs_8c_a6014bc30456423f628a211bf8007fbe0}{last\+\_\+made\+\_\+pid} = \hyperlink{jobs_8h_ad40327c746e8ef715109d9b9257eb991}{N\+O\+\_\+\+P\+ID}
+\item 
+volatile pid\+\_\+t \hyperlink{nojobs_8c_a2819d9527c8d26be39bb531290f4b597}{last\+\_\+asynchronous\+\_\+pid} = \hyperlink{jobs_8h_ad40327c746e8ef715109d9b9257eb991}{N\+O\+\_\+\+P\+ID}
+\item 
+static int \hyperlink{nojobs_8c_af553b22eef984c5245e4eae3e4a36cd5}{queue\+\_\+sigchld}
+\item 
+static int \hyperlink{nojobs_8c_af3275b044b48a9ba5da272b925ba6d9e}{waiting\+\_\+for\+\_\+child}
+\item 
+int \hyperlink{nojobs_8c_ab73b81916e1b9c693ec186cb41e9f4e5}{already\+\_\+making\+\_\+children} = 0
+\item 
+int \hyperlink{nojobs_8c_ae43d281c5f91cb3d7ad00fc46971b4da}{shell\+\_\+tty} = -\/1
+\item 
+int \hyperlink{nojobs_8c_a27ab938bc70e7696ed8fc9e10a4834c4}{check\+\_\+window\+\_\+size} = \hyperlink{config-top_8h_a533e5612b0a36f3dde51f89fb40c87f0}{C\+H\+E\+C\+K\+W\+I\+N\+S\+I\+Z\+E\+\_\+\+D\+E\+F\+A\+U\+LT}
+\item 
+int \hyperlink{nojobs_8c_a3002cbcd4a652dec2c5cef5ff3da446f}{job\+\_\+control} = 0
+\item 
+int \hyperlink{nojobs_8c_ad2b44c9005c5a931c29ae6588e237636}{running\+\_\+in\+\_\+background} = 0
+\item 
+static struct \hyperlink{structproc__status}{proc\+\_\+status} $\ast$ \hyperlink{nojobs_8c_a4b851dd6fd1d4260db571e5a01ced100}{pid\+\_\+list} = (struct \hyperlink{structproc__status}{proc\+\_\+status} $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+static int \hyperlink{nojobs_8c_aa4c42ba1acaceffc8ba36eaa40e802a6}{pid\+\_\+list\+\_\+size}
+\item 
+static int \hyperlink{nojobs_8c_acc216a9180c7ff0368811af940fe3c4f}{wait\+\_\+sigint\+\_\+received}
+\item 
+static long \hyperlink{nojobs_8c_ab3a8cdba56246c448bd2cf2d07c188f5}{child\+\_\+max} = -\/1L
+\item 
+static Sig\+Handler $\ast$ \hyperlink{nojobs_8c_ae15b67160f6705f527ba4c23e11e64d3}{old\+\_\+sigint\+\_\+handler} = \hyperlink{nojobs_8c_a4236e83af520841a9f9b18cab6952df1}{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER}
+\item 
+static T\+T\+Y\+S\+T\+R\+U\+CT \hyperlink{nojobs_8c_ad9fe5481268cb2aed5102ece6ef18bbb}{shell\+\_\+tty\+\_\+info}
+\item 
+static int \hyperlink{nojobs_8c_a3bc9f407d98883df03cba7b5f67bf2b3}{got\+\_\+tty\+\_\+state}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{nojobs.\+c@{nojobs.\+c}!D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX@{D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX@{D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX}{DEFAULT_CHILD_MAX}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+H\+I\+L\+D\+\_\+\+M\+AX~32}\hypertarget{nojobs_8c_a626cd506cc8c8753532f784d12b382e2}{}\label{nojobs_8c_a626cd506cc8c8753532f784d12b382e2}
+\index{nojobs.\+c@{nojobs.\+c}!input\+\_\+tty@{input\+\_\+tty}}
+\index{input\+\_\+tty@{input\+\_\+tty}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{input\+\_\+tty}{input_tty}}]{\setlength{\rightskip}{0pt plus 5cm}\#define input\+\_\+tty(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~({\bf shell\+\_\+tty} != -\/1) ? {\bf shell\+\_\+tty} \+: fileno (stderr)}\hypertarget{nojobs_8c_a23dc422a1eed633a3a9ce331720ca21c}{}\label{nojobs_8c_a23dc422a1eed633a3a9ce331720ca21c}
+\index{nojobs.\+c@{nojobs.\+c}!I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER@{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER}}
+\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER@{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER}{INVALID_SIGNAL_HANDLER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER~(Sig\+Handler $\ast$){\bf wait\+\_\+for\+\_\+background\+\_\+pids}}\hypertarget{nojobs_8c_a4236e83af520841a9f9b18cab6952df1}{}\label{nojobs_8c_a4236e83af520841a9f9b18cab6952df1}
+\index{nojobs.\+c@{nojobs.\+c}!P\+R\+O\+C\+\_\+\+A\+S\+Y\+NC@{P\+R\+O\+C\+\_\+\+A\+S\+Y\+NC}}
+\index{P\+R\+O\+C\+\_\+\+A\+S\+Y\+NC@{P\+R\+O\+C\+\_\+\+A\+S\+Y\+NC}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{P\+R\+O\+C\+\_\+\+A\+S\+Y\+NC}{PROC_ASYNC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+O\+C\+\_\+\+A\+S\+Y\+NC~0x04}\hypertarget{nojobs_8c_aa4e4b215686fd0782fcb5f0a6f6b8f22}{}\label{nojobs_8c_aa4e4b215686fd0782fcb5f0a6f6b8f22}
+\index{nojobs.\+c@{nojobs.\+c}!P\+R\+O\+C\+\_\+\+B\+AD@{P\+R\+O\+C\+\_\+\+B\+AD}}
+\index{P\+R\+O\+C\+\_\+\+B\+AD@{P\+R\+O\+C\+\_\+\+B\+AD}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{P\+R\+O\+C\+\_\+\+B\+AD}{PROC_BAD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+O\+C\+\_\+\+B\+AD~-\/1}\hypertarget{nojobs_8c_a1d72c7ba6b2af5c58b2be7031c9c7481}{}\label{nojobs_8c_a1d72c7ba6b2af5c58b2be7031c9c7481}
+\index{nojobs.\+c@{nojobs.\+c}!P\+R\+O\+C\+\_\+\+N\+O\+T\+I\+F\+I\+ED@{P\+R\+O\+C\+\_\+\+N\+O\+T\+I\+F\+I\+ED}}
+\index{P\+R\+O\+C\+\_\+\+N\+O\+T\+I\+F\+I\+ED@{P\+R\+O\+C\+\_\+\+N\+O\+T\+I\+F\+I\+ED}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{P\+R\+O\+C\+\_\+\+N\+O\+T\+I\+F\+I\+ED}{PROC_NOTIFIED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+O\+C\+\_\+\+N\+O\+T\+I\+F\+I\+ED~0x02}\hypertarget{nojobs_8c_a8baa1a79ad945553f1b577549c37e6ce}{}\label{nojobs_8c_a8baa1a79ad945553f1b577549c37e6ce}
+\index{nojobs.\+c@{nojobs.\+c}!P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG@{P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG}}
+\index{P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG@{P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG}{PROC_RUNNING}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+O\+C\+\_\+\+R\+U\+N\+N\+I\+NG~0x01}\hypertarget{nojobs_8c_a26975b50f0f5914f501689709f08147a}{}\label{nojobs_8c_a26975b50f0f5914f501689709f08147a}
+\index{nojobs.\+c@{nojobs.\+c}!P\+R\+O\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ED@{P\+R\+O\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ED}}
+\index{P\+R\+O\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ED@{P\+R\+O\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ED}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{P\+R\+O\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ED}{PROC_SIGNALED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+O\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ED~0x10}\hypertarget{nojobs_8c_a1187de7eeba46331ede38ee97ccfd8c4}{}\label{nojobs_8c_a1187de7eeba46331ede38ee97ccfd8c4}
+\index{nojobs.\+c@{nojobs.\+c}!P\+R\+O\+C\+\_\+\+S\+T\+I\+L\+L\+\_\+\+A\+L\+I\+VE@{P\+R\+O\+C\+\_\+\+S\+T\+I\+L\+L\+\_\+\+A\+L\+I\+VE}}
+\index{P\+R\+O\+C\+\_\+\+S\+T\+I\+L\+L\+\_\+\+A\+L\+I\+VE@{P\+R\+O\+C\+\_\+\+S\+T\+I\+L\+L\+\_\+\+A\+L\+I\+VE}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{P\+R\+O\+C\+\_\+\+S\+T\+I\+L\+L\+\_\+\+A\+L\+I\+VE}{PROC_STILL_ALIVE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+O\+C\+\_\+\+S\+T\+I\+L\+L\+\_\+\+A\+L\+I\+VE~-\/2}\hypertarget{nojobs_8c_ab33d13bf09b28451b873ad894dcae980}{}\label{nojobs_8c_ab33d13bf09b28451b873ad894dcae980}
+\index{nojobs.\+c@{nojobs.\+c}!R\+E\+P\+O\+R\+T\+S\+IG@{R\+E\+P\+O\+R\+T\+S\+IG}}
+\index{R\+E\+P\+O\+R\+T\+S\+IG@{R\+E\+P\+O\+R\+T\+S\+IG}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{R\+E\+P\+O\+R\+T\+S\+IG}{REPORTSIG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+P\+O\+R\+T\+S\+IG(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~((x) != S\+I\+G\+I\+NT \&\& (x) != S\+I\+G\+P\+I\+PE \&\& (x) != S\+I\+G\+T\+E\+RM)}\hypertarget{nojobs_8c_a657dd81fc9a67340cd1997e708bc0618}{}\label{nojobs_8c_a657dd81fc9a67340cd1997e708bc0618}
+\index{nojobs.\+c@{nojobs.\+c}!W\+A\+I\+T\+P\+ID@{W\+A\+I\+T\+P\+ID}}
+\index{W\+A\+I\+T\+P\+ID@{W\+A\+I\+T\+P\+ID}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{W\+A\+I\+T\+P\+ID}{WAITPID}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+A\+I\+T\+P\+ID(
+\begin{DoxyParamCaption}
+\item[{}]{pid, }
+\item[{}]{statusp, }
+\item[{}]{options}
+\end{DoxyParamCaption}
+)~waitpid (pid, statusp, options)}\hypertarget{nojobs_8c_a3aa5418612f55083950f87b97f60ce33}{}\label{nojobs_8c_a3aa5418612f55083950f87b97f60ce33}
+
+
+\subsection{Function Documentation}
+\index{nojobs.\+c@{nojobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, Sig\+Handler $\ast$))}{__P((int, SigHandler *))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf set\+\_\+original\+\_\+signal} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, Sig\+Handler $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a1fbfa74b670d120e2c1bd9668688a4ed}{}\label{nojobs_8c_a1fbfa74b670d120e2c1bd9668688a4ed}
+\index{nojobs.\+c@{nojobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf alloc\+\_\+pid\+\_\+list} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_ad647dd0fa00037b4b776b0715bb1b0c7}{}\label{nojobs_8c_ad647dd0fa00037b4b776b0715bb1b0c7}
+\index{nojobs.\+c@{nojobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((pid\+\_\+t))}{__P((pid_t))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf find\+\_\+proc\+\_\+slot} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(pid\+\_\+t)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a0dc07181cecd0c5a40614e69fd3dcb5e}{}\label{nojobs_8c_a0dc07181cecd0c5a40614e69fd3dcb5e}
+\index{nojobs.\+c@{nojobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+W\+A\+I\+T))}{__P((WAIT))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf process\+\_\+exit\+\_\+status} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(W\+A\+IT)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a8bb50d60b9d7287ae4dd13496428879b}{}\label{nojobs_8c_a8bb50d60b9d7287ae4dd13496428879b}
+\index{nojobs.\+c@{nojobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((pid\+\_\+t, W\+A\+I\+T))}{__P((pid_t, WAIT))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf set\+\_\+pid\+\_\+status} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(pid\+\_\+t, W\+A\+IT)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a230b7327492d07513d959f8e0bfb42ec}{}\label{nojobs_8c_a230b7327492d07513d959f8e0bfb42ec}
+\index{nojobs.\+c@{nojobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((pid\+\_\+t, int))}{__P((pid_t, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf set\+\_\+pid\+\_\+flags} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(pid\+\_\+t, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a74c6a3b1b0d5f7fc208fa04e9f10a399}{}\label{nojobs_8c_a74c6a3b1b0d5f7fc208fa04e9f10a399}
+\index{nojobs.\+c@{nojobs.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_ac6fd9125204fdd0cfc83499d6ed85aa7}{}\label{nojobs_8c_ac6fd9125204fdd0cfc83499d6ed85aa7}
+\index{nojobs.\+c@{nojobs.\+c}!add\+\_\+pid@{add\+\_\+pid}}
+\index{add\+\_\+pid@{add\+\_\+pid}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+pid(pid\+\_\+t pid, int async)}{add_pid(pid_t pid, int async)}}]{\setlength{\rightskip}{0pt plus 5cm}static void add\+\_\+pid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{async}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_ac1a600818fa4d8b2ed19bb882c5f7a68}{}\label{nojobs_8c_ac1a600818fa4d8b2ed19bb882c5f7a68}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_ac1a600818fa4d8b2ed19bb882c5f7a68_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!alloc\+\_\+pid\+\_\+list@{alloc\+\_\+pid\+\_\+list}}
+\index{alloc\+\_\+pid\+\_\+list@{alloc\+\_\+pid\+\_\+list}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{alloc\+\_\+pid\+\_\+list()}{alloc_pid_list()}}]{\setlength{\rightskip}{0pt plus 5cm}static void alloc\+\_\+pid\+\_\+list (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a007013470eda062a3a77d85cb2bc6e91}{}\label{nojobs_8c_a007013470eda062a3a77d85cb2bc6e91}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_a007013470eda062a3a77d85cb2bc6e91_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!cleanup\+\_\+dead\+\_\+jobs@{cleanup\+\_\+dead\+\_\+jobs}}
+\index{cleanup\+\_\+dead\+\_\+jobs@{cleanup\+\_\+dead\+\_\+jobs}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{cleanup\+\_\+dead\+\_\+jobs()}{cleanup_dead_jobs()}}]{\setlength{\rightskip}{0pt plus 5cm}int cleanup\+\_\+dead\+\_\+jobs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_acfa5133d8dd2e2eca3a8169134346022}{}\label{nojobs_8c_acfa5133d8dd2e2eca3a8169134346022}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_acfa5133d8dd2e2eca3a8169134346022_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!count\+\_\+all\+\_\+jobs@{count\+\_\+all\+\_\+jobs}}
+\index{count\+\_\+all\+\_\+jobs@{count\+\_\+all\+\_\+jobs}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{count\+\_\+all\+\_\+jobs()}{count_all_jobs()}}]{\setlength{\rightskip}{0pt plus 5cm}int count\+\_\+all\+\_\+jobs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_adaf7a0885abd94848dabd18ba344eb66}{}\label{nojobs_8c_adaf7a0885abd94848dabd18ba344eb66}
+\index{nojobs.\+c@{nojobs.\+c}!default\+\_\+tty\+\_\+job\+\_\+signals@{default\+\_\+tty\+\_\+job\+\_\+signals}}
+\index{default\+\_\+tty\+\_\+job\+\_\+signals@{default\+\_\+tty\+\_\+job\+\_\+signals}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{default\+\_\+tty\+\_\+job\+\_\+signals()}{default_tty_job_signals()}}]{\setlength{\rightskip}{0pt plus 5cm}void default\+\_\+tty\+\_\+job\+\_\+signals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a35131fce775aec129aca6c1ea1127f97}{}\label{nojobs_8c_a35131fce775aec129aca6c1ea1127f97}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_a35131fce775aec129aca6c1ea1127f97_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!describe\+\_\+pid@{describe\+\_\+pid}}
+\index{describe\+\_\+pid@{describe\+\_\+pid}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{describe\+\_\+pid(pid\+\_\+t pid)}{describe_pid(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}void describe\+\_\+pid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a6e05c5efdbabb700ce1f089aa2208017}{}\label{nojobs_8c_a6e05c5efdbabb700ce1f089aa2208017}
+\index{nojobs.\+c@{nojobs.\+c}!find\+\_\+index\+\_\+by\+\_\+pid@{find\+\_\+index\+\_\+by\+\_\+pid}}
+\index{find\+\_\+index\+\_\+by\+\_\+pid@{find\+\_\+index\+\_\+by\+\_\+pid}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+index\+\_\+by\+\_\+pid(pid\+\_\+t pid)}{find_index_by_pid(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}static int find\+\_\+index\+\_\+by\+\_\+pid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a69e369daaa12a0717d53ec471a33c7e0}{}\label{nojobs_8c_a69e369daaa12a0717d53ec471a33c7e0}
+\index{nojobs.\+c@{nojobs.\+c}!find\+\_\+proc\+\_\+slot@{find\+\_\+proc\+\_\+slot}}
+\index{find\+\_\+proc\+\_\+slot@{find\+\_\+proc\+\_\+slot}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+proc\+\_\+slot(pid\+\_\+t pid)}{find_proc_slot(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}static int find\+\_\+proc\+\_\+slot (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_abceed139a1763c63c5c310adc79f1631}{}\label{nojobs_8c_abceed139a1763c63c5c310adc79f1631}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_abceed139a1763c63c5c310adc79f1631_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!find\+\_\+status\+\_\+by\+\_\+pid@{find\+\_\+status\+\_\+by\+\_\+pid}}
+\index{find\+\_\+status\+\_\+by\+\_\+pid@{find\+\_\+status\+\_\+by\+\_\+pid}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+status\+\_\+by\+\_\+pid(pid\+\_\+t pid)}{find_status_by_pid(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}static int find\+\_\+status\+\_\+by\+\_\+pid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a2742b5ff772154f71b705639d5aef9be}{}\label{nojobs_8c_a2742b5ff772154f71b705639d5aef9be}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{nojobs_8c_a2742b5ff772154f71b705639d5aef9be_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!find\+\_\+termsig\+\_\+by\+\_\+pid@{find\+\_\+termsig\+\_\+by\+\_\+pid}}
+\index{find\+\_\+termsig\+\_\+by\+\_\+pid@{find\+\_\+termsig\+\_\+by\+\_\+pid}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+termsig\+\_\+by\+\_\+pid(pid\+\_\+t pid)}{find_termsig_by_pid(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}static int find\+\_\+termsig\+\_\+by\+\_\+pid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a8275120d4c1d5830b01f2442e71685a2}{}\label{nojobs_8c_a8275120d4c1d5830b01f2442e71685a2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{nojobs_8c_a8275120d4c1d5830b01f2442e71685a2_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!freeze\+\_\+jobs\+\_\+list@{freeze\+\_\+jobs\+\_\+list}}
+\index{freeze\+\_\+jobs\+\_\+list@{freeze\+\_\+jobs\+\_\+list}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{freeze\+\_\+jobs\+\_\+list()}{freeze_jobs_list()}}]{\setlength{\rightskip}{0pt plus 5cm}int freeze\+\_\+jobs\+\_\+list (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_ac04bd8c6bbeec0e7e6f542d3a8a9f09f}{}\label{nojobs_8c_ac04bd8c6bbeec0e7e6f542d3a8a9f09f}
+\index{nojobs.\+c@{nojobs.\+c}!get\+\_\+job\+\_\+by\+\_\+pid@{get\+\_\+job\+\_\+by\+\_\+pid}}
+\index{get\+\_\+job\+\_\+by\+\_\+pid@{get\+\_\+job\+\_\+by\+\_\+pid}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+job\+\_\+by\+\_\+pid(pid\+\_\+t pid, int block)}{get_job_by_pid(pid_t pid, int block)}}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+job\+\_\+by\+\_\+pid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{block}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_ae4b48a0f3e1472558c53f8f26db3ccf8}{}\label{nojobs_8c_ae4b48a0f3e1472558c53f8f26db3ccf8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{nojobs_8c_ae4b48a0f3e1472558c53f8f26db3ccf8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals@{get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals}}
+\index{get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals@{get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals()}{get_original_tty_job_signals()}}]{\setlength{\rightskip}{0pt plus 5cm}void get\+\_\+original\+\_\+tty\+\_\+job\+\_\+signals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a186a35817ae0f49ac740cbae8f598edb}{}\label{nojobs_8c_a186a35817ae0f49ac740cbae8f598edb}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{nojobs_8c_a186a35817ae0f49ac740cbae8f598edb_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!get\+\_\+pid\+\_\+flags@{get\+\_\+pid\+\_\+flags}}
+\index{get\+\_\+pid\+\_\+flags@{get\+\_\+pid\+\_\+flags}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+pid\+\_\+flags(pid\+\_\+t pid)}{get_pid_flags(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}static int get\+\_\+pid\+\_\+flags (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a5f1e8101b565733b1139795f185182a9}{}\label{nojobs_8c_a5f1e8101b565733b1139795f185182a9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{nojobs_8c_a5f1e8101b565733b1139795f185182a9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!get\+\_\+termsig@{get\+\_\+termsig}}
+\index{get\+\_\+termsig@{get\+\_\+termsig}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+termsig(\+W\+A\+I\+T status)}{get_termsig(WAIT status)}}]{\setlength{\rightskip}{0pt plus 5cm}static int get\+\_\+termsig (
+\begin{DoxyParamCaption}
+\item[{W\+A\+IT}]{status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a10c7daed7045ffdcb50669782c0a5c6e}{}\label{nojobs_8c_a10c7daed7045ffdcb50669782c0a5c6e}
+\index{nojobs.\+c@{nojobs.\+c}!get\+\_\+tty\+\_\+state@{get\+\_\+tty\+\_\+state}}
+\index{get\+\_\+tty\+\_\+state@{get\+\_\+tty\+\_\+state}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+tty\+\_\+state()}{get_tty_state()}}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+tty\+\_\+state (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a37d6118360319f23c01a9a326ad32906}{}\label{nojobs_8c_a37d6118360319f23c01a9a326ad32906}
+\index{nojobs.\+c@{nojobs.\+c}!give\+\_\+terminal\+\_\+to@{give\+\_\+terminal\+\_\+to}}
+\index{give\+\_\+terminal\+\_\+to@{give\+\_\+terminal\+\_\+to}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{give\+\_\+terminal\+\_\+to(pid\+\_\+t pgrp, int force)}{give_terminal_to(pid_t pgrp, int force)}}]{\setlength{\rightskip}{0pt plus 5cm}int give\+\_\+terminal\+\_\+to (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pgrp, }
+\item[{int}]{force}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a8db3c891f1a77a1b3412544323ae6eb4}{}\label{nojobs_8c_a8db3c891f1a77a1b3412544323ae6eb4}
+\index{nojobs.\+c@{nojobs.\+c}!ignore\+\_\+tty\+\_\+job\+\_\+signals@{ignore\+\_\+tty\+\_\+job\+\_\+signals}}
+\index{ignore\+\_\+tty\+\_\+job\+\_\+signals@{ignore\+\_\+tty\+\_\+job\+\_\+signals}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{ignore\+\_\+tty\+\_\+job\+\_\+signals()}{ignore_tty_job_signals()}}]{\setlength{\rightskip}{0pt plus 5cm}void ignore\+\_\+tty\+\_\+job\+\_\+signals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a0b224dea42fc99fc8f75137c74d10d8c}{}\label{nojobs_8c_a0b224dea42fc99fc8f75137c74d10d8c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_a0b224dea42fc99fc8f75137c74d10d8c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!initialize\+\_\+job\+\_\+control@{initialize\+\_\+job\+\_\+control}}
+\index{initialize\+\_\+job\+\_\+control@{initialize\+\_\+job\+\_\+control}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+job\+\_\+control(int force)}{initialize_job_control(int force)}}]{\setlength{\rightskip}{0pt plus 5cm}int initialize\+\_\+job\+\_\+control (
+\begin{DoxyParamCaption}
+\item[{int}]{force}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_aa9447ba6eda1088457e76cc37da06b7b}{}\label{nojobs_8c_aa9447ba6eda1088457e76cc37da06b7b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{nojobs_8c_aa9447ba6eda1088457e76cc37da06b7b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!initialize\+\_\+job\+\_\+signals@{initialize\+\_\+job\+\_\+signals}}
+\index{initialize\+\_\+job\+\_\+signals@{initialize\+\_\+job\+\_\+signals}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+job\+\_\+signals()}{initialize_job_signals()}}]{\setlength{\rightskip}{0pt plus 5cm}void initialize\+\_\+job\+\_\+signals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_ab3bf0c468c5caa52e82aa6a68f6a3099}{}\label{nojobs_8c_ab3bf0c468c5caa52e82aa6a68f6a3099}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_ab3bf0c468c5caa52e82aa6a68f6a3099_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!j\+\_\+strsignal@{j\+\_\+strsignal}}
+\index{j\+\_\+strsignal@{j\+\_\+strsignal}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{j\+\_\+strsignal(int s)}{j_strsignal(int s)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ j\+\_\+strsignal (
+\begin{DoxyParamCaption}
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a73562e7524f0f619567b2414e0a15309}{}\label{nojobs_8c_a73562e7524f0f619567b2414e0a15309}
+\index{nojobs.\+c@{nojobs.\+c}!kill\+\_\+pid@{kill\+\_\+pid}}
+\index{kill\+\_\+pid@{kill\+\_\+pid}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{kill\+\_\+pid(pid\+\_\+t pid, int signal, int group)}{kill_pid(pid_t pid, int signal, int group)}}]{\setlength{\rightskip}{0pt plus 5cm}int kill\+\_\+pid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{signal, }
+\item[{int}]{group}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a69ef0847d0993f8c08c1b4c79e868abc}{}\label{nojobs_8c_a69ef0847d0993f8c08c1b4c79e868abc}
+\index{nojobs.\+c@{nojobs.\+c}!make\+\_\+child@{make\+\_\+child}}
+\index{make\+\_\+child@{make\+\_\+child}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+child(char $\ast$command, int async\+\_\+p)}{make_child(char *command, int async_p)}}]{\setlength{\rightskip}{0pt plus 5cm}pid\+\_\+t make\+\_\+child (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{int}]{async\+\_\+p}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a5d849da9461b9ef900d191e67f54856c}{}\label{nojobs_8c_a5d849da9461b9ef900d191e67f54856c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_a5d849da9461b9ef900d191e67f54856c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified@{mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified}}
+\index{mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified@{mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified(int force)}{mark_dead_jobs_as_notified(int force)}}]{\setlength{\rightskip}{0pt plus 5cm}static void mark\+\_\+dead\+\_\+jobs\+\_\+as\+\_\+notified (
+\begin{DoxyParamCaption}
+\item[{int}]{force}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a17ec09b97c22e3e745e6fe463418e203}{}\label{nojobs_8c_a17ec09b97c22e3e745e6fe463418e203}
+\index{nojobs.\+c@{nojobs.\+c}!process\+\_\+exit\+\_\+status@{process\+\_\+exit\+\_\+status}}
+\index{process\+\_\+exit\+\_\+status@{process\+\_\+exit\+\_\+status}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{process\+\_\+exit\+\_\+status(\+W\+A\+I\+T status)}{process_exit_status(WAIT status)}}]{\setlength{\rightskip}{0pt plus 5cm}static int process\+\_\+exit\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{W\+A\+IT}]{status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_ab424b34a1f2efb697ac04e6ae1b67bd9}{}\label{nojobs_8c_ab424b34a1f2efb697ac04e6ae1b67bd9}
+\index{nojobs.\+c@{nojobs.\+c}!reap\+\_\+dead\+\_\+jobs@{reap\+\_\+dead\+\_\+jobs}}
+\index{reap\+\_\+dead\+\_\+jobs@{reap\+\_\+dead\+\_\+jobs}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{reap\+\_\+dead\+\_\+jobs()}{reap_dead_jobs()}}]{\setlength{\rightskip}{0pt plus 5cm}void reap\+\_\+dead\+\_\+jobs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a8113aecd5926c83f5bec94aaded2476a}{}\label{nojobs_8c_a8113aecd5926c83f5bec94aaded2476a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_a8113aecd5926c83f5bec94aaded2476a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!reap\+\_\+zombie\+\_\+children@{reap\+\_\+zombie\+\_\+children}}
+\index{reap\+\_\+zombie\+\_\+children@{reap\+\_\+zombie\+\_\+children}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{reap\+\_\+zombie\+\_\+children()}{reap_zombie_children()}}]{\setlength{\rightskip}{0pt plus 5cm}static void reap\+\_\+zombie\+\_\+children (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a9e020a8737b6918c70849e04937908db}{}\label{nojobs_8c_a9e020a8737b6918c70849e04937908db}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_a9e020a8737b6918c70849e04937908db_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!restore\+\_\+sigint\+\_\+handler@{restore\+\_\+sigint\+\_\+handler}}
+\index{restore\+\_\+sigint\+\_\+handler@{restore\+\_\+sigint\+\_\+handler}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{restore\+\_\+sigint\+\_\+handler()}{restore_sigint_handler()}}]{\setlength{\rightskip}{0pt plus 5cm}static void restore\+\_\+sigint\+\_\+handler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_abaf052f06c9c04a236219814419b7e83}{}\label{nojobs_8c_abaf052f06c9c04a236219814419b7e83}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_abaf052f06c9c04a236219814419b7e83_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!set\+\_\+jobs\+\_\+list\+\_\+frozen@{set\+\_\+jobs\+\_\+list\+\_\+frozen}}
+\index{set\+\_\+jobs\+\_\+list\+\_\+frozen@{set\+\_\+jobs\+\_\+list\+\_\+frozen}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+jobs\+\_\+list\+\_\+frozen(int s)}{set_jobs_list_frozen(int s)}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+jobs\+\_\+list\+\_\+frozen (
+\begin{DoxyParamCaption}
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a9c5a796b3c5e2ddcc0ea88c494e324ea}{}\label{nojobs_8c_a9c5a796b3c5e2ddcc0ea88c494e324ea}
+\index{nojobs.\+c@{nojobs.\+c}!set\+\_\+pid\+\_\+flags@{set\+\_\+pid\+\_\+flags}}
+\index{set\+\_\+pid\+\_\+flags@{set\+\_\+pid\+\_\+flags}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+pid\+\_\+flags(pid\+\_\+t pid, int flags)}{set_pid_flags(pid_t pid, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}static void set\+\_\+pid\+\_\+flags (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_acf61c8c86341c3fa68b62dad8ebe2607}{}\label{nojobs_8c_acf61c8c86341c3fa68b62dad8ebe2607}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{nojobs_8c_acf61c8c86341c3fa68b62dad8ebe2607_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!set\+\_\+pid\+\_\+status@{set\+\_\+pid\+\_\+status}}
+\index{set\+\_\+pid\+\_\+status@{set\+\_\+pid\+\_\+status}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+pid\+\_\+status(pid\+\_\+t pid, W\+A\+I\+T status)}{set_pid_status(pid_t pid, WAIT status)}}]{\setlength{\rightskip}{0pt plus 5cm}static void set\+\_\+pid\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{W\+A\+IT}]{status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a535e472bb4a367eb632b2d1b5da2ea31}{}\label{nojobs_8c_a535e472bb4a367eb632b2d1b5da2ea31}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_a535e472bb4a367eb632b2d1b5da2ea31_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!set\+\_\+tty\+\_\+state@{set\+\_\+tty\+\_\+state}}
+\index{set\+\_\+tty\+\_\+state@{set\+\_\+tty\+\_\+state}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+tty\+\_\+state()}{set_tty_state()}}]{\setlength{\rightskip}{0pt plus 5cm}int set\+\_\+tty\+\_\+state (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_ab9dc901cdc105f8060eafdc6301fe2de}{}\label{nojobs_8c_ab9dc901cdc105f8060eafdc6301fe2de}
+\index{nojobs.\+c@{nojobs.\+c}!start\+\_\+pipeline@{start\+\_\+pipeline}}
+\index{start\+\_\+pipeline@{start\+\_\+pipeline}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{start\+\_\+pipeline()}{start_pipeline()}}]{\setlength{\rightskip}{0pt plus 5cm}void start\+\_\+pipeline (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a718ce465ffb026f4a2b67b4a6eab4761}{}\label{nojobs_8c_a718ce465ffb026f4a2b67b4a6eab4761}
+\index{nojobs.\+c@{nojobs.\+c}!stop\+\_\+making\+\_\+children@{stop\+\_\+making\+\_\+children}}
+\index{stop\+\_\+making\+\_\+children@{stop\+\_\+making\+\_\+children}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{stop\+\_\+making\+\_\+children()}{stop_making_children()}}]{\setlength{\rightskip}{0pt plus 5cm}void stop\+\_\+making\+\_\+children (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a5d4feeb769d599bb634672546e5a19ff}{}\label{nojobs_8c_a5d4feeb769d599bb634672546e5a19ff}
+\index{nojobs.\+c@{nojobs.\+c}!stop\+\_\+pipeline@{stop\+\_\+pipeline}}
+\index{stop\+\_\+pipeline@{stop\+\_\+pipeline}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{stop\+\_\+pipeline(int async, C\+O\+M\+M\+A\+N\+D $\ast$ignore)}{stop_pipeline(int async, COMMAND *ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}int stop\+\_\+pipeline (
+\begin{DoxyParamCaption}
+\item[{int}]{async, }
+\item[{{\bf C\+O\+M\+M\+A\+ND} $\ast$}]{ignore}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a97eafecf3808cf462b54a378857155ae}{}\label{nojobs_8c_a97eafecf3808cf462b54a378857155ae}
+\index{nojobs.\+c@{nojobs.\+c}!unfreeze\+\_\+jobs\+\_\+list@{unfreeze\+\_\+jobs\+\_\+list}}
+\index{unfreeze\+\_\+jobs\+\_\+list@{unfreeze\+\_\+jobs\+\_\+list}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{unfreeze\+\_\+jobs\+\_\+list()}{unfreeze_jobs_list()}}]{\setlength{\rightskip}{0pt plus 5cm}void unfreeze\+\_\+jobs\+\_\+list (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_acc347c3553987b2835c81ebaffd378d6}{}\label{nojobs_8c_acc347c3553987b2835c81ebaffd378d6}
+\index{nojobs.\+c@{nojobs.\+c}!unset\+\_\+pid\+\_\+flags@{unset\+\_\+pid\+\_\+flags}}
+\index{unset\+\_\+pid\+\_\+flags@{unset\+\_\+pid\+\_\+flags}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{unset\+\_\+pid\+\_\+flags(pid\+\_\+t pid, int flags)}{unset_pid_flags(pid_t pid, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}static void unset\+\_\+pid\+\_\+flags (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a25778863c45840112f9db4fdb4157a1f}{}\label{nojobs_8c_a25778863c45840112f9db4fdb4157a1f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{nojobs_8c_a25778863c45840112f9db4fdb4157a1f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!wait\+\_\+for@{wait\+\_\+for}}
+\index{wait\+\_\+for@{wait\+\_\+for}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+for(pid\+\_\+t pid)}{wait_for(pid_t pid)}}]{\setlength{\rightskip}{0pt plus 5cm}int wait\+\_\+for (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_abcef62306debcbcd910ed2cbadcb43fe}{}\label{nojobs_8c_abcef62306debcbcd910ed2cbadcb43fe}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_abcef62306debcbcd910ed2cbadcb43fe_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!wait\+\_\+for\+\_\+background\+\_\+pids@{wait\+\_\+for\+\_\+background\+\_\+pids}}
+\index{wait\+\_\+for\+\_\+background\+\_\+pids@{wait\+\_\+for\+\_\+background\+\_\+pids}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+for\+\_\+background\+\_\+pids()}{wait_for_background_pids()}}]{\setlength{\rightskip}{0pt plus 5cm}void wait\+\_\+for\+\_\+background\+\_\+pids (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a003e4bf7f3074638f24ae4e7f2d25717}{}\label{nojobs_8c_a003e4bf7f3074638f24ae4e7f2d25717}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_a003e4bf7f3074638f24ae4e7f2d25717_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!wait\+\_\+for\+\_\+single\+\_\+pid@{wait\+\_\+for\+\_\+single\+\_\+pid}}
+\index{wait\+\_\+for\+\_\+single\+\_\+pid@{wait\+\_\+for\+\_\+single\+\_\+pid}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+for\+\_\+single\+\_\+pid(pid\+\_\+t pid, int flags)}{wait_for_single_pid(pid_t pid, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}int wait\+\_\+for\+\_\+single\+\_\+pid (
+\begin{DoxyParamCaption}
+\item[{pid\+\_\+t}]{pid, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a637f8e438a0ea8c409d891cb8ccb523e}{}\label{nojobs_8c_a637f8e438a0ea8c409d891cb8ccb523e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_a637f8e438a0ea8c409d891cb8ccb523e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!wait\+\_\+sigint\+\_\+cleanup@{wait\+\_\+sigint\+\_\+cleanup}}
+\index{wait\+\_\+sigint\+\_\+cleanup@{wait\+\_\+sigint\+\_\+cleanup}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+sigint\+\_\+cleanup()}{wait_sigint_cleanup()}}]{\setlength{\rightskip}{0pt plus 5cm}void wait\+\_\+sigint\+\_\+cleanup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_a1ced6c7ceaf0cf2f9983aa5262dfe392}{}\label{nojobs_8c_a1ced6c7ceaf0cf2f9983aa5262dfe392}
+\index{nojobs.\+c@{nojobs.\+c}!wait\+\_\+sigint\+\_\+handler@{wait\+\_\+sigint\+\_\+handler}}
+\index{wait\+\_\+sigint\+\_\+handler@{wait\+\_\+sigint\+\_\+handler}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+sigint\+\_\+handler(int sig)}{wait_sigint_handler(int sig)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf sighandler} wait\+\_\+sigint\+\_\+handler (
+\begin{DoxyParamCaption}
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a89ced87614d7f6c88e27c96091684467}{}\label{nojobs_8c_a89ced87614d7f6c88e27c96091684467}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nojobs_8c_a89ced87614d7f6c88e27c96091684467_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{nojobs.\+c@{nojobs.\+c}!without\+\_\+job\+\_\+control@{without\+\_\+job\+\_\+control}}
+\index{without\+\_\+job\+\_\+control@{without\+\_\+job\+\_\+control}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{without\+\_\+job\+\_\+control()}{without_job_control()}}]{\setlength{\rightskip}{0pt plus 5cm}void without\+\_\+job\+\_\+control (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{nojobs_8c_ab9244e49349e5265eef7d020233848ae}{}\label{nojobs_8c_ab9244e49349e5265eef7d020233848ae}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{nojobs_8c_ab9244e49349e5265eef7d020233848ae_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{nojobs.\+c@{nojobs.\+c}!already\+\_\+making\+\_\+children@{already\+\_\+making\+\_\+children}}
+\index{already\+\_\+making\+\_\+children@{already\+\_\+making\+\_\+children}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{already\+\_\+making\+\_\+children}{already_making_children}}]{\setlength{\rightskip}{0pt plus 5cm}int already\+\_\+making\+\_\+children = 0}\hypertarget{nojobs_8c_ab73b81916e1b9c693ec186cb41e9f4e5}{}\label{nojobs_8c_ab73b81916e1b9c693ec186cb41e9f4e5}
+\index{nojobs.\+c@{nojobs.\+c}!check\+\_\+window\+\_\+size@{check\+\_\+window\+\_\+size}}
+\index{check\+\_\+window\+\_\+size@{check\+\_\+window\+\_\+size}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+window\+\_\+size}{check_window_size}}]{\setlength{\rightskip}{0pt plus 5cm}int check\+\_\+window\+\_\+size = {\bf C\+H\+E\+C\+K\+W\+I\+N\+S\+I\+Z\+E\+\_\+\+D\+E\+F\+A\+U\+LT}}\hypertarget{nojobs_8c_a27ab938bc70e7696ed8fc9e10a4834c4}{}\label{nojobs_8c_a27ab938bc70e7696ed8fc9e10a4834c4}
+\index{nojobs.\+c@{nojobs.\+c}!child\+\_\+max@{child\+\_\+max}}
+\index{child\+\_\+max@{child\+\_\+max}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{child\+\_\+max}{child_max}}]{\setlength{\rightskip}{0pt plus 5cm}long child\+\_\+max = -\/1L\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_ab3a8cdba56246c448bd2cf2d07c188f5}{}\label{nojobs_8c_ab3a8cdba56246c448bd2cf2d07c188f5}
+\index{nojobs.\+c@{nojobs.\+c}!errno@{errno}}
+\index{errno@{errno}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{errno}{errno}}]{\setlength{\rightskip}{0pt plus 5cm}int errno}\hypertarget{nojobs_8c_ad65a8842cc674e3ddf69355898c0ecbf}{}\label{nojobs_8c_ad65a8842cc674e3ddf69355898c0ecbf}
+\index{nojobs.\+c@{nojobs.\+c}!got\+\_\+tty\+\_\+state@{got\+\_\+tty\+\_\+state}}
+\index{got\+\_\+tty\+\_\+state@{got\+\_\+tty\+\_\+state}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{got\+\_\+tty\+\_\+state}{got_tty_state}}]{\setlength{\rightskip}{0pt plus 5cm}int got\+\_\+tty\+\_\+state\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a3bc9f407d98883df03cba7b5f67bf2b3}{}\label{nojobs_8c_a3bc9f407d98883df03cba7b5f67bf2b3}
+\index{nojobs.\+c@{nojobs.\+c}!job\+\_\+control@{job\+\_\+control}}
+\index{job\+\_\+control@{job\+\_\+control}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{job\+\_\+control}{job_control}}]{\setlength{\rightskip}{0pt plus 5cm}int job\+\_\+control = 0}\hypertarget{nojobs_8c_a3002cbcd4a652dec2c5cef5ff3da446f}{}\label{nojobs_8c_a3002cbcd4a652dec2c5cef5ff3da446f}
+\index{nojobs.\+c@{nojobs.\+c}!last\+\_\+asynchronous\+\_\+pid@{last\+\_\+asynchronous\+\_\+pid}}
+\index{last\+\_\+asynchronous\+\_\+pid@{last\+\_\+asynchronous\+\_\+pid}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{last\+\_\+asynchronous\+\_\+pid}{last_asynchronous_pid}}]{\setlength{\rightskip}{0pt plus 5cm}volatile pid\+\_\+t last\+\_\+asynchronous\+\_\+pid = {\bf N\+O\+\_\+\+P\+ID}}\hypertarget{nojobs_8c_a2819d9527c8d26be39bb531290f4b597}{}\label{nojobs_8c_a2819d9527c8d26be39bb531290f4b597}
+\index{nojobs.\+c@{nojobs.\+c}!last\+\_\+made\+\_\+pid@{last\+\_\+made\+\_\+pid}}
+\index{last\+\_\+made\+\_\+pid@{last\+\_\+made\+\_\+pid}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{last\+\_\+made\+\_\+pid}{last_made_pid}}]{\setlength{\rightskip}{0pt plus 5cm}volatile pid\+\_\+t last\+\_\+made\+\_\+pid = {\bf N\+O\+\_\+\+P\+ID}}\hypertarget{nojobs_8c_a6014bc30456423f628a211bf8007fbe0}{}\label{nojobs_8c_a6014bc30456423f628a211bf8007fbe0}
+\index{nojobs.\+c@{nojobs.\+c}!old\+\_\+sigint\+\_\+handler@{old\+\_\+sigint\+\_\+handler}}
+\index{old\+\_\+sigint\+\_\+handler@{old\+\_\+sigint\+\_\+handler}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{old\+\_\+sigint\+\_\+handler}{old_sigint_handler}}]{\setlength{\rightskip}{0pt plus 5cm}Sig\+Handler$\ast$ old\+\_\+sigint\+\_\+handler = {\bf I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+I\+G\+N\+A\+L\+\_\+\+H\+A\+N\+D\+L\+ER}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_ae15b67160f6705f527ba4c23e11e64d3}{}\label{nojobs_8c_ae15b67160f6705f527ba4c23e11e64d3}
+\index{nojobs.\+c@{nojobs.\+c}!pid\+\_\+list@{pid\+\_\+list}}
+\index{pid\+\_\+list@{pid\+\_\+list}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{pid\+\_\+list}{pid_list}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf proc\+\_\+status}$\ast$ pid\+\_\+list = (struct {\bf proc\+\_\+status} $\ast$){\bf N\+U\+LL}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_a4b851dd6fd1d4260db571e5a01ced100}{}\label{nojobs_8c_a4b851dd6fd1d4260db571e5a01ced100}
+\index{nojobs.\+c@{nojobs.\+c}!pid\+\_\+list\+\_\+size@{pid\+\_\+list\+\_\+size}}
+\index{pid\+\_\+list\+\_\+size@{pid\+\_\+list\+\_\+size}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{pid\+\_\+list\+\_\+size}{pid_list_size}}]{\setlength{\rightskip}{0pt plus 5cm}int pid\+\_\+list\+\_\+size\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_aa4c42ba1acaceffc8ba36eaa40e802a6}{}\label{nojobs_8c_aa4c42ba1acaceffc8ba36eaa40e802a6}
+\index{nojobs.\+c@{nojobs.\+c}!queue\+\_\+sigchld@{queue\+\_\+sigchld}}
+\index{queue\+\_\+sigchld@{queue\+\_\+sigchld}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{queue\+\_\+sigchld}{queue_sigchld}}]{\setlength{\rightskip}{0pt plus 5cm}int queue\+\_\+sigchld\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_af553b22eef984c5245e4eae3e4a36cd5}{}\label{nojobs_8c_af553b22eef984c5245e4eae3e4a36cd5}
+\index{nojobs.\+c@{nojobs.\+c}!running\+\_\+in\+\_\+background@{running\+\_\+in\+\_\+background}}
+\index{running\+\_\+in\+\_\+background@{running\+\_\+in\+\_\+background}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{running\+\_\+in\+\_\+background}{running_in_background}}]{\setlength{\rightskip}{0pt plus 5cm}int running\+\_\+in\+\_\+background = 0}\hypertarget{nojobs_8c_ad2b44c9005c5a931c29ae6588e237636}{}\label{nojobs_8c_ad2b44c9005c5a931c29ae6588e237636}
+\index{nojobs.\+c@{nojobs.\+c}!shell\+\_\+tty@{shell\+\_\+tty}}
+\index{shell\+\_\+tty@{shell\+\_\+tty}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+tty}{shell_tty}}]{\setlength{\rightskip}{0pt plus 5cm}int shell\+\_\+tty = -\/1}\hypertarget{nojobs_8c_ae43d281c5f91cb3d7ad00fc46971b4da}{}\label{nojobs_8c_ae43d281c5f91cb3d7ad00fc46971b4da}
+\index{nojobs.\+c@{nojobs.\+c}!shell\+\_\+tty\+\_\+info@{shell\+\_\+tty\+\_\+info}}
+\index{shell\+\_\+tty\+\_\+info@{shell\+\_\+tty\+\_\+info}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+tty\+\_\+info}{shell_tty_info}}]{\setlength{\rightskip}{0pt plus 5cm}T\+T\+Y\+S\+T\+R\+U\+CT shell\+\_\+tty\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_ad9fe5481268cb2aed5102ece6ef18bbb}{}\label{nojobs_8c_ad9fe5481268cb2aed5102ece6ef18bbb}
+\index{nojobs.\+c@{nojobs.\+c}!top\+\_\+level\+\_\+mask@{top\+\_\+level\+\_\+mask}}
+\index{top\+\_\+level\+\_\+mask@{top\+\_\+level\+\_\+mask}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{top\+\_\+level\+\_\+mask}{top_level_mask}}]{\setlength{\rightskip}{0pt plus 5cm}sigset\+\_\+t top\+\_\+level\+\_\+mask}\hypertarget{nojobs_8c_a4423f1b40bab1e30781e832c6cad1e00}{}\label{nojobs_8c_a4423f1b40bab1e30781e832c6cad1e00}
+\index{nojobs.\+c@{nojobs.\+c}!wait\+\_\+sigint\+\_\+received@{wait\+\_\+sigint\+\_\+received}}
+\index{wait\+\_\+sigint\+\_\+received@{wait\+\_\+sigint\+\_\+received}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{wait\+\_\+sigint\+\_\+received}{wait_sigint_received}}]{\setlength{\rightskip}{0pt plus 5cm}int wait\+\_\+sigint\+\_\+received\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_acc216a9180c7ff0368811af940fe3c4f}{}\label{nojobs_8c_acc216a9180c7ff0368811af940fe3c4f}
+\index{nojobs.\+c@{nojobs.\+c}!waiting\+\_\+for\+\_\+child@{waiting\+\_\+for\+\_\+child}}
+\index{waiting\+\_\+for\+\_\+child@{waiting\+\_\+for\+\_\+child}!nojobs.\+c@{nojobs.\+c}}
+\subsubsection[{\texorpdfstring{waiting\+\_\+for\+\_\+child}{waiting_for_child}}]{\setlength{\rightskip}{0pt plus 5cm}int waiting\+\_\+for\+\_\+child\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{nojobs_8c_af3275b044b48a9ba5da272b925ba6d9e}{}\label{nojobs_8c_af3275b044b48a9ba5da272b925ba6d9e}

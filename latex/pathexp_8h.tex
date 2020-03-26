@@ -1,0 +1,179 @@
+\hypertarget{pathexp_8h}{}\section{pathexp.\+h File Reference}
+\label{pathexp_8h}\index{pathexp.\+h@{pathexp.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pathexp_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structign}{ign}
+\item 
+struct \hyperlink{structignorevar}{ignorevar}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{pathexp_8h_ae7383084475ca5f448864a3399c4e1f1}{G\+L\+O\+B\+\_\+\+F\+A\+I\+L\+ED}(glist)~(glist) == (char $\ast$$\ast$)\&\hyperlink{pathexp_8h_a7dea1c03d10d87b2ede2cee0fb7a88fa}{glob\+\_\+error\+\_\+return}
+\item 
+\#define \hyperlink{pathexp_8h_adfd140cabe1a1c0af0dec63f0410f9e7}{Q\+G\+L\+O\+B\+\_\+\+C\+V\+T\+N\+U\+LL}~0x01	/$\ast$ convert Q\+U\+O\+T\+E\+D\+\_\+\+N\+U\+L\+L strings to \textquotesingle{}\textbackslash{}0\textquotesingle{} $\ast$/
+\item 
+\#define \hyperlink{pathexp_8h_a748a78d53ad7fa34e42ad61729f92489}{Q\+G\+L\+O\+B\+\_\+\+F\+I\+L\+E\+N\+A\+ME}~0x02	/$\ast$ do correct quoting for matching filenames $\ast$/
+\item 
+\#define \hyperlink{pathexp_8h_af9ac8a7c7316154b43a7f87cfec26d00}{Q\+G\+L\+O\+B\+\_\+\+R\+E\+G\+E\+XP}~0x04	/$\ast$ quote an E\+R\+E for regcomp/regexec $\ast$/
+\item 
+\#define \hyperlink{pathexp_8h_af043d715c5ec86336febb162c5881ef9}{Q\+G\+L\+O\+B\+\_\+\+C\+T\+L\+E\+SC}~0x08	/$\ast$ turn C\+T\+L\+E\+S\+C C\+T\+L\+E\+S\+C into C\+T\+L\+E\+S\+C for B\+R\+Es $\ast$/
+\item 
+\#define \hyperlink{pathexp_8h_a50c83ec3372f54725f83b884b6fd55f4}{Q\+G\+L\+O\+B\+\_\+\+D\+E\+Q\+U\+O\+TE}~0x10	/$\ast$ like dequote\+\_\+string but quote glob chars $\ast$/
+\item 
+\#define \hyperlink{pathexp_8h_a7d6f2a3d180a54406fa58c6ca5f8f000}{F\+N\+M\+A\+T\+C\+H\+\_\+\+E\+X\+T\+F\+L\+AG}~0
+\item 
+\#define \hyperlink{pathexp_8h_ab553c4638a9992806a52f65d12cd21fc}{F\+N\+M\+A\+T\+C\+H\+\_\+\+I\+G\+N\+C\+A\+SE}~(\hyperlink{pathexp_8h_aca9257653043e30c345c3931fa66d934}{match\+\_\+ignore\+\_\+case} ? F\+N\+M\+\_\+\+C\+A\+S\+E\+F\+O\+LD \+: 0)
+\item 
+\#define \hyperlink{pathexp_8h_ad8905ec804d653f9f710404249756105}{F\+N\+M\+A\+T\+C\+H\+\_\+\+N\+O\+C\+A\+S\+E\+G\+L\+OB}~(glob\+\_\+ignore\+\_\+case ? F\+N\+M\+\_\+\+C\+A\+S\+E\+F\+O\+LD \+: 0)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int sh\+\_\+iv\+\_\+item\+\_\+func\+\_\+t \hyperlink{pathexp_8h_a79726307ab778d5da816ca84f419b22b}{\+\_\+\+\_\+P}((struct \hyperlink{structign}{ign} $\ast$))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{pathexp_8c_a1d53e9b8b773f9863668fe9db9294235}{unquoted\+\_\+glob\+\_\+pattern\+\_\+p} \hyperlink{pathexp_8h_ab7318f22403b1b9bb66e420e45bdf535}{\+\_\+\+\_\+P} ((char $\ast$))
+\item 
+char $\ast$\hyperlink{pathexp_8c_a602fd211dea0e387ef7094aba84b5468}{quote\+\_\+string\+\_\+for\+\_\+globbing} \hyperlink{pathexp_8h_a7d35fced5f103fe9758f536c2028e2bc}{\+\_\+\+\_\+P} ((const char $\ast$, int))
+\item 
+int \hyperlink{pathexp_8c_abe2d13a0d42719329db5e1cc318615b7}{glob\+\_\+char\+\_\+p} \hyperlink{pathexp_8h_a70c3f7076487640336f5333ea61c9abd}{\+\_\+\+\_\+P} ((const char $\ast$))
+\item 
+void \hyperlink{pathexp_8c_ad863ca19c364a20ca20b1941962d071a}{setup\+\_\+ignore\+\_\+patterns} \hyperlink{pathexp_8h_a88d66fb75210e9afdd4e837a34139d9f}{\+\_\+\+\_\+P} ((struct \hyperlink{structignorevar}{ignorevar} $\ast$))
+\item 
+int \hyperlink{pathexp_8c_a15f2efbaf551dbbcfa5d19e1778c9cd8}{should\+\_\+ignore\+\_\+glob\+\_\+matches} \hyperlink{pathexp_8h_af563be03f7fae4f1b16aaaee3ef60747}{\+\_\+\+\_\+P} ((void))
+\item 
+void \hyperlink{pathexp_8c_ab109632103d691f1ab9266432a2a6fce}{ignore\+\_\+glob\+\_\+matches} \hyperlink{pathexp_8h_a476d90ca6490c135f2f209697cf1d150}{\+\_\+\+\_\+P} ((char $\ast$$\ast$))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{pathexp_8h_a21cf63451602f4c9f018cbf4b77117ba}{noglob\+\_\+dot\+\_\+filenames}
+\item 
+char $\ast$ \hyperlink{pathexp_8h_a7dea1c03d10d87b2ede2cee0fb7a88fa}{glob\+\_\+error\+\_\+return}
+\item 
+int \hyperlink{pathexp_8h_a1dfb1afa76e9fabb7104932d2be0e731}{glob\+\_\+dot\+\_\+filenames}
+\item 
+int \hyperlink{pathexp_8h_afccfda7777ac4797a1cb790c52fe167b}{extended\+\_\+glob}
+\item 
+int \hyperlink{pathexp_8h_ace84a19207593baf38725b44236b2cd6}{glob\+\_\+star}
+\item 
+int \hyperlink{pathexp_8h_aca9257653043e30c345c3931fa66d934}{match\+\_\+ignore\+\_\+case}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{pathexp.\+h@{pathexp.\+h}!F\+N\+M\+A\+T\+C\+H\+\_\+\+E\+X\+T\+F\+L\+AG@{F\+N\+M\+A\+T\+C\+H\+\_\+\+E\+X\+T\+F\+L\+AG}}
+\index{F\+N\+M\+A\+T\+C\+H\+\_\+\+E\+X\+T\+F\+L\+AG@{F\+N\+M\+A\+T\+C\+H\+\_\+\+E\+X\+T\+F\+L\+AG}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{F\+N\+M\+A\+T\+C\+H\+\_\+\+E\+X\+T\+F\+L\+AG}{FNMATCH_EXTFLAG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+N\+M\+A\+T\+C\+H\+\_\+\+E\+X\+T\+F\+L\+AG~0}\hypertarget{pathexp_8h_a7d6f2a3d180a54406fa58c6ca5f8f000}{}\label{pathexp_8h_a7d6f2a3d180a54406fa58c6ca5f8f000}
+\index{pathexp.\+h@{pathexp.\+h}!F\+N\+M\+A\+T\+C\+H\+\_\+\+I\+G\+N\+C\+A\+SE@{F\+N\+M\+A\+T\+C\+H\+\_\+\+I\+G\+N\+C\+A\+SE}}
+\index{F\+N\+M\+A\+T\+C\+H\+\_\+\+I\+G\+N\+C\+A\+SE@{F\+N\+M\+A\+T\+C\+H\+\_\+\+I\+G\+N\+C\+A\+SE}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{F\+N\+M\+A\+T\+C\+H\+\_\+\+I\+G\+N\+C\+A\+SE}{FNMATCH_IGNCASE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+N\+M\+A\+T\+C\+H\+\_\+\+I\+G\+N\+C\+A\+SE~({\bf match\+\_\+ignore\+\_\+case} ? F\+N\+M\+\_\+\+C\+A\+S\+E\+F\+O\+LD \+: 0)}\hypertarget{pathexp_8h_ab553c4638a9992806a52f65d12cd21fc}{}\label{pathexp_8h_ab553c4638a9992806a52f65d12cd21fc}
+\index{pathexp.\+h@{pathexp.\+h}!F\+N\+M\+A\+T\+C\+H\+\_\+\+N\+O\+C\+A\+S\+E\+G\+L\+OB@{F\+N\+M\+A\+T\+C\+H\+\_\+\+N\+O\+C\+A\+S\+E\+G\+L\+OB}}
+\index{F\+N\+M\+A\+T\+C\+H\+\_\+\+N\+O\+C\+A\+S\+E\+G\+L\+OB@{F\+N\+M\+A\+T\+C\+H\+\_\+\+N\+O\+C\+A\+S\+E\+G\+L\+OB}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{F\+N\+M\+A\+T\+C\+H\+\_\+\+N\+O\+C\+A\+S\+E\+G\+L\+OB}{FNMATCH_NOCASEGLOB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+N\+M\+A\+T\+C\+H\+\_\+\+N\+O\+C\+A\+S\+E\+G\+L\+OB~(glob\+\_\+ignore\+\_\+case ? F\+N\+M\+\_\+\+C\+A\+S\+E\+F\+O\+LD \+: 0)}\hypertarget{pathexp_8h_ad8905ec804d653f9f710404249756105}{}\label{pathexp_8h_ad8905ec804d653f9f710404249756105}
+\index{pathexp.\+h@{pathexp.\+h}!G\+L\+O\+B\+\_\+\+F\+A\+I\+L\+ED@{G\+L\+O\+B\+\_\+\+F\+A\+I\+L\+ED}}
+\index{G\+L\+O\+B\+\_\+\+F\+A\+I\+L\+ED@{G\+L\+O\+B\+\_\+\+F\+A\+I\+L\+ED}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{G\+L\+O\+B\+\_\+\+F\+A\+I\+L\+ED}{GLOB_FAILED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+L\+O\+B\+\_\+\+F\+A\+I\+L\+ED(
+\begin{DoxyParamCaption}
+\item[{}]{glist}
+\end{DoxyParamCaption}
+)~(glist) == (char $\ast$$\ast$)\&{\bf glob\+\_\+error\+\_\+return}}\hypertarget{pathexp_8h_ae7383084475ca5f448864a3399c4e1f1}{}\label{pathexp_8h_ae7383084475ca5f448864a3399c4e1f1}
+\index{pathexp.\+h@{pathexp.\+h}!Q\+G\+L\+O\+B\+\_\+\+C\+T\+L\+E\+SC@{Q\+G\+L\+O\+B\+\_\+\+C\+T\+L\+E\+SC}}
+\index{Q\+G\+L\+O\+B\+\_\+\+C\+T\+L\+E\+SC@{Q\+G\+L\+O\+B\+\_\+\+C\+T\+L\+E\+SC}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{Q\+G\+L\+O\+B\+\_\+\+C\+T\+L\+E\+SC}{QGLOB_CTLESC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+G\+L\+O\+B\+\_\+\+C\+T\+L\+E\+SC~0x08	/$\ast$ turn C\+T\+L\+E\+S\+C C\+T\+L\+E\+S\+C into C\+T\+L\+E\+S\+C for B\+R\+Es $\ast$/}\hypertarget{pathexp_8h_af043d715c5ec86336febb162c5881ef9}{}\label{pathexp_8h_af043d715c5ec86336febb162c5881ef9}
+\index{pathexp.\+h@{pathexp.\+h}!Q\+G\+L\+O\+B\+\_\+\+C\+V\+T\+N\+U\+LL@{Q\+G\+L\+O\+B\+\_\+\+C\+V\+T\+N\+U\+LL}}
+\index{Q\+G\+L\+O\+B\+\_\+\+C\+V\+T\+N\+U\+LL@{Q\+G\+L\+O\+B\+\_\+\+C\+V\+T\+N\+U\+LL}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{Q\+G\+L\+O\+B\+\_\+\+C\+V\+T\+N\+U\+LL}{QGLOB_CVTNULL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+G\+L\+O\+B\+\_\+\+C\+V\+T\+N\+U\+LL~0x01	/$\ast$ convert Q\+U\+O\+T\+E\+D\+\_\+\+N\+U\+L\+L strings to \textquotesingle{}\textbackslash{}0\textquotesingle{} $\ast$/}\hypertarget{pathexp_8h_adfd140cabe1a1c0af0dec63f0410f9e7}{}\label{pathexp_8h_adfd140cabe1a1c0af0dec63f0410f9e7}
+\index{pathexp.\+h@{pathexp.\+h}!Q\+G\+L\+O\+B\+\_\+\+D\+E\+Q\+U\+O\+TE@{Q\+G\+L\+O\+B\+\_\+\+D\+E\+Q\+U\+O\+TE}}
+\index{Q\+G\+L\+O\+B\+\_\+\+D\+E\+Q\+U\+O\+TE@{Q\+G\+L\+O\+B\+\_\+\+D\+E\+Q\+U\+O\+TE}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{Q\+G\+L\+O\+B\+\_\+\+D\+E\+Q\+U\+O\+TE}{QGLOB_DEQUOTE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+G\+L\+O\+B\+\_\+\+D\+E\+Q\+U\+O\+TE~0x10	/$\ast$ like dequote\+\_\+string but quote glob chars $\ast$/}\hypertarget{pathexp_8h_a50c83ec3372f54725f83b884b6fd55f4}{}\label{pathexp_8h_a50c83ec3372f54725f83b884b6fd55f4}
+\index{pathexp.\+h@{pathexp.\+h}!Q\+G\+L\+O\+B\+\_\+\+F\+I\+L\+E\+N\+A\+ME@{Q\+G\+L\+O\+B\+\_\+\+F\+I\+L\+E\+N\+A\+ME}}
+\index{Q\+G\+L\+O\+B\+\_\+\+F\+I\+L\+E\+N\+A\+ME@{Q\+G\+L\+O\+B\+\_\+\+F\+I\+L\+E\+N\+A\+ME}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{Q\+G\+L\+O\+B\+\_\+\+F\+I\+L\+E\+N\+A\+ME}{QGLOB_FILENAME}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+G\+L\+O\+B\+\_\+\+F\+I\+L\+E\+N\+A\+ME~0x02	/$\ast$ do correct quoting for matching filenames $\ast$/}\hypertarget{pathexp_8h_a748a78d53ad7fa34e42ad61729f92489}{}\label{pathexp_8h_a748a78d53ad7fa34e42ad61729f92489}
+\index{pathexp.\+h@{pathexp.\+h}!Q\+G\+L\+O\+B\+\_\+\+R\+E\+G\+E\+XP@{Q\+G\+L\+O\+B\+\_\+\+R\+E\+G\+E\+XP}}
+\index{Q\+G\+L\+O\+B\+\_\+\+R\+E\+G\+E\+XP@{Q\+G\+L\+O\+B\+\_\+\+R\+E\+G\+E\+XP}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{Q\+G\+L\+O\+B\+\_\+\+R\+E\+G\+E\+XP}{QGLOB_REGEXP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+G\+L\+O\+B\+\_\+\+R\+E\+G\+E\+XP~0x04	/$\ast$ quote an E\+R\+E for regcomp/regexec $\ast$/}\hypertarget{pathexp_8h_af9ac8a7c7316154b43a7f87cfec26d00}{}\label{pathexp_8h_af9ac8a7c7316154b43a7f87cfec26d00}
+
+
+\subsection{Typedef Documentation}
+\index{pathexp.\+h@{pathexp.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+P}{__P}}]{\setlength{\rightskip}{0pt plus 5cm}typedef int sh\+\_\+iv\+\_\+item\+\_\+func\+\_\+t \+\_\+\+\_\+P((struct {\bf ign} $\ast$))}\hypertarget{pathexp_8h_a79726307ab778d5da816ca84f419b22b}{}\label{pathexp_8h_a79726307ab778d5da816ca84f419b22b}
+
+
+\subsection{Function Documentation}
+\index{pathexp.\+h@{pathexp.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf unquoted\+\_\+glob\+\_\+pattern\+\_\+p} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{pathexp_8h_ab7318f22403b1b9bb66e420e45bdf535}{}\label{pathexp_8h_ab7318f22403b1b9bb66e420e45bdf535}
+\index{pathexp.\+h@{pathexp.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, int))}{__P((const char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf quote\+\_\+string\+\_\+for\+\_\+globbing} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{pathexp_8h_a7d35fced5f103fe9758f536c2028e2bc}{}\label{pathexp_8h_a7d35fced5f103fe9758f536c2028e2bc}
+\index{pathexp.\+h@{pathexp.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$))}{__P((const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf glob\+\_\+char\+\_\+p} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{pathexp_8h_a70c3f7076487640336f5333ea61c9abd}{}\label{pathexp_8h_a70c3f7076487640336f5333ea61c9abd}
+\index{pathexp.\+h@{pathexp.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((struct ignorevar $\ast$))}{__P((struct ignorevar *))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf setup\+\_\+ignore\+\_\+patterns} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(struct {\bf ignorevar} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{pathexp_8h_a88d66fb75210e9afdd4e837a34139d9f}{}\label{pathexp_8h_a88d66fb75210e9afdd4e837a34139d9f}
+\index{pathexp.\+h@{pathexp.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf should\+\_\+ignore\+\_\+glob\+\_\+matches} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{pathexp_8h_af563be03f7fae4f1b16aaaee3ef60747}{}\label{pathexp_8h_af563be03f7fae4f1b16aaaee3ef60747}
+\index{pathexp.\+h@{pathexp.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$$\ast$))}{__P((char **))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf ignore\+\_\+glob\+\_\+matches} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$$\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{pathexp_8h_a476d90ca6490c135f2f209697cf1d150}{}\label{pathexp_8h_a476d90ca6490c135f2f209697cf1d150}
+
+
+\subsection{Variable Documentation}
+\index{pathexp.\+h@{pathexp.\+h}!extended\+\_\+glob@{extended\+\_\+glob}}
+\index{extended\+\_\+glob@{extended\+\_\+glob}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{extended\+\_\+glob}{extended_glob}}]{\setlength{\rightskip}{0pt plus 5cm}int extended\+\_\+glob}\hypertarget{pathexp_8h_afccfda7777ac4797a1cb790c52fe167b}{}\label{pathexp_8h_afccfda7777ac4797a1cb790c52fe167b}
+\index{pathexp.\+h@{pathexp.\+h}!glob\+\_\+dot\+\_\+filenames@{glob\+\_\+dot\+\_\+filenames}}
+\index{glob\+\_\+dot\+\_\+filenames@{glob\+\_\+dot\+\_\+filenames}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{glob\+\_\+dot\+\_\+filenames}{glob_dot_filenames}}]{\setlength{\rightskip}{0pt plus 5cm}int glob\+\_\+dot\+\_\+filenames}\hypertarget{pathexp_8h_a1dfb1afa76e9fabb7104932d2be0e731}{}\label{pathexp_8h_a1dfb1afa76e9fabb7104932d2be0e731}
+\index{pathexp.\+h@{pathexp.\+h}!glob\+\_\+error\+\_\+return@{glob\+\_\+error\+\_\+return}}
+\index{glob\+\_\+error\+\_\+return@{glob\+\_\+error\+\_\+return}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{glob\+\_\+error\+\_\+return}{glob_error_return}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ glob\+\_\+error\+\_\+return}\hypertarget{pathexp_8h_a7dea1c03d10d87b2ede2cee0fb7a88fa}{}\label{pathexp_8h_a7dea1c03d10d87b2ede2cee0fb7a88fa}
+\index{pathexp.\+h@{pathexp.\+h}!glob\+\_\+star@{glob\+\_\+star}}
+\index{glob\+\_\+star@{glob\+\_\+star}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{glob\+\_\+star}{glob_star}}]{\setlength{\rightskip}{0pt plus 5cm}int glob\+\_\+star}\hypertarget{pathexp_8h_ace84a19207593baf38725b44236b2cd6}{}\label{pathexp_8h_ace84a19207593baf38725b44236b2cd6}
+\index{pathexp.\+h@{pathexp.\+h}!match\+\_\+ignore\+\_\+case@{match\+\_\+ignore\+\_\+case}}
+\index{match\+\_\+ignore\+\_\+case@{match\+\_\+ignore\+\_\+case}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{match\+\_\+ignore\+\_\+case}{match_ignore_case}}]{\setlength{\rightskip}{0pt plus 5cm}int match\+\_\+ignore\+\_\+case}\hypertarget{pathexp_8h_aca9257653043e30c345c3931fa66d934}{}\label{pathexp_8h_aca9257653043e30c345c3931fa66d934}
+\index{pathexp.\+h@{pathexp.\+h}!noglob\+\_\+dot\+\_\+filenames@{noglob\+\_\+dot\+\_\+filenames}}
+\index{noglob\+\_\+dot\+\_\+filenames@{noglob\+\_\+dot\+\_\+filenames}!pathexp.\+h@{pathexp.\+h}}
+\subsubsection[{\texorpdfstring{noglob\+\_\+dot\+\_\+filenames}{noglob_dot_filenames}}]{\setlength{\rightskip}{0pt plus 5cm}int noglob\+\_\+dot\+\_\+filenames}\hypertarget{pathexp_8h_a21cf63451602f4c9f018cbf4b77117ba}{}\label{pathexp_8h_a21cf63451602f4c9f018cbf4b77117ba}

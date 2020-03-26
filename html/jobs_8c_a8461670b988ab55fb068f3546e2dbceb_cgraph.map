@@ -1,0 +1,6 @@
+<map id="reset_current" name="reset_current">
+<area shape="rect" id="node2" href="$jobs_8c.html#a65da6d0fa85ebbb91282a70c186172ee" title="job_last_stopped" alt="" coords="311,5,431,32"/>
+<area shape="rect" id="node4" href="$jobs_8c.html#a16770b5754c59e8942a2a4e577d3489b" title="job_last_running" alt="" coords="313,56,429,83"/>
+<area shape="rect" id="node5" href="$jobs_8c.html#a418c0d4ef10f2149706710f16d250882" title="set_current_job" alt="" coords="152,31,263,57"/>
+<area shape="rect" id="node3" href="$jobs_8c.html#a63606668cb8599788b6876b0f8683418" title="most_recent_job_in\l_state" alt="" coords="479,23,613,65"/>
+</map>

@@ -1,0 +1,119 @@
+\hypertarget{bracecomp_8c}{}\section{bracecomp.\+c File Reference}
+\label{bracecomp_8c}\index{bracecomp.\+c@{bracecomp.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shmbutil.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$readline/readline.\+h$>$}\\*
+Include dependency graph for bracecomp.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bracecomp_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{bracecomp_8c_aac165963fc12ab23b440c4307e58aa62}{\+\_\+strcompare} \hyperlink{bracecomp_8c_afdad91b13f5c5a924fbfec6c627c2f05}{\+\_\+\+\_\+P} ((char $\ast$$\ast$, char $\ast$$\ast$))
+\item 
+static int \hyperlink{bracecomp_8c_a17957e753c63b60cf51ea3b4108c1ec7}{string\+\_\+gcd} (char $\ast$s1, char $\ast$s2)
+\item 
+static char $\ast$ \hyperlink{bracecomp_8c_ac65c346e980864c3e8dcf840634bf290}{really\+\_\+munge\+\_\+braces} (char $\ast$$\ast$\hyperlink{structarray}{array}, int real\+\_\+start, int real\+\_\+end, int gcd\+\_\+zero)
+\item 
+static int \hyperlink{bracecomp_8c_aac165963fc12ab23b440c4307e58aa62}{\+\_\+strcompare} (char $\ast$$\ast$s1, char $\ast$$\ast$s2)
+\item 
+static int \hyperlink{bracecomp_8c_af41da27d543ebdc99d2c392885e1f30d}{hack\+\_\+braces\+\_\+completion} (char $\ast$$\ast$names)
+\item 
+int \hyperlink{bracecomp_8c_ae07b84e958ed6000c04692cafaec5111}{bash\+\_\+brace\+\_\+completion} (int count, int ignore)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{bracecomp.\+c@{bracecomp.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bracecomp.\+c@{bracecomp.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$$\ast$, char $\ast$$\ast$))}{__P((char **, char **))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf \+\_\+strcompare} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$$\ast$, char $\ast$$\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bracecomp_8c_afdad91b13f5c5a924fbfec6c627c2f05}{}\label{bracecomp_8c_afdad91b13f5c5a924fbfec6c627c2f05}
+\index{bracecomp.\+c@{bracecomp.\+c}!\+\_\+strcompare@{\+\_\+strcompare}}
+\index{\+\_\+strcompare@{\+\_\+strcompare}!bracecomp.\+c@{bracecomp.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+strcompare(char $\ast$$\ast$s1, char $\ast$$\ast$s2)}{_strcompare(char **s1, char **s2)}}]{\setlength{\rightskip}{0pt plus 5cm}static int \+\_\+strcompare (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{s1, }
+\item[{char $\ast$$\ast$}]{s2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bracecomp_8c_aac165963fc12ab23b440c4307e58aa62}{}\label{bracecomp_8c_aac165963fc12ab23b440c4307e58aa62}
+\index{bracecomp.\+c@{bracecomp.\+c}!bash\+\_\+brace\+\_\+completion@{bash\+\_\+brace\+\_\+completion}}
+\index{bash\+\_\+brace\+\_\+completion@{bash\+\_\+brace\+\_\+completion}!bracecomp.\+c@{bracecomp.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+brace\+\_\+completion(int count, int ignore)}{bash_brace_completion(int count, int ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}int bash\+\_\+brace\+\_\+completion (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{ignore}
+\end{DoxyParamCaption}
+)}\hypertarget{bracecomp_8c_ae07b84e958ed6000c04692cafaec5111}{}\label{bracecomp_8c_ae07b84e958ed6000c04692cafaec5111}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bracecomp_8c_ae07b84e958ed6000c04692cafaec5111_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bracecomp.\+c@{bracecomp.\+c}!hack\+\_\+braces\+\_\+completion@{hack\+\_\+braces\+\_\+completion}}
+\index{hack\+\_\+braces\+\_\+completion@{hack\+\_\+braces\+\_\+completion}!bracecomp.\+c@{bracecomp.\+c}}
+\subsubsection[{\texorpdfstring{hack\+\_\+braces\+\_\+completion(char $\ast$$\ast$names)}{hack_braces_completion(char **names)}}]{\setlength{\rightskip}{0pt plus 5cm}static int hack\+\_\+braces\+\_\+completion (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{names}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bracecomp_8c_af41da27d543ebdc99d2c392885e1f30d}{}\label{bracecomp_8c_af41da27d543ebdc99d2c392885e1f30d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bracecomp_8c_af41da27d543ebdc99d2c392885e1f30d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bracecomp.\+c@{bracecomp.\+c}!really\+\_\+munge\+\_\+braces@{really\+\_\+munge\+\_\+braces}}
+\index{really\+\_\+munge\+\_\+braces@{really\+\_\+munge\+\_\+braces}!bracecomp.\+c@{bracecomp.\+c}}
+\subsubsection[{\texorpdfstring{really\+\_\+munge\+\_\+braces(char $\ast$$\ast$array, int real\+\_\+start, int real\+\_\+end, int gcd\+\_\+zero)}{really_munge_braces(char **array, int real_start, int real_end, int gcd_zero)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ really\+\_\+munge\+\_\+braces (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{array, }
+\item[{int}]{real\+\_\+start, }
+\item[{int}]{real\+\_\+end, }
+\item[{int}]{gcd\+\_\+zero}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bracecomp_8c_ac65c346e980864c3e8dcf840634bf290}{}\label{bracecomp_8c_ac65c346e980864c3e8dcf840634bf290}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bracecomp_8c_ac65c346e980864c3e8dcf840634bf290_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bracecomp.\+c@{bracecomp.\+c}!string\+\_\+gcd@{string\+\_\+gcd}}
+\index{string\+\_\+gcd@{string\+\_\+gcd}!bracecomp.\+c@{bracecomp.\+c}}
+\subsubsection[{\texorpdfstring{string\+\_\+gcd(char $\ast$s1, char $\ast$s2)}{string_gcd(char *s1, char *s2)}}]{\setlength{\rightskip}{0pt plus 5cm}static int string\+\_\+gcd (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s1, }
+\item[{char $\ast$}]{s2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bracecomp_8c_a17957e753c63b60cf51ea3b4108c1ec7}{}\label{bracecomp_8c_a17957e753c63b60cf51ea3b4108c1ec7}

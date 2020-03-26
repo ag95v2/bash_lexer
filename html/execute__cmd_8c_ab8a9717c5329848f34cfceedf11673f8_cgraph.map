@@ -1,0 +1,5 @@
+<map id="coproc_pidchk" name="coproc_pidchk">
+<area shape="rect" id="node2" href="$execute__cmd_8c.html#a90d8701a279cacae09a0dc252736f04b" title="cpl_search" alt="" coords="331,5,416,32"/>
+<area shape="rect" id="node3" href="$execute__cmd_8c.html#a978cfd1b98650b8b05983d4aa93ecada" title="getcoprocbypid" alt="" coords="166,31,277,57"/>
+<area shape="rect" id="node4" href="$execute__cmd_8c.html#ad0b5e2496aa2e2aca7a180de203f7cfd" title="coproc_setstatus" alt="" coords="160,81,283,108"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="brace_expand_word_list" name="brace_expand_word_list">
+<area shape="rect" id="node2" href="$make__cmd_8c.html#a6a8b36e3c23a7324d5f9f3ed305a8bca" title="alloc_word_desc" alt="" coords="219,5,337,32"/>
+<area shape="rect" id="node3" href="$make__cmd_8c.html#a4136a0e5c54413cb4890c5070a71c31a" title="make_word_flags" alt="" coords="216,56,340,83"/>
+<area shape="rect" id="node4" href="$make__cmd_8c.html#aa707cc6dc36f4646bd1b0c25d3082d9c" title="make_word_list" alt="" coords="221,107,335,133"/>
+<area shape="rect" id="node5" href="$dispose__cmd_8c.html#a37005e70ed048a2e49b0b14112101f2f" title="dispose_words" alt="" coords="223,157,333,184"/>
+<area shape="rect" id="node6" href="$dispose__cmd_8c.html#ae50614881b216f9cc6aad5008c767a8a" title="dispose_word" alt="" coords="388,157,491,184"/>
+</map>

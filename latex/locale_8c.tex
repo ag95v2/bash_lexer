@@ -1,0 +1,352 @@
+\hypertarget{locale_8c}{}\section{locale.\+c File Reference}
+\label{locale_8c}\index{locale.\+c@{locale.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$langinfo.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}chartypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}input.\+h\char`\"{}}\\*
+Include dependency graph for locale.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{locale_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{locale_8c_ad79156adc59a63ee4ef9aa7d300408a8}{reset\+\_\+locale\+\_\+vars} \hyperlink{locale_8c_a89baedcb8d9fab5c7e50ba9cc1735d57}{\+\_\+\+\_\+P} ((void))
+\item 
+static int \hyperlink{locale_8c_af25cfdb3b1d335e22d71996ebf0b4580}{locale\+\_\+isutf8} \hyperlink{locale_8c_acf9d629f05a4e224dcafed875a2f7c91}{\+\_\+\+\_\+P} ((char $\ast$))
+\item 
+void \hyperlink{locale_8c_aabdd0062b205c85d50bdbf48851bf1b5}{set\+\_\+default\+\_\+locale} ()
+\item 
+void \hyperlink{locale_8c_a59bd1c44e647fcd8ae9e1c93a0a87fed}{set\+\_\+default\+\_\+locale\+\_\+vars} ()
+\item 
+int \hyperlink{locale_8c_a9ebf630b262c54e3b7e2d859f1362701}{set\+\_\+locale\+\_\+var} (char $\ast$var, char $\ast$value)
+\item 
+int \hyperlink{locale_8c_af7e04d9acf2899924ce6f963f9202d30}{set\+\_\+lang} (char $\ast$var, char $\ast$value)
+\item 
+void \hyperlink{locale_8c_a4123c91bb58a2c2bf4616021eaa6c8ee}{set\+\_\+default\+\_\+lang} ()
+\item 
+char $\ast$ \hyperlink{locale_8c_a89c820445792027a21a26e1582c274f8}{get\+\_\+locale\+\_\+var} (char $\ast$var)
+\item 
+static int \hyperlink{locale_8c_ad79156adc59a63ee4ef9aa7d300408a8}{reset\+\_\+locale\+\_\+vars} ()
+\item 
+char $\ast$ \hyperlink{locale_8c_a78e72c61ad6f2f08a2af1dab4882daa9}{localetrans} (char $\ast$string, int len, int $\ast$lenp)
+\item 
+char $\ast$ \hyperlink{locale_8c_aef5321d629f6f3019521dffbfeea407d}{mk\+\_\+msgstr} (char $\ast$string, int $\ast$foundnlp)
+\item 
+char $\ast$ \hyperlink{locale_8c_af143313ea7cedb8c8614dad238118be0}{localeexpand} (char $\ast$string, int start, int end, int lineno, int $\ast$lenp)
+\item 
+static void \hyperlink{locale_8c_a1437c5fa5bae8edb92e9e6c0eaded93a}{locale\+\_\+setblanks} ()
+\item 
+static int \hyperlink{locale_8c_af25cfdb3b1d335e22d71996ebf0b4580}{locale\+\_\+isutf8} (char $\ast$lspec)
+\item 
+int \hyperlink{locale_8c_a12cc6c07091a5a05045c9faf08c257ce}{locale\+\_\+decpoint} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{locale_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno}
+\item 
+int \hyperlink{locale_8c_a06dec6a71f242f615a934c6860419da9}{locale\+\_\+utf8locale}
+\item 
+int \hyperlink{locale_8c_a459ce17e071bd8965a1ec2fde4b5302b}{locale\+\_\+mb\+\_\+cur\+\_\+max}
+\item 
+int \hyperlink{locale_8c_afba85cdf06576288e903d3937c357fe7}{locale\+\_\+shiftstates}
+\item 
+int \hyperlink{locale_8c_ad1afa83036a310a3c29f4db3dfcf9be4}{dump\+\_\+translatable\+\_\+strings}
+\item 
+int \hyperlink{locale_8c_a5fed77c6fd3216357144a89741d9a4f2}{dump\+\_\+po\+\_\+strings}
+\item 
+static char $\ast$ \hyperlink{locale_8c_a9b83d3a1c5b4d7dc5a7b180c3f3db9da}{default\+\_\+locale}
+\item 
+static char $\ast$ \hyperlink{locale_8c_a291d42a74162940729cf1bfb4909cde6}{default\+\_\+domain}
+\item 
+static char $\ast$ \hyperlink{locale_8c_a8aee02f26ebc68c6e2eaeb4fff607723}{default\+\_\+dir}
+\item 
+static char $\ast$ \hyperlink{locale_8c_afed6d14c4796549fffca55e42bbf0d45}{lc\+\_\+all}
+\item 
+static char $\ast$ \hyperlink{locale_8c_ad3e9c4dede711fb23c9f332b56669a70}{lang}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{locale.\+c@{locale.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf reset\+\_\+locale\+\_\+vars} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{locale_8c_a89baedcb8d9fab5c7e50ba9cc1735d57}{}\label{locale_8c_a89baedcb8d9fab5c7e50ba9cc1735d57}
+\index{locale.\+c@{locale.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf locale\+\_\+isutf8} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{locale_8c_acf9d629f05a4e224dcafed875a2f7c91}{}\label{locale_8c_acf9d629f05a4e224dcafed875a2f7c91}
+\index{locale.\+c@{locale.\+c}!get\+\_\+locale\+\_\+var@{get\+\_\+locale\+\_\+var}}
+\index{get\+\_\+locale\+\_\+var@{get\+\_\+locale\+\_\+var}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+locale\+\_\+var(char $\ast$var)}{get_locale_var(char *var)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\+\_\+locale\+\_\+var (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{var}
+\end{DoxyParamCaption}
+)}\hypertarget{locale_8c_a89c820445792027a21a26e1582c274f8}{}\label{locale_8c_a89c820445792027a21a26e1582c274f8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{locale_8c_a89c820445792027a21a26e1582c274f8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{locale.\+c@{locale.\+c}!locale\+\_\+decpoint@{locale\+\_\+decpoint}}
+\index{locale\+\_\+decpoint@{locale\+\_\+decpoint}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{locale\+\_\+decpoint()}{locale_decpoint()}}]{\setlength{\rightskip}{0pt plus 5cm}int locale\+\_\+decpoint (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{locale_8c_a12cc6c07091a5a05045c9faf08c257ce}{}\label{locale_8c_a12cc6c07091a5a05045c9faf08c257ce}
+\index{locale.\+c@{locale.\+c}!locale\+\_\+isutf8@{locale\+\_\+isutf8}}
+\index{locale\+\_\+isutf8@{locale\+\_\+isutf8}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{locale\+\_\+isutf8(char $\ast$lspec)}{locale_isutf8(char *lspec)}}]{\setlength{\rightskip}{0pt plus 5cm}static int locale\+\_\+isutf8 (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{lspec}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{locale_8c_af25cfdb3b1d335e22d71996ebf0b4580}{}\label{locale_8c_af25cfdb3b1d335e22d71996ebf0b4580}
+\index{locale.\+c@{locale.\+c}!locale\+\_\+setblanks@{locale\+\_\+setblanks}}
+\index{locale\+\_\+setblanks@{locale\+\_\+setblanks}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{locale\+\_\+setblanks()}{locale_setblanks()}}]{\setlength{\rightskip}{0pt plus 5cm}static void locale\+\_\+setblanks (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{locale_8c_a1437c5fa5bae8edb92e9e6c0eaded93a}{}\label{locale_8c_a1437c5fa5bae8edb92e9e6c0eaded93a}
+\index{locale.\+c@{locale.\+c}!localeexpand@{localeexpand}}
+\index{localeexpand@{localeexpand}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{localeexpand(char $\ast$string, int start, int end, int lineno, int $\ast$lenp)}{localeexpand(char *string, int start, int end, int lineno, int *lenp)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ localeexpand (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{int}]{start, }
+\item[{int}]{end, }
+\item[{int}]{lineno, }
+\item[{int $\ast$}]{lenp}
+\end{DoxyParamCaption}
+)}\hypertarget{locale_8c_af143313ea7cedb8c8614dad238118be0}{}\label{locale_8c_af143313ea7cedb8c8614dad238118be0}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{locale_8c_af143313ea7cedb8c8614dad238118be0_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{locale.\+c@{locale.\+c}!localetrans@{localetrans}}
+\index{localetrans@{localetrans}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{localetrans(char $\ast$string, int len, int $\ast$lenp)}{localetrans(char *string, int len, int *lenp)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ localetrans (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{int}]{len, }
+\item[{int $\ast$}]{lenp}
+\end{DoxyParamCaption}
+)}\hypertarget{locale_8c_a78e72c61ad6f2f08a2af1dab4882daa9}{}\label{locale_8c_a78e72c61ad6f2f08a2af1dab4882daa9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{locale_8c_a78e72c61ad6f2f08a2af1dab4882daa9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{locale.\+c@{locale.\+c}!mk\+\_\+msgstr@{mk\+\_\+msgstr}}
+\index{mk\+\_\+msgstr@{mk\+\_\+msgstr}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{mk\+\_\+msgstr(char $\ast$string, int $\ast$foundnlp)}{mk_msgstr(char *string, int *foundnlp)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mk\+\_\+msgstr (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{int $\ast$}]{foundnlp}
+\end{DoxyParamCaption}
+)}\hypertarget{locale_8c_aef5321d629f6f3019521dffbfeea407d}{}\label{locale_8c_aef5321d629f6f3019521dffbfeea407d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{locale_8c_aef5321d629f6f3019521dffbfeea407d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{locale.\+c@{locale.\+c}!reset\+\_\+locale\+\_\+vars@{reset\+\_\+locale\+\_\+vars}}
+\index{reset\+\_\+locale\+\_\+vars@{reset\+\_\+locale\+\_\+vars}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{reset\+\_\+locale\+\_\+vars()}{reset_locale_vars()}}]{\setlength{\rightskip}{0pt plus 5cm}static int reset\+\_\+locale\+\_\+vars (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{locale_8c_ad79156adc59a63ee4ef9aa7d300408a8}{}\label{locale_8c_ad79156adc59a63ee4ef9aa7d300408a8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{locale_8c_ad79156adc59a63ee4ef9aa7d300408a8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{locale.\+c@{locale.\+c}!set\+\_\+default\+\_\+lang@{set\+\_\+default\+\_\+lang}}
+\index{set\+\_\+default\+\_\+lang@{set\+\_\+default\+\_\+lang}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+default\+\_\+lang()}{set_default_lang()}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+default\+\_\+lang (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{locale_8c_a4123c91bb58a2c2bf4616021eaa6c8ee}{}\label{locale_8c_a4123c91bb58a2c2bf4616021eaa6c8ee}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{locale_8c_a4123c91bb58a2c2bf4616021eaa6c8ee_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{locale.\+c@{locale.\+c}!set\+\_\+default\+\_\+locale@{set\+\_\+default\+\_\+locale}}
+\index{set\+\_\+default\+\_\+locale@{set\+\_\+default\+\_\+locale}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+default\+\_\+locale()}{set_default_locale()}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+default\+\_\+locale (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{locale_8c_aabdd0062b205c85d50bdbf48851bf1b5}{}\label{locale_8c_aabdd0062b205c85d50bdbf48851bf1b5}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{locale_8c_aabdd0062b205c85d50bdbf48851bf1b5_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{locale.\+c@{locale.\+c}!set\+\_\+default\+\_\+locale\+\_\+vars@{set\+\_\+default\+\_\+locale\+\_\+vars}}
+\index{set\+\_\+default\+\_\+locale\+\_\+vars@{set\+\_\+default\+\_\+locale\+\_\+vars}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+default\+\_\+locale\+\_\+vars()}{set_default_locale_vars()}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+default\+\_\+locale\+\_\+vars (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{locale_8c_a59bd1c44e647fcd8ae9e1c93a0a87fed}{}\label{locale_8c_a59bd1c44e647fcd8ae9e1c93a0a87fed}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{locale_8c_a59bd1c44e647fcd8ae9e1c93a0a87fed_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{locale.\+c@{locale.\+c}!set\+\_\+lang@{set\+\_\+lang}}
+\index{set\+\_\+lang@{set\+\_\+lang}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+lang(char $\ast$var, char $\ast$value)}{set_lang(char *var, char *value)}}]{\setlength{\rightskip}{0pt plus 5cm}int set\+\_\+lang (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{var, }
+\item[{char $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{locale_8c_af7e04d9acf2899924ce6f963f9202d30}{}\label{locale_8c_af7e04d9acf2899924ce6f963f9202d30}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{locale_8c_af7e04d9acf2899924ce6f963f9202d30_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{locale.\+c@{locale.\+c}!set\+\_\+locale\+\_\+var@{set\+\_\+locale\+\_\+var}}
+\index{set\+\_\+locale\+\_\+var@{set\+\_\+locale\+\_\+var}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+locale\+\_\+var(char $\ast$var, char $\ast$value)}{set_locale_var(char *var, char *value)}}]{\setlength{\rightskip}{0pt plus 5cm}int set\+\_\+locale\+\_\+var (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{var, }
+\item[{char $\ast$}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{locale_8c_a9ebf630b262c54e3b7e2d859f1362701}{}\label{locale_8c_a9ebf630b262c54e3b7e2d859f1362701}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{locale_8c_a9ebf630b262c54e3b7e2d859f1362701_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{locale.\+c@{locale.\+c}!default\+\_\+dir@{default\+\_\+dir}}
+\index{default\+\_\+dir@{default\+\_\+dir}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{default\+\_\+dir}{default_dir}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ default\+\_\+dir\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{locale_8c_a8aee02f26ebc68c6e2eaeb4fff607723}{}\label{locale_8c_a8aee02f26ebc68c6e2eaeb4fff607723}
+\index{locale.\+c@{locale.\+c}!default\+\_\+domain@{default\+\_\+domain}}
+\index{default\+\_\+domain@{default\+\_\+domain}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{default\+\_\+domain}{default_domain}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ default\+\_\+domain\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{locale_8c_a291d42a74162940729cf1bfb4909cde6}{}\label{locale_8c_a291d42a74162940729cf1bfb4909cde6}
+\index{locale.\+c@{locale.\+c}!default\+\_\+locale@{default\+\_\+locale}}
+\index{default\+\_\+locale@{default\+\_\+locale}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{default\+\_\+locale}{default_locale}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ default\+\_\+locale\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{locale_8c_a9b83d3a1c5b4d7dc5a7b180c3f3db9da}{}\label{locale_8c_a9b83d3a1c5b4d7dc5a7b180c3f3db9da}
+\index{locale.\+c@{locale.\+c}!dump\+\_\+po\+\_\+strings@{dump\+\_\+po\+\_\+strings}}
+\index{dump\+\_\+po\+\_\+strings@{dump\+\_\+po\+\_\+strings}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{dump\+\_\+po\+\_\+strings}{dump_po_strings}}]{\setlength{\rightskip}{0pt plus 5cm}int dump\+\_\+po\+\_\+strings}\hypertarget{locale_8c_a5fed77c6fd3216357144a89741d9a4f2}{}\label{locale_8c_a5fed77c6fd3216357144a89741d9a4f2}
+\index{locale.\+c@{locale.\+c}!dump\+\_\+translatable\+\_\+strings@{dump\+\_\+translatable\+\_\+strings}}
+\index{dump\+\_\+translatable\+\_\+strings@{dump\+\_\+translatable\+\_\+strings}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{dump\+\_\+translatable\+\_\+strings}{dump_translatable_strings}}]{\setlength{\rightskip}{0pt plus 5cm}int dump\+\_\+translatable\+\_\+strings}\hypertarget{locale_8c_ad1afa83036a310a3c29f4db3dfcf9be4}{}\label{locale_8c_ad1afa83036a310a3c29f4db3dfcf9be4}
+\index{locale.\+c@{locale.\+c}!errno@{errno}}
+\index{errno@{errno}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{errno}{errno}}]{\setlength{\rightskip}{0pt plus 5cm}int errno}\hypertarget{locale_8c_ad65a8842cc674e3ddf69355898c0ecbf}{}\label{locale_8c_ad65a8842cc674e3ddf69355898c0ecbf}
+\index{locale.\+c@{locale.\+c}!lang@{lang}}
+\index{lang@{lang}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{lang}{lang}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ lang\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{locale_8c_ad3e9c4dede711fb23c9f332b56669a70}{}\label{locale_8c_ad3e9c4dede711fb23c9f332b56669a70}
+\index{locale.\+c@{locale.\+c}!lc\+\_\+all@{lc\+\_\+all}}
+\index{lc\+\_\+all@{lc\+\_\+all}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{lc\+\_\+all}{lc_all}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ lc\+\_\+all\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{locale_8c_afed6d14c4796549fffca55e42bbf0d45}{}\label{locale_8c_afed6d14c4796549fffca55e42bbf0d45}
+\index{locale.\+c@{locale.\+c}!locale\+\_\+mb\+\_\+cur\+\_\+max@{locale\+\_\+mb\+\_\+cur\+\_\+max}}
+\index{locale\+\_\+mb\+\_\+cur\+\_\+max@{locale\+\_\+mb\+\_\+cur\+\_\+max}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{locale\+\_\+mb\+\_\+cur\+\_\+max}{locale_mb_cur_max}}]{\setlength{\rightskip}{0pt plus 5cm}int locale\+\_\+mb\+\_\+cur\+\_\+max}\hypertarget{locale_8c_a459ce17e071bd8965a1ec2fde4b5302b}{}\label{locale_8c_a459ce17e071bd8965a1ec2fde4b5302b}
+\index{locale.\+c@{locale.\+c}!locale\+\_\+shiftstates@{locale\+\_\+shiftstates}}
+\index{locale\+\_\+shiftstates@{locale\+\_\+shiftstates}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{locale\+\_\+shiftstates}{locale_shiftstates}}]{\setlength{\rightskip}{0pt plus 5cm}int locale\+\_\+shiftstates}\hypertarget{locale_8c_afba85cdf06576288e903d3937c357fe7}{}\label{locale_8c_afba85cdf06576288e903d3937c357fe7}
+\index{locale.\+c@{locale.\+c}!locale\+\_\+utf8locale@{locale\+\_\+utf8locale}}
+\index{locale\+\_\+utf8locale@{locale\+\_\+utf8locale}!locale.\+c@{locale.\+c}}
+\subsubsection[{\texorpdfstring{locale\+\_\+utf8locale}{locale_utf8locale}}]{\setlength{\rightskip}{0pt plus 5cm}int locale\+\_\+utf8locale}\hypertarget{locale_8c_a06dec6a71f242f615a934c6860419da9}{}\label{locale_8c_a06dec6a71f242f615a934c6860419da9}

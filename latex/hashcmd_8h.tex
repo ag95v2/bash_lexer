@@ -1,0 +1,110 @@
+\hypertarget{hashcmd_8h}{}\section{hashcmd.\+h File Reference}
+\label{hashcmd_8h}\index{hashcmd.\+h@{hashcmd.\+h}}
+{\ttfamily \#include \char`\"{}stdc.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}hashlib.\+h\char`\"{}}\\*
+Include dependency graph for hashcmd.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{hashcmd_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hashcmd_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__pathdata}{\+\_\+pathdata}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{hashcmd_8h_a118b0798fb7d995f7deb846455e0cf50}{F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS}~64	/$\ast$ must be power of two $\ast$/
+\item 
+\#define \hyperlink{hashcmd_8h_a4e2c03afe3b6c73fe6c5231cf6bd7c83}{H\+A\+S\+H\+\_\+\+R\+E\+L\+P\+A\+TH}~0x01	/$\ast$ this filename is a relative pathname. $\ast$/
+\item 
+\#define \hyperlink{hashcmd_8h_a1ec1d7ffa6b657425d656b37bc5da9c0}{H\+A\+S\+H\+\_\+\+C\+H\+K\+D\+OT}~0x02	/$\ast$ check `.\textquotesingle{} since it was earlier in \$\+P\+A\+T\+H $\ast$/
+\item 
+\#define \hyperlink{hashcmd_8h_ac8c4b12f7a18f36b7e5ee08074b38874}{pathdata}(x)~((\hyperlink{hashcmd_8h_af9a47dd9a650d1657e636bc6b44f51e9}{P\+A\+T\+H\+\_\+\+D\+A\+TA} $\ast$)(x)-\/$>$data)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__pathdata}{\+\_\+pathdata} \hyperlink{hashcmd_8h_af9a47dd9a650d1657e636bc6b44f51e9}{P\+A\+T\+H\+\_\+\+D\+A\+TA}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{hashcmd_8c_affca02a547f755d4217de8d22b8e8a71}{phash\+\_\+create} \hyperlink{hashcmd_8h_aebd96c4de518689d071fdfd26bb44a71}{\+\_\+\+\_\+P} ((void))
+\item 
+void \hyperlink{hashcmd_8c_a6ba6b8ff1c0dad139469970b9d167265}{phash\+\_\+insert} \hyperlink{hashcmd_8h_aa20c27820f129b6c3e234bae555cf435}{\+\_\+\+\_\+P} ((char $\ast$, char $\ast$, int, int))
+\item 
+int \hyperlink{hashcmd_8c_a11ec0f689502fc91fd344a7ca9b06f5b}{phash\+\_\+remove} \hyperlink{hashcmd_8h_a89d8c4d7fac4c4de70ff86cb19499924}{\+\_\+\+\_\+P} ((const char $\ast$))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{hashlib_8h_a8284f9978df160609365484b829527e6}{H\+A\+S\+H\+\_\+\+T\+A\+B\+LE} $\ast$ \hyperlink{hashcmd_8h_a97748f71bf021ed351004eb06a3d7a73}{hashed\+\_\+filenames}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{hashcmd.\+h@{hashcmd.\+h}!F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS@{F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS}}
+\index{F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS@{F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS}!hashcmd.\+h@{hashcmd.\+h}}
+\subsubsection[{\texorpdfstring{F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS}{FILENAME_HASH_BUCKETS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS~64	/$\ast$ must be power of two $\ast$/}\hypertarget{hashcmd_8h_a118b0798fb7d995f7deb846455e0cf50}{}\label{hashcmd_8h_a118b0798fb7d995f7deb846455e0cf50}
+\index{hashcmd.\+h@{hashcmd.\+h}!H\+A\+S\+H\+\_\+\+C\+H\+K\+D\+OT@{H\+A\+S\+H\+\_\+\+C\+H\+K\+D\+OT}}
+\index{H\+A\+S\+H\+\_\+\+C\+H\+K\+D\+OT@{H\+A\+S\+H\+\_\+\+C\+H\+K\+D\+OT}!hashcmd.\+h@{hashcmd.\+h}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+H\+\_\+\+C\+H\+K\+D\+OT}{HASH_CHKDOT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+H\+\_\+\+C\+H\+K\+D\+OT~0x02	/$\ast$ check `.\textquotesingle{} since it was earlier in \$\+P\+A\+T\+H $\ast$/}\hypertarget{hashcmd_8h_a1ec1d7ffa6b657425d656b37bc5da9c0}{}\label{hashcmd_8h_a1ec1d7ffa6b657425d656b37bc5da9c0}
+\index{hashcmd.\+h@{hashcmd.\+h}!H\+A\+S\+H\+\_\+\+R\+E\+L\+P\+A\+TH@{H\+A\+S\+H\+\_\+\+R\+E\+L\+P\+A\+TH}}
+\index{H\+A\+S\+H\+\_\+\+R\+E\+L\+P\+A\+TH@{H\+A\+S\+H\+\_\+\+R\+E\+L\+P\+A\+TH}!hashcmd.\+h@{hashcmd.\+h}}
+\subsubsection[{\texorpdfstring{H\+A\+S\+H\+\_\+\+R\+E\+L\+P\+A\+TH}{HASH_RELPATH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+A\+S\+H\+\_\+\+R\+E\+L\+P\+A\+TH~0x01	/$\ast$ this filename is a relative pathname. $\ast$/}\hypertarget{hashcmd_8h_a4e2c03afe3b6c73fe6c5231cf6bd7c83}{}\label{hashcmd_8h_a4e2c03afe3b6c73fe6c5231cf6bd7c83}
+\index{hashcmd.\+h@{hashcmd.\+h}!pathdata@{pathdata}}
+\index{pathdata@{pathdata}!hashcmd.\+h@{hashcmd.\+h}}
+\subsubsection[{\texorpdfstring{pathdata}{pathdata}}]{\setlength{\rightskip}{0pt plus 5cm}\#define pathdata(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~(({\bf P\+A\+T\+H\+\_\+\+D\+A\+TA} $\ast$)(x)-\/$>$data)}\hypertarget{hashcmd_8h_ac8c4b12f7a18f36b7e5ee08074b38874}{}\label{hashcmd_8h_ac8c4b12f7a18f36b7e5ee08074b38874}
+
+
+\subsection{Typedef Documentation}
+\index{hashcmd.\+h@{hashcmd.\+h}!P\+A\+T\+H\+\_\+\+D\+A\+TA@{P\+A\+T\+H\+\_\+\+D\+A\+TA}}
+\index{P\+A\+T\+H\+\_\+\+D\+A\+TA@{P\+A\+T\+H\+\_\+\+D\+A\+TA}!hashcmd.\+h@{hashcmd.\+h}}
+\subsubsection[{\texorpdfstring{P\+A\+T\+H\+\_\+\+D\+A\+TA}{PATH_DATA}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+pathdata}  {\bf P\+A\+T\+H\+\_\+\+D\+A\+TA}}\hypertarget{hashcmd_8h_af9a47dd9a650d1657e636bc6b44f51e9}{}\label{hashcmd_8h_af9a47dd9a650d1657e636bc6b44f51e9}
+
+
+\subsection{Function Documentation}
+\index{hashcmd.\+h@{hashcmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!hashcmd.\+h@{hashcmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf phash\+\_\+create} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{hashcmd_8h_aebd96c4de518689d071fdfd26bb44a71}{}\label{hashcmd_8h_aebd96c4de518689d071fdfd26bb44a71}
+\index{hashcmd.\+h@{hashcmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!hashcmd.\+h@{hashcmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, char $\ast$, int, int))}{__P((char *, char *, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf phash\+\_\+insert} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, char $\ast$, int, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{hashcmd_8h_aa20c27820f129b6c3e234bae555cf435}{}\label{hashcmd_8h_aa20c27820f129b6c3e234bae555cf435}
+\index{hashcmd.\+h@{hashcmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!hashcmd.\+h@{hashcmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$))}{__P((const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf phash\+\_\+remove} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{hashcmd_8h_a89d8c4d7fac4c4de70ff86cb19499924}{}\label{hashcmd_8h_a89d8c4d7fac4c4de70ff86cb19499924}
+
+
+\subsection{Variable Documentation}
+\index{hashcmd.\+h@{hashcmd.\+h}!hashed\+\_\+filenames@{hashed\+\_\+filenames}}
+\index{hashed\+\_\+filenames@{hashed\+\_\+filenames}!hashcmd.\+h@{hashcmd.\+h}}
+\subsubsection[{\texorpdfstring{hashed\+\_\+filenames}{hashed_filenames}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf H\+A\+S\+H\+\_\+\+T\+A\+B\+LE}$\ast$ hashed\+\_\+filenames}\hypertarget{hashcmd_8h_a97748f71bf021ed351004eb06a3d7a73}{}\label{hashcmd_8h_a97748f71bf021ed351004eb06a3d7a73}

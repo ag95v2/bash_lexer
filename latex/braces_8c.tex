@@ -1,0 +1,244 @@
+\hypertarget{braces_8c}{}\section{braces.\+c File Reference}
+\label{braces_8c}\index{braces.\+c@{braces.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}typemax.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}general.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shmbutil.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}chartypes.\+h\char`\"{}}\\*
+Include dependency graph for braces.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{braces_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{braces_8c_ab9313e52cefbd697271069d8a96d4158}{brace\+\_\+whitespace}(c)~(!(c) $\vert$$\vert$ (c) == \textquotesingle{} \textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\textbackslash{}t\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\textbackslash{}n\textquotesingle{})
+\item 
+\#define \hyperlink{braces_8c_a8b58f040eca80f30bfc6e554fd798223}{B\+R\+A\+C\+E\+\_\+\+S\+E\+Q\+\_\+\+S\+P\+E\+C\+I\+F\+I\+ER}~\char`\"{}..\char`\"{}
+\item 
+\#define \hyperlink{braces_8c_a485a5fb6e4ce93c17472aa0888c4d23a}{S\+T\+\_\+\+B\+AD}~0
+\item 
+\#define \hyperlink{braces_8c_a68bb850cf9dd4261573049c61c7316f8}{S\+T\+\_\+\+I\+NT}~1
+\item 
+\#define \hyperlink{braces_8c_a400ace30313dfbb04146d96f1ddf5191}{S\+T\+\_\+\+C\+H\+AR}~2
+\item 
+\#define \hyperlink{braces_8c_aebca3365c0648cac1f24175e326808fd}{S\+T\+\_\+\+Z\+I\+NT}~3
+\item 
+\#define \hyperlink{braces_8c_ae1a35ff08bae57ad1b3b00bb2bf1fcae}{sh\+\_\+imaxabs}(x)~(((x) $>$= 0) ? (x) \+: -\/(x))
+\item 
+\#define \hyperlink{braces_8c_a265327f58022648de0c808fbaab775ec}{A\+D\+D\+O\+V\+E\+R\+F\+L\+OW}(a,  b,  minv,  maxv)
+\item 
+\#define \hyperlink{braces_8c_abe3bdf2928b8bbc8178ab4c983333496}{S\+U\+B\+O\+V\+E\+R\+F\+L\+OW}(a,  b,  minv,  maxv)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int asprintf \hyperlink{braces_8c_a52ee5f5be41eea80c7fe978b4ed3004e}{\+\_\+\+\_\+P} ((char $\ast$$\ast$, const char $\ast$,...))
+\item 
+static char $\ast$$\ast$ \hyperlink{braces_8c_ac3f51a197896a1b80a041c12fd755175}{expand\+\_\+amble} (char $\ast$text, size\+\_\+t tlen, int flags)
+\item 
+static char $\ast$$\ast$ \hyperlink{braces_8c_ab84b7a32d8a479f303609d3386bbc290}{mkseq} (intmax\+\_\+t start, intmax\+\_\+t end, intmax\+\_\+t incr, int \hyperlink{shell_8c_ac765329451135abec74c45e1897abf26}{type}, int width)
+\item 
+static char $\ast$$\ast$ \hyperlink{braces_8c_a2ed3b7d53aca9bd84d5b46056e5a899c}{expand\+\_\+seqterm} (char $\ast$text, size\+\_\+t tlen)
+\item 
+static int \hyperlink{braces_8c_a322dbb1dcc556ceca6b42979dd287169}{brace\+\_\+gobbler} (char $\ast$text, size\+\_\+t tlen, int $\ast$indx, int satisfy)
+\item 
+static char $\ast$$\ast$ \hyperlink{braces_8c_a3fe635ed400413279476d182ade27f7a}{array\+\_\+concat} (char $\ast$$\ast$arr1, char $\ast$$\ast$arr2)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{braces_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{braces.\+c@{braces.\+c}!A\+D\+D\+O\+V\+E\+R\+F\+L\+OW@{A\+D\+D\+O\+V\+E\+R\+F\+L\+OW}}
+\index{A\+D\+D\+O\+V\+E\+R\+F\+L\+OW@{A\+D\+D\+O\+V\+E\+R\+F\+L\+OW}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{A\+D\+D\+O\+V\+E\+R\+F\+L\+OW}{ADDOVERFLOW}}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+D\+D\+O\+V\+E\+R\+F\+L\+OW(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b, }
+\item[{}]{minv, }
+\item[{}]{maxv}
+\end{DoxyParamCaption}
+)}\hypertarget{braces_8c_a265327f58022648de0c808fbaab775ec}{}\label{braces_8c_a265327f58022648de0c808fbaab775ec}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+((((a) > 0) && ((b) > ((maxv) - (a)))) || \(\backslash\)
+     (((a) < 0) && ((b) < ((minv) - (a)))))
+\end{DoxyCode}
+\index{braces.\+c@{braces.\+c}!B\+R\+A\+C\+E\+\_\+\+S\+E\+Q\+\_\+\+S\+P\+E\+C\+I\+F\+I\+ER@{B\+R\+A\+C\+E\+\_\+\+S\+E\+Q\+\_\+\+S\+P\+E\+C\+I\+F\+I\+ER}}
+\index{B\+R\+A\+C\+E\+\_\+\+S\+E\+Q\+\_\+\+S\+P\+E\+C\+I\+F\+I\+ER@{B\+R\+A\+C\+E\+\_\+\+S\+E\+Q\+\_\+\+S\+P\+E\+C\+I\+F\+I\+ER}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{B\+R\+A\+C\+E\+\_\+\+S\+E\+Q\+\_\+\+S\+P\+E\+C\+I\+F\+I\+ER}{BRACE_SEQ_SPECIFIER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+R\+A\+C\+E\+\_\+\+S\+E\+Q\+\_\+\+S\+P\+E\+C\+I\+F\+I\+ER~\char`\"{}..\char`\"{}}\hypertarget{braces_8c_a8b58f040eca80f30bfc6e554fd798223}{}\label{braces_8c_a8b58f040eca80f30bfc6e554fd798223}
+\index{braces.\+c@{braces.\+c}!brace\+\_\+whitespace@{brace\+\_\+whitespace}}
+\index{brace\+\_\+whitespace@{brace\+\_\+whitespace}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{brace\+\_\+whitespace}{brace_whitespace}}]{\setlength{\rightskip}{0pt plus 5cm}\#define brace\+\_\+whitespace(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~(!(c) $\vert$$\vert$ (c) == \textquotesingle{} \textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\textbackslash{}t\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\textbackslash{}n\textquotesingle{})}\hypertarget{braces_8c_ab9313e52cefbd697271069d8a96d4158}{}\label{braces_8c_ab9313e52cefbd697271069d8a96d4158}
+\index{braces.\+c@{braces.\+c}!sh\+\_\+imaxabs@{sh\+\_\+imaxabs}}
+\index{sh\+\_\+imaxabs@{sh\+\_\+imaxabs}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{sh\+\_\+imaxabs}{sh_imaxabs}}]{\setlength{\rightskip}{0pt plus 5cm}\#define sh\+\_\+imaxabs(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~(((x) $>$= 0) ? (x) \+: -\/(x))}\hypertarget{braces_8c_ae1a35ff08bae57ad1b3b00bb2bf1fcae}{}\label{braces_8c_ae1a35ff08bae57ad1b3b00bb2bf1fcae}
+\index{braces.\+c@{braces.\+c}!S\+T\+\_\+\+B\+AD@{S\+T\+\_\+\+B\+AD}}
+\index{S\+T\+\_\+\+B\+AD@{S\+T\+\_\+\+B\+AD}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{S\+T\+\_\+\+B\+AD}{ST_BAD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+\_\+\+B\+AD~0}\hypertarget{braces_8c_a485a5fb6e4ce93c17472aa0888c4d23a}{}\label{braces_8c_a485a5fb6e4ce93c17472aa0888c4d23a}
+\index{braces.\+c@{braces.\+c}!S\+T\+\_\+\+C\+H\+AR@{S\+T\+\_\+\+C\+H\+AR}}
+\index{S\+T\+\_\+\+C\+H\+AR@{S\+T\+\_\+\+C\+H\+AR}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{S\+T\+\_\+\+C\+H\+AR}{ST_CHAR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+\_\+\+C\+H\+AR~2}\hypertarget{braces_8c_a400ace30313dfbb04146d96f1ddf5191}{}\label{braces_8c_a400ace30313dfbb04146d96f1ddf5191}
+\index{braces.\+c@{braces.\+c}!S\+T\+\_\+\+I\+NT@{S\+T\+\_\+\+I\+NT}}
+\index{S\+T\+\_\+\+I\+NT@{S\+T\+\_\+\+I\+NT}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{S\+T\+\_\+\+I\+NT}{ST_INT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+\_\+\+I\+NT~1}\hypertarget{braces_8c_a68bb850cf9dd4261573049c61c7316f8}{}\label{braces_8c_a68bb850cf9dd4261573049c61c7316f8}
+\index{braces.\+c@{braces.\+c}!S\+T\+\_\+\+Z\+I\+NT@{S\+T\+\_\+\+Z\+I\+NT}}
+\index{S\+T\+\_\+\+Z\+I\+NT@{S\+T\+\_\+\+Z\+I\+NT}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{S\+T\+\_\+\+Z\+I\+NT}{ST_ZINT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+\_\+\+Z\+I\+NT~3}\hypertarget{braces_8c_aebca3365c0648cac1f24175e326808fd}{}\label{braces_8c_aebca3365c0648cac1f24175e326808fd}
+\index{braces.\+c@{braces.\+c}!S\+U\+B\+O\+V\+E\+R\+F\+L\+OW@{S\+U\+B\+O\+V\+E\+R\+F\+L\+OW}}
+\index{S\+U\+B\+O\+V\+E\+R\+F\+L\+OW@{S\+U\+B\+O\+V\+E\+R\+F\+L\+OW}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{S\+U\+B\+O\+V\+E\+R\+F\+L\+OW}{SUBOVERFLOW}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+U\+B\+O\+V\+E\+R\+F\+L\+OW(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b, }
+\item[{}]{minv, }
+\item[{}]{maxv}
+\end{DoxyParamCaption}
+)}\hypertarget{braces_8c_abe3bdf2928b8bbc8178ab4c983333496}{}\label{braces_8c_abe3bdf2928b8bbc8178ab4c983333496}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+((((b) > 0) && ((a) < ((minv) + (b)))) || \(\backslash\)
+     (((b) < 0) && ((a) > ((maxv) + (b)))))
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\index{braces.\+c@{braces.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$$\ast$, const char $\ast$,...))}{__P((char **, const char *,...))}}]{\setlength{\rightskip}{0pt plus 5cm}int asprintf \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$$\ast$, const char $\ast$,...)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{braces_8c_a52ee5f5be41eea80c7fe978b4ed3004e}{}\label{braces_8c_a52ee5f5be41eea80c7fe978b4ed3004e}
+\index{braces.\+c@{braces.\+c}!array\+\_\+concat@{array\+\_\+concat}}
+\index{array\+\_\+concat@{array\+\_\+concat}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{array\+\_\+concat(char $\ast$$\ast$arr1, char $\ast$$\ast$arr2)}{array_concat(char **arr1, char **arr2)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$$\ast$ array\+\_\+concat (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{arr1, }
+\item[{char $\ast$$\ast$}]{arr2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{braces_8c_a3fe635ed400413279476d182ade27f7a}{}\label{braces_8c_a3fe635ed400413279476d182ade27f7a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{braces_8c_a3fe635ed400413279476d182ade27f7a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{braces.\+c@{braces.\+c}!brace\+\_\+gobbler@{brace\+\_\+gobbler}}
+\index{brace\+\_\+gobbler@{brace\+\_\+gobbler}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{brace\+\_\+gobbler(char $\ast$text, size\+\_\+t tlen, int $\ast$indx, int satisfy)}{brace_gobbler(char *text, size_t tlen, int *indx, int satisfy)}}]{\setlength{\rightskip}{0pt plus 5cm}static int brace\+\_\+gobbler (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{size\+\_\+t}]{tlen, }
+\item[{int $\ast$}]{indx, }
+\item[{int}]{satisfy}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{braces_8c_a322dbb1dcc556ceca6b42979dd287169}{}\label{braces_8c_a322dbb1dcc556ceca6b42979dd287169}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{braces_8c_a322dbb1dcc556ceca6b42979dd287169_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{braces.\+c@{braces.\+c}!expand\+\_\+amble@{expand\+\_\+amble}}
+\index{expand\+\_\+amble@{expand\+\_\+amble}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{expand\+\_\+amble(char $\ast$text, size\+\_\+t tlen, int flags)}{expand_amble(char *text, size_t tlen, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$$\ast$ expand\+\_\+amble (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{size\+\_\+t}]{tlen, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{braces_8c_ac3f51a197896a1b80a041c12fd755175}{}\label{braces_8c_ac3f51a197896a1b80a041c12fd755175}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{braces_8c_ac3f51a197896a1b80a041c12fd755175_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{braces.\+c@{braces.\+c}!expand\+\_\+seqterm@{expand\+\_\+seqterm}}
+\index{expand\+\_\+seqterm@{expand\+\_\+seqterm}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{expand\+\_\+seqterm(char $\ast$text, size\+\_\+t tlen)}{expand_seqterm(char *text, size_t tlen)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$$\ast$ expand\+\_\+seqterm (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{size\+\_\+t}]{tlen}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{braces_8c_a2ed3b7d53aca9bd84d5b46056e5a899c}{}\label{braces_8c_a2ed3b7d53aca9bd84d5b46056e5a899c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{braces_8c_a2ed3b7d53aca9bd84d5b46056e5a899c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{braces.\+c@{braces.\+c}!mkseq@{mkseq}}
+\index{mkseq@{mkseq}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{mkseq(intmax\+\_\+t start, intmax\+\_\+t end, intmax\+\_\+t incr, int type, int width)}{mkseq(intmax_t start, intmax_t end, intmax_t incr, int type, int width)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$$\ast$ mkseq (
+\begin{DoxyParamCaption}
+\item[{intmax\+\_\+t}]{start, }
+\item[{intmax\+\_\+t}]{end, }
+\item[{intmax\+\_\+t}]{incr, }
+\item[{int}]{type, }
+\item[{int}]{width}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{braces_8c_ab84b7a32d8a479f303609d3386bbc290}{}\label{braces_8c_ab84b7a32d8a479f303609d3386bbc290}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{braces_8c_ab84b7a32d8a479f303609d3386bbc290_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{braces.\+c@{braces.\+c}!errno@{errno}}
+\index{errno@{errno}!braces.\+c@{braces.\+c}}
+\subsubsection[{\texorpdfstring{errno}{errno}}]{\setlength{\rightskip}{0pt plus 5cm}int errno}\hypertarget{braces_8c_ad65a8842cc674e3ddf69355898c0ecbf}{}\label{braces_8c_ad65a8842cc674e3ddf69355898c0ecbf}

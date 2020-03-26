@@ -1,0 +1,296 @@
+\hypertarget{pathexp_8c}{}\section{pathexp.\+c File Reference}
+\label{pathexp_8c}\index{pathexp.\+c@{pathexp.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pathexp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}flags.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shmbutil.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$glob/strmatch.\+h$>$}\\*
+{\ttfamily \#include $<$glob/glob.\+h$>$}\\*
+Include dependency graph for pathexp.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pathexp_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{pathexp_8c_ab6425e6cb716d9c11d31eb71fed3cc24}{glob\+\_\+name\+\_\+is\+\_\+acceptable} \hyperlink{pathexp_8c_aab8cace763d8b07f50328cc91e31725e}{\+\_\+\+\_\+P} ((const char $\ast$))
+\item 
+static void \hyperlink{pathexp_8c_ab6e4dbf2bb852d59afda73ddd4c0d4d2}{ignore\+\_\+globbed\+\_\+names} \hyperlink{pathexp_8c_a5beac83515e749971e5b79579ba641a8}{\+\_\+\+\_\+P} ((char $\ast$$\ast$, sh\+\_\+ignore\+\_\+func\+\_\+t $\ast$))
+\item 
+static char $\ast$\hyperlink{pathexp_8c_a0b951787acc04279a69535697a035f1e}{split\+\_\+ignorespec} \hyperlink{pathexp_8c_ada4c61f1ee7c426762fe0574ef9d71ea}{\+\_\+\+\_\+P} ((char $\ast$, int $\ast$))
+\item 
+int \hyperlink{pathexp_8c_a1d53e9b8b773f9863668fe9db9294235}{unquoted\+\_\+glob\+\_\+pattern\+\_\+p} (char $\ast$string)
+\item 
+static int \hyperlink{pathexp_8c_a6d8178f7c036ae79034473cfce68bce3}{ere\+\_\+char} (int c)
+\item 
+int \hyperlink{pathexp_8c_abe2d13a0d42719329db5e1cc318615b7}{glob\+\_\+char\+\_\+p} (char $\ast$s) const
+\item 
+char $\ast$ \hyperlink{pathexp_8c_a602fd211dea0e387ef7094aba84b5468}{quote\+\_\+string\+\_\+for\+\_\+globbing} (char $\ast$pathname, int qflags) const
+\item 
+char $\ast$ \hyperlink{pathexp_8c_a90a4b5a9bfead30cce3fbc379d1afb12}{quote\+\_\+globbing\+\_\+chars} (char $\ast$string) const
+\item 
+char $\ast$$\ast$ \hyperlink{pathexp_8c_ad6682dea844f51979b80970a271eea07}{shell\+\_\+glob\+\_\+filename} (char $\ast$pathname) const
+\item 
+void \hyperlink{pathexp_8c_a0891f4c87a86ca83ab4d33cab9ad3ea8}{setup\+\_\+glob\+\_\+ignore} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name})
+\item 
+int \hyperlink{pathexp_8c_a15f2efbaf551dbbcfa5d19e1778c9cd8}{should\+\_\+ignore\+\_\+glob\+\_\+matches} ()
+\item 
+static int \hyperlink{pathexp_8c_ab6425e6cb716d9c11d31eb71fed3cc24}{glob\+\_\+name\+\_\+is\+\_\+acceptable} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}) const
+\item 
+static void \hyperlink{pathexp_8c_ab6e4dbf2bb852d59afda73ddd4c0d4d2}{ignore\+\_\+globbed\+\_\+names} (char $\ast$$\ast$names, sh\+\_\+ignore\+\_\+func\+\_\+t $\ast$name\+\_\+func)
+\item 
+void \hyperlink{pathexp_8c_ab109632103d691f1ab9266432a2a6fce}{ignore\+\_\+glob\+\_\+matches} (char $\ast$$\ast$names)
+\item 
+static char $\ast$ \hyperlink{pathexp_8c_a0b951787acc04279a69535697a035f1e}{split\+\_\+ignorespec} (char $\ast$s, int $\ast$ip)
+\item 
+void \hyperlink{pathexp_8c_ad863ca19c364a20ca20b1941962d071a}{setup\+\_\+ignore\+\_\+patterns} (struct \hyperlink{structignorevar}{ignorevar} $\ast$ivp)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{pathexp_8c_a1dfb1afa76e9fabb7104932d2be0e731}{glob\+\_\+dot\+\_\+filenames}
+\item 
+int \hyperlink{pathexp_8c_afccfda7777ac4797a1cb790c52fe167b}{extended\+\_\+glob} = \hyperlink{config_8h_a6e72d34088cb0796fa2e7b15082ddf9b}{E\+X\+T\+G\+L\+O\+B\+\_\+\+D\+E\+F\+A\+U\+LT}
+\item 
+int \hyperlink{pathexp_8c_ace84a19207593baf38725b44236b2cd6}{glob\+\_\+star} = 0
+\item 
+static struct \hyperlink{structignorevar}{ignorevar} \hyperlink{pathexp_8c_a9789d32b311a8da66133fbbbf7b6a42d}{globignore}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{pathexp.\+c@{pathexp.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$))}{__P((const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf glob\+\_\+name\+\_\+is\+\_\+acceptable} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pathexp_8c_aab8cace763d8b07f50328cc91e31725e}{}\label{pathexp_8c_aab8cace763d8b07f50328cc91e31725e}
+\index{pathexp.\+c@{pathexp.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$$\ast$, sh\+\_\+ignore\+\_\+func\+\_\+t $\ast$))}{__P((char **, sh_ignore_func_t *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf ignore\+\_\+globbed\+\_\+names} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$$\ast$, sh\+\_\+ignore\+\_\+func\+\_\+t $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pathexp_8c_a5beac83515e749971e5b79579ba641a8}{}\label{pathexp_8c_a5beac83515e749971e5b79579ba641a8}
+\index{pathexp.\+c@{pathexp.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, int $\ast$))}{__P((char *, int *))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf split\+\_\+ignorespec} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, int $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pathexp_8c_ada4c61f1ee7c426762fe0574ef9d71ea}{}\label{pathexp_8c_ada4c61f1ee7c426762fe0574ef9d71ea}
+\index{pathexp.\+c@{pathexp.\+c}!ere\+\_\+char@{ere\+\_\+char}}
+\index{ere\+\_\+char@{ere\+\_\+char}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{ere\+\_\+char(int c)}{ere_char(int c)}}]{\setlength{\rightskip}{0pt plus 5cm}static int ere\+\_\+char (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{pathexp_8c_a6d8178f7c036ae79034473cfce68bce3}{}\label{pathexp_8c_a6d8178f7c036ae79034473cfce68bce3}
+\index{pathexp.\+c@{pathexp.\+c}!glob\+\_\+char\+\_\+p@{glob\+\_\+char\+\_\+p}}
+\index{glob\+\_\+char\+\_\+p@{glob\+\_\+char\+\_\+p}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{glob\+\_\+char\+\_\+p(char $\ast$s) const}{glob_char_p(char *s) const}}]{\setlength{\rightskip}{0pt plus 5cm}int glob\+\_\+char\+\_\+p (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s}
+\end{DoxyParamCaption}
+) const}\hypertarget{pathexp_8c_abe2d13a0d42719329db5e1cc318615b7}{}\label{pathexp_8c_abe2d13a0d42719329db5e1cc318615b7}
+\index{pathexp.\+c@{pathexp.\+c}!glob\+\_\+name\+\_\+is\+\_\+acceptable@{glob\+\_\+name\+\_\+is\+\_\+acceptable}}
+\index{glob\+\_\+name\+\_\+is\+\_\+acceptable@{glob\+\_\+name\+\_\+is\+\_\+acceptable}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{glob\+\_\+name\+\_\+is\+\_\+acceptable(char $\ast$name) const}{glob_name_is_acceptable(char *name) const}}]{\setlength{\rightskip}{0pt plus 5cm}static int glob\+\_\+name\+\_\+is\+\_\+acceptable (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pathexp_8c_ab6425e6cb716d9c11d31eb71fed3cc24}{}\label{pathexp_8c_ab6425e6cb716d9c11d31eb71fed3cc24}
+\index{pathexp.\+c@{pathexp.\+c}!ignore\+\_\+glob\+\_\+matches@{ignore\+\_\+glob\+\_\+matches}}
+\index{ignore\+\_\+glob\+\_\+matches@{ignore\+\_\+glob\+\_\+matches}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{ignore\+\_\+glob\+\_\+matches(char $\ast$$\ast$names)}{ignore_glob_matches(char **names)}}]{\setlength{\rightskip}{0pt plus 5cm}void ignore\+\_\+glob\+\_\+matches (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{names}
+\end{DoxyParamCaption}
+)}\hypertarget{pathexp_8c_ab109632103d691f1ab9266432a2a6fce}{}\label{pathexp_8c_ab109632103d691f1ab9266432a2a6fce}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pathexp_8c_ab109632103d691f1ab9266432a2a6fce_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pathexp.\+c@{pathexp.\+c}!ignore\+\_\+globbed\+\_\+names@{ignore\+\_\+globbed\+\_\+names}}
+\index{ignore\+\_\+globbed\+\_\+names@{ignore\+\_\+globbed\+\_\+names}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{ignore\+\_\+globbed\+\_\+names(char $\ast$$\ast$names, sh\+\_\+ignore\+\_\+func\+\_\+t $\ast$name\+\_\+func)}{ignore_globbed_names(char **names, sh_ignore_func_t *name_func)}}]{\setlength{\rightskip}{0pt plus 5cm}static void ignore\+\_\+globbed\+\_\+names (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{names, }
+\item[{sh\+\_\+ignore\+\_\+func\+\_\+t $\ast$}]{name\+\_\+func}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pathexp_8c_ab6e4dbf2bb852d59afda73ddd4c0d4d2}{}\label{pathexp_8c_ab6e4dbf2bb852d59afda73ddd4c0d4d2}
+\index{pathexp.\+c@{pathexp.\+c}!quote\+\_\+globbing\+\_\+chars@{quote\+\_\+globbing\+\_\+chars}}
+\index{quote\+\_\+globbing\+\_\+chars@{quote\+\_\+globbing\+\_\+chars}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{quote\+\_\+globbing\+\_\+chars(char $\ast$string) const}{quote_globbing_chars(char *string) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ quote\+\_\+globbing\+\_\+chars (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+) const}\hypertarget{pathexp_8c_a90a4b5a9bfead30cce3fbc379d1afb12}{}\label{pathexp_8c_a90a4b5a9bfead30cce3fbc379d1afb12}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pathexp_8c_a90a4b5a9bfead30cce3fbc379d1afb12_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pathexp.\+c@{pathexp.\+c}!quote\+\_\+string\+\_\+for\+\_\+globbing@{quote\+\_\+string\+\_\+for\+\_\+globbing}}
+\index{quote\+\_\+string\+\_\+for\+\_\+globbing@{quote\+\_\+string\+\_\+for\+\_\+globbing}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{quote\+\_\+string\+\_\+for\+\_\+globbing(char $\ast$pathname, int qflags) const}{quote_string_for_globbing(char *pathname, int qflags) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ quote\+\_\+string\+\_\+for\+\_\+globbing (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{pathname, }
+\item[{int}]{qflags}
+\end{DoxyParamCaption}
+) const}\hypertarget{pathexp_8c_a602fd211dea0e387ef7094aba84b5468}{}\label{pathexp_8c_a602fd211dea0e387ef7094aba84b5468}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pathexp_8c_a602fd211dea0e387ef7094aba84b5468_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pathexp.\+c@{pathexp.\+c}!setup\+\_\+glob\+\_\+ignore@{setup\+\_\+glob\+\_\+ignore}}
+\index{setup\+\_\+glob\+\_\+ignore@{setup\+\_\+glob\+\_\+ignore}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{setup\+\_\+glob\+\_\+ignore(char $\ast$name)}{setup_glob_ignore(char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}void setup\+\_\+glob\+\_\+ignore (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{pathexp_8c_a0891f4c87a86ca83ab4d33cab9ad3ea8}{}\label{pathexp_8c_a0891f4c87a86ca83ab4d33cab9ad3ea8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pathexp_8c_a0891f4c87a86ca83ab4d33cab9ad3ea8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pathexp.\+c@{pathexp.\+c}!setup\+\_\+ignore\+\_\+patterns@{setup\+\_\+ignore\+\_\+patterns}}
+\index{setup\+\_\+ignore\+\_\+patterns@{setup\+\_\+ignore\+\_\+patterns}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{setup\+\_\+ignore\+\_\+patterns(struct ignorevar $\ast$ivp)}{setup_ignore_patterns(struct ignorevar *ivp)}}]{\setlength{\rightskip}{0pt plus 5cm}void setup\+\_\+ignore\+\_\+patterns (
+\begin{DoxyParamCaption}
+\item[{struct {\bf ignorevar} $\ast$}]{ivp}
+\end{DoxyParamCaption}
+)}\hypertarget{pathexp_8c_ad863ca19c364a20ca20b1941962d071a}{}\label{pathexp_8c_ad863ca19c364a20ca20b1941962d071a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pathexp_8c_ad863ca19c364a20ca20b1941962d071a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pathexp.\+c@{pathexp.\+c}!shell\+\_\+glob\+\_\+filename@{shell\+\_\+glob\+\_\+filename}}
+\index{shell\+\_\+glob\+\_\+filename@{shell\+\_\+glob\+\_\+filename}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+glob\+\_\+filename(char $\ast$pathname) const}{shell_glob_filename(char *pathname) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ shell\+\_\+glob\+\_\+filename (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{pathname}
+\end{DoxyParamCaption}
+) const}\hypertarget{pathexp_8c_ad6682dea844f51979b80970a271eea07}{}\label{pathexp_8c_ad6682dea844f51979b80970a271eea07}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pathexp_8c_ad6682dea844f51979b80970a271eea07_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pathexp.\+c@{pathexp.\+c}!should\+\_\+ignore\+\_\+glob\+\_\+matches@{should\+\_\+ignore\+\_\+glob\+\_\+matches}}
+\index{should\+\_\+ignore\+\_\+glob\+\_\+matches@{should\+\_\+ignore\+\_\+glob\+\_\+matches}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{should\+\_\+ignore\+\_\+glob\+\_\+matches()}{should_ignore_glob_matches()}}]{\setlength{\rightskip}{0pt plus 5cm}int should\+\_\+ignore\+\_\+glob\+\_\+matches (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{pathexp_8c_a15f2efbaf551dbbcfa5d19e1778c9cd8}{}\label{pathexp_8c_a15f2efbaf551dbbcfa5d19e1778c9cd8}
+\index{pathexp.\+c@{pathexp.\+c}!split\+\_\+ignorespec@{split\+\_\+ignorespec}}
+\index{split\+\_\+ignorespec@{split\+\_\+ignorespec}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{split\+\_\+ignorespec(char $\ast$s, int $\ast$ip)}{split_ignorespec(char *s, int *ip)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ split\+\_\+ignorespec (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{int $\ast$}]{ip}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pathexp_8c_a0b951787acc04279a69535697a035f1e}{}\label{pathexp_8c_a0b951787acc04279a69535697a035f1e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pathexp_8c_a0b951787acc04279a69535697a035f1e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pathexp.\+c@{pathexp.\+c}!unquoted\+\_\+glob\+\_\+pattern\+\_\+p@{unquoted\+\_\+glob\+\_\+pattern\+\_\+p}}
+\index{unquoted\+\_\+glob\+\_\+pattern\+\_\+p@{unquoted\+\_\+glob\+\_\+pattern\+\_\+p}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{unquoted\+\_\+glob\+\_\+pattern\+\_\+p(char $\ast$string)}{unquoted_glob_pattern_p(char *string)}}]{\setlength{\rightskip}{0pt plus 5cm}int unquoted\+\_\+glob\+\_\+pattern\+\_\+p (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}\hypertarget{pathexp_8c_a1d53e9b8b773f9863668fe9db9294235}{}\label{pathexp_8c_a1d53e9b8b773f9863668fe9db9294235}
+
+
+\subsection{Variable Documentation}
+\index{pathexp.\+c@{pathexp.\+c}!extended\+\_\+glob@{extended\+\_\+glob}}
+\index{extended\+\_\+glob@{extended\+\_\+glob}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{extended\+\_\+glob}{extended_glob}}]{\setlength{\rightskip}{0pt plus 5cm}int extended\+\_\+glob = {\bf E\+X\+T\+G\+L\+O\+B\+\_\+\+D\+E\+F\+A\+U\+LT}}\hypertarget{pathexp_8c_afccfda7777ac4797a1cb790c52fe167b}{}\label{pathexp_8c_afccfda7777ac4797a1cb790c52fe167b}
+\index{pathexp.\+c@{pathexp.\+c}!glob\+\_\+dot\+\_\+filenames@{glob\+\_\+dot\+\_\+filenames}}
+\index{glob\+\_\+dot\+\_\+filenames@{glob\+\_\+dot\+\_\+filenames}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{glob\+\_\+dot\+\_\+filenames}{glob_dot_filenames}}]{\setlength{\rightskip}{0pt plus 5cm}int glob\+\_\+dot\+\_\+filenames}\hypertarget{pathexp_8c_a1dfb1afa76e9fabb7104932d2be0e731}{}\label{pathexp_8c_a1dfb1afa76e9fabb7104932d2be0e731}
+\index{pathexp.\+c@{pathexp.\+c}!glob\+\_\+star@{glob\+\_\+star}}
+\index{glob\+\_\+star@{glob\+\_\+star}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{glob\+\_\+star}{glob_star}}]{\setlength{\rightskip}{0pt plus 5cm}int glob\+\_\+star = 0}\hypertarget{pathexp_8c_ace84a19207593baf38725b44236b2cd6}{}\label{pathexp_8c_ace84a19207593baf38725b44236b2cd6}
+\index{pathexp.\+c@{pathexp.\+c}!globignore@{globignore}}
+\index{globignore@{globignore}!pathexp.\+c@{pathexp.\+c}}
+\subsubsection[{\texorpdfstring{globignore}{globignore}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf ignorevar} globignore\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pathexp_8c_a9789d32b311a8da66133fbbbf7b6a42d}{}\label{pathexp_8c_a9789d32b311a8da66133fbbbf7b6a42d}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+\{
+  \textcolor{stringliteral}{"GLOBIGNORE"},
+  (\textcolor{keyword}{struct }\hyperlink{structign}{ign} *)0,
+  0,
+  (\textcolor{keywordtype}{char} *)0,
+  (sh\_iv\_item\_func\_t *)0,
+\}
+\end{DoxyCode}

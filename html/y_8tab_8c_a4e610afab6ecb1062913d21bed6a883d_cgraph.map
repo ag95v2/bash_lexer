@@ -1,0 +1,26 @@
+<map id="restore_parser_state" name="restore_parser_state">
+<area shape="rect" id="node2" href="$y_8tab_8c.html#a489e794a3d27e9720f077d265f3cd4d3" title="restore_token_state" alt="" coords="195,115,332,141"/>
+<area shape="rect" id="node3" href="$variables_8c.html#a43ef93e0423caa03b57aeb66763f210d" title="restore_pipestatus\l_array" alt="" coords="199,166,328,207"/>
+<area shape="rect" id="node4" href="$variables_8c.html#aba8df3eeae83c8b121cc29a8984dfcdc" title="find_variable" alt="" coords="384,135,479,161"/>
+<area shape="rect" id="node23" href="$array_8c.html#a7bfdcd4d6e7fc4a9516a96b0e65cf247" title="array_dispose" alt="" coords="380,211,483,237"/>
+<area shape="rect" id="node5" href="$variables_8c.html#af1f754c2f9479edcb27a3934d92cbe22" title="find_variable_internal" alt="" coords="734,109,878,136"/>
+<area shape="rect" id="node21" href="$variables_8c.html#a6a6b45db14a7230706ed5356a09fd8be" title="find_variable_nameref" alt="" coords="531,55,680,81"/>
+<area shape="rect" id="node6" href="$variables_8c.html#a606b110162ef5b1263e5cc2610a0a6b4" title="hash_lookup" alt="" coords="1065,59,1160,85"/>
+<area shape="rect" id="node20" href="$variables_8c.html#ad9a2bb353e7efdf2dccc22d510036341" title="var_lookup" alt="" coords="932,59,1017,85"/>
+<area shape="rect" id="node7" href="$hashlib_8c.html#a148b14f11fd7c46056f38dc510ce204e" title="hash_search" alt="" coords="1208,59,1304,85"/>
+<area shape="rect" id="node8" href="$xmalloc_8c.html#aa9b2ea281c63b37140fe955ec465c784" title="xmalloc" alt="" coords="1352,59,1419,85"/>
+<area shape="rect" id="node9" href="$error_8c.html#a7a6e82735fe74b8e47d43f4f4ddca080" title="internal_warning" alt="" coords="1467,8,1583,35"/>
+<area shape="rect" id="node16" href="$y_8tab_8c.html#a5faf6a2d99f50a4655dd390199a8db7b" title="malloc" alt="" coords="1495,109,1555,136"/>
+<area shape="rect" id="node17" href="$xmalloc_8c.html#a913632f336fdb7b67305829dcc75a16f" title="allocerr" alt="" coords="1493,59,1557,85"/>
+<area shape="rect" id="node10" href="$error_8c.html#a17bd449db2707a09ee42c9298f083dea" title="error_prolog" alt="" coords="1759,33,1849,60"/>
+<area shape="rect" id="node11" href="$error_8c.html#a1944bd401c24a434a321990f648b8b3c" title="get_name_for_error" alt="" coords="1907,84,2042,111"/>
+<area shape="rect" id="node15" href="$execute__cmd_8c.html#a7563559124a946dd934650e169c80175" title="executing_line_number" alt="" coords="1897,33,2052,60"/>
+<area shape="rect" id="node12" href="$array_8c.html#ae293a54980d6266db085aa6449d5c149" title="array_reference" alt="" coords="2101,59,2213,85"/>
+<area shape="rect" id="node13" href="$general_8c.html#a373470ebfb219db3a97f7798996135a1" title="base_pathname" alt="" coords="2100,109,2215,136"/>
+<area shape="rect" id="node14" href="$general_8c.html#a6eb6283cbbb0fd5944cead61872fb6e2" title="absolute_pathname" alt="" coords="2263,109,2397,136"/>
+<area shape="rect" id="node18" href="$error_8c.html#aac4af98c0659128bd91aa86217f541d1" title="fatal_error" alt="" coords="1631,59,1711,85"/>
+<area shape="rect" id="node19" href="$shell_8c.html#a8cd407122e8280f23456b4942f4b7505" title="sh_exit" alt="" coords="1772,84,1836,111"/>
+<area shape="rect" id="node22" href="$variables_8c.html#a66846bca8d996300be2207f374145a66" title="find_global_variable\l_noref" alt="" coords="738,43,874,85"/>
+<area shape="rect" id="node24" href="$array_8c.html#a05b8194d509714a03fa60edb1c5b63e8" title="array_flush" alt="" coords="562,211,649,237"/>
+<area shape="rect" id="node25" href="$array_8c.html#a8620a01f7a7efdeb205437e112764672" title="array_dispose_element" alt="" coords="728,236,884,263"/>
+</map>

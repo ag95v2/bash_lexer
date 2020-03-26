@@ -1,0 +1,70 @@
+\hypertarget{list_8c}{}\section{list.\+c File Reference}
+\label{list_8c}\index{list.\+c@{list.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+Include dependency graph for list.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{list_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{general_8h_a7aee33514d37a8c90517acbbed03f811}{G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST} $\ast$ \hyperlink{list_8c_a538fdbf570481faa2f53dc529acae315}{list\+\_\+reverse} (\hyperlink{general_8h_a7aee33514d37a8c90517acbbed03f811}{G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST} $\ast$list)
+\item 
+int \hyperlink{list_8c_a4192686fbd8362b39de6e7b73f6f8c74}{list\+\_\+length} (\hyperlink{general_8h_a7aee33514d37a8c90517acbbed03f811}{G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST} $\ast$list)
+\item 
+\hyperlink{general_8h_a7aee33514d37a8c90517acbbed03f811}{G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST} $\ast$ \hyperlink{list_8c_a4681c245787f68874bb7ae2519436f56}{list\+\_\+append} (\hyperlink{general_8h_a7aee33514d37a8c90517acbbed03f811}{G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST} $\ast$head, \hyperlink{general_8h_a7aee33514d37a8c90517acbbed03f811}{G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST} $\ast$tail)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{general_8h_a7aee33514d37a8c90517acbbed03f811}{G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST} \hyperlink{list_8c_a111a36de4722e27d7df04701a7cf2d96}{global\+\_\+error\+\_\+list}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{list.\+c@{list.\+c}!list\+\_\+append@{list\+\_\+append}}
+\index{list\+\_\+append@{list\+\_\+append}!list.\+c@{list.\+c}}
+\subsubsection[{\texorpdfstring{list\+\_\+append(\+G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+S\+T $\ast$head, G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+S\+T $\ast$tail)}{list_append(GENERIC_LIST *head, GENERIC_LIST *tail)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST}$\ast$ list\+\_\+append (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST} $\ast$}]{head, }
+\item[{{\bf G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST} $\ast$}]{tail}
+\end{DoxyParamCaption}
+)}\hypertarget{list_8c_a4681c245787f68874bb7ae2519436f56}{}\label{list_8c_a4681c245787f68874bb7ae2519436f56}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{list_8c_a4681c245787f68874bb7ae2519436f56_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{list.\+c@{list.\+c}!list\+\_\+length@{list\+\_\+length}}
+\index{list\+\_\+length@{list\+\_\+length}!list.\+c@{list.\+c}}
+\subsubsection[{\texorpdfstring{list\+\_\+length(\+G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+S\+T $\ast$list)}{list_length(GENERIC_LIST *list)}}]{\setlength{\rightskip}{0pt plus 5cm}int list\+\_\+length (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST} $\ast$}]{list}
+\end{DoxyParamCaption}
+)}\hypertarget{list_8c_a4192686fbd8362b39de6e7b73f6f8c74}{}\label{list_8c_a4192686fbd8362b39de6e7b73f6f8c74}
+\index{list.\+c@{list.\+c}!list\+\_\+reverse@{list\+\_\+reverse}}
+\index{list\+\_\+reverse@{list\+\_\+reverse}!list.\+c@{list.\+c}}
+\subsubsection[{\texorpdfstring{list\+\_\+reverse(\+G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+S\+T $\ast$list)}{list_reverse(GENERIC_LIST *list)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST}$\ast$ list\+\_\+reverse (
+\begin{DoxyParamCaption}
+\item[{{\bf G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST} $\ast$}]{list}
+\end{DoxyParamCaption}
+)}\hypertarget{list_8c_a538fdbf570481faa2f53dc529acae315}{}\label{list_8c_a538fdbf570481faa2f53dc529acae315}
+
+
+\subsection{Variable Documentation}
+\index{list.\+c@{list.\+c}!global\+\_\+error\+\_\+list@{global\+\_\+error\+\_\+list}}
+\index{global\+\_\+error\+\_\+list@{global\+\_\+error\+\_\+list}!list.\+c@{list.\+c}}
+\subsubsection[{\texorpdfstring{global\+\_\+error\+\_\+list}{global_error_list}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+E\+N\+E\+R\+I\+C\+\_\+\+L\+I\+ST} global\+\_\+error\+\_\+list}\hypertarget{list_8c_a111a36de4722e27d7df04701a7cf2d96}{}\label{list_8c_a111a36de4722e27d7df04701a7cf2d96}

@@ -1,0 +1,599 @@
+\hypertarget{test_8c}{}\section{test.\+c File Reference}
+\label{test_8c}\index{test.\+c@{test.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}posixstat.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}filecntl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stat-\/time.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pathexp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}test.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/common.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$glob/strmatch.\+h$>$}\\*
+Include dependency graph for test.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{test_8c_a922a5e1e57c42e42231ac9a2fb14eb24}{S\+T\+R\+C\+O\+L\+L\+EQ}(a,  b)~((a)\mbox{[}0\mbox{]} == (b)\mbox{[}0\mbox{]} \&\& strcoll ((a), (b)) == 0)
+\item 
+\#define \hyperlink{test_8c_a24a7a0ceb1e8f5f44cb1038bb829030d}{R\+\_\+\+OK}~4
+\item 
+\#define \hyperlink{test_8c_ae5acf4043c0903cda7436b108e29e8e6}{W\+\_\+\+OK}~2
+\item 
+\#define \hyperlink{test_8c_a5e995ef7690698b62bf016b14fbc45ca}{X\+\_\+\+OK}~1
+\item 
+\#define \hyperlink{test_8c_af837744613408b57dc3654fbc3bcf900}{F\+\_\+\+OK}~0
+\item 
+\#define \hyperlink{test_8c_abaab8d42f075ee8ddc9b70951d3fd6cd}{EQ}~0
+\item 
+\#define \hyperlink{test_8c_a5af9139e882aef6c820ae908589a40d6}{NE}~1
+\item 
+\#define \hyperlink{test_8c_aaf56b99cbe34023f42ce5b7878c827d8}{LT}~2
+\item 
+\#define \hyperlink{test_8c_ab89310b3f2f97e4e9415fc5a51549612}{GT}~3
+\item 
+\#define \hyperlink{test_8c_aa4d6abc7b58eb11e517993df83b7f0f7}{LE}~4
+\item 
+\#define \hyperlink{test_8c_a38a01c8e60e89c1d671a68259085288f}{GE}~5
+\item 
+\#define \hyperlink{test_8c_a7d5ef0de19030d43f98042e1c4a9f605}{NT}~0
+\item 
+\#define \hyperlink{test_8c_a6dc9df917238f73b7f8ac0e1d7b1007f}{OT}~1
+\item 
+\#define \hyperlink{test_8c_a7f8e920c119fd99d39c4b910204084c5}{EF}~2
+\item 
+\#define \hyperlink{test_8c_aa8cecfc5c5c054d2875c03e77b7be15d}{T\+R\+UE}~1
+\item 
+\#define \hyperlink{test_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}~0
+\item 
+\#define \hyperlink{test_8c_aa5f6c5633aaa66aae11ef482fee370be}{S\+H\+E\+L\+L\+\_\+\+B\+O\+O\+L\+E\+AN}(value)~(!(value))
+\item 
+\#define \hyperlink{test_8c_a80410f53ab49e029d4c3c5bca2c2a277}{T\+E\+S\+T\+\_\+\+E\+R\+R\+E\+X\+I\+T\+\_\+\+S\+T\+A\+T\+US}~2
+\item 
+\#define \hyperlink{test_8c_afcd32c15fed9034f4fed01ecd1689636}{test\+\_\+exit}(val)~do \{ \hyperlink{test_8c_a287e04243953828232bb05890917793f}{test\+\_\+error\+\_\+return} = val; sh\+\_\+longjmp (\hyperlink{test_8c_a1fc7e6812fdf0354958a21e61cda2675}{test\+\_\+exit\+\_\+buf}, 1); \} while (0)
+\item 
+\#define \hyperlink{test_8c_a5b8bb418b41a8ab69bb2d7867c609518}{advance}(f)~do \{ ++\hyperlink{test_8c_a1910d262855b71da353ed0d07a6c7823}{pos}; if (f \&\& \hyperlink{test_8c_a1910d262855b71da353ed0d07a6c7823}{pos} $>$= \hyperlink{test_8c_ad1447518f4372828b8435ae82e48499e}{argc}) \hyperlink{test_8c_aeb8ad2f112468fc03aa578bf032e1112}{beyond} (); \} while (0)
+\item 
+\#define \hyperlink{test_8c_aeb6dd3d6de129f4b747e219aefb51931}{unary\+\_\+advance}()~do \{ \hyperlink{test_8c_a5b8bb418b41a8ab69bb2d7867c609518}{advance} (1); ++\hyperlink{test_8c_a1910d262855b71da353ed0d07a6c7823}{pos}; \} while (0)
+\item 
+\#define \hyperlink{test_8c_ad57c9de88009a30a614ee715c66aa865}{A\+N\+D\+OR}(s)~(s\mbox{[}0\mbox{]} == \textquotesingle{}-\/\textquotesingle{} \&\& (s\mbox{[}1\mbox{]} == \textquotesingle{}a\textquotesingle{} $\vert$$\vert$ s\mbox{[}1\mbox{]} == \textquotesingle{}o\textquotesingle{}) \&\& s\mbox{[}2\mbox{]} == 0)
+\item 
+\#define \hyperlink{test_8c_aae72b2d8ad69e018b7cfa7fd7d310fc8}{O\+N\+E\+\_\+\+A\+R\+G\+\_\+\+T\+E\+ST}(s)~((s)\mbox{[}0\mbox{]} != \textquotesingle{}\textbackslash{}0\textquotesingle{})
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int sh\+\_\+stat \hyperlink{test_8c_a566410b0195f916911eba32d1d243ace}{\+\_\+\+\_\+P} ((const char $\ast$, struct stat $\ast$))
+\item 
+static void test\+\_\+syntax\+\_\+error \hyperlink{test_8c_adcbc432905d6b32bea80d7975957675e}{\+\_\+\+\_\+P} ((char $\ast$, char $\ast$))
+\item 
+static void \hyperlink{test_8c_aeb8ad2f112468fc03aa578bf032e1112}{beyond} ()
+\item 
+static void \hyperlink{test_8c_a266fac557c932d91a3df620855a53787}{integer\+\_\+expected\+\_\+error} (char $\ast$pch)
+\item 
+static int \hyperlink{test_8c_afe50dfaccb7a06efec0dcef7519e8ed7}{expr} ()
+\item 
+static int \hyperlink{test_8c_a365f2d8039082624bc36762514a8a34c}{or} ()
+\item 
+static int \hyperlink{test_8c_a1b24e1921b6a4a4356cac5d25d198133}{and} ()
+\item 
+static int \hyperlink{test_8c_a4a02aba30add5148ab2c2e9622dd5acc}{term} ()
+\item 
+static int \hyperlink{test_8c_a690e81b38d328ee71b9e81b7fa4a3ce3}{stat\+\_\+mtime} (char $\ast$fn, struct stat $\ast$st, struct timespec $\ast$ts)
+\item 
+static int \hyperlink{test_8c_a3409c6cb2b22592ab6f586fd4d02be8b}{filecomp} (char $\ast$s, char $\ast$t, int op)
+\item 
+static int \hyperlink{test_8c_a30242737878d92d89cc6106d3ad4e11f}{arithcomp} (char $\ast$s, char $\ast$t, int op, int flags)
+\item 
+static int \hyperlink{test_8c_a8fc6d6376491377e83e3499e863ae0da}{patcomp} (char $\ast$string, char $\ast$pat, int op)
+\item 
+int \hyperlink{test_8c_a4b1683fde3a30fb28fbd22d3d3f978ef}{binary\+\_\+test} (char $\ast$op, char $\ast$arg1, char $\ast$arg2, int flags)
+\item 
+static int \hyperlink{test_8c_a3fe2470356fbce979e7477723e131a2a}{binary\+\_\+operator} ()
+\item 
+static int \hyperlink{test_8c_afb51d1ebd6b38e38287dd8ac18246236}{unary\+\_\+operator} ()
+\item 
+int \hyperlink{test_8c_adddc8ae036c52d409a0e7cf6374d9d72}{unary\+\_\+test} (char $\ast$op, char $\ast$arg)
+\item 
+int \hyperlink{test_8c_a3026ef0c1c43c75504b0d04b12ff2da3}{test\+\_\+binop} (char $\ast$op)
+\item 
+int \hyperlink{test_8c_a82cf42b2036cde25cce5305772abd821}{test\+\_\+unop} (char $\ast$op)
+\item 
+static int \hyperlink{test_8c_a22d7cb4bc98279c1ece53592d8457799}{two\+\_\+arguments} ()
+\item 
+static int \hyperlink{test_8c_a1f4941c1867d84b54aa38f596585202c}{three\+\_\+arguments} ()
+\item 
+static int \hyperlink{test_8c_afb11735427b6c4ab2ed5497e0fec3667}{posixtest} ()
+\item 
+int \hyperlink{test_8c_a12073c6b51a65871749623a4728f5e02}{test\+\_\+command} (int margc, char $\ast$$\ast$margv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{test_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno}
+\item 
+static procenv\+\_\+t \hyperlink{test_8c_a1fc7e6812fdf0354958a21e61cda2675}{test\+\_\+exit\+\_\+buf}
+\item 
+static int \hyperlink{test_8c_a287e04243953828232bb05890917793f}{test\+\_\+error\+\_\+return}
+\item 
+static int \hyperlink{test_8c_a1910d262855b71da353ed0d07a6c7823}{pos}
+\item 
+static int \hyperlink{test_8c_ad1447518f4372828b8435ae82e48499e}{argc}
+\item 
+static char $\ast$$\ast$ \hyperlink{test_8c_af2efa898e9eed6fe6715279cb1ec35b0}{argv}
+\item 
+static int \hyperlink{test_8c_ad34c2f048482e74a3106939b8866875b}{noeval}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{test.\+c@{test.\+c}!advance@{advance}}
+\index{advance@{advance}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{advance}{advance}}]{\setlength{\rightskip}{0pt plus 5cm}\#define advance(
+\begin{DoxyParamCaption}
+\item[{}]{f}
+\end{DoxyParamCaption}
+)~do \{ ++{\bf pos}; if (f \&\& {\bf pos} $>$= {\bf argc}) {\bf beyond} (); \} while (0)}\hypertarget{test_8c_a5b8bb418b41a8ab69bb2d7867c609518}{}\label{test_8c_a5b8bb418b41a8ab69bb2d7867c609518}
+\index{test.\+c@{test.\+c}!A\+N\+D\+OR@{A\+N\+D\+OR}}
+\index{A\+N\+D\+OR@{A\+N\+D\+OR}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{A\+N\+D\+OR}{ANDOR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+N\+D\+OR(
+\begin{DoxyParamCaption}
+\item[{}]{s}
+\end{DoxyParamCaption}
+)~(s\mbox{[}0\mbox{]} == \textquotesingle{}-\/\textquotesingle{} \&\& (s\mbox{[}1\mbox{]} == \textquotesingle{}a\textquotesingle{} $\vert$$\vert$ s\mbox{[}1\mbox{]} == \textquotesingle{}o\textquotesingle{}) \&\& s\mbox{[}2\mbox{]} == 0)}\hypertarget{test_8c_ad57c9de88009a30a614ee715c66aa865}{}\label{test_8c_ad57c9de88009a30a614ee715c66aa865}
+\index{test.\+c@{test.\+c}!EF@{EF}}
+\index{EF@{EF}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{EF}{EF}}]{\setlength{\rightskip}{0pt plus 5cm}\#define EF~2}\hypertarget{test_8c_a7f8e920c119fd99d39c4b910204084c5}{}\label{test_8c_a7f8e920c119fd99d39c4b910204084c5}
+\index{test.\+c@{test.\+c}!EQ@{EQ}}
+\index{EQ@{EQ}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{EQ}{EQ}}]{\setlength{\rightskip}{0pt plus 5cm}\#define EQ~0}\hypertarget{test_8c_abaab8d42f075ee8ddc9b70951d3fd6cd}{}\label{test_8c_abaab8d42f075ee8ddc9b70951d3fd6cd}
+\index{test.\+c@{test.\+c}!F\+\_\+\+OK@{F\+\_\+\+OK}}
+\index{F\+\_\+\+OK@{F\+\_\+\+OK}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{F\+\_\+\+OK}{F_OK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+\_\+\+OK~0}\hypertarget{test_8c_af837744613408b57dc3654fbc3bcf900}{}\label{test_8c_af837744613408b57dc3654fbc3bcf900}
+\index{test.\+c@{test.\+c}!F\+A\+L\+SE@{F\+A\+L\+SE}}
+\index{F\+A\+L\+SE@{F\+A\+L\+SE}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{F\+A\+L\+SE}{FALSE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+A\+L\+SE~0}\hypertarget{test_8c_aa93f0eb578d23995850d61f7d61c55c1}{}\label{test_8c_aa93f0eb578d23995850d61f7d61c55c1}
+\index{test.\+c@{test.\+c}!GE@{GE}}
+\index{GE@{GE}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{GE}{GE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define GE~5}\hypertarget{test_8c_a38a01c8e60e89c1d671a68259085288f}{}\label{test_8c_a38a01c8e60e89c1d671a68259085288f}
+\index{test.\+c@{test.\+c}!GT@{GT}}
+\index{GT@{GT}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{GT}{GT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define GT~3}\hypertarget{test_8c_ab89310b3f2f97e4e9415fc5a51549612}{}\label{test_8c_ab89310b3f2f97e4e9415fc5a51549612}
+\index{test.\+c@{test.\+c}!LE@{LE}}
+\index{LE@{LE}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{LE}{LE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define LE~4}\hypertarget{test_8c_aa4d6abc7b58eb11e517993df83b7f0f7}{}\label{test_8c_aa4d6abc7b58eb11e517993df83b7f0f7}
+\index{test.\+c@{test.\+c}!LT@{LT}}
+\index{LT@{LT}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{LT}{LT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define LT~2}\hypertarget{test_8c_aaf56b99cbe34023f42ce5b7878c827d8}{}\label{test_8c_aaf56b99cbe34023f42ce5b7878c827d8}
+\index{test.\+c@{test.\+c}!NE@{NE}}
+\index{NE@{NE}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{NE}{NE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define NE~1}\hypertarget{test_8c_a5af9139e882aef6c820ae908589a40d6}{}\label{test_8c_a5af9139e882aef6c820ae908589a40d6}
+\index{test.\+c@{test.\+c}!NT@{NT}}
+\index{NT@{NT}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{NT}{NT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define NT~0}\hypertarget{test_8c_a7d5ef0de19030d43f98042e1c4a9f605}{}\label{test_8c_a7d5ef0de19030d43f98042e1c4a9f605}
+\index{test.\+c@{test.\+c}!O\+N\+E\+\_\+\+A\+R\+G\+\_\+\+T\+E\+ST@{O\+N\+E\+\_\+\+A\+R\+G\+\_\+\+T\+E\+ST}}
+\index{O\+N\+E\+\_\+\+A\+R\+G\+\_\+\+T\+E\+ST@{O\+N\+E\+\_\+\+A\+R\+G\+\_\+\+T\+E\+ST}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{O\+N\+E\+\_\+\+A\+R\+G\+\_\+\+T\+E\+ST}{ONE_ARG_TEST}}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+N\+E\+\_\+\+A\+R\+G\+\_\+\+T\+E\+ST(
+\begin{DoxyParamCaption}
+\item[{}]{s}
+\end{DoxyParamCaption}
+)~((s)\mbox{[}0\mbox{]} != \textquotesingle{}\textbackslash{}0\textquotesingle{})}\hypertarget{test_8c_aae72b2d8ad69e018b7cfa7fd7d310fc8}{}\label{test_8c_aae72b2d8ad69e018b7cfa7fd7d310fc8}
+\index{test.\+c@{test.\+c}!OT@{OT}}
+\index{OT@{OT}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{OT}{OT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define OT~1}\hypertarget{test_8c_a6dc9df917238f73b7f8ac0e1d7b1007f}{}\label{test_8c_a6dc9df917238f73b7f8ac0e1d7b1007f}
+\index{test.\+c@{test.\+c}!R\+\_\+\+OK@{R\+\_\+\+OK}}
+\index{R\+\_\+\+OK@{R\+\_\+\+OK}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{R\+\_\+\+OK}{R_OK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+\_\+\+OK~4}\hypertarget{test_8c_a24a7a0ceb1e8f5f44cb1038bb829030d}{}\label{test_8c_a24a7a0ceb1e8f5f44cb1038bb829030d}
+\index{test.\+c@{test.\+c}!S\+H\+E\+L\+L\+\_\+\+B\+O\+O\+L\+E\+AN@{S\+H\+E\+L\+L\+\_\+\+B\+O\+O\+L\+E\+AN}}
+\index{S\+H\+E\+L\+L\+\_\+\+B\+O\+O\+L\+E\+AN@{S\+H\+E\+L\+L\+\_\+\+B\+O\+O\+L\+E\+AN}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{S\+H\+E\+L\+L\+\_\+\+B\+O\+O\+L\+E\+AN}{SHELL_BOOLEAN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+H\+E\+L\+L\+\_\+\+B\+O\+O\+L\+E\+AN(
+\begin{DoxyParamCaption}
+\item[{}]{value}
+\end{DoxyParamCaption}
+)~(!(value))}\hypertarget{test_8c_aa5f6c5633aaa66aae11ef482fee370be}{}\label{test_8c_aa5f6c5633aaa66aae11ef482fee370be}
+\index{test.\+c@{test.\+c}!S\+T\+R\+C\+O\+L\+L\+EQ@{S\+T\+R\+C\+O\+L\+L\+EQ}}
+\index{S\+T\+R\+C\+O\+L\+L\+EQ@{S\+T\+R\+C\+O\+L\+L\+EQ}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{S\+T\+R\+C\+O\+L\+L\+EQ}{STRCOLLEQ}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+R\+C\+O\+L\+L\+EQ(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)~((a)\mbox{[}0\mbox{]} == (b)\mbox{[}0\mbox{]} \&\& strcoll ((a), (b)) == 0)}\hypertarget{test_8c_a922a5e1e57c42e42231ac9a2fb14eb24}{}\label{test_8c_a922a5e1e57c42e42231ac9a2fb14eb24}
+\index{test.\+c@{test.\+c}!T\+E\+S\+T\+\_\+\+E\+R\+R\+E\+X\+I\+T\+\_\+\+S\+T\+A\+T\+US@{T\+E\+S\+T\+\_\+\+E\+R\+R\+E\+X\+I\+T\+\_\+\+S\+T\+A\+T\+US}}
+\index{T\+E\+S\+T\+\_\+\+E\+R\+R\+E\+X\+I\+T\+\_\+\+S\+T\+A\+T\+US@{T\+E\+S\+T\+\_\+\+E\+R\+R\+E\+X\+I\+T\+\_\+\+S\+T\+A\+T\+US}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T\+\_\+\+E\+R\+R\+E\+X\+I\+T\+\_\+\+S\+T\+A\+T\+US}{TEST_ERREXIT_STATUS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+S\+T\+\_\+\+E\+R\+R\+E\+X\+I\+T\+\_\+\+S\+T\+A\+T\+US~2}\hypertarget{test_8c_a80410f53ab49e029d4c3c5bca2c2a277}{}\label{test_8c_a80410f53ab49e029d4c3c5bca2c2a277}
+\index{test.\+c@{test.\+c}!test\+\_\+exit@{test\+\_\+exit}}
+\index{test\+\_\+exit@{test\+\_\+exit}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+exit}{test_exit}}]{\setlength{\rightskip}{0pt plus 5cm}\#define test\+\_\+exit(
+\begin{DoxyParamCaption}
+\item[{}]{val}
+\end{DoxyParamCaption}
+)~do \{ {\bf test\+\_\+error\+\_\+return} = val; sh\+\_\+longjmp ({\bf test\+\_\+exit\+\_\+buf}, 1); \} while (0)}\hypertarget{test_8c_afcd32c15fed9034f4fed01ecd1689636}{}\label{test_8c_afcd32c15fed9034f4fed01ecd1689636}
+\index{test.\+c@{test.\+c}!T\+R\+UE@{T\+R\+UE}}
+\index{T\+R\+UE@{T\+R\+UE}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{T\+R\+UE}{TRUE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+R\+UE~1}\hypertarget{test_8c_aa8cecfc5c5c054d2875c03e77b7be15d}{}\label{test_8c_aa8cecfc5c5c054d2875c03e77b7be15d}
+\index{test.\+c@{test.\+c}!unary\+\_\+advance@{unary\+\_\+advance}}
+\index{unary\+\_\+advance@{unary\+\_\+advance}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{unary\+\_\+advance}{unary_advance}}]{\setlength{\rightskip}{0pt plus 5cm}\#define unary\+\_\+advance(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~do \{ {\bf advance} (1); ++{\bf pos}; \} while (0)}\hypertarget{test_8c_aeb6dd3d6de129f4b747e219aefb51931}{}\label{test_8c_aeb6dd3d6de129f4b747e219aefb51931}
+\index{test.\+c@{test.\+c}!W\+\_\+\+OK@{W\+\_\+\+OK}}
+\index{W\+\_\+\+OK@{W\+\_\+\+OK}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{W\+\_\+\+OK}{W_OK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+\_\+\+OK~2}\hypertarget{test_8c_ae5acf4043c0903cda7436b108e29e8e6}{}\label{test_8c_ae5acf4043c0903cda7436b108e29e8e6}
+\index{test.\+c@{test.\+c}!X\+\_\+\+OK@{X\+\_\+\+OK}}
+\index{X\+\_\+\+OK@{X\+\_\+\+OK}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{X\+\_\+\+OK}{X_OK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+\_\+\+OK~1}\hypertarget{test_8c_a5e995ef7690698b62bf016b14fbc45ca}{}\label{test_8c_a5e995ef7690698b62bf016b14fbc45ca}
+
+
+\subsection{Function Documentation}
+\index{test.\+c@{test.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, struct stat $\ast$))}{__P((const char *, struct stat *))}}]{\setlength{\rightskip}{0pt plus 5cm}int sh\+\_\+stat \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, struct stat $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8c_a566410b0195f916911eba32d1d243ace}{}\label{test_8c_a566410b0195f916911eba32d1d243ace}
+\index{test.\+c@{test.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, char $\ast$))}{__P((char *, char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void test\+\_\+syntax\+\_\+error \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_adcbc432905d6b32bea80d7975957675e}{}\label{test_8c_adcbc432905d6b32bea80d7975957675e}
+\index{test.\+c@{test.\+c}!and@{and}}
+\index{and@{and}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{and()}{and()}}]{\setlength{\rightskip}{0pt plus 5cm}static int and (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a1b24e1921b6a4a4356cac5d25d198133}{}\label{test_8c_a1b24e1921b6a4a4356cac5d25d198133}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c_a1b24e1921b6a4a4356cac5d25d198133_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{test.\+c@{test.\+c}!arithcomp@{arithcomp}}
+\index{arithcomp@{arithcomp}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{arithcomp(char $\ast$s, char $\ast$t, int op, int flags)}{arithcomp(char *s, char *t, int op, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}static int arithcomp (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{char $\ast$}]{t, }
+\item[{int}]{op, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a30242737878d92d89cc6106d3ad4e11f}{}\label{test_8c_a30242737878d92d89cc6106d3ad4e11f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c_a30242737878d92d89cc6106d3ad4e11f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{test.\+c@{test.\+c}!beyond@{beyond}}
+\index{beyond@{beyond}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{beyond()}{beyond()}}]{\setlength{\rightskip}{0pt plus 5cm}static void beyond (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_aeb8ad2f112468fc03aa578bf032e1112}{}\label{test_8c_aeb8ad2f112468fc03aa578bf032e1112}
+\index{test.\+c@{test.\+c}!binary\+\_\+operator@{binary\+\_\+operator}}
+\index{binary\+\_\+operator@{binary\+\_\+operator}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{binary\+\_\+operator()}{binary_operator()}}]{\setlength{\rightskip}{0pt plus 5cm}static int binary\+\_\+operator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a3fe2470356fbce979e7477723e131a2a}{}\label{test_8c_a3fe2470356fbce979e7477723e131a2a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c_a3fe2470356fbce979e7477723e131a2a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{test.\+c@{test.\+c}!binary\+\_\+test@{binary\+\_\+test}}
+\index{binary\+\_\+test@{binary\+\_\+test}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{binary\+\_\+test(char $\ast$op, char $\ast$arg1, char $\ast$arg2, int flags)}{binary_test(char *op, char *arg1, char *arg2, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}int binary\+\_\+test (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{op, }
+\item[{char $\ast$}]{arg1, }
+\item[{char $\ast$}]{arg2, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8c_a4b1683fde3a30fb28fbd22d3d3f978ef}{}\label{test_8c_a4b1683fde3a30fb28fbd22d3d3f978ef}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c_a4b1683fde3a30fb28fbd22d3d3f978ef_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{test.\+c@{test.\+c}!expr@{expr}}
+\index{expr@{expr}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{expr()}{expr()}}]{\setlength{\rightskip}{0pt plus 5cm}static int expr (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_afe50dfaccb7a06efec0dcef7519e8ed7}{}\label{test_8c_afe50dfaccb7a06efec0dcef7519e8ed7}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c_afe50dfaccb7a06efec0dcef7519e8ed7_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{test.\+c@{test.\+c}!filecomp@{filecomp}}
+\index{filecomp@{filecomp}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{filecomp(char $\ast$s, char $\ast$t, int op)}{filecomp(char *s, char *t, int op)}}]{\setlength{\rightskip}{0pt plus 5cm}static int filecomp (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{char $\ast$}]{t, }
+\item[{int}]{op}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a3409c6cb2b22592ab6f586fd4d02be8b}{}\label{test_8c_a3409c6cb2b22592ab6f586fd4d02be8b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{test_8c_a3409c6cb2b22592ab6f586fd4d02be8b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{test.\+c@{test.\+c}!integer\+\_\+expected\+\_\+error@{integer\+\_\+expected\+\_\+error}}
+\index{integer\+\_\+expected\+\_\+error@{integer\+\_\+expected\+\_\+error}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{integer\+\_\+expected\+\_\+error(char $\ast$pch)}{integer_expected_error(char *pch)}}]{\setlength{\rightskip}{0pt plus 5cm}static void integer\+\_\+expected\+\_\+error (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{pch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a266fac557c932d91a3df620855a53787}{}\label{test_8c_a266fac557c932d91a3df620855a53787}
+\index{test.\+c@{test.\+c}!or@{or}}
+\index{or@{or}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{or()}{or()}}]{\setlength{\rightskip}{0pt plus 5cm}static int or (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a365f2d8039082624bc36762514a8a34c}{}\label{test_8c_a365f2d8039082624bc36762514a8a34c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c_a365f2d8039082624bc36762514a8a34c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{test.\+c@{test.\+c}!patcomp@{patcomp}}
+\index{patcomp@{patcomp}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{patcomp(char $\ast$string, char $\ast$pat, int op)}{patcomp(char *string, char *pat, int op)}}]{\setlength{\rightskip}{0pt plus 5cm}static int patcomp (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{char $\ast$}]{pat, }
+\item[{int}]{op}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a8fc6d6376491377e83e3499e863ae0da}{}\label{test_8c_a8fc6d6376491377e83e3499e863ae0da}
+\index{test.\+c@{test.\+c}!posixtest@{posixtest}}
+\index{posixtest@{posixtest}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{posixtest()}{posixtest()}}]{\setlength{\rightskip}{0pt plus 5cm}static int posixtest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_afb11735427b6c4ab2ed5497e0fec3667}{}\label{test_8c_afb11735427b6c4ab2ed5497e0fec3667}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c_afb11735427b6c4ab2ed5497e0fec3667_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{test.\+c@{test.\+c}!stat\+\_\+mtime@{stat\+\_\+mtime}}
+\index{stat\+\_\+mtime@{stat\+\_\+mtime}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{stat\+\_\+mtime(char $\ast$fn, struct stat $\ast$st, struct timespec $\ast$ts)}{stat_mtime(char *fn, struct stat *st, struct timespec *ts)}}]{\setlength{\rightskip}{0pt plus 5cm}static int stat\+\_\+mtime (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{fn, }
+\item[{struct stat $\ast$}]{st, }
+\item[{struct timespec $\ast$}]{ts}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a690e81b38d328ee71b9e81b7fa4a3ce3}{}\label{test_8c_a690e81b38d328ee71b9e81b7fa4a3ce3}
+\index{test.\+c@{test.\+c}!term@{term}}
+\index{term@{term}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{term()}{term()}}]{\setlength{\rightskip}{0pt plus 5cm}static int term (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a4a02aba30add5148ab2c2e9622dd5acc}{}\label{test_8c_a4a02aba30add5148ab2c2e9622dd5acc}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c_a4a02aba30add5148ab2c2e9622dd5acc_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{test.\+c@{test.\+c}!test\+\_\+binop@{test\+\_\+binop}}
+\index{test\+\_\+binop@{test\+\_\+binop}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+binop(char $\ast$op)}{test_binop(char *op)}}]{\setlength{\rightskip}{0pt plus 5cm}int test\+\_\+binop (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{op}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8c_a3026ef0c1c43c75504b0d04b12ff2da3}{}\label{test_8c_a3026ef0c1c43c75504b0d04b12ff2da3}
+\index{test.\+c@{test.\+c}!test\+\_\+command@{test\+\_\+command}}
+\index{test\+\_\+command@{test\+\_\+command}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+command(int margc, char $\ast$$\ast$margv)}{test_command(int margc, char **margv)}}]{\setlength{\rightskip}{0pt plus 5cm}int test\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{int}]{margc, }
+\item[{char $\ast$$\ast$}]{margv}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8c_a12073c6b51a65871749623a4728f5e02}{}\label{test_8c_a12073c6b51a65871749623a4728f5e02}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c_a12073c6b51a65871749623a4728f5e02_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{test.\+c@{test.\+c}!test\+\_\+unop@{test\+\_\+unop}}
+\index{test\+\_\+unop@{test\+\_\+unop}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+unop(char $\ast$op)}{test_unop(char *op)}}]{\setlength{\rightskip}{0pt plus 5cm}int test\+\_\+unop (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{op}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8c_a82cf42b2036cde25cce5305772abd821}{}\label{test_8c_a82cf42b2036cde25cce5305772abd821}
+\index{test.\+c@{test.\+c}!three\+\_\+arguments@{three\+\_\+arguments}}
+\index{three\+\_\+arguments@{three\+\_\+arguments}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{three\+\_\+arguments()}{three_arguments()}}]{\setlength{\rightskip}{0pt plus 5cm}static int three\+\_\+arguments (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a1f4941c1867d84b54aa38f596585202c}{}\label{test_8c_a1f4941c1867d84b54aa38f596585202c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c_a1f4941c1867d84b54aa38f596585202c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{test.\+c@{test.\+c}!two\+\_\+arguments@{two\+\_\+arguments}}
+\index{two\+\_\+arguments@{two\+\_\+arguments}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{two\+\_\+arguments()}{two_arguments()}}]{\setlength{\rightskip}{0pt plus 5cm}static int two\+\_\+arguments (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a22d7cb4bc98279c1ece53592d8457799}{}\label{test_8c_a22d7cb4bc98279c1ece53592d8457799}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c_a22d7cb4bc98279c1ece53592d8457799_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{test.\+c@{test.\+c}!unary\+\_\+operator@{unary\+\_\+operator}}
+\index{unary\+\_\+operator@{unary\+\_\+operator}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{unary\+\_\+operator()}{unary_operator()}}]{\setlength{\rightskip}{0pt plus 5cm}static int unary\+\_\+operator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_afb51d1ebd6b38e38287dd8ac18246236}{}\label{test_8c_afb51d1ebd6b38e38287dd8ac18246236}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c_afb51d1ebd6b38e38287dd8ac18246236_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{test.\+c@{test.\+c}!unary\+\_\+test@{unary\+\_\+test}}
+\index{unary\+\_\+test@{unary\+\_\+test}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{unary\+\_\+test(char $\ast$op, char $\ast$arg)}{unary_test(char *op, char *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}int unary\+\_\+test (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{op, }
+\item[{char $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{test_8c_adddc8ae036c52d409a0e7cf6374d9d72}{}\label{test_8c_adddc8ae036c52d409a0e7cf6374d9d72}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8c_adddc8ae036c52d409a0e7cf6374d9d72_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{test.\+c@{test.\+c}!argc@{argc}}
+\index{argc@{argc}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{argc}{argc}}]{\setlength{\rightskip}{0pt plus 5cm}int argc\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_ad1447518f4372828b8435ae82e48499e}{}\label{test_8c_ad1447518f4372828b8435ae82e48499e}
+\index{test.\+c@{test.\+c}!argv@{argv}}
+\index{argv@{argv}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{argv}{argv}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ argv\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_af2efa898e9eed6fe6715279cb1ec35b0}{}\label{test_8c_af2efa898e9eed6fe6715279cb1ec35b0}
+\index{test.\+c@{test.\+c}!errno@{errno}}
+\index{errno@{errno}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{errno}{errno}}]{\setlength{\rightskip}{0pt plus 5cm}int errno}\hypertarget{test_8c_ad65a8842cc674e3ddf69355898c0ecbf}{}\label{test_8c_ad65a8842cc674e3ddf69355898c0ecbf}
+\index{test.\+c@{test.\+c}!noeval@{noeval}}
+\index{noeval@{noeval}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{noeval}{noeval}}]{\setlength{\rightskip}{0pt plus 5cm}int noeval\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_ad34c2f048482e74a3106939b8866875b}{}\label{test_8c_ad34c2f048482e74a3106939b8866875b}
+\index{test.\+c@{test.\+c}!pos@{pos}}
+\index{pos@{pos}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{pos}{pos}}]{\setlength{\rightskip}{0pt plus 5cm}int pos\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a1910d262855b71da353ed0d07a6c7823}{}\label{test_8c_a1910d262855b71da353ed0d07a6c7823}
+\index{test.\+c@{test.\+c}!test\+\_\+error\+\_\+return@{test\+\_\+error\+\_\+return}}
+\index{test\+\_\+error\+\_\+return@{test\+\_\+error\+\_\+return}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+error\+\_\+return}{test_error_return}}]{\setlength{\rightskip}{0pt plus 5cm}int test\+\_\+error\+\_\+return\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a287e04243953828232bb05890917793f}{}\label{test_8c_a287e04243953828232bb05890917793f}
+\index{test.\+c@{test.\+c}!test\+\_\+exit\+\_\+buf@{test\+\_\+exit\+\_\+buf}}
+\index{test\+\_\+exit\+\_\+buf@{test\+\_\+exit\+\_\+buf}!test.\+c@{test.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+exit\+\_\+buf}{test_exit_buf}}]{\setlength{\rightskip}{0pt plus 5cm}procenv\+\_\+t test\+\_\+exit\+\_\+buf\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{test_8c_a1fc7e6812fdf0354958a21e61cda2675}{}\label{test_8c_a1fc7e6812fdf0354958a21e61cda2675}

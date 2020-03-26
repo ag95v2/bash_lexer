@@ -550,6 +550,7 @@ async_redirect_stdin ()
    EXECUTION_SUCCESS or EXECUTION_FAILURE are the only possible
    return values.  Executing a command with nothing in it returns
    EXECUTION_SUCCESS. */
+
 int
 execute_command_internal (command, asynchronous, pipe_in, pipe_out,
 			  fds_to_close)

@@ -1,0 +1,292 @@
+\hypertarget{pcomplib_8c}{}\section{pcomplib.\+c File Reference}
+\label{pcomplib_8c}\index{pcomplib.\+c@{pcomplib.\+c}}
+{\ttfamily \#include $<$config.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pcomplete.\+h\char`\"{}}\\*
+Include dependency graph for pcomplib.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplib_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{pcomplib_8c_a5d5e266a6783ff4f8ecb7533c123ff2a}{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS}~256	/$\ast$ must be power of two $\ast$/
+\item 
+\#define \hyperlink{pcomplib_8c_ae4bc0afa328d6588777cb932a96dee1e}{S\+T\+R\+D\+UP}(x)~((x) ? \hyperlink{general_8h_abb76e9f0eacf35ac61f9080497555ccd}{savestring} (x) \+: (char $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL})
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{pcomplib_8c_aae659d5e9f176cd79e4b7d876628eb2d}{free\+\_\+progcomp} \hyperlink{pcomplib_8c_ad060b3b7945882eea718eaed48b0e25b}{\+\_\+\+\_\+P} ((\hyperlink{xmalloc_8h_abbf31fec203727613ea15ba47bb8f344}{P\+T\+R\+\_\+T}))
+\item 
+\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$ \hyperlink{pcomplib_8c_a6b3ff6a9a30e86e621cec443beb95fbc}{compspec\+\_\+create} ()
+\item 
+void \hyperlink{pcomplib_8c_ad356f9eb78c2dc6155e89c6f36e8e44b}{compspec\+\_\+dispose} (\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$cs)
+\item 
+\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$ \hyperlink{pcomplib_8c_a315bd666a95daa2c6e34a2826c9eec18}{compspec\+\_\+copy} (\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$cs)
+\item 
+void \hyperlink{pcomplib_8c_a6b22e309ff6ca33831484bddb3ffee9f}{progcomp\+\_\+create} ()
+\item 
+int \hyperlink{pcomplib_8c_afd152b6e841eb9e8e5e8179d13d36aeb}{progcomp\+\_\+size} ()
+\item 
+static void \hyperlink{pcomplib_8c_aae659d5e9f176cd79e4b7d876628eb2d}{free\+\_\+progcomp} (\hyperlink{xmalloc_8h_abbf31fec203727613ea15ba47bb8f344}{P\+T\+R\+\_\+T} data)
+\item 
+void \hyperlink{pcomplib_8c_ad37040dff5bef54d45956327eebf12cc}{progcomp\+\_\+flush} ()
+\item 
+void \hyperlink{pcomplib_8c_af2aab4cace7c4606276513bbf79b2c6c}{progcomp\+\_\+dispose} ()
+\item 
+int \hyperlink{pcomplib_8c_aa3ba39e2b5b1c325ad33fea62777bc43}{progcomp\+\_\+remove} (char $\ast$cmd)
+\item 
+int \hyperlink{pcomplib_8c_acd0de9499b6334c0d9cfb4bb8a15d07b}{progcomp\+\_\+insert} (char $\ast$cmd, \hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$cs)
+\item 
+\hyperlink{pcomplete_8h_a7f2b5133e51abe1fe3cec6b99b7168bb}{C\+O\+M\+P\+S\+P\+EC} $\ast$ \hyperlink{pcomplib_8c_a88d94abae9b8b6eafa3959565767dae7}{progcomp\+\_\+search} (char $\ast$cmd) const
+\item 
+void \hyperlink{pcomplib_8c_a2e1fc73d258297a48f191d6ea858382d}{progcomp\+\_\+walk} (hash\+\_\+wfunc $\ast$pfunc)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{hashlib_8h_a8284f9978df160609365484b829527e6}{H\+A\+S\+H\+\_\+\+T\+A\+B\+LE} $\ast$ \hyperlink{pcomplib_8c_a49e67ae9dab4173435d2b2f3ea141267}{prog\+\_\+completes} = (\hyperlink{hashlib_8h_a8284f9978df160609365484b829527e6}{H\+A\+S\+H\+\_\+\+T\+A\+B\+LE} $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{pcomplib.\+c@{pcomplib.\+c}!C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS@{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS}}
+\index{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS@{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS}{COMPLETE_HASH_BUCKETS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+H\+A\+S\+H\+\_\+\+B\+U\+C\+K\+E\+TS~256	/$\ast$ must be power of two $\ast$/}\hypertarget{pcomplib_8c_a5d5e266a6783ff4f8ecb7533c123ff2a}{}\label{pcomplib_8c_a5d5e266a6783ff4f8ecb7533c123ff2a}
+\index{pcomplib.\+c@{pcomplib.\+c}!S\+T\+R\+D\+UP@{S\+T\+R\+D\+UP}}
+\index{S\+T\+R\+D\+UP@{S\+T\+R\+D\+UP}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{S\+T\+R\+D\+UP}{STRDUP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+R\+D\+UP(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~((x) ? {\bf savestring} (x) \+: (char $\ast$){\bf N\+U\+LL})}\hypertarget{pcomplib_8c_ae4bc0afa328d6588777cb932a96dee1e}{}\label{pcomplib_8c_ae4bc0afa328d6588777cb932a96dee1e}
+
+
+\subsection{Function Documentation}
+\index{pcomplib.\+c@{pcomplib.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+P\+T\+R\+\_\+\+T))}{__P((PTR_T))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf free\+\_\+progcomp} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf P\+T\+R\+\_\+T})}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplib_8c_ad060b3b7945882eea718eaed48b0e25b}{}\label{pcomplib_8c_ad060b3b7945882eea718eaed48b0e25b}
+\index{pcomplib.\+c@{pcomplib.\+c}!compspec\+\_\+copy@{compspec\+\_\+copy}}
+\index{compspec\+\_\+copy@{compspec\+\_\+copy}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{compspec\+\_\+copy(\+C\+O\+M\+P\+S\+P\+E\+C $\ast$cs)}{compspec_copy(COMPSPEC *cs)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+P\+S\+P\+EC}$\ast$ compspec\+\_\+copy (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+P\+S\+P\+EC} $\ast$}]{cs}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplib_8c_a315bd666a95daa2c6e34a2826c9eec18}{}\label{pcomplib_8c_a315bd666a95daa2c6e34a2826c9eec18}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplib_8c_a315bd666a95daa2c6e34a2826c9eec18_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplib.\+c@{pcomplib.\+c}!compspec\+\_\+create@{compspec\+\_\+create}}
+\index{compspec\+\_\+create@{compspec\+\_\+create}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{compspec\+\_\+create()}{compspec_create()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+P\+S\+P\+EC}$\ast$ compspec\+\_\+create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplib_8c_a6b3ff6a9a30e86e621cec443beb95fbc}{}\label{pcomplib_8c_a6b3ff6a9a30e86e621cec443beb95fbc}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplib_8c_a6b3ff6a9a30e86e621cec443beb95fbc_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplib.\+c@{pcomplib.\+c}!compspec\+\_\+dispose@{compspec\+\_\+dispose}}
+\index{compspec\+\_\+dispose@{compspec\+\_\+dispose}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{compspec\+\_\+dispose(\+C\+O\+M\+P\+S\+P\+E\+C $\ast$cs)}{compspec_dispose(COMPSPEC *cs)}}]{\setlength{\rightskip}{0pt plus 5cm}void compspec\+\_\+dispose (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+O\+M\+P\+S\+P\+EC} $\ast$}]{cs}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplib_8c_ad356f9eb78c2dc6155e89c6f36e8e44b}{}\label{pcomplib_8c_ad356f9eb78c2dc6155e89c6f36e8e44b}
+\index{pcomplib.\+c@{pcomplib.\+c}!free\+\_\+progcomp@{free\+\_\+progcomp}}
+\index{free\+\_\+progcomp@{free\+\_\+progcomp}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{free\+\_\+progcomp(\+P\+T\+R\+\_\+\+T data)}{free_progcomp(PTR_T data)}}]{\setlength{\rightskip}{0pt plus 5cm}static void free\+\_\+progcomp (
+\begin{DoxyParamCaption}
+\item[{{\bf P\+T\+R\+\_\+T}}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{pcomplib_8c_aae659d5e9f176cd79e4b7d876628eb2d}{}\label{pcomplib_8c_aae659d5e9f176cd79e4b7d876628eb2d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{pcomplib_8c_aae659d5e9f176cd79e4b7d876628eb2d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplib.\+c@{pcomplib.\+c}!progcomp\+\_\+create@{progcomp\+\_\+create}}
+\index{progcomp\+\_\+create@{progcomp\+\_\+create}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{progcomp\+\_\+create()}{progcomp_create()}}]{\setlength{\rightskip}{0pt plus 5cm}void progcomp\+\_\+create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplib_8c_a6b22e309ff6ca33831484bddb3ffee9f}{}\label{pcomplib_8c_a6b22e309ff6ca33831484bddb3ffee9f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplib_8c_a6b22e309ff6ca33831484bddb3ffee9f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplib.\+c@{pcomplib.\+c}!progcomp\+\_\+dispose@{progcomp\+\_\+dispose}}
+\index{progcomp\+\_\+dispose@{progcomp\+\_\+dispose}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{progcomp\+\_\+dispose()}{progcomp_dispose()}}]{\setlength{\rightskip}{0pt plus 5cm}void progcomp\+\_\+dispose (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplib_8c_af2aab4cace7c4606276513bbf79b2c6c}{}\label{pcomplib_8c_af2aab4cace7c4606276513bbf79b2c6c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{pcomplib_8c_af2aab4cace7c4606276513bbf79b2c6c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplib.\+c@{pcomplib.\+c}!progcomp\+\_\+flush@{progcomp\+\_\+flush}}
+\index{progcomp\+\_\+flush@{progcomp\+\_\+flush}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{progcomp\+\_\+flush()}{progcomp_flush()}}]{\setlength{\rightskip}{0pt plus 5cm}void progcomp\+\_\+flush (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplib_8c_ad37040dff5bef54d45956327eebf12cc}{}\label{pcomplib_8c_ad37040dff5bef54d45956327eebf12cc}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplib_8c_ad37040dff5bef54d45956327eebf12cc_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplib.\+c@{pcomplib.\+c}!progcomp\+\_\+insert@{progcomp\+\_\+insert}}
+\index{progcomp\+\_\+insert@{progcomp\+\_\+insert}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{progcomp\+\_\+insert(char $\ast$cmd, C\+O\+M\+P\+S\+P\+E\+C $\ast$cs)}{progcomp_insert(char *cmd, COMPSPEC *cs)}}]{\setlength{\rightskip}{0pt plus 5cm}int progcomp\+\_\+insert (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{cmd, }
+\item[{{\bf C\+O\+M\+P\+S\+P\+EC} $\ast$}]{cs}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplib_8c_acd0de9499b6334c0d9cfb4bb8a15d07b}{}\label{pcomplib_8c_acd0de9499b6334c0d9cfb4bb8a15d07b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplib_8c_acd0de9499b6334c0d9cfb4bb8a15d07b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplib.\+c@{pcomplib.\+c}!progcomp\+\_\+remove@{progcomp\+\_\+remove}}
+\index{progcomp\+\_\+remove@{progcomp\+\_\+remove}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{progcomp\+\_\+remove(char $\ast$cmd)}{progcomp_remove(char *cmd)}}]{\setlength{\rightskip}{0pt plus 5cm}int progcomp\+\_\+remove (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{cmd}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplib_8c_aa3ba39e2b5b1c325ad33fea62777bc43}{}\label{pcomplib_8c_aa3ba39e2b5b1c325ad33fea62777bc43}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplib_8c_aa3ba39e2b5b1c325ad33fea62777bc43_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplib.\+c@{pcomplib.\+c}!progcomp\+\_\+search@{progcomp\+\_\+search}}
+\index{progcomp\+\_\+search@{progcomp\+\_\+search}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{progcomp\+\_\+search(char $\ast$cmd) const}{progcomp_search(char *cmd) const}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+O\+M\+P\+S\+P\+EC}$\ast$ progcomp\+\_\+search (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{cmd}
+\end{DoxyParamCaption}
+) const}\hypertarget{pcomplib_8c_a88d94abae9b8b6eafa3959565767dae7}{}\label{pcomplib_8c_a88d94abae9b8b6eafa3959565767dae7}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplib_8c_a88d94abae9b8b6eafa3959565767dae7_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{pcomplib.\+c@{pcomplib.\+c}!progcomp\+\_\+size@{progcomp\+\_\+size}}
+\index{progcomp\+\_\+size@{progcomp\+\_\+size}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{progcomp\+\_\+size()}{progcomp_size()}}]{\setlength{\rightskip}{0pt plus 5cm}int progcomp\+\_\+size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplib_8c_afd152b6e841eb9e8e5e8179d13d36aeb}{}\label{pcomplib_8c_afd152b6e841eb9e8e5e8179d13d36aeb}
+\index{pcomplib.\+c@{pcomplib.\+c}!progcomp\+\_\+walk@{progcomp\+\_\+walk}}
+\index{progcomp\+\_\+walk@{progcomp\+\_\+walk}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{progcomp\+\_\+walk(hash\+\_\+wfunc $\ast$pfunc)}{progcomp_walk(hash_wfunc *pfunc)}}]{\setlength{\rightskip}{0pt plus 5cm}void progcomp\+\_\+walk (
+\begin{DoxyParamCaption}
+\item[{hash\+\_\+wfunc $\ast$}]{pfunc}
+\end{DoxyParamCaption}
+)}\hypertarget{pcomplib_8c_a2e1fc73d258297a48f191d6ea858382d}{}\label{pcomplib_8c_a2e1fc73d258297a48f191d6ea858382d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pcomplib_8c_a2e1fc73d258297a48f191d6ea858382d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{pcomplib.\+c@{pcomplib.\+c}!prog\+\_\+completes@{prog\+\_\+completes}}
+\index{prog\+\_\+completes@{prog\+\_\+completes}!pcomplib.\+c@{pcomplib.\+c}}
+\subsubsection[{\texorpdfstring{prog\+\_\+completes}{prog_completes}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf H\+A\+S\+H\+\_\+\+T\+A\+B\+LE}$\ast$ prog\+\_\+completes = ({\bf H\+A\+S\+H\+\_\+\+T\+A\+B\+LE} $\ast$){\bf N\+U\+LL}}\hypertarget{pcomplib_8c_a49e67ae9dab4173435d2b2f3ea141267}{}\label{pcomplib_8c_a49e67ae9dab4173435d2b2f3ea141267}

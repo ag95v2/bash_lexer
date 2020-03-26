@@ -1,0 +1,486 @@
+\hypertarget{unwind__prot_8c}{}\section{unwind\+\_\+prot.\+c File Reference}
+\label{unwind__prot_8c}\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$stddef.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}command.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}general.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}unwind\+\_\+prot.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sig.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}quit.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ocache.\+h\char`\"{}}\\*
+Include dependency graph for unwind\+\_\+prot.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structSAVED__VAR}{S\+A\+V\+E\+D\+\_\+\+V\+AR}
+\item 
+union \hyperlink{unionuwp}{uwp}
+\item 
+struct \hyperlink{structuwp_1_1uwp__head}{uwp\+::uwp\+\_\+head}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{unwind__prot_8c_a276e8a32e0bbf024aadd9420b8f2d3b3}{offsetof}(T\+Y\+PE,  \hyperlink{general_8h_ad18bab985add7879e49b167e78dbd752}{M\+E\+M\+B\+ER})~((size\+\_\+t) \&((T\+Y\+PE $\ast$)0)-\/$>$\hyperlink{general_8h_ad18bab985add7879e49b167e78dbd752}{M\+E\+M\+B\+ER})
+\item 
+\#define \hyperlink{unwind__prot_8c_a85b9da51fac88b2ebdd39debf1152dc0}{U\+W\+C\+A\+C\+H\+E\+S\+I\+ZE}~128
+\item 
+\#define \hyperlink{unwind__prot_8c_a0c2ffc1b528dba9ee22a3c6451388d6b}{uwpalloc}(elt)~ocache\+\_\+alloc (\hyperlink{unwind__prot_8c_a24def4b4863fcafd004fd54c2dd5e2a3}{uwcache}, \hyperlink{unwind__prot_8c_abb158c5de58ef6f7157f565b923e55fe}{U\+N\+W\+I\+N\+D\+\_\+\+E\+LT}, elt)
+\item 
+\#define \hyperlink{unwind__prot_8c_a79bd6de73b541819206584685b133def}{uwpfree}(elt)~ocache\+\_\+free (\hyperlink{unwind__prot_8c_a24def4b4863fcafd004fd54c2dd5e2a3}{uwcache}, \hyperlink{unwind__prot_8c_abb158c5de58ef6f7157f565b923e55fe}{U\+N\+W\+I\+N\+D\+\_\+\+E\+LT}, elt)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef union \hyperlink{unionuwp}{uwp} \hyperlink{unwind__prot_8c_abb158c5de58ef6f7157f565b923e55fe}{U\+N\+W\+I\+N\+D\+\_\+\+E\+LT}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{unwind__prot_8c_adcd63ab88def9e7cff50d5a2f4ab753a}{without\+\_\+interrupts} \hyperlink{unwind__prot_8c_af5599d3f48ee821a6e686f92a20453f0}{\+\_\+\+\_\+P} ((\hyperlink{input_8h_a0aac0b2046ec9535d322b00cb1340ad8}{V\+Function} $\ast$, char $\ast$, char $\ast$))
+\item 
+static void \hyperlink{unwind__prot_8c_a2940b00b071a698289fe2073778c4f3f}{unwind\+\_\+frame\+\_\+discard\+\_\+internal} \hyperlink{unwind__prot_8c_ac971f3fcdbd385dbf153f1e5961be74f}{\+\_\+\+\_\+P} ((char $\ast$, char $\ast$))
+\item 
+static void \hyperlink{unwind__prot_8c_a42c468189abdc0699891712af2344ddb}{add\+\_\+unwind\+\_\+protect\+\_\+internal} \hyperlink{unwind__prot_8c_a9f4dee9ff81dd8adb0fef6cf202acea9}{\+\_\+\+\_\+P} ((\hyperlink{input_8h_a38bf8b007a281c3c96504ad1d2614af4}{Function} $\ast$, char $\ast$))
+\item 
+static void \hyperlink{unwind__prot_8c_ac27abb5ae76cf5fe7cf9bf689b07591c}{restore\+\_\+variable} \hyperlink{unwind__prot_8c_ad751bcc506f089fac876edf4fb63bdfd}{\+\_\+\+\_\+P} ((\hyperlink{structSAVED__VAR}{S\+A\+V\+E\+D\+\_\+\+V\+AR} $\ast$))
+\item 
+void \hyperlink{unwind__prot_8c_a1886057f86c77799cd536208529f6ee5}{uwp\+\_\+init} ()
+\item 
+static void \hyperlink{unwind__prot_8c_adcd63ab88def9e7cff50d5a2f4ab753a}{without\+\_\+interrupts} (\hyperlink{input_8h_a0aac0b2046ec9535d322b00cb1340ad8}{V\+Function} $\ast$function, char $\ast$arg1, char $\ast$arg2)
+\item 
+void \hyperlink{unwind__prot_8c_a0634c88afd6862533b1a4ea67dc6d0d8}{begin\+\_\+unwind\+\_\+frame} (char $\ast$tag)
+\item 
+void \hyperlink{unwind__prot_8c_a6920dbbc57b643f9a10566dd61b62a30}{discard\+\_\+unwind\+\_\+frame} (char $\ast$tag)
+\item 
+void \hyperlink{unwind__prot_8c_a951deebec0eab9fc9b0252296b96084a}{run\+\_\+unwind\+\_\+frame} (char $\ast$tag)
+\item 
+void \hyperlink{unwind__prot_8c_a4d4c2515b10c89841ca0ad9fb9577694}{add\+\_\+unwind\+\_\+protect} (\hyperlink{input_8h_a38bf8b007a281c3c96504ad1d2614af4}{Function} $\ast$cleanup, char $\ast$arg)
+\item 
+void \hyperlink{unwind__prot_8c_ac874cd90d3bb9ea2d29b3c4ea73bd70d}{remove\+\_\+unwind\+\_\+protect} ()
+\item 
+void \hyperlink{unwind__prot_8c_ad689bac171942d42fecbab79f6e4e030}{run\+\_\+unwind\+\_\+protects} ()
+\item 
+void \hyperlink{unwind__prot_8c_a38ec5f32e8267900c897189a08e79201}{clear\+\_\+unwind\+\_\+protect\+\_\+list} (int flags)
+\item 
+int \hyperlink{unwind__prot_8c_a0999a96728cdbde7cb6ae753fa9b91ab}{have\+\_\+unwind\+\_\+protects} ()
+\item 
+int \hyperlink{unwind__prot_8c_a06b424bcde098157f62db7584be13c99}{unwind\+\_\+protect\+\_\+tag\+\_\+on\+\_\+stack} (char $\ast$tag) const
+\item 
+static void \hyperlink{unwind__prot_8c_a42c468189abdc0699891712af2344ddb}{add\+\_\+unwind\+\_\+protect\+\_\+internal} (\hyperlink{input_8h_a38bf8b007a281c3c96504ad1d2614af4}{Function} $\ast$cleanup, char $\ast$arg)
+\item 
+static void \hyperlink{unwind__prot_8c_a601859d37cece5380c6d5c4cd91a1193}{remove\+\_\+unwind\+\_\+protect\+\_\+internal} (char $\ast$ignore1, char $\ast$ignore2)
+\item 
+static void \hyperlink{unwind__prot_8c_a3ca36fb39f236603c0b7267adc587a12}{run\+\_\+unwind\+\_\+protects\+\_\+internal} (char $\ast$ignore1, char $\ast$ignore2)
+\item 
+static void \hyperlink{unwind__prot_8c_a04186455e7464e903a424f985eae8bee}{clear\+\_\+unwind\+\_\+protects\+\_\+internal} (char $\ast$flag, char $\ast$ignore)
+\item 
+static void \hyperlink{unwind__prot_8c_a2940b00b071a698289fe2073778c4f3f}{unwind\+\_\+frame\+\_\+discard\+\_\+internal} (char $\ast$tag, char $\ast$ignore)
+\item 
+static void \hyperlink{unwind__prot_8c_ac27abb5ae76cf5fe7cf9bf689b07591c}{restore\+\_\+variable} (\hyperlink{structSAVED__VAR}{S\+A\+V\+E\+D\+\_\+\+V\+AR} $\ast$sv)
+\item 
+static void \hyperlink{unwind__prot_8c_a1c325cf2f4d384149cdc62ba76bbea7c}{unwind\+\_\+frame\+\_\+run\+\_\+internal} (char $\ast$tag, char $\ast$ignore)
+\item 
+static void \hyperlink{unwind__prot_8c_aca05e29f468b40d43a4f5c568a38204e}{unwind\+\_\+protect\+\_\+mem\+\_\+internal} (char $\ast$var, char $\ast$psize)
+\item 
+void \hyperlink{unwind__prot_8c_aaa455f34e29b23a077c4004e2572dc81}{unwind\+\_\+protect\+\_\+mem} (char $\ast$var, int size)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{unwind__prot_8c_abb158c5de58ef6f7157f565b923e55fe}{U\+N\+W\+I\+N\+D\+\_\+\+E\+LT} $\ast$ \hyperlink{unwind__prot_8c_a1ad50e139ef4239a0341f20b58c4be28}{unwind\+\_\+protect\+\_\+list} = (\hyperlink{unwind__prot_8c_abb158c5de58ef6f7157f565b923e55fe}{U\+N\+W\+I\+N\+D\+\_\+\+E\+LT} $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+sh\+\_\+obj\+\_\+cache\+\_\+t \hyperlink{unwind__prot_8c_a24def4b4863fcafd004fd54c2dd5e2a3}{uwcache} = \{0, 0, 0\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!offsetof@{offsetof}}
+\index{offsetof@{offsetof}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{offsetof}{offsetof}}]{\setlength{\rightskip}{0pt plus 5cm}\#define offsetof(
+\begin{DoxyParamCaption}
+\item[{}]{T\+Y\+PE, }
+\item[{}]{{\bf M\+E\+M\+B\+ER}}
+\end{DoxyParamCaption}
+)~((size\+\_\+t) \&((T\+Y\+PE $\ast$)0)-\/$>${\bf M\+E\+M\+B\+ER})}\hypertarget{unwind__prot_8c_a276e8a32e0bbf024aadd9420b8f2d3b3}{}\label{unwind__prot_8c_a276e8a32e0bbf024aadd9420b8f2d3b3}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!U\+W\+C\+A\+C\+H\+E\+S\+I\+ZE@{U\+W\+C\+A\+C\+H\+E\+S\+I\+ZE}}
+\index{U\+W\+C\+A\+C\+H\+E\+S\+I\+ZE@{U\+W\+C\+A\+C\+H\+E\+S\+I\+ZE}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{U\+W\+C\+A\+C\+H\+E\+S\+I\+ZE}{UWCACHESIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+W\+C\+A\+C\+H\+E\+S\+I\+ZE~128}\hypertarget{unwind__prot_8c_a85b9da51fac88b2ebdd39debf1152dc0}{}\label{unwind__prot_8c_a85b9da51fac88b2ebdd39debf1152dc0}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!uwpalloc@{uwpalloc}}
+\index{uwpalloc@{uwpalloc}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{uwpalloc}{uwpalloc}}]{\setlength{\rightskip}{0pt plus 5cm}\#define uwpalloc(
+\begin{DoxyParamCaption}
+\item[{}]{elt}
+\end{DoxyParamCaption}
+)~ocache\+\_\+alloc ({\bf uwcache}, {\bf U\+N\+W\+I\+N\+D\+\_\+\+E\+LT}, elt)}\hypertarget{unwind__prot_8c_a0c2ffc1b528dba9ee22a3c6451388d6b}{}\label{unwind__prot_8c_a0c2ffc1b528dba9ee22a3c6451388d6b}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!uwpfree@{uwpfree}}
+\index{uwpfree@{uwpfree}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{uwpfree}{uwpfree}}]{\setlength{\rightskip}{0pt plus 5cm}\#define uwpfree(
+\begin{DoxyParamCaption}
+\item[{}]{elt}
+\end{DoxyParamCaption}
+)~ocache\+\_\+free ({\bf uwcache}, {\bf U\+N\+W\+I\+N\+D\+\_\+\+E\+LT}, elt)}\hypertarget{unwind__prot_8c_a79bd6de73b541819206584685b133def}{}\label{unwind__prot_8c_a79bd6de73b541819206584685b133def}
+
+
+\subsection{Typedef Documentation}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!U\+N\+W\+I\+N\+D\+\_\+\+E\+LT@{U\+N\+W\+I\+N\+D\+\_\+\+E\+LT}}
+\index{U\+N\+W\+I\+N\+D\+\_\+\+E\+LT@{U\+N\+W\+I\+N\+D\+\_\+\+E\+LT}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{U\+N\+W\+I\+N\+D\+\_\+\+E\+LT}{UNWIND_ELT}}]{\setlength{\rightskip}{0pt plus 5cm}typedef union {\bf uwp}  {\bf U\+N\+W\+I\+N\+D\+\_\+\+E\+LT}}\hypertarget{unwind__prot_8c_abb158c5de58ef6f7157f565b923e55fe}{}\label{unwind__prot_8c_abb158c5de58ef6f7157f565b923e55fe}
+
+
+\subsection{Function Documentation}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+V\+Function $\ast$, char $\ast$, char $\ast$))}{__P((VFunction *, char *, char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf without\+\_\+interrupts} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf V\+Function} $\ast$, char $\ast$, char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{unwind__prot_8c_af5599d3f48ee821a6e686f92a20453f0}{}\label{unwind__prot_8c_af5599d3f48ee821a6e686f92a20453f0}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, char $\ast$))}{__P((char *, char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf unwind\+\_\+frame\+\_\+discard\+\_\+internal} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{unwind__prot_8c_ac971f3fcdbd385dbf153f1e5961be74f}{}\label{unwind__prot_8c_ac971f3fcdbd385dbf153f1e5961be74f}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+Function $\ast$, char $\ast$))}{__P((Function *, char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf add\+\_\+unwind\+\_\+protect\+\_\+internal} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf Function} $\ast$, char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{unwind__prot_8c_a9f4dee9ff81dd8adb0fef6cf202acea9}{}\label{unwind__prot_8c_a9f4dee9ff81dd8adb0fef6cf202acea9}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+S\+A\+V\+E\+D\+\_\+\+V\+A\+R $\ast$))}{__P((SAVED_VAR *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf restore\+\_\+variable} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf S\+A\+V\+E\+D\+\_\+\+V\+AR} $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{unwind__prot_8c_ad751bcc506f089fac876edf4fb63bdfd}{}\label{unwind__prot_8c_ad751bcc506f089fac876edf4fb63bdfd}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!add\+\_\+unwind\+\_\+protect@{add\+\_\+unwind\+\_\+protect}}
+\index{add\+\_\+unwind\+\_\+protect@{add\+\_\+unwind\+\_\+protect}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+unwind\+\_\+protect(\+Function $\ast$cleanup, char $\ast$arg)}{add_unwind_protect(Function *cleanup, char *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}void add\+\_\+unwind\+\_\+protect (
+\begin{DoxyParamCaption}
+\item[{{\bf Function} $\ast$}]{cleanup, }
+\item[{char $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8c_a4d4c2515b10c89841ca0ad9fb9577694}{}\label{unwind__prot_8c_a4d4c2515b10c89841ca0ad9fb9577694}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{unwind__prot_8c_a4d4c2515b10c89841ca0ad9fb9577694_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!add\+\_\+unwind\+\_\+protect\+\_\+internal@{add\+\_\+unwind\+\_\+protect\+\_\+internal}}
+\index{add\+\_\+unwind\+\_\+protect\+\_\+internal@{add\+\_\+unwind\+\_\+protect\+\_\+internal}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+unwind\+\_\+protect\+\_\+internal(\+Function $\ast$cleanup, char $\ast$arg)}{add_unwind_protect_internal(Function *cleanup, char *arg)}}]{\setlength{\rightskip}{0pt plus 5cm}static void add\+\_\+unwind\+\_\+protect\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{{\bf Function} $\ast$}]{cleanup, }
+\item[{char $\ast$}]{arg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{unwind__prot_8c_a42c468189abdc0699891712af2344ddb}{}\label{unwind__prot_8c_a42c468189abdc0699891712af2344ddb}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!begin\+\_\+unwind\+\_\+frame@{begin\+\_\+unwind\+\_\+frame}}
+\index{begin\+\_\+unwind\+\_\+frame@{begin\+\_\+unwind\+\_\+frame}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{begin\+\_\+unwind\+\_\+frame(char $\ast$tag)}{begin_unwind_frame(char *tag)}}]{\setlength{\rightskip}{0pt plus 5cm}void begin\+\_\+unwind\+\_\+frame (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{tag}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8c_a0634c88afd6862533b1a4ea67dc6d0d8}{}\label{unwind__prot_8c_a0634c88afd6862533b1a4ea67dc6d0d8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8c_a0634c88afd6862533b1a4ea67dc6d0d8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!clear\+\_\+unwind\+\_\+protect\+\_\+list@{clear\+\_\+unwind\+\_\+protect\+\_\+list}}
+\index{clear\+\_\+unwind\+\_\+protect\+\_\+list@{clear\+\_\+unwind\+\_\+protect\+\_\+list}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{clear\+\_\+unwind\+\_\+protect\+\_\+list(int flags)}{clear_unwind_protect_list(int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}void clear\+\_\+unwind\+\_\+protect\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8c_a38ec5f32e8267900c897189a08e79201}{}\label{unwind__prot_8c_a38ec5f32e8267900c897189a08e79201}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8c_a38ec5f32e8267900c897189a08e79201_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!clear\+\_\+unwind\+\_\+protects\+\_\+internal@{clear\+\_\+unwind\+\_\+protects\+\_\+internal}}
+\index{clear\+\_\+unwind\+\_\+protects\+\_\+internal@{clear\+\_\+unwind\+\_\+protects\+\_\+internal}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{clear\+\_\+unwind\+\_\+protects\+\_\+internal(char $\ast$flag, char $\ast$ignore)}{clear_unwind_protects_internal(char *flag, char *ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}static void clear\+\_\+unwind\+\_\+protects\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{flag, }
+\item[{char $\ast$}]{ignore}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{unwind__prot_8c_a04186455e7464e903a424f985eae8bee}{}\label{unwind__prot_8c_a04186455e7464e903a424f985eae8bee}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8c_a04186455e7464e903a424f985eae8bee_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!discard\+\_\+unwind\+\_\+frame@{discard\+\_\+unwind\+\_\+frame}}
+\index{discard\+\_\+unwind\+\_\+frame@{discard\+\_\+unwind\+\_\+frame}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{discard\+\_\+unwind\+\_\+frame(char $\ast$tag)}{discard_unwind_frame(char *tag)}}]{\setlength{\rightskip}{0pt plus 5cm}void discard\+\_\+unwind\+\_\+frame (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{tag}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8c_a6920dbbc57b643f9a10566dd61b62a30}{}\label{unwind__prot_8c_a6920dbbc57b643f9a10566dd61b62a30}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8c_a6920dbbc57b643f9a10566dd61b62a30_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!have\+\_\+unwind\+\_\+protects@{have\+\_\+unwind\+\_\+protects}}
+\index{have\+\_\+unwind\+\_\+protects@{have\+\_\+unwind\+\_\+protects}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{have\+\_\+unwind\+\_\+protects()}{have_unwind_protects()}}]{\setlength{\rightskip}{0pt plus 5cm}int have\+\_\+unwind\+\_\+protects (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8c_a0999a96728cdbde7cb6ae753fa9b91ab}{}\label{unwind__prot_8c_a0999a96728cdbde7cb6ae753fa9b91ab}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!remove\+\_\+unwind\+\_\+protect@{remove\+\_\+unwind\+\_\+protect}}
+\index{remove\+\_\+unwind\+\_\+protect@{remove\+\_\+unwind\+\_\+protect}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{remove\+\_\+unwind\+\_\+protect()}{remove_unwind_protect()}}]{\setlength{\rightskip}{0pt plus 5cm}void remove\+\_\+unwind\+\_\+protect (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8c_ac874cd90d3bb9ea2d29b3c4ea73bd70d}{}\label{unwind__prot_8c_ac874cd90d3bb9ea2d29b3c4ea73bd70d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8c_ac874cd90d3bb9ea2d29b3c4ea73bd70d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!remove\+\_\+unwind\+\_\+protect\+\_\+internal@{remove\+\_\+unwind\+\_\+protect\+\_\+internal}}
+\index{remove\+\_\+unwind\+\_\+protect\+\_\+internal@{remove\+\_\+unwind\+\_\+protect\+\_\+internal}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{remove\+\_\+unwind\+\_\+protect\+\_\+internal(char $\ast$ignore1, char $\ast$ignore2)}{remove_unwind_protect_internal(char *ignore1, char *ignore2)}}]{\setlength{\rightskip}{0pt plus 5cm}static void remove\+\_\+unwind\+\_\+protect\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{ignore1, }
+\item[{char $\ast$}]{ignore2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{unwind__prot_8c_a601859d37cece5380c6d5c4cd91a1193}{}\label{unwind__prot_8c_a601859d37cece5380c6d5c4cd91a1193}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!restore\+\_\+variable@{restore\+\_\+variable}}
+\index{restore\+\_\+variable@{restore\+\_\+variable}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{restore\+\_\+variable(\+S\+A\+V\+E\+D\+\_\+\+V\+A\+R $\ast$sv)}{restore_variable(SAVED_VAR *sv)}}]{\setlength{\rightskip}{0pt plus 5cm}static void restore\+\_\+variable (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+A\+V\+E\+D\+\_\+\+V\+AR} $\ast$}]{sv}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{unwind__prot_8c_ac27abb5ae76cf5fe7cf9bf689b07591c}{}\label{unwind__prot_8c_ac27abb5ae76cf5fe7cf9bf689b07591c}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!run\+\_\+unwind\+\_\+frame@{run\+\_\+unwind\+\_\+frame}}
+\index{run\+\_\+unwind\+\_\+frame@{run\+\_\+unwind\+\_\+frame}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{run\+\_\+unwind\+\_\+frame(char $\ast$tag)}{run_unwind_frame(char *tag)}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+unwind\+\_\+frame (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{tag}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8c_a951deebec0eab9fc9b0252296b96084a}{}\label{unwind__prot_8c_a951deebec0eab9fc9b0252296b96084a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8c_a951deebec0eab9fc9b0252296b96084a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!run\+\_\+unwind\+\_\+protects@{run\+\_\+unwind\+\_\+protects}}
+\index{run\+\_\+unwind\+\_\+protects@{run\+\_\+unwind\+\_\+protects}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{run\+\_\+unwind\+\_\+protects()}{run_unwind_protects()}}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+unwind\+\_\+protects (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8c_ad689bac171942d42fecbab79f6e4e030}{}\label{unwind__prot_8c_ad689bac171942d42fecbab79f6e4e030}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8c_ad689bac171942d42fecbab79f6e4e030_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!run\+\_\+unwind\+\_\+protects\+\_\+internal@{run\+\_\+unwind\+\_\+protects\+\_\+internal}}
+\index{run\+\_\+unwind\+\_\+protects\+\_\+internal@{run\+\_\+unwind\+\_\+protects\+\_\+internal}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{run\+\_\+unwind\+\_\+protects\+\_\+internal(char $\ast$ignore1, char $\ast$ignore2)}{run_unwind_protects_internal(char *ignore1, char *ignore2)}}]{\setlength{\rightskip}{0pt plus 5cm}static void run\+\_\+unwind\+\_\+protects\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{ignore1, }
+\item[{char $\ast$}]{ignore2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{unwind__prot_8c_a3ca36fb39f236603c0b7267adc587a12}{}\label{unwind__prot_8c_a3ca36fb39f236603c0b7267adc587a12}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8c_a3ca36fb39f236603c0b7267adc587a12_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!unwind\+\_\+frame\+\_\+discard\+\_\+internal@{unwind\+\_\+frame\+\_\+discard\+\_\+internal}}
+\index{unwind\+\_\+frame\+\_\+discard\+\_\+internal@{unwind\+\_\+frame\+\_\+discard\+\_\+internal}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{unwind\+\_\+frame\+\_\+discard\+\_\+internal(char $\ast$tag, char $\ast$ignore)}{unwind_frame_discard_internal(char *tag, char *ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}static void unwind\+\_\+frame\+\_\+discard\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{tag, }
+\item[{char $\ast$}]{ignore}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{unwind__prot_8c_a2940b00b071a698289fe2073778c4f3f}{}\label{unwind__prot_8c_a2940b00b071a698289fe2073778c4f3f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8c_a2940b00b071a698289fe2073778c4f3f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!unwind\+\_\+frame\+\_\+run\+\_\+internal@{unwind\+\_\+frame\+\_\+run\+\_\+internal}}
+\index{unwind\+\_\+frame\+\_\+run\+\_\+internal@{unwind\+\_\+frame\+\_\+run\+\_\+internal}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{unwind\+\_\+frame\+\_\+run\+\_\+internal(char $\ast$tag, char $\ast$ignore)}{unwind_frame_run_internal(char *tag, char *ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}static void unwind\+\_\+frame\+\_\+run\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{tag, }
+\item[{char $\ast$}]{ignore}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{unwind__prot_8c_a1c325cf2f4d384149cdc62ba76bbea7c}{}\label{unwind__prot_8c_a1c325cf2f4d384149cdc62ba76bbea7c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8c_a1c325cf2f4d384149cdc62ba76bbea7c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!unwind\+\_\+protect\+\_\+mem@{unwind\+\_\+protect\+\_\+mem}}
+\index{unwind\+\_\+protect\+\_\+mem@{unwind\+\_\+protect\+\_\+mem}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{unwind\+\_\+protect\+\_\+mem(char $\ast$var, int size)}{unwind_protect_mem(char *var, int size)}}]{\setlength{\rightskip}{0pt plus 5cm}void unwind\+\_\+protect\+\_\+mem (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{var, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8c_aaa455f34e29b23a077c4004e2572dc81}{}\label{unwind__prot_8c_aaa455f34e29b23a077c4004e2572dc81}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8c_aaa455f34e29b23a077c4004e2572dc81_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!unwind\+\_\+protect\+\_\+mem\+\_\+internal@{unwind\+\_\+protect\+\_\+mem\+\_\+internal}}
+\index{unwind\+\_\+protect\+\_\+mem\+\_\+internal@{unwind\+\_\+protect\+\_\+mem\+\_\+internal}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{unwind\+\_\+protect\+\_\+mem\+\_\+internal(char $\ast$var, char $\ast$psize)}{unwind_protect_mem_internal(char *var, char *psize)}}]{\setlength{\rightskip}{0pt plus 5cm}static void unwind\+\_\+protect\+\_\+mem\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{var, }
+\item[{char $\ast$}]{psize}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{unwind__prot_8c_aca05e29f468b40d43a4f5c568a38204e}{}\label{unwind__prot_8c_aca05e29f468b40d43a4f5c568a38204e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unwind__prot_8c_aca05e29f468b40d43a4f5c568a38204e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!unwind\+\_\+protect\+\_\+tag\+\_\+on\+\_\+stack@{unwind\+\_\+protect\+\_\+tag\+\_\+on\+\_\+stack}}
+\index{unwind\+\_\+protect\+\_\+tag\+\_\+on\+\_\+stack@{unwind\+\_\+protect\+\_\+tag\+\_\+on\+\_\+stack}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{unwind\+\_\+protect\+\_\+tag\+\_\+on\+\_\+stack(char $\ast$tag) const}{unwind_protect_tag_on_stack(char *tag) const}}]{\setlength{\rightskip}{0pt plus 5cm}int unwind\+\_\+protect\+\_\+tag\+\_\+on\+\_\+stack (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{tag}
+\end{DoxyParamCaption}
+) const}\hypertarget{unwind__prot_8c_a06b424bcde098157f62db7584be13c99}{}\label{unwind__prot_8c_a06b424bcde098157f62db7584be13c99}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!uwp\+\_\+init@{uwp\+\_\+init}}
+\index{uwp\+\_\+init@{uwp\+\_\+init}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{uwp\+\_\+init()}{uwp_init()}}]{\setlength{\rightskip}{0pt plus 5cm}void uwp\+\_\+init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{unwind__prot_8c_a1886057f86c77799cd536208529f6ee5}{}\label{unwind__prot_8c_a1886057f86c77799cd536208529f6ee5}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!without\+\_\+interrupts@{without\+\_\+interrupts}}
+\index{without\+\_\+interrupts@{without\+\_\+interrupts}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{without\+\_\+interrupts(\+V\+Function $\ast$function, char $\ast$arg1, char $\ast$arg2)}{without_interrupts(VFunction *function, char *arg1, char *arg2)}}]{\setlength{\rightskip}{0pt plus 5cm}static void without\+\_\+interrupts (
+\begin{DoxyParamCaption}
+\item[{{\bf V\+Function} $\ast$}]{function, }
+\item[{char $\ast$}]{arg1, }
+\item[{char $\ast$}]{arg2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{unwind__prot_8c_adcd63ab88def9e7cff50d5a2f4ab753a}{}\label{unwind__prot_8c_adcd63ab88def9e7cff50d5a2f4ab753a}
+
+
+\subsection{Variable Documentation}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!unwind\+\_\+protect\+\_\+list@{unwind\+\_\+protect\+\_\+list}}
+\index{unwind\+\_\+protect\+\_\+list@{unwind\+\_\+protect\+\_\+list}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{unwind\+\_\+protect\+\_\+list}{unwind_protect_list}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf U\+N\+W\+I\+N\+D\+\_\+\+E\+LT}$\ast$ unwind\+\_\+protect\+\_\+list = ({\bf U\+N\+W\+I\+N\+D\+\_\+\+E\+LT} $\ast$){\bf N\+U\+LL}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{unwind__prot_8c_a1ad50e139ef4239a0341f20b58c4be28}{}\label{unwind__prot_8c_a1ad50e139ef4239a0341f20b58c4be28}
+\index{unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}!uwcache@{uwcache}}
+\index{uwcache@{uwcache}!unwind\+\_\+prot.\+c@{unwind\+\_\+prot.\+c}}
+\subsubsection[{\texorpdfstring{uwcache}{uwcache}}]{\setlength{\rightskip}{0pt plus 5cm}sh\+\_\+obj\+\_\+cache\+\_\+t uwcache = \{0, 0, 0\}}\hypertarget{unwind__prot_8c_a24def4b4863fcafd004fd54c2dd5e2a3}{}\label{unwind__prot_8c_a24def4b4863fcafd004fd54c2dd5e2a3}

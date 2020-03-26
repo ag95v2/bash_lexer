@@ -1,0 +1,5 @@
+<map id="initialize_traps" name="initialize_traps">
+<area shape="rect" id="node2" href="$jobs_8c.html#a186a35817ae0f49ac740cbae8f598edb" title="get_original_tty_job\l_signals" alt="" coords="159,23,293,65"/>
+<area shape="rect" id="node3" href="$trap_8c.html#a16eea6a0b6ebfc715568ee23e0ae83b9" title="set_original_signal" alt="" coords="341,5,471,32"/>
+<area shape="rect" id="node4" href="$trap_8c.html#a166504ddbc13624fc0c82ae1637e3356" title="get_original_signal" alt="" coords="341,56,471,83"/>
+</map>

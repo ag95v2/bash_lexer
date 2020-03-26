@@ -1,0 +1,2533 @@
+\hypertarget{bashline_8c}{}\section{bashline.\+c File Reference}
+\label{bashline_8c}\index{bashline.\+c@{bashline.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}posixstat.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$grp.\+h$>$}\\*
+{\ttfamily \#include $<$netdb.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}chartypes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}input.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}parser.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashhist.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashline.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}execute\+\_\+cmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}findcmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pathexp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shmbutil.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}trap.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}flags.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/common.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$readline/rlconf.\+h$>$}\\*
+{\ttfamily \#include $<$readline/readline.\+h$>$}\\*
+{\ttfamily \#include $<$readline/history.\+h$>$}\\*
+{\ttfamily \#include $<$readline/rlmbutil.\+h$>$}\\*
+{\ttfamily \#include $<$glob/glob.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}alias.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pcomplete.\+h\char`\"{}}\\*
+Include dependency graph for bashline.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{bashline_8c_ac83f281a9c8578cd2380878eebf9409c}{N\+O\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE}~-\/1
+\item 
+\#define \hyperlink{bashline_8c_abf799e4aa076fdb112fcdc8a82490d7d}{E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE}~1
+\item 
+\#define \hyperlink{bashline_8c_a81a7b318335f3e3b3bcc450a570de52c}{V\+I\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE}~0
+\item 
+\#define \hyperlink{bashline_8c_a482708843d672ae6ffc90ded31e09a9c}{R\+L\+\_\+\+B\+O\+O\+L\+E\+A\+N\+\_\+\+V\+A\+R\+I\+A\+B\+L\+E\+\_\+\+V\+A\+L\+UE}(s)~((s)\mbox{[}0\mbox{]} == \textquotesingle{}o\textquotesingle{} \&\& (s)\mbox{[}1\mbox{]} == \textquotesingle{}n\textquotesingle{} \&\& (s)\mbox{[}2\mbox{]} == \textquotesingle{}\textbackslash{}0\textquotesingle{})
+\item 
+\#define \hyperlink{bashline_8c_aed1ea8477439192dc45373897e53c677}{S\+P\+E\+C\+I\+F\+I\+C\+\_\+\+C\+O\+M\+P\+L\+E\+T\+I\+O\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS}
+\item 
+\#define \hyperlink{bashline_8c_a3fd916b39b0e1ec0253fcbe29ff86b13}{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+D\+Q\+U\+O\+TE}~1
+\item 
+\#define \hyperlink{bashline_8c_a151af795142e97159668cb0cf009347a}{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+S\+Q\+U\+O\+TE}~2
+\item 
+\#define \hyperlink{bashline_8c_a63e3297cf0a54288382cee1542ae5f91}{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+B\+S\+Q\+U\+O\+TE}~3
+\item 
+\#define \hyperlink{bashline_8c_a5946177944ab9c75cdbfb5d746e980d6}{D\+E\+F\+C\+O\+M\+P\+\_\+\+C\+M\+D\+P\+OS}~1
+\item 
+\#define \hyperlink{bashline_8c_a04b53d3a9fa07e96ca8fec139b817bbc}{cr\+\_\+whitespace}(c)~((c) == \textquotesingle{}\textbackslash{}r\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\textbackslash{}n\textquotesingle{} $\vert$$\vert$ \hyperlink{general_8h_a6a8878e323ddb4bf57b7c9db293b3fd6}{whitespace}(c))
+\item 
+\#define \hyperlink{bashline_8c_a4f57cfd350db276dfc5421a8a80e68fb}{H\+I\+S\+T\+O\+R\+Y\+\_\+\+F\+U\+LL}()~(history\+\_\+is\+\_\+stifled () \&\& history\+\_\+length $>$= history\+\_\+max\+\_\+entries)
+\item 
+\#define \hyperlink{bashline_8c_a18f8b8f85b639c358b41c9ed5888376f}{V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND}~\char`\"{}fc -\/e \textbackslash{}\char`\"{}\$\{V\+I\+S\+U\+A\+L\+:-\/\$\{E\+D\+I\+T\+O\+R\+:-\/vi\}\}\textbackslash{}\char`\"{}\char`\"{}
+\item 
+\#define \hyperlink{bashline_8c_a43ae3b48a38f087929b50f4b80fde11c}{E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND}~\char`\"{}fc -\/e \textbackslash{}\char`\"{}\$\{V\+I\+S\+U\+A\+L\+:-\/\$\{E\+D\+I\+T\+O\+R\+:-\/emacs\}\}\textbackslash{}\char`\"{}\char`\"{}
+\item 
+\#define \hyperlink{bashline_8c_a3eb8d4780456614fcdf5399a0096c289}{P\+O\+S\+I\+X\+\_\+\+V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND}~\char`\"{}fc -\/e vi\char`\"{}
+\item 
+\#define \hyperlink{bashline_8c_acbd9ed4b6106b7c9d08141f7acedeb58}{W\+O\+R\+D\+D\+E\+L\+IM}(c)~(\hyperlink{syntax_8h_aa201a991f08639a9e0e82234e70e03ad}{shellmeta}(c) $\vert$$\vert$ \hyperlink{syntax_8h_a2a73e24361d5f6ae7438b86b6fc15d44}{shellblank}(c))
+\item 
+\#define \hyperlink{bashline_8c_a8de5d5d82391240280a025220e130e30}{C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+RS}~\char`\"{};$\vert$\&\{(`\char`\"{}
+\item 
+\#define \hyperlink{bashline_8c_ac2a7ce4cae411c5837ace79b873f540a}{C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+R\+S\+\_\+\+P\+L\+U\+S\+\_\+\+WS}~\char`\"{};$\vert$\&\{(` \textbackslash{}t\char`\"{}
+\item 
+\#define \hyperlink{bashline_8c_a1d605896d3ebd8c0f5219f97a12f7b25}{C\+M\+D\+\_\+\+I\+S\+\_\+\+D\+IR}(x)~(\hyperlink{general_8c_a6eb6283cbbb0fd5944cead61872fb6e2}{absolute\+\_\+pathname}(x) == 0 \&\& \hyperlink{general_8c_a5f0cb862f9b5675b5f1cd4fce1c24c57}{absolute\+\_\+program}(x) == 0 \&\& $\ast$(x) != \textquotesingle{}$\sim$\textquotesingle{} \&\& \hyperlink{bashline_8c_a4fd40689a7351624be0977cfd29444a3}{test\+\_\+for\+\_\+directory} (x))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{bracecomp_8c_ae07b84e958ed6000c04692cafaec5111}{bash\+\_\+brace\+\_\+completion} \hyperlink{bashline_8c_a8cf3725b461ab94213a16fce68ce520f}{\+\_\+\+\_\+P} ((int, int))
+\item 
+int tputs \hyperlink{bashline_8c_a1998f15bd4256b5d22b9c3e2cbf348d7}{\+\_\+\+\_\+P} ((const char $\ast$string, int nlines, int($\ast$outx)(int)))
+\item 
+static int \hyperlink{bashline_8c_a84bd0c28a25931e25542fda809814b81}{bash\+\_\+ignore\+\_\+filenames} \hyperlink{bashline_8c_a7abb9ef79b322231fd18e380e052c261}{\+\_\+\+\_\+P} ((char $\ast$$\ast$))
+\item 
+static char $\ast$\hyperlink{bashline_8c_ada33d8b407a13cb37fe2c1d17b49c2be}{history\+\_\+expand\+\_\+line\+\_\+internal} \hyperlink{bashline_8c_aaebc78f478e6429aa47a1d6851d380ef}{\+\_\+\+\_\+P} ((char $\ast$))
+\item 
+static char $\ast$\hyperlink{bashline_8c_aceaa913f57ff7d892f13fc3adc594d47}{restore\+\_\+tilde} \hyperlink{bashline_8c_aa4778647aa7a4fe32c715127a7cb019c}{\+\_\+\+\_\+P} ((char $\ast$, char $\ast$))
+\item 
+static char $\ast$\hyperlink{bashline_8c_a3357b317343c8ca2d1c33a897f07ae4d}{bash\+\_\+filename\+\_\+rewrite\+\_\+hook} \hyperlink{bashline_8c_a1ae0efb2c9a4391bfe3d6b17e47dea5f}{\+\_\+\+\_\+P} ((char $\ast$, int))
+\item 
+static int \hyperlink{bashline_8c_a267b9f4b06458393534f36a1b50c8648}{bash\+\_\+push\+\_\+line} \hyperlink{bashline_8c_af2f9e1a9f86aa0650d2ce496e51081cd}{\+\_\+\+\_\+P} ((void))
+\item 
+static int \hyperlink{bashline_8c_ab27a666907e267f9b7a9ed23c13e6bb2}{executable\+\_\+completion} \hyperlink{bashline_8c_a14ec20800898e838a0287e2221bd6f9e}{\+\_\+\+\_\+P} ((const char $\ast$, int))
+\item 
+static void \hyperlink{bashline_8c_a4c5e43e1be1ca7b79d93677f0b8d89ef}{restore\+\_\+directory\+\_\+hook} \hyperlink{bashline_8c_a93da3b771c8f1ef637d606f00426fa17}{\+\_\+\+\_\+P} ((rl\+\_\+icppfunc\+\_\+t))
+\item 
+static int \hyperlink{bashline_8c_a32ffdcc88a8caee77d55c804ca3241f2}{check\+\_\+redir} \hyperlink{bashline_8c_a6e63beb5345b7c410d27ebebb7a18198}{\+\_\+\+\_\+P} ((int))
+\item 
+static char $\ast$$\ast$\hyperlink{bashline_8c_a6e427c36e946051f6662641c40ccdbff}{attempt\+\_\+shell\+\_\+completion} \hyperlink{bashline_8c_af9503c9a005e1fbcadc06ae408ed4def}{\+\_\+\+\_\+P} ((const char $\ast$, int, int))
+\item 
+static void \hyperlink{bashline_8c_a3e8cde273e6ed26f25e667723bc620e1}{\+\_\+ignore\+\_\+completion\+\_\+names} \hyperlink{bashline_8c_a59b320cf780d1fc9969829c8ba71232f}{\+\_\+\+\_\+P} ((char $\ast$$\ast$, sh\+\_\+ignore\+\_\+func\+\_\+t $\ast$))
+\item 
+static int \hyperlink{bashline_8c_a7a912c2b320b03ccf28a40718f236ae9}{name\+\_\+is\+\_\+acceptable} \hyperlink{bashline_8c_a872dde97a7c43f661f0ed4b35d84ad70}{\+\_\+\+\_\+P} ((const char $\ast$))
+\item 
+static char $\ast$\hyperlink{bashline_8c_ade940b0bd66caa6a681f059366211c17}{bash\+\_\+quote\+\_\+filename} \hyperlink{bashline_8c_ac8cfacf5c3bfee5a65e9644a618d7f92}{\+\_\+\+\_\+P} ((char $\ast$, int, char $\ast$))
+\item 
+static int \hyperlink{bashline_8c_ab73c31c3cf9b6e1d1b8b4563fc4f106d}{isolate\+\_\+sequence} \hyperlink{bashline_8c_a130190ea2fddbd7d382c66e7de68fb6a}{\+\_\+\+\_\+P} ((char $\ast$, int, int, int $\ast$))
+\item 
+static char $\ast$\hyperlink{bashline_8c_a1e73a130e0afa0ecc4a4f7590f2df953}{find\+\_\+cmd\+\_\+name} \hyperlink{bashline_8c_a3a80df36a261385ea6b92a309b2e1d36}{\+\_\+\+\_\+P} ((int, int $\ast$, int $\ast$))
+\item 
+static int \hyperlink{bashline_8c_aa8f674f9ff8144f133940589e9090ade}{bash\+\_\+specific\+\_\+completion} \hyperlink{bashline_8c_a9ca19c406450c76fc4367202e4f2bec3}{\+\_\+\+\_\+P} ((int, rl\+\_\+compentry\+\_\+func\+\_\+t $\ast$))
+\item 
+static int \hyperlink{bashline_8c_a84cfc0004171e49d068ff38f1ba1bb61}{edit\+\_\+and\+\_\+execute\+\_\+command} \hyperlink{bashline_8c_a9a9a7024e0eb7066938e91ef23f9cb2f}{\+\_\+\+\_\+P} ((int, int, int, char $\ast$))
+\item 
+void \hyperlink{bashline_8c_ae7d93155b5a5ff60983ee20547e4cba0}{posix\+\_\+readline\+\_\+initialize} (int on\+\_\+or\+\_\+off)
+\item 
+void \hyperlink{bashline_8c_afab6b9fe42cb1b1c36539bcd32a6d39a}{reset\+\_\+completer\+\_\+word\+\_\+break\+\_\+chars} ()
+\item 
+int \hyperlink{bashline_8c_afbdf9382519c509cafc189ddf7c8371c}{enable\+\_\+hostname\+\_\+completion} (int on\+\_\+or\+\_\+off)
+\item 
+void \hyperlink{bashline_8c_a4a84b36bf2499d6633a1371ba6d06c46}{initialize\+\_\+readline} ()
+\item 
+void \hyperlink{bashline_8c_aade584ad50880125f64e2f794ffdc50d}{bashline\+\_\+reinitialize} ()
+\item 
+void \hyperlink{bashline_8c_af35cbec965e59a9d7472ea26786b1ac7}{bashline\+\_\+set\+\_\+event\+\_\+hook} ()
+\item 
+void \hyperlink{bashline_8c_acdec59e33b823c81d8da90742678c640}{bashline\+\_\+reset\+\_\+event\+\_\+hook} ()
+\item 
+void \hyperlink{bashline_8c_a2cc228bbe4d080b0b873e217324afe12}{bashline\+\_\+reset} ()
+\item 
+static int \hyperlink{bashline_8c_a267b9f4b06458393534f36a1b50c8648}{bash\+\_\+push\+\_\+line} ()
+\item 
+int \hyperlink{bashline_8c_a14b077ed51af95a906e2de91fb829fd0}{bash\+\_\+re\+\_\+edit} (char $\ast$line)
+\item 
+static int \hyperlink{bashline_8c_af389e67e8dd5f8a8528694d91c5b3a99}{display\+\_\+shell\+\_\+version} (int count, int c)
+\item 
+static void \hyperlink{bashline_8c_a157537146d841e13b6225e20b68b1402}{initialize\+\_\+hostname\+\_\+list} ()
+\item 
+static void \hyperlink{bashline_8c_ad3527c17826cd2f0ec39cb25d5546e85}{add\+\_\+host\+\_\+name} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name})
+\item 
+static void \hyperlink{bashline_8c_aa34b7ff8b9c31f301a073abbc1415f25}{snarf\+\_\+hosts\+\_\+from\+\_\+file} (char $\ast$filename)
+\item 
+char $\ast$$\ast$ \hyperlink{bashline_8c_a7fe126f71ce01ae738ae13fd13b001c9}{get\+\_\+hostname\+\_\+list} ()
+\item 
+void \hyperlink{bashline_8c_a840ec558ddefd33cc3a55a66b8ff2df8}{clear\+\_\+hostname\+\_\+list} ()
+\item 
+static char $\ast$$\ast$ \hyperlink{bashline_8c_aa6787cd214060876d4e23379e143fb3d}{hostnames\+\_\+matching} (char $\ast$text)
+\item 
+static int \hyperlink{bashline_8c_a587484d59802fb750e4f88d026eae67e}{set\+\_\+saved\+\_\+history} ()
+\item 
+static int \hyperlink{bashline_8c_a074f085fde2464daba35c6e9fc2761ca}{operate\+\_\+and\+\_\+get\+\_\+next} (int count, int c)
+\item 
+static int \hyperlink{bashline_8c_a84cfc0004171e49d068ff38f1ba1bb61}{edit\+\_\+and\+\_\+execute\+\_\+command} (int count, int c, int editing\+\_\+mode, char $\ast$edit\+\_\+command)
+\item 
+static int \hyperlink{bashline_8c_a75d1d875dfaa0fceff24d67a4bea4d7a}{emacs\+\_\+edit\+\_\+and\+\_\+execute\+\_\+command} (int count, int c)
+\item 
+static int \hyperlink{bashline_8c_a6f8045654862af1329c2442c724cf84c}{posix\+\_\+edit\+\_\+macros} (int count, int key)
+\item 
+static int \hyperlink{bashline_8c_a5f6e8981a81c04d9afde3f70e72886e3}{bash\+\_\+forward\+\_\+shellword} (int count, int key)
+\item 
+static int \hyperlink{bashline_8c_a6c1f414978aefd6cd77f5555bbb8e5b7}{bash\+\_\+backward\+\_\+shellword} (int count, int key)
+\item 
+static int \hyperlink{bashline_8c_a5ca4ceb201da869c04fe0e2a9ebc13af}{bash\+\_\+kill\+\_\+shellword} (int count, int key)
+\item 
+static int \hyperlink{bashline_8c_a6ccc1dffee3d73a462d8831f28df1335}{bash\+\_\+backward\+\_\+kill\+\_\+shellword} (int count, int key)
+\item 
+static int \hyperlink{bashline_8c_a32ffdcc88a8caee77d55c804ca3241f2}{check\+\_\+redir} (int ti)
+\item 
+static int \hyperlink{bashline_8c_a9ebb6ea095442b22dccf9ab22c416c10}{find\+\_\+cmd\+\_\+start} (int start)
+\item 
+static int \hyperlink{bashline_8c_a59b8bff2dcb57ac41f501215bd6daca8}{find\+\_\+cmd\+\_\+end} (int end)
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a1e73a130e0afa0ecc4a4f7590f2df953}{find\+\_\+cmd\+\_\+name} (int start, int $\ast$sp, int $\ast$ep)
+\item 
+static char $\ast$ \hyperlink{bashline_8c_abf6e63e8c6817467393fd45f97535d4e}{prog\+\_\+complete\+\_\+return} (char $\ast$text, int matchnum) const
+\item 
+static int \hyperlink{bashline_8c_a2193e49b3e5c95ad6d9a702a56dec637}{invalid\+\_\+completion} (char $\ast$text, int ind) const
+\item 
+static char $\ast$$\ast$ \hyperlink{bashline_8c_a6e427c36e946051f6662641c40ccdbff}{attempt\+\_\+shell\+\_\+completion} (char $\ast$text, int start, int end) const
+\item 
+char $\ast$$\ast$ \hyperlink{bashline_8c_aaac86d73cc4aa1dcfcdc5f9d2377b9cf}{bash\+\_\+default\+\_\+completion} (char $\ast$text, int start, int end, int qc, int compflags) const
+\item 
+static int \hyperlink{bashline_8c_ad9f5dddfe0651f50f23f1122ecdba643}{bash\+\_\+command\+\_\+name\+\_\+stat\+\_\+hook} (char $\ast$$\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name})
+\item 
+static int \hyperlink{bashline_8c_ab27a666907e267f9b7a9ed23c13e6bb2}{executable\+\_\+completion} (char $\ast$filename, int searching\+\_\+path) const
+\item 
+char $\ast$ \hyperlink{bashline_8c_a8d5538b509cca782d25abe3aeec84458}{command\+\_\+word\+\_\+completion\+\_\+function} (char $\ast$hint\+\_\+text, int state) const
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a8175177017558d90a77a549e4226dc32}{command\+\_\+subst\+\_\+completion\+\_\+function} (char $\ast$text, int state) const
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a913b5c8b5ef432c2ead47f04e415cc9c}{variable\+\_\+completion\+\_\+function} (char $\ast$text, int state) const
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a5bace8ad451a7ec47cf386ed39479150}{hostname\+\_\+completion\+\_\+function} (char $\ast$text, int state) const
+\item 
+char $\ast$ \hyperlink{bashline_8c_a2fdea33ac9ee261180df17165d4eff52}{bash\+\_\+servicename\+\_\+completion\+\_\+function} (char $\ast$text, int state) const
+\item 
+char $\ast$ \hyperlink{bashline_8c_aa8524f98cd07534dbf25207a52ed621e}{bash\+\_\+groupname\+\_\+completion\+\_\+function} (char $\ast$text, int state) const
+\item 
+static char $\ast$ \hyperlink{bashline_8c_ada33d8b407a13cb37fe2c1d17b49c2be}{history\+\_\+expand\+\_\+line\+\_\+internal} (char $\ast$line)
+\item 
+static void \hyperlink{bashline_8c_a86d30fe3906997e4d5ece77edefc5c20}{cleanup\+\_\+expansion\+\_\+error} ()
+\item 
+static void \hyperlink{bashline_8c_a96b5eb6ca5ebe516c321cf7156227775}{maybe\+\_\+make\+\_\+readline\+\_\+line} (char $\ast$new\+\_\+line)
+\item 
+static void \hyperlink{bashline_8c_a816ff08a78ee5514ee3998061f853265}{set\+\_\+up\+\_\+new\+\_\+line} (char $\ast$new\+\_\+line)
+\item 
+static int \hyperlink{bashline_8c_ac0ac1810dc0a4611ac5f4a2d501d6ed9}{alias\+\_\+expand\+\_\+line} (int count, int ignore)
+\item 
+static int \hyperlink{bashline_8c_a756f1e694e73dd9d43c31a001696238b}{history\+\_\+expand\+\_\+line} (int count, int ignore)
+\item 
+static int \hyperlink{bashline_8c_a3e37f123a2a708a6b1ac8dfd183f33d2}{tcsh\+\_\+magic\+\_\+space} (int count, int ignore)
+\item 
+static int \hyperlink{bashline_8c_ae0abb27ac5c9bed1a9af82c7a37c45be}{history\+\_\+and\+\_\+alias\+\_\+expand\+\_\+line} (int count, int ignore)
+\item 
+static int \hyperlink{bashline_8c_a205768603a77318ef9225fd72938914e}{shell\+\_\+expand\+\_\+line} (int count, int ignore)
+\item 
+static void \hyperlink{bashline_8c_a3e8cde273e6ed26f25e667723bc620e1}{\+\_\+ignore\+\_\+completion\+\_\+names} (char $\ast$$\ast$names, sh\+\_\+ignore\+\_\+func\+\_\+t $\ast$name\+\_\+func)
+\item 
+static int \hyperlink{bashline_8c_a7a912c2b320b03ccf28a40718f236ae9}{name\+\_\+is\+\_\+acceptable} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}) const
+\item 
+static int \hyperlink{bashline_8c_a52150d3e8806018ac254db2844a0113f}{filename\+\_\+completion\+\_\+ignore} (char $\ast$$\ast$names)
+\item 
+static int \hyperlink{bashline_8c_a4fd40689a7351624be0977cfd29444a3}{test\+\_\+for\+\_\+directory} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}) const
+\item 
+static int \hyperlink{bashline_8c_a84bd0c28a25931e25542fda809814b81}{bash\+\_\+ignore\+\_\+filenames} (char $\ast$$\ast$names)
+\item 
+static int \hyperlink{bashline_8c_a4c5295f85dffd964d684df85e1a872f1}{return\+\_\+zero} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}) const
+\item 
+static int \hyperlink{bashline_8c_a891bdfaa9af1b263e657b4ef09e003cf}{bash\+\_\+ignore\+\_\+everything} (char $\ast$$\ast$names)
+\item 
+static char $\ast$ \hyperlink{bashline_8c_aceaa913f57ff7d892f13fc3adc594d47}{restore\+\_\+tilde} (char $\ast$val, char $\ast$directory\+\_\+part)
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a4a30f50ff531f8c30f4e2a8ff1432721}{maybe\+\_\+restore\+\_\+tilde} (char $\ast$val, char $\ast$directory\+\_\+part)
+\item 
+static void \hyperlink{bashline_8c_a3cf848eca2b02a606c979499ba7b054a}{bash\+\_\+directory\+\_\+expansion} (char $\ast$$\ast$dirname)
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a3357b317343c8ca2d1c33a897f07ae4d}{bash\+\_\+filename\+\_\+rewrite\+\_\+hook} (char $\ast$fname, int fnlen)
+\item 
+void \hyperlink{bashline_8c_aaed077930c1c47cb78b87edb763f2ac5}{set\+\_\+directory\+\_\+hook} ()
+\item 
+static rl\+\_\+icppfunc\+\_\+t $\ast$ \hyperlink{bashline_8c_a40ca89c8622f2cef612edff225721173}{save\+\_\+directory\+\_\+hook} ()
+\item 
+static void \hyperlink{bashline_8c_a4c5e43e1be1ca7b79d93677f0b8d89ef}{restore\+\_\+directory\+\_\+hook} (rl\+\_\+icppfunc\+\_\+t $\ast$hookf)
+\item 
+static int \hyperlink{bashline_8c_a31691eb2f7e44d24643418eca160bde5}{directory\+\_\+exists} (char $\ast$dirname, int should\+\_\+dequote) const
+\item 
+static int \hyperlink{bashline_8c_a224366986c1fd584f0dd9601682bb54b}{bash\+\_\+filename\+\_\+stat\+\_\+hook} (char $\ast$$\ast$dirname)
+\item 
+static int \hyperlink{bashline_8c_aeffbd0c284d00ef258bb88fe89f31c7a}{bash\+\_\+directory\+\_\+completion\+\_\+hook} (char $\ast$$\ast$dirname)
+\item 
+static void \hyperlink{bashline_8c_afcbc52249a2791271403b149e31b51b6}{build\+\_\+history\+\_\+completion\+\_\+array} ()
+\item 
+static char $\ast$ \hyperlink{bashline_8c_aac482f1f86ef4aa33ba4d9924195d747}{history\+\_\+completion\+\_\+generator} (char $\ast$hint\+\_\+text, int state) const
+\item 
+static int \hyperlink{bashline_8c_aa39452ed7d96cb4158819bd3c11a3880}{dynamic\+\_\+complete\+\_\+history} (int count, int key)
+\item 
+static int \hyperlink{bashline_8c_a8233e6b837722ec62b4e575a1d31f795}{bash\+\_\+dabbrev\+\_\+expand} (int count, int key)
+\item 
+static int \hyperlink{bashline_8c_a38f481dd8aa814e23b231b001a669c45}{bash\+\_\+complete\+\_\+username} (int ignore, int ignore2)
+\item 
+static int \hyperlink{bashline_8c_a8ab13256a9f91fcd44d845b2c1d1616e}{bash\+\_\+possible\+\_\+username\+\_\+completions} (int ignore, int ignore2)
+\item 
+static int \hyperlink{bashline_8c_a007b2568a741ee31ab49240bf8c10cfa}{bash\+\_\+complete\+\_\+username\+\_\+internal} (int what\+\_\+to\+\_\+do)
+\item 
+static int \hyperlink{bashline_8c_a1cb356f1d0969d887e180c45e911eda1}{bash\+\_\+complete\+\_\+filename} (int ignore, int ignore2)
+\item 
+static int \hyperlink{bashline_8c_a912382d845666233c19e8a3086f43c91}{bash\+\_\+possible\+\_\+filename\+\_\+completions} (int ignore, int ignore2)
+\item 
+static int \hyperlink{bashline_8c_a7f6e415b9567e146137289508d475102}{bash\+\_\+complete\+\_\+filename\+\_\+internal} (int what\+\_\+to\+\_\+do)
+\item 
+static int \hyperlink{bashline_8c_a355b4b4998a5766ff888fa867a4fbf8c}{bash\+\_\+complete\+\_\+hostname} (int ignore, int ignore2)
+\item 
+static int \hyperlink{bashline_8c_ab7fea3775bcdd91f438aa30ac35a7be5}{bash\+\_\+possible\+\_\+hostname\+\_\+completions} (int ignore, int ignore2)
+\item 
+static int \hyperlink{bashline_8c_a990ac27b5fc96161a7a1ffb8b34e3965}{bash\+\_\+complete\+\_\+variable} (int ignore, int ignore2)
+\item 
+static int \hyperlink{bashline_8c_a513a525a354b4879047d07ab3e3648d3}{bash\+\_\+possible\+\_\+variable\+\_\+completions} (int ignore, int ignore2)
+\item 
+static int \hyperlink{bashline_8c_a59156ce722bd7d8b77efa5dad78855c2}{bash\+\_\+complete\+\_\+command} (int ignore, int ignore2)
+\item 
+static int \hyperlink{bashline_8c_a5fb38c86133bd43e8387f39e73420466}{bash\+\_\+possible\+\_\+command\+\_\+completions} (int ignore, int ignore2)
+\item 
+static int \hyperlink{bashline_8c_ab3d5f4873570aa9d7cfe1678d80d38bd}{bash\+\_\+complete\+\_\+hostname\+\_\+internal} (int what\+\_\+to\+\_\+do)
+\item 
+static int \hyperlink{bashline_8c_ac7c869248d15cc477d0dc387ac98c205}{bash\+\_\+complete\+\_\+variable\+\_\+internal} (int what\+\_\+to\+\_\+do)
+\item 
+static int \hyperlink{bashline_8c_a6b05e465f483ad3969661bc9638e3bae}{bash\+\_\+complete\+\_\+command\+\_\+internal} (int what\+\_\+to\+\_\+do)
+\item 
+static int \hyperlink{bashline_8c_a0b44b874016e70e3589d2fd93fe725fc}{completion\+\_\+glob\+\_\+pattern} (char $\ast$string)
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a8c4b3b2d2ea4fdc0c95dd721246f6ed6}{glob\+\_\+complete\+\_\+word} (char $\ast$text, int state) const
+\item 
+static int \hyperlink{bashline_8c_a6f6d9c787f44a810390683d56528fa79}{bash\+\_\+glob\+\_\+completion\+\_\+internal} (int what\+\_\+to\+\_\+do)
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a7a18f1abc0f7e0606818b3123cbeade2}{bash\+\_\+glob\+\_\+quote\+\_\+filename} (char $\ast$s, int rtype, char $\ast$qcp)
+\item 
+static int \hyperlink{bashline_8c_ad7bc3ec25d19fbf303cd514fbd9dd065}{bash\+\_\+glob\+\_\+complete\+\_\+word} (int count, int key)
+\item 
+static int \hyperlink{bashline_8c_af6b39afa7409301e9489a475078d6e1c}{bash\+\_\+glob\+\_\+expand\+\_\+word} (int count, int key)
+\item 
+static int \hyperlink{bashline_8c_a51e99f46e0bb414d85e6790aee13999f}{bash\+\_\+glob\+\_\+list\+\_\+expansions} (int count, int key)
+\item 
+static int \hyperlink{bashline_8c_aa8f674f9ff8144f133940589e9090ade}{bash\+\_\+specific\+\_\+completion} (int what\+\_\+to\+\_\+do, rl\+\_\+compentry\+\_\+func\+\_\+t $\ast$generator)
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a9cc4c896685a24908c0eeeab0eb2eacb}{bash\+\_\+dequote\+\_\+filename} (char $\ast$text, int \hyperlink{alias_8c_abee33fe12ec70c17fc7edb103965a219}{quote\+\_\+char})
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a40b112adefc953dc91f9c37ca84b151a}{quote\+\_\+word\+\_\+break\+\_\+chars} (char $\ast$text)
+\item 
+static void \hyperlink{bashline_8c_a8e7868c7f7aa154a2a45c997b8445116}{set\+\_\+filename\+\_\+bstab} (char $\ast$string) const
+\item 
+static char $\ast$ \hyperlink{bashline_8c_ade940b0bd66caa6a681f059366211c17}{bash\+\_\+quote\+\_\+filename} (char $\ast$s, int rtype, char $\ast$qcp)
+\item 
+static int \hyperlink{bashline_8c_aa8214b493b119d0846c7671ac8b21c9f}{putx} (int c)
+\item 
+static int \hyperlink{bashline_8c_ab93ee68792fc0f439f955a71f12ba9c9}{bash\+\_\+execute\+\_\+unix\+\_\+command} (int count, int key)
+\item 
+int \hyperlink{bashline_8c_aba0ddfe354c3dc6e77abb6307223e943}{print\+\_\+unix\+\_\+command\+\_\+map} ()
+\item 
+static void \hyperlink{bashline_8c_a24a57e7e2e6b926dc2f84bf91e148d0c}{init\+\_\+unix\+\_\+command\+\_\+map} ()
+\item 
+static int \hyperlink{bashline_8c_ab73c31c3cf9b6e1d1b8b4563fc4f106d}{isolate\+\_\+sequence} (char $\ast$string, int ind, int need\+\_\+dquote, int $\ast$startp)
+\item 
+int \hyperlink{bashline_8c_a55e33804273e48b1e7986f4402203c61}{bind\+\_\+keyseq\+\_\+to\+\_\+unix\+\_\+command} (char $\ast$line)
+\item 
+char $\ast$$\ast$ \hyperlink{bashline_8c_a67132a5a9f7f4c2c281f39d202340148}{bash\+\_\+directory\+\_\+completion\+\_\+matches} (char $\ast$text) const
+\item 
+char $\ast$ \hyperlink{bashline_8c_afc63375d518c87820ca94935478f520c}{bash\+\_\+dequote\+\_\+text} (char $\ast$text) const
+\item 
+static int \hyperlink{bashline_8c_adbb35079ca9b06067b131bbb57e20c94}{bash\+\_\+event\+\_\+hook} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static char $\ast$$\ast$ \hyperlink{bashline_8c_a2fae76cee53f3fd27798e016ce620109}{prog\+\_\+complete\+\_\+matches}
+\item 
+int \hyperlink{bashline_8c_a4e7fa520c5fac785fe4b5e9d9607d3d9}{no\+\_\+symbolic\+\_\+links}
+\item 
+\hyperlink{structSTRING__INT__ALIST}{S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+ST} \hyperlink{bashline_8c_a61dc7eddb90ab5f8e332f66f1ae0f51b}{word\+\_\+token\+\_\+alist} \mbox{[}$\,$\mbox{]}
+\item 
+int \hyperlink{bashline_8c_a68a2ddf0bc68427c1fc0da8c1053242b}{bash\+\_\+readline\+\_\+initialized} = 0
+\item 
+int \hyperlink{bashline_8c_a7c5f3cb423d2c9118957a0085e509da6}{perform\+\_\+hostname\+\_\+completion} = 1
+\item 
+int \hyperlink{bashline_8c_ad051535bd97883586899593f6c574fe3}{no\+\_\+empty\+\_\+command\+\_\+completion}
+\item 
+int \hyperlink{bashline_8c_a432c7ae64a81b40587e5915cc49e0fe2}{force\+\_\+fignore} = 1
+\item 
+int \hyperlink{bashline_8c_a0227da48137b3b6b652228ee21e33145}{dircomplete\+\_\+spelling} = 0
+\item 
+int \hyperlink{bashline_8c_a1abcf01b5c8c7d4fc8b088dc3f8280b0}{dircomplete\+\_\+expand} = 0
+\item 
+int \hyperlink{bashline_8c_a12bf3793a56e703b85dc6dabeaa06158}{dircomplete\+\_\+expand\+\_\+relpath} = 0
+\item 
+int \hyperlink{bashline_8c_aafde51baef0db996c71dae472b62cb21}{complete\+\_\+fullquote} = 1
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a6d560fdd4f18faa0c73afcca9f7b8f30}{bash\+\_\+completer\+\_\+word\+\_\+break\+\_\+characters} = \char`\"{} \textbackslash{}t\textbackslash{}n\textbackslash{}\char`\"{}\textquotesingle{}@$>$$<$=;$\vert$\&(\+:\char`\"{}
+\item 
+static char $\ast$ \hyperlink{bashline_8c_ae5f882ac94980592940ceeeeea48b87a}{bash\+\_\+nohostname\+\_\+word\+\_\+break\+\_\+characters} = \char`\"{} \textbackslash{}t\textbackslash{}n\textbackslash{}\char`\"{}\textquotesingle{}$>$$<$=;$\vert$\&(\+:\char`\"{}
+\item 
+static const char $\ast$ \hyperlink{bashline_8c_ad48c8c3b99e67b581f0346eda28a7d85}{default\+\_\+filename\+\_\+quote\+\_\+characters} = \char`\"{} \textbackslash{}t\textbackslash{}n\textbackslash{}\textbackslash{}\textbackslash{}\char`\"{}\textquotesingle{}@$<$$>$=;$\vert$\&()\#\$`?$\ast$\mbox{[}!\+:\{$\sim$\char`\"{}
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a561fc6cd628c6efb825c79cd3a03d02c}{custom\+\_\+filename\+\_\+quote\+\_\+characters} = 0
+\item 
+static char \hyperlink{bashline_8c_a02ec2f69989177310647d1569f221e85}{filename\+\_\+bstab} \mbox{[}256\mbox{]}
+\item 
+static rl\+\_\+hook\+\_\+func\+\_\+t $\ast$ \hyperlink{bashline_8c_a47f7c5c8007492ea7e9a107a1f219e92}{old\+\_\+rl\+\_\+startup\+\_\+hook} = (rl\+\_\+hook\+\_\+func\+\_\+t $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+static int \hyperlink{bashline_8c_acc3c12c909b5a0e9c65e2732b5cd83fd}{dot\+\_\+in\+\_\+path} = 0
+\item 
+static int \hyperlink{bashline_8c_a336d07390362e898ec11590a02cb115f}{dabbrev\+\_\+expand\+\_\+active} = 0
+\item 
+static int \hyperlink{bashline_8c_a5601785b70999616fb2cec1705ae6b02}{completion\+\_\+quoting\+\_\+style} = \hyperlink{bashline_8c_a63e3297cf0a54288382cee1542ae5f91}{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+B\+S\+Q\+U\+O\+TE}
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a5c158bd2c121cd9cbfb8445b68a5dda9}{push\+\_\+to\+\_\+readline} = (char $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+static char $\ast$$\ast$ \hyperlink{bashline_8c_a110e2f78bdd7d4f04ecbfbfe928e5350}{hostname\+\_\+list} = (char $\ast$$\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+static int \hyperlink{bashline_8c_a5bb503bb95f7415e19ea9376243aaee7}{hostname\+\_\+list\+\_\+size}
+\item 
+static int \hyperlink{bashline_8c_a637a026a6dc3d0098d39dd7a3dea72e3}{hostname\+\_\+list\+\_\+length}
+\item 
+int \hyperlink{bashline_8c_a87935ec3fd72750971009a1d97bf253d}{hostname\+\_\+list\+\_\+initialized} = 0
+\item 
+static int \hyperlink{bashline_8c_ada2a097db7f2d24da890c9e96e52367a}{saved\+\_\+history\+\_\+line\+\_\+to\+\_\+use} = -\/1
+\item 
+static int \hyperlink{bashline_8c_a00c6281c691ec905591f4bdad7aac288}{last\+\_\+saved\+\_\+history\+\_\+line} = -\/1
+\item 
+static struct \hyperlink{structignorevar}{ignorevar} \hyperlink{bashline_8c_a82a2c656a8b64ffbf61a34c16a12f3c9}{fignore}
+\item 
+static char $\ast$$\ast$ \hyperlink{bashline_8c_a03ac3ee7042f6f7734416d8b7c48e785}{history\+\_\+completion\+\_\+array} = (char $\ast$$\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+static int \hyperlink{bashline_8c_aa1a3449bb9a9d6789e51191d3984d816}{harry\+\_\+size}
+\item 
+static int \hyperlink{bashline_8c_a6054bdf3b6e1c00413f2dc6db7a2d850}{harry\+\_\+len}
+\item 
+static char $\ast$ \hyperlink{bashline_8c_a8afb900c80656baaeed5a4ea49694759}{globtext}
+\item 
+static char $\ast$ \hyperlink{bashline_8c_ab1c9313a73d95f170d4110a5a9dae2d8}{globorig}
+\item 
+static Keymap \hyperlink{bashline_8c_a9237ec99f8b1f736cc3adea293416190}{cmd\+\_\+xmap}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{bashline.\+c@{bashline.\+c}!C\+M\+D\+\_\+\+I\+S\+\_\+\+D\+IR@{C\+M\+D\+\_\+\+I\+S\+\_\+\+D\+IR}}
+\index{C\+M\+D\+\_\+\+I\+S\+\_\+\+D\+IR@{C\+M\+D\+\_\+\+I\+S\+\_\+\+D\+IR}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{C\+M\+D\+\_\+\+I\+S\+\_\+\+D\+IR}{CMD_IS_DIR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+M\+D\+\_\+\+I\+S\+\_\+\+D\+IR(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~({\bf absolute\+\_\+pathname}(x) == 0 \&\& {\bf absolute\+\_\+program}(x) == 0 \&\& $\ast$(x) != \textquotesingle{}$\sim$\textquotesingle{} \&\& {\bf test\+\_\+for\+\_\+directory} (x))}\hypertarget{bashline_8c_a1d605896d3ebd8c0f5219f97a12f7b25}{}\label{bashline_8c_a1d605896d3ebd8c0f5219f97a12f7b25}
+\index{bashline.\+c@{bashline.\+c}!C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+RS@{C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+RS}}
+\index{C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+RS@{C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+RS}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+RS}{COMMAND_SEPARATORS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+RS~\char`\"{};$\vert$\&\{(`\char`\"{}}\hypertarget{bashline_8c_a8de5d5d82391240280a025220e130e30}{}\label{bashline_8c_a8de5d5d82391240280a025220e130e30}
+\index{bashline.\+c@{bashline.\+c}!C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+R\+S\+\_\+\+P\+L\+U\+S\+\_\+\+WS@{C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+R\+S\+\_\+\+P\+L\+U\+S\+\_\+\+WS}}
+\index{C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+R\+S\+\_\+\+P\+L\+U\+S\+\_\+\+WS@{C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+R\+S\+\_\+\+P\+L\+U\+S\+\_\+\+WS}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+R\+S\+\_\+\+P\+L\+U\+S\+\_\+\+WS}{COMMAND_SEPARATORS_PLUS_WS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+M\+M\+A\+N\+D\+\_\+\+S\+E\+P\+A\+R\+A\+T\+O\+R\+S\+\_\+\+P\+L\+U\+S\+\_\+\+WS~\char`\"{};$\vert$\&\{(` \textbackslash{}t\char`\"{}}\hypertarget{bashline_8c_ac2a7ce4cae411c5837ace79b873f540a}{}\label{bashline_8c_ac2a7ce4cae411c5837ace79b873f540a}
+\index{bashline.\+c@{bashline.\+c}!C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+B\+S\+Q\+U\+O\+TE@{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+B\+S\+Q\+U\+O\+TE}}
+\index{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+B\+S\+Q\+U\+O\+TE@{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+B\+S\+Q\+U\+O\+TE}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+B\+S\+Q\+U\+O\+TE}{COMPLETE_BSQUOTE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+B\+S\+Q\+U\+O\+TE~3}\hypertarget{bashline_8c_a63e3297cf0a54288382cee1542ae5f91}{}\label{bashline_8c_a63e3297cf0a54288382cee1542ae5f91}
+\index{bashline.\+c@{bashline.\+c}!C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+D\+Q\+U\+O\+TE@{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+D\+Q\+U\+O\+TE}}
+\index{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+D\+Q\+U\+O\+TE@{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+D\+Q\+U\+O\+TE}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+D\+Q\+U\+O\+TE}{COMPLETE_DQUOTE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+D\+Q\+U\+O\+TE~1}\hypertarget{bashline_8c_a3fd916b39b0e1ec0253fcbe29ff86b13}{}\label{bashline_8c_a3fd916b39b0e1ec0253fcbe29ff86b13}
+\index{bashline.\+c@{bashline.\+c}!C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+S\+Q\+U\+O\+TE@{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+S\+Q\+U\+O\+TE}}
+\index{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+S\+Q\+U\+O\+TE@{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+S\+Q\+U\+O\+TE}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+S\+Q\+U\+O\+TE}{COMPLETE_SQUOTE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+S\+Q\+U\+O\+TE~2}\hypertarget{bashline_8c_a151af795142e97159668cb0cf009347a}{}\label{bashline_8c_a151af795142e97159668cb0cf009347a}
+\index{bashline.\+c@{bashline.\+c}!cr\+\_\+whitespace@{cr\+\_\+whitespace}}
+\index{cr\+\_\+whitespace@{cr\+\_\+whitespace}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{cr\+\_\+whitespace}{cr_whitespace}}]{\setlength{\rightskip}{0pt plus 5cm}\#define cr\+\_\+whitespace(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~((c) == \textquotesingle{}\textbackslash{}r\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\textbackslash{}n\textquotesingle{} $\vert$$\vert$ {\bf whitespace}(c))}\hypertarget{bashline_8c_a04b53d3a9fa07e96ca8fec139b817bbc}{}\label{bashline_8c_a04b53d3a9fa07e96ca8fec139b817bbc}
+\index{bashline.\+c@{bashline.\+c}!D\+E\+F\+C\+O\+M\+P\+\_\+\+C\+M\+D\+P\+OS@{D\+E\+F\+C\+O\+M\+P\+\_\+\+C\+M\+D\+P\+OS}}
+\index{D\+E\+F\+C\+O\+M\+P\+\_\+\+C\+M\+D\+P\+OS@{D\+E\+F\+C\+O\+M\+P\+\_\+\+C\+M\+D\+P\+OS}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{D\+E\+F\+C\+O\+M\+P\+\_\+\+C\+M\+D\+P\+OS}{DEFCOMP_CMDPOS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+F\+C\+O\+M\+P\+\_\+\+C\+M\+D\+P\+OS~1}\hypertarget{bashline_8c_a5946177944ab9c75cdbfb5d746e980d6}{}\label{bashline_8c_a5946177944ab9c75cdbfb5d746e980d6}
+\index{bashline.\+c@{bashline.\+c}!E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND@{E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND}}
+\index{E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND@{E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND}{EMACS_EDIT_COMMAND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND~\char`\"{}fc -\/e \textbackslash{}\char`\"{}\$\{V\+I\+S\+U\+A\+L\+:-\/\$\{E\+D\+I\+T\+O\+R\+:-\/emacs\}\}\textbackslash{}\char`\"{}\char`\"{}}\hypertarget{bashline_8c_a43ae3b48a38f087929b50f4b80fde11c}{}\label{bashline_8c_a43ae3b48a38f087929b50f4b80fde11c}
+\index{bashline.\+c@{bashline.\+c}!E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE@{E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE}}
+\index{E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE@{E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE}{EMACS_EDITING_MODE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+M\+A\+C\+S\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE~1}\hypertarget{bashline_8c_abf799e4aa076fdb112fcdc8a82490d7d}{}\label{bashline_8c_abf799e4aa076fdb112fcdc8a82490d7d}
+\index{bashline.\+c@{bashline.\+c}!H\+I\+S\+T\+O\+R\+Y\+\_\+\+F\+U\+LL@{H\+I\+S\+T\+O\+R\+Y\+\_\+\+F\+U\+LL}}
+\index{H\+I\+S\+T\+O\+R\+Y\+\_\+\+F\+U\+LL@{H\+I\+S\+T\+O\+R\+Y\+\_\+\+F\+U\+LL}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{H\+I\+S\+T\+O\+R\+Y\+\_\+\+F\+U\+LL}{HISTORY_FULL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+I\+S\+T\+O\+R\+Y\+\_\+\+F\+U\+LL(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~(history\+\_\+is\+\_\+stifled () \&\& history\+\_\+length $>$= history\+\_\+max\+\_\+entries)}\hypertarget{bashline_8c_a4f57cfd350db276dfc5421a8a80e68fb}{}\label{bashline_8c_a4f57cfd350db276dfc5421a8a80e68fb}
+\index{bashline.\+c@{bashline.\+c}!N\+O\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE@{N\+O\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE}}
+\index{N\+O\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE@{N\+O\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{N\+O\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE}{NO_EDITING_MODE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+O\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE~-\/1}\hypertarget{bashline_8c_ac83f281a9c8578cd2380878eebf9409c}{}\label{bashline_8c_ac83f281a9c8578cd2380878eebf9409c}
+\index{bashline.\+c@{bashline.\+c}!P\+O\+S\+I\+X\+\_\+\+V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND@{P\+O\+S\+I\+X\+\_\+\+V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND}}
+\index{P\+O\+S\+I\+X\+\_\+\+V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND@{P\+O\+S\+I\+X\+\_\+\+V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{P\+O\+S\+I\+X\+\_\+\+V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND}{POSIX_VI_EDIT_COMMAND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+S\+I\+X\+\_\+\+V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND~\char`\"{}fc -\/e vi\char`\"{}}\hypertarget{bashline_8c_a3eb8d4780456614fcdf5399a0096c289}{}\label{bashline_8c_a3eb8d4780456614fcdf5399a0096c289}
+\index{bashline.\+c@{bashline.\+c}!R\+L\+\_\+\+B\+O\+O\+L\+E\+A\+N\+\_\+\+V\+A\+R\+I\+A\+B\+L\+E\+\_\+\+V\+A\+L\+UE@{R\+L\+\_\+\+B\+O\+O\+L\+E\+A\+N\+\_\+\+V\+A\+R\+I\+A\+B\+L\+E\+\_\+\+V\+A\+L\+UE}}
+\index{R\+L\+\_\+\+B\+O\+O\+L\+E\+A\+N\+\_\+\+V\+A\+R\+I\+A\+B\+L\+E\+\_\+\+V\+A\+L\+UE@{R\+L\+\_\+\+B\+O\+O\+L\+E\+A\+N\+\_\+\+V\+A\+R\+I\+A\+B\+L\+E\+\_\+\+V\+A\+L\+UE}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{R\+L\+\_\+\+B\+O\+O\+L\+E\+A\+N\+\_\+\+V\+A\+R\+I\+A\+B\+L\+E\+\_\+\+V\+A\+L\+UE}{RL_BOOLEAN_VARIABLE_VALUE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+L\+\_\+\+B\+O\+O\+L\+E\+A\+N\+\_\+\+V\+A\+R\+I\+A\+B\+L\+E\+\_\+\+V\+A\+L\+UE(
+\begin{DoxyParamCaption}
+\item[{}]{s}
+\end{DoxyParamCaption}
+)~((s)\mbox{[}0\mbox{]} == \textquotesingle{}o\textquotesingle{} \&\& (s)\mbox{[}1\mbox{]} == \textquotesingle{}n\textquotesingle{} \&\& (s)\mbox{[}2\mbox{]} == \textquotesingle{}\textbackslash{}0\textquotesingle{})}\hypertarget{bashline_8c_a482708843d672ae6ffc90ded31e09a9c}{}\label{bashline_8c_a482708843d672ae6ffc90ded31e09a9c}
+\index{bashline.\+c@{bashline.\+c}!S\+P\+E\+C\+I\+F\+I\+C\+\_\+\+C\+O\+M\+P\+L\+E\+T\+I\+O\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS@{S\+P\+E\+C\+I\+F\+I\+C\+\_\+\+C\+O\+M\+P\+L\+E\+T\+I\+O\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS}}
+\index{S\+P\+E\+C\+I\+F\+I\+C\+\_\+\+C\+O\+M\+P\+L\+E\+T\+I\+O\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS@{S\+P\+E\+C\+I\+F\+I\+C\+\_\+\+C\+O\+M\+P\+L\+E\+T\+I\+O\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{S\+P\+E\+C\+I\+F\+I\+C\+\_\+\+C\+O\+M\+P\+L\+E\+T\+I\+O\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS}{SPECIFIC_COMPLETION_FUNCTIONS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+P\+E\+C\+I\+F\+I\+C\+\_\+\+C\+O\+M\+P\+L\+E\+T\+I\+O\+N\+\_\+\+F\+U\+N\+C\+T\+I\+O\+NS}\hypertarget{bashline_8c_aed1ea8477439192dc45373897e53c677}{}\label{bashline_8c_aed1ea8477439192dc45373897e53c677}
+\index{bashline.\+c@{bashline.\+c}!V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND@{V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND}}
+\index{V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND@{V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND}{VI_EDIT_COMMAND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+I\+\_\+\+E\+D\+I\+T\+\_\+\+C\+O\+M\+M\+A\+ND~\char`\"{}fc -\/e \textbackslash{}\char`\"{}\$\{V\+I\+S\+U\+A\+L\+:-\/\$\{E\+D\+I\+T\+O\+R\+:-\/vi\}\}\textbackslash{}\char`\"{}\char`\"{}}\hypertarget{bashline_8c_a18f8b8f85b639c358b41c9ed5888376f}{}\label{bashline_8c_a18f8b8f85b639c358b41c9ed5888376f}
+\index{bashline.\+c@{bashline.\+c}!V\+I\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE@{V\+I\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE}}
+\index{V\+I\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE@{V\+I\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{V\+I\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE}{VI_EDITING_MODE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+I\+\_\+\+E\+D\+I\+T\+I\+N\+G\+\_\+\+M\+O\+DE~0}\hypertarget{bashline_8c_a81a7b318335f3e3b3bcc450a570de52c}{}\label{bashline_8c_a81a7b318335f3e3b3bcc450a570de52c}
+\index{bashline.\+c@{bashline.\+c}!W\+O\+R\+D\+D\+E\+L\+IM@{W\+O\+R\+D\+D\+E\+L\+IM}}
+\index{W\+O\+R\+D\+D\+E\+L\+IM@{W\+O\+R\+D\+D\+E\+L\+IM}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{W\+O\+R\+D\+D\+E\+L\+IM}{WORDDELIM}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+O\+R\+D\+D\+E\+L\+IM(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~({\bf shellmeta}(c) $\vert$$\vert$ {\bf shellblank}(c))}\hypertarget{bashline_8c_acbd9ed4b6106b7c9d08141f7acedeb58}{}\label{bashline_8c_acbd9ed4b6106b7c9d08141f7acedeb58}
+
+
+\subsection{Function Documentation}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, int))}{__P((int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bash\+\_\+brace\+\_\+completion} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_a8cf3725b461ab94213a16fce68ce520f}{}\label{bashline_8c_a8cf3725b461ab94213a16fce68ce520f}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$string, int nlines, int($\ast$outx)(int)))}{__P((const char *string, int nlines, int(*outx)(int)))}}]{\setlength{\rightskip}{0pt plus 5cm}int tputs \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$string, int nlines, int($\ast$outx)(int))}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_a1998f15bd4256b5d22b9c3e2cbf348d7}{}\label{bashline_8c_a1998f15bd4256b5d22b9c3e2cbf348d7}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$$\ast$))}{__P((char **))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf bash\+\_\+ignore\+\_\+filenames} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$$\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a7abb9ef79b322231fd18e380e052c261}{}\label{bashline_8c_a7abb9ef79b322231fd18e380e052c261}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf history\+\_\+expand\+\_\+line\+\_\+internal} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_aaebc78f478e6429aa47a1d6851d380ef}{}\label{bashline_8c_aaebc78f478e6429aa47a1d6851d380ef}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, char $\ast$))}{__P((char *, char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf restore\+\_\+tilde} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_aa4778647aa7a4fe32c715127a7cb019c}{}\label{bashline_8c_aa4778647aa7a4fe32c715127a7cb019c}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, int))}{__P((char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf bash\+\_\+filename\+\_\+rewrite\+\_\+hook} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a1ae0efb2c9a4391bfe3d6b17e47dea5f}{}\label{bashline_8c_a1ae0efb2c9a4391bfe3d6b17e47dea5f}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf bash\+\_\+push\+\_\+line} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_af2f9e1a9f86aa0650d2ce496e51081cd}{}\label{bashline_8c_af2f9e1a9f86aa0650d2ce496e51081cd}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, int))}{__P((const char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf executable\+\_\+completion} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a14ec20800898e838a0287e2221bd6f9e}{}\label{bashline_8c_a14ec20800898e838a0287e2221bd6f9e}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((rl\+\_\+icppfunc\+\_\+t))}{__P((rl_icppfunc_t))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf restore\+\_\+directory\+\_\+hook} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(rl\+\_\+icppfunc\+\_\+t)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a93da3b771c8f1ef637d606f00426fa17}{}\label{bashline_8c_a93da3b771c8f1ef637d606f00426fa17}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf check\+\_\+redir} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a6e63beb5345b7c410d27ebebb7a18198}{}\label{bashline_8c_a6e63beb5345b7c410d27ebebb7a18198}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, int, int))}{__P((const char *, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$$\ast$ {\bf attempt\+\_\+shell\+\_\+completion} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, int, int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_af9503c9a005e1fbcadc06ae408ed4def}{}\label{bashline_8c_af9503c9a005e1fbcadc06ae408ed4def}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$$\ast$, sh\+\_\+ignore\+\_\+func\+\_\+t $\ast$))}{__P((char **, sh_ignore_func_t *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf \+\_\+ignore\+\_\+completion\+\_\+names} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$$\ast$, sh\+\_\+ignore\+\_\+func\+\_\+t $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a59b320cf780d1fc9969829c8ba71232f}{}\label{bashline_8c_a59b320cf780d1fc9969829c8ba71232f}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$))}{__P((const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf name\+\_\+is\+\_\+acceptable} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a872dde97a7c43f661f0ed4b35d84ad70}{}\label{bashline_8c_a872dde97a7c43f661f0ed4b35d84ad70}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, int, char $\ast$))}{__P((char *, int, char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf bash\+\_\+quote\+\_\+filename} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, int, char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ac8cfacf5c3bfee5a65e9644a618d7f92}{}\label{bashline_8c_ac8cfacf5c3bfee5a65e9644a618d7f92}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, int, int, int $\ast$))}{__P((char *, int, int, int *))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf isolate\+\_\+sequence} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, int, int, int $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a130190ea2fddbd7d382c66e7de68fb6a}{}\label{bashline_8c_a130190ea2fddbd7d382c66e7de68fb6a}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, int $\ast$, int $\ast$))}{__P((int, int *, int *))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf find\+\_\+cmd\+\_\+name} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, int $\ast$, int $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a3a80df36a261385ea6b92a309b2e1d36}{}\label{bashline_8c_a3a80df36a261385ea6b92a309b2e1d36}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, rl\+\_\+compentry\+\_\+func\+\_\+t $\ast$))}{__P((int, rl_compentry_func_t *))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf bash\+\_\+specific\+\_\+completion} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, rl\+\_\+compentry\+\_\+func\+\_\+t $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a9ca19c406450c76fc4367202e4f2bec3}{}\label{bashline_8c_a9ca19c406450c76fc4367202e4f2bec3}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, int, int, char $\ast$))}{__P((int, int, int, char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf edit\+\_\+and\+\_\+execute\+\_\+command} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, int, int, char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a9a9a7024e0eb7066938e91ef23f9cb2f}{}\label{bashline_8c_a9a9a7024e0eb7066938e91ef23f9cb2f}
+\index{bashline.\+c@{bashline.\+c}!\+\_\+ignore\+\_\+completion\+\_\+names@{\+\_\+ignore\+\_\+completion\+\_\+names}}
+\index{\+\_\+ignore\+\_\+completion\+\_\+names@{\+\_\+ignore\+\_\+completion\+\_\+names}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+ignore\+\_\+completion\+\_\+names(char $\ast$$\ast$names, sh\+\_\+ignore\+\_\+func\+\_\+t $\ast$name\+\_\+func)}{_ignore_completion_names(char **names, sh_ignore_func_t *name_func)}}]{\setlength{\rightskip}{0pt plus 5cm}static void \+\_\+ignore\+\_\+completion\+\_\+names (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{names, }
+\item[{sh\+\_\+ignore\+\_\+func\+\_\+t $\ast$}]{name\+\_\+func}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a3e8cde273e6ed26f25e667723bc620e1}{}\label{bashline_8c_a3e8cde273e6ed26f25e667723bc620e1}
+\index{bashline.\+c@{bashline.\+c}!add\+\_\+host\+\_\+name@{add\+\_\+host\+\_\+name}}
+\index{add\+\_\+host\+\_\+name@{add\+\_\+host\+\_\+name}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+host\+\_\+name(char $\ast$name)}{add_host_name(char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}static void add\+\_\+host\+\_\+name (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ad3527c17826cd2f0ec39cb25d5546e85}{}\label{bashline_8c_ad3527c17826cd2f0ec39cb25d5546e85}
+\index{bashline.\+c@{bashline.\+c}!alias\+\_\+expand\+\_\+line@{alias\+\_\+expand\+\_\+line}}
+\index{alias\+\_\+expand\+\_\+line@{alias\+\_\+expand\+\_\+line}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{alias\+\_\+expand\+\_\+line(int count, int ignore)}{alias_expand_line(int count, int ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}static int alias\+\_\+expand\+\_\+line (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{ignore}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ac0ac1810dc0a4611ac5f4a2d501d6ed9}{}\label{bashline_8c_ac0ac1810dc0a4611ac5f4a2d501d6ed9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_ac0ac1810dc0a4611ac5f4a2d501d6ed9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!attempt\+\_\+shell\+\_\+completion@{attempt\+\_\+shell\+\_\+completion}}
+\index{attempt\+\_\+shell\+\_\+completion@{attempt\+\_\+shell\+\_\+completion}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{attempt\+\_\+shell\+\_\+completion(char $\ast$text, int start, int end) const}{attempt_shell_completion(char *text, int start, int end) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$$\ast$ attempt\+\_\+shell\+\_\+completion (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{int}]{start, }
+\item[{int}]{end}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a6e427c36e946051f6662641c40ccdbff}{}\label{bashline_8c_a6e427c36e946051f6662641c40ccdbff}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a6e427c36e946051f6662641c40ccdbff_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+backward\+\_\+kill\+\_\+shellword@{bash\+\_\+backward\+\_\+kill\+\_\+shellword}}
+\index{bash\+\_\+backward\+\_\+kill\+\_\+shellword@{bash\+\_\+backward\+\_\+kill\+\_\+shellword}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+backward\+\_\+kill\+\_\+shellword(int count, int key)}{bash_backward_kill_shellword(int count, int key)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+backward\+\_\+kill\+\_\+shellword (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a6ccc1dffee3d73a462d8831f28df1335}{}\label{bashline_8c_a6ccc1dffee3d73a462d8831f28df1335}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a6ccc1dffee3d73a462d8831f28df1335_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+backward\+\_\+shellword@{bash\+\_\+backward\+\_\+shellword}}
+\index{bash\+\_\+backward\+\_\+shellword@{bash\+\_\+backward\+\_\+shellword}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+backward\+\_\+shellword(int count, int key)}{bash_backward_shellword(int count, int key)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+backward\+\_\+shellword (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a6c1f414978aefd6cd77f5555bbb8e5b7}{}\label{bashline_8c_a6c1f414978aefd6cd77f5555bbb8e5b7}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a6c1f414978aefd6cd77f5555bbb8e5b7_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+command\+\_\+name\+\_\+stat\+\_\+hook@{bash\+\_\+command\+\_\+name\+\_\+stat\+\_\+hook}}
+\index{bash\+\_\+command\+\_\+name\+\_\+stat\+\_\+hook@{bash\+\_\+command\+\_\+name\+\_\+stat\+\_\+hook}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+command\+\_\+name\+\_\+stat\+\_\+hook(char $\ast$$\ast$name)}{bash_command_name_stat_hook(char **name)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+command\+\_\+name\+\_\+stat\+\_\+hook (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ad9f5dddfe0651f50f23f1122ecdba643}{}\label{bashline_8c_ad9f5dddfe0651f50f23f1122ecdba643}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_ad9f5dddfe0651f50f23f1122ecdba643_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+complete\+\_\+command@{bash\+\_\+complete\+\_\+command}}
+\index{bash\+\_\+complete\+\_\+command@{bash\+\_\+complete\+\_\+command}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+complete\+\_\+command(int ignore, int ignore2)}{bash_complete_command(int ignore, int ignore2)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+complete\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{int}]{ignore, }
+\item[{int}]{ignore2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a59156ce722bd7d8b77efa5dad78855c2}{}\label{bashline_8c_a59156ce722bd7d8b77efa5dad78855c2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a59156ce722bd7d8b77efa5dad78855c2_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+complete\+\_\+command\+\_\+internal@{bash\+\_\+complete\+\_\+command\+\_\+internal}}
+\index{bash\+\_\+complete\+\_\+command\+\_\+internal@{bash\+\_\+complete\+\_\+command\+\_\+internal}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+complete\+\_\+command\+\_\+internal(int what\+\_\+to\+\_\+do)}{bash_complete_command_internal(int what_to_do)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+complete\+\_\+command\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{int}]{what\+\_\+to\+\_\+do}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a6b05e465f483ad3969661bc9638e3bae}{}\label{bashline_8c_a6b05e465f483ad3969661bc9638e3bae}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a6b05e465f483ad3969661bc9638e3bae_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+complete\+\_\+filename@{bash\+\_\+complete\+\_\+filename}}
+\index{bash\+\_\+complete\+\_\+filename@{bash\+\_\+complete\+\_\+filename}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+complete\+\_\+filename(int ignore, int ignore2)}{bash_complete_filename(int ignore, int ignore2)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+complete\+\_\+filename (
+\begin{DoxyParamCaption}
+\item[{int}]{ignore, }
+\item[{int}]{ignore2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a1cb356f1d0969d887e180c45e911eda1}{}\label{bashline_8c_a1cb356f1d0969d887e180c45e911eda1}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a1cb356f1d0969d887e180c45e911eda1_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+complete\+\_\+filename\+\_\+internal@{bash\+\_\+complete\+\_\+filename\+\_\+internal}}
+\index{bash\+\_\+complete\+\_\+filename\+\_\+internal@{bash\+\_\+complete\+\_\+filename\+\_\+internal}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+complete\+\_\+filename\+\_\+internal(int what\+\_\+to\+\_\+do)}{bash_complete_filename_internal(int what_to_do)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+complete\+\_\+filename\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{int}]{what\+\_\+to\+\_\+do}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a7f6e415b9567e146137289508d475102}{}\label{bashline_8c_a7f6e415b9567e146137289508d475102}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a7f6e415b9567e146137289508d475102_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+complete\+\_\+hostname@{bash\+\_\+complete\+\_\+hostname}}
+\index{bash\+\_\+complete\+\_\+hostname@{bash\+\_\+complete\+\_\+hostname}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+complete\+\_\+hostname(int ignore, int ignore2)}{bash_complete_hostname(int ignore, int ignore2)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+complete\+\_\+hostname (
+\begin{DoxyParamCaption}
+\item[{int}]{ignore, }
+\item[{int}]{ignore2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a355b4b4998a5766ff888fa867a4fbf8c}{}\label{bashline_8c_a355b4b4998a5766ff888fa867a4fbf8c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a355b4b4998a5766ff888fa867a4fbf8c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+complete\+\_\+hostname\+\_\+internal@{bash\+\_\+complete\+\_\+hostname\+\_\+internal}}
+\index{bash\+\_\+complete\+\_\+hostname\+\_\+internal@{bash\+\_\+complete\+\_\+hostname\+\_\+internal}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+complete\+\_\+hostname\+\_\+internal(int what\+\_\+to\+\_\+do)}{bash_complete_hostname_internal(int what_to_do)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+complete\+\_\+hostname\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{int}]{what\+\_\+to\+\_\+do}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ab3d5f4873570aa9d7cfe1678d80d38bd}{}\label{bashline_8c_ab3d5f4873570aa9d7cfe1678d80d38bd}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_ab3d5f4873570aa9d7cfe1678d80d38bd_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+complete\+\_\+username@{bash\+\_\+complete\+\_\+username}}
+\index{bash\+\_\+complete\+\_\+username@{bash\+\_\+complete\+\_\+username}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+complete\+\_\+username(int ignore, int ignore2)}{bash_complete_username(int ignore, int ignore2)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+complete\+\_\+username (
+\begin{DoxyParamCaption}
+\item[{int}]{ignore, }
+\item[{int}]{ignore2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a38f481dd8aa814e23b231b001a669c45}{}\label{bashline_8c_a38f481dd8aa814e23b231b001a669c45}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a38f481dd8aa814e23b231b001a669c45_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+complete\+\_\+username\+\_\+internal@{bash\+\_\+complete\+\_\+username\+\_\+internal}}
+\index{bash\+\_\+complete\+\_\+username\+\_\+internal@{bash\+\_\+complete\+\_\+username\+\_\+internal}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+complete\+\_\+username\+\_\+internal(int what\+\_\+to\+\_\+do)}{bash_complete_username_internal(int what_to_do)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+complete\+\_\+username\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{int}]{what\+\_\+to\+\_\+do}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a007b2568a741ee31ab49240bf8c10cfa}{}\label{bashline_8c_a007b2568a741ee31ab49240bf8c10cfa}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a007b2568a741ee31ab49240bf8c10cfa_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+complete\+\_\+variable@{bash\+\_\+complete\+\_\+variable}}
+\index{bash\+\_\+complete\+\_\+variable@{bash\+\_\+complete\+\_\+variable}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+complete\+\_\+variable(int ignore, int ignore2)}{bash_complete_variable(int ignore, int ignore2)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+complete\+\_\+variable (
+\begin{DoxyParamCaption}
+\item[{int}]{ignore, }
+\item[{int}]{ignore2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a990ac27b5fc96161a7a1ffb8b34e3965}{}\label{bashline_8c_a990ac27b5fc96161a7a1ffb8b34e3965}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a990ac27b5fc96161a7a1ffb8b34e3965_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+complete\+\_\+variable\+\_\+internal@{bash\+\_\+complete\+\_\+variable\+\_\+internal}}
+\index{bash\+\_\+complete\+\_\+variable\+\_\+internal@{bash\+\_\+complete\+\_\+variable\+\_\+internal}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+complete\+\_\+variable\+\_\+internal(int what\+\_\+to\+\_\+do)}{bash_complete_variable_internal(int what_to_do)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+complete\+\_\+variable\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{int}]{what\+\_\+to\+\_\+do}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ac7c869248d15cc477d0dc387ac98c205}{}\label{bashline_8c_ac7c869248d15cc477d0dc387ac98c205}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_ac7c869248d15cc477d0dc387ac98c205_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+dabbrev\+\_\+expand@{bash\+\_\+dabbrev\+\_\+expand}}
+\index{bash\+\_\+dabbrev\+\_\+expand@{bash\+\_\+dabbrev\+\_\+expand}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+dabbrev\+\_\+expand(int count, int key)}{bash_dabbrev_expand(int count, int key)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+dabbrev\+\_\+expand (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a8233e6b837722ec62b4e575a1d31f795}{}\label{bashline_8c_a8233e6b837722ec62b4e575a1d31f795}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a8233e6b837722ec62b4e575a1d31f795_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+default\+\_\+completion@{bash\+\_\+default\+\_\+completion}}
+\index{bash\+\_\+default\+\_\+completion@{bash\+\_\+default\+\_\+completion}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+default\+\_\+completion(char $\ast$text, int start, int end, int qc, int compflags) const}{bash_default_completion(char *text, int start, int end, int qc, int compflags) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ bash\+\_\+default\+\_\+completion (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{int}]{start, }
+\item[{int}]{end, }
+\item[{int}]{qc, }
+\item[{int}]{compflags}
+\end{DoxyParamCaption}
+) const}\hypertarget{bashline_8c_aaac86d73cc4aa1dcfcdc5f9d2377b9cf}{}\label{bashline_8c_aaac86d73cc4aa1dcfcdc5f9d2377b9cf}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_aaac86d73cc4aa1dcfcdc5f9d2377b9cf_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+dequote\+\_\+filename@{bash\+\_\+dequote\+\_\+filename}}
+\index{bash\+\_\+dequote\+\_\+filename@{bash\+\_\+dequote\+\_\+filename}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+dequote\+\_\+filename(char $\ast$text, int quote\+\_\+char)}{bash_dequote_filename(char *text, int quote_char)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ bash\+\_\+dequote\+\_\+filename (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{int}]{quote\+\_\+char}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a9cc4c896685a24908c0eeeab0eb2eacb}{}\label{bashline_8c_a9cc4c896685a24908c0eeeab0eb2eacb}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a9cc4c896685a24908c0eeeab0eb2eacb_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+dequote\+\_\+text@{bash\+\_\+dequote\+\_\+text}}
+\index{bash\+\_\+dequote\+\_\+text@{bash\+\_\+dequote\+\_\+text}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+dequote\+\_\+text(char $\ast$text) const}{bash_dequote_text(char *text) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ bash\+\_\+dequote\+\_\+text (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text}
+\end{DoxyParamCaption}
+) const}\hypertarget{bashline_8c_afc63375d518c87820ca94935478f520c}{}\label{bashline_8c_afc63375d518c87820ca94935478f520c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_afc63375d518c87820ca94935478f520c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+directory\+\_\+completion\+\_\+hook@{bash\+\_\+directory\+\_\+completion\+\_\+hook}}
+\index{bash\+\_\+directory\+\_\+completion\+\_\+hook@{bash\+\_\+directory\+\_\+completion\+\_\+hook}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+directory\+\_\+completion\+\_\+hook(char $\ast$$\ast$dirname)}{bash_directory_completion_hook(char **dirname)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+directory\+\_\+completion\+\_\+hook (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{dirname}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_aeffbd0c284d00ef258bb88fe89f31c7a}{}\label{bashline_8c_aeffbd0c284d00ef258bb88fe89f31c7a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_aeffbd0c284d00ef258bb88fe89f31c7a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+directory\+\_\+completion\+\_\+matches@{bash\+\_\+directory\+\_\+completion\+\_\+matches}}
+\index{bash\+\_\+directory\+\_\+completion\+\_\+matches@{bash\+\_\+directory\+\_\+completion\+\_\+matches}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+directory\+\_\+completion\+\_\+matches(char $\ast$text) const}{bash_directory_completion_matches(char *text) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ bash\+\_\+directory\+\_\+completion\+\_\+matches (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text}
+\end{DoxyParamCaption}
+) const}\hypertarget{bashline_8c_a67132a5a9f7f4c2c281f39d202340148}{}\label{bashline_8c_a67132a5a9f7f4c2c281f39d202340148}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a67132a5a9f7f4c2c281f39d202340148_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+directory\+\_\+expansion@{bash\+\_\+directory\+\_\+expansion}}
+\index{bash\+\_\+directory\+\_\+expansion@{bash\+\_\+directory\+\_\+expansion}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+directory\+\_\+expansion(char $\ast$$\ast$dirname)}{bash_directory_expansion(char **dirname)}}]{\setlength{\rightskip}{0pt plus 5cm}static void bash\+\_\+directory\+\_\+expansion (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{dirname}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a3cf848eca2b02a606c979499ba7b054a}{}\label{bashline_8c_a3cf848eca2b02a606c979499ba7b054a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a3cf848eca2b02a606c979499ba7b054a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+event\+\_\+hook@{bash\+\_\+event\+\_\+hook}}
+\index{bash\+\_\+event\+\_\+hook@{bash\+\_\+event\+\_\+hook}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+event\+\_\+hook()}{bash_event_hook()}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+event\+\_\+hook (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_adbb35079ca9b06067b131bbb57e20c94}{}\label{bashline_8c_adbb35079ca9b06067b131bbb57e20c94}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_adbb35079ca9b06067b131bbb57e20c94_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+execute\+\_\+unix\+\_\+command@{bash\+\_\+execute\+\_\+unix\+\_\+command}}
+\index{bash\+\_\+execute\+\_\+unix\+\_\+command@{bash\+\_\+execute\+\_\+unix\+\_\+command}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+execute\+\_\+unix\+\_\+command(int count, int key)}{bash_execute_unix_command(int count, int key)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+execute\+\_\+unix\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ab93ee68792fc0f439f955a71f12ba9c9}{}\label{bashline_8c_ab93ee68792fc0f439f955a71f12ba9c9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_ab93ee68792fc0f439f955a71f12ba9c9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+filename\+\_\+rewrite\+\_\+hook@{bash\+\_\+filename\+\_\+rewrite\+\_\+hook}}
+\index{bash\+\_\+filename\+\_\+rewrite\+\_\+hook@{bash\+\_\+filename\+\_\+rewrite\+\_\+hook}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+filename\+\_\+rewrite\+\_\+hook(char $\ast$fname, int fnlen)}{bash_filename_rewrite_hook(char *fname, int fnlen)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ bash\+\_\+filename\+\_\+rewrite\+\_\+hook (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{fname, }
+\item[{int}]{fnlen}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a3357b317343c8ca2d1c33a897f07ae4d}{}\label{bashline_8c_a3357b317343c8ca2d1c33a897f07ae4d}
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+filename\+\_\+stat\+\_\+hook@{bash\+\_\+filename\+\_\+stat\+\_\+hook}}
+\index{bash\+\_\+filename\+\_\+stat\+\_\+hook@{bash\+\_\+filename\+\_\+stat\+\_\+hook}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+filename\+\_\+stat\+\_\+hook(char $\ast$$\ast$dirname)}{bash_filename_stat_hook(char **dirname)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+filename\+\_\+stat\+\_\+hook (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{dirname}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a224366986c1fd584f0dd9601682bb54b}{}\label{bashline_8c_a224366986c1fd584f0dd9601682bb54b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a224366986c1fd584f0dd9601682bb54b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+forward\+\_\+shellword@{bash\+\_\+forward\+\_\+shellword}}
+\index{bash\+\_\+forward\+\_\+shellword@{bash\+\_\+forward\+\_\+shellword}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+forward\+\_\+shellword(int count, int key)}{bash_forward_shellword(int count, int key)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+forward\+\_\+shellword (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a5f6e8981a81c04d9afde3f70e72886e3}{}\label{bashline_8c_a5f6e8981a81c04d9afde3f70e72886e3}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a5f6e8981a81c04d9afde3f70e72886e3_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+glob\+\_\+complete\+\_\+word@{bash\+\_\+glob\+\_\+complete\+\_\+word}}
+\index{bash\+\_\+glob\+\_\+complete\+\_\+word@{bash\+\_\+glob\+\_\+complete\+\_\+word}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+glob\+\_\+complete\+\_\+word(int count, int key)}{bash_glob_complete_word(int count, int key)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+glob\+\_\+complete\+\_\+word (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ad7bc3ec25d19fbf303cd514fbd9dd065}{}\label{bashline_8c_ad7bc3ec25d19fbf303cd514fbd9dd065}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_ad7bc3ec25d19fbf303cd514fbd9dd065_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+glob\+\_\+completion\+\_\+internal@{bash\+\_\+glob\+\_\+completion\+\_\+internal}}
+\index{bash\+\_\+glob\+\_\+completion\+\_\+internal@{bash\+\_\+glob\+\_\+completion\+\_\+internal}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+glob\+\_\+completion\+\_\+internal(int what\+\_\+to\+\_\+do)}{bash_glob_completion_internal(int what_to_do)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+glob\+\_\+completion\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{int}]{what\+\_\+to\+\_\+do}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a6f6d9c787f44a810390683d56528fa79}{}\label{bashline_8c_a6f6d9c787f44a810390683d56528fa79}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a6f6d9c787f44a810390683d56528fa79_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+glob\+\_\+expand\+\_\+word@{bash\+\_\+glob\+\_\+expand\+\_\+word}}
+\index{bash\+\_\+glob\+\_\+expand\+\_\+word@{bash\+\_\+glob\+\_\+expand\+\_\+word}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+glob\+\_\+expand\+\_\+word(int count, int key)}{bash_glob_expand_word(int count, int key)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+glob\+\_\+expand\+\_\+word (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_af6b39afa7409301e9489a475078d6e1c}{}\label{bashline_8c_af6b39afa7409301e9489a475078d6e1c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_af6b39afa7409301e9489a475078d6e1c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+glob\+\_\+list\+\_\+expansions@{bash\+\_\+glob\+\_\+list\+\_\+expansions}}
+\index{bash\+\_\+glob\+\_\+list\+\_\+expansions@{bash\+\_\+glob\+\_\+list\+\_\+expansions}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+glob\+\_\+list\+\_\+expansions(int count, int key)}{bash_glob_list_expansions(int count, int key)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+glob\+\_\+list\+\_\+expansions (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a51e99f46e0bb414d85e6790aee13999f}{}\label{bashline_8c_a51e99f46e0bb414d85e6790aee13999f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a51e99f46e0bb414d85e6790aee13999f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+glob\+\_\+quote\+\_\+filename@{bash\+\_\+glob\+\_\+quote\+\_\+filename}}
+\index{bash\+\_\+glob\+\_\+quote\+\_\+filename@{bash\+\_\+glob\+\_\+quote\+\_\+filename}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+glob\+\_\+quote\+\_\+filename(char $\ast$s, int rtype, char $\ast$qcp)}{bash_glob_quote_filename(char *s, int rtype, char *qcp)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ bash\+\_\+glob\+\_\+quote\+\_\+filename (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{int}]{rtype, }
+\item[{char $\ast$}]{qcp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a7a18f1abc0f7e0606818b3123cbeade2}{}\label{bashline_8c_a7a18f1abc0f7e0606818b3123cbeade2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a7a18f1abc0f7e0606818b3123cbeade2_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+groupname\+\_\+completion\+\_\+function@{bash\+\_\+groupname\+\_\+completion\+\_\+function}}
+\index{bash\+\_\+groupname\+\_\+completion\+\_\+function@{bash\+\_\+groupname\+\_\+completion\+\_\+function}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+groupname\+\_\+completion\+\_\+function(char $\ast$text, int state) const}{bash_groupname_completion_function(char *text, int state) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ bash\+\_\+groupname\+\_\+completion\+\_\+function (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{int}]{state}
+\end{DoxyParamCaption}
+) const}\hypertarget{bashline_8c_aa8524f98cd07534dbf25207a52ed621e}{}\label{bashline_8c_aa8524f98cd07534dbf25207a52ed621e}
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+ignore\+\_\+everything@{bash\+\_\+ignore\+\_\+everything}}
+\index{bash\+\_\+ignore\+\_\+everything@{bash\+\_\+ignore\+\_\+everything}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+ignore\+\_\+everything(char $\ast$$\ast$names)}{bash_ignore_everything(char **names)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+ignore\+\_\+everything (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{names}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a891bdfaa9af1b263e657b4ef09e003cf}{}\label{bashline_8c_a891bdfaa9af1b263e657b4ef09e003cf}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{bashline_8c_a891bdfaa9af1b263e657b4ef09e003cf_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+ignore\+\_\+filenames@{bash\+\_\+ignore\+\_\+filenames}}
+\index{bash\+\_\+ignore\+\_\+filenames@{bash\+\_\+ignore\+\_\+filenames}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+ignore\+\_\+filenames(char $\ast$$\ast$names)}{bash_ignore_filenames(char **names)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+ignore\+\_\+filenames (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{names}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a84bd0c28a25931e25542fda809814b81}{}\label{bashline_8c_a84bd0c28a25931e25542fda809814b81}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a84bd0c28a25931e25542fda809814b81_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+kill\+\_\+shellword@{bash\+\_\+kill\+\_\+shellword}}
+\index{bash\+\_\+kill\+\_\+shellword@{bash\+\_\+kill\+\_\+shellword}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+kill\+\_\+shellword(int count, int key)}{bash_kill_shellword(int count, int key)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+kill\+\_\+shellword (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a5ca4ceb201da869c04fe0e2a9ebc13af}{}\label{bashline_8c_a5ca4ceb201da869c04fe0e2a9ebc13af}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a5ca4ceb201da869c04fe0e2a9ebc13af_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+possible\+\_\+command\+\_\+completions@{bash\+\_\+possible\+\_\+command\+\_\+completions}}
+\index{bash\+\_\+possible\+\_\+command\+\_\+completions@{bash\+\_\+possible\+\_\+command\+\_\+completions}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+possible\+\_\+command\+\_\+completions(int ignore, int ignore2)}{bash_possible_command_completions(int ignore, int ignore2)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+possible\+\_\+command\+\_\+completions (
+\begin{DoxyParamCaption}
+\item[{int}]{ignore, }
+\item[{int}]{ignore2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a5fb38c86133bd43e8387f39e73420466}{}\label{bashline_8c_a5fb38c86133bd43e8387f39e73420466}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a5fb38c86133bd43e8387f39e73420466_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+possible\+\_\+filename\+\_\+completions@{bash\+\_\+possible\+\_\+filename\+\_\+completions}}
+\index{bash\+\_\+possible\+\_\+filename\+\_\+completions@{bash\+\_\+possible\+\_\+filename\+\_\+completions}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+possible\+\_\+filename\+\_\+completions(int ignore, int ignore2)}{bash_possible_filename_completions(int ignore, int ignore2)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+possible\+\_\+filename\+\_\+completions (
+\begin{DoxyParamCaption}
+\item[{int}]{ignore, }
+\item[{int}]{ignore2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a912382d845666233c19e8a3086f43c91}{}\label{bashline_8c_a912382d845666233c19e8a3086f43c91}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a912382d845666233c19e8a3086f43c91_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+possible\+\_\+hostname\+\_\+completions@{bash\+\_\+possible\+\_\+hostname\+\_\+completions}}
+\index{bash\+\_\+possible\+\_\+hostname\+\_\+completions@{bash\+\_\+possible\+\_\+hostname\+\_\+completions}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+possible\+\_\+hostname\+\_\+completions(int ignore, int ignore2)}{bash_possible_hostname_completions(int ignore, int ignore2)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+possible\+\_\+hostname\+\_\+completions (
+\begin{DoxyParamCaption}
+\item[{int}]{ignore, }
+\item[{int}]{ignore2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ab7fea3775bcdd91f438aa30ac35a7be5}{}\label{bashline_8c_ab7fea3775bcdd91f438aa30ac35a7be5}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_ab7fea3775bcdd91f438aa30ac35a7be5_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+possible\+\_\+username\+\_\+completions@{bash\+\_\+possible\+\_\+username\+\_\+completions}}
+\index{bash\+\_\+possible\+\_\+username\+\_\+completions@{bash\+\_\+possible\+\_\+username\+\_\+completions}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+possible\+\_\+username\+\_\+completions(int ignore, int ignore2)}{bash_possible_username_completions(int ignore, int ignore2)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+possible\+\_\+username\+\_\+completions (
+\begin{DoxyParamCaption}
+\item[{int}]{ignore, }
+\item[{int}]{ignore2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a8ab13256a9f91fcd44d845b2c1d1616e}{}\label{bashline_8c_a8ab13256a9f91fcd44d845b2c1d1616e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a8ab13256a9f91fcd44d845b2c1d1616e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+possible\+\_\+variable\+\_\+completions@{bash\+\_\+possible\+\_\+variable\+\_\+completions}}
+\index{bash\+\_\+possible\+\_\+variable\+\_\+completions@{bash\+\_\+possible\+\_\+variable\+\_\+completions}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+possible\+\_\+variable\+\_\+completions(int ignore, int ignore2)}{bash_possible_variable_completions(int ignore, int ignore2)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+possible\+\_\+variable\+\_\+completions (
+\begin{DoxyParamCaption}
+\item[{int}]{ignore, }
+\item[{int}]{ignore2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a513a525a354b4879047d07ab3e3648d3}{}\label{bashline_8c_a513a525a354b4879047d07ab3e3648d3}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a513a525a354b4879047d07ab3e3648d3_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+push\+\_\+line@{bash\+\_\+push\+\_\+line}}
+\index{bash\+\_\+push\+\_\+line@{bash\+\_\+push\+\_\+line}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+push\+\_\+line()}{bash_push_line()}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+push\+\_\+line (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a267b9f4b06458393534f36a1b50c8648}{}\label{bashline_8c_a267b9f4b06458393534f36a1b50c8648}
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+quote\+\_\+filename@{bash\+\_\+quote\+\_\+filename}}
+\index{bash\+\_\+quote\+\_\+filename@{bash\+\_\+quote\+\_\+filename}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+quote\+\_\+filename(char $\ast$s, int rtype, char $\ast$qcp)}{bash_quote_filename(char *s, int rtype, char *qcp)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ bash\+\_\+quote\+\_\+filename (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{int}]{rtype, }
+\item[{char $\ast$}]{qcp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ade940b0bd66caa6a681f059366211c17}{}\label{bashline_8c_ade940b0bd66caa6a681f059366211c17}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_ade940b0bd66caa6a681f059366211c17_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+re\+\_\+edit@{bash\+\_\+re\+\_\+edit}}
+\index{bash\+\_\+re\+\_\+edit@{bash\+\_\+re\+\_\+edit}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+re\+\_\+edit(char $\ast$line)}{bash_re_edit(char *line)}}]{\setlength{\rightskip}{0pt plus 5cm}int bash\+\_\+re\+\_\+edit (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{line}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_a14b077ed51af95a906e2de91fb829fd0}{}\label{bashline_8c_a14b077ed51af95a906e2de91fb829fd0}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{bashline_8c_a14b077ed51af95a906e2de91fb829fd0_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+servicename\+\_\+completion\+\_\+function@{bash\+\_\+servicename\+\_\+completion\+\_\+function}}
+\index{bash\+\_\+servicename\+\_\+completion\+\_\+function@{bash\+\_\+servicename\+\_\+completion\+\_\+function}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+servicename\+\_\+completion\+\_\+function(char $\ast$text, int state) const}{bash_servicename_completion_function(char *text, int state) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ bash\+\_\+servicename\+\_\+completion\+\_\+function (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{int}]{state}
+\end{DoxyParamCaption}
+) const}\hypertarget{bashline_8c_a2fdea33ac9ee261180df17165d4eff52}{}\label{bashline_8c_a2fdea33ac9ee261180df17165d4eff52}
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+specific\+\_\+completion@{bash\+\_\+specific\+\_\+completion}}
+\index{bash\+\_\+specific\+\_\+completion@{bash\+\_\+specific\+\_\+completion}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+specific\+\_\+completion(int what\+\_\+to\+\_\+do, rl\+\_\+compentry\+\_\+func\+\_\+t $\ast$generator)}{bash_specific_completion(int what_to_do, rl_compentry_func_t *generator)}}]{\setlength{\rightskip}{0pt plus 5cm}static int bash\+\_\+specific\+\_\+completion (
+\begin{DoxyParamCaption}
+\item[{int}]{what\+\_\+to\+\_\+do, }
+\item[{rl\+\_\+compentry\+\_\+func\+\_\+t $\ast$}]{generator}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_aa8f674f9ff8144f133940589e9090ade}{}\label{bashline_8c_aa8f674f9ff8144f133940589e9090ade}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_aa8f674f9ff8144f133940589e9090ade_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bashline\+\_\+reinitialize@{bashline\+\_\+reinitialize}}
+\index{bashline\+\_\+reinitialize@{bashline\+\_\+reinitialize}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bashline\+\_\+reinitialize()}{bashline_reinitialize()}}]{\setlength{\rightskip}{0pt plus 5cm}void bashline\+\_\+reinitialize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_aade584ad50880125f64e2f794ffdc50d}{}\label{bashline_8c_aade584ad50880125f64e2f794ffdc50d}
+\index{bashline.\+c@{bashline.\+c}!bashline\+\_\+reset@{bashline\+\_\+reset}}
+\index{bashline\+\_\+reset@{bashline\+\_\+reset}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bashline\+\_\+reset()}{bashline_reset()}}]{\setlength{\rightskip}{0pt plus 5cm}void bashline\+\_\+reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_a2cc228bbe4d080b0b873e217324afe12}{}\label{bashline_8c_a2cc228bbe4d080b0b873e217324afe12}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a2cc228bbe4d080b0b873e217324afe12_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bashline\+\_\+reset\+\_\+event\+\_\+hook@{bashline\+\_\+reset\+\_\+event\+\_\+hook}}
+\index{bashline\+\_\+reset\+\_\+event\+\_\+hook@{bashline\+\_\+reset\+\_\+event\+\_\+hook}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bashline\+\_\+reset\+\_\+event\+\_\+hook()}{bashline_reset_event_hook()}}]{\setlength{\rightskip}{0pt plus 5cm}void bashline\+\_\+reset\+\_\+event\+\_\+hook (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_acdec59e33b823c81d8da90742678c640}{}\label{bashline_8c_acdec59e33b823c81d8da90742678c640}
+\index{bashline.\+c@{bashline.\+c}!bashline\+\_\+set\+\_\+event\+\_\+hook@{bashline\+\_\+set\+\_\+event\+\_\+hook}}
+\index{bashline\+\_\+set\+\_\+event\+\_\+hook@{bashline\+\_\+set\+\_\+event\+\_\+hook}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bashline\+\_\+set\+\_\+event\+\_\+hook()}{bashline_set_event_hook()}}]{\setlength{\rightskip}{0pt plus 5cm}void bashline\+\_\+set\+\_\+event\+\_\+hook (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_af35cbec965e59a9d7472ea26786b1ac7}{}\label{bashline_8c_af35cbec965e59a9d7472ea26786b1ac7}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_af35cbec965e59a9d7472ea26786b1ac7_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!bind\+\_\+keyseq\+\_\+to\+\_\+unix\+\_\+command@{bind\+\_\+keyseq\+\_\+to\+\_\+unix\+\_\+command}}
+\index{bind\+\_\+keyseq\+\_\+to\+\_\+unix\+\_\+command@{bind\+\_\+keyseq\+\_\+to\+\_\+unix\+\_\+command}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bind\+\_\+keyseq\+\_\+to\+\_\+unix\+\_\+command(char $\ast$line)}{bind_keyseq_to_unix_command(char *line)}}]{\setlength{\rightskip}{0pt plus 5cm}int bind\+\_\+keyseq\+\_\+to\+\_\+unix\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{line}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_a55e33804273e48b1e7986f4402203c61}{}\label{bashline_8c_a55e33804273e48b1e7986f4402203c61}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a55e33804273e48b1e7986f4402203c61_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!build\+\_\+history\+\_\+completion\+\_\+array@{build\+\_\+history\+\_\+completion\+\_\+array}}
+\index{build\+\_\+history\+\_\+completion\+\_\+array@{build\+\_\+history\+\_\+completion\+\_\+array}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{build\+\_\+history\+\_\+completion\+\_\+array()}{build_history_completion_array()}}]{\setlength{\rightskip}{0pt plus 5cm}static void build\+\_\+history\+\_\+completion\+\_\+array (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_afcbc52249a2791271403b149e31b51b6}{}\label{bashline_8c_afcbc52249a2791271403b149e31b51b6}
+\index{bashline.\+c@{bashline.\+c}!check\+\_\+redir@{check\+\_\+redir}}
+\index{check\+\_\+redir@{check\+\_\+redir}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+redir(int ti)}{check_redir(int ti)}}]{\setlength{\rightskip}{0pt plus 5cm}static int check\+\_\+redir (
+\begin{DoxyParamCaption}
+\item[{int}]{ti}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a32ffdcc88a8caee77d55c804ca3241f2}{}\label{bashline_8c_a32ffdcc88a8caee77d55c804ca3241f2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a32ffdcc88a8caee77d55c804ca3241f2_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!cleanup\+\_\+expansion\+\_\+error@{cleanup\+\_\+expansion\+\_\+error}}
+\index{cleanup\+\_\+expansion\+\_\+error@{cleanup\+\_\+expansion\+\_\+error}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{cleanup\+\_\+expansion\+\_\+error()}{cleanup_expansion_error()}}]{\setlength{\rightskip}{0pt plus 5cm}static void cleanup\+\_\+expansion\+\_\+error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a86d30fe3906997e4d5ece77edefc5c20}{}\label{bashline_8c_a86d30fe3906997e4d5ece77edefc5c20}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a86d30fe3906997e4d5ece77edefc5c20_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!clear\+\_\+hostname\+\_\+list@{clear\+\_\+hostname\+\_\+list}}
+\index{clear\+\_\+hostname\+\_\+list@{clear\+\_\+hostname\+\_\+list}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{clear\+\_\+hostname\+\_\+list()}{clear_hostname_list()}}]{\setlength{\rightskip}{0pt plus 5cm}void clear\+\_\+hostname\+\_\+list (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_a840ec558ddefd33cc3a55a66b8ff2df8}{}\label{bashline_8c_a840ec558ddefd33cc3a55a66b8ff2df8}
+\index{bashline.\+c@{bashline.\+c}!command\+\_\+subst\+\_\+completion\+\_\+function@{command\+\_\+subst\+\_\+completion\+\_\+function}}
+\index{command\+\_\+subst\+\_\+completion\+\_\+function@{command\+\_\+subst\+\_\+completion\+\_\+function}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{command\+\_\+subst\+\_\+completion\+\_\+function(char $\ast$text, int state) const}{command_subst_completion_function(char *text, int state) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ command\+\_\+subst\+\_\+completion\+\_\+function (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{int}]{state}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a8175177017558d90a77a549e4226dc32}{}\label{bashline_8c_a8175177017558d90a77a549e4226dc32}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a8175177017558d90a77a549e4226dc32_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!command\+\_\+word\+\_\+completion\+\_\+function@{command\+\_\+word\+\_\+completion\+\_\+function}}
+\index{command\+\_\+word\+\_\+completion\+\_\+function@{command\+\_\+word\+\_\+completion\+\_\+function}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{command\+\_\+word\+\_\+completion\+\_\+function(char $\ast$hint\+\_\+text, int state) const}{command_word_completion_function(char *hint_text, int state) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ command\+\_\+word\+\_\+completion\+\_\+function (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{hint\+\_\+text, }
+\item[{int}]{state}
+\end{DoxyParamCaption}
+) const}\hypertarget{bashline_8c_a8d5538b509cca782d25abe3aeec84458}{}\label{bashline_8c_a8d5538b509cca782d25abe3aeec84458}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a8d5538b509cca782d25abe3aeec84458_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!completion\+\_\+glob\+\_\+pattern@{completion\+\_\+glob\+\_\+pattern}}
+\index{completion\+\_\+glob\+\_\+pattern@{completion\+\_\+glob\+\_\+pattern}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{completion\+\_\+glob\+\_\+pattern(char $\ast$string)}{completion_glob_pattern(char *string)}}]{\setlength{\rightskip}{0pt plus 5cm}static int completion\+\_\+glob\+\_\+pattern (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a0b44b874016e70e3589d2fd93fe725fc}{}\label{bashline_8c_a0b44b874016e70e3589d2fd93fe725fc}
+\index{bashline.\+c@{bashline.\+c}!directory\+\_\+exists@{directory\+\_\+exists}}
+\index{directory\+\_\+exists@{directory\+\_\+exists}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{directory\+\_\+exists(char $\ast$dirname, int should\+\_\+dequote) const}{directory_exists(char *dirname, int should_dequote) const}}]{\setlength{\rightskip}{0pt plus 5cm}static int directory\+\_\+exists (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{dirname, }
+\item[{int}]{should\+\_\+dequote}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a31691eb2f7e44d24643418eca160bde5}{}\label{bashline_8c_a31691eb2f7e44d24643418eca160bde5}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a31691eb2f7e44d24643418eca160bde5_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!display\+\_\+shell\+\_\+version@{display\+\_\+shell\+\_\+version}}
+\index{display\+\_\+shell\+\_\+version@{display\+\_\+shell\+\_\+version}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{display\+\_\+shell\+\_\+version(int count, int c)}{display_shell_version(int count, int c)}}]{\setlength{\rightskip}{0pt plus 5cm}static int display\+\_\+shell\+\_\+version (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_af389e67e8dd5f8a8528694d91c5b3a99}{}\label{bashline_8c_af389e67e8dd5f8a8528694d91c5b3a99}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_af389e67e8dd5f8a8528694d91c5b3a99_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!dynamic\+\_\+complete\+\_\+history@{dynamic\+\_\+complete\+\_\+history}}
+\index{dynamic\+\_\+complete\+\_\+history@{dynamic\+\_\+complete\+\_\+history}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{dynamic\+\_\+complete\+\_\+history(int count, int key)}{dynamic_complete_history(int count, int key)}}]{\setlength{\rightskip}{0pt plus 5cm}static int dynamic\+\_\+complete\+\_\+history (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_aa39452ed7d96cb4158819bd3c11a3880}{}\label{bashline_8c_aa39452ed7d96cb4158819bd3c11a3880}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_aa39452ed7d96cb4158819bd3c11a3880_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!edit\+\_\+and\+\_\+execute\+\_\+command@{edit\+\_\+and\+\_\+execute\+\_\+command}}
+\index{edit\+\_\+and\+\_\+execute\+\_\+command@{edit\+\_\+and\+\_\+execute\+\_\+command}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{edit\+\_\+and\+\_\+execute\+\_\+command(int count, int c, int editing\+\_\+mode, char $\ast$edit\+\_\+command)}{edit_and_execute_command(int count, int c, int editing_mode, char *edit_command)}}]{\setlength{\rightskip}{0pt plus 5cm}static int edit\+\_\+and\+\_\+execute\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{c, }
+\item[{int}]{editing\+\_\+mode, }
+\item[{char $\ast$}]{edit\+\_\+command}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a84cfc0004171e49d068ff38f1ba1bb61}{}\label{bashline_8c_a84cfc0004171e49d068ff38f1ba1bb61}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a84cfc0004171e49d068ff38f1ba1bb61_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!emacs\+\_\+edit\+\_\+and\+\_\+execute\+\_\+command@{emacs\+\_\+edit\+\_\+and\+\_\+execute\+\_\+command}}
+\index{emacs\+\_\+edit\+\_\+and\+\_\+execute\+\_\+command@{emacs\+\_\+edit\+\_\+and\+\_\+execute\+\_\+command}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{emacs\+\_\+edit\+\_\+and\+\_\+execute\+\_\+command(int count, int c)}{emacs_edit_and_execute_command(int count, int c)}}]{\setlength{\rightskip}{0pt plus 5cm}static int emacs\+\_\+edit\+\_\+and\+\_\+execute\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a75d1d875dfaa0fceff24d67a4bea4d7a}{}\label{bashline_8c_a75d1d875dfaa0fceff24d67a4bea4d7a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a75d1d875dfaa0fceff24d67a4bea4d7a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!enable\+\_\+hostname\+\_\+completion@{enable\+\_\+hostname\+\_\+completion}}
+\index{enable\+\_\+hostname\+\_\+completion@{enable\+\_\+hostname\+\_\+completion}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{enable\+\_\+hostname\+\_\+completion(int on\+\_\+or\+\_\+off)}{enable_hostname_completion(int on_or_off)}}]{\setlength{\rightskip}{0pt plus 5cm}int enable\+\_\+hostname\+\_\+completion (
+\begin{DoxyParamCaption}
+\item[{int}]{on\+\_\+or\+\_\+off}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_afbdf9382519c509cafc189ddf7c8371c}{}\label{bashline_8c_afbdf9382519c509cafc189ddf7c8371c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_afbdf9382519c509cafc189ddf7c8371c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!executable\+\_\+completion@{executable\+\_\+completion}}
+\index{executable\+\_\+completion@{executable\+\_\+completion}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{executable\+\_\+completion(char $\ast$filename, int searching\+\_\+path) const}{executable_completion(char *filename, int searching_path) const}}]{\setlength{\rightskip}{0pt plus 5cm}static int executable\+\_\+completion (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{filename, }
+\item[{int}]{searching\+\_\+path}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ab27a666907e267f9b7a9ed23c13e6bb2}{}\label{bashline_8c_ab27a666907e267f9b7a9ed23c13e6bb2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_ab27a666907e267f9b7a9ed23c13e6bb2_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!filename\+\_\+completion\+\_\+ignore@{filename\+\_\+completion\+\_\+ignore}}
+\index{filename\+\_\+completion\+\_\+ignore@{filename\+\_\+completion\+\_\+ignore}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{filename\+\_\+completion\+\_\+ignore(char $\ast$$\ast$names)}{filename_completion_ignore(char **names)}}]{\setlength{\rightskip}{0pt plus 5cm}static int filename\+\_\+completion\+\_\+ignore (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{names}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a52150d3e8806018ac254db2844a0113f}{}\label{bashline_8c_a52150d3e8806018ac254db2844a0113f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a52150d3e8806018ac254db2844a0113f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!find\+\_\+cmd\+\_\+end@{find\+\_\+cmd\+\_\+end}}
+\index{find\+\_\+cmd\+\_\+end@{find\+\_\+cmd\+\_\+end}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+cmd\+\_\+end(int end)}{find_cmd_end(int end)}}]{\setlength{\rightskip}{0pt plus 5cm}static int find\+\_\+cmd\+\_\+end (
+\begin{DoxyParamCaption}
+\item[{int}]{end}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a59b8bff2dcb57ac41f501215bd6daca8}{}\label{bashline_8c_a59b8bff2dcb57ac41f501215bd6daca8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a59b8bff2dcb57ac41f501215bd6daca8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!find\+\_\+cmd\+\_\+name@{find\+\_\+cmd\+\_\+name}}
+\index{find\+\_\+cmd\+\_\+name@{find\+\_\+cmd\+\_\+name}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+cmd\+\_\+name(int start, int $\ast$sp, int $\ast$ep)}{find_cmd_name(int start, int *sp, int *ep)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ find\+\_\+cmd\+\_\+name (
+\begin{DoxyParamCaption}
+\item[{int}]{start, }
+\item[{int $\ast$}]{sp, }
+\item[{int $\ast$}]{ep}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a1e73a130e0afa0ecc4a4f7590f2df953}{}\label{bashline_8c_a1e73a130e0afa0ecc4a4f7590f2df953}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a1e73a130e0afa0ecc4a4f7590f2df953_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!find\+\_\+cmd\+\_\+start@{find\+\_\+cmd\+\_\+start}}
+\index{find\+\_\+cmd\+\_\+start@{find\+\_\+cmd\+\_\+start}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+cmd\+\_\+start(int start)}{find_cmd_start(int start)}}]{\setlength{\rightskip}{0pt plus 5cm}static int find\+\_\+cmd\+\_\+start (
+\begin{DoxyParamCaption}
+\item[{int}]{start}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a9ebb6ea095442b22dccf9ab22c416c10}{}\label{bashline_8c_a9ebb6ea095442b22dccf9ab22c416c10}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a9ebb6ea095442b22dccf9ab22c416c10_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!get\+\_\+hostname\+\_\+list@{get\+\_\+hostname\+\_\+list}}
+\index{get\+\_\+hostname\+\_\+list@{get\+\_\+hostname\+\_\+list}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+hostname\+\_\+list()}{get_hostname_list()}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ get\+\_\+hostname\+\_\+list (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_a7fe126f71ce01ae738ae13fd13b001c9}{}\label{bashline_8c_a7fe126f71ce01ae738ae13fd13b001c9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a7fe126f71ce01ae738ae13fd13b001c9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!glob\+\_\+complete\+\_\+word@{glob\+\_\+complete\+\_\+word}}
+\index{glob\+\_\+complete\+\_\+word@{glob\+\_\+complete\+\_\+word}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{glob\+\_\+complete\+\_\+word(char $\ast$text, int state) const}{glob_complete_word(char *text, int state) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ glob\+\_\+complete\+\_\+word (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{int}]{state}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a8c4b3b2d2ea4fdc0c95dd721246f6ed6}{}\label{bashline_8c_a8c4b3b2d2ea4fdc0c95dd721246f6ed6}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a8c4b3b2d2ea4fdc0c95dd721246f6ed6_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!history\+\_\+and\+\_\+alias\+\_\+expand\+\_\+line@{history\+\_\+and\+\_\+alias\+\_\+expand\+\_\+line}}
+\index{history\+\_\+and\+\_\+alias\+\_\+expand\+\_\+line@{history\+\_\+and\+\_\+alias\+\_\+expand\+\_\+line}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{history\+\_\+and\+\_\+alias\+\_\+expand\+\_\+line(int count, int ignore)}{history_and_alias_expand_line(int count, int ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}static int history\+\_\+and\+\_\+alias\+\_\+expand\+\_\+line (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{ignore}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ae0abb27ac5c9bed1a9af82c7a37c45be}{}\label{bashline_8c_ae0abb27ac5c9bed1a9af82c7a37c45be}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_ae0abb27ac5c9bed1a9af82c7a37c45be_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!history\+\_\+completion\+\_\+generator@{history\+\_\+completion\+\_\+generator}}
+\index{history\+\_\+completion\+\_\+generator@{history\+\_\+completion\+\_\+generator}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{history\+\_\+completion\+\_\+generator(char $\ast$hint\+\_\+text, int state) const}{history_completion_generator(char *hint_text, int state) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ history\+\_\+completion\+\_\+generator (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{hint\+\_\+text, }
+\item[{int}]{state}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_aac482f1f86ef4aa33ba4d9924195d747}{}\label{bashline_8c_aac482f1f86ef4aa33ba4d9924195d747}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{bashline_8c_aac482f1f86ef4aa33ba4d9924195d747_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!history\+\_\+expand\+\_\+line@{history\+\_\+expand\+\_\+line}}
+\index{history\+\_\+expand\+\_\+line@{history\+\_\+expand\+\_\+line}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{history\+\_\+expand\+\_\+line(int count, int ignore)}{history_expand_line(int count, int ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}static int history\+\_\+expand\+\_\+line (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{ignore}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a756f1e694e73dd9d43c31a001696238b}{}\label{bashline_8c_a756f1e694e73dd9d43c31a001696238b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a756f1e694e73dd9d43c31a001696238b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!history\+\_\+expand\+\_\+line\+\_\+internal@{history\+\_\+expand\+\_\+line\+\_\+internal}}
+\index{history\+\_\+expand\+\_\+line\+\_\+internal@{history\+\_\+expand\+\_\+line\+\_\+internal}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{history\+\_\+expand\+\_\+line\+\_\+internal(char $\ast$line)}{history_expand_line_internal(char *line)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ history\+\_\+expand\+\_\+line\+\_\+internal (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{line}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ada33d8b407a13cb37fe2c1d17b49c2be}{}\label{bashline_8c_ada33d8b407a13cb37fe2c1d17b49c2be}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_ada33d8b407a13cb37fe2c1d17b49c2be_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!hostname\+\_\+completion\+\_\+function@{hostname\+\_\+completion\+\_\+function}}
+\index{hostname\+\_\+completion\+\_\+function@{hostname\+\_\+completion\+\_\+function}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{hostname\+\_\+completion\+\_\+function(char $\ast$text, int state) const}{hostname_completion_function(char *text, int state) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ hostname\+\_\+completion\+\_\+function (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{int}]{state}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a5bace8ad451a7ec47cf386ed39479150}{}\label{bashline_8c_a5bace8ad451a7ec47cf386ed39479150}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a5bace8ad451a7ec47cf386ed39479150_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!hostnames\+\_\+matching@{hostnames\+\_\+matching}}
+\index{hostnames\+\_\+matching@{hostnames\+\_\+matching}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{hostnames\+\_\+matching(char $\ast$text)}{hostnames_matching(char *text)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$$\ast$ hostnames\+\_\+matching (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_aa6787cd214060876d4e23379e143fb3d}{}\label{bashline_8c_aa6787cd214060876d4e23379e143fb3d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_aa6787cd214060876d4e23379e143fb3d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!init\+\_\+unix\+\_\+command\+\_\+map@{init\+\_\+unix\+\_\+command\+\_\+map}}
+\index{init\+\_\+unix\+\_\+command\+\_\+map@{init\+\_\+unix\+\_\+command\+\_\+map}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{init\+\_\+unix\+\_\+command\+\_\+map()}{init_unix_command_map()}}]{\setlength{\rightskip}{0pt plus 5cm}static void init\+\_\+unix\+\_\+command\+\_\+map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a24a57e7e2e6b926dc2f84bf91e148d0c}{}\label{bashline_8c_a24a57e7e2e6b926dc2f84bf91e148d0c}
+\index{bashline.\+c@{bashline.\+c}!initialize\+\_\+hostname\+\_\+list@{initialize\+\_\+hostname\+\_\+list}}
+\index{initialize\+\_\+hostname\+\_\+list@{initialize\+\_\+hostname\+\_\+list}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+hostname\+\_\+list()}{initialize_hostname_list()}}]{\setlength{\rightskip}{0pt plus 5cm}static void initialize\+\_\+hostname\+\_\+list (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a157537146d841e13b6225e20b68b1402}{}\label{bashline_8c_a157537146d841e13b6225e20b68b1402}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a157537146d841e13b6225e20b68b1402_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!initialize\+\_\+readline@{initialize\+\_\+readline}}
+\index{initialize\+\_\+readline@{initialize\+\_\+readline}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+readline()}{initialize_readline()}}]{\setlength{\rightskip}{0pt plus 5cm}void initialize\+\_\+readline (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_a4a84b36bf2499d6633a1371ba6d06c46}{}\label{bashline_8c_a4a84b36bf2499d6633a1371ba6d06c46}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{bashline_8c_a4a84b36bf2499d6633a1371ba6d06c46_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!invalid\+\_\+completion@{invalid\+\_\+completion}}
+\index{invalid\+\_\+completion@{invalid\+\_\+completion}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{invalid\+\_\+completion(char $\ast$text, int ind) const}{invalid_completion(char *text, int ind) const}}]{\setlength{\rightskip}{0pt plus 5cm}static int invalid\+\_\+completion (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{int}]{ind}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a2193e49b3e5c95ad6d9a702a56dec637}{}\label{bashline_8c_a2193e49b3e5c95ad6d9a702a56dec637}
+\index{bashline.\+c@{bashline.\+c}!isolate\+\_\+sequence@{isolate\+\_\+sequence}}
+\index{isolate\+\_\+sequence@{isolate\+\_\+sequence}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{isolate\+\_\+sequence(char $\ast$string, int ind, int need\+\_\+dquote, int $\ast$startp)}{isolate_sequence(char *string, int ind, int need_dquote, int *startp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int isolate\+\_\+sequence (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{int}]{ind, }
+\item[{int}]{need\+\_\+dquote, }
+\item[{int $\ast$}]{startp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ab73c31c3cf9b6e1d1b8b4563fc4f106d}{}\label{bashline_8c_ab73c31c3cf9b6e1d1b8b4563fc4f106d}
+\index{bashline.\+c@{bashline.\+c}!maybe\+\_\+make\+\_\+readline\+\_\+line@{maybe\+\_\+make\+\_\+readline\+\_\+line}}
+\index{maybe\+\_\+make\+\_\+readline\+\_\+line@{maybe\+\_\+make\+\_\+readline\+\_\+line}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{maybe\+\_\+make\+\_\+readline\+\_\+line(char $\ast$new\+\_\+line)}{maybe_make_readline_line(char *new_line)}}]{\setlength{\rightskip}{0pt plus 5cm}static void maybe\+\_\+make\+\_\+readline\+\_\+line (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{new\+\_\+line}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a96b5eb6ca5ebe516c321cf7156227775}{}\label{bashline_8c_a96b5eb6ca5ebe516c321cf7156227775}
+\index{bashline.\+c@{bashline.\+c}!maybe\+\_\+restore\+\_\+tilde@{maybe\+\_\+restore\+\_\+tilde}}
+\index{maybe\+\_\+restore\+\_\+tilde@{maybe\+\_\+restore\+\_\+tilde}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{maybe\+\_\+restore\+\_\+tilde(char $\ast$val, char $\ast$directory\+\_\+part)}{maybe_restore_tilde(char *val, char *directory_part)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ maybe\+\_\+restore\+\_\+tilde (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{val, }
+\item[{char $\ast$}]{directory\+\_\+part}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a4a30f50ff531f8c30f4e2a8ff1432721}{}\label{bashline_8c_a4a30f50ff531f8c30f4e2a8ff1432721}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a4a30f50ff531f8c30f4e2a8ff1432721_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!name\+\_\+is\+\_\+acceptable@{name\+\_\+is\+\_\+acceptable}}
+\index{name\+\_\+is\+\_\+acceptable@{name\+\_\+is\+\_\+acceptable}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{name\+\_\+is\+\_\+acceptable(char $\ast$name) const}{name_is_acceptable(char *name) const}}]{\setlength{\rightskip}{0pt plus 5cm}static int name\+\_\+is\+\_\+acceptable (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a7a912c2b320b03ccf28a40718f236ae9}{}\label{bashline_8c_a7a912c2b320b03ccf28a40718f236ae9}
+\index{bashline.\+c@{bashline.\+c}!operate\+\_\+and\+\_\+get\+\_\+next@{operate\+\_\+and\+\_\+get\+\_\+next}}
+\index{operate\+\_\+and\+\_\+get\+\_\+next@{operate\+\_\+and\+\_\+get\+\_\+next}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{operate\+\_\+and\+\_\+get\+\_\+next(int count, int c)}{operate_and_get_next(int count, int c)}}]{\setlength{\rightskip}{0pt plus 5cm}static int operate\+\_\+and\+\_\+get\+\_\+next (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a074f085fde2464daba35c6e9fc2761ca}{}\label{bashline_8c_a074f085fde2464daba35c6e9fc2761ca}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{bashline_8c_a074f085fde2464daba35c6e9fc2761ca_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!posix\+\_\+edit\+\_\+macros@{posix\+\_\+edit\+\_\+macros}}
+\index{posix\+\_\+edit\+\_\+macros@{posix\+\_\+edit\+\_\+macros}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{posix\+\_\+edit\+\_\+macros(int count, int key)}{posix_edit_macros(int count, int key)}}]{\setlength{\rightskip}{0pt plus 5cm}static int posix\+\_\+edit\+\_\+macros (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a6f8045654862af1329c2442c724cf84c}{}\label{bashline_8c_a6f8045654862af1329c2442c724cf84c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a6f8045654862af1329c2442c724cf84c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!posix\+\_\+readline\+\_\+initialize@{posix\+\_\+readline\+\_\+initialize}}
+\index{posix\+\_\+readline\+\_\+initialize@{posix\+\_\+readline\+\_\+initialize}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{posix\+\_\+readline\+\_\+initialize(int on\+\_\+or\+\_\+off)}{posix_readline_initialize(int on_or_off)}}]{\setlength{\rightskip}{0pt plus 5cm}void posix\+\_\+readline\+\_\+initialize (
+\begin{DoxyParamCaption}
+\item[{int}]{on\+\_\+or\+\_\+off}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_ae7d93155b5a5ff60983ee20547e4cba0}{}\label{bashline_8c_ae7d93155b5a5ff60983ee20547e4cba0}
+\index{bashline.\+c@{bashline.\+c}!print\+\_\+unix\+\_\+command\+\_\+map@{print\+\_\+unix\+\_\+command\+\_\+map}}
+\index{print\+\_\+unix\+\_\+command\+\_\+map@{print\+\_\+unix\+\_\+command\+\_\+map}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+unix\+\_\+command\+\_\+map()}{print_unix_command_map()}}]{\setlength{\rightskip}{0pt plus 5cm}int print\+\_\+unix\+\_\+command\+\_\+map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_aba0ddfe354c3dc6e77abb6307223e943}{}\label{bashline_8c_aba0ddfe354c3dc6e77abb6307223e943}
+\index{bashline.\+c@{bashline.\+c}!prog\+\_\+complete\+\_\+return@{prog\+\_\+complete\+\_\+return}}
+\index{prog\+\_\+complete\+\_\+return@{prog\+\_\+complete\+\_\+return}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{prog\+\_\+complete\+\_\+return(char $\ast$text, int matchnum) const}{prog_complete_return(char *text, int matchnum) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ prog\+\_\+complete\+\_\+return (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{int}]{matchnum}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_abf6e63e8c6817467393fd45f97535d4e}{}\label{bashline_8c_abf6e63e8c6817467393fd45f97535d4e}
+\index{bashline.\+c@{bashline.\+c}!putx@{putx}}
+\index{putx@{putx}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{putx(int c)}{putx(int c)}}]{\setlength{\rightskip}{0pt plus 5cm}static int putx (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_aa8214b493b119d0846c7671ac8b21c9f}{}\label{bashline_8c_aa8214b493b119d0846c7671ac8b21c9f}
+\index{bashline.\+c@{bashline.\+c}!quote\+\_\+word\+\_\+break\+\_\+chars@{quote\+\_\+word\+\_\+break\+\_\+chars}}
+\index{quote\+\_\+word\+\_\+break\+\_\+chars@{quote\+\_\+word\+\_\+break\+\_\+chars}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{quote\+\_\+word\+\_\+break\+\_\+chars(char $\ast$text)}{quote_word_break_chars(char *text)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ quote\+\_\+word\+\_\+break\+\_\+chars (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a40b112adefc953dc91f9c37ca84b151a}{}\label{bashline_8c_a40b112adefc953dc91f9c37ca84b151a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a40b112adefc953dc91f9c37ca84b151a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!reset\+\_\+completer\+\_\+word\+\_\+break\+\_\+chars@{reset\+\_\+completer\+\_\+word\+\_\+break\+\_\+chars}}
+\index{reset\+\_\+completer\+\_\+word\+\_\+break\+\_\+chars@{reset\+\_\+completer\+\_\+word\+\_\+break\+\_\+chars}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{reset\+\_\+completer\+\_\+word\+\_\+break\+\_\+chars()}{reset_completer_word_break_chars()}}]{\setlength{\rightskip}{0pt plus 5cm}void reset\+\_\+completer\+\_\+word\+\_\+break\+\_\+chars (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_afab6b9fe42cb1b1c36539bcd32a6d39a}{}\label{bashline_8c_afab6b9fe42cb1b1c36539bcd32a6d39a}
+\index{bashline.\+c@{bashline.\+c}!restore\+\_\+directory\+\_\+hook@{restore\+\_\+directory\+\_\+hook}}
+\index{restore\+\_\+directory\+\_\+hook@{restore\+\_\+directory\+\_\+hook}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{restore\+\_\+directory\+\_\+hook(rl\+\_\+icppfunc\+\_\+t $\ast$hookf)}{restore_directory_hook(rl_icppfunc_t *hookf)}}]{\setlength{\rightskip}{0pt plus 5cm}static void restore\+\_\+directory\+\_\+hook (
+\begin{DoxyParamCaption}
+\item[{rl\+\_\+icppfunc\+\_\+t $\ast$}]{hookf}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a4c5e43e1be1ca7b79d93677f0b8d89ef}{}\label{bashline_8c_a4c5e43e1be1ca7b79d93677f0b8d89ef}
+\index{bashline.\+c@{bashline.\+c}!restore\+\_\+tilde@{restore\+\_\+tilde}}
+\index{restore\+\_\+tilde@{restore\+\_\+tilde}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{restore\+\_\+tilde(char $\ast$val, char $\ast$directory\+\_\+part)}{restore_tilde(char *val, char *directory_part)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ restore\+\_\+tilde (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{val, }
+\item[{char $\ast$}]{directory\+\_\+part}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_aceaa913f57ff7d892f13fc3adc594d47}{}\label{bashline_8c_aceaa913f57ff7d892f13fc3adc594d47}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_aceaa913f57ff7d892f13fc3adc594d47_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!return\+\_\+zero@{return\+\_\+zero}}
+\index{return\+\_\+zero@{return\+\_\+zero}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{return\+\_\+zero(char $\ast$name) const}{return_zero(char *name) const}}]{\setlength{\rightskip}{0pt plus 5cm}static int return\+\_\+zero (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a4c5295f85dffd964d684df85e1a872f1}{}\label{bashline_8c_a4c5295f85dffd964d684df85e1a872f1}
+\index{bashline.\+c@{bashline.\+c}!save\+\_\+directory\+\_\+hook@{save\+\_\+directory\+\_\+hook}}
+\index{save\+\_\+directory\+\_\+hook@{save\+\_\+directory\+\_\+hook}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{save\+\_\+directory\+\_\+hook()}{save_directory_hook()}}]{\setlength{\rightskip}{0pt plus 5cm}static rl\+\_\+icppfunc\+\_\+t$\ast$ save\+\_\+directory\+\_\+hook (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a40ca89c8622f2cef612edff225721173}{}\label{bashline_8c_a40ca89c8622f2cef612edff225721173}
+\index{bashline.\+c@{bashline.\+c}!set\+\_\+directory\+\_\+hook@{set\+\_\+directory\+\_\+hook}}
+\index{set\+\_\+directory\+\_\+hook@{set\+\_\+directory\+\_\+hook}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+directory\+\_\+hook()}{set_directory_hook()}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+directory\+\_\+hook (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashline_8c_aaed077930c1c47cb78b87edb763f2ac5}{}\label{bashline_8c_aaed077930c1c47cb78b87edb763f2ac5}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_aaed077930c1c47cb78b87edb763f2ac5_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!set\+\_\+filename\+\_\+bstab@{set\+\_\+filename\+\_\+bstab}}
+\index{set\+\_\+filename\+\_\+bstab@{set\+\_\+filename\+\_\+bstab}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+filename\+\_\+bstab(char $\ast$string) const}{set_filename_bstab(char *string) const}}]{\setlength{\rightskip}{0pt plus 5cm}static void set\+\_\+filename\+\_\+bstab (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a8e7868c7f7aa154a2a45c997b8445116}{}\label{bashline_8c_a8e7868c7f7aa154a2a45c997b8445116}
+\index{bashline.\+c@{bashline.\+c}!set\+\_\+saved\+\_\+history@{set\+\_\+saved\+\_\+history}}
+\index{set\+\_\+saved\+\_\+history@{set\+\_\+saved\+\_\+history}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+saved\+\_\+history()}{set_saved_history()}}]{\setlength{\rightskip}{0pt plus 5cm}static int set\+\_\+saved\+\_\+history (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a587484d59802fb750e4f88d026eae67e}{}\label{bashline_8c_a587484d59802fb750e4f88d026eae67e}
+\index{bashline.\+c@{bashline.\+c}!set\+\_\+up\+\_\+new\+\_\+line@{set\+\_\+up\+\_\+new\+\_\+line}}
+\index{set\+\_\+up\+\_\+new\+\_\+line@{set\+\_\+up\+\_\+new\+\_\+line}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+up\+\_\+new\+\_\+line(char $\ast$new\+\_\+line)}{set_up_new_line(char *new_line)}}]{\setlength{\rightskip}{0pt plus 5cm}static void set\+\_\+up\+\_\+new\+\_\+line (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{new\+\_\+line}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a816ff08a78ee5514ee3998061f853265}{}\label{bashline_8c_a816ff08a78ee5514ee3998061f853265}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{bashline_8c_a816ff08a78ee5514ee3998061f853265_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!shell\+\_\+expand\+\_\+line@{shell\+\_\+expand\+\_\+line}}
+\index{shell\+\_\+expand\+\_\+line@{shell\+\_\+expand\+\_\+line}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+expand\+\_\+line(int count, int ignore)}{shell_expand_line(int count, int ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}static int shell\+\_\+expand\+\_\+line (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{ignore}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a205768603a77318ef9225fd72938914e}{}\label{bashline_8c_a205768603a77318ef9225fd72938914e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a205768603a77318ef9225fd72938914e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!snarf\+\_\+hosts\+\_\+from\+\_\+file@{snarf\+\_\+hosts\+\_\+from\+\_\+file}}
+\index{snarf\+\_\+hosts\+\_\+from\+\_\+file@{snarf\+\_\+hosts\+\_\+from\+\_\+file}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{snarf\+\_\+hosts\+\_\+from\+\_\+file(char $\ast$filename)}{snarf_hosts_from_file(char *filename)}}]{\setlength{\rightskip}{0pt plus 5cm}static void snarf\+\_\+hosts\+\_\+from\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_aa34b7ff8b9c31f301a073abbc1415f25}{}\label{bashline_8c_aa34b7ff8b9c31f301a073abbc1415f25}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{bashline_8c_aa34b7ff8b9c31f301a073abbc1415f25_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!tcsh\+\_\+magic\+\_\+space@{tcsh\+\_\+magic\+\_\+space}}
+\index{tcsh\+\_\+magic\+\_\+space@{tcsh\+\_\+magic\+\_\+space}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{tcsh\+\_\+magic\+\_\+space(int count, int ignore)}{tcsh_magic_space(int count, int ignore)}}]{\setlength{\rightskip}{0pt plus 5cm}static int tcsh\+\_\+magic\+\_\+space (
+\begin{DoxyParamCaption}
+\item[{int}]{count, }
+\item[{int}]{ignore}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a3e37f123a2a708a6b1ac8dfd183f33d2}{}\label{bashline_8c_a3e37f123a2a708a6b1ac8dfd183f33d2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a3e37f123a2a708a6b1ac8dfd183f33d2_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!test\+\_\+for\+\_\+directory@{test\+\_\+for\+\_\+directory}}
+\index{test\+\_\+for\+\_\+directory@{test\+\_\+for\+\_\+directory}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{test\+\_\+for\+\_\+directory(char $\ast$name) const}{test_for_directory(char *name) const}}]{\setlength{\rightskip}{0pt plus 5cm}static int test\+\_\+for\+\_\+directory (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a4fd40689a7351624be0977cfd29444a3}{}\label{bashline_8c_a4fd40689a7351624be0977cfd29444a3}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a4fd40689a7351624be0977cfd29444a3_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{bashline.\+c@{bashline.\+c}!variable\+\_\+completion\+\_\+function@{variable\+\_\+completion\+\_\+function}}
+\index{variable\+\_\+completion\+\_\+function@{variable\+\_\+completion\+\_\+function}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{variable\+\_\+completion\+\_\+function(char $\ast$text, int state) const}{variable_completion_function(char *text, int state) const}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ variable\+\_\+completion\+\_\+function (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text, }
+\item[{int}]{state}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a913b5c8b5ef432c2ead47f04e415cc9c}{}\label{bashline_8c_a913b5c8b5ef432c2ead47f04e415cc9c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashline_8c_a913b5c8b5ef432c2ead47f04e415cc9c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+completer\+\_\+word\+\_\+break\+\_\+characters@{bash\+\_\+completer\+\_\+word\+\_\+break\+\_\+characters}}
+\index{bash\+\_\+completer\+\_\+word\+\_\+break\+\_\+characters@{bash\+\_\+completer\+\_\+word\+\_\+break\+\_\+characters}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+completer\+\_\+word\+\_\+break\+\_\+characters}{bash_completer_word_break_characters}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ bash\+\_\+completer\+\_\+word\+\_\+break\+\_\+characters = \char`\"{} \textbackslash{}t\textbackslash{}n\textbackslash{}\char`\"{}\textquotesingle{}@$>$$<$=;$\vert$\&(\+:\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a6d560fdd4f18faa0c73afcca9f7b8f30}{}\label{bashline_8c_a6d560fdd4f18faa0c73afcca9f7b8f30}
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+nohostname\+\_\+word\+\_\+break\+\_\+characters@{bash\+\_\+nohostname\+\_\+word\+\_\+break\+\_\+characters}}
+\index{bash\+\_\+nohostname\+\_\+word\+\_\+break\+\_\+characters@{bash\+\_\+nohostname\+\_\+word\+\_\+break\+\_\+characters}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+nohostname\+\_\+word\+\_\+break\+\_\+characters}{bash_nohostname_word_break_characters}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ bash\+\_\+nohostname\+\_\+word\+\_\+break\+\_\+characters = \char`\"{} \textbackslash{}t\textbackslash{}n\textbackslash{}\char`\"{}\textquotesingle{}$>$$<$=;$\vert$\&(\+:\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ae5f882ac94980592940ceeeeea48b87a}{}\label{bashline_8c_ae5f882ac94980592940ceeeeea48b87a}
+\index{bashline.\+c@{bashline.\+c}!bash\+\_\+readline\+\_\+initialized@{bash\+\_\+readline\+\_\+initialized}}
+\index{bash\+\_\+readline\+\_\+initialized@{bash\+\_\+readline\+\_\+initialized}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+readline\+\_\+initialized}{bash_readline_initialized}}]{\setlength{\rightskip}{0pt plus 5cm}int bash\+\_\+readline\+\_\+initialized = 0}\hypertarget{bashline_8c_a68a2ddf0bc68427c1fc0da8c1053242b}{}\label{bashline_8c_a68a2ddf0bc68427c1fc0da8c1053242b}
+\index{bashline.\+c@{bashline.\+c}!cmd\+\_\+xmap@{cmd\+\_\+xmap}}
+\index{cmd\+\_\+xmap@{cmd\+\_\+xmap}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{cmd\+\_\+xmap}{cmd_xmap}}]{\setlength{\rightskip}{0pt plus 5cm}Keymap cmd\+\_\+xmap\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a9237ec99f8b1f736cc3adea293416190}{}\label{bashline_8c_a9237ec99f8b1f736cc3adea293416190}
+\index{bashline.\+c@{bashline.\+c}!complete\+\_\+fullquote@{complete\+\_\+fullquote}}
+\index{complete\+\_\+fullquote@{complete\+\_\+fullquote}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{complete\+\_\+fullquote}{complete_fullquote}}]{\setlength{\rightskip}{0pt plus 5cm}int complete\+\_\+fullquote = 1}\hypertarget{bashline_8c_aafde51baef0db996c71dae472b62cb21}{}\label{bashline_8c_aafde51baef0db996c71dae472b62cb21}
+\index{bashline.\+c@{bashline.\+c}!completion\+\_\+quoting\+\_\+style@{completion\+\_\+quoting\+\_\+style}}
+\index{completion\+\_\+quoting\+\_\+style@{completion\+\_\+quoting\+\_\+style}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{completion\+\_\+quoting\+\_\+style}{completion_quoting_style}}]{\setlength{\rightskip}{0pt plus 5cm}int completion\+\_\+quoting\+\_\+style = {\bf C\+O\+M\+P\+L\+E\+T\+E\+\_\+\+B\+S\+Q\+U\+O\+TE}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a5601785b70999616fb2cec1705ae6b02}{}\label{bashline_8c_a5601785b70999616fb2cec1705ae6b02}
+\index{bashline.\+c@{bashline.\+c}!custom\+\_\+filename\+\_\+quote\+\_\+characters@{custom\+\_\+filename\+\_\+quote\+\_\+characters}}
+\index{custom\+\_\+filename\+\_\+quote\+\_\+characters@{custom\+\_\+filename\+\_\+quote\+\_\+characters}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{custom\+\_\+filename\+\_\+quote\+\_\+characters}{custom_filename_quote_characters}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ custom\+\_\+filename\+\_\+quote\+\_\+characters = 0\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a561fc6cd628c6efb825c79cd3a03d02c}{}\label{bashline_8c_a561fc6cd628c6efb825c79cd3a03d02c}
+\index{bashline.\+c@{bashline.\+c}!dabbrev\+\_\+expand\+\_\+active@{dabbrev\+\_\+expand\+\_\+active}}
+\index{dabbrev\+\_\+expand\+\_\+active@{dabbrev\+\_\+expand\+\_\+active}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{dabbrev\+\_\+expand\+\_\+active}{dabbrev_expand_active}}]{\setlength{\rightskip}{0pt plus 5cm}int dabbrev\+\_\+expand\+\_\+active = 0\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a336d07390362e898ec11590a02cb115f}{}\label{bashline_8c_a336d07390362e898ec11590a02cb115f}
+\index{bashline.\+c@{bashline.\+c}!default\+\_\+filename\+\_\+quote\+\_\+characters@{default\+\_\+filename\+\_\+quote\+\_\+characters}}
+\index{default\+\_\+filename\+\_\+quote\+\_\+characters@{default\+\_\+filename\+\_\+quote\+\_\+characters}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{default\+\_\+filename\+\_\+quote\+\_\+characters}{default_filename_quote_characters}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ default\+\_\+filename\+\_\+quote\+\_\+characters = \char`\"{} \textbackslash{}t\textbackslash{}n\textbackslash{}\textbackslash{}\textbackslash{}\char`\"{}\textquotesingle{}@$<$$>$=;$\vert$\&()\#\$`?$\ast$\mbox{[}!\+:\{$\sim$\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ad48c8c3b99e67b581f0346eda28a7d85}{}\label{bashline_8c_ad48c8c3b99e67b581f0346eda28a7d85}
+\index{bashline.\+c@{bashline.\+c}!dircomplete\+\_\+expand@{dircomplete\+\_\+expand}}
+\index{dircomplete\+\_\+expand@{dircomplete\+\_\+expand}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{dircomplete\+\_\+expand}{dircomplete_expand}}]{\setlength{\rightskip}{0pt plus 5cm}int dircomplete\+\_\+expand = 0}\hypertarget{bashline_8c_a1abcf01b5c8c7d4fc8b088dc3f8280b0}{}\label{bashline_8c_a1abcf01b5c8c7d4fc8b088dc3f8280b0}
+\index{bashline.\+c@{bashline.\+c}!dircomplete\+\_\+expand\+\_\+relpath@{dircomplete\+\_\+expand\+\_\+relpath}}
+\index{dircomplete\+\_\+expand\+\_\+relpath@{dircomplete\+\_\+expand\+\_\+relpath}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{dircomplete\+\_\+expand\+\_\+relpath}{dircomplete_expand_relpath}}]{\setlength{\rightskip}{0pt plus 5cm}int dircomplete\+\_\+expand\+\_\+relpath = 0}\hypertarget{bashline_8c_a12bf3793a56e703b85dc6dabeaa06158}{}\label{bashline_8c_a12bf3793a56e703b85dc6dabeaa06158}
+\index{bashline.\+c@{bashline.\+c}!dircomplete\+\_\+spelling@{dircomplete\+\_\+spelling}}
+\index{dircomplete\+\_\+spelling@{dircomplete\+\_\+spelling}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{dircomplete\+\_\+spelling}{dircomplete_spelling}}]{\setlength{\rightskip}{0pt plus 5cm}int dircomplete\+\_\+spelling = 0}\hypertarget{bashline_8c_a0227da48137b3b6b652228ee21e33145}{}\label{bashline_8c_a0227da48137b3b6b652228ee21e33145}
+\index{bashline.\+c@{bashline.\+c}!dot\+\_\+in\+\_\+path@{dot\+\_\+in\+\_\+path}}
+\index{dot\+\_\+in\+\_\+path@{dot\+\_\+in\+\_\+path}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{dot\+\_\+in\+\_\+path}{dot_in_path}}]{\setlength{\rightskip}{0pt plus 5cm}int dot\+\_\+in\+\_\+path = 0\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_acc3c12c909b5a0e9c65e2732b5cd83fd}{}\label{bashline_8c_acc3c12c909b5a0e9c65e2732b5cd83fd}
+\index{bashline.\+c@{bashline.\+c}!fignore@{fignore}}
+\index{fignore@{fignore}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{fignore}{fignore}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf ignorevar} fignore\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a82a2c656a8b64ffbf61a34c16a12f3c9}{}\label{bashline_8c_a82a2c656a8b64ffbf61a34c16a12f3c9}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+\{
+  \textcolor{stringliteral}{"FIGNORE"},
+  (\textcolor{keyword}{struct }\hyperlink{structign}{ign} *)0,
+  0,
+  (\textcolor{keywordtype}{char} *)0,
+  (sh\_iv\_item\_func\_t *) 0,
+\}
+\end{DoxyCode}
+\index{bashline.\+c@{bashline.\+c}!filename\+\_\+bstab@{filename\+\_\+bstab}}
+\index{filename\+\_\+bstab@{filename\+\_\+bstab}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{filename\+\_\+bstab}{filename_bstab}}]{\setlength{\rightskip}{0pt plus 5cm}char filename\+\_\+bstab\mbox{[}256\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a02ec2f69989177310647d1569f221e85}{}\label{bashline_8c_a02ec2f69989177310647d1569f221e85}
+\index{bashline.\+c@{bashline.\+c}!force\+\_\+fignore@{force\+\_\+fignore}}
+\index{force\+\_\+fignore@{force\+\_\+fignore}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{force\+\_\+fignore}{force_fignore}}]{\setlength{\rightskip}{0pt plus 5cm}int force\+\_\+fignore = 1}\hypertarget{bashline_8c_a432c7ae64a81b40587e5915cc49e0fe2}{}\label{bashline_8c_a432c7ae64a81b40587e5915cc49e0fe2}
+\index{bashline.\+c@{bashline.\+c}!globorig@{globorig}}
+\index{globorig@{globorig}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{globorig}{globorig}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ globorig\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ab1c9313a73d95f170d4110a5a9dae2d8}{}\label{bashline_8c_ab1c9313a73d95f170d4110a5a9dae2d8}
+\index{bashline.\+c@{bashline.\+c}!globtext@{globtext}}
+\index{globtext@{globtext}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{globtext}{globtext}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ globtext\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a8afb900c80656baaeed5a4ea49694759}{}\label{bashline_8c_a8afb900c80656baaeed5a4ea49694759}
+\index{bashline.\+c@{bashline.\+c}!harry\+\_\+len@{harry\+\_\+len}}
+\index{harry\+\_\+len@{harry\+\_\+len}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{harry\+\_\+len}{harry_len}}]{\setlength{\rightskip}{0pt plus 5cm}int harry\+\_\+len\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a6054bdf3b6e1c00413f2dc6db7a2d850}{}\label{bashline_8c_a6054bdf3b6e1c00413f2dc6db7a2d850}
+\index{bashline.\+c@{bashline.\+c}!harry\+\_\+size@{harry\+\_\+size}}
+\index{harry\+\_\+size@{harry\+\_\+size}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{harry\+\_\+size}{harry_size}}]{\setlength{\rightskip}{0pt plus 5cm}int harry\+\_\+size\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_aa1a3449bb9a9d6789e51191d3984d816}{}\label{bashline_8c_aa1a3449bb9a9d6789e51191d3984d816}
+\index{bashline.\+c@{bashline.\+c}!history\+\_\+completion\+\_\+array@{history\+\_\+completion\+\_\+array}}
+\index{history\+\_\+completion\+\_\+array@{history\+\_\+completion\+\_\+array}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{history\+\_\+completion\+\_\+array}{history_completion_array}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ history\+\_\+completion\+\_\+array = (char $\ast$$\ast$){\bf N\+U\+LL}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a03ac3ee7042f6f7734416d8b7c48e785}{}\label{bashline_8c_a03ac3ee7042f6f7734416d8b7c48e785}
+\index{bashline.\+c@{bashline.\+c}!hostname\+\_\+list@{hostname\+\_\+list}}
+\index{hostname\+\_\+list@{hostname\+\_\+list}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{hostname\+\_\+list}{hostname_list}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ hostname\+\_\+list = (char $\ast$$\ast$){\bf N\+U\+LL}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a110e2f78bdd7d4f04ecbfbfe928e5350}{}\label{bashline_8c_a110e2f78bdd7d4f04ecbfbfe928e5350}
+\index{bashline.\+c@{bashline.\+c}!hostname\+\_\+list\+\_\+initialized@{hostname\+\_\+list\+\_\+initialized}}
+\index{hostname\+\_\+list\+\_\+initialized@{hostname\+\_\+list\+\_\+initialized}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{hostname\+\_\+list\+\_\+initialized}{hostname_list_initialized}}]{\setlength{\rightskip}{0pt plus 5cm}int hostname\+\_\+list\+\_\+initialized = 0}\hypertarget{bashline_8c_a87935ec3fd72750971009a1d97bf253d}{}\label{bashline_8c_a87935ec3fd72750971009a1d97bf253d}
+\index{bashline.\+c@{bashline.\+c}!hostname\+\_\+list\+\_\+length@{hostname\+\_\+list\+\_\+length}}
+\index{hostname\+\_\+list\+\_\+length@{hostname\+\_\+list\+\_\+length}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{hostname\+\_\+list\+\_\+length}{hostname_list_length}}]{\setlength{\rightskip}{0pt plus 5cm}int hostname\+\_\+list\+\_\+length\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a637a026a6dc3d0098d39dd7a3dea72e3}{}\label{bashline_8c_a637a026a6dc3d0098d39dd7a3dea72e3}
+\index{bashline.\+c@{bashline.\+c}!hostname\+\_\+list\+\_\+size@{hostname\+\_\+list\+\_\+size}}
+\index{hostname\+\_\+list\+\_\+size@{hostname\+\_\+list\+\_\+size}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{hostname\+\_\+list\+\_\+size}{hostname_list_size}}]{\setlength{\rightskip}{0pt plus 5cm}int hostname\+\_\+list\+\_\+size\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a5bb503bb95f7415e19ea9376243aaee7}{}\label{bashline_8c_a5bb503bb95f7415e19ea9376243aaee7}
+\index{bashline.\+c@{bashline.\+c}!last\+\_\+saved\+\_\+history\+\_\+line@{last\+\_\+saved\+\_\+history\+\_\+line}}
+\index{last\+\_\+saved\+\_\+history\+\_\+line@{last\+\_\+saved\+\_\+history\+\_\+line}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{last\+\_\+saved\+\_\+history\+\_\+line}{last_saved_history_line}}]{\setlength{\rightskip}{0pt plus 5cm}int last\+\_\+saved\+\_\+history\+\_\+line = -\/1\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a00c6281c691ec905591f4bdad7aac288}{}\label{bashline_8c_a00c6281c691ec905591f4bdad7aac288}
+\index{bashline.\+c@{bashline.\+c}!no\+\_\+empty\+\_\+command\+\_\+completion@{no\+\_\+empty\+\_\+command\+\_\+completion}}
+\index{no\+\_\+empty\+\_\+command\+\_\+completion@{no\+\_\+empty\+\_\+command\+\_\+completion}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{no\+\_\+empty\+\_\+command\+\_\+completion}{no_empty_command_completion}}]{\setlength{\rightskip}{0pt plus 5cm}int no\+\_\+empty\+\_\+command\+\_\+completion}\hypertarget{bashline_8c_ad051535bd97883586899593f6c574fe3}{}\label{bashline_8c_ad051535bd97883586899593f6c574fe3}
+\index{bashline.\+c@{bashline.\+c}!no\+\_\+symbolic\+\_\+links@{no\+\_\+symbolic\+\_\+links}}
+\index{no\+\_\+symbolic\+\_\+links@{no\+\_\+symbolic\+\_\+links}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{no\+\_\+symbolic\+\_\+links}{no_symbolic_links}}]{\setlength{\rightskip}{0pt plus 5cm}int no\+\_\+symbolic\+\_\+links}\hypertarget{bashline_8c_a4e7fa520c5fac785fe4b5e9d9607d3d9}{}\label{bashline_8c_a4e7fa520c5fac785fe4b5e9d9607d3d9}
+\index{bashline.\+c@{bashline.\+c}!old\+\_\+rl\+\_\+startup\+\_\+hook@{old\+\_\+rl\+\_\+startup\+\_\+hook}}
+\index{old\+\_\+rl\+\_\+startup\+\_\+hook@{old\+\_\+rl\+\_\+startup\+\_\+hook}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{old\+\_\+rl\+\_\+startup\+\_\+hook}{old_rl_startup_hook}}]{\setlength{\rightskip}{0pt plus 5cm}rl\+\_\+hook\+\_\+func\+\_\+t$\ast$ old\+\_\+rl\+\_\+startup\+\_\+hook = (rl\+\_\+hook\+\_\+func\+\_\+t $\ast$){\bf N\+U\+LL}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a47f7c5c8007492ea7e9a107a1f219e92}{}\label{bashline_8c_a47f7c5c8007492ea7e9a107a1f219e92}
+\index{bashline.\+c@{bashline.\+c}!perform\+\_\+hostname\+\_\+completion@{perform\+\_\+hostname\+\_\+completion}}
+\index{perform\+\_\+hostname\+\_\+completion@{perform\+\_\+hostname\+\_\+completion}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{perform\+\_\+hostname\+\_\+completion}{perform_hostname_completion}}]{\setlength{\rightskip}{0pt plus 5cm}int perform\+\_\+hostname\+\_\+completion = 1}\hypertarget{bashline_8c_a7c5f3cb423d2c9118957a0085e509da6}{}\label{bashline_8c_a7c5f3cb423d2c9118957a0085e509da6}
+\index{bashline.\+c@{bashline.\+c}!prog\+\_\+complete\+\_\+matches@{prog\+\_\+complete\+\_\+matches}}
+\index{prog\+\_\+complete\+\_\+matches@{prog\+\_\+complete\+\_\+matches}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{prog\+\_\+complete\+\_\+matches}{prog_complete_matches}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ prog\+\_\+complete\+\_\+matches\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a2fae76cee53f3fd27798e016ce620109}{}\label{bashline_8c_a2fae76cee53f3fd27798e016ce620109}
+\index{bashline.\+c@{bashline.\+c}!push\+\_\+to\+\_\+readline@{push\+\_\+to\+\_\+readline}}
+\index{push\+\_\+to\+\_\+readline@{push\+\_\+to\+\_\+readline}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{push\+\_\+to\+\_\+readline}{push_to_readline}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ push\+\_\+to\+\_\+readline = (char $\ast$){\bf N\+U\+LL}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_a5c158bd2c121cd9cbfb8445b68a5dda9}{}\label{bashline_8c_a5c158bd2c121cd9cbfb8445b68a5dda9}
+\index{bashline.\+c@{bashline.\+c}!saved\+\_\+history\+\_\+line\+\_\+to\+\_\+use@{saved\+\_\+history\+\_\+line\+\_\+to\+\_\+use}}
+\index{saved\+\_\+history\+\_\+line\+\_\+to\+\_\+use@{saved\+\_\+history\+\_\+line\+\_\+to\+\_\+use}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{saved\+\_\+history\+\_\+line\+\_\+to\+\_\+use}{saved_history_line_to_use}}]{\setlength{\rightskip}{0pt plus 5cm}int saved\+\_\+history\+\_\+line\+\_\+to\+\_\+use = -\/1\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{bashline_8c_ada2a097db7f2d24da890c9e96e52367a}{}\label{bashline_8c_ada2a097db7f2d24da890c9e96e52367a}
+\index{bashline.\+c@{bashline.\+c}!word\+\_\+token\+\_\+alist@{word\+\_\+token\+\_\+alist}}
+\index{word\+\_\+token\+\_\+alist@{word\+\_\+token\+\_\+alist}!bashline.\+c@{bashline.\+c}}
+\subsubsection[{\texorpdfstring{word\+\_\+token\+\_\+alist}{word_token_alist}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+T\+R\+I\+N\+G\+\_\+\+I\+N\+T\+\_\+\+A\+L\+I\+ST} word\+\_\+token\+\_\+alist\mbox{[}$\,$\mbox{]}}\hypertarget{bashline_8c_a61dc7eddb90ab5f8e332f66f1ae0f51b}{}\label{bashline_8c_a61dc7eddb90ab5f8e332f66f1ae0f51b}

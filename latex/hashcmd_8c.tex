@@ -1,0 +1,162 @@
+\hypertarget{hashcmd_8c}{}\section{hashcmd.\+c File Reference}
+\label{hashcmd_8c}\index{hashcmd.\+c@{hashcmd.\+c}}
+{\ttfamily \#include $<$config.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}posixstat.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}flags.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}findcmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}hashcmd.\+h\char`\"{}}\\*
+Include dependency graph for hashcmd.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hashcmd_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{hashcmd_8c_a8af87f08f25d1e13b12813f461925ce2}{phash\+\_\+freedata} \hyperlink{hashcmd_8c_ab58e8d5c5d6c0328e50dfff0ed82c984}{\+\_\+\+\_\+P} ((\hyperlink{xmalloc_8h_abbf31fec203727613ea15ba47bb8f344}{P\+T\+R\+\_\+T}))
+\item 
+void \hyperlink{hashcmd_8c_affca02a547f755d4217de8d22b8e8a71}{phash\+\_\+create} ()
+\item 
+static void \hyperlink{hashcmd_8c_a8af87f08f25d1e13b12813f461925ce2}{phash\+\_\+freedata} (\hyperlink{xmalloc_8h_abbf31fec203727613ea15ba47bb8f344}{P\+T\+R\+\_\+T} data)
+\item 
+void \hyperlink{hashcmd_8c_aa325999bffb6752968545d558b6b865d}{phash\+\_\+flush} ()
+\item 
+int \hyperlink{hashcmd_8c_a11ec0f689502fc91fd344a7ca9b06f5b}{phash\+\_\+remove} (char $\ast$filename) const
+\item 
+void \hyperlink{hashcmd_8c_a6ba6b8ff1c0dad139469970b9d167265}{phash\+\_\+insert} (char $\ast$filename, char $\ast$full\+\_\+path, int check\+\_\+dot, int found)
+\item 
+char $\ast$ \hyperlink{hashcmd_8c_a30dde5ef483d93f72a08e2aeebe503d5}{phash\+\_\+search} (char $\ast$filename) const
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{hashlib_8h_a8284f9978df160609365484b829527e6}{H\+A\+S\+H\+\_\+\+T\+A\+B\+LE} $\ast$ \hyperlink{hashcmd_8c_a97748f71bf021ed351004eb06a3d7a73}{hashed\+\_\+filenames} = (\hyperlink{hashlib_8h_a8284f9978df160609365484b829527e6}{H\+A\+S\+H\+\_\+\+T\+A\+B\+LE} $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{hashcmd.\+c@{hashcmd.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!hashcmd.\+c@{hashcmd.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+P\+T\+R\+\_\+\+T))}{__P((PTR_T))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf phash\+\_\+freedata} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf P\+T\+R\+\_\+T})}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{hashcmd_8c_ab58e8d5c5d6c0328e50dfff0ed82c984}{}\label{hashcmd_8c_ab58e8d5c5d6c0328e50dfff0ed82c984}
+\index{hashcmd.\+c@{hashcmd.\+c}!phash\+\_\+create@{phash\+\_\+create}}
+\index{phash\+\_\+create@{phash\+\_\+create}!hashcmd.\+c@{hashcmd.\+c}}
+\subsubsection[{\texorpdfstring{phash\+\_\+create()}{phash_create()}}]{\setlength{\rightskip}{0pt plus 5cm}void phash\+\_\+create (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{hashcmd_8c_affca02a547f755d4217de8d22b8e8a71}{}\label{hashcmd_8c_affca02a547f755d4217de8d22b8e8a71}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hashcmd_8c_affca02a547f755d4217de8d22b8e8a71_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{hashcmd.\+c@{hashcmd.\+c}!phash\+\_\+flush@{phash\+\_\+flush}}
+\index{phash\+\_\+flush@{phash\+\_\+flush}!hashcmd.\+c@{hashcmd.\+c}}
+\subsubsection[{\texorpdfstring{phash\+\_\+flush()}{phash_flush()}}]{\setlength{\rightskip}{0pt plus 5cm}void phash\+\_\+flush (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{hashcmd_8c_aa325999bffb6752968545d558b6b865d}{}\label{hashcmd_8c_aa325999bffb6752968545d558b6b865d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{hashcmd_8c_aa325999bffb6752968545d558b6b865d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{hashcmd.\+c@{hashcmd.\+c}!phash\+\_\+freedata@{phash\+\_\+freedata}}
+\index{phash\+\_\+freedata@{phash\+\_\+freedata}!hashcmd.\+c@{hashcmd.\+c}}
+\subsubsection[{\texorpdfstring{phash\+\_\+freedata(\+P\+T\+R\+\_\+\+T data)}{phash_freedata(PTR_T data)}}]{\setlength{\rightskip}{0pt plus 5cm}static void phash\+\_\+freedata (
+\begin{DoxyParamCaption}
+\item[{{\bf P\+T\+R\+\_\+T}}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{hashcmd_8c_a8af87f08f25d1e13b12813f461925ce2}{}\label{hashcmd_8c_a8af87f08f25d1e13b12813f461925ce2}
+\index{hashcmd.\+c@{hashcmd.\+c}!phash\+\_\+insert@{phash\+\_\+insert}}
+\index{phash\+\_\+insert@{phash\+\_\+insert}!hashcmd.\+c@{hashcmd.\+c}}
+\subsubsection[{\texorpdfstring{phash\+\_\+insert(char $\ast$filename, char $\ast$full\+\_\+path, int check\+\_\+dot, int found)}{phash_insert(char *filename, char *full_path, int check_dot, int found)}}]{\setlength{\rightskip}{0pt plus 5cm}void phash\+\_\+insert (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{filename, }
+\item[{char $\ast$}]{full\+\_\+path, }
+\item[{int}]{check\+\_\+dot, }
+\item[{int}]{found}
+\end{DoxyParamCaption}
+)}\hypertarget{hashcmd_8c_a6ba6b8ff1c0dad139469970b9d167265}{}\label{hashcmd_8c_a6ba6b8ff1c0dad139469970b9d167265}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hashcmd_8c_a6ba6b8ff1c0dad139469970b9d167265_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{hashcmd.\+c@{hashcmd.\+c}!phash\+\_\+remove@{phash\+\_\+remove}}
+\index{phash\+\_\+remove@{phash\+\_\+remove}!hashcmd.\+c@{hashcmd.\+c}}
+\subsubsection[{\texorpdfstring{phash\+\_\+remove(char $\ast$filename) const}{phash_remove(char *filename) const}}]{\setlength{\rightskip}{0pt plus 5cm}int phash\+\_\+remove (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{filename}
+\end{DoxyParamCaption}
+) const}\hypertarget{hashcmd_8c_a11ec0f689502fc91fd344a7ca9b06f5b}{}\label{hashcmd_8c_a11ec0f689502fc91fd344a7ca9b06f5b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{hashcmd_8c_a11ec0f689502fc91fd344a7ca9b06f5b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{hashcmd.\+c@{hashcmd.\+c}!phash\+\_\+search@{phash\+\_\+search}}
+\index{phash\+\_\+search@{phash\+\_\+search}!hashcmd.\+c@{hashcmd.\+c}}
+\subsubsection[{\texorpdfstring{phash\+\_\+search(char $\ast$filename) const}{phash_search(char *filename) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ phash\+\_\+search (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{filename}
+\end{DoxyParamCaption}
+) const}\hypertarget{hashcmd_8c_a30dde5ef483d93f72a08e2aeebe503d5}{}\label{hashcmd_8c_a30dde5ef483d93f72a08e2aeebe503d5}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hashcmd_8c_a30dde5ef483d93f72a08e2aeebe503d5_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{hashcmd.\+c@{hashcmd.\+c}!hashed\+\_\+filenames@{hashed\+\_\+filenames}}
+\index{hashed\+\_\+filenames@{hashed\+\_\+filenames}!hashcmd.\+c@{hashcmd.\+c}}
+\subsubsection[{\texorpdfstring{hashed\+\_\+filenames}{hashed_filenames}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf H\+A\+S\+H\+\_\+\+T\+A\+B\+LE}$\ast$ hashed\+\_\+filenames = ({\bf H\+A\+S\+H\+\_\+\+T\+A\+B\+LE} $\ast$){\bf N\+U\+LL}}\hypertarget{hashcmd_8c_a97748f71bf021ed351004eb06a3d7a73}{}\label{hashcmd_8c_a97748f71bf021ed351004eb06a3d7a73}

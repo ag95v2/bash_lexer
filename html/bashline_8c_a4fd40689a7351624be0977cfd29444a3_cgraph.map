@@ -1,0 +1,6 @@
+<map id="test_for_directory" name="test_for_directory">
+<area shape="rect" id="node2" href="$general_8c.html#ae35b22a547d2632b3c5e338e188c7501" title="bash_tilde_expand" alt="" coords="176,31,307,57"/>
+<area shape="rect" id="node5" href="$general_8c.html#a862a9f80c5d26246cc559819191eb09d" title="file_isdir" alt="" coords="206,81,277,108"/>
+<area shape="rect" id="node3" href="$trap_8c.html#adabc6d96b205b032ae85e59adc6912e5" title="any_signals_trapped" alt="" coords="355,5,496,32"/>
+<area shape="rect" id="node4" href="$general_8c.html#a2fbbd07cc3acd2a78428354178cc4074" title="unquoted_tilde_word" alt="" coords="355,56,496,83"/>
+</map>

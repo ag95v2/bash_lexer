@@ -1,0 +1,932 @@
+\hypertarget{general_8c}{}\section{general.\+c File Reference}
+\label{general_8c}\index{general.\+c@{general.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$sys/param.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}posixstat.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}filecntl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}chartypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}parser.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}flags.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}findcmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}test.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}trap.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/common.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$tilde/tilde.\+h$>$}\\*
+Include dependency graph for general.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{general_8c_a3f26a11caebdeb9fd25527e75191aef3}{T\+I\+L\+D\+E\+\_\+\+E\+ND}(c)~((c) == \textquotesingle{}\textbackslash{}0\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}/\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\+:\textquotesingle{})
+\item 
+\#define \hyperlink{general_8c_ae808967e53fe8df76d0671033db0be8b}{N\+O\+G\+R\+O\+UP}~(gid\+\_\+t) -\/1
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static char $\ast$\hyperlink{general_8c_ab7623b503550d04d6b3f2ed74207dd6a}{bash\+\_\+special\+\_\+tilde\+\_\+expansions} \hyperlink{general_8c_a442b03be4e1dc4837ff23206176b0414}{\+\_\+\+\_\+P} ((char $\ast$))
+\item 
+static int \hyperlink{general_8c_a2fbbd07cc3acd2a78428354178cc4074}{unquoted\+\_\+tilde\+\_\+word} \hyperlink{general_8c_ab605b482f1543754c2b6a1dc2f983906}{\+\_\+\+\_\+P} ((const char $\ast$))
+\item 
+static void \hyperlink{general_8c_a582d878a96afe050f07ec7a41d3926e4}{initialize\+\_\+group\+\_\+array} \hyperlink{general_8c_ab7fc5cafd7df0f46281d06d9be8ec53c}{\+\_\+\+\_\+P} ((void))
+\item 
+void \hyperlink{general_8c_a0915ffe5048f4ae5b18d0b3a8838d62c}{posix\+\_\+initialize} (int on)
+\item 
+int \hyperlink{general_8c_ace2a489fb204543cc145139fe6d951c3}{num\+\_\+posix\+\_\+options} ()
+\item 
+char $\ast$ \hyperlink{general_8c_a30e0b4ef524d626e62858e284cbc8de9}{get\+\_\+posix\+\_\+options} (char $\ast$bitmap)
+\item 
+void \hyperlink{general_8c_a816fb4228f164663311c67c22f0cfba4}{set\+\_\+posix\+\_\+options} (char $\ast$bitmap) const
+\item 
+\hyperlink{config_8h_a2cf48f04356c1d108368999bc7430616}{R\+L\+I\+M\+T\+Y\+PE} \hyperlink{general_8c_a0b9e1fc3dc9b36e7f169b0db95e4a77f}{string\+\_\+to\+\_\+rlimtype} (char $\ast$s)
+\item 
+void \hyperlink{general_8c_a6388497bcf23eab56a7d529a5a8a188f}{print\+\_\+rlimtype} (\hyperlink{config_8h_a2cf48f04356c1d108368999bc7430616}{R\+L\+I\+M\+T\+Y\+PE} n, int addnl)
+\item 
+int \hyperlink{general_8c_a1e8f672fbc6ae9c452176b96ae991491}{all\+\_\+digits} (char $\ast$string) const
+\item 
+int \hyperlink{general_8c_acf578cd76e0dc1087cdc627781f06c9e}{legal\+\_\+number} (char $\ast$string, intmax\+\_\+t $\ast$result) const
+\item 
+int \hyperlink{general_8c_a30c87e5e2b6826cae0b16c50843dc153}{legal\+\_\+identifier} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}) const
+\item 
+int \hyperlink{general_8c_a1fc62854f5e53e63b92e72acb847d088}{valid\+\_\+nameref\+\_\+value} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, int flags) const
+\item 
+int \hyperlink{general_8c_a09abdb815a5c99e35db98a3c7c288b78}{check\+\_\+selfref} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, char $\ast$value, int flags) const
+\item 
+int \hyperlink{general_8c_a2d8b1ad469d271ae155d0c8b065a1118}{check\+\_\+identifier} (\hyperlink{command_8h_a3f0cccf333703e5f6c4168be0db675fa}{W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$word, int check\+\_\+word)
+\item 
+int \hyperlink{general_8c_a1aefa464e6ab39c7f656a33577ab8d9a}{importable\+\_\+function\+\_\+name} (char $\ast$string, size\+\_\+t len) const
+\item 
+int \hyperlink{general_8c_a50f4e4e25c671743984ff176c0ba6dc3}{exportable\+\_\+function\+\_\+name} (char $\ast$string) const
+\item 
+int \hyperlink{general_8c_a223628a71a62572335852a54901f4368}{legal\+\_\+alias\+\_\+name} (char $\ast$string, int flags) const
+\item 
+int \hyperlink{general_8c_af5c52d3eee3df33dfe1ad03538f3c884}{assignment} (char $\ast$string, int flags) const
+\item 
+int \hyperlink{general_8c_af5f3da633eb71e3efe8314cc7caaf7db}{line\+\_\+isblank} (char $\ast$line) const
+\item 
+int \hyperlink{general_8c_a90505ba31aeb06ef5a7a6d5d6fd08055}{sh\+\_\+unset\+\_\+nodelay\+\_\+mode} (int fd)
+\item 
+int \hyperlink{general_8c_ab4f0a00327423b9157868a2d5f488aa7}{sh\+\_\+setclexec} (int fd)
+\item 
+int \hyperlink{general_8c_af0b8a3b83755241f88043a9e180a57db}{sh\+\_\+validfd} (int fd)
+\item 
+int \hyperlink{general_8c_a8670f09d29c7851594d26d44da651677}{fd\+\_\+ispipe} (int fd)
+\item 
+void \hyperlink{general_8c_aa97db0252691c49c78d363ed172d0a0f}{check\+\_\+dev\+\_\+tty} ()
+\item 
+int \hyperlink{general_8c_a7445bd7305915c4044c94ba5b97e334f}{same\+\_\+file} (char $\ast$path1, char $\ast$path2, struct stat $\ast$stp1, struct stat $\ast$stp2) const
+\item 
+int \hyperlink{general_8c_a1b1369b8d59bb4f4cf2da4fedde105d2}{move\+\_\+to\+\_\+high\+\_\+fd} (int fd, int check\+\_\+new, int maxfd)
+\item 
+int \hyperlink{general_8c_a47b42362e48468ec40ec8de83105d841}{check\+\_\+binary\+\_\+file} (char $\ast$sample, int sample\+\_\+len) const
+\item 
+int \hyperlink{general_8c_af41a6ba27a2a96208603104a0a5232e0}{sh\+\_\+openpipe} (int $\ast$pv)
+\item 
+int \hyperlink{general_8c_a15a0132090e9b69be30a74639f45503e}{sh\+\_\+closepipe} (int $\ast$pv)
+\item 
+int \hyperlink{general_8c_aca9a9f18262deaaaed08d66b694832a4}{file\+\_\+exists} (char $\ast$fn) const
+\item 
+int \hyperlink{general_8c_a862a9f80c5d26246cc559819191eb09d}{file\+\_\+isdir} (char $\ast$fn) const
+\item 
+int \hyperlink{general_8c_a8070f431fd78549132f829ae58983c27}{file\+\_\+iswdir} (char $\ast$fn) const
+\item 
+int \hyperlink{general_8c_aedeeb6f333729ec67a86a8cf66056844}{path\+\_\+dot\+\_\+or\+\_\+dotdot} (char $\ast$string) const
+\item 
+int \hyperlink{general_8c_a6eb6283cbbb0fd5944cead61872fb6e2}{absolute\+\_\+pathname} (char $\ast$string) const
+\item 
+int \hyperlink{general_8c_a5f0cb862f9b5675b5f1cd4fce1c24c57}{absolute\+\_\+program} (char $\ast$string) const
+\item 
+char $\ast$ \hyperlink{general_8c_a4f33de3d54d05ed0fd6b7ed5152933a3}{make\+\_\+absolute} (char $\ast$string, char $\ast$dot\+\_\+path) const
+\item 
+char $\ast$ \hyperlink{general_8c_a373470ebfb219db3a97f7798996135a1}{base\+\_\+pathname} (char $\ast$string)
+\item 
+char $\ast$ \hyperlink{general_8c_a19609e14d781357e232399c8c8bbe2b9}{full\+\_\+pathname} (char $\ast$file)
+\item 
+char $\ast$ \hyperlink{general_8c_a43b9da0ddb47cad720f96dd583609735}{polite\+\_\+directory\+\_\+format} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name})
+\item 
+char $\ast$ \hyperlink{general_8c_a22060b312152e10775c9632128c88501}{trim\+\_\+pathname} (char $\ast$\hyperlink{shell_8c_a8f8f80d37794cde9472343e4487ba3eb}{name}, int maxlen)
+\item 
+char $\ast$ \hyperlink{general_8c_a86f47e15e56f6165aa568f99fe79a1df}{printable\+\_\+filename} (char $\ast$fn, int flags)
+\item 
+char $\ast$ \hyperlink{general_8c_a54db0dd4718ec09edd3eb7bf9abb297c}{extract\+\_\+colon\+\_\+unit} (char $\ast$string, int $\ast$p\+\_\+index)
+\item 
+static char $\ast$ \hyperlink{general_8c_ab7623b503550d04d6b3f2ed74207dd6a}{bash\+\_\+special\+\_\+tilde\+\_\+expansions} (char $\ast$text)
+\item 
+void \hyperlink{general_8c_a4e5d56d2cb8f303e5fc9cc2a64f7bd0e}{tilde\+\_\+initialize} ()
+\item 
+static int \hyperlink{general_8c_a2fbbd07cc3acd2a78428354178cc4074}{unquoted\+\_\+tilde\+\_\+word} (char $\ast$s) const
+\item 
+char $\ast$ \hyperlink{general_8c_a7e30ea1dbc3cb5d7d1a029420f36cc8d}{bash\+\_\+tilde\+\_\+find\+\_\+word} (char $\ast$s, int flags, int $\ast$lenp) const
+\item 
+char $\ast$ \hyperlink{general_8c_ae35b22a547d2632b3c5e338e188c7501}{bash\+\_\+tilde\+\_\+expand} (char $\ast$s, int assign\+\_\+p) const
+\item 
+static void \hyperlink{general_8c_a582d878a96afe050f07ec7a41d3926e4}{initialize\+\_\+group\+\_\+array} ()
+\item 
+int \hyperlink{general_8c_aebc9eb6b82c04324aacd9b2e268122b5}{group\+\_\+member} (gid\+\_\+t gid)
+\item 
+char $\ast$$\ast$ \hyperlink{general_8c_a4d76f0797b151763354ef069b3df17d0}{get\+\_\+group\+\_\+list} (int $\ast$ngp)
+\item 
+int $\ast$ \hyperlink{general_8c_ab4bf0be26bfa8e947fa43001ce5d3351}{get\+\_\+group\+\_\+array} (int $\ast$ngp)
+\item 
+char $\ast$ \hyperlink{general_8c_a6056bdf45f2cafe2fd23dee8139f6881}{conf\+\_\+standard\+\_\+path} ()
+\item 
+int \hyperlink{general_8c_a5b8321688606303e1b2215d4e5bd9b97}{default\+\_\+columns} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{general_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno}
+\item 
+const char $\ast$const \hyperlink{general_8c_a18b853a5d17c4e5095221485d0c737cf}{bash\+\_\+getcwd\+\_\+errstr} = \hyperlink{bashintl_8h_abdf0847bd8caa2c2247f5d9bc5e12982}{N\+\_\+}(\char`\"{}getcwd\+: cannot access parent directories\char`\"{})
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int $\ast$ \hyperlink{general_8c_a5b8033fb4a7ba4323f6cae871869782e}{posix\_mode\_var}\\
+\} \hyperlink{general_8c_a33c35871294aab6af5a27208e63b350f}{posix\_vars} \mbox{[}$\,$\mbox{]}\\
+
+\end{tabbing}\item 
+static char \hyperlink{general_8c_a5fa1b184d4d06d8f17ccd9ac6bca3586}{tdir} \mbox{[}P\+A\+T\+H\+\_\+\+M\+AX\mbox{]}
+\item 
+static char $\ast$$\ast$ \hyperlink{general_8c_a9862ca46a49662bdb7067265e7810d0e}{bash\+\_\+tilde\+\_\+prefixes}
+\item 
+static char $\ast$$\ast$ \hyperlink{general_8c_aea55acdd1148d5e3bf5282489b3c6e02}{bash\+\_\+tilde\+\_\+prefixes2}
+\item 
+static char $\ast$$\ast$ \hyperlink{general_8c_a90a7ac18d7b5da8fcd087447748ff4fc}{bash\+\_\+tilde\+\_\+suffixes}
+\item 
+static char $\ast$$\ast$ \hyperlink{general_8c_a8ce35ba385612cd78e2a8fd4b20bfed9}{bash\+\_\+tilde\+\_\+suffixes2}
+\item 
+static int \hyperlink{general_8c_ae5dcb44242d12656bf1a5945b165aebc}{ngroups}
+\item 
+static int \hyperlink{general_8c_a5035bba02de871563287114035c95a0f}{maxgroups}
+\item 
+static \hyperlink{config_8h_ac75dbc8dcc2cee999977cc1758935079}{G\+E\+T\+G\+R\+O\+U\+P\+S\+\_\+T} $\ast$ \hyperlink{general_8c_a132f32fe7e56c1c2fca5f5633822773e}{group\+\_\+array} = (\hyperlink{config_8h_ac75dbc8dcc2cee999977cc1758935079}{G\+E\+T\+G\+R\+O\+U\+P\+S\+\_\+T} $\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{general.\+c@{general.\+c}!N\+O\+G\+R\+O\+UP@{N\+O\+G\+R\+O\+UP}}
+\index{N\+O\+G\+R\+O\+UP@{N\+O\+G\+R\+O\+UP}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{N\+O\+G\+R\+O\+UP}{NOGROUP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+O\+G\+R\+O\+UP~(gid\+\_\+t) -\/1}\hypertarget{general_8c_ae808967e53fe8df76d0671033db0be8b}{}\label{general_8c_ae808967e53fe8df76d0671033db0be8b}
+\index{general.\+c@{general.\+c}!T\+I\+L\+D\+E\+\_\+\+E\+ND@{T\+I\+L\+D\+E\+\_\+\+E\+ND}}
+\index{T\+I\+L\+D\+E\+\_\+\+E\+ND@{T\+I\+L\+D\+E\+\_\+\+E\+ND}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{T\+I\+L\+D\+E\+\_\+\+E\+ND}{TILDE_END}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+I\+L\+D\+E\+\_\+\+E\+ND(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~((c) == \textquotesingle{}\textbackslash{}0\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}/\textquotesingle{} $\vert$$\vert$ (c) == \textquotesingle{}\+:\textquotesingle{})}\hypertarget{general_8c_a3f26a11caebdeb9fd25527e75191aef3}{}\label{general_8c_a3f26a11caebdeb9fd25527e75191aef3}
+
+
+\subsection{Function Documentation}
+\index{general.\+c@{general.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ {\bf bash\+\_\+special\+\_\+tilde\+\_\+expansions} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_a442b03be4e1dc4837ff23206176b0414}{}\label{general_8c_a442b03be4e1dc4837ff23206176b0414}
+\index{general.\+c@{general.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$))}{__P((const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf unquoted\+\_\+tilde\+\_\+word} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_ab605b482f1543754c2b6a1dc2f983906}{}\label{general_8c_ab605b482f1543754c2b6a1dc2f983906}
+\index{general.\+c@{general.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf initialize\+\_\+group\+\_\+array} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_ab7fc5cafd7df0f46281d06d9be8ec53c}{}\label{general_8c_ab7fc5cafd7df0f46281d06d9be8ec53c}
+\index{general.\+c@{general.\+c}!absolute\+\_\+pathname@{absolute\+\_\+pathname}}
+\index{absolute\+\_\+pathname@{absolute\+\_\+pathname}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{absolute\+\_\+pathname(char $\ast$string) const}{absolute_pathname(char *string) const}}]{\setlength{\rightskip}{0pt plus 5cm}int absolute\+\_\+pathname (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a6eb6283cbbb0fd5944cead61872fb6e2}{}\label{general_8c_a6eb6283cbbb0fd5944cead61872fb6e2}
+\index{general.\+c@{general.\+c}!absolute\+\_\+program@{absolute\+\_\+program}}
+\index{absolute\+\_\+program@{absolute\+\_\+program}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{absolute\+\_\+program(char $\ast$string) const}{absolute_program(char *string) const}}]{\setlength{\rightskip}{0pt plus 5cm}int absolute\+\_\+program (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a5f0cb862f9b5675b5f1cd4fce1c24c57}{}\label{general_8c_a5f0cb862f9b5675b5f1cd4fce1c24c57}
+\index{general.\+c@{general.\+c}!all\+\_\+digits@{all\+\_\+digits}}
+\index{all\+\_\+digits@{all\+\_\+digits}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{all\+\_\+digits(char $\ast$string) const}{all_digits(char *string) const}}]{\setlength{\rightskip}{0pt plus 5cm}int all\+\_\+digits (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a1e8f672fbc6ae9c452176b96ae991491}{}\label{general_8c_a1e8f672fbc6ae9c452176b96ae991491}
+\index{general.\+c@{general.\+c}!assignment@{assignment}}
+\index{assignment@{assignment}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{assignment(char $\ast$string, int flags) const}{assignment(char *string, int flags) const}}]{\setlength{\rightskip}{0pt plus 5cm}int assignment (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_af5c52d3eee3df33dfe1ad03538f3c884}{}\label{general_8c_af5c52d3eee3df33dfe1ad03538f3c884}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_af5c52d3eee3df33dfe1ad03538f3c884_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!base\+\_\+pathname@{base\+\_\+pathname}}
+\index{base\+\_\+pathname@{base\+\_\+pathname}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{base\+\_\+pathname(char $\ast$string)}{base_pathname(char *string)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ base\+\_\+pathname (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a373470ebfb219db3a97f7798996135a1}{}\label{general_8c_a373470ebfb219db3a97f7798996135a1}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{general_8c_a373470ebfb219db3a97f7798996135a1_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!bash\+\_\+special\+\_\+tilde\+\_\+expansions@{bash\+\_\+special\+\_\+tilde\+\_\+expansions}}
+\index{bash\+\_\+special\+\_\+tilde\+\_\+expansions@{bash\+\_\+special\+\_\+tilde\+\_\+expansions}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+special\+\_\+tilde\+\_\+expansions(char $\ast$text)}{bash_special_tilde_expansions(char *text)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ bash\+\_\+special\+\_\+tilde\+\_\+expansions (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_ab7623b503550d04d6b3f2ed74207dd6a}{}\label{general_8c_ab7623b503550d04d6b3f2ed74207dd6a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_ab7623b503550d04d6b3f2ed74207dd6a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!bash\+\_\+tilde\+\_\+expand@{bash\+\_\+tilde\+\_\+expand}}
+\index{bash\+\_\+tilde\+\_\+expand@{bash\+\_\+tilde\+\_\+expand}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+tilde\+\_\+expand(char $\ast$s, int assign\+\_\+p) const}{bash_tilde_expand(char *s, int assign_p) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ bash\+\_\+tilde\+\_\+expand (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{int}]{assign\+\_\+p}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_ae35b22a547d2632b3c5e338e188c7501}{}\label{general_8c_ae35b22a547d2632b3c5e338e188c7501}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{general_8c_ae35b22a547d2632b3c5e338e188c7501_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!bash\+\_\+tilde\+\_\+find\+\_\+word@{bash\+\_\+tilde\+\_\+find\+\_\+word}}
+\index{bash\+\_\+tilde\+\_\+find\+\_\+word@{bash\+\_\+tilde\+\_\+find\+\_\+word}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+tilde\+\_\+find\+\_\+word(char $\ast$s, int flags, int $\ast$lenp) const}{bash_tilde_find_word(char *s, int flags, int *lenp) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ bash\+\_\+tilde\+\_\+find\+\_\+word (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s, }
+\item[{int}]{flags, }
+\item[{int $\ast$}]{lenp}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a7e30ea1dbc3cb5d7d1a029420f36cc8d}{}\label{general_8c_a7e30ea1dbc3cb5d7d1a029420f36cc8d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a7e30ea1dbc3cb5d7d1a029420f36cc8d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!check\+\_\+binary\+\_\+file@{check\+\_\+binary\+\_\+file}}
+\index{check\+\_\+binary\+\_\+file@{check\+\_\+binary\+\_\+file}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+binary\+\_\+file(char $\ast$sample, int sample\+\_\+len) const}{check_binary_file(char *sample, int sample_len) const}}]{\setlength{\rightskip}{0pt plus 5cm}int check\+\_\+binary\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{sample, }
+\item[{int}]{sample\+\_\+len}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a47b42362e48468ec40ec8de83105d841}{}\label{general_8c_a47b42362e48468ec40ec8de83105d841}
+\index{general.\+c@{general.\+c}!check\+\_\+dev\+\_\+tty@{check\+\_\+dev\+\_\+tty}}
+\index{check\+\_\+dev\+\_\+tty@{check\+\_\+dev\+\_\+tty}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+dev\+\_\+tty()}{check_dev_tty()}}]{\setlength{\rightskip}{0pt plus 5cm}void check\+\_\+dev\+\_\+tty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_aa97db0252691c49c78d363ed172d0a0f}{}\label{general_8c_aa97db0252691c49c78d363ed172d0a0f}
+\index{general.\+c@{general.\+c}!check\+\_\+identifier@{check\+\_\+identifier}}
+\index{check\+\_\+identifier@{check\+\_\+identifier}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+identifier(\+W\+O\+R\+D\+\_\+\+D\+E\+S\+C $\ast$word, int check\+\_\+word)}{check_identifier(WORD_DESC *word, int check_word)}}]{\setlength{\rightskip}{0pt plus 5cm}int check\+\_\+identifier (
+\begin{DoxyParamCaption}
+\item[{{\bf W\+O\+R\+D\+\_\+\+D\+E\+SC} $\ast$}]{word, }
+\item[{int}]{check\+\_\+word}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a2d8b1ad469d271ae155d0c8b065a1118}{}\label{general_8c_a2d8b1ad469d271ae155d0c8b065a1118}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a2d8b1ad469d271ae155d0c8b065a1118_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!check\+\_\+selfref@{check\+\_\+selfref}}
+\index{check\+\_\+selfref@{check\+\_\+selfref}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+selfref(char $\ast$name, char $\ast$value, int flags) const}{check_selfref(char *name, char *value, int flags) const}}]{\setlength{\rightskip}{0pt plus 5cm}int check\+\_\+selfref (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{char $\ast$}]{value, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a09abdb815a5c99e35db98a3c7c288b78}{}\label{general_8c_a09abdb815a5c99e35db98a3c7c288b78}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a09abdb815a5c99e35db98a3c7c288b78_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!conf\+\_\+standard\+\_\+path@{conf\+\_\+standard\+\_\+path}}
+\index{conf\+\_\+standard\+\_\+path@{conf\+\_\+standard\+\_\+path}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{conf\+\_\+standard\+\_\+path()}{conf_standard_path()}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ conf\+\_\+standard\+\_\+path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a6056bdf45f2cafe2fd23dee8139f6881}{}\label{general_8c_a6056bdf45f2cafe2fd23dee8139f6881}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a6056bdf45f2cafe2fd23dee8139f6881_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!default\+\_\+columns@{default\+\_\+columns}}
+\index{default\+\_\+columns@{default\+\_\+columns}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{default\+\_\+columns()}{default_columns()}}]{\setlength{\rightskip}{0pt plus 5cm}int default\+\_\+columns (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a5b8321688606303e1b2215d4e5bd9b97}{}\label{general_8c_a5b8321688606303e1b2215d4e5bd9b97}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a5b8321688606303e1b2215d4e5bd9b97_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!exportable\+\_\+function\+\_\+name@{exportable\+\_\+function\+\_\+name}}
+\index{exportable\+\_\+function\+\_\+name@{exportable\+\_\+function\+\_\+name}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{exportable\+\_\+function\+\_\+name(char $\ast$string) const}{exportable_function_name(char *string) const}}]{\setlength{\rightskip}{0pt plus 5cm}int exportable\+\_\+function\+\_\+name (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a50f4e4e25c671743984ff176c0ba6dc3}{}\label{general_8c_a50f4e4e25c671743984ff176c0ba6dc3}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{general_8c_a50f4e4e25c671743984ff176c0ba6dc3_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!extract\+\_\+colon\+\_\+unit@{extract\+\_\+colon\+\_\+unit}}
+\index{extract\+\_\+colon\+\_\+unit@{extract\+\_\+colon\+\_\+unit}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{extract\+\_\+colon\+\_\+unit(char $\ast$string, int $\ast$p\+\_\+index)}{extract_colon_unit(char *string, int *p_index)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ extract\+\_\+colon\+\_\+unit (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{int $\ast$}]{p\+\_\+index}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a54db0dd4718ec09edd3eb7bf9abb297c}{}\label{general_8c_a54db0dd4718ec09edd3eb7bf9abb297c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a54db0dd4718ec09edd3eb7bf9abb297c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!fd\+\_\+ispipe@{fd\+\_\+ispipe}}
+\index{fd\+\_\+ispipe@{fd\+\_\+ispipe}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{fd\+\_\+ispipe(int fd)}{fd_ispipe(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}int fd\+\_\+ispipe (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a8670f09d29c7851594d26d44da651677}{}\label{general_8c_a8670f09d29c7851594d26d44da651677}
+\index{general.\+c@{general.\+c}!file\+\_\+exists@{file\+\_\+exists}}
+\index{file\+\_\+exists@{file\+\_\+exists}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{file\+\_\+exists(char $\ast$fn) const}{file_exists(char *fn) const}}]{\setlength{\rightskip}{0pt plus 5cm}int file\+\_\+exists (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{fn}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_aca9a9f18262deaaaed08d66b694832a4}{}\label{general_8c_aca9a9f18262deaaaed08d66b694832a4}
+\index{general.\+c@{general.\+c}!file\+\_\+isdir@{file\+\_\+isdir}}
+\index{file\+\_\+isdir@{file\+\_\+isdir}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{file\+\_\+isdir(char $\ast$fn) const}{file_isdir(char *fn) const}}]{\setlength{\rightskip}{0pt plus 5cm}int file\+\_\+isdir (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{fn}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a862a9f80c5d26246cc559819191eb09d}{}\label{general_8c_a862a9f80c5d26246cc559819191eb09d}
+\index{general.\+c@{general.\+c}!file\+\_\+iswdir@{file\+\_\+iswdir}}
+\index{file\+\_\+iswdir@{file\+\_\+iswdir}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{file\+\_\+iswdir(char $\ast$fn) const}{file_iswdir(char *fn) const}}]{\setlength{\rightskip}{0pt plus 5cm}int file\+\_\+iswdir (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{fn}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a8070f431fd78549132f829ae58983c27}{}\label{general_8c_a8070f431fd78549132f829ae58983c27}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{general_8c_a8070f431fd78549132f829ae58983c27_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!full\+\_\+pathname@{full\+\_\+pathname}}
+\index{full\+\_\+pathname@{full\+\_\+pathname}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{full\+\_\+pathname(char $\ast$file)}{full_pathname(char *file)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ full\+\_\+pathname (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{file}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a19609e14d781357e232399c8c8bbe2b9}{}\label{general_8c_a19609e14d781357e232399c8c8bbe2b9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a19609e14d781357e232399c8c8bbe2b9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!get\+\_\+group\+\_\+array@{get\+\_\+group\+\_\+array}}
+\index{get\+\_\+group\+\_\+array@{get\+\_\+group\+\_\+array}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+group\+\_\+array(int $\ast$ngp)}{get_group_array(int *ngp)}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ get\+\_\+group\+\_\+array (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{ngp}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_ab4bf0be26bfa8e947fa43001ce5d3351}{}\label{general_8c_ab4bf0be26bfa8e947fa43001ce5d3351}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_ab4bf0be26bfa8e947fa43001ce5d3351_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!get\+\_\+group\+\_\+list@{get\+\_\+group\+\_\+list}}
+\index{get\+\_\+group\+\_\+list@{get\+\_\+group\+\_\+list}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+group\+\_\+list(int $\ast$ngp)}{get_group_list(int *ngp)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ get\+\_\+group\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{ngp}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a4d76f0797b151763354ef069b3df17d0}{}\label{general_8c_a4d76f0797b151763354ef069b3df17d0}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a4d76f0797b151763354ef069b3df17d0_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!get\+\_\+posix\+\_\+options@{get\+\_\+posix\+\_\+options}}
+\index{get\+\_\+posix\+\_\+options@{get\+\_\+posix\+\_\+options}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+posix\+\_\+options(char $\ast$bitmap)}{get_posix_options(char *bitmap)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\+\_\+posix\+\_\+options (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{bitmap}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a30e0b4ef524d626e62858e284cbc8de9}{}\label{general_8c_a30e0b4ef524d626e62858e284cbc8de9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a30e0b4ef524d626e62858e284cbc8de9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!group\+\_\+member@{group\+\_\+member}}
+\index{group\+\_\+member@{group\+\_\+member}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{group\+\_\+member(gid\+\_\+t gid)}{group_member(gid_t gid)}}]{\setlength{\rightskip}{0pt plus 5cm}int group\+\_\+member (
+\begin{DoxyParamCaption}
+\item[{gid\+\_\+t}]{gid}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_aebc9eb6b82c04324aacd9b2e268122b5}{}\label{general_8c_aebc9eb6b82c04324aacd9b2e268122b5}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_aebc9eb6b82c04324aacd9b2e268122b5_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!importable\+\_\+function\+\_\+name@{importable\+\_\+function\+\_\+name}}
+\index{importable\+\_\+function\+\_\+name@{importable\+\_\+function\+\_\+name}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{importable\+\_\+function\+\_\+name(char $\ast$string, size\+\_\+t len) const}{importable_function_name(char *string, size_t len) const}}]{\setlength{\rightskip}{0pt plus 5cm}int importable\+\_\+function\+\_\+name (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{size\+\_\+t}]{len}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a1aefa464e6ab39c7f656a33577ab8d9a}{}\label{general_8c_a1aefa464e6ab39c7f656a33577ab8d9a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{general_8c_a1aefa464e6ab39c7f656a33577ab8d9a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!initialize\+\_\+group\+\_\+array@{initialize\+\_\+group\+\_\+array}}
+\index{initialize\+\_\+group\+\_\+array@{initialize\+\_\+group\+\_\+array}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+group\+\_\+array()}{initialize_group_array()}}]{\setlength{\rightskip}{0pt plus 5cm}static void initialize\+\_\+group\+\_\+array (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_a582d878a96afe050f07ec7a41d3926e4}{}\label{general_8c_a582d878a96afe050f07ec7a41d3926e4}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a582d878a96afe050f07ec7a41d3926e4_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!legal\+\_\+alias\+\_\+name@{legal\+\_\+alias\+\_\+name}}
+\index{legal\+\_\+alias\+\_\+name@{legal\+\_\+alias\+\_\+name}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{legal\+\_\+alias\+\_\+name(char $\ast$string, int flags) const}{legal_alias_name(char *string, int flags) const}}]{\setlength{\rightskip}{0pt plus 5cm}int legal\+\_\+alias\+\_\+name (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a223628a71a62572335852a54901f4368}{}\label{general_8c_a223628a71a62572335852a54901f4368}
+\index{general.\+c@{general.\+c}!legal\+\_\+identifier@{legal\+\_\+identifier}}
+\index{legal\+\_\+identifier@{legal\+\_\+identifier}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{legal\+\_\+identifier(char $\ast$name) const}{legal_identifier(char *name) const}}]{\setlength{\rightskip}{0pt plus 5cm}int legal\+\_\+identifier (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a30c87e5e2b6826cae0b16c50843dc153}{}\label{general_8c_a30c87e5e2b6826cae0b16c50843dc153}
+\index{general.\+c@{general.\+c}!legal\+\_\+number@{legal\+\_\+number}}
+\index{legal\+\_\+number@{legal\+\_\+number}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{legal\+\_\+number(char $\ast$string, intmax\+\_\+t $\ast$result) const}{legal_number(char *string, intmax_t *result) const}}]{\setlength{\rightskip}{0pt plus 5cm}int legal\+\_\+number (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{intmax\+\_\+t $\ast$}]{result}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_acf578cd76e0dc1087cdc627781f06c9e}{}\label{general_8c_acf578cd76e0dc1087cdc627781f06c9e}
+\index{general.\+c@{general.\+c}!line\+\_\+isblank@{line\+\_\+isblank}}
+\index{line\+\_\+isblank@{line\+\_\+isblank}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{line\+\_\+isblank(char $\ast$line) const}{line_isblank(char *line) const}}]{\setlength{\rightskip}{0pt plus 5cm}int line\+\_\+isblank (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{line}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_af5f3da633eb71e3efe8314cc7caaf7db}{}\label{general_8c_af5f3da633eb71e3efe8314cc7caaf7db}
+\index{general.\+c@{general.\+c}!make\+\_\+absolute@{make\+\_\+absolute}}
+\index{make\+\_\+absolute@{make\+\_\+absolute}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+absolute(char $\ast$string, char $\ast$dot\+\_\+path) const}{make_absolute(char *string, char *dot_path) const}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ make\+\_\+absolute (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string, }
+\item[{char $\ast$}]{dot\+\_\+path}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a4f33de3d54d05ed0fd6b7ed5152933a3}{}\label{general_8c_a4f33de3d54d05ed0fd6b7ed5152933a3}
+\index{general.\+c@{general.\+c}!move\+\_\+to\+\_\+high\+\_\+fd@{move\+\_\+to\+\_\+high\+\_\+fd}}
+\index{move\+\_\+to\+\_\+high\+\_\+fd@{move\+\_\+to\+\_\+high\+\_\+fd}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{move\+\_\+to\+\_\+high\+\_\+fd(int fd, int check\+\_\+new, int maxfd)}{move_to_high_fd(int fd, int check_new, int maxfd)}}]{\setlength{\rightskip}{0pt plus 5cm}int move\+\_\+to\+\_\+high\+\_\+fd (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{int}]{check\+\_\+new, }
+\item[{int}]{maxfd}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a1b1369b8d59bb4f4cf2da4fedde105d2}{}\label{general_8c_a1b1369b8d59bb4f4cf2da4fedde105d2}
+\index{general.\+c@{general.\+c}!num\+\_\+posix\+\_\+options@{num\+\_\+posix\+\_\+options}}
+\index{num\+\_\+posix\+\_\+options@{num\+\_\+posix\+\_\+options}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{num\+\_\+posix\+\_\+options()}{num_posix_options()}}]{\setlength{\rightskip}{0pt plus 5cm}int num\+\_\+posix\+\_\+options (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_ace2a489fb204543cc145139fe6d951c3}{}\label{general_8c_ace2a489fb204543cc145139fe6d951c3}
+\index{general.\+c@{general.\+c}!path\+\_\+dot\+\_\+or\+\_\+dotdot@{path\+\_\+dot\+\_\+or\+\_\+dotdot}}
+\index{path\+\_\+dot\+\_\+or\+\_\+dotdot@{path\+\_\+dot\+\_\+or\+\_\+dotdot}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{path\+\_\+dot\+\_\+or\+\_\+dotdot(char $\ast$string) const}{path_dot_or_dotdot(char *string) const}}]{\setlength{\rightskip}{0pt plus 5cm}int path\+\_\+dot\+\_\+or\+\_\+dotdot (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_aedeeb6f333729ec67a86a8cf66056844}{}\label{general_8c_aedeeb6f333729ec67a86a8cf66056844}
+\index{general.\+c@{general.\+c}!polite\+\_\+directory\+\_\+format@{polite\+\_\+directory\+\_\+format}}
+\index{polite\+\_\+directory\+\_\+format@{polite\+\_\+directory\+\_\+format}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{polite\+\_\+directory\+\_\+format(char $\ast$name)}{polite_directory_format(char *name)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ polite\+\_\+directory\+\_\+format (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a43b9da0ddb47cad720f96dd583609735}{}\label{general_8c_a43b9da0ddb47cad720f96dd583609735}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a43b9da0ddb47cad720f96dd583609735_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!posix\+\_\+initialize@{posix\+\_\+initialize}}
+\index{posix\+\_\+initialize@{posix\+\_\+initialize}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{posix\+\_\+initialize(int on)}{posix_initialize(int on)}}]{\setlength{\rightskip}{0pt plus 5cm}void posix\+\_\+initialize (
+\begin{DoxyParamCaption}
+\item[{int}]{on}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a0915ffe5048f4ae5b18d0b3a8838d62c}{}\label{general_8c_a0915ffe5048f4ae5b18d0b3a8838d62c}
+\index{general.\+c@{general.\+c}!print\+\_\+rlimtype@{print\+\_\+rlimtype}}
+\index{print\+\_\+rlimtype@{print\+\_\+rlimtype}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{print\+\_\+rlimtype(\+R\+L\+I\+M\+T\+Y\+P\+E n, int addnl)}{print_rlimtype(RLIMTYPE n, int addnl)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+rlimtype (
+\begin{DoxyParamCaption}
+\item[{{\bf R\+L\+I\+M\+T\+Y\+PE}}]{n, }
+\item[{int}]{addnl}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a6388497bcf23eab56a7d529a5a8a188f}{}\label{general_8c_a6388497bcf23eab56a7d529a5a8a188f}
+\index{general.\+c@{general.\+c}!printable\+\_\+filename@{printable\+\_\+filename}}
+\index{printable\+\_\+filename@{printable\+\_\+filename}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{printable\+\_\+filename(char $\ast$fn, int flags)}{printable_filename(char *fn, int flags)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ printable\+\_\+filename (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{fn, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a86f47e15e56f6165aa568f99fe79a1df}{}\label{general_8c_a86f47e15e56f6165aa568f99fe79a1df}
+\index{general.\+c@{general.\+c}!same\+\_\+file@{same\+\_\+file}}
+\index{same\+\_\+file@{same\+\_\+file}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{same\+\_\+file(char $\ast$path1, char $\ast$path2, struct stat $\ast$stp1, struct stat $\ast$stp2) const}{same_file(char *path1, char *path2, struct stat *stp1, struct stat *stp2) const}}]{\setlength{\rightskip}{0pt plus 5cm}int same\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{path1, }
+\item[{char $\ast$}]{path2, }
+\item[{struct stat $\ast$}]{stp1, }
+\item[{struct stat $\ast$}]{stp2}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a7445bd7305915c4044c94ba5b97e334f}{}\label{general_8c_a7445bd7305915c4044c94ba5b97e334f}
+\index{general.\+c@{general.\+c}!set\+\_\+posix\+\_\+options@{set\+\_\+posix\+\_\+options}}
+\index{set\+\_\+posix\+\_\+options@{set\+\_\+posix\+\_\+options}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+posix\+\_\+options(char $\ast$bitmap) const}{set_posix_options(char *bitmap) const}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+posix\+\_\+options (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{bitmap}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a816fb4228f164663311c67c22f0cfba4}{}\label{general_8c_a816fb4228f164663311c67c22f0cfba4}
+\index{general.\+c@{general.\+c}!sh\+\_\+closepipe@{sh\+\_\+closepipe}}
+\index{sh\+\_\+closepipe@{sh\+\_\+closepipe}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{sh\+\_\+closepipe(int $\ast$pv)}{sh_closepipe(int *pv)}}]{\setlength{\rightskip}{0pt plus 5cm}int sh\+\_\+closepipe (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{pv}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a15a0132090e9b69be30a74639f45503e}{}\label{general_8c_a15a0132090e9b69be30a74639f45503e}
+\index{general.\+c@{general.\+c}!sh\+\_\+openpipe@{sh\+\_\+openpipe}}
+\index{sh\+\_\+openpipe@{sh\+\_\+openpipe}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{sh\+\_\+openpipe(int $\ast$pv)}{sh_openpipe(int *pv)}}]{\setlength{\rightskip}{0pt plus 5cm}int sh\+\_\+openpipe (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{pv}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_af41a6ba27a2a96208603104a0a5232e0}{}\label{general_8c_af41a6ba27a2a96208603104a0a5232e0}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{general_8c_af41a6ba27a2a96208603104a0a5232e0_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!sh\+\_\+setclexec@{sh\+\_\+setclexec}}
+\index{sh\+\_\+setclexec@{sh\+\_\+setclexec}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{sh\+\_\+setclexec(int fd)}{sh_setclexec(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}int sh\+\_\+setclexec (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_ab4f0a00327423b9157868a2d5f488aa7}{}\label{general_8c_ab4f0a00327423b9157868a2d5f488aa7}
+\index{general.\+c@{general.\+c}!sh\+\_\+unset\+\_\+nodelay\+\_\+mode@{sh\+\_\+unset\+\_\+nodelay\+\_\+mode}}
+\index{sh\+\_\+unset\+\_\+nodelay\+\_\+mode@{sh\+\_\+unset\+\_\+nodelay\+\_\+mode}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{sh\+\_\+unset\+\_\+nodelay\+\_\+mode(int fd)}{sh_unset_nodelay_mode(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}int sh\+\_\+unset\+\_\+nodelay\+\_\+mode (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a90505ba31aeb06ef5a7a6d5d6fd08055}{}\label{general_8c_a90505ba31aeb06ef5a7a6d5d6fd08055}
+\index{general.\+c@{general.\+c}!sh\+\_\+validfd@{sh\+\_\+validfd}}
+\index{sh\+\_\+validfd@{sh\+\_\+validfd}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{sh\+\_\+validfd(int fd)}{sh_validfd(int fd)}}]{\setlength{\rightskip}{0pt plus 5cm}int sh\+\_\+validfd (
+\begin{DoxyParamCaption}
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_af0b8a3b83755241f88043a9e180a57db}{}\label{general_8c_af0b8a3b83755241f88043a9e180a57db}
+\index{general.\+c@{general.\+c}!string\+\_\+to\+\_\+rlimtype@{string\+\_\+to\+\_\+rlimtype}}
+\index{string\+\_\+to\+\_\+rlimtype@{string\+\_\+to\+\_\+rlimtype}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{string\+\_\+to\+\_\+rlimtype(char $\ast$s)}{string_to_rlimtype(char *s)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+L\+I\+M\+T\+Y\+PE} string\+\_\+to\+\_\+rlimtype (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a0b9e1fc3dc9b36e7f169b0db95e4a77f}{}\label{general_8c_a0b9e1fc3dc9b36e7f169b0db95e4a77f}
+\index{general.\+c@{general.\+c}!tilde\+\_\+initialize@{tilde\+\_\+initialize}}
+\index{tilde\+\_\+initialize@{tilde\+\_\+initialize}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{tilde\+\_\+initialize()}{tilde_initialize()}}]{\setlength{\rightskip}{0pt plus 5cm}void tilde\+\_\+initialize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a4e5d56d2cb8f303e5fc9cc2a64f7bd0e}{}\label{general_8c_a4e5d56d2cb8f303e5fc9cc2a64f7bd0e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a4e5d56d2cb8f303e5fc9cc2a64f7bd0e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!trim\+\_\+pathname@{trim\+\_\+pathname}}
+\index{trim\+\_\+pathname@{trim\+\_\+pathname}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{trim\+\_\+pathname(char $\ast$name, int maxlen)}{trim_pathname(char *name, int maxlen)}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ trim\+\_\+pathname (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{int}]{maxlen}
+\end{DoxyParamCaption}
+)}\hypertarget{general_8c_a22060b312152e10775c9632128c88501}{}\label{general_8c_a22060b312152e10775c9632128c88501}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a22060b312152e10775c9632128c88501_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{general.\+c@{general.\+c}!unquoted\+\_\+tilde\+\_\+word@{unquoted\+\_\+tilde\+\_\+word}}
+\index{unquoted\+\_\+tilde\+\_\+word@{unquoted\+\_\+tilde\+\_\+word}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{unquoted\+\_\+tilde\+\_\+word(char $\ast$s) const}{unquoted_tilde_word(char *s) const}}]{\setlength{\rightskip}{0pt plus 5cm}static int unquoted\+\_\+tilde\+\_\+word (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{s}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_a2fbbd07cc3acd2a78428354178cc4074}{}\label{general_8c_a2fbbd07cc3acd2a78428354178cc4074}
+\index{general.\+c@{general.\+c}!valid\+\_\+nameref\+\_\+value@{valid\+\_\+nameref\+\_\+value}}
+\index{valid\+\_\+nameref\+\_\+value@{valid\+\_\+nameref\+\_\+value}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{valid\+\_\+nameref\+\_\+value(char $\ast$name, int flags) const}{valid_nameref_value(char *name, int flags) const}}]{\setlength{\rightskip}{0pt plus 5cm}int valid\+\_\+nameref\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{name, }
+\item[{int}]{flags}
+\end{DoxyParamCaption}
+) const}\hypertarget{general_8c_a1fc62854f5e53e63b92e72acb847d088}{}\label{general_8c_a1fc62854f5e53e63b92e72acb847d088}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{general_8c_a1fc62854f5e53e63b92e72acb847d088_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{general.\+c@{general.\+c}!bash\+\_\+getcwd\+\_\+errstr@{bash\+\_\+getcwd\+\_\+errstr}}
+\index{bash\+\_\+getcwd\+\_\+errstr@{bash\+\_\+getcwd\+\_\+errstr}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+getcwd\+\_\+errstr}{bash_getcwd_errstr}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ const bash\+\_\+getcwd\+\_\+errstr = {\bf N\+\_\+}(\char`\"{}getcwd\+: cannot access parent directories\char`\"{})}\hypertarget{general_8c_a18b853a5d17c4e5095221485d0c737cf}{}\label{general_8c_a18b853a5d17c4e5095221485d0c737cf}
+\index{general.\+c@{general.\+c}!bash\+\_\+tilde\+\_\+prefixes@{bash\+\_\+tilde\+\_\+prefixes}}
+\index{bash\+\_\+tilde\+\_\+prefixes@{bash\+\_\+tilde\+\_\+prefixes}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+tilde\+\_\+prefixes}{bash_tilde_prefixes}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ bash\+\_\+tilde\+\_\+prefixes\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_a9862ca46a49662bdb7067265e7810d0e}{}\label{general_8c_a9862ca46a49662bdb7067265e7810d0e}
+\index{general.\+c@{general.\+c}!bash\+\_\+tilde\+\_\+prefixes2@{bash\+\_\+tilde\+\_\+prefixes2}}
+\index{bash\+\_\+tilde\+\_\+prefixes2@{bash\+\_\+tilde\+\_\+prefixes2}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+tilde\+\_\+prefixes2}{bash_tilde_prefixes2}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ bash\+\_\+tilde\+\_\+prefixes2\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_aea55acdd1148d5e3bf5282489b3c6e02}{}\label{general_8c_aea55acdd1148d5e3bf5282489b3c6e02}
+\index{general.\+c@{general.\+c}!bash\+\_\+tilde\+\_\+suffixes@{bash\+\_\+tilde\+\_\+suffixes}}
+\index{bash\+\_\+tilde\+\_\+suffixes@{bash\+\_\+tilde\+\_\+suffixes}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+tilde\+\_\+suffixes}{bash_tilde_suffixes}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ bash\+\_\+tilde\+\_\+suffixes\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_a90a7ac18d7b5da8fcd087447748ff4fc}{}\label{general_8c_a90a7ac18d7b5da8fcd087447748ff4fc}
+\index{general.\+c@{general.\+c}!bash\+\_\+tilde\+\_\+suffixes2@{bash\+\_\+tilde\+\_\+suffixes2}}
+\index{bash\+\_\+tilde\+\_\+suffixes2@{bash\+\_\+tilde\+\_\+suffixes2}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+tilde\+\_\+suffixes2}{bash_tilde_suffixes2}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ bash\+\_\+tilde\+\_\+suffixes2\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_a8ce35ba385612cd78e2a8fd4b20bfed9}{}\label{general_8c_a8ce35ba385612cd78e2a8fd4b20bfed9}
+\index{general.\+c@{general.\+c}!errno@{errno}}
+\index{errno@{errno}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{errno}{errno}}]{\setlength{\rightskip}{0pt plus 5cm}int errno}\hypertarget{general_8c_ad65a8842cc674e3ddf69355898c0ecbf}{}\label{general_8c_ad65a8842cc674e3ddf69355898c0ecbf}
+\index{general.\+c@{general.\+c}!group\+\_\+array@{group\+\_\+array}}
+\index{group\+\_\+array@{group\+\_\+array}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{group\+\_\+array}{group_array}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+E\+T\+G\+R\+O\+U\+P\+S\+\_\+T}$\ast$ group\+\_\+array = ({\bf G\+E\+T\+G\+R\+O\+U\+P\+S\+\_\+T} $\ast$){\bf N\+U\+LL}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_a132f32fe7e56c1c2fca5f5633822773e}{}\label{general_8c_a132f32fe7e56c1c2fca5f5633822773e}
+\index{general.\+c@{general.\+c}!maxgroups@{maxgroups}}
+\index{maxgroups@{maxgroups}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{maxgroups}{maxgroups}}]{\setlength{\rightskip}{0pt plus 5cm}int maxgroups\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_a5035bba02de871563287114035c95a0f}{}\label{general_8c_a5035bba02de871563287114035c95a0f}
+\index{general.\+c@{general.\+c}!ngroups@{ngroups}}
+\index{ngroups@{ngroups}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{ngroups}{ngroups}}]{\setlength{\rightskip}{0pt plus 5cm}int ngroups\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_ae5dcb44242d12656bf1a5945b165aebc}{}\label{general_8c_ae5dcb44242d12656bf1a5945b165aebc}
+\index{general.\+c@{general.\+c}!posix\+\_\+mode\+\_\+var@{posix\+\_\+mode\+\_\+var}}
+\index{posix\+\_\+mode\+\_\+var@{posix\+\_\+mode\+\_\+var}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{posix\+\_\+mode\+\_\+var}{posix_mode_var}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ posix\+\_\+mode\+\_\+var}\hypertarget{general_8c_a5b8033fb4a7ba4323f6cae871869782e}{}\label{general_8c_a5b8033fb4a7ba4323f6cae871869782e}
+\index{general.\+c@{general.\+c}!posix\+\_\+vars@{posix\+\_\+vars}}
+\index{posix\+\_\+vars@{posix\+\_\+vars}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{posix\+\_\+vars}{posix_vars}}]{\setlength{\rightskip}{0pt plus 5cm}struct \{ ... \}   posix\+\_\+vars\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_a33c35871294aab6af5a27208e63b350f}{}\label{general_8c_a33c35871294aab6af5a27208e63b350f}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= 
+\{
+  &\hyperlink{flags_8c_a193cf389beaaa21326a2a8047fc5a7f6}{interactive\_comments},
+  &source\_uses\_path,
+  &\hyperlink{parser_8h_a7f8a254149285ae8961a2061787c04f8}{expand\_aliases},
+  &\hyperlink{subst_8c_a7d4df0349f3e066a2baa6ebcb8fbfc00}{inherit\_errexit},
+  &print\_shift\_error,
+  0
+\}
+\end{DoxyCode}
+\index{general.\+c@{general.\+c}!tdir@{tdir}}
+\index{tdir@{tdir}!general.\+c@{general.\+c}}
+\subsubsection[{\texorpdfstring{tdir}{tdir}}]{\setlength{\rightskip}{0pt plus 5cm}char tdir\mbox{[}P\+A\+T\+H\+\_\+\+M\+AX\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{general_8c_a5fa1b184d4d06d8f17ccd9ac6bca3586}{}\label{general_8c_a5fa1b184d4d06d8f17ccd9ac6bca3586}

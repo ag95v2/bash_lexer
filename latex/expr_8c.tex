@@ -1,0 +1,1103 @@
+\hypertarget{expr_8c}{}\section{expr.\+c File Reference}
+\label{expr_8c}\index{expr.\+c@{expr.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}chartypes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}arrayfunc.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}execute\+\_\+cmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}flags.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}subst.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}typemax.\+h\char`\"{}}\\*
+Include dependency graph for expr.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structlvalue}{lvalue}
+\item 
+struct \hyperlink{structEXPR__CONTEXT}{E\+X\+P\+R\+\_\+\+C\+O\+N\+T\+E\+XT}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{expr_8c_a04b53d3a9fa07e96ca8fec139b817bbc}{cr\+\_\+whitespace}(c)~(\hyperlink{general_8h_a6a8878e323ddb4bf57b7c9db293b3fd6}{whitespace}(c) $\vert$$\vert$ ((c) == \textquotesingle{}\textbackslash{}n\textquotesingle{}))
+\item 
+\#define \hyperlink{expr_8c_aff4ce2c9a1dc3c2b2ff6f0cb8b9721a9}{E\+X\+P\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+G\+R\+O\+W\+\_\+\+S\+I\+ZE}~10
+\item 
+\#define \hyperlink{expr_8c_a6a712ee227860f3394af95185bdb9377}{M\+A\+X\+\_\+\+E\+X\+P\+R\+\_\+\+R\+E\+C\+U\+R\+S\+I\+O\+N\+\_\+\+L\+E\+V\+EL}~1024
+\item 
+\#define \hyperlink{expr_8c_a0a580632390bd1a0652d3ceaca567324}{E\+Q\+EQ}~1	/$\ast$ \char`\"{}==\char`\"{} $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a2b6ba3ea1fe3e8cc970ad05cd05d703b}{N\+EQ}~2	/$\ast$ \char`\"{}!=\char`\"{} $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a09a442c77eb5aa8256ff65117f529e18}{L\+EQ}~3	/$\ast$ \char`\"{}$<$=\char`\"{} $\ast$/
+\item 
+\#define \hyperlink{expr_8c_aa3f6df19cd1472f7600ebaf78a8d9fb8}{G\+EQ}~4	/$\ast$ \char`\"{}$>$=\char`\"{} $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a87f23f9d76e3a2d5658da8dae25f38c4}{S\+TR}~5	/$\ast$ string $\ast$/
+\item 
+\#define \hyperlink{expr_8c_aaf0952059602752258dccaa015d7b54a}{N\+UM}~6	/$\ast$ number $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a8e46a68b2e887e05d235781f5c40d68e}{L\+A\+ND}~7	/$\ast$ \char`\"{}\&\&\char`\"{} Logical A\+ND $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a9f45d1c2faccca6ad5f6a8c4a8b2e597}{L\+OR}~8	/$\ast$ \char`\"{}$\vert$$\vert$\char`\"{} Logical OR $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a6470b5517d6c0de41301e38e36632160}{L\+SH}~9	/$\ast$ \char`\"{}$<$$<$\char`\"{} Left S\+Hift $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a2767d35fa5b743df792b05f3b223b350}{R\+SH}~10	/$\ast$ \char`\"{}$>$$>$\char`\"{} Right S\+Hift $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a58a569495ac1e4285fe881d6a7f8035c}{O\+P\+\_\+\+A\+S\+S\+I\+GN}~11	/$\ast$ op= \hyperlink{expr_8c_a0eef2ebbb6dd4dcb5cc792e905836bf3}{expassign} as in Posix.\+2 $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a76019e0b0719452e312ad2ab070a0669}{C\+O\+ND}~12	/$\ast$ \hyperlink{expr_8c_adb9fff8c5d2a520f542b0a21592181da}{exp1} ? exp2 \+: \hyperlink{expr_8c_a72f0339429af4ce10724eab3efa11027}{exp3} $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a0d5e23bac60070676b465522a140f5c7}{P\+O\+W\+ER}~13	/$\ast$ \hyperlink{expr_8c_adb9fff8c5d2a520f542b0a21592181da}{exp1}$\ast$$\ast$exp2 $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a72f054e473ebbee6d292631710a8b7fe}{P\+R\+E\+I\+NC}~14	/$\ast$ ++var $\ast$/
+\item 
+\#define \hyperlink{expr_8c_ac4b01d043314d1b0051c8a886ad6697d}{P\+R\+E\+D\+EC}~15	/$\ast$ -\/-\/var $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a7f26909009a1bb23fb207c2bbf99ba88}{P\+O\+S\+T\+I\+NC}~16	/$\ast$ var++ $\ast$/
+\item 
+\#define \hyperlink{expr_8c_abb26b4ca54d5193569c4efcb7a901301}{P\+O\+S\+T\+D\+EC}~17	/$\ast$ var-\/-\/ $\ast$/
+\item 
+\#define \hyperlink{expr_8c_abaab8d42f075ee8ddc9b70951d3fd6cd}{EQ}~\textquotesingle{}=\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_ab89310b3f2f97e4e9415fc5a51549612}{GT}~\textquotesingle{}$>$\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_aaf56b99cbe34023f42ce5b7878c827d8}{LT}~\textquotesingle{}$<$\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_a0ea7ff5947c5f5430a29fdd98391eb2a}{P\+L\+US}~\textquotesingle{}+\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_a5381a445a1e4bdc36460151d82eed95a}{M\+I\+N\+US}~\textquotesingle{}-\/\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_ab7aff04ad21c86032dee3b2012ad6126}{M\+UL}~\textquotesingle{}$\ast$\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_a8295e0aed07a8923d8363ce46c7b08e2}{D\+IV}~\textquotesingle{}/\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_aca7d5718ab8c38506adb3bef2469b319}{M\+OD}~\textquotesingle{}\%\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_ad3e9fe0ec59d2dbb3982ababa042720c}{N\+OT}~\textquotesingle{}!\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_a48ea1fc2fe2e898c390f7f425b280ea8}{L\+P\+AR}~\textquotesingle{}(\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_a5e78e592b96d384fb9f910870af69cb0}{R\+P\+AR}~\textquotesingle{})\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_ab57e5c97e5d788f048284f1175c757b7}{B\+A\+ND}~\textquotesingle{}\&\textquotesingle{}	/$\ast$ Bitwise A\+ND $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a6c788a1f6152a38d6f992e260eeed9f0}{B\+OR}~\textquotesingle{}$\vert$\textquotesingle{}	/$\ast$ Bitwise O\+R. $\ast$/
+\item 
+\#define \hyperlink{expr_8c_ad6c1643771fd1580d0c82ed66110c16a}{B\+X\+OR}~\textquotesingle{}$^\wedge$\textquotesingle{}	/$\ast$ Bitwise e\+Xclusive O\+R. $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a8b44657eb037a8f2f34fd10459d31003}{B\+N\+OT}~\textquotesingle{}$\sim$\textquotesingle{}	/$\ast$ Bitwise \hyperlink{expr_8c_ad3e9fe0ec59d2dbb3982ababa042720c}{N\+OT}; Two\textquotesingle{}s complement. $\ast$/
+\item 
+\#define \hyperlink{expr_8c_a824d8a3cb13d4106028ec7e571a68250}{Q\+U\+ES}~\textquotesingle{}?\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_ab00f2b8e8bad4307cf0775a5520cf663}{C\+OL}~\textquotesingle{}\+:\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_aa2f49001be13949a16a57e6c99ab00ad}{C\+O\+M\+MA}~\textquotesingle{},\textquotesingle{}
+\item 
+\#define \hyperlink{expr_8c_a876fded66c0d970748b388da9967790d}{E\+X\+P\+\_\+\+H\+I\+G\+H\+E\+ST}~\hyperlink{expr_8c_a66b31ebbd7204cbbb829d6eb8874cfc4}{expcomma}
+\item 
+\#define \hyperlink{expr_8c_a07751a70c542c04b0be29412ef6347d1}{M\+A\+X\+\_\+\+I\+N\+T\+\_\+\+L\+EN}~32
+\item 
+\#define \hyperlink{expr_8c_a4f516c365664ccb6d0b8dfe3aebc5d11}{S\+A\+V\+E\+T\+OK}(X)
+\item 
+\#define \hyperlink{expr_8c_acb2b07d1929f05ed4561e59fc2f74c0c}{R\+E\+S\+T\+O\+R\+E\+T\+OK}(X)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{expr_8c_aec09ad94fe705771bc6f2e65f478a5d3}{\+\_\+is\+\_\+arithop} \hyperlink{expr_8c_ae3e6fbde5c4ddde851eff4f29a8f5498}{\+\_\+\+\_\+P} ((int))
+\item 
+static void \hyperlink{expr_8c_a7d824e228995047bb1c2ed17a88c32d5}{readtok} \hyperlink{expr_8c_a062ac8dd4d1425de8e618c12ae231667}{\+\_\+\+\_\+P} ((void))
+\item 
+static void \hyperlink{expr_8c_a84407d1bc22483f5f0c042bc7b4cc523}{init\+\_\+lvalue} \hyperlink{expr_8c_ab5def24324c5b097558059534e8a7e45}{\+\_\+\+\_\+P} ((struct \hyperlink{structlvalue}{lvalue} $\ast$))
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a7042f4b92b122a66891230520fd12aa1}{expr\+\_\+streval} \hyperlink{expr_8c_ae95e793231f322f08c9b1182791baa45}{\+\_\+\+\_\+P} ((char $\ast$, int, struct \hyperlink{structlvalue}{lvalue} $\ast$))
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a1d6da8fd606c1cfe2fd50d3ed65a85a5}{strlong} \hyperlink{expr_8c_a45b1937b0174796545d7778e12ec9e2f}{\+\_\+\+\_\+P} ((char $\ast$))
+\item 
+static void \hyperlink{expr_8c_ad212d1528f1dbcd8392a2ffe66dc3a4b}{evalerror} \hyperlink{expr_8c_a4e83481061b910bc29836991a396ddd5}{\+\_\+\+\_\+P} ((const char $\ast$))
+\item 
+static void \hyperlink{expr_8c_a32c830a87458e98c11d28ff868a804f2}{expr\+\_\+bind\+\_\+variable} \hyperlink{expr_8c_aea458a3f857aabaf27c7c7b8cb2fc5fd}{\+\_\+\+\_\+P} ((char $\ast$, char $\ast$))
+\item 
+static void \hyperlink{expr_8c_a2aa10f8d36dee0354e66c6ede8b2b7d8}{expr\+\_\+bind\+\_\+array\+\_\+element} \hyperlink{expr_8c_a5d5afd1020d5514c0de1318dd74b5bd7}{\+\_\+\+\_\+P} ((char $\ast$, \hyperlink{array_8h_a3672e3c5b95dde98c9ed75ac7c1e6d60}{arrayind\+\_\+t}, char $\ast$))
+\item 
+static void \hyperlink{expr_8c_a9f83b934ef3add1078adb020a47383b1}{pushexp} ()
+\item 
+static void \hyperlink{expr_8c_aa652fc29931fad4d466a20f9ea317528}{popexp} ()
+\item 
+static void \hyperlink{expr_8c_ad5184984eeb4169bb2e0b827097022ac}{expr\+\_\+unwind} ()
+\item 
+static void \hyperlink{expr_8c_a32c830a87458e98c11d28ff868a804f2}{expr\+\_\+bind\+\_\+variable} (char $\ast$lhs, char $\ast$rhs)
+\item 
+static int \hyperlink{expr_8c_a6f14eef0d8233dbf9412d316d45ec139}{expr\+\_\+skipsubscript} (char $\ast$vp, char $\ast$cp)
+\item 
+static void \hyperlink{expr_8c_a2aa10f8d36dee0354e66c6ede8b2b7d8}{expr\+\_\+bind\+\_\+array\+\_\+element} (char $\ast$tok, \hyperlink{array_8h_a3672e3c5b95dde98c9ed75ac7c1e6d60}{arrayind\+\_\+t} ind, char $\ast$rhs)
+\item 
+intmax\+\_\+t \hyperlink{expr_8c_ab9b32ed3c0339ae19b5e1e625add9ad9}{evalexp} (char $\ast$\hyperlink{test_8c_afe50dfaccb7a06efec0dcef7519e8ed7}{expr}, int flags, int $\ast$validp)
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a108c3ca190a150962cff2fae3fd29ef2}{subexpr} (char $\ast$\hyperlink{test_8c_afe50dfaccb7a06efec0dcef7519e8ed7}{expr})
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a66b31ebbd7204cbbb829d6eb8874cfc4}{expcomma} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a0eef2ebbb6dd4dcb5cc792e905836bf3}{expassign} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a302dc8d18c5805ef46d37b0dfb79146f}{expcond} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a157924170dca17c6b1013c6beeb403de}{explor} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a27fa6ffa04d057cde75fe8acaaead393}{expland} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_aed61052b1cb1e2439410daa5397e435e}{expbor} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a87685fc5c1beadd4b3889393a180c003}{expbxor} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a7243fabf2b9eafd31b9229942677fc68}{expband} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a533eee403706f1d66439c7cb3be7258d}{exp5} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a3cfbacc76dd292bb3485f1f183f9fd24}{exp4} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a187e198f452cb8d23b272ef7db8dc516}{expshift} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a72f0339429af4ce10724eab3efa11027}{exp3} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_ab1b6141a775fb0cd237b2bb7097c3842}{expmuldiv} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a995e9b79080e732edd6cdb7734931c01}{ipow} (intmax\+\_\+t base, intmax\+\_\+t exp)
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a2225ae04944e6e85a42f1a860d605c68}{exppower} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_adb9fff8c5d2a520f542b0a21592181da}{exp1} ()
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a1135d4b4fce4f73d356c904ec4f516a8}{exp0} ()
+\item 
+static void \hyperlink{expr_8c_a84407d1bc22483f5f0c042bc7b4cc523}{init\+\_\+lvalue} (struct \hyperlink{structlvalue}{lvalue} $\ast$lv)
+\item 
+static struct \hyperlink{structlvalue}{lvalue} $\ast$ \hyperlink{expr_8c_a9ac43f300c847d683c97e7cebb6c56f1}{alloc\+\_\+lvalue} ()
+\item 
+static void \hyperlink{expr_8c_a30ba6940b182c017f089fefcb026863f}{free\+\_\+lvalue} (struct \hyperlink{structlvalue}{lvalue} $\ast$lv)
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a7042f4b92b122a66891230520fd12aa1}{expr\+\_\+streval} (char $\ast$tok, int e, struct \hyperlink{structlvalue}{lvalue} $\ast$\hyperlink{structlvalue}{lvalue})
+\item 
+static int \hyperlink{expr_8c_a27124e24f78bbe09a7baff37bf6ea1f4}{\+\_\+is\+\_\+multiop} (int c)
+\item 
+static int \hyperlink{expr_8c_aec09ad94fe705771bc6f2e65f478a5d3}{\+\_\+is\+\_\+arithop} (int c)
+\item 
+static void \hyperlink{expr_8c_a7d824e228995047bb1c2ed17a88c32d5}{readtok} ()
+\item 
+static void \hyperlink{expr_8c_ad212d1528f1dbcd8392a2ffe66dc3a4b}{evalerror} (char $\ast$msg) const
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a1d6da8fd606c1cfe2fd50d3ed65a85a5}{strlong} (char $\ast$num)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static char $\ast$ \hyperlink{expr_8c_a9db6e8ed664bd315265a603bb764e032}{expression}
+\item 
+static char $\ast$ \hyperlink{expr_8c_a48eb585a5cc3f2f35661183d9e54a87b}{tp}
+\item 
+static char $\ast$ \hyperlink{expr_8c_a3e33b2b838f0b4e8292110b4aff0ff47}{lasttp}
+\item 
+static int \hyperlink{expr_8c_af8a8494bad999db6122a894636051fbb}{curtok}
+\item 
+static int \hyperlink{expr_8c_ac19535597cbc28a389c9a201caedc428}{lasttok}
+\item 
+static int \hyperlink{expr_8c_a427dabbe6e0112c32b0610cc1e98b1c0}{assigntok}
+\item 
+static char $\ast$ \hyperlink{expr_8c_a969b397593aa51a6a27fc04d3b74a29c}{tokstr}
+\item 
+static intmax\+\_\+t \hyperlink{expr_8c_a1fe9a6d3842312b057f39d5357d27f8a}{tokval}
+\item 
+static int \hyperlink{expr_8c_ad34c2f048482e74a3106939b8866875b}{noeval}
+\item 
+static procenv\+\_\+t \hyperlink{expr_8c_a9b8d69b13f91400db4fdbc85e086f070}{evalbuf}
+\item 
+static int \hyperlink{expr_8c_a4db1a49fe0be13f2ffde35fde23faaff}{already\+\_\+expanded}
+\item 
+static struct \hyperlink{structlvalue}{lvalue} \hyperlink{expr_8c_a86593f91141a2527627dc7746929a253}{curlval} = \{0, 0, 0, -\/1\}
+\item 
+static struct \hyperlink{structlvalue}{lvalue} \hyperlink{expr_8c_a17359e57bd923c9cd17581c4e22e4fa5}{lastlval} = \{0, 0, 0, -\/1\}
+\item 
+static \hyperlink{structEXPR__CONTEXT}{E\+X\+P\+R\+\_\+\+C\+O\+N\+T\+E\+XT} $\ast$$\ast$ \hyperlink{expr_8c_a3530d9efe2b40e837e1469a4a2995ddc}{expr\+\_\+stack}
+\item 
+static int \hyperlink{expr_8c_ab549821acc8213d14cffbd29947b28ae}{expr\+\_\+depth}
+\item 
+static int \hyperlink{expr_8c_afc6415aa5f2518220733d1e4805e1966}{expr\+\_\+stack\+\_\+size}
+\item 
+const char $\ast$const \hyperlink{expr_8c_ad07db73af4336afc471825c9d2126c16}{bash\+\_\+badsub\+\_\+errmsg}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{expr.\+c@{expr.\+c}!B\+A\+ND@{B\+A\+ND}}
+\index{B\+A\+ND@{B\+A\+ND}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{B\+A\+ND}{BAND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+ND~\textquotesingle{}\&\textquotesingle{}	/$\ast$ Bitwise A\+ND $\ast$/}\hypertarget{expr_8c_ab57e5c97e5d788f048284f1175c757b7}{}\label{expr_8c_ab57e5c97e5d788f048284f1175c757b7}
+\index{expr.\+c@{expr.\+c}!B\+N\+OT@{B\+N\+OT}}
+\index{B\+N\+OT@{B\+N\+OT}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{B\+N\+OT}{BNOT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+N\+OT~\textquotesingle{}$\sim$\textquotesingle{}	/$\ast$ Bitwise {\bf N\+OT}; Two\textquotesingle{}s complement. $\ast$/}\hypertarget{expr_8c_a8b44657eb037a8f2f34fd10459d31003}{}\label{expr_8c_a8b44657eb037a8f2f34fd10459d31003}
+\index{expr.\+c@{expr.\+c}!B\+OR@{B\+OR}}
+\index{B\+OR@{B\+OR}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{B\+OR}{BOR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+OR~\textquotesingle{}$\vert$\textquotesingle{}	/$\ast$ Bitwise O\+R. $\ast$/}\hypertarget{expr_8c_a6c788a1f6152a38d6f992e260eeed9f0}{}\label{expr_8c_a6c788a1f6152a38d6f992e260eeed9f0}
+\index{expr.\+c@{expr.\+c}!B\+X\+OR@{B\+X\+OR}}
+\index{B\+X\+OR@{B\+X\+OR}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{B\+X\+OR}{BXOR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+X\+OR~\textquotesingle{}$^\wedge$\textquotesingle{}	/$\ast$ Bitwise e\+Xclusive O\+R. $\ast$/}\hypertarget{expr_8c_ad6c1643771fd1580d0c82ed66110c16a}{}\label{expr_8c_ad6c1643771fd1580d0c82ed66110c16a}
+\index{expr.\+c@{expr.\+c}!C\+OL@{C\+OL}}
+\index{C\+OL@{C\+OL}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{C\+OL}{COL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+OL~\textquotesingle{}\+:\textquotesingle{}}\hypertarget{expr_8c_ab00f2b8e8bad4307cf0775a5520cf663}{}\label{expr_8c_ab00f2b8e8bad4307cf0775a5520cf663}
+\index{expr.\+c@{expr.\+c}!C\+O\+M\+MA@{C\+O\+M\+MA}}
+\index{C\+O\+M\+MA@{C\+O\+M\+MA}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{C\+O\+M\+MA}{COMMA}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+M\+MA~\textquotesingle{},\textquotesingle{}}\hypertarget{expr_8c_aa2f49001be13949a16a57e6c99ab00ad}{}\label{expr_8c_aa2f49001be13949a16a57e6c99ab00ad}
+\index{expr.\+c@{expr.\+c}!C\+O\+ND@{C\+O\+ND}}
+\index{C\+O\+ND@{C\+O\+ND}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{C\+O\+ND}{COND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+ND~12	/$\ast$ {\bf exp1} ? exp2 \+: {\bf exp3} $\ast$/}\hypertarget{expr_8c_a76019e0b0719452e312ad2ab070a0669}{}\label{expr_8c_a76019e0b0719452e312ad2ab070a0669}
+\index{expr.\+c@{expr.\+c}!cr\+\_\+whitespace@{cr\+\_\+whitespace}}
+\index{cr\+\_\+whitespace@{cr\+\_\+whitespace}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{cr\+\_\+whitespace}{cr_whitespace}}]{\setlength{\rightskip}{0pt plus 5cm}\#define cr\+\_\+whitespace(
+\begin{DoxyParamCaption}
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~({\bf whitespace}(c) $\vert$$\vert$ ((c) == \textquotesingle{}\textbackslash{}n\textquotesingle{}))}\hypertarget{expr_8c_a04b53d3a9fa07e96ca8fec139b817bbc}{}\label{expr_8c_a04b53d3a9fa07e96ca8fec139b817bbc}
+\index{expr.\+c@{expr.\+c}!D\+IV@{D\+IV}}
+\index{D\+IV@{D\+IV}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{D\+IV}{DIV}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+IV~\textquotesingle{}/\textquotesingle{}}\hypertarget{expr_8c_a8295e0aed07a8923d8363ce46c7b08e2}{}\label{expr_8c_a8295e0aed07a8923d8363ce46c7b08e2}
+\index{expr.\+c@{expr.\+c}!EQ@{EQ}}
+\index{EQ@{EQ}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{EQ}{EQ}}]{\setlength{\rightskip}{0pt plus 5cm}\#define EQ~\textquotesingle{}=\textquotesingle{}}\hypertarget{expr_8c_abaab8d42f075ee8ddc9b70951d3fd6cd}{}\label{expr_8c_abaab8d42f075ee8ddc9b70951d3fd6cd}
+\index{expr.\+c@{expr.\+c}!E\+Q\+EQ@{E\+Q\+EQ}}
+\index{E\+Q\+EQ@{E\+Q\+EQ}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{E\+Q\+EQ}{EQEQ}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+Q\+EQ~1	/$\ast$ \char`\"{}==\char`\"{} $\ast$/}\hypertarget{expr_8c_a0a580632390bd1a0652d3ceaca567324}{}\label{expr_8c_a0a580632390bd1a0652d3ceaca567324}
+\index{expr.\+c@{expr.\+c}!E\+X\+P\+\_\+\+H\+I\+G\+H\+E\+ST@{E\+X\+P\+\_\+\+H\+I\+G\+H\+E\+ST}}
+\index{E\+X\+P\+\_\+\+H\+I\+G\+H\+E\+ST@{E\+X\+P\+\_\+\+H\+I\+G\+H\+E\+ST}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{E\+X\+P\+\_\+\+H\+I\+G\+H\+E\+ST}{EXP_HIGHEST}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+P\+\_\+\+H\+I\+G\+H\+E\+ST~{\bf expcomma}}\hypertarget{expr_8c_a876fded66c0d970748b388da9967790d}{}\label{expr_8c_a876fded66c0d970748b388da9967790d}
+\index{expr.\+c@{expr.\+c}!E\+X\+P\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+G\+R\+O\+W\+\_\+\+S\+I\+ZE@{E\+X\+P\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+G\+R\+O\+W\+\_\+\+S\+I\+ZE}}
+\index{E\+X\+P\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+G\+R\+O\+W\+\_\+\+S\+I\+ZE@{E\+X\+P\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+G\+R\+O\+W\+\_\+\+S\+I\+ZE}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{E\+X\+P\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+G\+R\+O\+W\+\_\+\+S\+I\+ZE}{EXPR_STACK_GROW_SIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+P\+R\+\_\+\+S\+T\+A\+C\+K\+\_\+\+G\+R\+O\+W\+\_\+\+S\+I\+ZE~10}\hypertarget{expr_8c_aff4ce2c9a1dc3c2b2ff6f0cb8b9721a9}{}\label{expr_8c_aff4ce2c9a1dc3c2b2ff6f0cb8b9721a9}
+\index{expr.\+c@{expr.\+c}!G\+EQ@{G\+EQ}}
+\index{G\+EQ@{G\+EQ}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{G\+EQ}{GEQ}}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+EQ~4	/$\ast$ \char`\"{}$>$=\char`\"{} $\ast$/}\hypertarget{expr_8c_aa3f6df19cd1472f7600ebaf78a8d9fb8}{}\label{expr_8c_aa3f6df19cd1472f7600ebaf78a8d9fb8}
+\index{expr.\+c@{expr.\+c}!GT@{GT}}
+\index{GT@{GT}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{GT}{GT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define GT~\textquotesingle{}$>$\textquotesingle{}}\hypertarget{expr_8c_ab89310b3f2f97e4e9415fc5a51549612}{}\label{expr_8c_ab89310b3f2f97e4e9415fc5a51549612}
+\index{expr.\+c@{expr.\+c}!L\+A\+ND@{L\+A\+ND}}
+\index{L\+A\+ND@{L\+A\+ND}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{L\+A\+ND}{LAND}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+A\+ND~7	/$\ast$ \char`\"{}\&\&\char`\"{} Logical A\+ND $\ast$/}\hypertarget{expr_8c_a8e46a68b2e887e05d235781f5c40d68e}{}\label{expr_8c_a8e46a68b2e887e05d235781f5c40d68e}
+\index{expr.\+c@{expr.\+c}!L\+EQ@{L\+EQ}}
+\index{L\+EQ@{L\+EQ}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{L\+EQ}{LEQ}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+EQ~3	/$\ast$ \char`\"{}$<$=\char`\"{} $\ast$/}\hypertarget{expr_8c_a09a442c77eb5aa8256ff65117f529e18}{}\label{expr_8c_a09a442c77eb5aa8256ff65117f529e18}
+\index{expr.\+c@{expr.\+c}!L\+OR@{L\+OR}}
+\index{L\+OR@{L\+OR}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{L\+OR}{LOR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+OR~8	/$\ast$ \char`\"{}$\vert$$\vert$\char`\"{} Logical OR $\ast$/}\hypertarget{expr_8c_a9f45d1c2faccca6ad5f6a8c4a8b2e597}{}\label{expr_8c_a9f45d1c2faccca6ad5f6a8c4a8b2e597}
+\index{expr.\+c@{expr.\+c}!L\+P\+AR@{L\+P\+AR}}
+\index{L\+P\+AR@{L\+P\+AR}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{L\+P\+AR}{LPAR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+P\+AR~\textquotesingle{}(\textquotesingle{}}\hypertarget{expr_8c_a48ea1fc2fe2e898c390f7f425b280ea8}{}\label{expr_8c_a48ea1fc2fe2e898c390f7f425b280ea8}
+\index{expr.\+c@{expr.\+c}!L\+SH@{L\+SH}}
+\index{L\+SH@{L\+SH}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{L\+SH}{LSH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+SH~9	/$\ast$ \char`\"{}$<$$<$\char`\"{} Left S\+Hift $\ast$/}\hypertarget{expr_8c_a6470b5517d6c0de41301e38e36632160}{}\label{expr_8c_a6470b5517d6c0de41301e38e36632160}
+\index{expr.\+c@{expr.\+c}!LT@{LT}}
+\index{LT@{LT}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{LT}{LT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define LT~\textquotesingle{}$<$\textquotesingle{}}\hypertarget{expr_8c_aaf56b99cbe34023f42ce5b7878c827d8}{}\label{expr_8c_aaf56b99cbe34023f42ce5b7878c827d8}
+\index{expr.\+c@{expr.\+c}!M\+A\+X\+\_\+\+E\+X\+P\+R\+\_\+\+R\+E\+C\+U\+R\+S\+I\+O\+N\+\_\+\+L\+E\+V\+EL@{M\+A\+X\+\_\+\+E\+X\+P\+R\+\_\+\+R\+E\+C\+U\+R\+S\+I\+O\+N\+\_\+\+L\+E\+V\+EL}}
+\index{M\+A\+X\+\_\+\+E\+X\+P\+R\+\_\+\+R\+E\+C\+U\+R\+S\+I\+O\+N\+\_\+\+L\+E\+V\+EL@{M\+A\+X\+\_\+\+E\+X\+P\+R\+\_\+\+R\+E\+C\+U\+R\+S\+I\+O\+N\+\_\+\+L\+E\+V\+EL}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+X\+\_\+\+E\+X\+P\+R\+\_\+\+R\+E\+C\+U\+R\+S\+I\+O\+N\+\_\+\+L\+E\+V\+EL}{MAX_EXPR_RECURSION_LEVEL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+E\+X\+P\+R\+\_\+\+R\+E\+C\+U\+R\+S\+I\+O\+N\+\_\+\+L\+E\+V\+EL~1024}\hypertarget{expr_8c_a6a712ee227860f3394af95185bdb9377}{}\label{expr_8c_a6a712ee227860f3394af95185bdb9377}
+\index{expr.\+c@{expr.\+c}!M\+A\+X\+\_\+\+I\+N\+T\+\_\+\+L\+EN@{M\+A\+X\+\_\+\+I\+N\+T\+\_\+\+L\+EN}}
+\index{M\+A\+X\+\_\+\+I\+N\+T\+\_\+\+L\+EN@{M\+A\+X\+\_\+\+I\+N\+T\+\_\+\+L\+EN}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+X\+\_\+\+I\+N\+T\+\_\+\+L\+EN}{MAX_INT_LEN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+\_\+\+I\+N\+T\+\_\+\+L\+EN~32}\hypertarget{expr_8c_a07751a70c542c04b0be29412ef6347d1}{}\label{expr_8c_a07751a70c542c04b0be29412ef6347d1}
+\index{expr.\+c@{expr.\+c}!M\+I\+N\+US@{M\+I\+N\+US}}
+\index{M\+I\+N\+US@{M\+I\+N\+US}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{M\+I\+N\+US}{MINUS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+I\+N\+US~\textquotesingle{}-\/\textquotesingle{}}\hypertarget{expr_8c_a5381a445a1e4bdc36460151d82eed95a}{}\label{expr_8c_a5381a445a1e4bdc36460151d82eed95a}
+\index{expr.\+c@{expr.\+c}!M\+OD@{M\+OD}}
+\index{M\+OD@{M\+OD}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{M\+OD}{MOD}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+OD~\textquotesingle{}\%\textquotesingle{}}\hypertarget{expr_8c_aca7d5718ab8c38506adb3bef2469b319}{}\label{expr_8c_aca7d5718ab8c38506adb3bef2469b319}
+\index{expr.\+c@{expr.\+c}!M\+UL@{M\+UL}}
+\index{M\+UL@{M\+UL}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{M\+UL}{MUL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+UL~\textquotesingle{}$\ast$\textquotesingle{}}\hypertarget{expr_8c_ab7aff04ad21c86032dee3b2012ad6126}{}\label{expr_8c_ab7aff04ad21c86032dee3b2012ad6126}
+\index{expr.\+c@{expr.\+c}!N\+EQ@{N\+EQ}}
+\index{N\+EQ@{N\+EQ}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{N\+EQ}{NEQ}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+EQ~2	/$\ast$ \char`\"{}!=\char`\"{} $\ast$/}\hypertarget{expr_8c_a2b6ba3ea1fe3e8cc970ad05cd05d703b}{}\label{expr_8c_a2b6ba3ea1fe3e8cc970ad05cd05d703b}
+\index{expr.\+c@{expr.\+c}!N\+OT@{N\+OT}}
+\index{N\+OT@{N\+OT}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{N\+OT}{NOT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+OT~\textquotesingle{}!\textquotesingle{}}\hypertarget{expr_8c_ad3e9fe0ec59d2dbb3982ababa042720c}{}\label{expr_8c_ad3e9fe0ec59d2dbb3982ababa042720c}
+\index{expr.\+c@{expr.\+c}!N\+UM@{N\+UM}}
+\index{N\+UM@{N\+UM}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{N\+UM}{NUM}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+UM~6	/$\ast$ number $\ast$/}\hypertarget{expr_8c_aaf0952059602752258dccaa015d7b54a}{}\label{expr_8c_aaf0952059602752258dccaa015d7b54a}
+\index{expr.\+c@{expr.\+c}!O\+P\+\_\+\+A\+S\+S\+I\+GN@{O\+P\+\_\+\+A\+S\+S\+I\+GN}}
+\index{O\+P\+\_\+\+A\+S\+S\+I\+GN@{O\+P\+\_\+\+A\+S\+S\+I\+GN}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{O\+P\+\_\+\+A\+S\+S\+I\+GN}{OP_ASSIGN}}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\+P\+\_\+\+A\+S\+S\+I\+GN~11	/$\ast$ op= {\bf expassign} as in Posix.\+2 $\ast$/}\hypertarget{expr_8c_a58a569495ac1e4285fe881d6a7f8035c}{}\label{expr_8c_a58a569495ac1e4285fe881d6a7f8035c}
+\index{expr.\+c@{expr.\+c}!P\+L\+US@{P\+L\+US}}
+\index{P\+L\+US@{P\+L\+US}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{P\+L\+US}{PLUS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+L\+US~\textquotesingle{}+\textquotesingle{}}\hypertarget{expr_8c_a0ea7ff5947c5f5430a29fdd98391eb2a}{}\label{expr_8c_a0ea7ff5947c5f5430a29fdd98391eb2a}
+\index{expr.\+c@{expr.\+c}!P\+O\+S\+T\+D\+EC@{P\+O\+S\+T\+D\+EC}}
+\index{P\+O\+S\+T\+D\+EC@{P\+O\+S\+T\+D\+EC}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{P\+O\+S\+T\+D\+EC}{POSTDEC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+S\+T\+D\+EC~17	/$\ast$ var-\/-\/ $\ast$/}\hypertarget{expr_8c_abb26b4ca54d5193569c4efcb7a901301}{}\label{expr_8c_abb26b4ca54d5193569c4efcb7a901301}
+\index{expr.\+c@{expr.\+c}!P\+O\+S\+T\+I\+NC@{P\+O\+S\+T\+I\+NC}}
+\index{P\+O\+S\+T\+I\+NC@{P\+O\+S\+T\+I\+NC}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{P\+O\+S\+T\+I\+NC}{POSTINC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+S\+T\+I\+NC~16	/$\ast$ var++ $\ast$/}\hypertarget{expr_8c_a7f26909009a1bb23fb207c2bbf99ba88}{}\label{expr_8c_a7f26909009a1bb23fb207c2bbf99ba88}
+\index{expr.\+c@{expr.\+c}!P\+O\+W\+ER@{P\+O\+W\+ER}}
+\index{P\+O\+W\+ER@{P\+O\+W\+ER}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{P\+O\+W\+ER}{POWER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+W\+ER~13	/$\ast$ {\bf exp1}$\ast$$\ast$exp2 $\ast$/}\hypertarget{expr_8c_a0d5e23bac60070676b465522a140f5c7}{}\label{expr_8c_a0d5e23bac60070676b465522a140f5c7}
+\index{expr.\+c@{expr.\+c}!P\+R\+E\+D\+EC@{P\+R\+E\+D\+EC}}
+\index{P\+R\+E\+D\+EC@{P\+R\+E\+D\+EC}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{P\+R\+E\+D\+EC}{PREDEC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+E\+D\+EC~15	/$\ast$ -\/-\/var $\ast$/}\hypertarget{expr_8c_ac4b01d043314d1b0051c8a886ad6697d}{}\label{expr_8c_ac4b01d043314d1b0051c8a886ad6697d}
+\index{expr.\+c@{expr.\+c}!P\+R\+E\+I\+NC@{P\+R\+E\+I\+NC}}
+\index{P\+R\+E\+I\+NC@{P\+R\+E\+I\+NC}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{P\+R\+E\+I\+NC}{PREINC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+E\+I\+NC~14	/$\ast$ ++var $\ast$/}\hypertarget{expr_8c_a72f054e473ebbee6d292631710a8b7fe}{}\label{expr_8c_a72f054e473ebbee6d292631710a8b7fe}
+\index{expr.\+c@{expr.\+c}!Q\+U\+ES@{Q\+U\+ES}}
+\index{Q\+U\+ES@{Q\+U\+ES}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{Q\+U\+ES}{QUES}}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+U\+ES~\textquotesingle{}?\textquotesingle{}}\hypertarget{expr_8c_a824d8a3cb13d4106028ec7e571a68250}{}\label{expr_8c_a824d8a3cb13d4106028ec7e571a68250}
+\index{expr.\+c@{expr.\+c}!R\+E\+S\+T\+O\+R\+E\+T\+OK@{R\+E\+S\+T\+O\+R\+E\+T\+OK}}
+\index{R\+E\+S\+T\+O\+R\+E\+T\+OK@{R\+E\+S\+T\+O\+R\+E\+T\+OK}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{R\+E\+S\+T\+O\+R\+E\+T\+OK}{RESTORETOK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+S\+T\+O\+R\+E\+T\+OK(
+\begin{DoxyParamCaption}
+\item[{}]{X}
+\end{DoxyParamCaption}
+)}\hypertarget{expr_8c_acb2b07d1929f05ed4561e59fc2f74c0c}{}\label{expr_8c_acb2b07d1929f05ed4561e59fc2f74c0c}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \hyperlink{expr_8c_af8a8494bad999db6122a894636051fbb}{\(\backslash\)}
+\hyperlink{expr_8c_af8a8494bad999db6122a894636051fbb}{    curtok} = (X)->\hyperlink{expr_8c_af8a8494bad999db6122a894636051fbb}{curtok}; \hyperlink{expr_8c_ac19535597cbc28a389c9a201caedc428}{\(\backslash\)}
+\hyperlink{expr_8c_ac19535597cbc28a389c9a201caedc428}{    lasttok} = (X)->\hyperlink{expr_8c_ac19535597cbc28a389c9a201caedc428}{lasttok}; \hyperlink{expr_8c_a48eb585a5cc3f2f35661183d9e54a87b}{\(\backslash\)}
+\hyperlink{expr_8c_a48eb585a5cc3f2f35661183d9e54a87b}{    tp} = (X)->\hyperlink{expr_8c_a48eb585a5cc3f2f35661183d9e54a87b}{tp}; \hyperlink{expr_8c_a3e33b2b838f0b4e8292110b4aff0ff47}{\(\backslash\)}
+\hyperlink{expr_8c_a3e33b2b838f0b4e8292110b4aff0ff47}{    lasttp} = (X)->\hyperlink{expr_8c_a3e33b2b838f0b4e8292110b4aff0ff47}{lasttp}; \hyperlink{expr_8c_a1fe9a6d3842312b057f39d5357d27f8a}{\(\backslash\)}
+\hyperlink{expr_8c_a1fe9a6d3842312b057f39d5357d27f8a}{    tokval} = (X)->\hyperlink{expr_8c_a1fe9a6d3842312b057f39d5357d27f8a}{tokval}; \hyperlink{expr_8c_a969b397593aa51a6a27fc04d3b74a29c}{\(\backslash\)}
+\hyperlink{expr_8c_a969b397593aa51a6a27fc04d3b74a29c}{    tokstr} = (X)->\hyperlink{expr_8c_a969b397593aa51a6a27fc04d3b74a29c}{tokstr}; \hyperlink{expr_8c_ad34c2f048482e74a3106939b8866875b}{\(\backslash\)}
+\hyperlink{expr_8c_ad34c2f048482e74a3106939b8866875b}{    noeval} = (X)->\hyperlink{expr_8c_ad34c2f048482e74a3106939b8866875b}{noeval}; \hyperlink{expr_8c_a86593f91141a2527627dc7746929a253}{\(\backslash\)}
+\hyperlink{expr_8c_a86593f91141a2527627dc7746929a253}{    curlval} = (X)->lval; \(\backslash\)
+  \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\index{expr.\+c@{expr.\+c}!R\+P\+AR@{R\+P\+AR}}
+\index{R\+P\+AR@{R\+P\+AR}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{R\+P\+AR}{RPAR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+P\+AR~\textquotesingle{})\textquotesingle{}}\hypertarget{expr_8c_a5e78e592b96d384fb9f910870af69cb0}{}\label{expr_8c_a5e78e592b96d384fb9f910870af69cb0}
+\index{expr.\+c@{expr.\+c}!R\+SH@{R\+SH}}
+\index{R\+SH@{R\+SH}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{R\+SH}{RSH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+SH~10	/$\ast$ \char`\"{}$>$$>$\char`\"{} Right S\+Hift $\ast$/}\hypertarget{expr_8c_a2767d35fa5b743df792b05f3b223b350}{}\label{expr_8c_a2767d35fa5b743df792b05f3b223b350}
+\index{expr.\+c@{expr.\+c}!S\+A\+V\+E\+T\+OK@{S\+A\+V\+E\+T\+OK}}
+\index{S\+A\+V\+E\+T\+OK@{S\+A\+V\+E\+T\+OK}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{S\+A\+V\+E\+T\+OK}{SAVETOK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+A\+V\+E\+T\+OK(
+\begin{DoxyParamCaption}
+\item[{}]{X}
+\end{DoxyParamCaption}
+)}\hypertarget{expr_8c_a4f516c365664ccb6d0b8dfe3aebc5d11}{}\label{expr_8c_a4f516c365664ccb6d0b8dfe3aebc5d11}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+    (X)->\hyperlink{expr_8c_af8a8494bad999db6122a894636051fbb}{curtok} = \hyperlink{expr_8c_af8a8494bad999db6122a894636051fbb}{curtok}; \(\backslash\)
+    (X)->\hyperlink{expr_8c_ac19535597cbc28a389c9a201caedc428}{lasttok} = \hyperlink{expr_8c_ac19535597cbc28a389c9a201caedc428}{lasttok}; \(\backslash\)
+    (X)->\hyperlink{expr_8c_a48eb585a5cc3f2f35661183d9e54a87b}{tp} = \hyperlink{expr_8c_a48eb585a5cc3f2f35661183d9e54a87b}{tp}; \(\backslash\)
+    (X)->\hyperlink{expr_8c_a3e33b2b838f0b4e8292110b4aff0ff47}{lasttp} = \hyperlink{expr_8c_a3e33b2b838f0b4e8292110b4aff0ff47}{lasttp}; \(\backslash\)
+    (X)->\hyperlink{expr_8c_a1fe9a6d3842312b057f39d5357d27f8a}{tokval} = \hyperlink{expr_8c_a1fe9a6d3842312b057f39d5357d27f8a}{tokval}; \(\backslash\)
+    (X)->\hyperlink{expr_8c_a969b397593aa51a6a27fc04d3b74a29c}{tokstr} = \hyperlink{expr_8c_a969b397593aa51a6a27fc04d3b74a29c}{tokstr}; \(\backslash\)
+    (X)->\hyperlink{expr_8c_ad34c2f048482e74a3106939b8866875b}{noeval} = \hyperlink{expr_8c_ad34c2f048482e74a3106939b8866875b}{noeval}; \(\backslash\)
+    (X)->lval = \hyperlink{expr_8c_a86593f91141a2527627dc7746929a253}{curlval}; \(\backslash\)
+  \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\index{expr.\+c@{expr.\+c}!S\+TR@{S\+TR}}
+\index{S\+TR@{S\+TR}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{S\+TR}{STR}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+TR~5	/$\ast$ string $\ast$/}\hypertarget{expr_8c_a87f23f9d76e3a2d5658da8dae25f38c4}{}\label{expr_8c_a87f23f9d76e3a2d5658da8dae25f38c4}
+
+
+\subsection{Function Documentation}
+\index{expr.\+c@{expr.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf \+\_\+is\+\_\+arithop} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_ae3e6fbde5c4ddde851eff4f29a8f5498}{}\label{expr_8c_ae3e6fbde5c4ddde851eff4f29a8f5498}
+\index{expr.\+c@{expr.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf readtok} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a062ac8dd4d1425de8e618c12ae231667}{}\label{expr_8c_a062ac8dd4d1425de8e618c12ae231667}
+\index{expr.\+c@{expr.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((struct lvalue $\ast$))}{__P((struct lvalue *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf init\+\_\+lvalue} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(struct {\bf lvalue} $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_ab5def24324c5b097558059534e8a7e45}{}\label{expr_8c_ab5def24324c5b097558059534e8a7e45}
+\index{expr.\+c@{expr.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, int, struct lvalue $\ast$))}{__P((char *, int, struct lvalue *))}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t {\bf expr\+\_\+streval} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, int, struct {\bf lvalue} $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_ae95e793231f322f08c9b1182791baa45}{}\label{expr_8c_ae95e793231f322f08c9b1182791baa45}
+\index{expr.\+c@{expr.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t {\bf strlong} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a45b1937b0174796545d7778e12ec9e2f}{}\label{expr_8c_a45b1937b0174796545d7778e12ec9e2f}
+\index{expr.\+c@{expr.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$))}{__P((const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf evalerror} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a4e83481061b910bc29836991a396ddd5}{}\label{expr_8c_a4e83481061b910bc29836991a396ddd5}
+\index{expr.\+c@{expr.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, char $\ast$))}{__P((char *, char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf expr\+\_\+bind\+\_\+variable} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_aea458a3f857aabaf27c7c7b8cb2fc5fd}{}\label{expr_8c_aea458a3f857aabaf27c7c7b8cb2fc5fd}
+\index{expr.\+c@{expr.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, arrayind\+\_\+t, char $\ast$))}{__P((char *, arrayind_t, char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf expr\+\_\+bind\+\_\+array\+\_\+element} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, {\bf arrayind\+\_\+t}, char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a5d5afd1020d5514c0de1318dd74b5bd7}{}\label{expr_8c_a5d5afd1020d5514c0de1318dd74b5bd7}
+\index{expr.\+c@{expr.\+c}!\+\_\+is\+\_\+arithop@{\+\_\+is\+\_\+arithop}}
+\index{\+\_\+is\+\_\+arithop@{\+\_\+is\+\_\+arithop}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+is\+\_\+arithop(int c)}{_is_arithop(int c)}}]{\setlength{\rightskip}{0pt plus 5cm}static int \+\_\+is\+\_\+arithop (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_aec09ad94fe705771bc6f2e65f478a5d3}{}\label{expr_8c_aec09ad94fe705771bc6f2e65f478a5d3}
+\index{expr.\+c@{expr.\+c}!\+\_\+is\+\_\+multiop@{\+\_\+is\+\_\+multiop}}
+\index{\+\_\+is\+\_\+multiop@{\+\_\+is\+\_\+multiop}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+is\+\_\+multiop(int c)}{_is_multiop(int c)}}]{\setlength{\rightskip}{0pt plus 5cm}static int \+\_\+is\+\_\+multiop (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a27124e24f78bbe09a7baff37bf6ea1f4}{}\label{expr_8c_a27124e24f78bbe09a7baff37bf6ea1f4}
+\index{expr.\+c@{expr.\+c}!alloc\+\_\+lvalue@{alloc\+\_\+lvalue}}
+\index{alloc\+\_\+lvalue@{alloc\+\_\+lvalue}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{alloc\+\_\+lvalue()}{alloc_lvalue()}}]{\setlength{\rightskip}{0pt plus 5cm}static struct {\bf lvalue}$\ast$ alloc\+\_\+lvalue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a9ac43f300c847d683c97e7cebb6c56f1}{}\label{expr_8c_a9ac43f300c847d683c97e7cebb6c56f1}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a9ac43f300c847d683c97e7cebb6c56f1_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!evalerror@{evalerror}}
+\index{evalerror@{evalerror}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{evalerror(char $\ast$msg) const}{evalerror(char *msg) const}}]{\setlength{\rightskip}{0pt plus 5cm}static void evalerror (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{msg}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_ad212d1528f1dbcd8392a2ffe66dc3a4b}{}\label{expr_8c_ad212d1528f1dbcd8392a2ffe66dc3a4b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_ad212d1528f1dbcd8392a2ffe66dc3a4b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!evalexp@{evalexp}}
+\index{evalexp@{evalexp}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{evalexp(char $\ast$expr, int flags, int $\ast$validp)}{evalexp(char *expr, int flags, int *validp)}}]{\setlength{\rightskip}{0pt plus 5cm}intmax\+\_\+t evalexp (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{expr, }
+\item[{int}]{flags, }
+\item[{int $\ast$}]{validp}
+\end{DoxyParamCaption}
+)}\hypertarget{expr_8c_ab9b32ed3c0339ae19b5e1e625add9ad9}{}\label{expr_8c_ab9b32ed3c0339ae19b5e1e625add9ad9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_ab9b32ed3c0339ae19b5e1e625add9ad9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!exp0@{exp0}}
+\index{exp0@{exp0}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{exp0()}{exp0()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t exp0 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a1135d4b4fce4f73d356c904ec4f516a8}{}\label{expr_8c_a1135d4b4fce4f73d356c904ec4f516a8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a1135d4b4fce4f73d356c904ec4f516a8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!exp1@{exp1}}
+\index{exp1@{exp1}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{exp1()}{exp1()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t exp1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_adb9fff8c5d2a520f542b0a21592181da}{}\label{expr_8c_adb9fff8c5d2a520f542b0a21592181da}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_adb9fff8c5d2a520f542b0a21592181da_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!exp3@{exp3}}
+\index{exp3@{exp3}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{exp3()}{exp3()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t exp3 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a72f0339429af4ce10724eab3efa11027}{}\label{expr_8c_a72f0339429af4ce10724eab3efa11027}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a72f0339429af4ce10724eab3efa11027_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!exp4@{exp4}}
+\index{exp4@{exp4}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{exp4()}{exp4()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t exp4 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a3cfbacc76dd292bb3485f1f183f9fd24}{}\label{expr_8c_a3cfbacc76dd292bb3485f1f183f9fd24}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a3cfbacc76dd292bb3485f1f183f9fd24_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!exp5@{exp5}}
+\index{exp5@{exp5}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{exp5()}{exp5()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t exp5 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a533eee403706f1d66439c7cb3be7258d}{}\label{expr_8c_a533eee403706f1d66439c7cb3be7258d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a533eee403706f1d66439c7cb3be7258d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!expassign@{expassign}}
+\index{expassign@{expassign}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expassign()}{expassign()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t expassign (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a0eef2ebbb6dd4dcb5cc792e905836bf3}{}\label{expr_8c_a0eef2ebbb6dd4dcb5cc792e905836bf3}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a0eef2ebbb6dd4dcb5cc792e905836bf3_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!expband@{expband}}
+\index{expband@{expband}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expband()}{expband()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t expband (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a7243fabf2b9eafd31b9229942677fc68}{}\label{expr_8c_a7243fabf2b9eafd31b9229942677fc68}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a7243fabf2b9eafd31b9229942677fc68_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!expbor@{expbor}}
+\index{expbor@{expbor}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expbor()}{expbor()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t expbor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_aed61052b1cb1e2439410daa5397e435e}{}\label{expr_8c_aed61052b1cb1e2439410daa5397e435e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_aed61052b1cb1e2439410daa5397e435e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!expbxor@{expbxor}}
+\index{expbxor@{expbxor}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expbxor()}{expbxor()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t expbxor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a87685fc5c1beadd4b3889393a180c003}{}\label{expr_8c_a87685fc5c1beadd4b3889393a180c003}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a87685fc5c1beadd4b3889393a180c003_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!expcomma@{expcomma}}
+\index{expcomma@{expcomma}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expcomma()}{expcomma()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t expcomma (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a66b31ebbd7204cbbb829d6eb8874cfc4}{}\label{expr_8c_a66b31ebbd7204cbbb829d6eb8874cfc4}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a66b31ebbd7204cbbb829d6eb8874cfc4_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!expcond@{expcond}}
+\index{expcond@{expcond}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expcond()}{expcond()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t expcond (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a302dc8d18c5805ef46d37b0dfb79146f}{}\label{expr_8c_a302dc8d18c5805ef46d37b0dfb79146f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a302dc8d18c5805ef46d37b0dfb79146f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!expland@{expland}}
+\index{expland@{expland}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expland()}{expland()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t expland (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a27fa6ffa04d057cde75fe8acaaead393}{}\label{expr_8c_a27fa6ffa04d057cde75fe8acaaead393}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a27fa6ffa04d057cde75fe8acaaead393_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!explor@{explor}}
+\index{explor@{explor}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{explor()}{explor()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t explor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a157924170dca17c6b1013c6beeb403de}{}\label{expr_8c_a157924170dca17c6b1013c6beeb403de}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a157924170dca17c6b1013c6beeb403de_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!expmuldiv@{expmuldiv}}
+\index{expmuldiv@{expmuldiv}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expmuldiv()}{expmuldiv()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t expmuldiv (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_ab1b6141a775fb0cd237b2bb7097c3842}{}\label{expr_8c_ab1b6141a775fb0cd237b2bb7097c3842}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_ab1b6141a775fb0cd237b2bb7097c3842_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!exppower@{exppower}}
+\index{exppower@{exppower}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{exppower()}{exppower()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t exppower (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a2225ae04944e6e85a42f1a860d605c68}{}\label{expr_8c_a2225ae04944e6e85a42f1a860d605c68}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a2225ae04944e6e85a42f1a860d605c68_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!expr\+\_\+bind\+\_\+array\+\_\+element@{expr\+\_\+bind\+\_\+array\+\_\+element}}
+\index{expr\+\_\+bind\+\_\+array\+\_\+element@{expr\+\_\+bind\+\_\+array\+\_\+element}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expr\+\_\+bind\+\_\+array\+\_\+element(char $\ast$tok, arrayind\+\_\+t ind, char $\ast$rhs)}{expr_bind_array_element(char *tok, arrayind_t ind, char *rhs)}}]{\setlength{\rightskip}{0pt plus 5cm}static void expr\+\_\+bind\+\_\+array\+\_\+element (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{tok, }
+\item[{{\bf arrayind\+\_\+t}}]{ind, }
+\item[{char $\ast$}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a2aa10f8d36dee0354e66c6ede8b2b7d8}{}\label{expr_8c_a2aa10f8d36dee0354e66c6ede8b2b7d8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a2aa10f8d36dee0354e66c6ede8b2b7d8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!expr\+\_\+bind\+\_\+variable@{expr\+\_\+bind\+\_\+variable}}
+\index{expr\+\_\+bind\+\_\+variable@{expr\+\_\+bind\+\_\+variable}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expr\+\_\+bind\+\_\+variable(char $\ast$lhs, char $\ast$rhs)}{expr_bind_variable(char *lhs, char *rhs)}}]{\setlength{\rightskip}{0pt plus 5cm}static void expr\+\_\+bind\+\_\+variable (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{lhs, }
+\item[{char $\ast$}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a32c830a87458e98c11d28ff868a804f2}{}\label{expr_8c_a32c830a87458e98c11d28ff868a804f2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a32c830a87458e98c11d28ff868a804f2_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!expr\+\_\+skipsubscript@{expr\+\_\+skipsubscript}}
+\index{expr\+\_\+skipsubscript@{expr\+\_\+skipsubscript}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expr\+\_\+skipsubscript(char $\ast$vp, char $\ast$cp)}{expr_skipsubscript(char *vp, char *cp)}}]{\setlength{\rightskip}{0pt plus 5cm}static int expr\+\_\+skipsubscript (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{vp, }
+\item[{char $\ast$}]{cp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a6f14eef0d8233dbf9412d316d45ec139}{}\label{expr_8c_a6f14eef0d8233dbf9412d316d45ec139}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a6f14eef0d8233dbf9412d316d45ec139_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!expr\+\_\+streval@{expr\+\_\+streval}}
+\index{expr\+\_\+streval@{expr\+\_\+streval}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expr\+\_\+streval(char $\ast$tok, int e, struct lvalue $\ast$lvalue)}{expr_streval(char *tok, int e, struct lvalue *lvalue)}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t expr\+\_\+streval (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{tok, }
+\item[{int}]{e, }
+\item[{struct {\bf lvalue} $\ast$}]{lvalue}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a7042f4b92b122a66891230520fd12aa1}{}\label{expr_8c_a7042f4b92b122a66891230520fd12aa1}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a7042f4b92b122a66891230520fd12aa1_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!expr\+\_\+unwind@{expr\+\_\+unwind}}
+\index{expr\+\_\+unwind@{expr\+\_\+unwind}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expr\+\_\+unwind()}{expr_unwind()}}]{\setlength{\rightskip}{0pt plus 5cm}static void expr\+\_\+unwind (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_ad5184984eeb4169bb2e0b827097022ac}{}\label{expr_8c_ad5184984eeb4169bb2e0b827097022ac}
+\index{expr.\+c@{expr.\+c}!expshift@{expshift}}
+\index{expshift@{expshift}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expshift()}{expshift()}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t expshift (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a187e198f452cb8d23b272ef7db8dc516}{}\label{expr_8c_a187e198f452cb8d23b272ef7db8dc516}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a187e198f452cb8d23b272ef7db8dc516_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!free\+\_\+lvalue@{free\+\_\+lvalue}}
+\index{free\+\_\+lvalue@{free\+\_\+lvalue}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{free\+\_\+lvalue(struct lvalue $\ast$lv)}{free_lvalue(struct lvalue *lv)}}]{\setlength{\rightskip}{0pt plus 5cm}static void free\+\_\+lvalue (
+\begin{DoxyParamCaption}
+\item[{struct {\bf lvalue} $\ast$}]{lv}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a30ba6940b182c017f089fefcb026863f}{}\label{expr_8c_a30ba6940b182c017f089fefcb026863f}
+\index{expr.\+c@{expr.\+c}!init\+\_\+lvalue@{init\+\_\+lvalue}}
+\index{init\+\_\+lvalue@{init\+\_\+lvalue}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{init\+\_\+lvalue(struct lvalue $\ast$lv)}{init_lvalue(struct lvalue *lv)}}]{\setlength{\rightskip}{0pt plus 5cm}static void init\+\_\+lvalue (
+\begin{DoxyParamCaption}
+\item[{struct {\bf lvalue} $\ast$}]{lv}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a84407d1bc22483f5f0c042bc7b4cc523}{}\label{expr_8c_a84407d1bc22483f5f0c042bc7b4cc523}
+\index{expr.\+c@{expr.\+c}!ipow@{ipow}}
+\index{ipow@{ipow}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{ipow(intmax\+\_\+t base, intmax\+\_\+t exp)}{ipow(intmax_t base, intmax_t exp)}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t ipow (
+\begin{DoxyParamCaption}
+\item[{intmax\+\_\+t}]{base, }
+\item[{intmax\+\_\+t}]{exp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a995e9b79080e732edd6cdb7734931c01}{}\label{expr_8c_a995e9b79080e732edd6cdb7734931c01}
+\index{expr.\+c@{expr.\+c}!popexp@{popexp}}
+\index{popexp@{popexp}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{popexp()}{popexp()}}]{\setlength{\rightskip}{0pt plus 5cm}static void popexp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_aa652fc29931fad4d466a20f9ea317528}{}\label{expr_8c_aa652fc29931fad4d466a20f9ea317528}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_aa652fc29931fad4d466a20f9ea317528_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!pushexp@{pushexp}}
+\index{pushexp@{pushexp}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{pushexp()}{pushexp()}}]{\setlength{\rightskip}{0pt plus 5cm}static void pushexp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a9f83b934ef3add1078adb020a47383b1}{}\label{expr_8c_a9f83b934ef3add1078adb020a47383b1}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a9f83b934ef3add1078adb020a47383b1_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!readtok@{readtok}}
+\index{readtok@{readtok}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{readtok()}{readtok()}}]{\setlength{\rightskip}{0pt plus 5cm}static void readtok (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a7d824e228995047bb1c2ed17a88c32d5}{}\label{expr_8c_a7d824e228995047bb1c2ed17a88c32d5}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a7d824e228995047bb1c2ed17a88c32d5_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!strlong@{strlong}}
+\index{strlong@{strlong}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{strlong(char $\ast$num)}{strlong(char *num)}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t strlong (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{num}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a1d6da8fd606c1cfe2fd50d3ed65a85a5}{}\label{expr_8c_a1d6da8fd606c1cfe2fd50d3ed65a85a5}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a1d6da8fd606c1cfe2fd50d3ed65a85a5_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{expr.\+c@{expr.\+c}!subexpr@{subexpr}}
+\index{subexpr@{subexpr}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{subexpr(char $\ast$expr)}{subexpr(char *expr)}}]{\setlength{\rightskip}{0pt plus 5cm}static intmax\+\_\+t subexpr (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{expr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a108c3ca190a150962cff2fae3fd29ef2}{}\label{expr_8c_a108c3ca190a150962cff2fae3fd29ef2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{expr_8c_a108c3ca190a150962cff2fae3fd29ef2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{expr.\+c@{expr.\+c}!already\+\_\+expanded@{already\+\_\+expanded}}
+\index{already\+\_\+expanded@{already\+\_\+expanded}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{already\+\_\+expanded}{already_expanded}}]{\setlength{\rightskip}{0pt plus 5cm}int already\+\_\+expanded\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a4db1a49fe0be13f2ffde35fde23faaff}{}\label{expr_8c_a4db1a49fe0be13f2ffde35fde23faaff}
+\index{expr.\+c@{expr.\+c}!assigntok@{assigntok}}
+\index{assigntok@{assigntok}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{assigntok}{assigntok}}]{\setlength{\rightskip}{0pt plus 5cm}int assigntok\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a427dabbe6e0112c32b0610cc1e98b1c0}{}\label{expr_8c_a427dabbe6e0112c32b0610cc1e98b1c0}
+\index{expr.\+c@{expr.\+c}!bash\+\_\+badsub\+\_\+errmsg@{bash\+\_\+badsub\+\_\+errmsg}}
+\index{bash\+\_\+badsub\+\_\+errmsg@{bash\+\_\+badsub\+\_\+errmsg}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{bash\+\_\+badsub\+\_\+errmsg}{bash_badsub_errmsg}}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ const bash\+\_\+badsub\+\_\+errmsg}\hypertarget{expr_8c_ad07db73af4336afc471825c9d2126c16}{}\label{expr_8c_ad07db73af4336afc471825c9d2126c16}
+\index{expr.\+c@{expr.\+c}!curlval@{curlval}}
+\index{curlval@{curlval}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{curlval}{curlval}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf lvalue} curlval = \{0, 0, 0, -\/1\}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a86593f91141a2527627dc7746929a253}{}\label{expr_8c_a86593f91141a2527627dc7746929a253}
+\index{expr.\+c@{expr.\+c}!curtok@{curtok}}
+\index{curtok@{curtok}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{curtok}{curtok}}]{\setlength{\rightskip}{0pt plus 5cm}int curtok\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_af8a8494bad999db6122a894636051fbb}{}\label{expr_8c_af8a8494bad999db6122a894636051fbb}
+\index{expr.\+c@{expr.\+c}!evalbuf@{evalbuf}}
+\index{evalbuf@{evalbuf}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{evalbuf}{evalbuf}}]{\setlength{\rightskip}{0pt plus 5cm}procenv\+\_\+t evalbuf\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a9b8d69b13f91400db4fdbc85e086f070}{}\label{expr_8c_a9b8d69b13f91400db4fdbc85e086f070}
+\index{expr.\+c@{expr.\+c}!expr\+\_\+depth@{expr\+\_\+depth}}
+\index{expr\+\_\+depth@{expr\+\_\+depth}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expr\+\_\+depth}{expr_depth}}]{\setlength{\rightskip}{0pt plus 5cm}int expr\+\_\+depth\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_ab549821acc8213d14cffbd29947b28ae}{}\label{expr_8c_ab549821acc8213d14cffbd29947b28ae}
+\index{expr.\+c@{expr.\+c}!expr\+\_\+stack@{expr\+\_\+stack}}
+\index{expr\+\_\+stack@{expr\+\_\+stack}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expr\+\_\+stack}{expr_stack}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf E\+X\+P\+R\+\_\+\+C\+O\+N\+T\+E\+XT}$\ast$$\ast$ expr\+\_\+stack\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a3530d9efe2b40e837e1469a4a2995ddc}{}\label{expr_8c_a3530d9efe2b40e837e1469a4a2995ddc}
+\index{expr.\+c@{expr.\+c}!expr\+\_\+stack\+\_\+size@{expr\+\_\+stack\+\_\+size}}
+\index{expr\+\_\+stack\+\_\+size@{expr\+\_\+stack\+\_\+size}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expr\+\_\+stack\+\_\+size}{expr_stack_size}}]{\setlength{\rightskip}{0pt plus 5cm}int expr\+\_\+stack\+\_\+size\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_afc6415aa5f2518220733d1e4805e1966}{}\label{expr_8c_afc6415aa5f2518220733d1e4805e1966}
+\index{expr.\+c@{expr.\+c}!expression@{expression}}
+\index{expression@{expression}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{expression}{expression}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ expression\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a9db6e8ed664bd315265a603bb764e032}{}\label{expr_8c_a9db6e8ed664bd315265a603bb764e032}
+\index{expr.\+c@{expr.\+c}!lastlval@{lastlval}}
+\index{lastlval@{lastlval}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{lastlval}{lastlval}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf lvalue} lastlval = \{0, 0, 0, -\/1\}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a17359e57bd923c9cd17581c4e22e4fa5}{}\label{expr_8c_a17359e57bd923c9cd17581c4e22e4fa5}
+\index{expr.\+c@{expr.\+c}!lasttok@{lasttok}}
+\index{lasttok@{lasttok}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{lasttok}{lasttok}}]{\setlength{\rightskip}{0pt plus 5cm}int lasttok\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_ac19535597cbc28a389c9a201caedc428}{}\label{expr_8c_ac19535597cbc28a389c9a201caedc428}
+\index{expr.\+c@{expr.\+c}!lasttp@{lasttp}}
+\index{lasttp@{lasttp}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{lasttp}{lasttp}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ lasttp\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a3e33b2b838f0b4e8292110b4aff0ff47}{}\label{expr_8c_a3e33b2b838f0b4e8292110b4aff0ff47}
+\index{expr.\+c@{expr.\+c}!noeval@{noeval}}
+\index{noeval@{noeval}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{noeval}{noeval}}]{\setlength{\rightskip}{0pt plus 5cm}int noeval\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_ad34c2f048482e74a3106939b8866875b}{}\label{expr_8c_ad34c2f048482e74a3106939b8866875b}
+\index{expr.\+c@{expr.\+c}!tokstr@{tokstr}}
+\index{tokstr@{tokstr}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{tokstr}{tokstr}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ tokstr\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a969b397593aa51a6a27fc04d3b74a29c}{}\label{expr_8c_a969b397593aa51a6a27fc04d3b74a29c}
+\index{expr.\+c@{expr.\+c}!tokval@{tokval}}
+\index{tokval@{tokval}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{tokval}{tokval}}]{\setlength{\rightskip}{0pt plus 5cm}intmax\+\_\+t tokval\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a1fe9a6d3842312b057f39d5357d27f8a}{}\label{expr_8c_a1fe9a6d3842312b057f39d5357d27f8a}
+\index{expr.\+c@{expr.\+c}!tp@{tp}}
+\index{tp@{tp}!expr.\+c@{expr.\+c}}
+\subsubsection[{\texorpdfstring{tp}{tp}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ tp\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{expr_8c_a48eb585a5cc3f2f35661183d9e54a87b}{}\label{expr_8c_a48eb585a5cc3f2f35661183d9e54a87b}

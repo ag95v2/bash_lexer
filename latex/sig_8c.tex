@@ -1,0 +1,457 @@
+\hypertarget{sig_8c}{}\section{sig.\+c File Reference}
+\label{sig_8c}\index{sig.\+c@{sig.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}execute\+\_\+cmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}jobs.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}siglist.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sig.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}trap.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/common.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/builtext.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashline.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$readline/readline.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashhist.\+h\char`\"{}}\\*
+Include dependency graph for sig.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sig_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtermsig}{termsig}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{sig_8c_a0c3f3d9a92ee178d790a04bfb9f88696}{N\+U\+L\+L\+\_\+\+H\+A\+N\+D\+L\+ER}~(Sig\+Handler $\ast$)S\+I\+G\+\_\+\+D\+FL
+\item 
+\#define \hyperlink{sig_8c_ab3678ba47ea58c8dd4c6614bafdb20a8}{T\+E\+R\+M\+S\+I\+G\+S\+\_\+\+L\+E\+N\+G\+TH}~(sizeof (\hyperlink{sig_8c_ac368559228a22d420a8793490307eb10}{terminating\+\_\+signals}) / sizeof (struct \hyperlink{structtermsig}{termsig}))
+\item 
+\#define \hyperlink{sig_8c_ab0b384b6745f24008660c3087b3249fb}{X\+S\+IG}(x)~(\hyperlink{sig_8c_ac368559228a22d420a8793490307eb10}{terminating\+\_\+signals}\mbox{[}x\mbox{]}.signum)
+\item 
+\#define \hyperlink{sig_8c_a0a4da5d14d7f4528929ea2520a719dbf}{X\+H\+A\+N\+D\+L\+ER}(x)~(\hyperlink{sig_8c_ac368559228a22d420a8793490307eb10}{terminating\+\_\+signals}\mbox{[}x\mbox{]}.orig\+\_\+handler)
+\item 
+\#define \hyperlink{sig_8c_ace6ac4f8afc9c7aabbc3bba08c372ba7}{X\+S\+A\+F\+L\+A\+GS}(x)~(\hyperlink{sig_8c_ac368559228a22d420a8793490307eb10}{terminating\+\_\+signals}\mbox{[}x\mbox{]}.orig\+\_\+flags)
+\item 
+\#define \hyperlink{sig_8c_a763d2b4bf39fdec23282c6618c05f4ba}{X\+C\+O\+R\+E\+D\+U\+MP}(x)~(\hyperlink{sig_8c_ac368559228a22d420a8793490307eb10}{terminating\+\_\+signals}\mbox{[}x\mbox{]}.core\+\_\+dump)
+\item 
+\#define \hyperlink{sig_8c_a6287f27139d955654e13dd86ce525e9b}{S\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}~0
+\item 
+\#define \hyperlink{sig_8c_a74ef0a27afcf55b6cd6d35cf0fa5d427}{S\+A\+\_\+\+R\+E\+S\+T\+A\+RT}~0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sig_8c_a0097c75f13699d2bb5dba2c06bfc1a40}{initialize\+\_\+siglist} ()
+\item 
+static void \hyperlink{sig_8c_a4241c1c206cfce43836a5f49a8c47728}{initialize\+\_\+shell\+\_\+signals} \hyperlink{sig_8c_aad61bdd859aa6011c7ef17324aca4d8d}{\+\_\+\+\_\+P} ((void))
+\item 
+void \hyperlink{sig_8c_aaf1c2939be75464829d454614a4e4ce0}{initialize\+\_\+signals} (int reinit)
+\item 
+void \hyperlink{sig_8c_af6e26d8b1639be351169ac893a03a71c}{initialize\+\_\+terminating\+\_\+signals} ()
+\item 
+static void \hyperlink{sig_8c_a4241c1c206cfce43836a5f49a8c47728}{initialize\+\_\+shell\+\_\+signals} ()
+\item 
+void \hyperlink{sig_8c_a84a126f6091a8deb8f85ea4b67bb5f63}{reset\+\_\+terminating\+\_\+signals} ()
+\item 
+void \hyperlink{sig_8c_a38e9061e8499eb0061be217a6c290a6d}{top\+\_\+level\+\_\+cleanup} ()
+\item 
+void \hyperlink{sig_8c_a0c1a46c1b65caedaa01c2823433bd3a8}{throw\+\_\+to\+\_\+top\+\_\+level} ()
+\item 
+void \hyperlink{sig_8c_a5829694351a703580df0274633b4a087}{jump\+\_\+to\+\_\+top\+\_\+level} (int value)
+\item 
+\hyperlink{sig_8h_a09fccaf2f4ae9265e0535220e9447dce}{sighandler} \hyperlink{sig_8c_a2dc09d4ca716766b6b2e0053a603d70a}{termsig\+\_\+sighandler} (int sig)
+\item 
+void \hyperlink{sig_8c_ac41101d32e279afcdc02c1317d298b9f}{termsig\+\_\+handler} (int sig)
+\item 
+\hyperlink{sig_8h_a09fccaf2f4ae9265e0535220e9447dce}{sighandler} \hyperlink{sig_8c_a03b1d93044f72223debb80de9dcead89}{sigint\+\_\+sighandler} (int sig)
+\item 
+void \hyperlink{sig_8c_afea6a0df4ee65bf4ec4415731d6f45fb}{set\+\_\+sigwinch\+\_\+handler} ()
+\item 
+void \hyperlink{sig_8c_a99db8c5089acb581067fecc2e4a0c9d5}{unset\+\_\+sigwinch\+\_\+handler} ()
+\item 
+\hyperlink{sig_8h_a09fccaf2f4ae9265e0535220e9447dce}{sighandler} \hyperlink{sig_8c_abeec35371a32dc68041fc9c063362e89}{sigterm\+\_\+sighandler} (int sig)
+\item 
+Sig\+Handler $\ast$ \hyperlink{sig_8c_ad891d3743c3f51a52fb4a4727fb66c25}{set\+\_\+signal\+\_\+handler} (int sig, Sig\+Handler $\ast$handler)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile sig\+\_\+atomic\+\_\+t \hyperlink{sig_8c_ac537ae77bc844e34fe1a43b15658c978}{interrupt\+\_\+state} = 0
+\item 
+volatile sig\+\_\+atomic\+\_\+t \hyperlink{sig_8c_a7a77982e39c810b380a630ebd494d95c}{sigwinch\+\_\+received} = 0
+\item 
+volatile sig\+\_\+atomic\+\_\+t \hyperlink{sig_8c_a5b02f2e548145c2c928160a4e2b6ef9d}{sigterm\+\_\+received} = 0
+\item 
+volatile sig\+\_\+atomic\+\_\+t \hyperlink{sig_8c_a18548eecf50c0cb3cee5ad12192e4414}{terminating\+\_\+signal} = 0
+\item 
+procenv\+\_\+t \hyperlink{sig_8c_a047be68a91ac230623785fa32c056bd2}{top\+\_\+level}
+\item 
+sigset\+\_\+t \hyperlink{sig_8c_a4423f1b40bab1e30781e832c6cad1e00}{top\+\_\+level\+\_\+mask}
+\item 
+int \hyperlink{sig_8c_ab53709631666c77a60dcf13563912ac0}{interrupt\+\_\+immediately} = 0
+\item 
+int \hyperlink{sig_8c_afd4ce9a0fa0e81841a164462921f2fe0}{terminate\+\_\+immediately} = 0
+\item 
+static struct \hyperlink{structtermsig}{termsig} \hyperlink{sig_8c_ac368559228a22d420a8793490307eb10}{terminating\+\_\+signals} \mbox{[}$\,$\mbox{]}
+\item 
+static int \hyperlink{sig_8c_a5eea080fede127a596b8bd07bf7a7b63}{termsigs\+\_\+initialized} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{sig.\+c@{sig.\+c}!N\+U\+L\+L\+\_\+\+H\+A\+N\+D\+L\+ER@{N\+U\+L\+L\+\_\+\+H\+A\+N\+D\+L\+ER}}
+\index{N\+U\+L\+L\+\_\+\+H\+A\+N\+D\+L\+ER@{N\+U\+L\+L\+\_\+\+H\+A\+N\+D\+L\+ER}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{N\+U\+L\+L\+\_\+\+H\+A\+N\+D\+L\+ER}{NULL_HANDLER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+U\+L\+L\+\_\+\+H\+A\+N\+D\+L\+ER~(Sig\+Handler $\ast$)S\+I\+G\+\_\+\+D\+FL}\hypertarget{sig_8c_a0c3f3d9a92ee178d790a04bfb9f88696}{}\label{sig_8c_a0c3f3d9a92ee178d790a04bfb9f88696}
+\index{sig.\+c@{sig.\+c}!S\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT@{S\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}}
+\index{S\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT@{S\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{S\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT}{SA_INTERRUPT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+A\+\_\+\+I\+N\+T\+E\+R\+R\+U\+PT~0}\hypertarget{sig_8c_a6287f27139d955654e13dd86ce525e9b}{}\label{sig_8c_a6287f27139d955654e13dd86ce525e9b}
+\index{sig.\+c@{sig.\+c}!S\+A\+\_\+\+R\+E\+S\+T\+A\+RT@{S\+A\+\_\+\+R\+E\+S\+T\+A\+RT}}
+\index{S\+A\+\_\+\+R\+E\+S\+T\+A\+RT@{S\+A\+\_\+\+R\+E\+S\+T\+A\+RT}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{S\+A\+\_\+\+R\+E\+S\+T\+A\+RT}{SA_RESTART}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+A\+\_\+\+R\+E\+S\+T\+A\+RT~0}\hypertarget{sig_8c_a74ef0a27afcf55b6cd6d35cf0fa5d427}{}\label{sig_8c_a74ef0a27afcf55b6cd6d35cf0fa5d427}
+\index{sig.\+c@{sig.\+c}!T\+E\+R\+M\+S\+I\+G\+S\+\_\+\+L\+E\+N\+G\+TH@{T\+E\+R\+M\+S\+I\+G\+S\+\_\+\+L\+E\+N\+G\+TH}}
+\index{T\+E\+R\+M\+S\+I\+G\+S\+\_\+\+L\+E\+N\+G\+TH@{T\+E\+R\+M\+S\+I\+G\+S\+\_\+\+L\+E\+N\+G\+TH}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{T\+E\+R\+M\+S\+I\+G\+S\+\_\+\+L\+E\+N\+G\+TH}{TERMSIGS_LENGTH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+R\+M\+S\+I\+G\+S\+\_\+\+L\+E\+N\+G\+TH~(sizeof ({\bf terminating\+\_\+signals}) / sizeof (struct {\bf termsig}))}\hypertarget{sig_8c_ab3678ba47ea58c8dd4c6614bafdb20a8}{}\label{sig_8c_ab3678ba47ea58c8dd4c6614bafdb20a8}
+\index{sig.\+c@{sig.\+c}!X\+C\+O\+R\+E\+D\+U\+MP@{X\+C\+O\+R\+E\+D\+U\+MP}}
+\index{X\+C\+O\+R\+E\+D\+U\+MP@{X\+C\+O\+R\+E\+D\+U\+MP}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{X\+C\+O\+R\+E\+D\+U\+MP}{XCOREDUMP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+C\+O\+R\+E\+D\+U\+MP(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~({\bf terminating\+\_\+signals}\mbox{[}x\mbox{]}.core\+\_\+dump)}\hypertarget{sig_8c_a763d2b4bf39fdec23282c6618c05f4ba}{}\label{sig_8c_a763d2b4bf39fdec23282c6618c05f4ba}
+\index{sig.\+c@{sig.\+c}!X\+H\+A\+N\+D\+L\+ER@{X\+H\+A\+N\+D\+L\+ER}}
+\index{X\+H\+A\+N\+D\+L\+ER@{X\+H\+A\+N\+D\+L\+ER}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{X\+H\+A\+N\+D\+L\+ER}{XHANDLER}}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+H\+A\+N\+D\+L\+ER(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~({\bf terminating\+\_\+signals}\mbox{[}x\mbox{]}.orig\+\_\+handler)}\hypertarget{sig_8c_a0a4da5d14d7f4528929ea2520a719dbf}{}\label{sig_8c_a0a4da5d14d7f4528929ea2520a719dbf}
+\index{sig.\+c@{sig.\+c}!X\+S\+A\+F\+L\+A\+GS@{X\+S\+A\+F\+L\+A\+GS}}
+\index{X\+S\+A\+F\+L\+A\+GS@{X\+S\+A\+F\+L\+A\+GS}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{X\+S\+A\+F\+L\+A\+GS}{XSAFLAGS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+S\+A\+F\+L\+A\+GS(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~({\bf terminating\+\_\+signals}\mbox{[}x\mbox{]}.orig\+\_\+flags)}\hypertarget{sig_8c_ace6ac4f8afc9c7aabbc3bba08c372ba7}{}\label{sig_8c_ace6ac4f8afc9c7aabbc3bba08c372ba7}
+\index{sig.\+c@{sig.\+c}!X\+S\+IG@{X\+S\+IG}}
+\index{X\+S\+IG@{X\+S\+IG}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{X\+S\+IG}{XSIG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+S\+IG(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~({\bf terminating\+\_\+signals}\mbox{[}x\mbox{]}.signum)}\hypertarget{sig_8c_ab0b384b6745f24008660c3087b3249fb}{}\label{sig_8c_ab0b384b6745f24008660c3087b3249fb}
+
+
+\subsection{Function Documentation}
+\index{sig.\+c@{sig.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf initialize\+\_\+shell\+\_\+signals} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{sig_8c_aad61bdd859aa6011c7ef17324aca4d8d}{}\label{sig_8c_aad61bdd859aa6011c7ef17324aca4d8d}
+\index{sig.\+c@{sig.\+c}!initialize\+\_\+shell\+\_\+signals@{initialize\+\_\+shell\+\_\+signals}}
+\index{initialize\+\_\+shell\+\_\+signals@{initialize\+\_\+shell\+\_\+signals}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+shell\+\_\+signals()}{initialize_shell_signals()}}]{\setlength{\rightskip}{0pt plus 5cm}static void initialize\+\_\+shell\+\_\+signals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{sig_8c_a4241c1c206cfce43836a5f49a8c47728}{}\label{sig_8c_a4241c1c206cfce43836a5f49a8c47728}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sig_8c_a4241c1c206cfce43836a5f49a8c47728_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{sig.\+c@{sig.\+c}!initialize\+\_\+siglist@{initialize\+\_\+siglist}}
+\index{initialize\+\_\+siglist@{initialize\+\_\+siglist}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+siglist()}{initialize_siglist()}}]{\setlength{\rightskip}{0pt plus 5cm}void initialize\+\_\+siglist (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_a0097c75f13699d2bb5dba2c06bfc1a40}{}\label{sig_8c_a0097c75f13699d2bb5dba2c06bfc1a40}
+\index{sig.\+c@{sig.\+c}!initialize\+\_\+signals@{initialize\+\_\+signals}}
+\index{initialize\+\_\+signals@{initialize\+\_\+signals}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+signals(int reinit)}{initialize_signals(int reinit)}}]{\setlength{\rightskip}{0pt plus 5cm}void initialize\+\_\+signals (
+\begin{DoxyParamCaption}
+\item[{int}]{reinit}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_aaf1c2939be75464829d454614a4e4ce0}{}\label{sig_8c_aaf1c2939be75464829d454614a4e4ce0}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sig_8c_aaf1c2939be75464829d454614a4e4ce0_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{sig.\+c@{sig.\+c}!initialize\+\_\+terminating\+\_\+signals@{initialize\+\_\+terminating\+\_\+signals}}
+\index{initialize\+\_\+terminating\+\_\+signals@{initialize\+\_\+terminating\+\_\+signals}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+terminating\+\_\+signals()}{initialize_terminating_signals()}}]{\setlength{\rightskip}{0pt plus 5cm}void initialize\+\_\+terminating\+\_\+signals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_af6e26d8b1639be351169ac893a03a71c}{}\label{sig_8c_af6e26d8b1639be351169ac893a03a71c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sig_8c_af6e26d8b1639be351169ac893a03a71c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{sig.\+c@{sig.\+c}!jump\+\_\+to\+\_\+top\+\_\+level@{jump\+\_\+to\+\_\+top\+\_\+level}}
+\index{jump\+\_\+to\+\_\+top\+\_\+level@{jump\+\_\+to\+\_\+top\+\_\+level}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{jump\+\_\+to\+\_\+top\+\_\+level(int value)}{jump_to_top_level(int value)}}]{\setlength{\rightskip}{0pt plus 5cm}void jump\+\_\+to\+\_\+top\+\_\+level (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_a5829694351a703580df0274633b4a087}{}\label{sig_8c_a5829694351a703580df0274633b4a087}
+\index{sig.\+c@{sig.\+c}!reset\+\_\+terminating\+\_\+signals@{reset\+\_\+terminating\+\_\+signals}}
+\index{reset\+\_\+terminating\+\_\+signals@{reset\+\_\+terminating\+\_\+signals}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{reset\+\_\+terminating\+\_\+signals()}{reset_terminating_signals()}}]{\setlength{\rightskip}{0pt plus 5cm}void reset\+\_\+terminating\+\_\+signals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_a84a126f6091a8deb8f85ea4b67bb5f63}{}\label{sig_8c_a84a126f6091a8deb8f85ea4b67bb5f63}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{sig_8c_a84a126f6091a8deb8f85ea4b67bb5f63_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{sig.\+c@{sig.\+c}!set\+\_\+signal\+\_\+handler@{set\+\_\+signal\+\_\+handler}}
+\index{set\+\_\+signal\+\_\+handler@{set\+\_\+signal\+\_\+handler}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+signal\+\_\+handler(int sig, Sig\+Handler $\ast$handler)}{set_signal_handler(int sig, SigHandler *handler)}}]{\setlength{\rightskip}{0pt plus 5cm}Sig\+Handler$\ast$ set\+\_\+signal\+\_\+handler (
+\begin{DoxyParamCaption}
+\item[{int}]{sig, }
+\item[{Sig\+Handler $\ast$}]{handler}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_ad891d3743c3f51a52fb4a4727fb66c25}{}\label{sig_8c_ad891d3743c3f51a52fb4a4727fb66c25}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sig_8c_ad891d3743c3f51a52fb4a4727fb66c25_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{sig.\+c@{sig.\+c}!set\+\_\+sigwinch\+\_\+handler@{set\+\_\+sigwinch\+\_\+handler}}
+\index{set\+\_\+sigwinch\+\_\+handler@{set\+\_\+sigwinch\+\_\+handler}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{set\+\_\+sigwinch\+\_\+handler()}{set_sigwinch_handler()}}]{\setlength{\rightskip}{0pt plus 5cm}void set\+\_\+sigwinch\+\_\+handler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_afea6a0df4ee65bf4ec4415731d6f45fb}{}\label{sig_8c_afea6a0df4ee65bf4ec4415731d6f45fb}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sig_8c_afea6a0df4ee65bf4ec4415731d6f45fb_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{sig.\+c@{sig.\+c}!sigint\+\_\+sighandler@{sigint\+\_\+sighandler}}
+\index{sigint\+\_\+sighandler@{sigint\+\_\+sighandler}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{sigint\+\_\+sighandler(int sig)}{sigint_sighandler(int sig)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf sighandler} sigint\+\_\+sighandler (
+\begin{DoxyParamCaption}
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_a03b1d93044f72223debb80de9dcead89}{}\label{sig_8c_a03b1d93044f72223debb80de9dcead89}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sig_8c_a03b1d93044f72223debb80de9dcead89_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{sig.\+c@{sig.\+c}!sigterm\+\_\+sighandler@{sigterm\+\_\+sighandler}}
+\index{sigterm\+\_\+sighandler@{sigterm\+\_\+sighandler}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{sigterm\+\_\+sighandler(int sig)}{sigterm_sighandler(int sig)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf sighandler} sigterm\+\_\+sighandler (
+\begin{DoxyParamCaption}
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_abeec35371a32dc68041fc9c063362e89}{}\label{sig_8c_abeec35371a32dc68041fc9c063362e89}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sig_8c_abeec35371a32dc68041fc9c063362e89_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{sig.\+c@{sig.\+c}!termsig\+\_\+handler@{termsig\+\_\+handler}}
+\index{termsig\+\_\+handler@{termsig\+\_\+handler}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{termsig\+\_\+handler(int sig)}{termsig_handler(int sig)}}]{\setlength{\rightskip}{0pt plus 5cm}void termsig\+\_\+handler (
+\begin{DoxyParamCaption}
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_ac41101d32e279afcdc02c1317d298b9f}{}\label{sig_8c_ac41101d32e279afcdc02c1317d298b9f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sig_8c_ac41101d32e279afcdc02c1317d298b9f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{sig.\+c@{sig.\+c}!termsig\+\_\+sighandler@{termsig\+\_\+sighandler}}
+\index{termsig\+\_\+sighandler@{termsig\+\_\+sighandler}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{termsig\+\_\+sighandler(int sig)}{termsig_sighandler(int sig)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf sighandler} termsig\+\_\+sighandler (
+\begin{DoxyParamCaption}
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_a2dc09d4ca716766b6b2e0053a603d70a}{}\label{sig_8c_a2dc09d4ca716766b6b2e0053a603d70a}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sig_8c_a2dc09d4ca716766b6b2e0053a603d70a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{sig.\+c@{sig.\+c}!throw\+\_\+to\+\_\+top\+\_\+level@{throw\+\_\+to\+\_\+top\+\_\+level}}
+\index{throw\+\_\+to\+\_\+top\+\_\+level@{throw\+\_\+to\+\_\+top\+\_\+level}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{throw\+\_\+to\+\_\+top\+\_\+level()}{throw_to_top_level()}}]{\setlength{\rightskip}{0pt plus 5cm}void throw\+\_\+to\+\_\+top\+\_\+level (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_a0c1a46c1b65caedaa01c2823433bd3a8}{}\label{sig_8c_a0c1a46c1b65caedaa01c2823433bd3a8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sig_8c_a0c1a46c1b65caedaa01c2823433bd3a8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{sig.\+c@{sig.\+c}!top\+\_\+level\+\_\+cleanup@{top\+\_\+level\+\_\+cleanup}}
+\index{top\+\_\+level\+\_\+cleanup@{top\+\_\+level\+\_\+cleanup}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{top\+\_\+level\+\_\+cleanup()}{top_level_cleanup()}}]{\setlength{\rightskip}{0pt plus 5cm}void top\+\_\+level\+\_\+cleanup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_a38e9061e8499eb0061be217a6c290a6d}{}\label{sig_8c_a38e9061e8499eb0061be217a6c290a6d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sig_8c_a38e9061e8499eb0061be217a6c290a6d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{sig.\+c@{sig.\+c}!unset\+\_\+sigwinch\+\_\+handler@{unset\+\_\+sigwinch\+\_\+handler}}
+\index{unset\+\_\+sigwinch\+\_\+handler@{unset\+\_\+sigwinch\+\_\+handler}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{unset\+\_\+sigwinch\+\_\+handler()}{unset_sigwinch_handler()}}]{\setlength{\rightskip}{0pt plus 5cm}void unset\+\_\+sigwinch\+\_\+handler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{sig_8c_a99db8c5089acb581067fecc2e4a0c9d5}{}\label{sig_8c_a99db8c5089acb581067fecc2e4a0c9d5}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sig_8c_a99db8c5089acb581067fecc2e4a0c9d5_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{sig.\+c@{sig.\+c}!interrupt\+\_\+immediately@{interrupt\+\_\+immediately}}
+\index{interrupt\+\_\+immediately@{interrupt\+\_\+immediately}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{interrupt\+\_\+immediately}{interrupt_immediately}}]{\setlength{\rightskip}{0pt plus 5cm}int interrupt\+\_\+immediately = 0}\hypertarget{sig_8c_ab53709631666c77a60dcf13563912ac0}{}\label{sig_8c_ab53709631666c77a60dcf13563912ac0}
+\index{sig.\+c@{sig.\+c}!interrupt\+\_\+state@{interrupt\+\_\+state}}
+\index{interrupt\+\_\+state@{interrupt\+\_\+state}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{interrupt\+\_\+state}{interrupt_state}}]{\setlength{\rightskip}{0pt plus 5cm}volatile sig\+\_\+atomic\+\_\+t interrupt\+\_\+state = 0}\hypertarget{sig_8c_ac537ae77bc844e34fe1a43b15658c978}{}\label{sig_8c_ac537ae77bc844e34fe1a43b15658c978}
+\index{sig.\+c@{sig.\+c}!sigterm\+\_\+received@{sigterm\+\_\+received}}
+\index{sigterm\+\_\+received@{sigterm\+\_\+received}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{sigterm\+\_\+received}{sigterm_received}}]{\setlength{\rightskip}{0pt plus 5cm}volatile sig\+\_\+atomic\+\_\+t sigterm\+\_\+received = 0}\hypertarget{sig_8c_a5b02f2e548145c2c928160a4e2b6ef9d}{}\label{sig_8c_a5b02f2e548145c2c928160a4e2b6ef9d}
+\index{sig.\+c@{sig.\+c}!sigwinch\+\_\+received@{sigwinch\+\_\+received}}
+\index{sigwinch\+\_\+received@{sigwinch\+\_\+received}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{sigwinch\+\_\+received}{sigwinch_received}}]{\setlength{\rightskip}{0pt plus 5cm}volatile sig\+\_\+atomic\+\_\+t sigwinch\+\_\+received = 0}\hypertarget{sig_8c_a7a77982e39c810b380a630ebd494d95c}{}\label{sig_8c_a7a77982e39c810b380a630ebd494d95c}
+\index{sig.\+c@{sig.\+c}!terminate\+\_\+immediately@{terminate\+\_\+immediately}}
+\index{terminate\+\_\+immediately@{terminate\+\_\+immediately}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{terminate\+\_\+immediately}{terminate_immediately}}]{\setlength{\rightskip}{0pt plus 5cm}int terminate\+\_\+immediately = 0}\hypertarget{sig_8c_afd4ce9a0fa0e81841a164462921f2fe0}{}\label{sig_8c_afd4ce9a0fa0e81841a164462921f2fe0}
+\index{sig.\+c@{sig.\+c}!terminating\+\_\+signal@{terminating\+\_\+signal}}
+\index{terminating\+\_\+signal@{terminating\+\_\+signal}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{terminating\+\_\+signal}{terminating_signal}}]{\setlength{\rightskip}{0pt plus 5cm}volatile sig\+\_\+atomic\+\_\+t terminating\+\_\+signal = 0}\hypertarget{sig_8c_a18548eecf50c0cb3cee5ad12192e4414}{}\label{sig_8c_a18548eecf50c0cb3cee5ad12192e4414}
+\index{sig.\+c@{sig.\+c}!terminating\+\_\+signals@{terminating\+\_\+signals}}
+\index{terminating\+\_\+signals@{terminating\+\_\+signals}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{terminating\+\_\+signals}{terminating_signals}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf termsig} terminating\+\_\+signals\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{sig_8c_ac368559228a22d420a8793490307eb10}{}\label{sig_8c_ac368559228a22d420a8793490307eb10}
+\index{sig.\+c@{sig.\+c}!termsigs\+\_\+initialized@{termsigs\+\_\+initialized}}
+\index{termsigs\+\_\+initialized@{termsigs\+\_\+initialized}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{termsigs\+\_\+initialized}{termsigs_initialized}}]{\setlength{\rightskip}{0pt plus 5cm}int termsigs\+\_\+initialized = 0\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{sig_8c_a5eea080fede127a596b8bd07bf7a7b63}{}\label{sig_8c_a5eea080fede127a596b8bd07bf7a7b63}
+\index{sig.\+c@{sig.\+c}!top\+\_\+level@{top\+\_\+level}}
+\index{top\+\_\+level@{top\+\_\+level}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{top\+\_\+level}{top_level}}]{\setlength{\rightskip}{0pt plus 5cm}procenv\+\_\+t top\+\_\+level}\hypertarget{sig_8c_a047be68a91ac230623785fa32c056bd2}{}\label{sig_8c_a047be68a91ac230623785fa32c056bd2}
+\index{sig.\+c@{sig.\+c}!top\+\_\+level\+\_\+mask@{top\+\_\+level\+\_\+mask}}
+\index{top\+\_\+level\+\_\+mask@{top\+\_\+level\+\_\+mask}!sig.\+c@{sig.\+c}}
+\subsubsection[{\texorpdfstring{top\+\_\+level\+\_\+mask}{top_level_mask}}]{\setlength{\rightskip}{0pt plus 5cm}sigset\+\_\+t top\+\_\+level\+\_\+mask}\hypertarget{sig_8c_a4423f1b40bab1e30781e832c6cad1e00}{}\label{sig_8c_a4423f1b40bab1e30781e832c6cad1e00}

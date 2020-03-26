@@ -1,0 +1,107 @@
+\hypertarget{struct__sh__parser__state__t}{}\section{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t Struct Reference}
+\label{struct__sh__parser__state__t}\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+
+
+{\ttfamily \#include $<$shell.\+h$>$}
+
+
+
+Collaboration diagram for \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{struct__sh__parser__state__t__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{struct__sh__parser__state__t_a7b1532dc80c2e47e76927f139141b9f7}{parser\+\_\+state}
+\item 
+int $\ast$ \hyperlink{struct__sh__parser__state__t_a244829887df0a9f52b2345ca53676bbf}{token\+\_\+state}
+\item 
+char $\ast$ \hyperlink{struct__sh__parser__state__t_acf66652fab7d2d06b98ba68c55b2e9c6}{token}
+\item 
+int \hyperlink{struct__sh__parser__state__t_accbc03182193e2ac6620034c01f6558c}{token\+\_\+buffer\+\_\+size}
+\item 
+int \hyperlink{struct__sh__parser__state__t_a0c76836d520b37268713709048223289}{input\+\_\+line\+\_\+terminator}
+\item 
+int \hyperlink{struct__sh__parser__state__t_acae44fdc78165351620339ff23ef7250}{eof\+\_\+encountered}
+\item 
+char $\ast$$\ast$ \hyperlink{struct__sh__parser__state__t_ab1fff8eebe02ce1b436200a0915d7ca1}{prompt\+\_\+string\+\_\+pointer}
+\item 
+int \hyperlink{struct__sh__parser__state__t_ae2216d09a3cf20acf376c7fa719a92d8}{current\+\_\+command\+\_\+line\+\_\+count}
+\item 
+int \hyperlink{struct__sh__parser__state__t_a558735699f0b5cc25cef0852e806fc51}{last\+\_\+command\+\_\+exit\+\_\+value}
+\item 
+sh\+\_\+builtin\+\_\+func\+\_\+t $\ast$ \hyperlink{struct__sh__parser__state__t_a8a85e5f70b6e0dda3f02e4028890988b}{last\+\_\+shell\+\_\+builtin}
+\item 
+sh\+\_\+builtin\+\_\+func\+\_\+t $\ast$ \hyperlink{struct__sh__parser__state__t_a41bd60fdf09f9d03381abca2a70fcb7f}{this\+\_\+shell\+\_\+builtin}
+\item 
+int \hyperlink{struct__sh__parser__state__t_a2a78f970e9bd4951b46c7c5608c9df0f}{expand\+\_\+aliases}
+\item 
+int \hyperlink{struct__sh__parser__state__t_a694b50976966ced6beb057bcff29bb7e}{echo\+\_\+input\+\_\+at\+\_\+read}
+\item 
+int \hyperlink{struct__sh__parser__state__t_a6836ca188e82d08939fbf24dd4565b1a}{need\+\_\+here\+\_\+doc}
+\item 
+int \hyperlink{struct__sh__parser__state__t_ae3c18bb0af3a20be094360b307aba4be}{here\+\_\+doc\+\_\+first\+\_\+line}
+\item 
+\hyperlink{command_8h_adeb9f5d937c92c7923aec48ad5e47d57}{R\+E\+D\+I\+R\+E\+CT} $\ast$ \hyperlink{struct__sh__parser__state__t_ada19fb5dc8d70e07f2c75577e7bf9e9d}{redir\+\_\+stack} \mbox{[}\hyperlink{shell_8h_a8cb36393843e65244395d203958dd6cf}{H\+E\+R\+E\+D\+O\+C\+\_\+\+M\+AX}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!current\+\_\+command\+\_\+line\+\_\+count@{current\+\_\+command\+\_\+line\+\_\+count}}
+\index{current\+\_\+command\+\_\+line\+\_\+count@{current\+\_\+command\+\_\+line\+\_\+count}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{current\+\_\+command\+\_\+line\+\_\+count}{current_command_line_count}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::current\+\_\+command\+\_\+line\+\_\+count}\hypertarget{struct__sh__parser__state__t_ae2216d09a3cf20acf376c7fa719a92d8}{}\label{struct__sh__parser__state__t_ae2216d09a3cf20acf376c7fa719a92d8}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!echo\+\_\+input\+\_\+at\+\_\+read@{echo\+\_\+input\+\_\+at\+\_\+read}}
+\index{echo\+\_\+input\+\_\+at\+\_\+read@{echo\+\_\+input\+\_\+at\+\_\+read}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{echo\+\_\+input\+\_\+at\+\_\+read}{echo_input_at_read}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::echo\+\_\+input\+\_\+at\+\_\+read}\hypertarget{struct__sh__parser__state__t_a694b50976966ced6beb057bcff29bb7e}{}\label{struct__sh__parser__state__t_a694b50976966ced6beb057bcff29bb7e}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!eof\+\_\+encountered@{eof\+\_\+encountered}}
+\index{eof\+\_\+encountered@{eof\+\_\+encountered}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{eof\+\_\+encountered}{eof_encountered}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::eof\+\_\+encountered}\hypertarget{struct__sh__parser__state__t_acae44fdc78165351620339ff23ef7250}{}\label{struct__sh__parser__state__t_acae44fdc78165351620339ff23ef7250}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!expand\+\_\+aliases@{expand\+\_\+aliases}}
+\index{expand\+\_\+aliases@{expand\+\_\+aliases}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{expand\+\_\+aliases}{expand_aliases}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::expand\+\_\+aliases}\hypertarget{struct__sh__parser__state__t_a2a78f970e9bd4951b46c7c5608c9df0f}{}\label{struct__sh__parser__state__t_a2a78f970e9bd4951b46c7c5608c9df0f}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!here\+\_\+doc\+\_\+first\+\_\+line@{here\+\_\+doc\+\_\+first\+\_\+line}}
+\index{here\+\_\+doc\+\_\+first\+\_\+line@{here\+\_\+doc\+\_\+first\+\_\+line}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{here\+\_\+doc\+\_\+first\+\_\+line}{here_doc_first_line}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::here\+\_\+doc\+\_\+first\+\_\+line}\hypertarget{struct__sh__parser__state__t_ae3c18bb0af3a20be094360b307aba4be}{}\label{struct__sh__parser__state__t_ae3c18bb0af3a20be094360b307aba4be}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!input\+\_\+line\+\_\+terminator@{input\+\_\+line\+\_\+terminator}}
+\index{input\+\_\+line\+\_\+terminator@{input\+\_\+line\+\_\+terminator}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{input\+\_\+line\+\_\+terminator}{input_line_terminator}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::input\+\_\+line\+\_\+terminator}\hypertarget{struct__sh__parser__state__t_a0c76836d520b37268713709048223289}{}\label{struct__sh__parser__state__t_a0c76836d520b37268713709048223289}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!last\+\_\+command\+\_\+exit\+\_\+value@{last\+\_\+command\+\_\+exit\+\_\+value}}
+\index{last\+\_\+command\+\_\+exit\+\_\+value@{last\+\_\+command\+\_\+exit\+\_\+value}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{last\+\_\+command\+\_\+exit\+\_\+value}{last_command_exit_value}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::last\+\_\+command\+\_\+exit\+\_\+value}\hypertarget{struct__sh__parser__state__t_a558735699f0b5cc25cef0852e806fc51}{}\label{struct__sh__parser__state__t_a558735699f0b5cc25cef0852e806fc51}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!last\+\_\+shell\+\_\+builtin@{last\+\_\+shell\+\_\+builtin}}
+\index{last\+\_\+shell\+\_\+builtin@{last\+\_\+shell\+\_\+builtin}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{last\+\_\+shell\+\_\+builtin}{last_shell_builtin}}]{\setlength{\rightskip}{0pt plus 5cm}sh\+\_\+builtin\+\_\+func\+\_\+t$\ast$ \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::last\+\_\+shell\+\_\+builtin}\hypertarget{struct__sh__parser__state__t_a8a85e5f70b6e0dda3f02e4028890988b}{}\label{struct__sh__parser__state__t_a8a85e5f70b6e0dda3f02e4028890988b}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!need\+\_\+here\+\_\+doc@{need\+\_\+here\+\_\+doc}}
+\index{need\+\_\+here\+\_\+doc@{need\+\_\+here\+\_\+doc}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{need\+\_\+here\+\_\+doc}{need_here_doc}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::need\+\_\+here\+\_\+doc}\hypertarget{struct__sh__parser__state__t_a6836ca188e82d08939fbf24dd4565b1a}{}\label{struct__sh__parser__state__t_a6836ca188e82d08939fbf24dd4565b1a}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!parser\+\_\+state@{parser\+\_\+state}}
+\index{parser\+\_\+state@{parser\+\_\+state}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{parser\+\_\+state}{parser_state}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::parser\+\_\+state}\hypertarget{struct__sh__parser__state__t_a7b1532dc80c2e47e76927f139141b9f7}{}\label{struct__sh__parser__state__t_a7b1532dc80c2e47e76927f139141b9f7}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!prompt\+\_\+string\+\_\+pointer@{prompt\+\_\+string\+\_\+pointer}}
+\index{prompt\+\_\+string\+\_\+pointer@{prompt\+\_\+string\+\_\+pointer}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{prompt\+\_\+string\+\_\+pointer}{prompt_string_pointer}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::prompt\+\_\+string\+\_\+pointer}\hypertarget{struct__sh__parser__state__t_ab1fff8eebe02ce1b436200a0915d7ca1}{}\label{struct__sh__parser__state__t_ab1fff8eebe02ce1b436200a0915d7ca1}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!redir\+\_\+stack@{redir\+\_\+stack}}
+\index{redir\+\_\+stack@{redir\+\_\+stack}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{redir\+\_\+stack}{redir_stack}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+E\+D\+I\+R\+E\+CT}$\ast$ \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::redir\+\_\+stack\mbox{[}{\bf H\+E\+R\+E\+D\+O\+C\+\_\+\+M\+AX}\mbox{]}}\hypertarget{struct__sh__parser__state__t_ada19fb5dc8d70e07f2c75577e7bf9e9d}{}\label{struct__sh__parser__state__t_ada19fb5dc8d70e07f2c75577e7bf9e9d}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!this\+\_\+shell\+\_\+builtin@{this\+\_\+shell\+\_\+builtin}}
+\index{this\+\_\+shell\+\_\+builtin@{this\+\_\+shell\+\_\+builtin}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{this\+\_\+shell\+\_\+builtin}{this_shell_builtin}}]{\setlength{\rightskip}{0pt plus 5cm}sh\+\_\+builtin\+\_\+func\+\_\+t $\ast$ \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::this\+\_\+shell\+\_\+builtin}\hypertarget{struct__sh__parser__state__t_a41bd60fdf09f9d03381abca2a70fcb7f}{}\label{struct__sh__parser__state__t_a41bd60fdf09f9d03381abca2a70fcb7f}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!token@{token}}
+\index{token@{token}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{token}{token}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::token}\hypertarget{struct__sh__parser__state__t_acf66652fab7d2d06b98ba68c55b2e9c6}{}\label{struct__sh__parser__state__t_acf66652fab7d2d06b98ba68c55b2e9c6}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!token\+\_\+buffer\+\_\+size@{token\+\_\+buffer\+\_\+size}}
+\index{token\+\_\+buffer\+\_\+size@{token\+\_\+buffer\+\_\+size}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{token\+\_\+buffer\+\_\+size}{token_buffer_size}}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::token\+\_\+buffer\+\_\+size}\hypertarget{struct__sh__parser__state__t_accbc03182193e2ac6620034c01f6558c}{}\label{struct__sh__parser__state__t_accbc03182193e2ac6620034c01f6558c}
+\index{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}!token\+\_\+state@{token\+\_\+state}}
+\index{token\+\_\+state@{token\+\_\+state}!\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t@{\+\_\+sh\+\_\+parser\+\_\+state\+\_\+t}}
+\subsubsection[{\texorpdfstring{token\+\_\+state}{token_state}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ \+\_\+sh\+\_\+parser\+\_\+state\+\_\+t\+::token\+\_\+state}\hypertarget{struct__sh__parser__state__t_a244829887df0a9f52b2345ca53676bbf}{}\label{struct__sh__parser__state__t_a244829887df0a9f52b2345ca53676bbf}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{shell_8h}{shell.\+h}\end{DoxyCompactItemize}

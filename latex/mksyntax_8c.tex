@@ -1,0 +1,306 @@
+\hypertarget{mksyntax_8c}{}\section{mksyntax.\+c File Reference}
+\label{mksyntax_8c}\index{mksyntax.\+c@{mksyntax.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}chartypes.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}syntax.\+h\char`\"{}}\\*
+Include dependency graph for mksyntax.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mksyntax_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structwordflag}{wordflag}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{mksyntax_8c_ae8536c0c5b6007232ae9218d1ecfd2b8}{N\+\_\+\+W\+F\+L\+A\+GS}~(sizeof (\hyperlink{mksyntax_8c_a02bab312143e53289df3c8251b0f74d4}{wordflags}) / sizeof (\hyperlink{mksyntax_8c_a02bab312143e53289df3c8251b0f74d4}{wordflags}\mbox{[}0\mbox{]}))
+\item 
+\#define \hyperlink{mksyntax_8c_a9b91278be11f6dd84666d50e37eacd5c}{S\+Y\+N\+S\+I\+ZE}~256
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{mksyntax_8c_a64a6014565bb3e03294ec4a952d5add0}{usage} ()
+\item 
+static char $\ast$ \hyperlink{mksyntax_8c_afce268e081a9630987fbcc5a691f9811}{cdesc} (int i)
+\item 
+static char $\ast$ \hyperlink{mksyntax_8c_a5f72c98d1997d8c908873d3ded483bae}{getcstr} (int f)
+\item 
+static void \hyperlink{mksyntax_8c_a0426dc3db1028b20191d778adefc95c2}{addcstr} (char $\ast$str, int flag)
+\item 
+static void \hyperlink{mksyntax_8c_a8563fd9452577c842430be9a351ffb29}{addcchar} (unsigned char c, int flag)
+\item 
+static void \hyperlink{mksyntax_8c_a61e987d5cb21d0ce8ecbbf7528be1692}{addblanks} ()
+\item 
+static void \hyperlink{mksyntax_8c_af607f7fae37c2c0b9881e62e3279150c}{load\+\_\+lsyntax} ()
+\item 
+static void \hyperlink{mksyntax_8c_a9211fdb82849b671c7cb8beae7dfc6fe}{dump\+\_\+lflags} (F\+I\+LE $\ast$fp, int ind)
+\item 
+static void \hyperlink{mksyntax_8c_ac59b04fc548cfaa766c61972440d0467}{wcomment} (F\+I\+LE $\ast$fp, int i)
+\item 
+static void \hyperlink{mksyntax_8c_a9fc11d0e083ecfda23799819d917968e}{dump\+\_\+lsyntax} (F\+I\+LE $\ast$fp)
+\item 
+int \hyperlink{mksyntax_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int \hyperlink{test_8c_ad1447518f4372828b8435ae82e48499e}{argc}, char $\ast$$\ast$\hyperlink{test_8c_af2efa898e9eed6fe6715279cb1ec35b0}{argv})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{mksyntax_8c_ad5e1c16213bbee2d5e8cc363309f418c}{optind}
+\item 
+char $\ast$ \hyperlink{mksyntax_8c_adb50a0eab9fed92fc3bfc7dfa4f2c410}{optarg}
+\item 
+int \hyperlink{mksyntax_8c_ad65a8842cc674e3ddf69355898c0ecbf}{errno}
+\item 
+struct \hyperlink{structwordflag}{wordflag} \hyperlink{mksyntax_8c_a02bab312143e53289df3c8251b0f74d4}{wordflags} \mbox{[}$\,$\mbox{]}
+\item 
+int \hyperlink{mksyntax_8c_a6ea4fed8a68c3e8388772d41cddc60db}{lsyntax} \mbox{[}\hyperlink{mksyntax_8c_a9b91278be11f6dd84666d50e37eacd5c}{S\+Y\+N\+S\+I\+ZE}\mbox{]}
+\item 
+int \hyperlink{mksyntax_8c_ac3e1795766a80ec63b157951b4b9a7d4}{debug}
+\item 
+char $\ast$ \hyperlink{mksyntax_8c_ab9e1449fd00c98428516f0b41eddcb10}{progname}
+\item 
+char \hyperlink{mksyntax_8c_a17d99dc04dcfc9ee719924c1ea01f34d}{preamble} \mbox{[}$\,$\mbox{]}
+\item 
+char \hyperlink{mksyntax_8c_a43dffa9d91301bbae9f86260ba002137}{includes} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{mksyntax.\+c@{mksyntax.\+c}!N\+\_\+\+W\+F\+L\+A\+GS@{N\+\_\+\+W\+F\+L\+A\+GS}}
+\index{N\+\_\+\+W\+F\+L\+A\+GS@{N\+\_\+\+W\+F\+L\+A\+GS}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{N\+\_\+\+W\+F\+L\+A\+GS}{N_WFLAGS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+\_\+\+W\+F\+L\+A\+GS~(sizeof ({\bf wordflags}) / sizeof ({\bf wordflags}\mbox{[}0\mbox{]}))}\hypertarget{mksyntax_8c_ae8536c0c5b6007232ae9218d1ecfd2b8}{}\label{mksyntax_8c_ae8536c0c5b6007232ae9218d1ecfd2b8}
+\index{mksyntax.\+c@{mksyntax.\+c}!S\+Y\+N\+S\+I\+ZE@{S\+Y\+N\+S\+I\+ZE}}
+\index{S\+Y\+N\+S\+I\+ZE@{S\+Y\+N\+S\+I\+ZE}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{S\+Y\+N\+S\+I\+ZE}{SYNSIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+Y\+N\+S\+I\+ZE~256}\hypertarget{mksyntax_8c_a9b91278be11f6dd84666d50e37eacd5c}{}\label{mksyntax_8c_a9b91278be11f6dd84666d50e37eacd5c}
+
+
+\subsection{Function Documentation}
+\index{mksyntax.\+c@{mksyntax.\+c}!addblanks@{addblanks}}
+\index{addblanks@{addblanks}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{addblanks()}{addblanks()}}]{\setlength{\rightskip}{0pt plus 5cm}static void addblanks (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mksyntax_8c_a61e987d5cb21d0ce8ecbbf7528be1692}{}\label{mksyntax_8c_a61e987d5cb21d0ce8ecbbf7528be1692}
+\index{mksyntax.\+c@{mksyntax.\+c}!addcchar@{addcchar}}
+\index{addcchar@{addcchar}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{addcchar(unsigned char c, int flag)}{addcchar(unsigned char c, int flag)}}]{\setlength{\rightskip}{0pt plus 5cm}static void addcchar (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{c, }
+\item[{int}]{flag}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mksyntax_8c_a8563fd9452577c842430be9a351ffb29}{}\label{mksyntax_8c_a8563fd9452577c842430be9a351ffb29}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{mksyntax_8c_a8563fd9452577c842430be9a351ffb29_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{mksyntax.\+c@{mksyntax.\+c}!addcstr@{addcstr}}
+\index{addcstr@{addcstr}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{addcstr(char $\ast$str, int flag)}{addcstr(char *str, int flag)}}]{\setlength{\rightskip}{0pt plus 5cm}static void addcstr (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{str, }
+\item[{int}]{flag}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mksyntax_8c_a0426dc3db1028b20191d778adefc95c2}{}\label{mksyntax_8c_a0426dc3db1028b20191d778adefc95c2}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{mksyntax_8c_a0426dc3db1028b20191d778adefc95c2_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{mksyntax.\+c@{mksyntax.\+c}!cdesc@{cdesc}}
+\index{cdesc@{cdesc}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{cdesc(int i)}{cdesc(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ cdesc (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mksyntax_8c_afce268e081a9630987fbcc5a691f9811}{}\label{mksyntax_8c_afce268e081a9630987fbcc5a691f9811}
+\index{mksyntax.\+c@{mksyntax.\+c}!dump\+\_\+lflags@{dump\+\_\+lflags}}
+\index{dump\+\_\+lflags@{dump\+\_\+lflags}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{dump\+\_\+lflags(\+F\+I\+L\+E $\ast$fp, int ind)}{dump_lflags(FILE *fp, int ind)}}]{\setlength{\rightskip}{0pt plus 5cm}static void dump\+\_\+lflags (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp, }
+\item[{int}]{ind}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mksyntax_8c_a9211fdb82849b671c7cb8beae7dfc6fe}{}\label{mksyntax_8c_a9211fdb82849b671c7cb8beae7dfc6fe}
+\index{mksyntax.\+c@{mksyntax.\+c}!dump\+\_\+lsyntax@{dump\+\_\+lsyntax}}
+\index{dump\+\_\+lsyntax@{dump\+\_\+lsyntax}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{dump\+\_\+lsyntax(\+F\+I\+L\+E $\ast$fp)}{dump_lsyntax(FILE *fp)}}]{\setlength{\rightskip}{0pt plus 5cm}static void dump\+\_\+lsyntax (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mksyntax_8c_a9fc11d0e083ecfda23799819d917968e}{}\label{mksyntax_8c_a9fc11d0e083ecfda23799819d917968e}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{mksyntax_8c_a9fc11d0e083ecfda23799819d917968e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{mksyntax.\+c@{mksyntax.\+c}!getcstr@{getcstr}}
+\index{getcstr@{getcstr}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{getcstr(int f)}{getcstr(int f)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ getcstr (
+\begin{DoxyParamCaption}
+\item[{int}]{f}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mksyntax_8c_a5f72c98d1997d8c908873d3ded483bae}{}\label{mksyntax_8c_a5f72c98d1997d8c908873d3ded483bae}
+\index{mksyntax.\+c@{mksyntax.\+c}!load\+\_\+lsyntax@{load\+\_\+lsyntax}}
+\index{load\+\_\+lsyntax@{load\+\_\+lsyntax}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{load\+\_\+lsyntax()}{load_lsyntax()}}]{\setlength{\rightskip}{0pt plus 5cm}static void load\+\_\+lsyntax (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mksyntax_8c_af607f7fae37c2c0b9881e62e3279150c}{}\label{mksyntax_8c_af607f7fae37c2c0b9881e62e3279150c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{mksyntax_8c_af607f7fae37c2c0b9881e62e3279150c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{mksyntax.\+c@{mksyntax.\+c}!main@{main}}
+\index{main@{main}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{main(int argc, char $\ast$$\ast$argv)}{main(int argc, char **argv)}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\hypertarget{mksyntax_8c_a3c04138a5bfe5d72780bb7e82a18e627}{}\label{mksyntax_8c_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mksyntax_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{mksyntax.\+c@{mksyntax.\+c}!usage@{usage}}
+\index{usage@{usage}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{usage()}{usage()}}]{\setlength{\rightskip}{0pt plus 5cm}static void usage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mksyntax_8c_a64a6014565bb3e03294ec4a952d5add0}{}\label{mksyntax_8c_a64a6014565bb3e03294ec4a952d5add0}
+\index{mksyntax.\+c@{mksyntax.\+c}!wcomment@{wcomment}}
+\index{wcomment@{wcomment}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{wcomment(\+F\+I\+L\+E $\ast$fp, int i)}{wcomment(FILE *fp, int i)}}]{\setlength{\rightskip}{0pt plus 5cm}static void wcomment (
+\begin{DoxyParamCaption}
+\item[{F\+I\+LE $\ast$}]{fp, }
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mksyntax_8c_ac59b04fc548cfaa766c61972440d0467}{}\label{mksyntax_8c_ac59b04fc548cfaa766c61972440d0467}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{mksyntax_8c_ac59b04fc548cfaa766c61972440d0467_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{mksyntax.\+c@{mksyntax.\+c}!debug@{debug}}
+\index{debug@{debug}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{debug}{debug}}]{\setlength{\rightskip}{0pt plus 5cm}int debug}\hypertarget{mksyntax_8c_ac3e1795766a80ec63b157951b4b9a7d4}{}\label{mksyntax_8c_ac3e1795766a80ec63b157951b4b9a7d4}
+\index{mksyntax.\+c@{mksyntax.\+c}!errno@{errno}}
+\index{errno@{errno}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{errno}{errno}}]{\setlength{\rightskip}{0pt plus 5cm}int errno}\hypertarget{mksyntax_8c_ad65a8842cc674e3ddf69355898c0ecbf}{}\label{mksyntax_8c_ad65a8842cc674e3ddf69355898c0ecbf}
+\index{mksyntax.\+c@{mksyntax.\+c}!includes@{includes}}
+\index{includes@{includes}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{includes}{includes}}]{\setlength{\rightskip}{0pt plus 5cm}char includes\mbox{[}$\,$\mbox{]}}\hypertarget{mksyntax_8c_a43dffa9d91301bbae9f86260ba002137}{}\label{mksyntax_8c_a43dffa9d91301bbae9f86260ba002137}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \textcolor{stringliteral}{"\(\backslash\)}
+\textcolor{stringliteral}{#include \(\backslash\)"config.h\(\backslash\)"\(\backslash\)n\(\backslash\)}
+\textcolor{stringliteral}{#include \(\backslash\)"stdc.h\(\backslash\)"\(\backslash\)n\(\backslash\)}
+\textcolor{stringliteral}{#include \(\backslash\)"syntax.h\(\backslash\)"\(\backslash\)n\(\backslash\)n"}
+\end{DoxyCode}
+\index{mksyntax.\+c@{mksyntax.\+c}!lsyntax@{lsyntax}}
+\index{lsyntax@{lsyntax}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{lsyntax}{lsyntax}}]{\setlength{\rightskip}{0pt plus 5cm}int lsyntax\mbox{[}{\bf S\+Y\+N\+S\+I\+ZE}\mbox{]}}\hypertarget{mksyntax_8c_a6ea4fed8a68c3e8388772d41cddc60db}{}\label{mksyntax_8c_a6ea4fed8a68c3e8388772d41cddc60db}
+\index{mksyntax.\+c@{mksyntax.\+c}!optarg@{optarg}}
+\index{optarg@{optarg}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{optarg}{optarg}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ optarg}\hypertarget{mksyntax_8c_adb50a0eab9fed92fc3bfc7dfa4f2c410}{}\label{mksyntax_8c_adb50a0eab9fed92fc3bfc7dfa4f2c410}
+\index{mksyntax.\+c@{mksyntax.\+c}!optind@{optind}}
+\index{optind@{optind}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{optind}{optind}}]{\setlength{\rightskip}{0pt plus 5cm}int optind}\hypertarget{mksyntax_8c_ad5e1c16213bbee2d5e8cc363309f418c}{}\label{mksyntax_8c_ad5e1c16213bbee2d5e8cc363309f418c}
+\index{mksyntax.\+c@{mksyntax.\+c}!preamble@{preamble}}
+\index{preamble@{preamble}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{preamble}{preamble}}]{\setlength{\rightskip}{0pt plus 5cm}char preamble\mbox{[}$\,$\mbox{]}}\hypertarget{mksyntax_8c_a17d99dc04dcfc9ee719924c1ea01f34d}{}\label{mksyntax_8c_a17d99dc04dcfc9ee719924c1ea01f34d}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \textcolor{stringliteral}{"\(\backslash\)}
+\textcolor{stringliteral}{/*\(\backslash\)n\(\backslash\)}
+\textcolor{stringliteral}{ * This file was generated by mksyntax.  DO NOT EDIT.\(\backslash\)n\(\backslash\)}
+\textcolor{stringliteral}{ */\(\backslash\)n\(\backslash\)}
+\textcolor{stringliteral}{\(\backslash\)n"}
+\end{DoxyCode}
+\index{mksyntax.\+c@{mksyntax.\+c}!progname@{progname}}
+\index{progname@{progname}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{progname}{progname}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ progname}\hypertarget{mksyntax_8c_ab9e1449fd00c98428516f0b41eddcb10}{}\label{mksyntax_8c_ab9e1449fd00c98428516f0b41eddcb10}
+\index{mksyntax.\+c@{mksyntax.\+c}!wordflags@{wordflags}}
+\index{wordflags@{wordflags}!mksyntax.\+c@{mksyntax.\+c}}
+\subsubsection[{\texorpdfstring{wordflags}{wordflags}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf wordflag}  wordflags\mbox{[}$\,$\mbox{]}}\hypertarget{mksyntax_8c_a02bab312143e53289df3c8251b0f74d4}{}\label{mksyntax_8c_a02bab312143e53289df3c8251b0f74d4}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{ \hyperlink{syntax_8h_a7b8dd60ab90b7483c91c0cbeba6bafbd}{CWORD},   \textcolor{stringliteral}{"CWORD"} \},
+    \{ \hyperlink{syntax_8h_a279df8bea63f0363dd63b8239a56609b}{CSHMETA},   \textcolor{stringliteral}{"CSHMETA"} \},
+    \{ \hyperlink{syntax_8h_a4bab9a22b153363a4ae8ef138311bf83}{CSHBRK}, \textcolor{stringliteral}{"CSHBRK"} \},
+    \{ \hyperlink{syntax_8h_ad5bfd1266535c1f39bbe6c1f2a9262be}{CBACKQ}, \textcolor{stringliteral}{"CBACKQ"} \},
+    \{ \hyperlink{syntax_8h_ad5eccd4785fe7879f3ad3fe2a78e2ed5}{CQUOTE}, \textcolor{stringliteral}{"CQUOTE"} \},
+    \{ \hyperlink{syntax_8h_a76f345621ba935aec3ae45211c8b3692}{CSPECL}, \textcolor{stringliteral}{"CSPECL"} \},
+    \{ \hyperlink{syntax_8h_a691d03bd5a78dda7521e1b3131246429}{CEXP},     \textcolor{stringliteral}{"CEXP"} \},
+    \{ \hyperlink{syntax_8h_a994956f3544823b74723c85aaa21396e}{CBSDQUOTE},   \textcolor{stringliteral}{"CBSDQUOTE"} \},
+    \{ \hyperlink{syntax_8h_ab83e02f9258fd2d3137278df6387ed37}{CBSHDOC},   \textcolor{stringliteral}{"CBSHDOC"} \},
+    \{ \hyperlink{syntax_8h_a9ab880e22ffa5bc8ce2ff97288affe40}{CGLOB},   \textcolor{stringliteral}{"CGLOB"} \},
+    \{ \hyperlink{syntax_8h_a1a33332b80d4ffebe73337541ab1ade7}{CXGLOB}, \textcolor{stringliteral}{"CXGLOB"} \},
+    \{ \hyperlink{syntax_8h_a0ffca7671bfa9a43dd4f0c6f01dcdc2f}{CXQUOTE},   \textcolor{stringliteral}{"CXQUOTE"} \},
+    \{ \hyperlink{syntax_8h_a0ef7d47455eef1c6c4899263c883a419}{CSPECVAR}, \textcolor{stringliteral}{"CSPECVAR"} \},
+    \{ \hyperlink{syntax_8h_a68813add36ac5a4a468b5aa37c129d39}{CSUBSTOP}, \textcolor{stringliteral}{"CSUBSTOP"} \},
+    \{ \hyperlink{syntax_8h_a554a7ced931c8f9dfed52adabb01e45c}{CBLANK}, \textcolor{stringliteral}{"CBLANK"} \},
+\}
+\end{DoxyCode}

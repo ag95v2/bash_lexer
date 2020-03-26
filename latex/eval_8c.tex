@@ -1,0 +1,206 @@
+\hypertarget{eval_8c}{}\section{eval.\+c File Reference}
+\label{eval_8c}\index{eval.\+c@{eval.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}flags.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}parser.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}trap.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}builtins/common.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}execute\+\_\+cmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}input.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashhist.\+h\char`\"{}}\\*
+Include dependency graph for eval.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{eval_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{eval_8c_af73466fc9bb7c8b48c151256c573d32b}{send\+\_\+pwd\+\_\+to\+\_\+eterm} \hyperlink{eval_8c_aaa47cad9b3b357883365f8688c017239}{\+\_\+\+\_\+P} ((void))
+\item 
+static \hyperlink{sig_8h_a09fccaf2f4ae9265e0535220e9447dce}{sighandler} \hyperlink{eval_8c_a787a256b39640e12cd72832bc12c9027}{alrm\+\_\+catcher} \hyperlink{eval_8c_ad3a36f6d6cb1f7efc16765d563ea79f7}{\+\_\+\+\_\+P} ((int))
+\item 
+int \hyperlink{eval_8c_ae43afb0f02ffb0c1a74bc6ea3a94f2dd}{reader\+\_\+loop} ()
+\item 
+int \hyperlink{eval_8c_a13ad6abb4025dc15f864bf9a4cd8834c}{pretty\+\_\+print\+\_\+loop} ()
+\item 
+static \hyperlink{sig_8h_a09fccaf2f4ae9265e0535220e9447dce}{sighandler} \hyperlink{eval_8c_a787a256b39640e12cd72832bc12c9027}{alrm\+\_\+catcher} (int i)
+\item 
+static void \hyperlink{eval_8c_af73466fc9bb7c8b48c151256c573d32b}{send\+\_\+pwd\+\_\+to\+\_\+eterm} ()
+\item 
+static void \hyperlink{eval_8c_addce3b6a778231b47480ac77ef391b4d}{execute\+\_\+prompt\+\_\+command} ()
+\item 
+int \hyperlink{eval_8c_aa4d204c0f3d5a003614f0f97f33dc68f}{parse\+\_\+command} ()
+\item 
+int \hyperlink{eval_8c_a191f693141f019761fc7f7c1e752345d}{read\+\_\+command} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+sigset\+\_\+t \hyperlink{eval_8c_a4423f1b40bab1e30781e832c6cad1e00}{top\+\_\+level\+\_\+mask}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{eval.\+c@{eval.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!eval.\+c@{eval.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf send\+\_\+pwd\+\_\+to\+\_\+eterm} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{eval_8c_aaa47cad9b3b357883365f8688c017239}{}\label{eval_8c_aaa47cad9b3b357883365f8688c017239}
+\index{eval.\+c@{eval.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!eval.\+c@{eval.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf sighandler} {\bf alrm\+\_\+catcher} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{eval_8c_ad3a36f6d6cb1f7efc16765d563ea79f7}{}\label{eval_8c_ad3a36f6d6cb1f7efc16765d563ea79f7}
+\index{eval.\+c@{eval.\+c}!alrm\+\_\+catcher@{alrm\+\_\+catcher}}
+\index{alrm\+\_\+catcher@{alrm\+\_\+catcher}!eval.\+c@{eval.\+c}}
+\subsubsection[{\texorpdfstring{alrm\+\_\+catcher(int i)}{alrm_catcher(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf sighandler} alrm\+\_\+catcher (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{eval_8c_a787a256b39640e12cd72832bc12c9027}{}\label{eval_8c_a787a256b39640e12cd72832bc12c9027}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{eval_8c_a787a256b39640e12cd72832bc12c9027_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{eval.\+c@{eval.\+c}!execute\+\_\+prompt\+\_\+command@{execute\+\_\+prompt\+\_\+command}}
+\index{execute\+\_\+prompt\+\_\+command@{execute\+\_\+prompt\+\_\+command}!eval.\+c@{eval.\+c}}
+\subsubsection[{\texorpdfstring{execute\+\_\+prompt\+\_\+command()}{execute_prompt_command()}}]{\setlength{\rightskip}{0pt plus 5cm}static void execute\+\_\+prompt\+\_\+command (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{eval_8c_addce3b6a778231b47480ac77ef391b4d}{}\label{eval_8c_addce3b6a778231b47480ac77ef391b4d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{eval_8c_addce3b6a778231b47480ac77ef391b4d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{eval.\+c@{eval.\+c}!parse\+\_\+command@{parse\+\_\+command}}
+\index{parse\+\_\+command@{parse\+\_\+command}!eval.\+c@{eval.\+c}}
+\subsubsection[{\texorpdfstring{parse\+\_\+command()}{parse_command()}}]{\setlength{\rightskip}{0pt plus 5cm}int parse\+\_\+command (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{eval_8c_aa4d204c0f3d5a003614f0f97f33dc68f}{}\label{eval_8c_aa4d204c0f3d5a003614f0f97f33dc68f}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{eval_8c_aa4d204c0f3d5a003614f0f97f33dc68f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{eval.\+c@{eval.\+c}!pretty\+\_\+print\+\_\+loop@{pretty\+\_\+print\+\_\+loop}}
+\index{pretty\+\_\+print\+\_\+loop@{pretty\+\_\+print\+\_\+loop}!eval.\+c@{eval.\+c}}
+\subsubsection[{\texorpdfstring{pretty\+\_\+print\+\_\+loop()}{pretty_print_loop()}}]{\setlength{\rightskip}{0pt plus 5cm}int pretty\+\_\+print\+\_\+loop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{eval_8c_a13ad6abb4025dc15f864bf9a4cd8834c}{}\label{eval_8c_a13ad6abb4025dc15f864bf9a4cd8834c}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{eval_8c_a13ad6abb4025dc15f864bf9a4cd8834c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{eval.\+c@{eval.\+c}!read\+\_\+command@{read\+\_\+command}}
+\index{read\+\_\+command@{read\+\_\+command}!eval.\+c@{eval.\+c}}
+\subsubsection[{\texorpdfstring{read\+\_\+command()}{read_command()}}]{\setlength{\rightskip}{0pt plus 5cm}int read\+\_\+command (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{eval_8c_a191f693141f019761fc7f7c1e752345d}{}\label{eval_8c_a191f693141f019761fc7f7c1e752345d}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{eval_8c_a191f693141f019761fc7f7c1e752345d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{eval.\+c@{eval.\+c}!reader\+\_\+loop@{reader\+\_\+loop}}
+\index{reader\+\_\+loop@{reader\+\_\+loop}!eval.\+c@{eval.\+c}}
+\subsubsection[{\texorpdfstring{reader\+\_\+loop()}{reader_loop()}}]{\setlength{\rightskip}{0pt plus 5cm}int reader\+\_\+loop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{eval_8c_ae43afb0f02ffb0c1a74bc6ea3a94f2dd}{}\label{eval_8c_ae43afb0f02ffb0c1a74bc6ea3a94f2dd}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{eval_8c_ae43afb0f02ffb0c1a74bc6ea3a94f2dd_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{eval.\+c@{eval.\+c}!send\+\_\+pwd\+\_\+to\+\_\+eterm@{send\+\_\+pwd\+\_\+to\+\_\+eterm}}
+\index{send\+\_\+pwd\+\_\+to\+\_\+eterm@{send\+\_\+pwd\+\_\+to\+\_\+eterm}!eval.\+c@{eval.\+c}}
+\subsubsection[{\texorpdfstring{send\+\_\+pwd\+\_\+to\+\_\+eterm()}{send_pwd_to_eterm()}}]{\setlength{\rightskip}{0pt plus 5cm}static void send\+\_\+pwd\+\_\+to\+\_\+eterm (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{eval_8c_af73466fc9bb7c8b48c151256c573d32b}{}\label{eval_8c_af73466fc9bb7c8b48c151256c573d32b}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{eval_8c_af73466fc9bb7c8b48c151256c573d32b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{eval.\+c@{eval.\+c}!top\+\_\+level\+\_\+mask@{top\+\_\+level\+\_\+mask}}
+\index{top\+\_\+level\+\_\+mask@{top\+\_\+level\+\_\+mask}!eval.\+c@{eval.\+c}}
+\subsubsection[{\texorpdfstring{top\+\_\+level\+\_\+mask}{top_level_mask}}]{\setlength{\rightskip}{0pt plus 5cm}sigset\+\_\+t top\+\_\+level\+\_\+mask}\hypertarget{eval_8c_a4423f1b40bab1e30781e832c6cad1e00}{}\label{eval_8c_a4423f1b40bab1e30781e832c6cad1e00}

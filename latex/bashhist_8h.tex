@@ -1,0 +1,186 @@
+\hypertarget{bashhist_8h}{}\section{bashhist.\+h File Reference}
+\label{bashhist_8h}\index{bashhist.\+h@{bashhist.\+h}}
+{\ttfamily \#include \char`\"{}stdc.\+h\char`\"{}}\\*
+Include dependency graph for bashhist.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{bashhist_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{bashhist_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{bashhist_8h_a91fded8f647d79ad2d4338cc74365374}{H\+C\+\_\+\+I\+G\+N\+S\+P\+A\+CE}~0x01
+\item 
+\#define \hyperlink{bashhist_8h_a0fdbfad33f67eb401dc4656ba80c5ced}{H\+C\+\_\+\+I\+G\+N\+D\+U\+PS}~0x02
+\item 
+\#define \hyperlink{bashhist_8h_ae8b3c73ada4b5878a9b4c1f1b59a0632}{H\+C\+\_\+\+E\+R\+A\+S\+E\+D\+U\+PS}~0x04
+\item 
+\#define \hyperlink{bashhist_8h_ae8599514b133497d7bf2e53e548ddebe}{H\+C\+\_\+\+I\+G\+N\+B\+O\+TH}~(\hyperlink{bashhist_8h_a91fded8f647d79ad2d4338cc74365374}{H\+C\+\_\+\+I\+G\+N\+S\+P\+A\+CE}$\vert$\hyperlink{bashhist_8h_a0fdbfad33f67eb401dc4656ba80c5ced}{H\+C\+\_\+\+I\+G\+N\+D\+U\+PS})
+\item 
+\#define \hyperlink{bashhist_8h_a630ddf8653e9dc70ac765ed521c1e6bd}{H\+I\+S\+T\+E\+X\+P\+A\+N\+D\+\_\+\+D\+E\+F\+A\+U\+LT}~1
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{bashhist_8c_ab75fc0a6f362bcf42b6953fc1a0c3db5}{bash\+\_\+initialize\+\_\+history} \hyperlink{bashhist_8h_aef93f8f69c985cbcda0f9078088f43f3}{\+\_\+\+\_\+P} ((void))
+\item 
+void \hyperlink{bashhist_8c_a82455377ee4285e9a4dd7e1562894d0c}{bash\+\_\+history\+\_\+reinit} \hyperlink{bashhist_8h_a6bcd8cb88ac73d7f88a10e2e127f743c}{\+\_\+\+\_\+P} ((int))
+\item 
+int \hyperlink{bashhist_8c_a73a2b2bb5cc2206a1b1b14506a770b03}{bash\+\_\+delete\+\_\+history\+\_\+range} \hyperlink{bashhist_8h_aae4147085c7edfc60a4a4b249671266e}{\+\_\+\+\_\+P} ((int, int))
+\item 
+int \hyperlink{bashhist_8c_a28e5bb73b063f5034dd66f8dce59bb3c}{maybe\+\_\+append\+\_\+history} \hyperlink{bashhist_8h_a8787bb6749db1007638362ee6e5fe48d}{\+\_\+\+\_\+P} ((char $\ast$))
+\item 
+char $\ast$\hyperlink{bashhist_8c_a4ed75096dc128a1619ca330a832f1efc}{pre\+\_\+process\+\_\+line} \hyperlink{bashhist_8h_a764e9d2d018a7b8101f411b4ec3fd7f9}{\+\_\+\+\_\+P} ((char $\ast$, int, int))
+\item 
+int \hyperlink{bashhist_8c_a1422f5c7531932507c4abee6dde956e5}{check\+\_\+add\+\_\+history} \hyperlink{bashhist_8h_a4b33bae25659bf1fcd9ad1c82fde350b}{\+\_\+\+\_\+P} ((char $\ast$, int))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{bashhist_8h_a4d4b85d3d35baed065a9ba7091a48587}{remember\+\_\+on\+\_\+history}
+\item 
+int \hyperlink{bashhist_8h_a700de549bf144f6aad67ec2c0f26ecfb}{enable\+\_\+history\+\_\+list}
+\item 
+int \hyperlink{bashhist_8h_a7ca25fff1387d553739be759a23d55a8}{literal\+\_\+history}
+\item 
+int \hyperlink{bashhist_8h_a4687bf6d2633a8ea0fcb0a4dd04d1c4a}{force\+\_\+append\+\_\+history}
+\item 
+int \hyperlink{bashhist_8h_a245c800288e30b34caa5045bb36070d2}{history\+\_\+lines\+\_\+this\+\_\+session}
+\item 
+int \hyperlink{bashhist_8h_aec123c6a4a942db338cc617cb53fe7ec}{history\+\_\+lines\+\_\+in\+\_\+file}
+\item 
+int \hyperlink{bashhist_8h_ad7ac1c37b8abf7cc510cd05802a9b2f2}{history\+\_\+expansion}
+\item 
+int \hyperlink{bashhist_8h_a773d6ddaa298216f854214e903877adf}{history\+\_\+control}
+\item 
+int \hyperlink{bashhist_8h_a3077e0fae4bacf774f8eb086c87a05dc}{command\+\_\+oriented\+\_\+history}
+\item 
+int \hyperlink{bashhist_8h_ae4dd58cf329bd700de4e465ce0fde255}{current\+\_\+command\+\_\+first\+\_\+line\+\_\+saved}
+\item 
+int \hyperlink{bashhist_8h_affd9eca068a640614558233bd3dcd0ee}{current\+\_\+command\+\_\+first\+\_\+line\+\_\+comment}
+\item 
+int \hyperlink{bashhist_8h_a4386cfc2bda5cf8e119ce5436b061d69}{hist\+\_\+last\+\_\+line\+\_\+added}
+\item 
+int \hyperlink{bashhist_8h_a657d7d2d7651cc5519a4428e7f060bfb}{hist\+\_\+last\+\_\+line\+\_\+pushed}
+\item 
+int \hyperlink{bashhist_8h_afcc212ec74144bc5b7461b3f036e0175}{dont\+\_\+save\+\_\+function\+\_\+defs}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{bashhist.\+h@{bashhist.\+h}!H\+C\+\_\+\+E\+R\+A\+S\+E\+D\+U\+PS@{H\+C\+\_\+\+E\+R\+A\+S\+E\+D\+U\+PS}}
+\index{H\+C\+\_\+\+E\+R\+A\+S\+E\+D\+U\+PS@{H\+C\+\_\+\+E\+R\+A\+S\+E\+D\+U\+PS}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{H\+C\+\_\+\+E\+R\+A\+S\+E\+D\+U\+PS}{HC_ERASEDUPS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+C\+\_\+\+E\+R\+A\+S\+E\+D\+U\+PS~0x04}\hypertarget{bashhist_8h_ae8b3c73ada4b5878a9b4c1f1b59a0632}{}\label{bashhist_8h_ae8b3c73ada4b5878a9b4c1f1b59a0632}
+\index{bashhist.\+h@{bashhist.\+h}!H\+C\+\_\+\+I\+G\+N\+B\+O\+TH@{H\+C\+\_\+\+I\+G\+N\+B\+O\+TH}}
+\index{H\+C\+\_\+\+I\+G\+N\+B\+O\+TH@{H\+C\+\_\+\+I\+G\+N\+B\+O\+TH}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{H\+C\+\_\+\+I\+G\+N\+B\+O\+TH}{HC_IGNBOTH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+C\+\_\+\+I\+G\+N\+B\+O\+TH~({\bf H\+C\+\_\+\+I\+G\+N\+S\+P\+A\+CE}$\vert${\bf H\+C\+\_\+\+I\+G\+N\+D\+U\+PS})}\hypertarget{bashhist_8h_ae8599514b133497d7bf2e53e548ddebe}{}\label{bashhist_8h_ae8599514b133497d7bf2e53e548ddebe}
+\index{bashhist.\+h@{bashhist.\+h}!H\+C\+\_\+\+I\+G\+N\+D\+U\+PS@{H\+C\+\_\+\+I\+G\+N\+D\+U\+PS}}
+\index{H\+C\+\_\+\+I\+G\+N\+D\+U\+PS@{H\+C\+\_\+\+I\+G\+N\+D\+U\+PS}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{H\+C\+\_\+\+I\+G\+N\+D\+U\+PS}{HC_IGNDUPS}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+C\+\_\+\+I\+G\+N\+D\+U\+PS~0x02}\hypertarget{bashhist_8h_a0fdbfad33f67eb401dc4656ba80c5ced}{}\label{bashhist_8h_a0fdbfad33f67eb401dc4656ba80c5ced}
+\index{bashhist.\+h@{bashhist.\+h}!H\+C\+\_\+\+I\+G\+N\+S\+P\+A\+CE@{H\+C\+\_\+\+I\+G\+N\+S\+P\+A\+CE}}
+\index{H\+C\+\_\+\+I\+G\+N\+S\+P\+A\+CE@{H\+C\+\_\+\+I\+G\+N\+S\+P\+A\+CE}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{H\+C\+\_\+\+I\+G\+N\+S\+P\+A\+CE}{HC_IGNSPACE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+C\+\_\+\+I\+G\+N\+S\+P\+A\+CE~0x01}\hypertarget{bashhist_8h_a91fded8f647d79ad2d4338cc74365374}{}\label{bashhist_8h_a91fded8f647d79ad2d4338cc74365374}
+\index{bashhist.\+h@{bashhist.\+h}!H\+I\+S\+T\+E\+X\+P\+A\+N\+D\+\_\+\+D\+E\+F\+A\+U\+LT@{H\+I\+S\+T\+E\+X\+P\+A\+N\+D\+\_\+\+D\+E\+F\+A\+U\+LT}}
+\index{H\+I\+S\+T\+E\+X\+P\+A\+N\+D\+\_\+\+D\+E\+F\+A\+U\+LT@{H\+I\+S\+T\+E\+X\+P\+A\+N\+D\+\_\+\+D\+E\+F\+A\+U\+LT}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{H\+I\+S\+T\+E\+X\+P\+A\+N\+D\+\_\+\+D\+E\+F\+A\+U\+LT}{HISTEXPAND_DEFAULT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+I\+S\+T\+E\+X\+P\+A\+N\+D\+\_\+\+D\+E\+F\+A\+U\+LT~1}\hypertarget{bashhist_8h_a630ddf8653e9dc70ac765ed521c1e6bd}{}\label{bashhist_8h_a630ddf8653e9dc70ac765ed521c1e6bd}
+
+
+\subsection{Function Documentation}
+\index{bashhist.\+h@{bashhist.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf bash\+\_\+initialize\+\_\+history} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashhist_8h_aef93f8f69c985cbcda0f9078088f43f3}{}\label{bashhist_8h_aef93f8f69c985cbcda0f9078088f43f3}
+\index{bashhist.\+h@{bashhist.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf bash\+\_\+history\+\_\+reinit} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashhist_8h_a6bcd8cb88ac73d7f88a10e2e127f743c}{}\label{bashhist_8h_a6bcd8cb88ac73d7f88a10e2e127f743c}
+\index{bashhist.\+h@{bashhist.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int, int))}{__P((int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bash\+\_\+delete\+\_\+history\+\_\+range} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashhist_8h_aae4147085c7edfc60a4a4b249671266e}{}\label{bashhist_8h_aae4147085c7edfc60a4a4b249671266e}
+\index{bashhist.\+h@{bashhist.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf maybe\+\_\+append\+\_\+history} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashhist_8h_a8787bb6749db1007638362ee6e5fe48d}{}\label{bashhist_8h_a8787bb6749db1007638362ee6e5fe48d}
+\index{bashhist.\+h@{bashhist.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, int, int))}{__P((char *, int, int))}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf pre\+\_\+process\+\_\+line} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, int, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashhist_8h_a764e9d2d018a7b8101f411b4ec3fd7f9}{}\label{bashhist_8h_a764e9d2d018a7b8101f411b4ec3fd7f9}
+\index{bashhist.\+h@{bashhist.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, int))}{__P((char *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf check\+\_\+add\+\_\+history} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{bashhist_8h_a4b33bae25659bf1fcd9ad1c82fde350b}{}\label{bashhist_8h_a4b33bae25659bf1fcd9ad1c82fde350b}
+
+
+\subsection{Variable Documentation}
+\index{bashhist.\+h@{bashhist.\+h}!command\+\_\+oriented\+\_\+history@{command\+\_\+oriented\+\_\+history}}
+\index{command\+\_\+oriented\+\_\+history@{command\+\_\+oriented\+\_\+history}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{command\+\_\+oriented\+\_\+history}{command_oriented_history}}]{\setlength{\rightskip}{0pt plus 5cm}int command\+\_\+oriented\+\_\+history}\hypertarget{bashhist_8h_a3077e0fae4bacf774f8eb086c87a05dc}{}\label{bashhist_8h_a3077e0fae4bacf774f8eb086c87a05dc}
+\index{bashhist.\+h@{bashhist.\+h}!current\+\_\+command\+\_\+first\+\_\+line\+\_\+comment@{current\+\_\+command\+\_\+first\+\_\+line\+\_\+comment}}
+\index{current\+\_\+command\+\_\+first\+\_\+line\+\_\+comment@{current\+\_\+command\+\_\+first\+\_\+line\+\_\+comment}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{current\+\_\+command\+\_\+first\+\_\+line\+\_\+comment}{current_command_first_line_comment}}]{\setlength{\rightskip}{0pt plus 5cm}int current\+\_\+command\+\_\+first\+\_\+line\+\_\+comment}\hypertarget{bashhist_8h_affd9eca068a640614558233bd3dcd0ee}{}\label{bashhist_8h_affd9eca068a640614558233bd3dcd0ee}
+\index{bashhist.\+h@{bashhist.\+h}!current\+\_\+command\+\_\+first\+\_\+line\+\_\+saved@{current\+\_\+command\+\_\+first\+\_\+line\+\_\+saved}}
+\index{current\+\_\+command\+\_\+first\+\_\+line\+\_\+saved@{current\+\_\+command\+\_\+first\+\_\+line\+\_\+saved}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{current\+\_\+command\+\_\+first\+\_\+line\+\_\+saved}{current_command_first_line_saved}}]{\setlength{\rightskip}{0pt plus 5cm}int current\+\_\+command\+\_\+first\+\_\+line\+\_\+saved}\hypertarget{bashhist_8h_ae4dd58cf329bd700de4e465ce0fde255}{}\label{bashhist_8h_ae4dd58cf329bd700de4e465ce0fde255}
+\index{bashhist.\+h@{bashhist.\+h}!dont\+\_\+save\+\_\+function\+\_\+defs@{dont\+\_\+save\+\_\+function\+\_\+defs}}
+\index{dont\+\_\+save\+\_\+function\+\_\+defs@{dont\+\_\+save\+\_\+function\+\_\+defs}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{dont\+\_\+save\+\_\+function\+\_\+defs}{dont_save_function_defs}}]{\setlength{\rightskip}{0pt plus 5cm}int dont\+\_\+save\+\_\+function\+\_\+defs}\hypertarget{bashhist_8h_afcc212ec74144bc5b7461b3f036e0175}{}\label{bashhist_8h_afcc212ec74144bc5b7461b3f036e0175}
+\index{bashhist.\+h@{bashhist.\+h}!enable\+\_\+history\+\_\+list@{enable\+\_\+history\+\_\+list}}
+\index{enable\+\_\+history\+\_\+list@{enable\+\_\+history\+\_\+list}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{enable\+\_\+history\+\_\+list}{enable_history_list}}]{\setlength{\rightskip}{0pt plus 5cm}int enable\+\_\+history\+\_\+list}\hypertarget{bashhist_8h_a700de549bf144f6aad67ec2c0f26ecfb}{}\label{bashhist_8h_a700de549bf144f6aad67ec2c0f26ecfb}
+\index{bashhist.\+h@{bashhist.\+h}!force\+\_\+append\+\_\+history@{force\+\_\+append\+\_\+history}}
+\index{force\+\_\+append\+\_\+history@{force\+\_\+append\+\_\+history}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{force\+\_\+append\+\_\+history}{force_append_history}}]{\setlength{\rightskip}{0pt plus 5cm}int force\+\_\+append\+\_\+history}\hypertarget{bashhist_8h_a4687bf6d2633a8ea0fcb0a4dd04d1c4a}{}\label{bashhist_8h_a4687bf6d2633a8ea0fcb0a4dd04d1c4a}
+\index{bashhist.\+h@{bashhist.\+h}!hist\+\_\+last\+\_\+line\+\_\+added@{hist\+\_\+last\+\_\+line\+\_\+added}}
+\index{hist\+\_\+last\+\_\+line\+\_\+added@{hist\+\_\+last\+\_\+line\+\_\+added}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{hist\+\_\+last\+\_\+line\+\_\+added}{hist_last_line_added}}]{\setlength{\rightskip}{0pt plus 5cm}int hist\+\_\+last\+\_\+line\+\_\+added}\hypertarget{bashhist_8h_a4386cfc2bda5cf8e119ce5436b061d69}{}\label{bashhist_8h_a4386cfc2bda5cf8e119ce5436b061d69}
+\index{bashhist.\+h@{bashhist.\+h}!hist\+\_\+last\+\_\+line\+\_\+pushed@{hist\+\_\+last\+\_\+line\+\_\+pushed}}
+\index{hist\+\_\+last\+\_\+line\+\_\+pushed@{hist\+\_\+last\+\_\+line\+\_\+pushed}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{hist\+\_\+last\+\_\+line\+\_\+pushed}{hist_last_line_pushed}}]{\setlength{\rightskip}{0pt plus 5cm}int hist\+\_\+last\+\_\+line\+\_\+pushed}\hypertarget{bashhist_8h_a657d7d2d7651cc5519a4428e7f060bfb}{}\label{bashhist_8h_a657d7d2d7651cc5519a4428e7f060bfb}
+\index{bashhist.\+h@{bashhist.\+h}!history\+\_\+control@{history\+\_\+control}}
+\index{history\+\_\+control@{history\+\_\+control}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{history\+\_\+control}{history_control}}]{\setlength{\rightskip}{0pt plus 5cm}int history\+\_\+control}\hypertarget{bashhist_8h_a773d6ddaa298216f854214e903877adf}{}\label{bashhist_8h_a773d6ddaa298216f854214e903877adf}
+\index{bashhist.\+h@{bashhist.\+h}!history\+\_\+expansion@{history\+\_\+expansion}}
+\index{history\+\_\+expansion@{history\+\_\+expansion}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{history\+\_\+expansion}{history_expansion}}]{\setlength{\rightskip}{0pt plus 5cm}int history\+\_\+expansion}\hypertarget{bashhist_8h_ad7ac1c37b8abf7cc510cd05802a9b2f2}{}\label{bashhist_8h_ad7ac1c37b8abf7cc510cd05802a9b2f2}
+\index{bashhist.\+h@{bashhist.\+h}!history\+\_\+lines\+\_\+in\+\_\+file@{history\+\_\+lines\+\_\+in\+\_\+file}}
+\index{history\+\_\+lines\+\_\+in\+\_\+file@{history\+\_\+lines\+\_\+in\+\_\+file}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{history\+\_\+lines\+\_\+in\+\_\+file}{history_lines_in_file}}]{\setlength{\rightskip}{0pt plus 5cm}int history\+\_\+lines\+\_\+in\+\_\+file}\hypertarget{bashhist_8h_aec123c6a4a942db338cc617cb53fe7ec}{}\label{bashhist_8h_aec123c6a4a942db338cc617cb53fe7ec}
+\index{bashhist.\+h@{bashhist.\+h}!history\+\_\+lines\+\_\+this\+\_\+session@{history\+\_\+lines\+\_\+this\+\_\+session}}
+\index{history\+\_\+lines\+\_\+this\+\_\+session@{history\+\_\+lines\+\_\+this\+\_\+session}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{history\+\_\+lines\+\_\+this\+\_\+session}{history_lines_this_session}}]{\setlength{\rightskip}{0pt plus 5cm}int history\+\_\+lines\+\_\+this\+\_\+session}\hypertarget{bashhist_8h_a245c800288e30b34caa5045bb36070d2}{}\label{bashhist_8h_a245c800288e30b34caa5045bb36070d2}
+\index{bashhist.\+h@{bashhist.\+h}!literal\+\_\+history@{literal\+\_\+history}}
+\index{literal\+\_\+history@{literal\+\_\+history}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{literal\+\_\+history}{literal_history}}]{\setlength{\rightskip}{0pt plus 5cm}int literal\+\_\+history}\hypertarget{bashhist_8h_a7ca25fff1387d553739be759a23d55a8}{}\label{bashhist_8h_a7ca25fff1387d553739be759a23d55a8}
+\index{bashhist.\+h@{bashhist.\+h}!remember\+\_\+on\+\_\+history@{remember\+\_\+on\+\_\+history}}
+\index{remember\+\_\+on\+\_\+history@{remember\+\_\+on\+\_\+history}!bashhist.\+h@{bashhist.\+h}}
+\subsubsection[{\texorpdfstring{remember\+\_\+on\+\_\+history}{remember_on_history}}]{\setlength{\rightskip}{0pt plus 5cm}int remember\+\_\+on\+\_\+history}\hypertarget{bashhist_8h_a4d4b85d3d35baed065a9ba7091a48587}{}\label{bashhist_8h_a4d4b85d3d35baed065a9ba7091a48587}

@@ -1,0 +1,263 @@
+\hypertarget{execute__cmd_8h}{}\section{execute\+\_\+cmd.\+h File Reference}
+\label{execute__cmd_8h}\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+{\ttfamily \#include \char`\"{}stdc.\+h\char`\"{}}\\*
+Include dependency graph for execute\+\_\+cmd.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{execute__cmd_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{execute__cmd_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structexecstate}{execstate}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structfd__bitmap}{fd\+\_\+bitmap} $\ast$\hyperlink{execute__cmd_8c_a669e55863f9f092fd1890cd55fe270a3}{new\+\_\+fd\+\_\+bitmap} \hyperlink{execute__cmd_8h_ac9acad3329004cae02d74276ab1edd5b}{\+\_\+\+\_\+P} ((int))
+\item 
+void \hyperlink{execute__cmd_8c_a005a2ab83cc8e602e9cab28b32f71295}{dispose\+\_\+fd\+\_\+bitmap} \hyperlink{execute__cmd_8h_a300d44076f619896f0f004c4c6dd828f}{\+\_\+\+\_\+P} ((struct \hyperlink{structfd__bitmap}{fd\+\_\+bitmap} $\ast$))
+\item 
+int \hyperlink{execute__cmd_8c_a7563559124a946dd934650e169c80175}{executing\+\_\+line\+\_\+number} \hyperlink{execute__cmd_8h_adba9e300f1344b0e8e9c94d2bdb9357f}{\+\_\+\+\_\+P} ((void))
+\item 
+int \hyperlink{execute__cmd_8c_af9618a372612bc0e669e3041908d779d}{execute\+\_\+command} \hyperlink{execute__cmd_8h_a237d9e30ec56fc3c204afc5d7396ab29}{\+\_\+\+\_\+P} ((\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$))
+\item 
+int \hyperlink{execute__cmd_8c_ac9d4ba2854a0597581d9988d45b26a79}{execute\+\_\+command\+\_\+internal} \hyperlink{execute__cmd_8h_a4ff384d7322673ca86f945e47acacc24}{\+\_\+\+\_\+P} ((\hyperlink{command_8h_a8c41dec142c299806885773c902c0d87}{C\+O\+M\+M\+A\+ND} $\ast$, int, int, int, struct \hyperlink{structfd__bitmap}{fd\+\_\+bitmap} $\ast$))
+\item 
+int \hyperlink{execute__cmd_8c_a0693bee68fcde1ddccb03d269b266187}{shell\+\_\+execve} \hyperlink{execute__cmd_8h_ab4320fe233b7a5382b4af1d79b112bad}{\+\_\+\+\_\+P} ((char $\ast$, char $\ast$$\ast$, char $\ast$$\ast$))
+\item 
+int \hyperlink{execute__cmd_8c_a70f9f43739b1acd7d295c15af55574af}{execute\+\_\+shell\+\_\+function} \hyperlink{execute__cmd_8h_a244be3d87b7946c5bf75a5bc0d46b646}{\+\_\+\+\_\+P} ((\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$, \hyperlink{command_8h_ac42a7b781459884316a1f2ffe79e8a62}{W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$))
+\item 
+struct \hyperlink{structcoproc}{coproc} $\ast$\hyperlink{execute__cmd_8c_a978cfd1b98650b8b05983d4aa93ecada}{getcoprocbypid} \hyperlink{execute__cmd_8h_a76d37040d0e63f3621a612f41513e98d}{\+\_\+\+\_\+P} ((pid\+\_\+t))
+\item 
+struct \hyperlink{structcoproc}{coproc} $\ast$\hyperlink{execute__cmd_8c_a673854b6beff7bec83446bd141f6f788}{getcoprocbyname} \hyperlink{execute__cmd_8h_ad639ee6ea70620afb9c7b96125269b89}{\+\_\+\+\_\+P} ((const char $\ast$))
+\item 
+void \hyperlink{execute__cmd_8c_adbddc408e55b6699ceaa80070833d977}{coproc\+\_\+init} \hyperlink{execute__cmd_8h_a8ec0d6302bf4e41a70db8239a67361a5}{\+\_\+\+\_\+P} ((struct \hyperlink{structcoproc}{coproc} $\ast$))
+\item 
+struct \hyperlink{structcoproc}{coproc} $\ast$\hyperlink{execute__cmd_8c_aeb867ced598dd7ef15ef618e40583290}{coproc\+\_\+alloc} \hyperlink{execute__cmd_8h_a31bbdcdff1097e147a93a91e8ad7edde}{\+\_\+\+\_\+P} ((char $\ast$, pid\+\_\+t))
+\item 
+void \hyperlink{execute__cmd_8c_a9f8821962675ed2767dd5b471cb46a3b}{coproc\+\_\+rclose} \hyperlink{execute__cmd_8h_ad07c26ea8347013ce82d4b205b9b50c3}{\+\_\+\+\_\+P} ((struct \hyperlink{structcoproc}{coproc} $\ast$, int))
+\item 
+void \hyperlink{execute__cmd_8c_ab8a9717c5329848f34cfceedf11673f8}{coproc\+\_\+pidchk} \hyperlink{execute__cmd_8h_a98995003eeb3c888cc354b134ab71959}{\+\_\+\+\_\+P} ((pid\+\_\+t, int))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{execute__cmd_8h_add8e674e588c6cff9adb9177e416dc09}{return\+\_\+catch\+\_\+flag}
+\item 
+int \hyperlink{execute__cmd_8h_afe3eeaca94d517df5e3f8644b5dd92c8}{return\+\_\+catch\+\_\+value}
+\item 
+volatile int \hyperlink{execute__cmd_8h_a983b0107b49076599659aa750b14413e}{last\+\_\+command\+\_\+exit\+\_\+value}
+\item 
+int \hyperlink{execute__cmd_8h_a5719fe068e6db753bf1dbb3832cbac22}{last\+\_\+command\+\_\+exit\+\_\+signal}
+\item 
+int \hyperlink{execute__cmd_8h_a8fd93fac39713beb94eed7b21c9c7add}{builtin\+\_\+ignoring\+\_\+errexit}
+\item 
+int \hyperlink{execute__cmd_8h_a45e5b34044beedf4b9dbbcca9d3021e1}{executing\+\_\+builtin}
+\item 
+int \hyperlink{execute__cmd_8h_a2cb744acc87fb33a861757a23f06535f}{executing\+\_\+list}
+\item 
+int \hyperlink{execute__cmd_8h_aad9f5b507ca60fbc973c3a72eb893f69}{comsub\+\_\+ignore\+\_\+return}
+\item 
+int \hyperlink{execute__cmd_8h_a3c800265c671320a6dae122fd649438a}{subshell\+\_\+level}
+\item 
+int \hyperlink{execute__cmd_8h_aca9257653043e30c345c3931fa66d934}{match\+\_\+ignore\+\_\+case}
+\item 
+int \hyperlink{execute__cmd_8h_aa9b5fa951b8a300744e59741641c3aa9}{executing\+\_\+command\+\_\+builtin}
+\item 
+int \hyperlink{execute__cmd_8h_a952ab702247ed8378bc80f9e85e14ad6}{funcnest}
+\item 
+int \hyperlink{execute__cmd_8h_a7956dbdb6364822323c7c5c149b929a9}{funcnest\+\_\+max}
+\item 
+int \hyperlink{execute__cmd_8h_a8892e0542b9dc46c7b64afc9f21e9d7f}{evalnest}
+\item 
+int \hyperlink{execute__cmd_8h_a6f498e828b8666a02fb1b4d01f520495}{evalnest\+\_\+max}
+\item 
+int \hyperlink{execute__cmd_8h_a47764b3fceed5c7ecb914ad54693ef92}{sourcenest}
+\item 
+int \hyperlink{execute__cmd_8h_a57b0824f89ac7bc453201380bf956d80}{sourcenest\+\_\+max}
+\item 
+int \hyperlink{execute__cmd_8h_adbcf768dde8fc18d3e314d07adcdb537}{stdin\+\_\+redir}
+\item 
+int \hyperlink{execute__cmd_8h_ac29b5ce6cbc8a6038ebb54d18eb18a50}{line\+\_\+number\+\_\+for\+\_\+err\+\_\+trap}
+\item 
+char $\ast$ \hyperlink{execute__cmd_8h_a596561c3c5cb0a51e766b3b9ae86d913}{the\+\_\+printed\+\_\+command\+\_\+except\+\_\+trap}
+\item 
+char $\ast$ \hyperlink{execute__cmd_8h_a39f95ee9cfa8c6c082c06fddb31e4461}{this\+\_\+command\+\_\+name}
+\item 
+\hyperlink{variables_8h_aba7363ba59b9546110e58106ad60cb50}{S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$ \hyperlink{execute__cmd_8h_ab2d3023f49ce851dcede46603b86f1c3}{this\+\_\+shell\+\_\+function}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf fd\+\_\+bitmap}$\ast$ {\bf new\+\_\+fd\+\_\+bitmap} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{execute__cmd_8h_ac9acad3329004cae02d74276ab1edd5b}{}\label{execute__cmd_8h_ac9acad3329004cae02d74276ab1edd5b}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((struct fd\+\_\+bitmap $\ast$))}{__P((struct fd_bitmap *))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf dispose\+\_\+fd\+\_\+bitmap} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(struct {\bf fd\+\_\+bitmap} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{execute__cmd_8h_a300d44076f619896f0f004c4c6dd828f}{}\label{execute__cmd_8h_a300d44076f619896f0f004c4c6dd828f}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((void))}{__P((void))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf executing\+\_\+line\+\_\+number} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(void)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{execute__cmd_8h_adba9e300f1344b0e8e9c94d2bdb9357f}{}\label{execute__cmd_8h_adba9e300f1344b0e8e9c94d2bdb9357f}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+C\+O\+M\+M\+A\+N\+D $\ast$))}{__P((COMMAND *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf execute\+\_\+command} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf C\+O\+M\+M\+A\+ND} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{execute__cmd_8h_a237d9e30ec56fc3c204afc5d7396ab29}{}\label{execute__cmd_8h_a237d9e30ec56fc3c204afc5d7396ab29}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+C\+O\+M\+M\+A\+N\+D $\ast$, int, int, int, struct fd\+\_\+bitmap $\ast$))}{__P((COMMAND *, int, int, int, struct fd_bitmap *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf execute\+\_\+command\+\_\+internal} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf C\+O\+M\+M\+A\+ND} $\ast$, int, int, int, struct {\bf fd\+\_\+bitmap} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{execute__cmd_8h_a4ff384d7322673ca86f945e47acacc24}{}\label{execute__cmd_8h_a4ff384d7322673ca86f945e47acacc24}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, char $\ast$$\ast$, char $\ast$$\ast$))}{__P((char *, char **, char **))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf shell\+\_\+execve} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, char $\ast$$\ast$, char $\ast$$\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{execute__cmd_8h_ab4320fe233b7a5382b4af1d79b112bad}{}\label{execute__cmd_8h_ab4320fe233b7a5382b4af1d79b112bad}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+S\+H\+E\+L\+L\+\_\+\+V\+A\+R $\ast$, W\+O\+R\+D\+\_\+\+L\+I\+S\+T $\ast$))}{__P((SHELL_VAR *, WORD_LIST *))}}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf execute\+\_\+shell\+\_\+function} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf S\+H\+E\+L\+L\+\_\+\+V\+AR} $\ast$, {\bf W\+O\+R\+D\+\_\+\+L\+I\+ST} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{execute__cmd_8h_a244be3d87b7946c5bf75a5bc0d46b646}{}\label{execute__cmd_8h_a244be3d87b7946c5bf75a5bc0d46b646}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((pid\+\_\+t))}{__P((pid_t))}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf coproc}$\ast$ {\bf getcoprocbypid} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(pid\+\_\+t)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{execute__cmd_8h_a76d37040d0e63f3621a612f41513e98d}{}\label{execute__cmd_8h_a76d37040d0e63f3621a612f41513e98d}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$))}{__P((const char *))}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf coproc}$\ast$ {\bf getcoprocbyname} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{execute__cmd_8h_ad639ee6ea70620afb9c7b96125269b89}{}\label{execute__cmd_8h_ad639ee6ea70620afb9c7b96125269b89}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((struct coproc $\ast$))}{__P((struct coproc *))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf coproc\+\_\+init} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(struct {\bf coproc} $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{execute__cmd_8h_a8ec0d6302bf4e41a70db8239a67361a5}{}\label{execute__cmd_8h_a8ec0d6302bf4e41a70db8239a67361a5}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, pid\+\_\+t))}{__P((char *, pid_t))}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf coproc}$\ast$ {\bf coproc\+\_\+alloc} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, pid\+\_\+t)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{execute__cmd_8h_a31bbdcdff1097e147a93a91e8ad7edde}{}\label{execute__cmd_8h_a31bbdcdff1097e147a93a91e8ad7edde}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((struct coproc $\ast$, int))}{__P((struct coproc *, int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf coproc\+\_\+rclose} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(struct {\bf coproc} $\ast$, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{execute__cmd_8h_ad07c26ea8347013ce82d4b205b9b50c3}{}\label{execute__cmd_8h_ad07c26ea8347013ce82d4b205b9b50c3}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((pid\+\_\+t, int))}{__P((pid_t, int))}}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf coproc\+\_\+pidchk} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(pid\+\_\+t, int)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{execute__cmd_8h_a98995003eeb3c888cc354b134ab71959}{}\label{execute__cmd_8h_a98995003eeb3c888cc354b134ab71959}
+
+
+\subsection{Variable Documentation}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!builtin\+\_\+ignoring\+\_\+errexit@{builtin\+\_\+ignoring\+\_\+errexit}}
+\index{builtin\+\_\+ignoring\+\_\+errexit@{builtin\+\_\+ignoring\+\_\+errexit}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{builtin\+\_\+ignoring\+\_\+errexit}{builtin_ignoring_errexit}}]{\setlength{\rightskip}{0pt plus 5cm}int builtin\+\_\+ignoring\+\_\+errexit}\hypertarget{execute__cmd_8h_a8fd93fac39713beb94eed7b21c9c7add}{}\label{execute__cmd_8h_a8fd93fac39713beb94eed7b21c9c7add}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!comsub\+\_\+ignore\+\_\+return@{comsub\+\_\+ignore\+\_\+return}}
+\index{comsub\+\_\+ignore\+\_\+return@{comsub\+\_\+ignore\+\_\+return}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{comsub\+\_\+ignore\+\_\+return}{comsub_ignore_return}}]{\setlength{\rightskip}{0pt plus 5cm}int comsub\+\_\+ignore\+\_\+return}\hypertarget{execute__cmd_8h_aad9f5b507ca60fbc973c3a72eb893f69}{}\label{execute__cmd_8h_aad9f5b507ca60fbc973c3a72eb893f69}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!evalnest@{evalnest}}
+\index{evalnest@{evalnest}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{evalnest}{evalnest}}]{\setlength{\rightskip}{0pt plus 5cm}int evalnest}\hypertarget{execute__cmd_8h_a8892e0542b9dc46c7b64afc9f21e9d7f}{}\label{execute__cmd_8h_a8892e0542b9dc46c7b64afc9f21e9d7f}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!evalnest\+\_\+max@{evalnest\+\_\+max}}
+\index{evalnest\+\_\+max@{evalnest\+\_\+max}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{evalnest\+\_\+max}{evalnest_max}}]{\setlength{\rightskip}{0pt plus 5cm}int evalnest\+\_\+max}\hypertarget{execute__cmd_8h_a6f498e828b8666a02fb1b4d01f520495}{}\label{execute__cmd_8h_a6f498e828b8666a02fb1b4d01f520495}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!executing\+\_\+builtin@{executing\+\_\+builtin}}
+\index{executing\+\_\+builtin@{executing\+\_\+builtin}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{executing\+\_\+builtin}{executing_builtin}}]{\setlength{\rightskip}{0pt plus 5cm}int executing\+\_\+builtin}\hypertarget{execute__cmd_8h_a45e5b34044beedf4b9dbbcca9d3021e1}{}\label{execute__cmd_8h_a45e5b34044beedf4b9dbbcca9d3021e1}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!executing\+\_\+command\+\_\+builtin@{executing\+\_\+command\+\_\+builtin}}
+\index{executing\+\_\+command\+\_\+builtin@{executing\+\_\+command\+\_\+builtin}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{executing\+\_\+command\+\_\+builtin}{executing_command_builtin}}]{\setlength{\rightskip}{0pt plus 5cm}int executing\+\_\+command\+\_\+builtin}\hypertarget{execute__cmd_8h_aa9b5fa951b8a300744e59741641c3aa9}{}\label{execute__cmd_8h_aa9b5fa951b8a300744e59741641c3aa9}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!executing\+\_\+list@{executing\+\_\+list}}
+\index{executing\+\_\+list@{executing\+\_\+list}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{executing\+\_\+list}{executing_list}}]{\setlength{\rightskip}{0pt plus 5cm}int executing\+\_\+list}\hypertarget{execute__cmd_8h_a2cb744acc87fb33a861757a23f06535f}{}\label{execute__cmd_8h_a2cb744acc87fb33a861757a23f06535f}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!funcnest@{funcnest}}
+\index{funcnest@{funcnest}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{funcnest}{funcnest}}]{\setlength{\rightskip}{0pt plus 5cm}int funcnest}\hypertarget{execute__cmd_8h_a952ab702247ed8378bc80f9e85e14ad6}{}\label{execute__cmd_8h_a952ab702247ed8378bc80f9e85e14ad6}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!funcnest\+\_\+max@{funcnest\+\_\+max}}
+\index{funcnest\+\_\+max@{funcnest\+\_\+max}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{funcnest\+\_\+max}{funcnest_max}}]{\setlength{\rightskip}{0pt plus 5cm}int funcnest\+\_\+max}\hypertarget{execute__cmd_8h_a7956dbdb6364822323c7c5c149b929a9}{}\label{execute__cmd_8h_a7956dbdb6364822323c7c5c149b929a9}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!last\+\_\+command\+\_\+exit\+\_\+signal@{last\+\_\+command\+\_\+exit\+\_\+signal}}
+\index{last\+\_\+command\+\_\+exit\+\_\+signal@{last\+\_\+command\+\_\+exit\+\_\+signal}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{last\+\_\+command\+\_\+exit\+\_\+signal}{last_command_exit_signal}}]{\setlength{\rightskip}{0pt plus 5cm}int last\+\_\+command\+\_\+exit\+\_\+signal}\hypertarget{execute__cmd_8h_a5719fe068e6db753bf1dbb3832cbac22}{}\label{execute__cmd_8h_a5719fe068e6db753bf1dbb3832cbac22}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!last\+\_\+command\+\_\+exit\+\_\+value@{last\+\_\+command\+\_\+exit\+\_\+value}}
+\index{last\+\_\+command\+\_\+exit\+\_\+value@{last\+\_\+command\+\_\+exit\+\_\+value}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{last\+\_\+command\+\_\+exit\+\_\+value}{last_command_exit_value}}]{\setlength{\rightskip}{0pt plus 5cm}volatile int last\+\_\+command\+\_\+exit\+\_\+value}\hypertarget{execute__cmd_8h_a983b0107b49076599659aa750b14413e}{}\label{execute__cmd_8h_a983b0107b49076599659aa750b14413e}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!line\+\_\+number\+\_\+for\+\_\+err\+\_\+trap@{line\+\_\+number\+\_\+for\+\_\+err\+\_\+trap}}
+\index{line\+\_\+number\+\_\+for\+\_\+err\+\_\+trap@{line\+\_\+number\+\_\+for\+\_\+err\+\_\+trap}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{line\+\_\+number\+\_\+for\+\_\+err\+\_\+trap}{line_number_for_err_trap}}]{\setlength{\rightskip}{0pt plus 5cm}int line\+\_\+number\+\_\+for\+\_\+err\+\_\+trap}\hypertarget{execute__cmd_8h_ac29b5ce6cbc8a6038ebb54d18eb18a50}{}\label{execute__cmd_8h_ac29b5ce6cbc8a6038ebb54d18eb18a50}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!match\+\_\+ignore\+\_\+case@{match\+\_\+ignore\+\_\+case}}
+\index{match\+\_\+ignore\+\_\+case@{match\+\_\+ignore\+\_\+case}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{match\+\_\+ignore\+\_\+case}{match_ignore_case}}]{\setlength{\rightskip}{0pt plus 5cm}int match\+\_\+ignore\+\_\+case}\hypertarget{execute__cmd_8h_aca9257653043e30c345c3931fa66d934}{}\label{execute__cmd_8h_aca9257653043e30c345c3931fa66d934}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!return\+\_\+catch\+\_\+flag@{return\+\_\+catch\+\_\+flag}}
+\index{return\+\_\+catch\+\_\+flag@{return\+\_\+catch\+\_\+flag}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{return\+\_\+catch\+\_\+flag}{return_catch_flag}}]{\setlength{\rightskip}{0pt plus 5cm}int return\+\_\+catch\+\_\+flag}\hypertarget{execute__cmd_8h_add8e674e588c6cff9adb9177e416dc09}{}\label{execute__cmd_8h_add8e674e588c6cff9adb9177e416dc09}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!return\+\_\+catch\+\_\+value@{return\+\_\+catch\+\_\+value}}
+\index{return\+\_\+catch\+\_\+value@{return\+\_\+catch\+\_\+value}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{return\+\_\+catch\+\_\+value}{return_catch_value}}]{\setlength{\rightskip}{0pt plus 5cm}int return\+\_\+catch\+\_\+value}\hypertarget{execute__cmd_8h_afe3eeaca94d517df5e3f8644b5dd92c8}{}\label{execute__cmd_8h_afe3eeaca94d517df5e3f8644b5dd92c8}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!sourcenest@{sourcenest}}
+\index{sourcenest@{sourcenest}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{sourcenest}{sourcenest}}]{\setlength{\rightskip}{0pt plus 5cm}int sourcenest}\hypertarget{execute__cmd_8h_a47764b3fceed5c7ecb914ad54693ef92}{}\label{execute__cmd_8h_a47764b3fceed5c7ecb914ad54693ef92}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!sourcenest\+\_\+max@{sourcenest\+\_\+max}}
+\index{sourcenest\+\_\+max@{sourcenest\+\_\+max}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{sourcenest\+\_\+max}{sourcenest_max}}]{\setlength{\rightskip}{0pt plus 5cm}int sourcenest\+\_\+max}\hypertarget{execute__cmd_8h_a57b0824f89ac7bc453201380bf956d80}{}\label{execute__cmd_8h_a57b0824f89ac7bc453201380bf956d80}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!stdin\+\_\+redir@{stdin\+\_\+redir}}
+\index{stdin\+\_\+redir@{stdin\+\_\+redir}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{stdin\+\_\+redir}{stdin_redir}}]{\setlength{\rightskip}{0pt plus 5cm}int stdin\+\_\+redir}\hypertarget{execute__cmd_8h_adbcf768dde8fc18d3e314d07adcdb537}{}\label{execute__cmd_8h_adbcf768dde8fc18d3e314d07adcdb537}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!subshell\+\_\+level@{subshell\+\_\+level}}
+\index{subshell\+\_\+level@{subshell\+\_\+level}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{subshell\+\_\+level}{subshell_level}}]{\setlength{\rightskip}{0pt plus 5cm}int subshell\+\_\+level}\hypertarget{execute__cmd_8h_a3c800265c671320a6dae122fd649438a}{}\label{execute__cmd_8h_a3c800265c671320a6dae122fd649438a}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!the\+\_\+printed\+\_\+command\+\_\+except\+\_\+trap@{the\+\_\+printed\+\_\+command\+\_\+except\+\_\+trap}}
+\index{the\+\_\+printed\+\_\+command\+\_\+except\+\_\+trap@{the\+\_\+printed\+\_\+command\+\_\+except\+\_\+trap}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{the\+\_\+printed\+\_\+command\+\_\+except\+\_\+trap}{the_printed_command_except_trap}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ the\+\_\+printed\+\_\+command\+\_\+except\+\_\+trap}\hypertarget{execute__cmd_8h_a596561c3c5cb0a51e766b3b9ae86d913}{}\label{execute__cmd_8h_a596561c3c5cb0a51e766b3b9ae86d913}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!this\+\_\+command\+\_\+name@{this\+\_\+command\+\_\+name}}
+\index{this\+\_\+command\+\_\+name@{this\+\_\+command\+\_\+name}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{this\+\_\+command\+\_\+name}{this_command_name}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ this\+\_\+command\+\_\+name}\hypertarget{execute__cmd_8h_a39f95ee9cfa8c6c082c06fddb31e4461}{}\label{execute__cmd_8h_a39f95ee9cfa8c6c082c06fddb31e4461}
+\index{execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}!this\+\_\+shell\+\_\+function@{this\+\_\+shell\+\_\+function}}
+\index{this\+\_\+shell\+\_\+function@{this\+\_\+shell\+\_\+function}!execute\+\_\+cmd.\+h@{execute\+\_\+cmd.\+h}}
+\subsubsection[{\texorpdfstring{this\+\_\+shell\+\_\+function}{this_shell_function}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+H\+E\+L\+L\+\_\+\+V\+AR}$\ast$ this\+\_\+shell\+\_\+function}\hypertarget{execute__cmd_8h_ab2d3023f49ce851dcede46603b86f1c3}{}\label{execute__cmd_8h_ab2d3023f49ce851dcede46603b86f1c3}

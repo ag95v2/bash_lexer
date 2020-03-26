@@ -1,0 +1,37 @@
+<map id="add_undo_redirect" name="add_undo_redirect">
+<area shape="rect" id="node2" href="$error_8c.html#ae8a9b9f67af9617a712e5772717de46e" title="sys_error" alt="" coords="726,76,802,103"/>
+<area shape="rect" id="node22" href="$make__cmd_8c.html#a6ddeb55118131e64dee1cfd7574fc246" title="make_redirection" alt="" coords="185,253,306,280"/>
+<area shape="rect" id="node31" href="$copy__cmd_8c.html#a2b7473d6474fb9576ec51c4efa27bb54" title="copy_redirects" alt="" coords="875,380,981,407"/>
+<area shape="rect" id="node36" href="$redir_8c.html#a2cdf15caf326d8ba705947b5010bdb70" title="add_exec_redirect" alt="" coords="181,431,309,457"/>
+<area shape="rect" id="node3" href="$error_8c.html#a17bd449db2707a09ee42c9298f083dea" title="error_prolog" alt="" coords="883,76,973,103"/>
+<area shape="rect" id="node4" href="$error_8c.html#a1944bd401c24a434a321990f648b8b3c" title="get_name_for_error" alt="" coords="1039,144,1174,171"/>
+<area shape="rect" id="node21" href="$execute__cmd_8c.html#a7563559124a946dd934650e169c80175" title="executing_line_number" alt="" coords="1029,93,1184,120"/>
+<area shape="rect" id="node5" href="$variables_8c.html#aba8df3eeae83c8b121cc29a8984dfcdc" title="find_variable" alt="" coords="1242,245,1337,272"/>
+<area shape="rect" id="node18" href="$array_8c.html#ae293a54980d6266db085aa6449d5c149" title="array_reference" alt="" coords="1233,144,1345,171"/>
+<area shape="rect" id="node19" href="$general_8c.html#a373470ebfb219db3a97f7798996135a1" title="base_pathname" alt="" coords="1232,195,1347,221"/>
+<area shape="rect" id="node6" href="$variables_8c.html#af1f754c2f9479edcb27a3934d92cbe22" title="find_variable_internal" alt="" coords="1592,279,1736,305"/>
+<area shape="rect" id="node16" href="$variables_8c.html#a6a6b45db14a7230706ed5356a09fd8be" title="find_variable_nameref" alt="" coords="1395,228,1544,255"/>
+<area shape="rect" id="node7" href="$variables_8c.html#a606b110162ef5b1263e5cc2610a0a6b4" title="hash_lookup" alt="" coords="1932,279,2027,305"/>
+<area shape="rect" id="node15" href="$variables_8c.html#ad9a2bb353e7efdf2dccc22d510036341" title="var_lookup" alt="" coords="1791,228,1877,255"/>
+<area shape="rect" id="node8" href="$hashlib_8c.html#a148b14f11fd7c46056f38dc510ce204e" title="hash_search" alt="" coords="2087,279,2183,305"/>
+<area shape="rect" id="node9" href="$xmalloc_8c.html#aa9b2ea281c63b37140fe955ec465c784" title="xmalloc" alt="" coords="2270,304,2337,331"/>
+<area shape="rect" id="node10" href="$error_8c.html#a7a6e82735fe74b8e47d43f4f4ddca080" title="internal_warning" alt="" coords="2411,161,2527,188"/>
+<area shape="rect" id="node11" href="$y_8tab_8c.html#a5faf6a2d99f50a4655dd390199a8db7b" title="malloc" alt="" coords="2439,253,2499,280"/>
+<area shape="rect" id="node12" href="$xmalloc_8c.html#a913632f336fdb7b67305829dcc75a16f" title="allocerr" alt="" coords="2437,304,2501,331"/>
+<area shape="rect" id="node13" href="$error_8c.html#aac4af98c0659128bd91aa86217f541d1" title="fatal_error" alt="" coords="2575,111,2655,137"/>
+<area shape="rect" id="node14" href="$shell_8c.html#a8cd407122e8280f23456b4942f4b7505" title="sh_exit" alt="" coords="2703,85,2767,112"/>
+<area shape="rect" id="node17" href="$variables_8c.html#a66846bca8d996300be2207f374145a66" title="find_global_variable\l_noref" alt="" coords="1596,213,1732,254"/>
+<area shape="rect" id="node20" href="$general_8c.html#a6eb6283cbbb0fd5944cead61872fb6e2" title="absolute_pathname" alt="" coords="1402,177,1537,204"/>
+<area shape="rect" id="node23" href="$general_8c.html#a1e8f672fbc6ae9c452176b96ae991491" title="all_digits" alt="" coords="386,279,459,305"/>
+<area shape="rect" id="node24" href="$general_8c.html#acf578cd76e0dc1087cdc627781f06c9e" title="legal_number" alt="" coords="373,127,472,153"/>
+<area shape="rect" id="node25" href="$dispose__cmd_8c.html#ae50614881b216f9cc6aad5008c767a8a" title="dispose_word" alt="" coords="371,228,474,255"/>
+<area shape="rect" id="node26" href="$error_8c.html#ac80cd7a7bf6abf1bd423b4df43335251" title="programming_error" alt="" coords="357,177,488,204"/>
+<area shape="rect" id="node27" href="$jobs_8c.html#a8db3c891f1a77a1b3412544323ae6eb4" title="give_terminal_to" alt="" coords="536,127,653,153"/>
+<area shape="rect" id="node29" href="$bashhist_8c.html#a136f061fdc2e43baab31a6e7487fee5e" title="last_history_line" alt="" coords="537,177,653,204"/>
+<area shape="rect" id="node28" href="$jobs_8h.html#add1dc6545057b7f1c7f91352536fb060" title="getpid" alt="" coords="735,127,793,153"/>
+<area shape="rect" id="node30" href="$bashhist_8c.html#af7be874e0aca2c2f87f3fcbdf29dc603" title="last_history_entry" alt="" coords="701,177,827,204"/>
+<area shape="rect" id="node32" href="$copy__cmd_8c.html#a5b3a869ad2828cf1d6b4a2fedef5e33b" title="copy_redirect" alt="" coords="1784,380,1884,407"/>
+<area shape="rect" id="node33" href="$copy__cmd_8c.html#aeac551e6a371c4df6da2adbd2b30ba77" title="copy_word" alt="" coords="1937,431,2022,457"/>
+<area shape="rect" id="node34" href="$make__cmd_8c.html#ae830e552eb79411cedfd8fe5fa9b4a4b" title="make_bare_word" alt="" coords="2075,431,2196,457"/>
+<area shape="rect" id="node35" href="$make__cmd_8c.html#a6a8b36e3c23a7324d5f9f3ed305a8bca" title="alloc_word_desc" alt="" coords="2244,431,2363,457"/>
+</map>

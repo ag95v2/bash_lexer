@@ -1,0 +1,443 @@
+\hypertarget{mailcheck_8c}{}\section{mailcheck.\+c File Reference}
+\label{mailcheck_8c}\index{mailcheck.\+c@{mailcheck.\+c}}
+{\ttfamily \#include \char`\"{}config.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}bashtypes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}posixstat.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$sys/param.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}posixtime.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashansi.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bashintl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}shell.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}execute\+\_\+cmd.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mailcheck.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$tilde/tilde.\+h$>$}\\*
+Include dependency graph for mailcheck.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mailcheck_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct__fileinfo}{\+\_\+fileinfo}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{mailcheck_8c_ae8a715e580ac72dfeff656fd8c65af8b}{M\+B\+O\+X\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}~0x01
+\item 
+\#define \hyperlink{mailcheck_8c_a2d975ba2462ad73e4e730b7e8d4d7935}{R\+E\+S\+E\+T\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE}(i)
+\item 
+\#define \hyperlink{mailcheck_8c_ab5b4fb77aedca3a36c82cd8034e582f4}{U\+P\+D\+A\+T\+E\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE}(i,  finfo)
+\item 
+\#define \hyperlink{mailcheck_8c_a51754a976a0497e056ee436058413bac}{atime}~\hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{mailfiles}\mbox{[}i\mbox{]}-\/$>$access\+\_\+time
+\item 
+\#define \hyperlink{mailcheck_8c_a2499b683a4fb3cc97ddf7c4d7f31194f}{mtime}~\hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{mailfiles}\mbox{[}i\mbox{]}-\/$>$mod\+\_\+time
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{struct__fileinfo}{\+\_\+fileinfo} \hyperlink{mailcheck_8c_a6d957426bed2f81d3baec1e1160b109e}{F\+I\+L\+E\+I\+N\+FO}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int mailstat \hyperlink{mailcheck_8c_a6f2f7a6e9e021ca29b7a6b2eb05c3f50}{\+\_\+\+\_\+P} ((const char $\ast$, struct stat $\ast$))
+\item 
+static int \hyperlink{mailcheck_8c_a7b7c4168da3d3954e0ce90fa53745c87}{find\+\_\+mail\+\_\+file} \hyperlink{mailcheck_8c_a7d72d519865aa83dd5b321f4d8ce78ea}{\+\_\+\+\_\+P} ((char $\ast$))
+\item 
+static void \hyperlink{mailcheck_8c_a1f6dfba78ffc9779582581ce00e1dc52}{init\+\_\+mail\+\_\+file} \hyperlink{mailcheck_8c_a06f9a808c4608f6813f07b1af9d9b112}{\+\_\+\+\_\+P} ((int))
+\item 
+static int \hyperlink{mailcheck_8c_a87e9565d340de2fcd0b7b4eb96010d29}{add\+\_\+mail\+\_\+file} \hyperlink{mailcheck_8c_a3954b67850a7e643d3f5e268ba697ada}{\+\_\+\+\_\+P} ((char $\ast$, char $\ast$))
+\item 
+static void \hyperlink{mailcheck_8c_ad10c3e39e9440bf68df7c454d37e6fb1}{dispose\+\_\+mail\+\_\+file} \hyperlink{mailcheck_8c_a69ddd3cbde5f54105a828b324c8ec500}{\+\_\+\+\_\+P} ((\hyperlink{mailcheck_8c_a6d957426bed2f81d3baec1e1160b109e}{F\+I\+L\+E\+I\+N\+FO} $\ast$))
+\item 
+int \hyperlink{mailcheck_8c_a6b5e89b1bcff8168190f02ac332af2ed}{time\+\_\+to\+\_\+check\+\_\+mail} ()
+\item 
+void \hyperlink{mailcheck_8c_ac6757502dea67c283ee357985f4aa671}{reset\+\_\+mail\+\_\+timer} ()
+\item 
+static int \hyperlink{mailcheck_8c_a7b7c4168da3d3954e0ce90fa53745c87}{find\+\_\+mail\+\_\+file} (char $\ast$file)
+\item 
+static void \hyperlink{mailcheck_8c_a1f6dfba78ffc9779582581ce00e1dc52}{init\+\_\+mail\+\_\+file} (int i)
+\item 
+static void \hyperlink{mailcheck_8c_aa0108cd5172827f796782ddd85e33d4e}{update\+\_\+mail\+\_\+file} (int i)
+\item 
+static int \hyperlink{mailcheck_8c_a87e9565d340de2fcd0b7b4eb96010d29}{add\+\_\+mail\+\_\+file} (char $\ast$file, char $\ast$msg)
+\item 
+void \hyperlink{mailcheck_8c_a7c5cff4db517d44cf1c5db0711dab0b9}{reset\+\_\+mail\+\_\+files} ()
+\item 
+static \hyperlink{mailcheck_8c_a6d957426bed2f81d3baec1e1160b109e}{F\+I\+L\+E\+I\+N\+FO} $\ast$ \hyperlink{mailcheck_8c_a6727f20362ef957730aa86b8ae866086}{alloc\+\_\+mail\+\_\+file} (char $\ast$filename, char $\ast$msg)
+\item 
+static void \hyperlink{mailcheck_8c_ad10c3e39e9440bf68df7c454d37e6fb1}{dispose\+\_\+mail\+\_\+file} (\hyperlink{mailcheck_8c_a6d957426bed2f81d3baec1e1160b109e}{F\+I\+L\+E\+I\+N\+FO} $\ast$mf)
+\item 
+void \hyperlink{mailcheck_8c_aa44170e270ff266e0fadd634f54db3c8}{free\+\_\+mail\+\_\+files} ()
+\item 
+void \hyperlink{mailcheck_8c_adfe10401732a76ee873e160b73a06fda}{init\+\_\+mail\+\_\+dates} ()
+\item 
+static int \hyperlink{mailcheck_8c_a62caf02f2cf1e11e1b584b224a4bfc1f}{file\+\_\+mod\+\_\+date\+\_\+changed} (int i)
+\item 
+static int \hyperlink{mailcheck_8c_aa186993f7badb4a48c3e9b72934f0fcb}{file\+\_\+access\+\_\+date\+\_\+changed} (int i)
+\item 
+static int \hyperlink{mailcheck_8c_ad7c626a94b5cd3d98ccdbdda2b6d06fe}{file\+\_\+has\+\_\+grown} (int i)
+\item 
+static char $\ast$ \hyperlink{mailcheck_8c_a02577189dbfad6724a2f42537ce052dc}{parse\+\_\+mailpath\+\_\+spec} (char $\ast$str)
+\item 
+char $\ast$ \hyperlink{mailcheck_8c_a88ab1eda6580e877550cbe7e3e1e5301}{make\+\_\+default\+\_\+mailpath} ()
+\item 
+void \hyperlink{mailcheck_8c_a2d20a822dc1ab20632f8b92b0b081ee9}{remember\+\_\+mail\+\_\+dates} ()
+\item 
+void \hyperlink{mailcheck_8c_a9d6c2f16e1ac3572b0e9ea5ff2065324}{check\+\_\+mail} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+time\+\_\+t \hyperlink{mailcheck_8c_a921ecdc742149cd1e3f93520f8fbd371}{shell\+\_\+start\+\_\+time}
+\item 
+static \hyperlink{mailcheck_8c_a6d957426bed2f81d3baec1e1160b109e}{F\+I\+L\+E\+I\+N\+FO} $\ast$$\ast$ \hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{mailfiles} = (\hyperlink{mailcheck_8c_a6d957426bed2f81d3baec1e1160b109e}{F\+I\+L\+E\+I\+N\+FO} $\ast$$\ast$)\hyperlink{hashlib_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{N\+U\+LL}
+\item 
+static int \hyperlink{mailcheck_8c_a8fc0a060dfd16a1cf8ffa1c4545b19ec}{mailfiles\+\_\+count}
+\item 
+static time\+\_\+t \hyperlink{mailcheck_8c_ab97c4a4d5dfec0d31e3cbfa3e520f1bd}{last\+\_\+time\+\_\+mail\+\_\+checked} = 0
+\item 
+int \hyperlink{mailcheck_8c_a76a6721552b0b0b38961d78d5dedcc94}{mail\+\_\+warning}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{mailcheck.\+c@{mailcheck.\+c}!atime@{atime}}
+\index{atime@{atime}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{atime}{atime}}]{\setlength{\rightskip}{0pt plus 5cm}\#define atime~{\bf mailfiles}\mbox{[}i\mbox{]}-\/$>$access\+\_\+time}\hypertarget{mailcheck_8c_a51754a976a0497e056ee436058413bac}{}\label{mailcheck_8c_a51754a976a0497e056ee436058413bac}
+\index{mailcheck.\+c@{mailcheck.\+c}!M\+B\+O\+X\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED@{M\+B\+O\+X\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}}
+\index{M\+B\+O\+X\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED@{M\+B\+O\+X\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{M\+B\+O\+X\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED}{MBOX_INITIALIZED}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+B\+O\+X\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED~0x01}\hypertarget{mailcheck_8c_ae8a715e580ac72dfeff656fd8c65af8b}{}\label{mailcheck_8c_ae8a715e580ac72dfeff656fd8c65af8b}
+\index{mailcheck.\+c@{mailcheck.\+c}!mtime@{mtime}}
+\index{mtime@{mtime}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{mtime}{mtime}}]{\setlength{\rightskip}{0pt plus 5cm}\#define mtime~{\bf mailfiles}\mbox{[}i\mbox{]}-\/$>$mod\+\_\+time}\hypertarget{mailcheck_8c_a2499b683a4fb3cc97ddf7c4d7f31194f}{}\label{mailcheck_8c_a2499b683a4fb3cc97ddf7c4d7f31194f}
+\index{mailcheck.\+c@{mailcheck.\+c}!R\+E\+S\+E\+T\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE@{R\+E\+S\+E\+T\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE}}
+\index{R\+E\+S\+E\+T\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE@{R\+E\+S\+E\+T\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{R\+E\+S\+E\+T\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE}{RESET_MAIL_FILE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+S\+E\+T\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE(
+\begin{DoxyParamCaption}
+\item[{}]{i}
+\end{DoxyParamCaption}
+)}\hypertarget{mailcheck_8c_a2d975ba2462ad73e4e730b7e8d4d7935}{}\label{mailcheck_8c_a2d975ba2462ad73e4e730b7e8d4d7935}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \(\backslash\)
+    \{ \hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{\(\backslash\)}
+\hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{      mailfiles}[i]->\hyperlink{struct__fileinfo_af8ba936363aafb7842dd4e113ff2f123}{access\_time} = \hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{mailfiles}[i]->
+      \hyperlink{struct__fileinfo_a17b9194f9b657cc80abac1aa26a42661}{mod\_time} = 0; \hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{\(\backslash\)}
+\hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{      mailfiles}[i]->\hyperlink{struct__fileinfo_a476a96e113e2be0ce30d2ba189b4e532}{file\_size} = 0; \hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{\(\backslash\)}
+\hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{      mailfiles}[i]->\hyperlink{struct__fileinfo_ace325912d8b1e2db21732d0bdeae6e95}{flags} = 0; \(\backslash\)
+    \} \(\backslash\)
+  while (0)
+\end{DoxyCode}
+\index{mailcheck.\+c@{mailcheck.\+c}!U\+P\+D\+A\+T\+E\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE@{U\+P\+D\+A\+T\+E\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE}}
+\index{U\+P\+D\+A\+T\+E\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE@{U\+P\+D\+A\+T\+E\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{U\+P\+D\+A\+T\+E\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE}{UPDATE_MAIL_FILE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+P\+D\+A\+T\+E\+\_\+\+M\+A\+I\+L\+\_\+\+F\+I\+LE(
+\begin{DoxyParamCaption}
+\item[{}]{i, }
+\item[{}]{finfo}
+\end{DoxyParamCaption}
+)}\hypertarget{mailcheck_8c_ab5b4fb77aedca3a36c82cd8034e582f4}{}\label{mailcheck_8c_ab5b4fb77aedca3a36c82cd8034e582f4}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \(\backslash\)
+    \{ \hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{\(\backslash\)}
+\hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{      mailfiles}[i]->\hyperlink{struct__fileinfo_af8ba936363aafb7842dd4e113ff2f123}{access\_time} = finfo.st\_atime; \hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{\(\backslash\)}
+\hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{      mailfiles}[i]->\hyperlink{struct__fileinfo_a17b9194f9b657cc80abac1aa26a42661}{mod\_time} = finfo.st\_mtime; \hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{\(\backslash\)}
+\hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{      mailfiles}[i]->\hyperlink{struct__fileinfo_a476a96e113e2be0ce30d2ba189b4e532}{file\_size} = finfo.st\_size; \hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{\(\backslash\)}
+\hyperlink{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{      mailfiles}[i]->\hyperlink{struct__fileinfo_ace325912d8b1e2db21732d0bdeae6e95}{flags} |= \hyperlink{mailcheck_8c_ae8a715e580ac72dfeff656fd8c65af8b}{MBOX\_INITIALIZED}; \(\backslash\)
+    \} \(\backslash\)
+  while (0)
+\end{DoxyCode}
+
+
+\subsection{Typedef Documentation}
+\index{mailcheck.\+c@{mailcheck.\+c}!F\+I\+L\+E\+I\+N\+FO@{F\+I\+L\+E\+I\+N\+FO}}
+\index{F\+I\+L\+E\+I\+N\+FO@{F\+I\+L\+E\+I\+N\+FO}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{F\+I\+L\+E\+I\+N\+FO}{FILEINFO}}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \+\_\+fileinfo}  {\bf F\+I\+L\+E\+I\+N\+FO}}\hypertarget{mailcheck_8c_a6d957426bed2f81d3baec1e1160b109e}{}\label{mailcheck_8c_a6d957426bed2f81d3baec1e1160b109e}
+
+
+\subsection{Function Documentation}
+\index{mailcheck.\+c@{mailcheck.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((const char $\ast$, struct stat $\ast$))}{__P((const char *, struct stat *))}}]{\setlength{\rightskip}{0pt plus 5cm}int mailstat \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(const char $\ast$, struct stat $\ast$)}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{mailcheck_8c_a6f2f7a6e9e021ca29b7a6b2eb05c3f50}{}\label{mailcheck_8c_a6f2f7a6e9e021ca29b7a6b2eb05c3f50}
+\index{mailcheck.\+c@{mailcheck.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$))}{__P((char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf find\+\_\+mail\+\_\+file} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_a7d72d519865aa83dd5b321f4d8ce78ea}{}\label{mailcheck_8c_a7d72d519865aa83dd5b321f4d8ce78ea}
+\index{mailcheck.\+c@{mailcheck.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((int))}{__P((int))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf init\+\_\+mail\+\_\+file} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(int)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_a06f9a808c4608f6813f07b1af9d9b112}{}\label{mailcheck_8c_a06f9a808c4608f6813f07b1af9d9b112}
+\index{mailcheck.\+c@{mailcheck.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((char $\ast$, char $\ast$))}{__P((char *, char *))}}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf add\+\_\+mail\+\_\+file} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{(char $\ast$, char $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_a3954b67850a7e643d3f5e268ba697ada}{}\label{mailcheck_8c_a3954b67850a7e643d3f5e268ba697ada}
+\index{mailcheck.\+c@{mailcheck.\+c}!\+\_\+\+\_\+P@{\+\_\+\+\_\+P}}
+\index{\+\_\+\+\_\+P@{\+\_\+\+\_\+P}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+\+P((\+F\+I\+L\+E\+I\+N\+F\+O $\ast$))}{__P((FILEINFO *))}}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf dispose\+\_\+mail\+\_\+file} \+\_\+\+\_\+P (
+\begin{DoxyParamCaption}
+\item[{({\bf F\+I\+L\+E\+I\+N\+FO} $\ast$)}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_a69ddd3cbde5f54105a828b324c8ec500}{}\label{mailcheck_8c_a69ddd3cbde5f54105a828b324c8ec500}
+\index{mailcheck.\+c@{mailcheck.\+c}!add\+\_\+mail\+\_\+file@{add\+\_\+mail\+\_\+file}}
+\index{add\+\_\+mail\+\_\+file@{add\+\_\+mail\+\_\+file}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{add\+\_\+mail\+\_\+file(char $\ast$file, char $\ast$msg)}{add_mail_file(char *file, char *msg)}}]{\setlength{\rightskip}{0pt plus 5cm}static int add\+\_\+mail\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{file, }
+\item[{char $\ast$}]{msg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_a87e9565d340de2fcd0b7b4eb96010d29}{}\label{mailcheck_8c_a87e9565d340de2fcd0b7b4eb96010d29}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mailcheck_8c_a87e9565d340de2fcd0b7b4eb96010d29_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{mailcheck.\+c@{mailcheck.\+c}!alloc\+\_\+mail\+\_\+file@{alloc\+\_\+mail\+\_\+file}}
+\index{alloc\+\_\+mail\+\_\+file@{alloc\+\_\+mail\+\_\+file}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{alloc\+\_\+mail\+\_\+file(char $\ast$filename, char $\ast$msg)}{alloc_mail_file(char *filename, char *msg)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf F\+I\+L\+E\+I\+N\+FO}$\ast$ alloc\+\_\+mail\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{filename, }
+\item[{char $\ast$}]{msg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_a6727f20362ef957730aa86b8ae866086}{}\label{mailcheck_8c_a6727f20362ef957730aa86b8ae866086}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mailcheck_8c_a6727f20362ef957730aa86b8ae866086_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{mailcheck.\+c@{mailcheck.\+c}!check\+\_\+mail@{check\+\_\+mail}}
+\index{check\+\_\+mail@{check\+\_\+mail}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{check\+\_\+mail()}{check_mail()}}]{\setlength{\rightskip}{0pt plus 5cm}void check\+\_\+mail (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{mailcheck_8c_a9d6c2f16e1ac3572b0e9ea5ff2065324}{}\label{mailcheck_8c_a9d6c2f16e1ac3572b0e9ea5ff2065324}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mailcheck_8c_a9d6c2f16e1ac3572b0e9ea5ff2065324_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{mailcheck.\+c@{mailcheck.\+c}!dispose\+\_\+mail\+\_\+file@{dispose\+\_\+mail\+\_\+file}}
+\index{dispose\+\_\+mail\+\_\+file@{dispose\+\_\+mail\+\_\+file}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{dispose\+\_\+mail\+\_\+file(\+F\+I\+L\+E\+I\+N\+F\+O $\ast$mf)}{dispose_mail_file(FILEINFO *mf)}}]{\setlength{\rightskip}{0pt plus 5cm}static void dispose\+\_\+mail\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{{\bf F\+I\+L\+E\+I\+N\+FO} $\ast$}]{mf}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_ad10c3e39e9440bf68df7c454d37e6fb1}{}\label{mailcheck_8c_ad10c3e39e9440bf68df7c454d37e6fb1}
+\index{mailcheck.\+c@{mailcheck.\+c}!file\+\_\+access\+\_\+date\+\_\+changed@{file\+\_\+access\+\_\+date\+\_\+changed}}
+\index{file\+\_\+access\+\_\+date\+\_\+changed@{file\+\_\+access\+\_\+date\+\_\+changed}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{file\+\_\+access\+\_\+date\+\_\+changed(int i)}{file_access_date_changed(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}static int file\+\_\+access\+\_\+date\+\_\+changed (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_aa186993f7badb4a48c3e9b72934f0fcb}{}\label{mailcheck_8c_aa186993f7badb4a48c3e9b72934f0fcb}
+\index{mailcheck.\+c@{mailcheck.\+c}!file\+\_\+has\+\_\+grown@{file\+\_\+has\+\_\+grown}}
+\index{file\+\_\+has\+\_\+grown@{file\+\_\+has\+\_\+grown}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{file\+\_\+has\+\_\+grown(int i)}{file_has_grown(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}static int file\+\_\+has\+\_\+grown (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_ad7c626a94b5cd3d98ccdbdda2b6d06fe}{}\label{mailcheck_8c_ad7c626a94b5cd3d98ccdbdda2b6d06fe}
+\index{mailcheck.\+c@{mailcheck.\+c}!file\+\_\+mod\+\_\+date\+\_\+changed@{file\+\_\+mod\+\_\+date\+\_\+changed}}
+\index{file\+\_\+mod\+\_\+date\+\_\+changed@{file\+\_\+mod\+\_\+date\+\_\+changed}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{file\+\_\+mod\+\_\+date\+\_\+changed(int i)}{file_mod_date_changed(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}static int file\+\_\+mod\+\_\+date\+\_\+changed (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_a62caf02f2cf1e11e1b584b224a4bfc1f}{}\label{mailcheck_8c_a62caf02f2cf1e11e1b584b224a4bfc1f}
+\index{mailcheck.\+c@{mailcheck.\+c}!find\+\_\+mail\+\_\+file@{find\+\_\+mail\+\_\+file}}
+\index{find\+\_\+mail\+\_\+file@{find\+\_\+mail\+\_\+file}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{find\+\_\+mail\+\_\+file(char $\ast$file)}{find_mail_file(char *file)}}]{\setlength{\rightskip}{0pt plus 5cm}static int find\+\_\+mail\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_a7b7c4168da3d3954e0ce90fa53745c87}{}\label{mailcheck_8c_a7b7c4168da3d3954e0ce90fa53745c87}
+\index{mailcheck.\+c@{mailcheck.\+c}!free\+\_\+mail\+\_\+files@{free\+\_\+mail\+\_\+files}}
+\index{free\+\_\+mail\+\_\+files@{free\+\_\+mail\+\_\+files}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{free\+\_\+mail\+\_\+files()}{free_mail_files()}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+mail\+\_\+files (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{mailcheck_8c_aa44170e270ff266e0fadd634f54db3c8}{}\label{mailcheck_8c_aa44170e270ff266e0fadd634f54db3c8}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{mailcheck_8c_aa44170e270ff266e0fadd634f54db3c8_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{mailcheck.\+c@{mailcheck.\+c}!init\+\_\+mail\+\_\+dates@{init\+\_\+mail\+\_\+dates}}
+\index{init\+\_\+mail\+\_\+dates@{init\+\_\+mail\+\_\+dates}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{init\+\_\+mail\+\_\+dates()}{init_mail_dates()}}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+mail\+\_\+dates (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{mailcheck_8c_adfe10401732a76ee873e160b73a06fda}{}\label{mailcheck_8c_adfe10401732a76ee873e160b73a06fda}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mailcheck_8c_adfe10401732a76ee873e160b73a06fda_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{mailcheck.\+c@{mailcheck.\+c}!init\+\_\+mail\+\_\+file@{init\+\_\+mail\+\_\+file}}
+\index{init\+\_\+mail\+\_\+file@{init\+\_\+mail\+\_\+file}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{init\+\_\+mail\+\_\+file(int i)}{init_mail_file(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}static void init\+\_\+mail\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_a1f6dfba78ffc9779582581ce00e1dc52}{}\label{mailcheck_8c_a1f6dfba78ffc9779582581ce00e1dc52}
+\index{mailcheck.\+c@{mailcheck.\+c}!make\+\_\+default\+\_\+mailpath@{make\+\_\+default\+\_\+mailpath}}
+\index{make\+\_\+default\+\_\+mailpath@{make\+\_\+default\+\_\+mailpath}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{make\+\_\+default\+\_\+mailpath()}{make_default_mailpath()}}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ make\+\_\+default\+\_\+mailpath (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{mailcheck_8c_a88ab1eda6580e877550cbe7e3e1e5301}{}\label{mailcheck_8c_a88ab1eda6580e877550cbe7e3e1e5301}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mailcheck_8c_a88ab1eda6580e877550cbe7e3e1e5301_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{mailcheck.\+c@{mailcheck.\+c}!parse\+\_\+mailpath\+\_\+spec@{parse\+\_\+mailpath\+\_\+spec}}
+\index{parse\+\_\+mailpath\+\_\+spec@{parse\+\_\+mailpath\+\_\+spec}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{parse\+\_\+mailpath\+\_\+spec(char $\ast$str)}{parse_mailpath_spec(char *str)}}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ parse\+\_\+mailpath\+\_\+spec (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_a02577189dbfad6724a2f42537ce052dc}{}\label{mailcheck_8c_a02577189dbfad6724a2f42537ce052dc}
+\index{mailcheck.\+c@{mailcheck.\+c}!remember\+\_\+mail\+\_\+dates@{remember\+\_\+mail\+\_\+dates}}
+\index{remember\+\_\+mail\+\_\+dates@{remember\+\_\+mail\+\_\+dates}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{remember\+\_\+mail\+\_\+dates()}{remember_mail_dates()}}]{\setlength{\rightskip}{0pt plus 5cm}void remember\+\_\+mail\+\_\+dates (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{mailcheck_8c_a2d20a822dc1ab20632f8b92b0b081ee9}{}\label{mailcheck_8c_a2d20a822dc1ab20632f8b92b0b081ee9}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mailcheck_8c_a2d20a822dc1ab20632f8b92b0b081ee9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{mailcheck.\+c@{mailcheck.\+c}!reset\+\_\+mail\+\_\+files@{reset\+\_\+mail\+\_\+files}}
+\index{reset\+\_\+mail\+\_\+files@{reset\+\_\+mail\+\_\+files}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{reset\+\_\+mail\+\_\+files()}{reset_mail_files()}}]{\setlength{\rightskip}{0pt plus 5cm}void reset\+\_\+mail\+\_\+files (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{mailcheck_8c_a7c5cff4db517d44cf1c5db0711dab0b9}{}\label{mailcheck_8c_a7c5cff4db517d44cf1c5db0711dab0b9}
+\index{mailcheck.\+c@{mailcheck.\+c}!reset\+\_\+mail\+\_\+timer@{reset\+\_\+mail\+\_\+timer}}
+\index{reset\+\_\+mail\+\_\+timer@{reset\+\_\+mail\+\_\+timer}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{reset\+\_\+mail\+\_\+timer()}{reset_mail_timer()}}]{\setlength{\rightskip}{0pt plus 5cm}void reset\+\_\+mail\+\_\+timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{mailcheck_8c_ac6757502dea67c283ee357985f4aa671}{}\label{mailcheck_8c_ac6757502dea67c283ee357985f4aa671}
+\index{mailcheck.\+c@{mailcheck.\+c}!time\+\_\+to\+\_\+check\+\_\+mail@{time\+\_\+to\+\_\+check\+\_\+mail}}
+\index{time\+\_\+to\+\_\+check\+\_\+mail@{time\+\_\+to\+\_\+check\+\_\+mail}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{time\+\_\+to\+\_\+check\+\_\+mail()}{time_to_check_mail()}}]{\setlength{\rightskip}{0pt plus 5cm}int time\+\_\+to\+\_\+check\+\_\+mail (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{mailcheck_8c_a6b5e89b1bcff8168190f02ac332af2ed}{}\label{mailcheck_8c_a6b5e89b1bcff8168190f02ac332af2ed}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mailcheck_8c_a6b5e89b1bcff8168190f02ac332af2ed_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{mailcheck.\+c@{mailcheck.\+c}!update\+\_\+mail\+\_\+file@{update\+\_\+mail\+\_\+file}}
+\index{update\+\_\+mail\+\_\+file@{update\+\_\+mail\+\_\+file}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{update\+\_\+mail\+\_\+file(int i)}{update_mail_file(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}static void update\+\_\+mail\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_aa0108cd5172827f796782ddd85e33d4e}{}\label{mailcheck_8c_aa0108cd5172827f796782ddd85e33d4e}
+
+
+\subsection{Variable Documentation}
+\index{mailcheck.\+c@{mailcheck.\+c}!last\+\_\+time\+\_\+mail\+\_\+checked@{last\+\_\+time\+\_\+mail\+\_\+checked}}
+\index{last\+\_\+time\+\_\+mail\+\_\+checked@{last\+\_\+time\+\_\+mail\+\_\+checked}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{last\+\_\+time\+\_\+mail\+\_\+checked}{last_time_mail_checked}}]{\setlength{\rightskip}{0pt plus 5cm}time\+\_\+t last\+\_\+time\+\_\+mail\+\_\+checked = 0\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_ab97c4a4d5dfec0d31e3cbfa3e520f1bd}{}\label{mailcheck_8c_ab97c4a4d5dfec0d31e3cbfa3e520f1bd}
+\index{mailcheck.\+c@{mailcheck.\+c}!mail\+\_\+warning@{mail\+\_\+warning}}
+\index{mail\+\_\+warning@{mail\+\_\+warning}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{mail\+\_\+warning}{mail_warning}}]{\setlength{\rightskip}{0pt plus 5cm}int mail\+\_\+warning}\hypertarget{mailcheck_8c_a76a6721552b0b0b38961d78d5dedcc94}{}\label{mailcheck_8c_a76a6721552b0b0b38961d78d5dedcc94}
+\index{mailcheck.\+c@{mailcheck.\+c}!mailfiles@{mailfiles}}
+\index{mailfiles@{mailfiles}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{mailfiles}{mailfiles}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf F\+I\+L\+E\+I\+N\+FO}$\ast$$\ast$ mailfiles = ({\bf F\+I\+L\+E\+I\+N\+FO} $\ast$$\ast$){\bf N\+U\+LL}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}{}\label{mailcheck_8c_a2bfc7651be5a56f8079cc5025b20fe0d}
+\index{mailcheck.\+c@{mailcheck.\+c}!mailfiles\+\_\+count@{mailfiles\+\_\+count}}
+\index{mailfiles\+\_\+count@{mailfiles\+\_\+count}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{mailfiles\+\_\+count}{mailfiles_count}}]{\setlength{\rightskip}{0pt plus 5cm}int mailfiles\+\_\+count\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{mailcheck_8c_a8fc0a060dfd16a1cf8ffa1c4545b19ec}{}\label{mailcheck_8c_a8fc0a060dfd16a1cf8ffa1c4545b19ec}
+\index{mailcheck.\+c@{mailcheck.\+c}!shell\+\_\+start\+\_\+time@{shell\+\_\+start\+\_\+time}}
+\index{shell\+\_\+start\+\_\+time@{shell\+\_\+start\+\_\+time}!mailcheck.\+c@{mailcheck.\+c}}
+\subsubsection[{\texorpdfstring{shell\+\_\+start\+\_\+time}{shell_start_time}}]{\setlength{\rightskip}{0pt plus 5cm}time\+\_\+t shell\+\_\+start\+\_\+time}\hypertarget{mailcheck_8c_a921ecdc742149cd1e3f93520f8fbd371}{}\label{mailcheck_8c_a921ecdc742149cd1e3f93520f8fbd371}
