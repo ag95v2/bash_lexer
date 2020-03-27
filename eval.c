@@ -177,7 +177,7 @@ int reader_loop()
 				executing = 1;
 				stdin_redir = 0;
 
-				execute_command(current_command);
+				//execute_command(current_command);
 
 			exec_done:
 				QUIT;
